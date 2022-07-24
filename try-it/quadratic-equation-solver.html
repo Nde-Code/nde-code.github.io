@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<style>
+	.calculate-btn {
+		padding: 15px 31px;
+		color: #fff;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #2B96D9;
+		transition: all .2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0367A6;
+		cursor: pointer;
+	}
+
+	.calculate-btn:hover {
+		background: #4AB0D9
+	}
+
+	.sqrt-icon {
+		font-size: 160px;
+		color: crimson;
+	}
+
+	.center-elements {
+		text-align: center;
+	}
+
+	.website-box-notice-title {
+		color: white;
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+	#equation-plot-id {
+		color: #2B96D9;
+		font-size: 50px;
+		font-style: italic;
+		font-weight: bold;
+	}
+
+	@media screen and (max-width: 768px) {
+		.sqrt-icon {
+			font-size: 130px;
+			margin-top: 20px;
+		}
+	}
+
+	.modalbox-go-btn {
+		padding: 15px 31px;
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #2B96D9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0367A6;
+		cursor: pointer;
+	}
+
+	.modalbox-go-btn:hover {
+		background: #4AB0D9;
+	}
+
+	.main-website-panel-notice {
+		font-size: 22px;
+		margin-right: 5%;
+		margin-left: 5%;
+	}
+	</style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nathan Debilloëz · Logiciel</title>
+	<meta name="description" content="Calculatrice dans le navigateur pour calculer des équations du second degré.">
+	<meta name="keywords" content="Nathan Debilloëz, Logiciels, Calculatrice d'équations du second degré">
+	<meta name="author" content="Nathan Debilloëz">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../assets/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+</head>
+
+<body id="main-body" class="loading">
+	<div id="modalbox-open-div"></div>
+	<div class="loading-animation" id="loading-id"></div>
+	<div id="loading-body" style="visibility: hidden;">
+		<div id="particles-js"></div>
+		<div class="app">
+			<div class="header-contenaire">
+				<div class="website-nav-content">
+					<div class="menu-header">
+						<div class="mobile-menu">
+							<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+						</div>
+						<a href="/" class="menu-header-title"><strong>Nathan Debilloëz</strong></a>
+						<a onclick="openContactBox();" class="menu-item">Contact</a>
+						<a onclick="openAboutBox();" class="menu-item">À propos</a>
+							<div class="menu-dropdown">
+								<button class="menu-dropdown-btn">Projets 
+									<i class="fa fa-caret-down"></i>
+								</button>
+								<div class="menu-dropdown-items">
+									<a href="https://gist.github.com/Nde-Code/6dbbfc3ae6c3c2b2d8fb722b944b63ec">Intégrale de Riemann</a>
+									<a href="pinwheel-animation">Moulin à vent</a>
+									<a href="https://github.com/Nde-Code/DroneGames">DroneGames</a>
+									<a href="https://github.com/Nde-Code/RobotGames">RobotGames</a>
+								</div>
+							</div> 
+							<div class="menu-dropdown">
+								<button class="menu-dropdown-btn">Logiciels 
+									<i class="fa fa-caret-down"></i>
+								</button>
+								<div class="menu-dropdown-items">
+									<a href="photo-gallery-creator">Créer un album photo</a>
+									<a href="photo-editor">Retoucher une image </a>
+									<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
+									<a href="graphing">Traceur de graphique mathématique</a>
+								</div>
+							</div>
+					  </div>
+				<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
+			</div>
+			<div class="main-website-panel" id="main-website-content-id">
+				<div class="main-website-row-panel" style="padding-left: 7px;">
+					<div class="main-website-panel-style">
+						<div class="center-elements">
+							<i class="fa-solid fa-square-root-variable sqrt-icon"></i>
+							<h1 style="margin-top: 30px; color: white; font-weight: bold; font-size: 24px;">Votre équation: </h1>
+							<span id="equation-plot-id"> ax<sup>2</sup> + bx + c = 0 </span>
+							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> :Le logiciel est gratuit, rapide et propose une prévisualisation de votre entrée.</p>
+							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> :Vous n'avez pas le raisonnement du calcul à exécuter.</p>
+							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> :Cette calculatrice ne travaille que dans les réels. Pas dans les complexes pour les amateurs de mathématique.</p>
+							<p style="margin-left: 53px; margin-right: 53px; text-align: center; font-weight: bold; color: green; font-size: 20px; margin-bottom: 20px;" id="display-result-id"></p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 20px;"></div>
+			<div class="website-bottom-menu">
+				<a onclick="$('#modalbox-equation').css('display', 'block'); window.scrollTo(0, 0);" id="calculate-btn-id" class="calculate-btn"><i class="fa-solid fa-pen-to-square"></i> Configurer l'équation</a>
+			</div>
+			<div style="margin-top: 20px;" class="foot-page">
+				<div class="main-footer-page">
+					<div class="social-media">
+						<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
+						<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
+						<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
+					</div>
+					<div class="copyright-notice">
+						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+						<p class="footer-page-text"> Mes dessins sont faits avec Canva et mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
+						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modalbox-class" id="modalbox-equation" style="display: none;">
+			<header class="modalbox-header-class" id="modalbox-header-id">
+				<i class="fa-solid fa-pen-to-square"></i> Configurer
+				<a class="modalbox-header-close" onclick="$('#modalbox-equation').css('display', 'none');">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</a>
+			</header>
+			<div class="modalbox-main-content">
+
+				<div class="modalbox-components-contenaire">
+					<h2>Le A de votre équation:</h2>
+					<p class="modalbox-description">Il s'agit du X au carré de votre équation. Toutes les valeurs fractionnaires doivent être placer sous la forme de chiffre à virgule.</p>
+				</div>
+				<input type="number" id="a-equation" class="modalbox-input" placeholder="A:"> 
+
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 20px; height: 3px;"></div>
+
+				<div class="modalbox-components-contenaire">
+					<h2>Le B de votre équation:</h2>
+					<p class="modalbox-description">Il s'agit du X (pas au carré) de votre équation. Toutes les valeurs fractionnaires doivent être placer sous la forme de chiffre à virgule.</p>
+				</div>
+				<input type="number" id="b-equation" class="modalbox-input" placeholder="B:">
+
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 20px; height: 3px;"></div>
+
+				<div class="modalbox-components-contenaire">
+					<h2>Le C de votre équation:</h2>
+					<p class="modalbox-description">Il s'agit de la constante de votre équation. Toutes les valeurs fractionnaires doivent être placer sous la forme de chiffre à virgule.</p>
+				</div>
+				<input type="number" id="c-equation" class="modalbox-input" placeholder="C:">
+
+
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<p class="modalbox-error-class" id="modalbox-error-id">Aucune erreur(s) n'est à signaler ! </p>
+
+				<div style="text-align: center; margin-bottom: 40px;">
+					<a class="modalbox-go-btn" onclick="solve($('#a-equation').val(), $('#b-equation').val(), $('#c-equation').val());"><i class="fa-solid fa-calculator"></i> Calculer</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/particles.js"></script>
+	<script src="../js/particles-setup.js"></script>
+	<script src="../js/app.js"></script>
+	<script type="text/javascript">
+		$("#copyright").html(new Date().getFullYear());
+
+		$(document).on('DOMContentLoaded', () => { loadingAnimation(); });
+
+		function loadingAnimation() {
+
+			$("#loading-body").css('display', 'none');
+
+			setTimeout(() => {
+
+				$("#loading-body").css('display', 'block');
+
+				$("#loading-body").css("visibility", "unset");
+
+				$("#loading-id").css('display', 'none');
+
+				$("#main-body").attr("class", "active");
+
+			}, 3000);
+
+		};
+
+		setInterval(function () {
+
+			if ($(window).width() <= 1024) {
+
+				$(".modalbox-go-btn").html('<i class="fa-solid fa-calculator"></i>');
+
+				$("#calculate-btn-id").html('<i class="fa-solid fa-pen-to-square"></i>');
+
+				$(".main-website-row-panel").css("paddingLeft", "unset");
+
+			}
+
+			if ($(window).width() <= 745) {
+
+				$("#equation-plot-id").css("fontSize", "20px");
+
+			}
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-equation").css('marginLeft', 'unset');
+
+				$("#modalbox-equation").css('left', 'unset');
+
+				$("#modalbox-equation").css('width', (window.innerWidth - 10) + "px");
+
+				$("#display-result-id").css("marginLeft", "unset");
+
+				$("#display-result-id").css("marginRight", "unset");
+
+			}
+
+		}, 500);
+
+		function buildEquation() {
+
+			let aValueHtml = $("#a-equation").val();
+
+			let bValueHtml = $("#b-equation").val();
+
+			let cValueHtml = $("#c-equation").val();
+
+			if (bValueHtml >= 0) {
+
+				bValueHtml = "+ " + bValueHtml;
+
+			}
+
+			if (cValueHtml >= 0) {
+
+				cValueHtml = "+ " + cValueHtml;
+
+			}
+
+			if (aValueHtml < 0) {
+
+				aValueHtml = "- " + Math.abs(aValueHtml);
+
+			}
+
+			if (bValueHtml < 0) {
+
+				bValueHtml = "- " + Math.abs(bValueHtml);
+
+			}
+
+			if (cValueHtml < 0) {
+
+				cValueHtml = "- " + Math.abs(cValueHtml);
+
+			}
+
+			let equationP = `${aValueHtml}x<sup>2</sup> ${bValueHtml}x ${cValueHtml} = 0`;
+
+			$("#equation-plot-id").html(equationP);
+
+		}
+
+		function solve(a, b, c) {
+
+			if (!a) {
+				
+				$("#modalbox-error-id").html("Le A de votre équation est vide !");
+
+				return false;
+
+			}
+
+			else if (!b) {
+				
+				$("#modalbox-error-id").html("Le B de votre équation est vide !");
+
+				return false;
+
+			}
+
+			else if (!c) {
+				
+				$("#modalbox-error-id").html("Le C de votre équation est vide !");
+
+				return false;
+
+			} 
+
+			else {
+
+				$("#modalbox-equation").css("display", "none");
+
+				$("#modalbox-error-id").html("Aucune erreur(s) n'est à signaler !");
+
+				if ($(window).width() >= 768) $(".sqrt-icon").css("fontSize", "250px");
+
+				$(".main-website-panel-notice").remove();
+
+				buildEquation();
+
+				var delta = Math.pow(b, 2) - 4 * (a) * (c);
+
+				if (a == 0 && delta >= 0) {
+
+					$("#display-result-id").html("L'équation n'est pas du second degré !");
+
+					return;
+
+				};
+
+				if (delta > 0) {
+
+					let resultOne = ((-b) + Math.sqrt(delta)) / (2 * (a));
+
+					let resultTwo = ((-b) - Math.sqrt(delta)) / (2 * (a));
+
+					let printResult = `L'ensemble de solution de votre équation est {X<sub>1</sub> = ${resultOne.toFixed(3)}; X<sub>2</sub> = ${resultTwo.toFixed(3)}} avec un Delta de ${delta}.`;
+
+					$("#display-result-id").html(printResult);
+
+				}
+
+				if (delta === 0) {
+
+					if (b == 0 && a == 0) {
+
+						let nullResult = `La solution de votre équation est 0.`;
+
+						$("#display-result-id").html(nullResult);
+
+					} else {
+
+						let resultThree = (-b) / (2 * (a));
+
+						let printResultTwo = `La solution de votre équation est ${resultThree.toFixed(3)} car votre Delta est de ${delta}.`;
+
+						$("#display-result-id").html(printResultTwo);
+
+					}
+
+				}
+
+				if (delta < 0) {
+
+					let printResultThree = `Votre equation n'a aucune solution car le Delta (${delta}) est négatif.`;
+
+					$("#display-result-id").html(printResultThree);
+
+				}
+
+				window.scrollTo(0, 0);
+
+			}
+
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,490 @@
+* {
+    font-family: Verdana, sans-serif;
+    text-decoration: none;
+}
+
+:root {
+    color-scheme: dark;
+}
+
+body.loading {
+    margin: 0;
+    padding: 0;
+    background: #292829;
+    height: 200%;
+}
+
+.loading-animation {
+    margin: 0 auto;
+    margin-top: 15%;
+    text-align: center;
+    border: 30px solid #363536;
+    border-top: 30px solid #2B96D9;
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+body.active {
+    background: url('assets/font.png') no-repeat;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+}
+
+.app {
+    position: relative;
+}
+
+.white-lines {
+    height: 1px;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: white;
+}
+
+.count-particles {
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Verdana, sans-serif;
+    font-weight: bold;
+}
+
+.particles-js-canvas-el {
+    position: absolute;
+}
+
+.js-count-particles {
+    font-size: 1.1em;
+}
+
+#stats,
+.count-particles {
+    -webkit-user-select: none;
+    user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#stats {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.count-particles {
+    border-radius: 0 0 3px 3px;
+}
+
+#particles-js {
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/font.png');
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.foot-page {
+    background: #292829;
+    width: 100%;
+    color: white;
+    margin-top: -18px;
+}
+
+div.main-footer-page {
+    text-align: center;
+    align-items: center;
+}
+
+div.social-media {
+    padding: 18px 30px;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 15px 5px #000000;
+    cursor: default;
+}
+
+i.twitter {
+    font-size: 25px;
+    color: rgb(29, 161, 242);
+    padding: 19px 20px;
+    cursor: pointer;
+}
+
+i.facebook {
+    font-size: 25px;
+    color: #4267B2;
+    padding: 19px 20px;
+    cursor: pointer;
+}
+
+i.github {
+    font-size: 25px;
+    color: white;
+    padding: 19px 20px;
+    cursor: pointer;
+}
+
+div.copyright-notice {
+    background: #363536;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-page-text {
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+p.footer-page-text a.footer-page-link {
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.main-website-row-panel:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.main-website-panel-style {
+    overflow-y: auto;
+    height: 505px;
+    background: linear-gradient(325deg, rgba(35, 35, 39, 1) 29%, rgba(61, 61, 65, 1) 67%, rgba(92, 92, 97, 1) 89%, rgba(145, 147, 147, 1) 98%);
+    padding: 20px;
+    margin-top: 20px;
+    border: 4px solid #363536;
+    color: white;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 15px 5px #000000;
+}
+
+.main-website-components-box {
+    float: left;
+    width: 100%;
+}
+
+.main-website-panel {
+    height: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.modalbox-class {
+    top: 40%;
+    left: 50%;
+    margin-left: -400px;
+    margin-top: -200px;
+    width: 800px;
+    background: linear-gradient(302deg, rgba(35, 35, 39, 1) 10%, rgba(35, 35, 39, 1) 28%, rgba(45, 45, 49, 1) 48%, rgba(50, 50, 54, 1) 56%, rgba(54, 54, 58, 1) 63%, rgba(58, 58, 62, 1) 72%, rgba(61, 61, 65, 1) 80%, rgba(92, 92, 97, 1) 92%, rgba(145, 147, 147, 1) 98%);
+    z-index: 2;
+    border: 4px solid #363536;
+    color: white;
+    position: fixed;
+    font-size: 20px;
+    -webkit-box-shadow: 5px 11px 15px 5px #000000;
+    box-shadow: 5px 11px 15px 5px #000000;
+}
+
+.modalbox-header-close {
+    float: right;
+    margin-right: 15px;
+    color: #ffffff;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+header.modalbox-header-class {
+    padding: 20px;
+    background: #2B96D9;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.modalbox-main-content {
+    overflow-y: scroll;
+    height: 426px;
+}
+
+.modalbox-components-contenaire {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.modalbox-textarea {
+    resize: none;
+    width: 88%;
+    height: 230px;
+    background: #323232;
+    border: 4px solid #757375;
+    outline: none;
+    color: white;
+    font-size: 22px;
+    margin-left: 5%;
+    -webkit-box-shadow: 3px 5px 15px 5px #000;
+    box-shadow: 3px 5px 15px 5px #000;
+}
+
+.modalbox-input {
+    width: 88%;
+    height: 45px;
+    background: #323232;
+    border: 4px solid #757375;
+    outline: none;
+    color: white;
+    font-size: 22px;
+    margin-left: 5%;
+    -webkit-box-shadow: 3px 5px 15px 5px #000;
+    box-shadow: 3px 5px 15px 5px #000;
+}
+
+.modalbox-description {
+    font-size: 22px;
+}
+
+.modalbox-error-class {
+    text-align: center;
+    font-size: 20px;
+    color: #E2392B;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.modalbox-close-btn {
+    padding: 15px 31px;
+    color: white;
+    font-size: 20px;
+    border-radius: 50px;
+    background: #2B96D9;
+    transition: all 0.2s ease-out 0s;
+    font-weight: bold;
+    border: 4px solid #0367A6;
+    cursor: pointer;
+}
+
+.modalbox-close-btn:hover {
+    background: #4AB0D9;
+}
+
+.main-website-panel-style::-webkit-scrollbar-track {
+    display: none;
+}
+
+.main-website-panel-style::-webkit-scrollbar {
+    display: none;
+}
+
+.main-website-panel-style::-webkit-scrollbar-thumb {
+    display: none;
+}
+
+.email-bar {
+    width: 88%;
+    height: 45px;
+    background: #323232;
+    border: 4px solid #757375;
+    outline: none;
+    color: white;
+    text-align: center;
+    font-size: 22px;
+    margin-left: 5%;
+    box-shadow: 3px 5px 15px 5px #000000;
+    -webkit-box-shadow: 3px 5px 15px 5px #000000;
+}
+
+.menu-header {
+    overflow: hidden;
+    background: #292829;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20px;
+    border: 4px dashed #363536;
+    border-radius: 25px;
+}
+
+.menu-header a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 24px 26px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu-dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.menu-dropdown .menu-dropdown-btn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 24px 26px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    cursor: pointer;
+}
+
+.menu-header a:hover,
+.menu-dropdown:hover .menu-dropdown-btn {
+    background-color: rgb(78, 78, 78);
+}
+
+.menu-dropdown-items {
+    display: none;
+    position: absolute;
+    background-color: #363536;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.menu-dropdown-items a {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    width: auto;
+}
+
+.menu-dropdown-items a:hover {
+    background-color: rgb(78, 78, 78);
+}
+
+.menu-dropdown:hover .menu-dropdown-items {
+    display: block;
+}
+
+.mobile-menu {
+    display: none;
+    margin-left: 25px;
+    font-size: 42px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .mobile-menu {
+        color: white;
+        display: block;
+        float: right;
+    }
+
+    .menu-header a.menu-item {
+        display: none;
+    }
+
+    .menu-dropdown .menu-dropdown-btn {
+        display: none;
+        width: 100%;
+    }
+
+    .menu-header {
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    .menu-header a.menu-header-title {
+        text-align: left;
+    }
+
+    .menu-header a {
+        float: none;
+        display: block;
+    }
+
+    .menu-dropdown {
+        float: none;
+        text-align: left;
+    }
+}
+
+.link-btn {
+    color: #2B96D9;
+    font-size: 22px;
+    text-decoration: underline;
+    word-break: break-word;
+}
+
+.link-btn:hover {
+    color: #4AB0D9;
+}
+
+.website-bottom-menu {
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 280px) {
+    .loading-animation {
+        margin: 0 auto;
+        margin-top: 15%;
+        text-align: center;
+        border: 30px solid #323232;
+        border-top: 30px solid #2B96D9;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        animation: spin 2s linear infinite;
+    }
+}
+
+@media only screen and (max-width: 728px) {
+    .main-website-panel-style {
+        padding: unset;
+    }
+}
+
+.green {
+    color: #038C0C;
+}
+
+.not {
+    color: #E2392B;
+}
+
+.warn {
+    color: #FF941A;
+}
+
+/* Merci: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

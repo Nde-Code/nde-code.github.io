@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<style>
+	.center-elements {
+		text-align: center;
+	}
+
+	.create-graph-btn {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #2B96D9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0367A6;
+		padding: 15px 31px;
+		cursor: pointer;
+		margin-left: 0.5%;
+	}
+
+	.create-graph-btn:hover {
+		background: #4AB0D9;
+	}
+
+	.modalbox-go-btn {
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #2B96D9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0367A6;
+		padding: 15px 31px;
+		cursor: pointer;
+	}
+
+	.modalbox-go-btn:hover {
+		background: #4AB0D9;
+	}
+
+	.main-website-panel-notice {
+		font-size: 22px;
+		margin-right: 5%;
+    	margin-left: 5%;
+	}
+
+	.plot-icon {
+		font-size: 230px;
+		color: green;
+	} 
+
+	@media screen and (max-width: 1024px) {
+		.plot-icon {
+			font-size: 130px;
+		}
+	}
+
+	.another-create-graph-btn {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #038C0C;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #027313;
+		padding: 15px 31px;
+		cursor: pointer;
+		margin-left: 0.5%;
+	}
+
+	.another-create-graph-btn:hover {
+		background: #52BF04;
+	}
+
+	.js-plotly-plot .plotly .cursor-ns-resize {
+		cursor: default !important;
+	}
+
+	.js-plotly-plot .plotly .cursor-s-resize {
+		cursor: default !important;
+	}
+
+	div.plotly-notifier {
+  		display: none;
+	}
+	</style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nathan Debilloëz · Logiciel</title>
+	<meta name="description" content="Dessine le graphique d'une fonction mathématique.">
+	<meta name="keywords" content="Nathan Debilloëz, Logiciels, Dessine une fonction mathématique.">
+	<meta name="author" content="Nathan Debilloëz">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../assets/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<script src="../js/plotly.js" defer></script>
+	<script src="../js/math.js" defer></script>
+</head>
+
+<body id="main-body" class="loading">
+    <div id="modalbox-open-div"></div>
+	<div class="loading-animation" id="loading-id"></div>
+	<div id="loading-body" style="visibility: hidden;">
+		<div id="particles-js"></div>
+		<div class="app">
+			<div class="website-nav-content">
+				<div class="menu-header">
+					<div class="mobile-menu">
+						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+					</div>
+                    <a href="/" class="menu-header-title"><strong>Nathan Debilloëz</strong></a>
+                    <a onclick="openContactBox();" class="menu-item">Contact</a>
+                    <a onclick="openAboutBox();" class="menu-item">À propos</a>
+                        <div class="menu-dropdown">
+							<button class="menu-dropdown-btn">Projets 
+								<i class="fa fa-caret-down"></i>
+							</button>
+                            <div class="menu-dropdown-items">
+								<a href="https://gist.github.com/Nde-Code/6dbbfc3ae6c3c2b2d8fb722b944b63ec">Intégrale de Riemann</a>
+								<a href="pinwheel">Moulin à vent</a>
+                                <a href="https://github.com/Nde-Code/DroneGames">DroneGames</a>
+                                <a href="https://github.com/Nde-Code/RobotGames">RobotGames</a>
+                            </div>
+                        </div> 
+						<div class="menu-dropdown">
+							<button class="menu-dropdown-btn">Logiciels 
+								<i class="fa fa-caret-down"></i>
+							</button>
+							<div class="menu-dropdown-items">
+								<a href="photo-gallery-creator">Créer un album photo</a>
+								<a href="photo-editor">Retoucher une image </a>
+								<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
+								<a href="graphing">Traceur de graphique mathématique</a>
+							</div>
+						</div>
+                  </div>
+				<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
+				<div class="main-website-panel">
+					<div class="main-website-row-panel" style="padding-left: 7px;">
+						<div class="main-website-panel-style">
+							<div class="center-elements" id="graph-contenaire">
+								<i class="fa-solid fa-chart-line plot-icon"></i>
+								<h1 style="margin-top: 20px; color: white; font-size: 24px; font-weight: bold;">Votre graphique apparaîtra ici.</h1>
+								<p class="main-website-panel-notice"><i class="fas fa-check green"></i> :Le logiciel est gratuit, rapide et vraiment super facile à utiliser.</p>
+								<p class="main-website-panel-notice"><i class="fas fa-times not"></i> :Vous ne pouvez tracer qu'une seule courbe à la fois pour des raisons d'optimisation.</p>
+								<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> :Je vous recommande plus l'utilisation de ce logiciel pour une esquisse graphique.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 20px;"></div>
+				<div class="website-bottom-menu">
+					<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0);"><i class="fa-solid fa-chart-line"></i> Tracer un graphique</a>
+				</div>
+				<div style="margin-top: 20px;" class="foot-page">
+					<div class="main-footer-page">
+						<div class="social-media">
+							<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
+							<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
+							<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
+						</div>
+						<div class="copyright-notice">
+							<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+							<p class="footer-page-text"> Mes dessins sont faits avec Canva et mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
+							<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modalbox-class" id="modalbox-graphing" style="display: none;">
+			<header class="modalbox-header-class" id="modalbox-header-id">
+				<i class="fa-solid fa-chart-line"></i> Équation
+				<a class="modalbox-header-close" onclick="$('#modalbox-graphing').css('display', 'none');">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</a>
+			</header>
+			<div class="modalbox-main-content">
+	
+				<div class="modalbox-components-contenaire">
+					<h2>L'équation de votre fonction:</h2>
+					<p class="modalbox-description"> L'équation doit être rédigée comme un petit "script" selon la grammaire de la librairie Math.js. Liste non exhaustive de toutes les fonctions mathématiques supporter: <a href="https://mathjs.org/docs/reference/functions.html" class="link-btn">https://mathjs.org/docs/reference/functions.html</a></p>
+				</div>
+				<input id="graph-equation" class="modalbox-input" placeholder="Équation:">
+
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<div class="modalbox-components-contenaire">
+					<h2>Le point maximal de l'intervalle Y:</h2>
+					<p class="modalbox-description"> Le point a affiché le plus grand sur l'axe des ordonnés (Y). </p>
+				</div>
+				<input id="max-range" class="modalbox-input" placeholder="Point maximal:" type="number">
+
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<div class="modalbox-components-contenaire">
+					<h2>Le point minimal de l'intervalle Y:</h2>
+					<p class="modalbox-description"> Le point a affiché le plus petit sur l'axe des ordonnés (Y). </p>
+				</div>
+				<input id="min-range" class="modalbox-input" placeholder="Point minimal:" type="number">
+				
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<p class="modalbox-error-class" id="modalbox-error-id">Aucune erreur(s) n'est à signaler ! </p>
+
+				<div style="margin-bottom: 40px; text-align: center;">
+					<a class="modalbox-go-btn" onclick="graphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());"><i class="fa-solid fa-pencil"></i> Tracer</a>
+				</div>
+	
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/particles.js"></script>
+	<script src="../js/particles-setup.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+		// Je me suis inspiré d'un exemple de Math.js pour réaliser ce logiciel.
+		// https://mathjs.org/examples/browser/plot.html.html
+        $("#copyright").html(new Date().getFullYear());
+
+		$(document).on('DOMContentLoaded', () => { loadingAnimation(); });
+
+		function loadingAnimation() {
+
+			$("#loading-body").css("display", "none");
+
+			setTimeout(function () {
+
+				$("#loading-body").css("display", "block");
+
+				$("#loading-body").css("visibility", "unset");
+
+				$("#loading-id").css("display", "none");
+
+				$("#main-body").attr("class", "active");
+
+			}, 3000);
+
+		}
+
+		setInterval(function () {
+
+			if ($(window).width() <= 1024) {
+
+				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i>');
+
+				$(".main-website-row-panel").css("paddingLeft", "unset");
+
+				$(".modalbox-go-btn").html('<i class="fa-solid fa-pencil"></i>');
+
+			}
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-graphing").css('marginLeft', 'unset');
+
+				$("#modalbox-graphing").css('left', 'unset');
+
+				$("#modalbox-graphing").css('width', Math.round(window.innerWidth - 10) + "px");
+
+			}
+
+		}, 500);
+
+		// Merci: https://bobbyhadz.com/blog/javascript-check-if-array-contains-only-numbers
+		function onlyNumbers(array) {
+
+			return array.every(element => {
+
+				return math.typeOf(element) === 'number' || math.typeOf(element) === 'Complex';
+
+			});
+
+		}
+
+		// Math. = Javascript classique.
+		// math. = Javascript avec les classes de Math.js.
+
+		function graphing(func, maxRange, minRange) {
+
+			if (!func) {
+
+				$("#modalbox-error-id").html("L'équation de la fonction est vide !");
+
+				return false;
+
+			}
+
+			else if (!maxRange) {
+
+				$("#modalbox-error-id").html("Le point maximal de l'intervalle Y est vide !");
+
+				return false;
+
+			}
+
+			else if (!minRange) {
+
+				$("#modalbox-error-id").html("Le point minimal de l'intervalle Y est vide !");
+
+				return false;
+
+			}
+
+			else if (Number(minRange) > Number(maxRange)) {
+
+				$("#modalbox-error-id").html("Le point d'intervalle minimal est plus grand ou égal au point d'intervalle maximal !");
+
+				return false;
+
+			}
+
+			else {
+
+				let mathFunction = func.toLowerCase();
+
+				var layout = {
+
+					displayModeBar: false,
+
+					hovermode: false,
+
+					plot_bgcolor: "transparent",
+
+					paper_bgcolor: "transparent",
+
+					margin: {
+
+						l: 20,
+
+						r: 20,
+							
+						b: 20,
+							
+						t: 20,
+							
+						pad: 8
+							
+					},
+
+					xaxis: {
+
+						color: 'white',
+
+						gridcolor: '#757375',
+
+						dtick: 2,
+
+						gridwidth: 1,
+
+						zerolinecolor: '#fff',
+
+						automargin: true,
+
+						zerolinewidth: 1,
+
+						range: [-10, 10],
+
+						fixedrange: true
+
+					},
+
+					yaxis: {
+							
+						color: 'white',
+
+						gridcolor: '#757375',
+
+						gridwidth: 1,
+
+						zerolinecolor: '#fff',
+
+						zerolinewidth: 1,
+
+						automargin: true,
+
+						range: [minRange, maxRange]
+
+					}
+
+				}
+
+				let mathFunctionCompiled = math.compile(mathFunction)
+
+				let xPoint = math.round(math.range(-10, 10, 0.01).toArray(), 3);
+
+				var yPoint = xPoint.map(function (x) {
+
+					return math.round(mathFunctionCompiled.evaluate({
+
+						x: x
+
+					}), 5);
+
+				});
+
+				if (onlyNumbers(yPoint) === false) {
+
+					$("#modalbox-error-id").html("Les données générées sont invalides !");
+
+					return false;
+
+				}
+
+				let mathGraph = {
+
+					x: xPoint,
+
+					y: yPoint,
+
+					type: 'scatter',
+
+					line: {
+
+						color: 'green',
+
+						dash: 'dashdot',
+
+						width: 3
+
+					}
+
+				}
+
+				let data = [mathGraph];
+
+				$("#graph-contenaire").html('<div id="graphing-box" style="margin-top: 20px;"></div>');
+
+				$(".create-graph-btn").attr("class", "another-create-graph-btn");
+
+				if ($(window).width() >= 1024) {
+
+					$(".another-create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Éditer votre graphique');
+
+				}
+
+				Plotly.newPlot('graphing-box', data, layout, {staticPlot: true});
+
+				$("#modalbox-graphing").css("display", "none");
+
+				$("#modalbox-error-id").html("Aucune erreur(s) n'est à signaler !");
+
+				window.scrollTo(0, 0);
+
+			}
+
+		}
+    </script>
+</body>
+
+</html>

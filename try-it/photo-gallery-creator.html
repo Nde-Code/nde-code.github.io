@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<style>
+	.image-canvas-class {
+		width: 30%;
+		height: auto;
+	}
+
+	.upload-btn-class {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #2B96D9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0367A6;
+		padding: 15px 31px;
+		cursor: pointer;
+		margin-left: 0.5%;
+	}
+
+	.upload-btn-class:hover {
+		background: #4AB0D9;
+	}
+
+	input[type="file"] {
+		display: none;
+	}
+
+	.create-album-btn-class {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #038C0C;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #027313;
+		padding: 15px 31px;
+		cursor: pointer;
+		margin-left: 0.5%;
+	}
+
+	.create-album-btn-class:hover {
+		background: #52BF04;
+	}
+
+	.no-step-btn-class {
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #494949;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #212121;
+		padding: 15px 31px;
+		cursor: no-drop;
+		margin: 8px;
+	}
+
+	.delete-btn {
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #E2392B;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #C83226;
+		padding: 15px 31px;
+		cursor: pointer;
+	}
+
+	.delete-btn:hover {
+		background: #FF6661;
+	}
+
+	.next-page {
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #494949;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 2px solid #212121;
+		padding: 15px 31px;
+		cursor: no-drop;
+	}
+
+	.menu-action-class {
+		float: right;
+		margin-right: 15%;
+	}
+
+	.modalbox-go-btn {
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #2B96D9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0367A6;
+		padding: 15px 31px;
+		cursor: pointer;
+	}
+
+	.modalbox-go-btn:hover {
+		background: #4AB0D9;
+	}
+
+	.activate-action-btn-class {
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #2B96D9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0367A6;
+		padding: 15px 31px;
+		cursor: pointer;
+		margin: 8px;
+	}
+
+	.activate-action-btn-class:hover {
+		background: #4AB0D9;
+	}
+
+	@media screen and (max-width: 700px) {
+		.menu-action-class {
+			margin-top: 12%;
+			float: unset;
+			margin-right: unset;
+		}
+	}
+
+	@media screen and (max-width: 1024px) {
+
+		.no-step-btn-class {
+			padding: 10px 20px;
+		}
+
+		.activate-action-btn-class {
+			padding: 10px 20px;
+		}
+
+		.delete-btn {
+			padding: 10px 20px;
+		}
+	}
+
+	.box-icon {
+		font-size: 180px;
+		color: goldenrod;
+	}
+
+	@media screen and (max-width: 1024px) {
+		.box-icon {
+			font-size: 130px;
+		}
+	}
+
+	.main-website-panel-notice {
+		font-size: 22px;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+
+	.center-elements {
+		text-align: center;
+	}
+	</style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nathan Debilloëz · Logiciel </title>
+	<meta name="description" content="Application web permettant de créer un album photo de manière rapide et simple.">
+	<meta name="keywords" content="Nathan Debilloëz, Logiciels, Créer un album photo">
+	<meta name="author" content="Nathan Debilloëz">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../assets/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+</head>
+
+<body class="loading">
+	<div id="modalbox-open-div"></div>
+	<div class="loading-animation" id="loading-id"></div>
+	<div id="loading-body" style="visibility: hidden;">
+		<div id="particles-js"></div>
+		<div class="app">
+			<div class="website-nav-content">
+				<div class="menu-header">
+					<div class="mobile-menu">
+						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+					</div>
+					<a href="/" class="menu-header-title"><strong>Nathan Debilloëz</strong></a>
+					<a onclick="openContactBox();" class="menu-item">Contact</a>
+					<a onclick="openAboutBox();" class="menu-item">À propos</a>
+						<div class="menu-dropdown">
+							<button class="menu-dropdown-btn">Projets 
+								<i class="fa fa-caret-down"></i>
+							</button>
+							<div class="menu-dropdown-items">
+								<a href="https://gist.github.com/Nde-Code/6dbbfc3ae6c3c2b2d8fb722b944b63ec">Intégrale de Riemann</a>
+								<a href="pinwheel">Moulin à vent</a>
+								<a href="https://github.com/Nde-Code/DroneGames">DroneGames</a>
+								<a href="https://github.com/Nde-Code/RobotGames">RobotGames</a>
+							</div>
+						</div> 
+						<div class="menu-dropdown">
+							<button class="menu-dropdown-btn">Logiciels 
+								<i class="fa fa-caret-down"></i>
+							</button>
+							<div class="menu-dropdown-items">
+								<a href="photo-gallery-creator">Créer un album photo</a>
+								<a href="photo-editor">Retoucher une image </a>
+								<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
+								<a href="graphing">Traceur de graphique mathématique</a>
+							</div>
+						</div>
+				  </div>
+				<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
+			</div>
+			<div class="main-website-panel">
+				<div class="main-website-row-panel" style="padding-left: 7px;">
+					<div class="main-website-panel-style" id="album-contenaire">
+						<div class="center-elements">
+							<i class="fa-solid fa-images box-icon"></i>
+							<h1 style="margin-top: 30px; font-size: 24px; font-weight: bold; color: white;">Votre album apparaîtra ici.</h1>
+							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> :Le logiciel est gratuit, ce n'est qu'un outil. Tout le code est sur GitHub et toutes les contributions sont les bienvenus. </p>
+							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> :Il n'y a aucun transfert de données entre le serveur et vous. Le logiciel est statique et il n'y a aucune limitation d'album créé. </p>
+							<p class="main-website-panel-notice"><i class="fas fa-exclamation-triangle warn"></i> :Le logiciel ne travail qu'avec des images hébergées (avec des liens) et ce pour des raisons d'optimisation. </p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 20px;"></div>
+			<div class="website-bottom-menu" id="website-bottom-menu-id"> 
+				<label class="upload-btn-class" id="upload-btn-label-id"> <input onchange="uploadAlbumFile();" accept=".album" class="upload-album-btn" type="file" id="upload-album-file-id"><i class="fas fa-cloud-upload-alt"></i><span id="upload-album-text"> Lire un album</span></label> 
+				<a class="create-album-btn-class" id="open-modalbox" onclick="openModalBox();"><i class="fas fa-plus-circle"></i> Ajouter une image </a> 
+			</div>
+			<div style="margin-top: 20px;" class="foot-page">
+				<div class="main-footer-page">
+					<div class="social-media">
+						<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
+						<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
+						<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
+					</div>
+					<div class="copyright-notice">
+						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+						<p class="footer-page-text"> Mes dessins sont faits avec Canva et mon Favicon est fait avec <a href="https://logomakr.com/3yCPYg" class="footer-page-link">Logomakr</a>.</p>
+						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modalbox-class" id="modalbox-add">
+			<header class="modalbox-header-class" id="modalbox-header-id">
+				<i class="fas fa-plus-circle"></i> <span id="modalbox-header-class-title">Ajouter</span>
+				<a class="modalbox-header-close" id="windowbox-dispose-id">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</a>
+			</header>
+			<div class="modalbox-main-content">
+
+				<div class="modalbox-components-contenaire">
+					<h2>Le titre de votre image:</h2>
+					<p class="modalbox-description"> Entrez le titre de votre image. </p>
+				</div>
+				<input id="album-title" class="modalbox-input" placeholder="Titre:">
+				
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 20px;"></div>
+
+				<div class="modalbox-components-contenaire">
+					<h2>Le sous-titre de votre image:</h2>
+					<p class="modalbox-description"> Entrez le sous-titre de votre image. </p>
+				</div>
+				<input id="album-subtitle" class="modalbox-input" placeholder="Sous-titre:">
+				
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 20px;"></div>
+
+				<div class="modalbox-components-contenaire">
+					<h2>La description de votre image:</h2>
+					<p class="modalbox-description"> Entrez une description pour votre image. </p>
+				</div>
+				<textarea id="album-description" class="modalbox-textarea" placeholder="Description:"></textarea>
+				
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 20px;"></div>
+
+				<div class="modalbox-components-contenaire">
+					<h2>Le lien de votre image:</h2>
+					<p class="modalbox-description"> Si vous avez une image en local utiliser un hébergeur d'image. </p>
+				</div>
+				<input id="album-link" class="modalbox-input" placeholder="Lien:">
+
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<p class="modalbox-error-class" id="modalbox-error-id">Aucune erreur(s) n'est à signaler ! </p>
+
+				<div style="text-align: center; margin-bottom: 40px;">
+					<a class="modalbox-go-btn" id="create-album-btn-id" onclick="addInAlbum();"><i class="fas fa-plus-circle"></i> Ajouter l'image </a>
+				</div>
+			</div>
+		</div>
+
+		<div class="modalbox-class" id="modalbox-download" style="display: none;">
+			<header class="modalbox-header-class" id="modalbox-header-id">
+				<i class="fas fa-download"></i> <span id="modalbox-header-class-title">Télécharger</span>
+				<a class="modalbox-header-close" id="modalbox-header-close-id">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</a>
+			</header>
+			<div class="modalbox-main-content" style="overflow-y: unset;">
+
+				<div class="modalbox-components-contenaire">
+					<h2>Le nom:</h2>
+					<p class="modalbox-description"> Entrez un nom pour votre album ! </p>
+				</div>
+				<input id="album-name" class="modalbox-input" placeholder="Nom:">
+				
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<div style="text-align: center; margin-bottom: 40px; ">
+					<a class="modalbox-go-btn" id="download-btn-id" onclick="downloadAlbumFile($('#album-name').val());"><i class="fas fa-download"></i> Télécharger</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery.js"></script>
+	<script src="../js/particles.js"></script>
+	<script src="../js/filesaver.js"></script>
+	<script src="../js/particles-setup.js"></script>
+	<script src="../js/app.js"></script>
+    <script>
+        $("#copyright").html(new Date().getFullYear());
+
+		$(document).on('DOMContentLoaded', () => { loadingAnimation(); });
+
+		function loadingAnimation() {
+
+			$("#loading-body").css("display", "none");
+
+			$("#loading-id").css("display", "block");
+
+			$('body').attr('class', 'loading');
+
+			setTimeout(function () {
+
+				$("#loading-body").css("display", "block");
+
+				$("#loading-body").css("visibility", "unset");
+
+				$("#loading-id").css("display", "none");
+
+				$('body').attr('class', 'active');
+
+				$("#modalbox-add").css("display", "none");
+
+			}, 3000);
+
+		}
+
+		var albumCodeArray = [];
+
+		var jsonFilecontent = {};
+
+		var running = false;
+
+		var pageCounter = 0;
+
+		var currentPage = 0;
+
+		function getAlbumSize() {
+
+			return albumCodeArray.length;
+
+		}
+
+		function openModalBox() {
+
+			$("#modalbox-add").css("display", "block");
+
+			window.scrollTo(0, 0);
+
+		}
+
+		function openDownloadBox() {
+
+			window.scrollTo(0, 0);
+
+			$("#modalbox-download").css("display", "block");
+
+		}
+
+		$("#modalbox-header-close-id").on('click', () => {
+
+			$("#modalbox-download").css("display", "none");
+
+		});
+
+		$("#windowbox-dispose-id").on('click', () => {
+
+			$("#modalbox-add").css("display", "none");
+
+		});
+
+		function addInAlbum() {
+
+			var contentPage;
+
+			if (!$("#album-title").val() || $("#album-title").val() == "" || $("#album-title").val().match(/([<&][a-z]*[;]*)(script( .+[=]["'].+["'])*)([>&]*[a-z]*[;]*)([^>]*([<&][a-z]*[;]*)*(\/script)([>&]*[a-z]*[;]*))*/gi)) {
+
+				$("#modalbox-error-id").html("Merci de renseigner un titre (valide) pour votre image !");
+
+				return;
+
+			}
+
+			else if (!$("#album-subtitle").val() || $("#album-subtitle").val() == "" || $("#album-subtitle").val().match(/([<&][a-z]*[;]*)(script( .+[=]["'].+["'])*)([>&]*[a-z]*[;]*)([^>]*([<&][a-z]*[;]*)*(\/script)([>&]*[a-z]*[;]*))*/gi)) {
+
+				$("#modalbox-error-id").html("Merci de renseigner un sous-titre (valide) pour votre image !");
+
+				return;
+
+			}
+
+			else if (!$("#album-description").val() || $("#album-description").val() == "" || $("#album-description").val().match(/([<&][a-z]*[;]*)(script( .+[=]["'].+["'])*)([>&]*[a-z]*[;]*)([^>]*([<&][a-z]*[;]*)*(\/script)([>&]*[a-z]*[;]*))*/gi)) {
+
+				$("#modalbox-error-id").html("Merci de renseigner une description (valide) pour votre image !");
+
+				return;
+
+			}
+
+			else if (!$("#album-link").val() || $("#album-link").val() == "" || $("#album-link").val().match(/([<&][a-z]*[;]*)(script( .+[=]["'].+["'])*)([>&]*[a-z]*[;]*)([^>]*([<&][a-z]*[;]*)*(\/script)([>&]*[a-z]*[;]*))*/gi)) {
+
+				$("#modalbox-error-id").html("Merci de renseigner un lien (valide) vers votre image !");
+
+				return;
+
+			}
+
+			else if (!$("#album-link").val().toLowerCase().toString().match(/^http[^ \!@\$\^&\(\)\+\=]+(\.png|\.jpeg|\.gif|\.jpg)$/)) {
+
+				$("#modalbox-error-id").html("Merci de renseigner un lien (valide) vers votre image !")
+
+				return;
+
+			}
+
+			else {
+
+				if (running === false && running !== true) {
+
+					running = true;
+
+					currentPage = 0;
+
+					albumCodeArray.length - 1;
+
+					$("#album-contenaire").css("textAlign", "unset");
+
+					$("#upload-btn-label-id").css("display", "none");
+
+					$("#open-modalbox").attr("title", "Ajoutez une image à votre album !")
+
+					$("#website-bottom-menu-id").append(`
+								<a id="download-file-btn-id" onclick="openDownloadBox()" class="upload-btn-class"><i class="fas fa-download"></i> Télécharger </a>
+								<div class="menu-action-class">
+									<a id="delete-btn-id" onclick="deleteAlbumFile()" class="delete-btn"><i class="fas fa-trash-alt"></i></a>
+									<a id="go-to-previous-page" onclick="previous()" class="no-step-btn-class"><i class="fas fa-backward"></i></a>
+									<a id="go-to-next-page" onclick="next()" class="next-page"><i class="fas fa-forward"></i></a>
+								</div>
+							`);
+
+				}
+
+				window.scrollTo(0, 0);
+
+				contentPage =
+					`<h2>${$("#album-title").val()}</h2>
+					<h5 style="font-size: 18px;">${$("#album-subtitle").val()}</h5>
+					<img src="${$("#album-link").val()}" id="image-canvas-id" class="image-canvas-class" alt="Votre image.">
+					<p class="description">${$("#album-description").val()}</p>`;
+
+				$("#album-title").val("");
+
+				$("#album-subtitle").val("");
+
+				$("#album-description").val("");
+
+				$("#album-link").val("");
+
+				$("#modalbox-add").css("display", "none");
+
+				$("#album-contenaire").html(contentPage);
+
+				albumCodeArray.push(contentPage);
+
+				pageCounter += 1;
+
+				currentPage = (pageCounter - 1);
+
+				$("#go-to-next-page").attr("class", "no-step-btn-class")
+
+				navBarManager();
+
+			}
+
+		}
+
+		function navBarManager() {
+
+			if ((albumCodeArray.length - 1) > 0) {
+
+				$("#go-to-previous-page").attr("class", "activate-action-btn-class");
+
+				$("#go-to-previous-page").attr("onclick", "previous()");
+
+			}
+
+			if ((albumCodeArray.length - 1) > currentPage) {
+
+				$("#go-to-next-page").attr("class", "activate-action-btn-class");
+
+				$("#go-to-next-page").attr("onclick", "next()");
+
+			}
+
+			if (currentPage === 0) {
+
+				$("#go-to-previous-page").attr("class", "no-step-btn-class");
+
+				$("#go-to-previous-page").removeAttr("onclick");
+
+			}
+
+			if (currentPage === (albumCodeArray.length - 1)) {
+
+				$("#go-to-next-page").attr("class", "no-step-btn-class");
+
+				$("#go-to-next-page").removeAttr("onclick");
+
+			}
+
+		}
+
+		function previous() {
+
+			currentPage -= 1;
+
+			window.scrollTo(0, 0);
+
+			$("#album-contenaire").html(albumCodeArray[currentPage]);
+
+			navBarManager();
+
+		}
+
+		function next() {
+
+			currentPage += 1;
+
+			window.scrollTo(0, 0);
+
+			$("#album-contenaire").html(albumCodeArray[currentPage]);
+
+			navBarManager();
+
+		}
+
+		setInterval(function () {
+
+			if($(window).width() <= 1024) {
+
+				$(".main-website-row-panel").css("paddingLeft", "unset")
+
+			}
+
+			if ($(window).width() <= 1024 && running === true) {
+
+				$("#download-file-btn-id").html('<i class="fas fa-download"></i>');
+
+				$("#create-album-btn-id").html('<i class="fas fa-plus-circle"></i>');
+
+				$("#open-modalbox").html('<i class="fas fa-plus-circle"></i>');
+
+				$("#download-btn-id").html('<i class="fas fa-download"></i>');
+
+			}
+
+			if ($(window).width() <= 1024 && running === false) {
+
+				$("#upload-album-text").css("display", "none");
+
+				$("#open-modalbox").html('<i class="fas fa-plus-circle"></i>');
+
+				$("#create-album-btn-id").html('<i class="fas fa-plus-circle"></i>');
+
+			}
+
+			if ($(window).width() <= 360 && running === false) {
+
+				$("#album-contenaire").css("padding", "10px");
+
+			}
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-add").css('marginLeft', 'unset');
+
+				$("#modalbox-add").css('left', 'unset');
+
+				$("#modalbox-add").css('width', (window.innerWidth - 10) + "px");
+
+				$("#modalbox-download").css('marginLeft', 'unset');
+
+				$("#modalbox-download").css('left', 'unset');
+
+				$("#modalbox-download").css('width', (window.innerWidth - 10) + "px");
+
+			}
+
+		}, 500);
+
+		var uploadedFile;
+
+		var opener = new FileReader();
+
+		var resultat;
+
+		var formatedFile;
+
+		var jsonSize;
+
+		function uploadAlbumFile() {
+
+			try {
+
+				uploadedFile = $("#upload-album-file-id")[0].files;
+
+				opener.onload = function (fileData) {
+
+					if (isJson(fileData.target.result) === false) return;
+
+					else {
+
+						resultat = JSON.parse(fileData.target.result);
+
+						formatedFile = JSON.stringify(resultat, null, 2);
+
+						jsonSize = Object.keys(resultat).length;
+
+						pageCounter = jsonSize;
+
+						if (running === false) {
+
+							running = true;
+
+							currentPage = 0;
+
+							$("#album-contenaire").css("textAlign", "unset");
+
+							$("#upload-btn-label-id").css("display", "none");
+
+							$("#open-modalbox").attr("title", "Ajoutez une image à votre album !");
+
+							$("#website-bottom-menu-id").append(`
+										<a id="download-file-btn-id" onclick="openDownloadBox()" class="upload-btn-class"><i class="fas fa-download"></i> Télécharger </a>
+										<div class="menu-action-class"><a id="delete-btn-id" onclick="deleteAlbumFile()" class="delete-btn"><i class="fas fa-trash-alt"></i></a>
+											<a id="go-to-previous-page" onclick="previous()" class="no-step-btn-class"><i class="fas fa-backward"></i></a>
+											<a id="go-to-next-page" onclick="next()" class="next-page"><i class="fas fa-forward"></i></a>
+										</div>
+									`);
+
+						}
+
+						for (var pages = 0; pages < jsonSize; pages++) {
+
+							albumCodeArray.push((resultat[pages]));
+
+						}
+
+						openPage(0);
+
+						$("#go-to-previous-page").attr("class", "no-step-btn-class");
+
+						console.log("%c Fichier chargé en mémoire !", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);');
+
+						window.scrollTo(0, 0);
+
+					}
+
+				}
+
+				opener.readAsText(uploadedFile.item(0));
+
+			} catch (err) {
+
+				console.warn("Votre fichier est illisible, il est peut-être corrompu...");
+
+			}
+
+		}
+
+		// https://stackoverflow.com/questions/9804777/how-to-test-if-a-string-is-json-or-not
+		function isJson(item) {
+
+			item = typeof item !== "string" ? JSON.stringify(item) : item;
+
+			try {
+
+				item = JSON.parse(item);
+
+			} catch (errorJSON) {
+
+				return false;
+
+			}
+
+			if (typeof item === "object" && item !== null) {
+
+				return true;
+
+			}
+
+			return false;
+
+		}
+
+		function openPage(index) {
+
+			if (isNaN(index)) return;
+
+			currentPage = index;
+
+			$("#album-contenaire").html(albumCodeArray[index]);
+
+			navBarManager();
+
+		}
+
+		function downloadAlbumFile(name) {
+
+			jsonFilecontent = {};
+
+			if (name == "" || !name) return;
+
+			for (var count = 0; count < albumCodeArray.length; count++) {
+
+				jsonFilecontent[count] = albumCodeArray[count];
+
+			}
+
+			var stringJsonFilecontent = JSON.stringify(jsonFilecontent, null, "\n");
+
+			var fileInputAlbum = new Blob([stringJsonFilecontent], { type: "application/json" });
+
+			saveAs(fileInputAlbum, `${name}.album`);
+
+			console.log("%c Impression de votre album !", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);');
+
+			$("#modalbox-download").css("display", "none");
+
+		}
+
+		function deleteAlbumFile() {
+
+			if (albumCodeArray.length === 1) {
+
+				document.location.reload();
+
+			}
+
+			else if (currentPage === (albumCodeArray.length - 1)) {
+
+				console.log("%c Suppression du fichier.", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);')
+
+				removeItemOnce(albumCodeArray, albumCodeArray[currentPage]);
+
+				openPage(currentPage - 1);
+
+				pageCounter -= 1;
+
+			}
+
+			else {
+
+				console.log("%c Suppression du fichier.", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);')
+
+				removeItemOnce(albumCodeArray, albumCodeArray[currentPage]);
+
+				openPage(currentPage);
+
+				pageCounter -= 1;
+
+			}
+
+		}
+
+		// Merci: https://stackoverflow.com/questions/5767325/how-can-i-remove-a-specific-item-from-an-array
+		function removeItemOnce(arr, value) {
+
+			var deleteItemsPlace = arr.indexOf(value);
+
+			if (deleteItemsPlace > -1) {
+
+				arr.splice(deleteItemsPlace, 1);
+
+			}
+
+			return arr;
+
+		}
+    </script>
+</body>
+
+</html>
