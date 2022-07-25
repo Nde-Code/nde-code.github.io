@@ -59,6 +59,14 @@
 	<meta name="description" content="Erreur sur le site de Nathan Debilloëz !">
 	<meta name="keywords" content="Nathan Debilloëz, Erreur 404">
 	<meta name="author" content="Nathan Debilloëz">
+	<script>
+		// Un petit routeur qui redirige vers la page 404 en cas d'erreur au status 404.
+		if (window.location.href != window.location.protocol + "//" + window.location.host + "/404") {
+
+			window.location.href = window.location.protocol + "//" + window.location.host + "/404";
+
+		}
+	</script>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="assets/css/fontawesome.css">
 	<link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
@@ -159,12 +167,6 @@
     <script src="js/app.js"></script>
     <script>
         $("#copyright").html(new Date().getFullYear());
-
-		if (window.location.href != window.location.protocol + "//" + window.location.host + "/404") {
-
-			window.location.href = window.location.protocol + "//" + window.location.host + "/404";
-
-		}
 
 		$(document).on('DOMContentLoaded', () => { loadingAnimation(); });
 
