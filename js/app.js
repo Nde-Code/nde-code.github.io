@@ -24,7 +24,7 @@ function openContactBox() {
                     <h2>Règles à respecter:</h2>
                     <p class="modalbox-description"><i class="fas fa-check" style="color: green;"></i> :Vous pouvez me contacter pour des questions pertinentes en rapport avec mon site ou autre application. Vous pouvez me soumettre vos projets faits avec mes logiciels, mais aussi me dire ce que va (pas) sur le thème, la police d'écriture, etc... </p>
                     <p class="modalbox-description"><i class="fas fa-times" style="color: red;"></i> :Hors de question de me contacter pour des bêtises ou des tentatives néfastes à mon égard. Pas question non plus de spammer ou de me demander comment ça va ! </p>
-                    <p class="modalbox-description"><i class="fas fa-exclamation-triangle" style="color: orange;"></i> :Je ne répondrai pas dans l'immédiat voir peut-être même pas mais je lirai bien évidement vos emails. </p>
+                    <p class="modalbox-description"><i class="fas fa-exclamation-triangle" style="color: orange;"></i> :Je ne répondrai pas dans l'immédiat voir peut-être même plus tard, mais je lirai bien évidemment vos emails au plus vite. </p>
                 </div>
 
                 <div class="white-lines"></div>
