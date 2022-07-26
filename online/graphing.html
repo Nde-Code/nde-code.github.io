@@ -361,7 +361,7 @@
 
 						gridwidth: 1,
 
-						zerolinecolor: '#fff',
+						zerolinecolor: 'white',
 
 						automargin: true,
 
@@ -381,7 +381,7 @@
 
 						gridwidth: 1,
 
-						zerolinecolor: '#fff',
+						zerolinecolor: 'white',
 
 						zerolinewidth: 1,
 
@@ -395,17 +395,27 @@
 
 				let mathFunctionCompiled = math.compile(mathFunction)
 
-				let xPoint = math.round(math.range(-10, 10, 0.01).toArray(), 3);
+				try {
 
-				var yPoint = xPoint.map(function (x) {
+					var xPoint = math.round(math.range(-10, 10, 0.01).toArray(), 3);
 
-					return math.round(mathFunctionCompiled.evaluate({
+					var yPoint = xPoint.map(function (x) {
 
-						x: x
+						return math.round(mathFunctionCompiled.evaluate({
 
-					}), 5);
+							x: x
 
-				});
+						}), 5);
+
+					});
+
+				} catch(err) {
+
+					$("#modalbox-error-id").html("Impossible de compiler votre expression !");
+
+					return false;
+
+				}		
 
 				if (onlyNumbers(yPoint) === false) {
 
