@@ -201,7 +201,7 @@
 					<h2>Le point maximal de l'intervalle Y:</h2>
 					<p class="modalbox-description"> Entrez le point a affiché le plus grand sur l'axe des ordonnés (Y). </p>
 				</div>
-				<input id="max-range" class="modalbox-input" placeholder="Point maximal:" type="number">
+				<input id="max-range" class="modalbox-input" placeholder="Point maximal:" type="text" inputmode="numeric">
 
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -209,7 +209,7 @@
 					<h2>Le point minimal de l'intervalle Y:</h2>
 					<p class="modalbox-description"> Entrez le point a affiché le plus petit sur l'axe des ordonnés (Y). </p>
 				</div>
-				<input id="min-range" class="modalbox-input" placeholder="Point minimal:" type="number">
+				<input id="min-range" class="modalbox-input" placeholder="Point minimal:" type="text" inputmode="numeric">
 				
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -293,23 +293,23 @@
 
 			if (!func) {
 
-				$("#modalbox-error-id").html("L'équation de la fonction est vide !");
+				$("#modalbox-error-id").html("L'équation de la fonction est invalide ou vide !");
 
 				return false;
 
 			}
 
-			else if (!maxRange) {
+			else if (Number(maxRange) === '' || isNaN(maxRange)) {
 
-				$("#modalbox-error-id").html("Le point maximal de l'intervalle Y est vide !");
+				$("#modalbox-error-id").html("Le point maximal de l'intervalle Y est invalide ou vide !");
 
 				return false;
 
 			}
 
-			else if (!minRange) {
+			else if (Number(minRange) === '' || isNaN(minRange)) {
 
-				$("#modalbox-error-id").html("Le point minimal de l'intervalle Y est vide !");
+				$("#modalbox-error-id").html("Le point minimal de l'intervalle Y est invalide ou vide !");
 
 				return false;
 

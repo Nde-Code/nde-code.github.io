@@ -67,7 +67,7 @@
 		background: #4AB0D9;
 	}
 
-	.filters {
+	.edit-filters-btn-class {
 		font-size: 20px;
 		border-radius: 50px;
 		color: white;
@@ -80,7 +80,7 @@
 		margin: 8px;
 	}
 
-	.filters:hover {
+	.edit-filters-btn-class:hover {
 		background: #52BF04;
 	}
 
@@ -255,10 +255,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="modalbox-class" id="modalbox-filters" style="display: none;">
+		<div class="modalbox-class" id="modalbox-edit-filters" style="display: none;">
 			<header class="modalbox-header-class" id="modalbox-header-id">
-				<i class="fas fa-filter"></i> Filtres
-				<a onclick="$('#modalbox-filters').css('display', 'none');" class="modalbox-header-close" id="dispose-modalbox">
+				<i class="fa-solid fa-pen-to-square"></i> Éditer
+				<a onclick="$('#modalbox-edit-filters').css('display', 'none');" class="modalbox-header-close" id="dispose-modalbox">
 					<i class="fa fa-times" aria-hidden="true"></i>
 				</a>
 			</header>
@@ -398,9 +398,9 @@
 
 		});
 
-		function openFiltersBox() {
+		function openEditFiltersBox() {
 
-			$("#modalbox-filters").css("display", "block");
+			$("#modalbox-edit-filters").css("display", "block");
 
 			window.scrollTo(0, 0);
 
@@ -436,8 +436,8 @@
 
 					return $("#actions").append(`
 								<a onclick="getImage();" id="img-download-btn-id" class="download-btn"><i class="fas fa-download"></i> Télécharger l\'image</a>
-								<a id="apply-filters-btn-id" onclick="openFiltersBox();" class="filters"><i class="fas fa-filter"></i> Appliquer des filtres</a>
-								<a id="remove-filters-btn-id" onclick="deleteFilters();" class="delete-btn"><i class="fas fa-trash-alt"></i>  Réinitialiser</a>
+								<a id="edit-filters-btn-id" onclick="openEditFiltersBox();" class="edit-filters-btn-class"><i class="fa-solid fa-pen-to-square"></i> Éditer l\'image</a>
+								<a id="remove-filters-btn-id" onclick="deleteFilters();" class="delete-btn"><i class="fas fa-trash-alt"></i> Réinitialiser</a>
 							`);
 
 				});
@@ -454,7 +454,7 @@
 
 		}
 
-		function goFilters() {
+		function applyFilters() {
 
 			filters = `blur(${$('#blurValue').val()}px)
 					   sepia(${$('#sepiaValue').val()}%) 
@@ -470,7 +470,7 @@
 
 			$("#edit-properties").css("filter", "-webkit-filter");
 
-			$("#modalbox-filters").css("display", "none");
+			$("#modalbox-edit-filters").css("display", "none");
 
 		}
 
@@ -555,7 +555,7 @@
 
 				$("#img-download-btn-id").html('<i class="fas fa-download"></i>');
 
-				$("#apply-filters-btn-id").html('<i class="fas fa-filter"></i>');
+				$("#edit-filters-btn-id").html('<i class="fas fa-filter"></i>');
 
 				$("#remove-filters-btn-id").html('<i class="fas fa-trash-alt"></i>');
 
@@ -569,11 +569,11 @@
 
 			if ($(window).width() <= 768 && status === 'true') {
 
-				$("#modalbox-filters").css("marginLeft", "unset");
+				$("#modalbox-edit-filters").css("marginLeft", "unset");
 
-				$("#modalbox-filters").css("left", "unset");
+				$("#modalbox-edit-filters").css("left", "unset");
 
-				$("#modalbox-filters").css("width", Math.round(window.innerWidth - 10) + "px");
+				$("#modalbox-edit-filters").css("width", Math.round(window.innerWidth - 10) + "px");
 
 			}
 
