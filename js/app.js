@@ -20,7 +20,7 @@ function openContactBox() {
             </header>
             <div class="modalbox-main-content">
 
-                <div class="modalbox-components-contenaire">
+                <div class="modalbox-text-contenaire">
                     <h2>Règles à respecter:</h2>
                     <p class="modalbox-description"><i class="fas fa-check" style="color: green;"></i> :Vous pouvez me contacter pour des questions pertinentes en rapport avec mon site ou autre application. Vous pouvez me soumettre vos projets faits avec mes logiciels, mais aussi me dire ce que va (pas) sur le thème, la police d'écriture, etc... </p>
                     <p class="modalbox-description"><i class="fas fa-times" style="color: red;"></i> :Hors de question de me contacter pour des bêtises ou des tentatives néfastes à mon égard. Pas question non plus de spammer ou de me demander comment ça va ! </p>
@@ -29,12 +29,12 @@ function openContactBox() {
 
                 <div class="white-lines"></div>
 
-                <div class="modalbox-components-contenaire">
+                <div class="modalbox-text-contenaire">
                     <h2>Mon E-Mail:</h2>
                     <p class="modalbox-description"> Cet E-Mail est la seule que je vous laisse pour me contacter. Merci de ne pas en abuser et ne pas spammer ma boîte mail. </p>
                 </div>
 
-                <input style="text-align: center;" id="email" class="email-bar" value="nathan.debilloez@outlook.com" readonly>
+                <input style="text-align: center;" id="email" class="modalbox-email-input" value="nathan.debilloez@outlook.com" readonly>
                 
                 <div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -66,7 +66,7 @@ function openAboutBox() {
             </header>
             <div class="modalbox-main-content">
 
-                <div class="modalbox-components-contenaire">
+                <div class="modalbox-text-contenaire">
                     <h2>Information:</h2>
                     <p class="modalbox-description"> Le site est statique, il n'y a aucun code serveur, et également aucune utilisation de base de données. Le code est en HTML, Css, Javascript avec JQuery. </p>
                     <h2>Librairies utilisées:</h2>

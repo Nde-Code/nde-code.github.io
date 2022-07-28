@@ -228,7 +228,7 @@ header.modalbox-header-class {
     height: 426px;
 }
 
-.modalbox-components-contenaire {
+.modalbox-text-contenaire {
     margin-right: 5%;
     margin-left: 5%;
     margin-bottom: 20px;
@@ -302,7 +302,7 @@ header.modalbox-header-class {
     display: none;
 }
 
-.email-bar {
+.modalbox-email-input {
     width: 88%;
     height: 45px;
     background: #323232;
