@@ -43,7 +43,7 @@ body.active {
     background-size: cover;
 }
 
-.app {
+.main-contenaire {
     position: relative;
 }
 
@@ -475,18 +475,6 @@ header.modalbox-header-class {
 
 .warn {
     color: #FF941A;
-}
-
-/* Merci: https://www.w3schools.com/howto/howto_css_hide_arrow_number.asp */
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-input[type=number] {
-    -moz-appearance: textfield;
 }
 
 .main-website-panel-notice {
