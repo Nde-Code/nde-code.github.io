@@ -179,7 +179,7 @@
 				</div>
 				<input type="text" inputmode="numeric" id="a-equation" class="modalbox-input" placeholder="A:"> 
 
-				<div class="white-lines" style="margin-top: 20px; margin-bottom: 20px; height: 3px;"></div>
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				<div class="modalbox-text-contenaire">
 					<h2>Le B de votre équation:</h2>
@@ -187,7 +187,7 @@
 				</div>
 				<input type="text" inputmode="numeric" id="b-equation" class="modalbox-input" placeholder="B:">
 
-				<div class="white-lines" style="margin-top: 20px; margin-bottom: 20px; height: 3px;"></div>
+				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				<div class="modalbox-text-contenaire">
 					<h2>Le C de votre équation:</h2>
@@ -357,7 +357,7 @@
 
 					let resultTwo = ((-bValue) - Math.sqrt(delta)) / (2 * (aValue));
 
-					$("#display-result-id").html(`L'ensemble de solution de votre équation est {X<sub>1</sub> = ${resultOne.toFixed(3)}; X<sub>2</sub> = ${resultTwo.toFixed(3)}} avec un Delta de ${delta}.`);
+					$("#display-result-id").html(`L'ensemble de solution de votre équation est {x<sub>1</sub> = ${resultOne.toFixed(3)}; x<sub>2</sub> = ${resultTwo.toFixed(3)}} avec un Delta de ${delta}.`);
 
 				}
 
@@ -365,7 +365,7 @@
 
 					let resultThree = (-bValue) / (2 * (aValue));
 
-					$("#display-result-id").html(`La solution de votre équation est ${resultThree.toFixed(3)} car votre Delta est de ${delta}.`);
+					$("#display-result-id").html(`La solution de votre équation est x = ${resultThree.toFixed(3)} car votre Delta est de ${delta}.`);
 
 				}
 
