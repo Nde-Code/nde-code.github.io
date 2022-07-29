@@ -82,6 +82,7 @@ function openAboutBox() {
                     <p class="modalbox-description"> · Pixlr: <a href="https://pixlr.com/fr/" class="link-btn">https://pixlr.com/fr/</a></p>
                     <h2>Site utilisé:</h2>
                     <p class="modalbox-description"> · W3schools: <a href="https://www.w3schools.com/" class="link-btn">https://www.w3schools.com/</a></p>
+                    <p class="modalbox-description"> Ce site m'a permis d'apprendre en autodidacte, le développement avec HTML, Css et Javascript ainsi que JQuery et ce gratuitement. </p>
                     <h2>Licence:</h2>
                     <p class="modalbox-description">À obligatoirement respecter: "GNU General Public License v3.0"</p>
                 </div>
