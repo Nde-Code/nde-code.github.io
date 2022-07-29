@@ -198,18 +198,18 @@
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				<div class="modalbox-text-contenaire">
-					<h2>Le point maximal de l'intervalle Y:</h2>
+					<h2>Le point maximum de l'intervalle Y:</h2>
 					<p class="modalbox-description"> Entrez le point a affiché le plus grand sur l'axe des ordonnés (Y). </p>
 				</div>
-				<input id="max-range" class="modalbox-input" placeholder="Point maximal:" type="text" inputmode="numeric">
+				<input id="max-range" class="modalbox-input" placeholder="Y maximum:" type="text" inputmode="numeric">
 
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				<div class="modalbox-text-contenaire">
-					<h2>Le point minimal de l'intervalle Y:</h2>
+					<h2>Le point minimum de l'intervalle Y:</h2>
 					<p class="modalbox-description"> Entrez le point a affiché le plus petit sur l'axe des ordonnés (Y). </p>
 				</div>
-				<input id="min-range" class="modalbox-input" placeholder="Point minimal:" type="text" inputmode="numeric">
+				<input id="min-range" class="modalbox-input" placeholder="Y minimum:" type="text" inputmode="numeric">
 				
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -300,25 +300,25 @@
 
 			}
 
-			else if (Number(maxRange) === '' || isNaN(maxRange)) {
+			else if (maxRange === '' || isNaN(maxRange)) {
 
-				$("#modalbox-error-id").html("Le point maximal de l'intervalle Y est invalide ou vide !");
-
-				return false;
-
-			}
-
-			else if (Number(minRange) === '' || isNaN(minRange)) {
-
-				$("#modalbox-error-id").html("Le point minimal de l'intervalle Y est invalide ou vide !");
+				$("#modalbox-error-id").html("Le point maximum de l'intervalle Y est invalide ou vide !");
 
 				return false;
 
 			}
 
-			else if (Number(minRange) > Number(maxRange)) {
+			else if (minRange === '' || isNaN(minRange)) {
 
-				$("#modalbox-error-id").html("Le point d'intervalle minimal est plus grand ou égal au point d'intervalle maximal !");
+				$("#modalbox-error-id").html("Le point minimum de l'intervalle Y est invalide ou vide !");
+
+				return false;
+
+			}
+
+			else if (Number(minRange) > Number(maxRange) || Number(minRange) === Number(maxRange)) {
+
+				$("#modalbox-error-id").html("Le point d'intervalle minimum est plus grand ou égal au point d'intervalle maximum !");
 
 				return false;
 
