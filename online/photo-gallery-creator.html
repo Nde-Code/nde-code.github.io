@@ -191,10 +191,9 @@
 	<meta name="theme-color" content="#ffffff">
 </head>
 
-<body class="loading">
+<body class="main-body-class">
 	<div id="modalbox-open-div"></div>
-	<div class="loading-animation" id="loading-id"></div>
-	<div id="loading-body" style="visibility: hidden;">
+	<div id="main-elements-contenaire">
 		<div id="particles-js"></div>
 		<div class="main-contenaire">
 			<div class="header-contenaire">
@@ -264,7 +263,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="modalbox-class" id="modalbox-add">
+		<div class="modalbox-class" id="modalbox-add" style="display: none;">
 			<header class="modalbox-header-class" id="modalbox-header-id">
 				<i class="fas fa-plus-circle"></i> Ajouter
 				<a class="modalbox-header-close" id="windowbox-dispose-id">
@@ -344,32 +343,6 @@
 	<script src="../js/app.js"></script>
     <script>
         $("#copyright").html(new Date().getFullYear());
-
-		$(document).on('DOMContentLoaded', () => { loadingAnimation(); });
-
-		function loadingAnimation() {
-
-			$("#loading-body").css("display", "none");
-
-			$("#loading-id").css("display", "block");
-
-			$('body').attr('class', 'loading');
-
-			setTimeout(function () {
-
-				$("#loading-body").css("display", "block");
-
-				$("#loading-body").css("visibility", "unset");
-
-				$("#loading-id").css("display", "none");
-
-				$('body').attr('class', 'active');
-
-				$("#modalbox-add").css("display", "none");
-
-			}, 3000);
-
-		}
 
 		var albumCodeArray = [];
 

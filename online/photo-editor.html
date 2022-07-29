@@ -182,10 +182,9 @@
 	<meta name="theme-color" content="#ffffff">
 </head>
 
-<body id="main-body" class="loading">
+<body class="main-body-class">
 	<div id="modalbox-open-div"></div>
-	<div class="loading-animation" id="loading-id"></div>
-	<div id="loading-body" style="visibility: hidden;">
+	<div id="main-elements-contenaire">
 		<div id="particles-js"></div>
 		<div class="main-contenaire">
 			<div class="header-contenaire">
@@ -369,26 +368,6 @@
 		var imgHtmlElement;
 
 		$("#copyright").html(new Date().getFullYear());
-
-		$(document).on('DOMContentLoaded', () => { loadingAnimation(); })
-
-		function loadingAnimation() {
-
-			$("#loading-body").css('display', 'none');
-
-			setTimeout(() => {
-
-				$("#loading-body").css('display', 'block');
-
-				$("#loading-body").css("visibility", "unset");
-
-				$("#loading-id").css('display', 'none');
-
-				$("#main-body").attr("class", "active");
-
-			}, 3000);
-
-		};
 
 		$("#upload-btn-id").on("change", function (data) {
 
