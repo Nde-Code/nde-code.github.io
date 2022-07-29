@@ -231,7 +231,7 @@
     <script>
 		// Je me suis inspiré d'un exemple de Math.js pour réaliser ce logiciel.
 		// Cet exemple est sous licence Apache 2.0, Copyright (C) 2013-2022 Jos de Jong wjosdejong@gmail.com. 
-		// Je n'ai que regardé les lignes  397, 401-411 (sur mon code) pour créer mon logiciel. 
+		// Je n'ai que regardé les lignes 399-411 (sur mon code) pour créer mon logiciel. 
 		// https://mathjs.org/examples/browser/plot.html.html
         $("#copyright").html(new Date().getFullYear());
 
@@ -394,9 +394,9 @@
 
 				}
 
-				let mathFunctionCompiled = math.compile(mathFunction)
-
 				try {
+
+					var mathFunctionCompiled = math.compile(mathFunction)
 
 					var xPoint = math.round(math.range(-10, 10, 0.01).toArray(), 3);
 
