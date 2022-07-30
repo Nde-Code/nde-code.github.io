@@ -397,8 +397,6 @@
 
 					status = true;
 
-					console.log("%c Fichier chargé en mémoire !", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);');
-
 					$("#image-contenaire").html(`<img id="edit-properties" class="canvas-picture" src="${base64input.target.result}" alt="Votre image.">`);
 
 					imgHtmlElement = `<img id="edit-properties" class="canvas-picture" src="${base64input.target.result}" alt="Votre image.">`;
@@ -460,8 +458,6 @@
 		}
 
 		function getImage() {
-
-			console.log("%c Téléchargement de votre image en cours...", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);')
 
 			var setDate = new Date();
 

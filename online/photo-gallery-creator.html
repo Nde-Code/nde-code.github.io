@@ -669,8 +669,6 @@
 
 						$("#go-to-previous-page").attr("class", "no-step-btn-class");
 
-						console.log("%c Fichier chargé en mémoire !", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);');
-
 						window.scrollTo(0, 0);
 
 					}
@@ -742,8 +740,6 @@
 
 			saveAs(fileInputAlbum, `${name}.album`);
 
-			console.log("%c Impression de votre album !", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);');
-
 			$("#modalbox-download").css("display", "none");
 
 		}
@@ -758,8 +754,6 @@
 
 			else if (currentPage === (albumCodeArray.length - 1)) {
 
-				console.log("%c Suppression du fichier.", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);')
-
 				removeItemOnce(albumCodeArray, albumCodeArray[currentPage]);
 
 				openPage(currentPage - 1);
@@ -769,8 +763,6 @@
 			}
 
 			else {
-
-				console.log("%c Suppression du fichier.", 'font-size: 1.2em; font-family: Verdana; color: rgb(162, 59, 194);')
 
 				removeItemOnce(albumCodeArray, albumCodeArray[currentPage]);
 
