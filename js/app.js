@@ -1,5 +1,3 @@
-console.log("%c Hey, bienvenue sur mon site internet !", 'font-size: 1.2em; font-family: Verdana; color: #2B96D9; font-weight: bold;');
-
 var isOpenContactBox = false;
 
 var isOpenAboutBox = false;
