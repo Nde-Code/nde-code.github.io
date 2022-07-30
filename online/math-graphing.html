@@ -228,10 +228,6 @@
 	<script src="../js/plotly.js" defer></script>
 	<script src="../js/math.js" defer></script>
     <script>
-		// Je me suis inspiré d'un exemple de Math.js pour réaliser ce logiciel.
-		// Cet exemple est sous licence Apache 2.0, Copyright (C) 2013-2022 Jos de Jong wjosdejong@gmail.com. 
-		// Je n'ai que regardé les lignes 399-411 (sur mon code) pour créer mon logiciel. 
-		// https://mathjs.org/examples/browser/plot.html.html
         $("#copyright").html(new Date().getFullYear());
 
 		setInterval(function () {
@@ -375,11 +371,12 @@
 
 				try {
 
-					var mathFunctionCompiled = math.compile(mathFunction)
+					// Merci: https://mathjs.org/examples/browser/plot.html.html
+					var mathFunctionCompiled = math.parse(mathFunction)
 
-					var xPoint = math.round(math.range(-10, 10, 0.01).toArray(), 3);
+					var xPoints = math.round(math.range(-10, 10, 0.01).toArray(), 3);
 
-					var yPoint = xPoint.map(function (x) {
+					var yPoints = xPoints.map(function (x) {
 
 						return math.round(mathFunctionCompiled.evaluate({
 
@@ -397,7 +394,7 @@
 
 				}		
 
-				if (onlyNumbers(yPoint) === false) {
+				if (onlyNumbers(yPoints) === false) {
 
 					$("#modalbox-error-id").html("Les données générées sont invalides !");
 
@@ -407,9 +404,9 @@
 
 				let mathGraph = {
 
-					x: xPoint,
+					x: xPoints,
 
-					y: yPoint,
+					y: yPoints,
 
 					type: 'scatter',
 
