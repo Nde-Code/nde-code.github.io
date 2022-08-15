@@ -372,17 +372,17 @@
 				try {
 
 					// Merci: https://mathjs.org/examples/browser/plot.html.html
-					var mathFunctionCompiled = math.parse(mathFunction)
+					var mathFunctionCompiled = math.compile(mathFunction)
 
 					var xPoints = math.range(-10, 10, 0.01).toArray();
 
 					var yPoints = xPoints.map(function (x) {
 
-						return math.round(mathFunctionCompiled.evaluate({
+						return mathFunctionCompiled.evaluate({
 
 							x: x
 
-						}), 5);
+						});
 
 					});
 
@@ -408,15 +408,15 @@
 
 					y: yPoints,
 
+					mode: 'markers',
+
 					type: 'scatter',
 
-					line: {
+					marker: {
 
 						color: 'green',
 
-						dash: 'dashdot',
-
-						width: 3
+						size: '3'
 
 					}
 
