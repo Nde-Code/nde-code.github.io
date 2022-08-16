@@ -16,8 +16,6 @@ Le site est statique, il n'y a aucun code serveur, et également aucune utilisat
 
 # Librairies utilisées:
 
-  - Particles.js: https://github.com/VincentGarreau/particles.js
-
   - Font Awesome: https://fontawesome.com/
 
   - FileSaver: https://github.com/eligrey/FileSaver.js/

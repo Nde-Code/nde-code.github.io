@@ -68,7 +68,6 @@ function openAboutBox() {
                     <h2>Information:</h2>
                     <p class="modalbox-description"> Le site est statique, il n'y a aucun code serveur, et également aucune utilisation de base de données. Le code est en HTML, Css, Javascript avec JQuery. </p>
                     <h2>Librairies utilisées:</h2>
-                    <p class="modalbox-description"> · Particles.js: <a href="https://github.com/VincentGarreau/particles.js" class="link-btn">https://github.com/VincentGarreau/particles.js</a></p>
                     <p class="modalbox-description"> · Font Awesome: <a href="https://fontawesome.com/" class="link-btn">https://fontawesome.com/</a></p>
                     <p class="modalbox-description"> · FileSaver: <a href="https://github.com/eligrey/FileSaver.js/" class="link-btn">https://github.com/eligrey/FileSaver.js/</a></p>
                     <p class="modalbox-description"> · JQuery: <a href="https://jquery.com/" class="link-btn">https://jquery.com/</a></p>
