@@ -2,6 +2,8 @@ var isOpenContactBox = false;
 
 var isOpenAboutBox = false;
 
+var isES6 = true;
+
 function openContactBox() {
 
     if (isOpenContactBox === false) {
@@ -45,7 +47,7 @@ function openContactBox() {
         $("#modalbox-open-div").append(contactBoxHtml);
 
     }
-    
+
 }
 
 function openAboutBox() {
@@ -98,6 +100,24 @@ function openAboutBox() {
 
 }
 
+function detectES6() {
+
+    try {
+
+        Function("() => {};");
+
+        return true;
+
+    }
+
+    catch (invalid) {
+
+        return false;
+
+    }
+
+}
+
 setInterval(function () {
 
     let mobileBoxSize = Math.round(window.innerWidth - 10) + "px";
@@ -119,6 +139,18 @@ setInterval(function () {
         $("#modalbox-about").css('left', 'unset');
 
         $("#modalbox-about").css('width', mobileBoxSize);
+
+    }
+
+    if ($(window).width() <= 768 && isES6 === false) {
+
+        $("#modalbox-warning").css('marginLeft', 'unset');
+
+        $(".warning-browser").css('fontSize', '150px')
+
+        $("#modalbox-warning").css('left', 'unset');
+
+        $("#modalbox-warning").css('width', mobileBoxSize);
 
     }
 
@@ -162,6 +194,38 @@ $('#displayMobileMenu').on('click', function () {
 });
 
 document.oncontextmenu = () => { return false; }
+
+$(document).ready(function () {
+
+    if (detectES6() !== false) {
+
+        isES6 = false;
+
+        let invalidBrowserBox = `
+        <div class="modalbox-class" id="modalbox-warning">
+            <header class="modalbox-header-class" id="modalbox-header-id">
+                <i class="fa-solid fa-triangle-exclamation"></i> Attention
+            </header>
+            <div class="modalbox-main-content" style="text-align: center; overflow-y: hidden;">
+    
+                <div class="modalbox-text-contenaire">
+                    <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 200px; color: #FF941A;"></i>
+                    <h2>Navigateur incompatible:</h2>
+                    <p class="modalbox-description"> Impossible d'interpréter le code Javascript ! Il est temps de changer de navigateur ! </p>
+                </div>
+    
+            </div>
+        </div>`;
+
+        $(".main-body-class").css("background", "#212121");
+
+        $("#main-elements-contenaire").remove();
+
+        $("#modalbox-open-div").append(invalidBrowserBox);
+
+    }
+
+});
 
 setInterval(function () {
 
