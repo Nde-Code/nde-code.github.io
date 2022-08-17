@@ -197,7 +197,7 @@ document.oncontextmenu = () => { return false; }
 
 $(document).ready(function () {
 
-    if (detectES6() !== false) {
+    if (detectES6() === false) {
 
         isES6 = false;
 
