@@ -245,7 +245,7 @@ header.modalbox-header-class {
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 20px;
-    border: 4px dashed #363536;
+    border: 4px solid #363536;
     border-radius: 25px;
 }
 
