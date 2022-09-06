@@ -146,7 +146,7 @@
 			</div>
 			<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 20px;"></div>
 			<div class="website-bottom-menu">
-				<a onclick="$('#modalbox-equation').css('display', 'block'); window.scrollTo(0, 0);" id="calculate-btn-id" class="calculate-btn"><i class="fa-solid fa-square-root-variable"></i> Calculer une équation</a>
+				<a onclick="$('#modalbox-equation').css('display', 'block'); window.scrollTo(0, 0);" id="calculate-btn-id" class="calculate-btn"><i class="fa-solid fa-pencil"></i> Résoudre une équation</a>
 			</div>
 			<div style="margin-top: 20px;" class="foot-page">
 				<div class="main-footer-page">
@@ -165,7 +165,7 @@
 		</div>
 		<div class="modalbox-class" id="modalbox-equation" style="display: none;">
 			<header class="modalbox-header-class" id="modalbox-header-id">
-				<i class="fa-solid fa-square-root-variable"></i> Calculer
+				<i class="fa-solid fa-pencil"></i> Résoudre
 				<a class="modalbox-header-close" onclick="$('#modalbox-equation').css('display', 'none');">
 					<i class="fa fa-times" aria-hidden="true"></i>
 				</a>
@@ -200,7 +200,7 @@
 				<p class="modalbox-error-class" id="modalbox-error-id">Aucune erreur(s) n'est à signaler ! </p>
 
 				<div style="text-align: center; margin-bottom: 40px;">
-					<a class="modalbox-go-btn" onclick="solve($('#a-equation').val(), $('#b-equation').val(), $('#c-equation').val());"><i class="fa-solid fa-square-root-variable"></i> Calculer</a>
+					<a class="modalbox-go-btn" onclick="solve($('#a-equation').val(), $('#b-equation').val(), $('#c-equation').val());"><i class="fa-solid fa-pencil"></i> Résoudre</a>
 				</div>
 			</div>
 		</div>
@@ -214,9 +214,9 @@
 
 			if ($(window).width() <= 1024) {
 
-				$(".modalbox-go-btn").html('<i class="fa-solid fa-square-root-variable"></i>');
+				$(".modalbox-go-btn").html('<i class="fa-solid fa-pencil"></i>');
 
-				$("#calculate-btn-id").html('<i class="fa-solid fa-square-root-variable"></i>');
+				$("#calculate-btn-id").html('<i class="fa-solid fa-pencil"></i>');
 
 				$(".main-website-row-panel").css("paddingLeft", "unset");
 
