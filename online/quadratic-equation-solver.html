@@ -19,7 +19,7 @@
 		background: #4AB0D9
 	}
 
-	.calculator-icon {
+	.square-root-icon {
 		font-size: 160px;
 		color: crimson;
 	}
@@ -42,7 +42,7 @@
 	}
 
 	@media screen and (max-width: 768px) {
-		.calculator-icon {
+		.square-root-icon {
 			font-size: 130px;
 			margin-top: 20px;
 		}
@@ -133,7 +133,7 @@
 				<div class="main-website-row-panel" style="padding-left: 7px;">
 					<div class="main-website-panel-style">
 						<div class="center-elements">
-							<i class="fa-solid fa-calculator calculator-icon"></i>
+							<i class="fa-solid fa-square-root-variable square-root-icon"></i>
 							<h1 style="margin-top: 30px; color: white; font-weight: bold; font-size: 24px;">Votre équation: </h1>
 							<span id="equation-plot-id"> Ax<sup>2</sup> + Bx + C = 0 </span>
 							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> :Le logiciel est gratuit et propose une prévisualisation de votre entrée.</p>
@@ -340,7 +340,7 @@
 
 				$("#modalbox-error-id").html("Aucune erreur(s) n'est à signaler !");
 
-				if ($(window).width() >= 768) $(".calculator-icon").css("fontSize", "280px");
+				if ($(window).width() >= 768) $(".square-root-icon").css("fontSize", "280px");
 
 				$(".main-website-panel-notice").remove();
 
