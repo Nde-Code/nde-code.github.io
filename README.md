@@ -1,7 +1,5 @@
 # nde-code.github.io:
 
-Instance en ligne: https://nde-code.github.io/
-
 Ce petit site est mon plus gros projet.
 
 Il est l'hébergeur de tous mes travaux informatiques.
