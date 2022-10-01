@@ -42,7 +42,7 @@ Ce site m'a permis d'apprendre en autodidacte, le développement avec HTML, Css 
 
 # Installation:
 
-## Par commande Git:
+## Par commande Git Bash:
 
 ```bash
 git clone https://github.com/Nde-Code/nde-code.github.io.git
