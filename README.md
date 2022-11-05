@@ -32,12 +32,6 @@ Le site est statique, il n'y a aucun code serveur, et également aucune utilisat
   
   - Pixlr: https://pixlr.com/fr/
 
-# Site utilisé:
-
-  - W3schools: https://www.w3schools.com/
-
-Ce site m'a permis d'apprendre en autodidacte, le développement avec HTML, Css et Javascript ainsi que JQuery et ce gratuitement.
-
 # Installation:
 
 ## Par commande Git Bash:
