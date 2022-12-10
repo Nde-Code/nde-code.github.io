@@ -8,7 +8,7 @@ Il est l'hébergeur de tous mes travaux informatiques.
 
 # Information:
 
-Le site est statique, il n'y a aucun code serveur, et également aucune utilisation de base de données. Le code est en HTML, Css, Javascript avec JQuery.
+Le site est totalement statique, c'est-à-dire qu'il n'y a aucun contact entre vous et le serveur. Par conséquent je ne recueille et stocke aucune donnée personnelle. Le code est est intégralement visible sur GitHub.
 
 > J'ai choisi de ne pas utiliser de Framework ou n'importe quoi d'autres car j'aime bien être totalement libre et avoir un contrôle total sur le code. Par ailleurs, l'utilisation d'un Framework n'aurait rien apporté pour un petit site comme celui-ci.
 

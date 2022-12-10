@@ -68,7 +68,7 @@ function openAboutBox() {
 
                 <div class="modalbox-text-contenaire">
                     <h2>Information:</h2>
-                    <p class="modalbox-description"> Le site est statique, il n'y a aucun code serveur, et également aucune utilisation de base de données. Le code est en HTML, Css, Javascript avec JQuery. </p>
+                    <p class="modalbox-description"> Le site est totalement statique, c'est-à-dire qu'il n'y a aucun contact entre vous et le serveur. Par conséquent je ne recueille et stocke aucune donnée personnelle. Le code est est intégralement visible sur GitHub. </p>
                     <h2>Librairies utilisées:</h2>
                     <p class="modalbox-description"> · Font Awesome: <a href="https://fontawesome.com/" class="link-btn">https://fontawesome.com/</a></p>
                     <p class="modalbox-description"> · FileSaver: <a href="https://github.com/eligrey/FileSaver.js/" class="link-btn">https://github.com/eligrey/FileSaver.js/</a></p>
