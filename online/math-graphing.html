@@ -366,22 +366,19 @@
 
 				}
 
+				var xPoints = [];
+
+				var yPoints = [];
+
 				try {
 
-					// Merci: https://mathjs.org/examples/browser/plot.html.html
-					var mathFunctionCompiled = math.compile(mathFunction)
+					for(var iterationCount = -10; iterationCount < 10; iterationCount += 0.1){
 
-					var xPoints = math.range(-10, 10, 0.1).toArray();
+						xPoints.push(iterationCount);
 
-					var yPoints = xPoints.map(function (x) {
+						yPoints.push(math.evaluate(mathFunction, {x : iterationCount}));						
 
-						return mathFunctionCompiled.evaluate({
-
-							x: x
-
-						});
-
-					});
+					}
 
 				} catch(err) {
 
