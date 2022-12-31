@@ -243,3 +243,5 @@ $(window).on('resize', () => {
     }
 
 });
+
+$("#copyright").html(new Date().getFullYear());
