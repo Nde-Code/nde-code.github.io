@@ -13,6 +13,7 @@
 		font-weight: bold;
 		border: 4px solid #0367A6;
 		cursor: pointer;
+		margin: 8px;
 	}
 
 	.calculate-btn:hover {
@@ -62,6 +63,23 @@
 
 	.modalbox-go-btn:hover {
 		background: #4AB0D9;
+	}
+
+	.share-btn {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #F25C05;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #D93D04;
+		padding: 15px 31px;
+		cursor: pointer;
+		margin: 8px;
+	}
+
+	.share-btn:hover {
+		background: #F28705;
 	}
 	</style>
 	<meta charset="UTF-8">
@@ -207,7 +225,8 @@
 	</div>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/app.js"></script>
-	<script type="text/javascript">		
+	<script type="text/javascript">	
+		var isRunning = false;	
 
 		setInterval(function () {
 
@@ -220,6 +239,12 @@
 				$(".main-website-row-panel").css("paddingLeft", "unset");
 
 			}
+
+			if ($(window).width() <= 1024 && isRunning == true) {
+
+				$("#share-btn-id").html('<i class="fa-solid fa-share-nodes"></i>');
+
+			}	
 
 			if ($(window).width() <= 745) {
 
@@ -243,47 +268,67 @@
 
 		}, 500);
 
-		function buildEquation() {
+		function buildEquation(a, b, c) {
 
-			let aValueHtml = $("#a-equation").val();
+			if (b >= 0) {
 
-			let bValueHtml = $("#b-equation").val();
-
-			let cValueHtml = $("#c-equation").val();
-
-			if (bValueHtml >= 0) {
-
-				bValueHtml = "+ " + bValueHtml;
+				b = "+ " + b;
 
 			}
 
-			if (cValueHtml >= 0) {
+			if (c >= 0) {
 
-				cValueHtml = "+ " + cValueHtml;
-
-			}
-
-			if (aValueHtml < 0) {
-
-				aValueHtml = "- " + Math.abs(aValueHtml);
+				c = "+ " + c;
 
 			}
 
-			if (bValueHtml < 0) {
+			if (a < 0) {
 
-				bValueHtml = "- " + Math.abs(bValueHtml);
-
-			}
-
-			if (cValueHtml < 0) {
-
-				cValueHtml = "- " + Math.abs(cValueHtml);
+				a = "- " + Math.abs(a);
 
 			}
 
-			$("#equation-plot-id").html(`${aValueHtml}x<sup>2</sup> ${bValueHtml}x ${cValueHtml} = 0`);
+			if (b < 0) {
+
+				b = "- " + Math.abs(b);
+
+			}
+
+			if (c < 0) {
+
+				c = "- " + Math.abs(c);
+
+			}
+
+			$("#equation-plot-id").html(`${a}x<sup>2</sup> ${b}x ${c} = 0`);
 
 		}
+
+		function shareUrl(a, b, c) {
+
+			var urlToShare = location.protocol + '//' + location.host + location.pathname + "?a="+a+"&b="+b+"&c="+c;
+
+
+			window.location.href = urlToShare;
+
+		}
+
+
+		document.addEventListener('DOMContentLoaded', function() {
+
+		var urlParams = new URLSearchParams(new URL(window.location.href).search);
+
+			if (!urlParams.get("a") || !urlParams.get("b") || !urlParams.get("c")) {
+
+				return;
+
+			} else {
+
+				solve(urlParams.get("a"), urlParams.get("b"), urlParams.get("c"));
+
+			}
+
+		});
 
 		function solve(a, b, c) {
 
@@ -335,15 +380,20 @@
 
 			else {
 
+				if (isRunning === false) $(".website-bottom-menu").append(`<a onclick="shareUrl($('#a-equation').val(), $('#b-equation').val(), $('#c-equation').val())" id="share-btn-id" class="share-btn"><i class="fa-solid fa-share-nodes"></i> Partager le résultat</a>`);
+				
+				isRunning = true;
+
 				$("#modalbox-equation").css("display", "none");
 
 				$("#modalbox-error-id").html("Aucune erreur(s) n'est à signaler !");
+
 
 				if ($(window).width() >= 768) $(".square-root-icon").css("fontSize", "280px");
 
 				$(".main-website-panel-notice").remove();
 
-				buildEquation();
+				buildEquation(a, b, c);
 
 				var delta = Math.pow(bValue, 2) - 4 * (aValue) * (cValue);
 
