@@ -69,17 +69,17 @@
 		font-size: 20px;
 		border-radius: 50px;
 		color: white;
-		background: #F25C05;
+		background: #F27405;
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #D93D04;
+		border: 4px solid #F25D27;
 		padding: 15px 31px;
 		cursor: pointer;
 		margin: 8px;
 	}
 
 	.share-btn:hover {
-		background: #F28705;
+		background: #F2B705;
 	}
 	</style>
 	<meta charset="UTF-8">
@@ -380,7 +380,15 @@
 
 			else {
 
-				if (isRunning === false) $(".website-bottom-menu").append(`<a onclick="shareUrl($('#a-equation').val(), $('#b-equation').val(), $('#c-equation').val())" id="share-btn-id" class="share-btn"><i class="fa-solid fa-share-nodes"></i> Partager le résultat</a>`);
+				if (isRunning === false)	$(".website-bottom-menu").append(`<a onclick="shareUrl('${a}', '${b}', '${c}')" id="share-btn-id" class="share-btn"><i class="fa-solid fa-share-nodes"></i> Partager le résultat</a>`);
+				
+				else {
+
+					$("#share-btn-id").remove();
+
+					$(".website-bottom-menu").append(`<a onclick="shareUrl('${a}', '${b}', '${c}')" id="share-btn-id" class="share-btn"><i class="fa-solid fa-share-nodes"></i> Partager le résultat</a>`);
+
+				}
 				
 				isRunning = true;
 
