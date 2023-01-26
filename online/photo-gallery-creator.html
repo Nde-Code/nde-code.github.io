@@ -12,17 +12,17 @@
 		font-size: 20px;
 		border-radius: 50px;
 		color: white;
-		background: #2B96D9;
+		background: #044BD9;
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #0367A6;
+		border: 4px solid #032CA6;
 		padding: 15px 31px;
 		cursor: pointer;
 		margin-left: 0.5%;
 	}
 
 	.upload-btn-class:hover {
-		background: #4AB0D9;
+		background: #3671BF;
 	}
 
 	input[type="file"] {
@@ -96,33 +96,33 @@
 		color: white;
 		font-size: 20px;
 		border-radius: 50px;
-		background: #2B96D9;
+		background: #044BD9;
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #0367A6;
+		border: 4px solid #032CA6;
 		padding: 15px 31px;
 		cursor: pointer;
 	}
 
 	.modalbox-go-btn:hover {
-		background: #4AB0D9;
+		background: #3671BF;
 	}
 
 	.activate-action-btn-class {
 		color: white;
 		font-size: 20px;
 		border-radius: 50px;
-		background: #2B96D9;
+		background: #044BD9;
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #0367A6;
+		border: 4px solid #032CA6;
 		padding: 15px 31px;
 		cursor: pointer;
 		margin: 8px;
 	}
 
 	.activate-action-btn-class:hover {
-		background: #4AB0D9;
+		background: #3671BF;
 	}
 
 	@media screen and (max-width: 700px) {
@@ -303,7 +303,7 @@
 
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
-				<p class="modalbox-error-class" id="modalbox-error-id">Aucune erreur(s) n'est à signaler ! </p>
+				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="text-align: center; margin-bottom: 40px;">
 					<a class="modalbox-go-btn" id="create-album-btn-id" onclick="addInAlbum();"><i class="fas fa-plus-circle"></i> Ajouter </a>
@@ -390,7 +390,7 @@
 
 			if (!$("#album-title").val() || $("#album-title").val() == "" || $("#album-title").val().match(/([<&][a-z]*[;]*)(script( .+[=]["'].+["'])*)([>&]*[a-z]*[;]*)([^>]*([<&][a-z]*[;]*)*(\/script)([>&]*[a-z]*[;]*))*/gi)) {
 
-				$("#modalbox-error-id").html("Merci de renseigner un titre (valide) pour votre image !");
+				$("#modalbox-errors-warnings-id").html("Merci de renseigner un titre (valide) pour votre image !");
 
 				return;
 
@@ -398,7 +398,7 @@
 
 			else if (!$("#album-subtitle").val() || $("#album-subtitle").val() == "" || $("#album-subtitle").val().match(/([<&][a-z]*[;]*)(script( .+[=]["'].+["'])*)([>&]*[a-z]*[;]*)([^>]*([<&][a-z]*[;]*)*(\/script)([>&]*[a-z]*[;]*))*/gi)) {
 
-				$("#modalbox-error-id").html("Merci de renseigner un sous-titre (valide) pour votre image !");
+				$("#modalbox-errors-warnings-id").html("Merci de renseigner un sous-titre (valide) pour votre image !");
 
 				return;
 
@@ -406,7 +406,7 @@
 
 			else if (!$("#album-description").val() || $("#album-description").val() == "" || $("#album-description").val().match(/([<&][a-z]*[;]*)(script( .+[=]["'].+["'])*)([>&]*[a-z]*[;]*)([^>]*([<&][a-z]*[;]*)*(\/script)([>&]*[a-z]*[;]*))*/gi)) {
 
-				$("#modalbox-error-id").html("Merci de renseigner une description (valide) pour votre image !");
+				$("#modalbox-errors-warnings-id").html("Merci de renseigner une description (valide) pour votre image !");
 
 				return;
 
@@ -414,7 +414,7 @@
 
 			else if (!$("#album-link").val() || $("#album-link").val() == "" || $("#album-link").val().match(/([<&][a-z]*[;]*)(script( .+[=]["'].+["'])*)([>&]*[a-z]*[;]*)([^>]*([<&][a-z]*[;]*)*(\/script)([>&]*[a-z]*[;]*))*/gi)) {
 
-				$("#modalbox-error-id").html("Merci de renseigner un lien (valide) vers votre image !");
+				$("#modalbox-errors-warnings-id").html("Merci de renseigner un lien (valide) vers votre image !");
 
 				return;
 
@@ -422,7 +422,7 @@
 
 			else if (!$("#album-link").val().toLowerCase().toString().match(/^http[^ \!@\$\^&\(\)\+\=]+(\.png|\.jpeg|\.gif|\.jpg)$/)) {
 
-				$("#modalbox-error-id").html("Merci de renseigner un lien (valide) vers votre image !")
+				$("#modalbox-errors-warnings-id").html("Merci de renseigner un lien (valide) vers votre image !")
 
 				return;
 

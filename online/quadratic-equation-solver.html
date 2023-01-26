@@ -8,16 +8,16 @@
 		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
-		background: #2B96D9;
+		background: #044BD9;
 		transition: all .2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #0367A6;
+		border: 4px solid #032CA6;
 		cursor: pointer;
 		margin: 8px;
 	}
 
 	.calculate-btn:hover {
-		background: #4AB0D9
+		background: #3671BF
 	}
 
 	.square-root-icon {
@@ -36,7 +36,7 @@
 	}
 
 	#equation-plot-id {
-		color: #2B96D9;
+		color: #044BD9;
 		font-size: 30px;
 		font-style: italic;
 		font-weight: bold;
@@ -54,15 +54,15 @@
 		color: white;
 		font-size: 20px;
 		border-radius: 50px;
-		background: #2B96D9;
+		background: #044BD9;
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #0367A6;
+		border: 4px solid #032CA6;
 		cursor: pointer;
 	}
 
 	.modalbox-go-btn:hover {
-		background: #4AB0D9;
+		background: #3671BF;
 	}
 
 	.share-btn {
@@ -215,7 +215,7 @@
 
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
-				<p class="modalbox-error-class" id="modalbox-error-id">Aucune erreur(s) n'est à signaler ! </p>
+				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="text-align: center; margin-bottom: 40px;">
 					<a class="modalbox-go-btn" onclick="solve($('#a-equation').val(), $('#b-equation').val(), $('#c-equation').val());"><i class="fa-solid fa-pencil"></i> Résoudre</a>
@@ -340,7 +340,7 @@
 
 			if (aValue === '' || isNaN(a)) {
 				
-				$("#modalbox-error-id").html("Le A de votre équation est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("Le A de votre équation est invalide ou vide !");
 
 				return false;
 
@@ -348,7 +348,7 @@
 
 			else if (bValue === '' || isNaN(b)) {
 				
-				$("#modalbox-error-id").html("Le B de votre équation est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("Le B de votre équation est invalide ou vide !");
 
 				return false;
 
@@ -356,7 +356,7 @@
 
 			else if (cValue === '' || isNaN(c)) {
 				
-				$("#modalbox-error-id").html("Le C de votre équation est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("Le C de votre équation est invalide ou vide !");
 
 				return false;
 
@@ -364,7 +364,7 @@
 
 			else if (bValue === 0 && aValue === 0) {
 
-				$("#modalbox-error-id").html('Votre équation n\'a aucune solution !');
+				$("#modalbox-errors-warnings-id").html('Votre équation n\'a aucune solution !');
 
 				return false;
 
@@ -372,7 +372,7 @@
 
 			else if (aValue === 0) {
 
-				$("#modalbox-error-id").html('L\'équation n\'est pas du second degré !');
+				$("#modalbox-errors-warnings-id").html('L\'équation n\'est pas du second degré !');
 
 				return false;
 
@@ -394,7 +394,7 @@
 
 				$("#modalbox-equation").css("display", "none");
 
-				$("#modalbox-error-id").html("Aucune erreur(s) n'est à signaler !");
+				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 
 
 				if ($(window).width() >= 768) $(".square-root-icon").css("fontSize", "280px");
@@ -425,7 +425,7 @@
 
 				if (delta < 0) {
 
-					$("#display-result-id").html(`Votre equation n'a aucune solution car le Delta (${delta}) est négatif.`);
+					$("#display-result-id").html(`Votre équation n'a aucune solution car le Delta (${delta}) est négatif.`);
 
 				}
 
