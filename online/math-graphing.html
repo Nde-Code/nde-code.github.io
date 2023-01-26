@@ -387,9 +387,9 @@
 
 			else {
 
-				let paramEquationX = paramEquationX.toLowerCase(); 
+				let xFunction = paramEquationX.toLowerCase(); 
 
-				let paramEquationY = paramEquationY.toLowerCase(); 
+				let yFunction = paramEquationY.toLowerCase(); 
 
 				let zFunction = paramEquationZ.toLowerCase(); 
 
@@ -405,11 +405,11 @@
 
 						for (var u = -10; u < 10; u += Number(accuracy)) {
 
-							xPoints.push(math.evaluate(paramEquationX, {u : u, v: v}))
+							xPoints.push(math.evaluate(xFunction, {u : u, v: v}))
 
-							yPoints.push(math.evaluate(paramEquationY, {u : u, v: v}))
+							yPoints.push(math.evaluate(yFunction, {u : u, v: v}))
 
-							zPoints.push(math.evaluate(paramEquationZ, {u : u, v: v}));
+							zPoints.push(math.evaluate(zFunction, {u : u, v: v}));
 
 						}
 
