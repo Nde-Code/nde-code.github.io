@@ -439,11 +439,11 @@
 
 							eye: {
 
-								x: 1,
+								x: 0.95,
 
-								y: 1,
+								y: 0.95,
 								
-								z: 1
+								z: 0.95
 
 							}
 
@@ -457,9 +457,11 @@
 
 							gridwidth: 1,
 
-							zerolinecolor: 'white',
+							zerolinecolor: 'red',
 
-							zerolinewidth: 1,
+							zerolinewidth: 4,
+
+							title: 'X',
 
 							showspikes: false
 
@@ -473,9 +475,11 @@
 
 							gridwidth: 1,
 
-							zerolinecolor: 'white',
+							zerolinecolor: 'green',
 
-							zerolinewidth: 1,
+							zerolinewidth: 4,
+
+							title: 'Y',
 
 							showspikes: false
 
@@ -489,13 +493,16 @@
 
 							gridwidth: 1,
 
-							zerolinecolor: 'white',
+							zerolinecolor: 'blue',
 
-							zerolinewidth: 1,
+							zerolinewidth: 4,
+
+							title: 'Z',
 
 							showspikes: false
 
 						}
+
 					},
 
 					hovermode: false,
@@ -503,6 +510,18 @@
 					plot_bgcolor: "transparent",
 
 					paper_bgcolor: "transparent",
+
+					height: 500,
+
+					aspectratio: {
+
+						x: 2,
+
+						y: 2,
+
+						z: 2
+
+    				},
 
 					margin: {
 
@@ -533,7 +552,7 @@
 
 					marker: {
 
-						size: 5,
+						size: 2,
 
 						colorscale: colorScale,
 
@@ -545,7 +564,7 @@
 
 				}];
 
-				$("#graph-contenaire").html('<div id="graphing-box" style="margin-top: 20px;"></div>');
+				$("#graph-contenaire").html('<div id="graphing-box"></div>');
 
 				$(".create-graph-btn").attr("class", "another-create-graph-btn");
 
@@ -577,7 +596,7 @@
 
 			}
 
-			else if (!maxRange || isNaN(maxRange)) {
+			else if (!maxRange || isNaN(maxRange) || Number(maxRange) > 100) {
 
 				$("#modalbox-errors-warnings-id").html("La borne maximum est invalide ou vide !");
 
@@ -585,7 +604,7 @@
 
 			}
 
-			else if (!minRange || isNaN(minRange)) {
+			else if (!minRange || isNaN(minRange) || Number(minRange) < -100) {
 
 				$("#modalbox-errors-warnings-id").html("La borne minimum est invalide ou vide !");
 
@@ -615,6 +634,8 @@
 
 					paper_bgcolor: "transparent",
 
+					height: 490,
+
 					margin: {
 
 						l: 20,
@@ -643,7 +664,7 @@
 
 						automargin: true,
 
-						zerolinewidth: 1,
+						zerolinewidth: 0.8,
 
 						range: [-10, 10],
 
@@ -723,7 +744,7 @@
 
 				let data = [mathGraph];
 
-				$("#graph-contenaire").html('<div id="graphing-box" style="margin-top: 20px;"></div>');
+				$("#graph-contenaire").html('<div id="graphing-box"></div>');
 
 				$(".create-graph-btn").attr("class", "another-create-graph-btn");
 
