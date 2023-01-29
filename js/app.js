@@ -31,7 +31,7 @@ function openContactBox() {
 
                 <div class="modalbox-text-contenaire">
                     <h2>Mon E-Mail:</h2>
-                    <p class="modalbox-description"> Cet E-Mail est la seule que je vous laisse pour me contacter. Merci de ne pas en abuser et ne pas "spammer" ma boîte mail. </p>
+                    <p class="modalbox-description"> Cet E-Mail est la seule que je vous laisse pour me contacter. </p>
                 </div>
 
                 <input style="text-align: center;" id="email" class="modalbox-email-input" value="nathan.debilloez@outlook.com" readonly>
