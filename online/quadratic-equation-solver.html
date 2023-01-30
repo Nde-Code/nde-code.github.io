@@ -338,25 +338,25 @@
 
 			let cValue = Number(c);
 
-			if (aValue === '' || isNaN(a)) {
+			if (aValue === '' || isNaN(a) || aValue > 10000) {
 				
-				$("#modalbox-errors-warnings-id").html("Le A de votre équation est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("Le A de votre équation est invalide, trop grand ou vide !");
 
 				return false;
 
 			}
 
-			else if (bValue === '' || isNaN(b)) {
+			else if (bValue === '' || isNaN(b) || bValue > 10000) {
 				
-				$("#modalbox-errors-warnings-id").html("Le B de votre équation est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("Le B de votre équation est invalide, trop grand ou vide !");
 
 				return false;
 
 			}
 
-			else if (cValue === '' || isNaN(c)) {
+			else if (cValue === '' || isNaN(c) || cValue > 10000) {
 				
-				$("#modalbox-errors-warnings-id").html("Le C de votre équation est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("Le C de votre équation est invalide, trop grand ou vide !");
 
 				return false;
 
