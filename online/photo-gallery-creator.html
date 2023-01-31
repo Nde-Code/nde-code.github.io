@@ -310,30 +310,6 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="modalbox-class" id="modalbox-download" style="display: none;">
-			<header class="modalbox-header-class" id="modalbox-header-id">
-				<i class="fas fa-download"></i> Télécharger
-				<a class="modalbox-header-close" id="modalbox-header-close-id">
-					<i class="fa fa-times" aria-hidden="true"></i>
-				</a>
-			</header>
-			<div class="modalbox-main-content" style="overflow-y: unset;">
-
-				<div class="modalbox-text-contenaire">
-					<h2>Le nom:</h2>
-					<p class="modalbox-description"> Entrez un nom pour votre album ! </p>
-				</div>
-				<input id="album-name" class="modalbox-input" placeholder="Nom:">
-				
-				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
-				<div style="text-align: center; margin-bottom: 40px; ">
-					<a class="modalbox-go-btn" id="download-btn-id" onclick="downloadAlbumFile($('#album-name').val());"><i class="fas fa-download"></i> Télécharger</a>
-				</div>
-
-			</div>
-		</div>
 	</div>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/filesaver.js"></script>
@@ -363,20 +339,6 @@
 			window.scrollTo(0, 0);
 
 		}
-
-		function openDownloadBox() {
-
-			window.scrollTo(0, 0);
-
-			$("#modalbox-download").css("display", "block");
-
-		}
-
-		$("#modalbox-header-close-id").on('click', () => {
-
-			$("#modalbox-download").css("display", "none");
-
-		});
 
 		$("#windowbox-dispose-id").on('click', () => {
 
@@ -445,7 +407,7 @@
 					$("#open-modalbox").attr("title", "Ajoutez une image à votre album !")
 
 					$("#website-bottom-menu-id").append(`
-								<a id="download-file-btn-id" onclick="openDownloadBox()" class="upload-btn-class"><i class="fas fa-download"></i> Télécharger </a>
+								<a id="download-file-btn-id" onclick="downloadAlbumFile();" class="upload-btn-class"><i class="fas fa-download"></i> Télécharger </a>
 								<div class="menu-action-class">
 									<a id="delete-btn-id" onclick="deleteAlbumFile()" class="delete-btn"><i class="fas fa-trash-alt"></i></a>
 									<a id="go-to-previous-page" onclick="previous()" class="no-step-btn-class"><i class="fas fa-backward"></i></a>
@@ -593,12 +555,6 @@
 
 				$("#modalbox-add").css('width', (window.innerWidth - 10) + "px");
 
-				$("#modalbox-download").css('marginLeft', 'unset');
-
-				$("#modalbox-download").css('left', 'unset');
-
-				$("#modalbox-download").css('width', (window.innerWidth - 10) + "px");
-
 			}
 
 		}, 500);
@@ -718,11 +674,11 @@
 
 		}
 
-		function downloadAlbumFile(name) {
+		function downloadAlbumFile() {
+
+			var date = new Date();
 
 			jsonFilecontent = {};
-
-			if (name == "" || !name) return;
 
 			for (var count = 0; count < albumCodeArray.length; count++) {
 
@@ -734,9 +690,7 @@
 
 			var fileInputAlbum = new Blob([stringJsonFilecontent], { type: "application/json" });
 
-			saveAs(fileInputAlbum, `${name}.album`);
-
-			$("#modalbox-download").css("display", "none");
+			saveAs(fileInputAlbum, `album_${date.toLocaleDateString()}.album`);
 
 		}
 
