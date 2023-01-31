@@ -34,7 +34,7 @@ function openContactBox() {
                     <p class="modalbox-description"> Cet E-Mail est la seule que je vous laisse pour me contacter. </p>
                 </div>
 
-                <input style="text-align: center;" id="email" class="modalbox-email-input" value="nathan.debilloez@outlook.com" readonly>
+                <input title="E-Mail pour me contacter:" style="text-align: center;" id="email" class="modalbox-email-input" value="nathan.debilloez@outlook.com" readonly>
                 
                 <div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -81,12 +81,6 @@ function openAboutBox() {
                     <p class="modalbox-description"> · Pixlr: <a href="https://pixlr.com/fr/" class="link-btn">https://pixlr.com/fr/</a></p>
                     <h2>Licence:</h2>
                     <p class="modalbox-description">À obligatoirement respecter: "GNU General Public License v3.0"</p>
-                </div>
-
-                <div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
-                <div style="margin-bottom: 40px; text-align: center;">
-                    <a class="modalbox-close-btn" onclick="$('#modalbox-about').remove(); isOpenAboutBox = false;"><i class="fa fa-times"></i> Fermer</a>
                 </div>
             </div>
         </div>`;
