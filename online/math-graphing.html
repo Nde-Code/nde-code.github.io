@@ -42,7 +42,7 @@
 
 	.plot-icon {
 		font-size: 230px;
-		color: rgb(93, 0, 255);
+		color: #00bfff;
 	} 
 
 	@media screen and (max-width: 1024px) {
@@ -78,6 +78,28 @@
 
 	div.plotly-notifier {
   		display: none;
+	}
+
+	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
+	.rotate-animation {
+		-webkit-animation: spin 2s linear infinite;
+    	-moz-animation: spin 2s linear infinite;
+    	animation: spin 2s linear infinite;
+	}
+
+	@-moz-keyframes spin { 
+    	100% { -moz-transform: rotate(360deg); } 
+	}
+
+	@-webkit-keyframes spin { 
+    	100% { -webkit-transform: rotate(360deg); } 
+	} 
+
+	@keyframes spin { 
+		100% { 
+			-webkit-transform: rotate(360deg); 
+			transform:rotate(360deg); 
+		} 
 	}
 	</style>
 	<meta charset="UTF-8">
@@ -193,8 +215,8 @@
 				</div>
 
 				<select title="Sélectionnez le type de graphique que vous désirez tracer:" onchange="setPlotType();" id="graph-type-id" class="graph-type-class">
-					<option value="2dFunctionGraph">Fonction en 2D</option>
-					<option value="3dParametricsGraph">Paramétrique en 2D et 3D</option>
+					<option value="2d-function-graph">Classique d'une fonction de R dans R</option>
+					<option value="3d-parametric-graph">Paramétrique jusqu'à R² dans R³</option>
 				</select>
 
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
@@ -227,7 +249,7 @@
 
 				</div>
 
-				<div id="options-3d-parametrics-graph" style="display: none;">
+				<div id="options-3d-parametric-graph" style="display: none;">
 
 					<div class="modalbox-text-contenaire">
 						<h2>L'équation en X:</h2>
@@ -275,7 +297,7 @@
 						<p style="font-size: 20px; font-weight: bold;">Précision des points: <span class="display-value-class" id="display-accuracy-id" style="color: #005DD9"></span></p>
 						<p class="modalbox-description">Il s'agit plus singulièrement de l'espace entre les points. Attention qu'une précision plus importante implique un calcul plus long. </p>
 					</div>
-					<input onchange="getAccuracy();" value="0.3" type="range" min="0.1" max="0.6" step="0.1" id="accuracy-id" class="modalbox-range-btn" placeholder="Précision:">
+					<input onchange="getAccuracy();" value="0.3" type="range" min="0.1" max="1" step="0.1" id="accuracy-id" class="modalbox-range-btn" placeholder="Précision:">
 						
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -284,7 +306,7 @@
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="classicGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());"><i class="fa-solid fa-pencil"></i> Tracer</a>
+					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
 				</div>
 	
 			</div>
@@ -295,6 +317,7 @@
 	<script src="../js/plotly.js" defer></script>
 	<script src="../js/math.js" defer></script>
     <script>
+		var inLoading = false;
 
 		setInterval(function () {
 
@@ -303,6 +326,10 @@
 				$(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i>');
 
 				$(".main-website-row-panel").css("paddingLeft", "unset");
+
+			}
+
+			if ($(window).width() <= 1024 && inLoading === false) {
 
 				$(".modalbox-go-btn").html('<i class="fa-solid fa-pencil"></i>');
 
@@ -333,13 +360,15 @@
 
 		function setPlotType() {
 
-			if($("#graph-type-id").val() === "3dParametricsGraph"){
+			if($("#graph-type-id").val() === "3d-parametric-graph"){
 				
 				$("#options-function-graph").css('display', "none")
 				
-				$(".modalbox-go-btn").attr("onclick", "parametrics3DGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#colorScale-id').val(), $('#accuracy-id').val())")
+				$(".modalbox-go-btn").attr("onclick", "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#colorScale-id').val(), $('#accuracy-id').val())")
 				
-				$("#options-3d-parametrics-graph").css('display', "block")
+				$("#options-3d-parametric-graph").css('display', "block");
+
+				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 				
 				getAccuracy();
 
@@ -349,9 +378,11 @@
 
 				$("#options-function-graph").css('display', "block")
 
-				$("#options-3d-parametrics-graph").css('display', "none")
+				$("#options-3d-parametric-graph").css('display', "none")
 
-				$(".modalbox-go-btn").attr("onclick", `classicGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());`)
+				$(".modalbox-go-btn").attr("onclick", `functionGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());`)
+			
+				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 			
 			}
 
@@ -359,7 +390,7 @@
 
 		function getAccuracy() { $("#display-accuracy-id").html($("#accuracy-id").val()); }
 
-		function parametrics3DGraphing(paramEquationX, paramEquationY, paramEquationZ, colorScale, accuracy) {
+		function parametricGraphing(paramEquationX, paramEquationY, paramEquationZ, colorScale, accuracy) {
 
 			if(!paramEquationX) {
 
@@ -387,230 +418,225 @@
 
 			else {
 
-				let xFunction = paramEquationX.toLowerCase(); 
+				loadingData();
 
-				let yFunction = paramEquationY.toLowerCase(); 
+				setTimeout(function() {
 
-				let zFunction = paramEquationZ.toLowerCase(); 
+					let xPoints = [];
 
-				let xPoints = [];
+					let yPoints = [];
 
-				let yPoints = [];
+					let zPoints = [];
 
-				let zPoints = [];
+					let xFunction = paramEquationX.toLowerCase(); 
 
-				try {
+					let yFunction = paramEquationY.toLowerCase(); 
 
-					for (var v = -10; v < 10; v += Number(accuracy)) {
+					let zFunction = paramEquationZ.toLowerCase(); 
 
-						for (var u = -10; u < 10; u += Number(accuracy)) {
+					try {
 
-							xPoints.push(math.evaluate(xFunction, {u : u, v: v}))
+					 	for (var v = -8; v < 8; v += Number(accuracy)) {
 
-							yPoints.push(math.evaluate(yFunction, {u : u, v: v}))
+							for (var u = -8; u < 8; u += Number(accuracy)) {
 
-							zPoints.push(math.evaluate(zFunction, {u : u, v: v}));
+								xPoints.push(math.evaluate(xFunction, {u : u, v: v}))
+
+								yPoints.push(math.evaluate(yFunction, {u : u, v: v}))
+
+								zPoints.push(math.evaluate(zFunction, {u : u, v: v}));
+
+							}
 
 						}
+
+					} catch(err) {
+
+						$("#modalbox-errors-warnings-id").html("Impossible de compiler votre expression !");
+
+						cancelOnErrors();
+
+						return false;
+
+					}	
+
+					if (onlyNumbers(xPoints) === false || onlyNumbers(yPoints) === false || onlyNumbers(zPoints) === false) {
+
+						$("#modalbox-errors-warnings-id").html("Les données générées sont invalides !");
+
+						cancelOnErrors();
+
+						return false;
 
 					}
 
-				} catch(err) {
+					var layer = {
 
-					$("#modalbox-errors-warnings-id").html("Impossible de compiler votre expression !");
+						scene: {
 
-					return false;
+							camera: {
 
-				}	
+								eye: {
 
-				if (onlyNumbers(xPoints) === false || onlyNumbers(yPoints) === false || onlyNumbers(zPoints) === false) {
+									x: 0.95,
 
-					$("#modalbox-errors-warnings-id").html("Les données générées sont invalides !");
+									y: 0.95,
+									
+									z: 0.95
 
-					return false;
+								}
 
-				}
+							},
 
-				var layer = {
+							xaxis: {
 
-					scene: {
+								color: 'white',
 
-						camera: {
+								gridcolor: '#757375',
 
-							eye: {
+								gridwidth: 1,
 
-								x: 0.95,
+								zerolinecolor: 'red',
 
-								y: 0.95,
+								zerolinewidth: 4,
+
+								title: 'X',
+
+								showspikes: false,
+
+								titlefont : {
+
+									size : 22,
+
+									color : 'red'
+
+								}
+
+							},
+
+							yaxis: {
+
+								color: 'white',
+
+								gridcolor: '#757375',
+
+								gridwidth: 1,
+
+								zerolinecolor: 'green',
+
+								zerolinewidth: 4,
+
+								title: 'Y',
+
+								showspikes: false,
+
+								titlefont : {
+
+									size : 22,
+
+									color : 'green'
+
+								}
+
+							},
+
+							zaxis: {
+
+								color: 'white',
+
+								gridcolor: '#757375',
+
+								gridwidth: 1,
+
+								zerolinecolor: 'blue',
+
+								zerolinewidth: 4,
+
+								title: 'Z',
+
+								showspikes: false,
+
+								titlefont : {
+
+									size : 22,
+
+									color : 'blue'
+
+								}
+
+							}
+
+						},
+
+						hovermode: false,
+
+						plot_bgcolor: "transparent",
+
+						paper_bgcolor: "transparent",
+
+						height: 500,
+
+						aspectratio: {
+
+							x: 2,
+
+							y: 2,
+
+							z: 2
+
+						},
+
+						margin: {
+
+							l: 5,
+
+							r: 5,
 								
-								z: 0.95
+							b: 5,
+								
+							t: 5
+							
+						},
+								
+					}
 
-							}
+					var data = [{
+
+						x: xPoints,
+
+						y: yPoints,
+
+						z: zPoints,
+
+						type: 'scatter3d',
+
+						mode: 'markers',
+
+						marker: {
+
+							size: 2,
+
+							colorscale: colorScale,
+
+							color: zPoints,
+							
+							opacity: 0.8
 
 						},
 
-						xaxis: {
+					}];
 
-							color: 'white',
+					endOfLoadingData();
 
-							gridcolor: '#757375',
+					Plotly.newPlot('graphing-box', data, layer, {displayModeBar: false});
 
-							gridwidth: 1,
-
-							zerolinecolor: 'red',
-
-							zerolinewidth: 4,
-
-							title: 'X',
-
-							showspikes: false,
-
-							titlefont : {
-
-								size : 22,
-
-								color : 'red'
-
-    						}
-
-						},
-
-						yaxis: {
-
-							color: 'white',
-
-							gridcolor: '#757375',
-
-							gridwidth: 1,
-
-							zerolinecolor: 'green',
-
-							zerolinewidth: 4,
-
-							title: 'Y',
-
-							showspikes: false,
-
-							titlefont : {
-
-								size : 22,
-
-								color : 'green'
-
-							}
-
-						},
-
-						zaxis: {
-
-							color: 'white',
-
-							gridcolor: '#757375',
-
-							gridwidth: 1,
-
-							zerolinecolor: 'blue',
-
-							zerolinewidth: 4,
-
-							title: 'Z',
-
-							showspikes: false,
-
-							titlefont : {
-
-								size : 22,
-
-								color : 'blue'
-
-							}
-
-						}
-
-					},
-
-					hovermode: false,
-
-					plot_bgcolor: "transparent",
-
-					paper_bgcolor: "transparent",
-
-					height: 500,
-
-					aspectratio: {
-
-						x: 2,
-
-						y: 2,
-
-						z: 2
-
-    				},
-
-					margin: {
-
-						l: 5,
-
-						r: 5,
-							
-						b: 5,
-							
-						t: 5
-					},
-
-					
-							
-				}
-
-				var data = [{
-
-					x: xPoints,
-
-					y: yPoints,
-
-					z: zPoints,
-
-					type: 'scatter3d',
-
-					mode: 'markers',
-
-					marker: {
-
-						size: 2,
-
-						colorscale: colorScale,
-
-						color: zPoints,
-						
-						opacity: 0.8
-
-					},
-
-				}];
-
-				$("#graph-contenaire").html('<div id="graphing-box"></div>');
-
-				$(".create-graph-btn").attr("class", "another-create-graph-btn");
-
-				if ($(window).width() >= 1024) {
-
-					$(".another-create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Retracer un/votre graphique');
-
-				}
-
-				Plotly.newPlot('graphing-box', data, layer, {displayModeBar: false});
-
-				$("#modalbox-graphing").css("display", "none");
-
-				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
-
-				window.scrollTo(0, 0);
+				}, 5000)
 
 			}
 
 		}
 
-		function classicGraphing(func, maxRange, minRange) {
+		function functionGraphing(func, maxRange, minRange) {
 
 			if (!func) {
 
@@ -618,7 +644,7 @@
 
 				return false;
 
-			}
+			} 
 
 			else if (!maxRange || isNaN(maxRange) || Number(maxRange) > 100) {
 
@@ -646,149 +672,199 @@
 
 			else {
 
-				let mathFunction = func.toLowerCase();
+				loadingData();
 
-				var layout = {
+				setTimeout(function() {
 
-					displayModeBar: false,
+					let mathFunction = func.toLowerCase();
 
-					hovermode: false,
+					var layout = {
 
-					plot_bgcolor: "transparent",
+						displayModeBar: false,
 
-					paper_bgcolor: "transparent",
+						hovermode: false,
 
-					height: 490,
+						plot_bgcolor: "transparent",
 
-					margin: {
+						paper_bgcolor: "transparent",
 
-						l: 20,
+						height: 490,
 
-						r: 20,
-							
-						b: 20,
-							
-						t: 20,
-							
-						pad: 8
-							
-					},
+						margin: {
 
-					xaxis: {
+							l: 20,
 
-						color: 'white',
+							r: 20,
+								
+							b: 20,
+								
+							t: 20,
+								
+							pad: 8
+								
+						},
 
-						gridcolor: '#757375',
+						xaxis: {
 
-						dtick: 2,
+							color: 'white',
 
-						gridwidth: 1,
+							gridcolor: '#757375',
 
-						zerolinecolor: 'white',
+							dtick: 2,
 
-						automargin: true,
+							gridwidth: 1,
 
-						zerolinewidth: 0.8,
+							zerolinecolor: 'white',
 
-						range: [-10, 10],
+							automargin: true,
 
-						title: 'X',
+							zerolinewidth: 0.8,
 
-						fixedrange: true
+							range: [-10, 10],
 
-					},
+							title: 'X',
 
-					yaxis: {
-							
-						color: 'white',
+							fixedrange: true
 
-						gridcolor: '#757375',
+						},
 
-						gridwidth: 1,
+						yaxis: {
+								
+							color: 'white',
 
-						zerolinecolor: 'white',
+							gridcolor: '#757375',
 
-						zerolinewidth: 0.8,
+							gridwidth: 1,
 
-						automargin: true,
+							zerolinecolor: 'white',
 
-						title: 'Y',
+							zerolinewidth: 0.8,
 
-						range: [minRange, maxRange]
+							automargin: true,
 
-					}
+							title: 'Y',
 
-				}
+							range: [minRange, maxRange]
 
-				let xPoints = [];
-
-				let yPoints = [];
-
-				try {
-
-					for(var iterationCount = -10; iterationCount < 10; iterationCount += 0.1){
-
-						xPoints.push(iterationCount);
-
-						yPoints.push(math.evaluate(mathFunction, {x : iterationCount}));						
+						}
 
 					}
 
-				} catch(err) {
+					let xPoints = [];
 
-					$("#modalbox-errors-warnings-id").html("Impossible de compiler votre expression !");
+					let yPoints = [];
 
-					return false;
+					try {
 
-				}		
+						for(var iterationCount = -10; iterationCount < 10; iterationCount += 0.001){
 
-				if (onlyNumbers(yPoints) === false) {
+							xPoints.push(iterationCount);
 
-					$("#modalbox-errors-warnings-id").html("Les données générées sont invalides !");
+							yPoints.push(math.evaluate(mathFunction, {x : iterationCount}));						
 
-					return false;
+						}
 
-				}
+					} catch(err) {
 
-				let mathGraph = {
+						$("#modalbox-errors-warnings-id").html("Impossible de compiler votre expression !");
 
-					x: xPoints,
+						cancelOnErrors();
 
-					y: yPoints,
+						return false;
 
-					mode: 'markers',
+					}		
 
-					type: 'scatter',
+					if (onlyNumbers(yPoints) === false) {
 
-					marker: {
+						$("#modalbox-errors-warnings-id").html("Les données générées sont invalides !");
 
-						color: 'rgb(93, 0, 255)',
+						cancelOnErrors();
 
-						size: '5'
+						return false;
 
 					}
 
-				}
+					let mathGraph = {
 
-				let data = [mathGraph];
+						x: xPoints,
 
-				$("#graph-contenaire").html('<div id="graphing-box"></div>');
+						y: yPoints,
 
-				$(".create-graph-btn").attr("class", "another-create-graph-btn");
+						mode: 'markers',
 
-				if ($(window).width() >= 1024) {
+						type: 'scatter',
 
-					$(".another-create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Retracer un/votre graphique');
+						marker: {
 
-				}
+							color: '#00bfff',
 
-				Plotly.newPlot('graphing-box', data, layout, {staticPlot: true});
+							size: '2'
 
-				$("#modalbox-graphing").css("display", "none");
+						}
 
-				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
+					}
+					
+					let data = [mathGraph];	
 
-				window.scrollTo(0, 0);
+					endOfLoadingData();
+
+					Plotly.newPlot('graphing-box', data, layout, {staticPlot: true});
+
+				}, 3500)
+
+			}
+
+		}
+
+		function endOfLoadingData() {
+
+			$("#graph-contenaire").html('<div id="graphing-box"></div>');
+
+			$(".create-graph-btn").attr("class", "another-create-graph-btn");
+			
+			$("#modalbox-graphing").css("display", "none");
+
+			if ($(window).width() >= 1024) {
+
+				$(".another-create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Retracer un/votre graphique');
+
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
+
+			}
+
+			$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
+
+			inLoading = false;
+
+			window.scrollTo(0, 0);
+
+		}
+
+		function loadingData() {
+
+			inLoading = true;
+
+			if ($(window).width() >= 1024) {
+
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+
+			} else {
+
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+
+			}
+
+		}
+
+		function cancelOnErrors() {
+
+			if ($(window).width() >= 1024) {
+
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
+
+			} else {
+
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
 			}
 
