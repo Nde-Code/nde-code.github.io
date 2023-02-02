@@ -81,6 +81,19 @@
 	.share-btn:hover {
 		background: #9D52FF;
 	}
+
+	.result-sentence {
+    	font-size: 22px;
+    	margin-right: 5%;
+    	margin-left: 5%;
+    	color: white;
+	}
+
+	.result-text {
+		font-size: 20px;
+		font-weight: bold;
+		color: #005DD9;
+	}
 	</style>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -157,7 +170,7 @@
 							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Le logiciel est gratuit et propose une prévisualisation de votre entrée.</p>
 							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Cette calculatrice ne travaille que dans les réels. Pas dans les complexes pour les amateurs de mathématique.</p>
 							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Vous n'avez pas le calcul complet avec les étapes et le résultat est arrondi à 3 chiffres après la virgule.</p>
-							<p style="margin-left: 53px; margin-right: 53px; text-align: center; font-weight: bold; color: green; font-size: 20px; margin-bottom: 20px;" id="display-result-id"></p>
+							<p class="result-sentence" id="display-result-id"></p>
 						</div>
 					</div>
 				</div>
@@ -397,35 +410,35 @@
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 
 
-				if ($(window).width() >= 768) $(".square-root-icon").css("fontSize", "250px");
+				if ($(window).width() >= 768) $(".square-root-icon").css("fontSize", "150px");
 
 				$(".main-website-panel-notice").remove();
 
 				buildEquation(a, b, c);
 
-				var delta = Math.pow(bValue, 2) - 4 * (aValue) * (cValue);
+				var discriminant = Math.pow(bValue, 2) - 4 * (aValue) * (cValue);
 
-				if (delta > 0) {
+				if (discriminant > 0) {
 
-					let resultOne = ((-bValue) + Math.sqrt(delta)) / (2 * (aValue));
+					let resultOne = ((-bValue) + Math.sqrt(discriminant)) / (2 * (aValue));
 
-					let resultTwo = ((-bValue) - Math.sqrt(delta)) / (2 * (aValue));
+					let resultTwo = ((-bValue) - Math.sqrt(discriminant)) / (2 * (aValue));
 
-					$("#display-result-id").html(`L'ensemble de solution de votre équation est {x<sub>1</sub> = ${resultOne.toFixed(3)}; x<sub>2</sub> = ${resultTwo.toFixed(3)}} avec un Delta de ${delta}.`);
+					$("#display-result-id").html(`A pour ensemble de solution: <p class="result-text">{x<sub>1</sub> = ${resultOne.toFixed(3)}; x<sub>2</sub> = ${resultTwo.toFixed(3)}}</p> avec un discriminant de <p class="result-text">${discriminant}</p>`);
 
 				}
 
-				if (delta === 0) {
+				if (discriminant === 0) {
 
 					let resultThree = (-bValue) / (2 * (aValue));
 
-					$("#display-result-id").html(`La solution de votre équation est x = ${resultThree.toFixed(3)} car votre Delta est de ${delta}.`);
+					$("#display-result-id").html(`A pour unique solution: <p class="result-text">x = ${resultThree.toFixed(3)}</p> car votre discriminant est de <p class="result-text">0</p>`);
 
 				}
 
-				if (delta < 0) {
+				if (discriminant < 0) {
 
-					$("#display-result-id").html(`Votre équation n'a aucune solution car le Delta (${delta}) est négatif.`);
+					$("#display-result-id").html(`N'a aucune solution réelle car le discriminant est: <p class="result-text">${discriminant}</p> donc négatif ce qui implique qu'il faut travailler avec les nombres complexes.`);
 
 				}
 
