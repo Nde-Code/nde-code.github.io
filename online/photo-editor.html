@@ -123,6 +123,45 @@
 			font-size: 130px;
 		}
 	}
+
+	.loading-data-btn {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #005DD9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0047A6;
+		padding: 15px 31px;
+		cursor: pointer;
+		margin-left: 0.5%;
+	}
+
+	.loading-data-btn:hover {
+		background: #4690F2;
+	}
+
+	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
+	.rotate-animation {
+		-webkit-animation: spin 2s linear infinite;
+    	-moz-animation: spin 2s linear infinite;
+    	animation: spin 2s linear infinite;
+	}
+
+	@-moz-keyframes spin { 
+    	100% { -moz-transform: rotate(360deg); } 
+	}
+
+	@-webkit-keyframes spin { 
+    	100% { -webkit-transform: rotate(360deg); } 
+	} 
+
+	@keyframes spin { 
+		100% { 
+			-webkit-transform: rotate(360deg); 
+			transform:rotate(360deg); 
+		} 
+	}
 	</style>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -198,7 +237,7 @@
 							<h1 style="margin-top: 20px; color: white; font-size: 24px; font-weight: bold;">Votre image apparaîtra ici.</h1>
 							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Le logiciel est gratuit, rapide et relativement complet.</p>
 							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Le logiciel permet d'appliquer quelques filtres et non pas retoucher voire transformer complètement une image.</p>
-							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> La durée de l'importation varie en fonction de la taille de votre image. Il y a une limite d'importation de 10 mégabits.</p>
+							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Il y a une limite d'importation de 10 mégabits et la durée de l'importation est de minimum 2 second.</p>
 						</div>
 					</div>
 				</div>
@@ -337,6 +376,8 @@
 
 			data.preventDefault();
 
+			loadingData();
+
 			return readInput(this);
 
 			window.scrollTo(0, 0);
@@ -351,45 +392,49 @@
 
 		}
 
-		var readInput = function (inputValue) {
+		function readInput(inputValue) {
 
-			var readingFile;
+			setTimeout(function() {
 
-			if (inputValue.files && inputValue.files[0] && (inputValue.files[0].size / 1048576) < 10) {
+				var readingFile;
 
-				console.log(inputValue.files[0].size)
+				if (inputValue.files && inputValue.files[0] && (inputValue.files[0].size / 1048576) < 10) {
 
-				readingFile = new FileReader();
+					readingFile = new FileReader();
 
-				readingFile.addEventListener("load", (base64input) => {
+					readingFile.addEventListener("load", (base64input) => {
 
-					status = true;
+						status = true;
 
-					$("#image-contenaire").html(`<img id="edit-properties" class="canvas-picture" src="${base64input.target.result}" alt="Votre image.">`);
+						$("#image-contenaire").html(`<img id="edit-properties" class="canvas-picture" src="${base64input.target.result}" alt="Votre image.">`);
 
-					imgHtmlElement = `<img id="edit-properties" class="canvas-picture" src="${base64input.target.result}" alt="Votre image.">`;
+						imgHtmlElement = `<img id="edit-properties" class="canvas-picture" src="${base64input.target.result}" alt="Votre image.">`;
 
-					$("#image-contenaire").css("textAlign", "center");
+						$("#image-contenaire").css("textAlign", "center");
 
-					$("#actions").css("textAlign", "center");
+						$("#actions").css("textAlign", "center");
 
-					$("#image-contenaire").attr("id", "img-contenaire-id");
+						$("#image-contenaire").attr("id", "img-contenaire-id");
 
-					$("#load-image-id").css("display", "none");
+						$("#load-image-id").css("display", "none");
 
-					window.scrollTo(0, 0);
+						$(".loading-data-btn").remove();
 
-					return $("#actions").append(`
-								<a onclick="getImage();" id="img-download-btn-id" class="download-btn"><i class="fas fa-download"></i> Télécharger l\'image</a>
-								<a id="edit-filters-btn-id" onclick="openEditFiltersBox();" class="edit-filters-btn-class"><i class="fa-solid fa-pen-to-square"></i> Éditer l\'image</a>
-								<a id="remove-filters-btn-id" onclick="deleteFilters();" class="delete-btn"><i class="fas fa-trash-alt"></i> Réinitialiser</a>
-							`);
+						window.scrollTo(0, 0);
 
-				});
+						return $("#actions").append(`
+									<a onclick="getImage();" id="img-download-btn-id" class="download-btn"><i class="fas fa-download"></i> Télécharger l\'image</a>
+									<a id="edit-filters-btn-id" onclick="openEditFiltersBox();" class="edit-filters-btn-class"><i class="fa-solid fa-pen-to-square"></i> Éditer l\'image</a>
+									<a id="remove-filters-btn-id" onclick="deleteFilters();" class="delete-btn"><i class="fas fa-trash-alt"></i> Réinitialiser</a>
+								`);
 
-				return readingFile.readAsDataURL(inputValue.files[0]);
+					});
 
-			}
+					return readingFile.readAsDataURL(inputValue.files[0]);
+
+				}
+
+			}, 2000)
 
 		};
 
@@ -529,6 +574,24 @@
 			}
 
 		}, 500);
+
+		function loadingData() {
+
+			if ($(window).width() >= 1024) {
+
+				$("#load-image-id").remove();
+
+				$("#actions").append('<a class="loading-data-btn"><i class="fa-solid fa-gear rotate-animation"></i> Chargement...</a>')
+
+			} else {
+
+				$("#load-image-id").remove();
+
+				$("#actions").append('<a class="loading-data-btn"><i class="fa-solid fa-gear rotate-animation"></i></a>')
+
+			}
+
+		}
 	</script>
 </body>
 

@@ -824,6 +824,16 @@
 			
 			$("#modalbox-graphing").css("display", "none");
 
+			if($("#graph-type-id").val() === "3d-parametric-graph") {
+
+				$("#from-modalbox-create-id").attr('onclick', "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#colorScale-id').val(), $('#accuracy-id').val())")
+
+			} else {
+
+				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());`)
+
+			}
+
 			if ($(window).width() >= 1024) {
 
 				$(".another-create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Retracer un/votre graphique');
@@ -846,9 +856,13 @@
 
 			if ($(window).width() >= 1024) {
 
+				$("#from-modalbox-create-id").attr('onclick', '');
+
 				$("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
 			} else {
+
+				$("#from-modalbox-create-id").attr('onclick', '');
 
 				$("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
