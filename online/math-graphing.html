@@ -442,11 +442,11 @@
 
 							for (var u = -8; u < 8; u += Number(accuracy)) {
 
-								xPoints.push(math.evaluate(xFunction, {u : u, v: v}))
+								xPoints.push(math.compile(xFunction).evaluate({u : u, v: v}));
 
-								yPoints.push(math.evaluate(yFunction, {u : u, v: v}))
+								yPoints.push(math.compile(yFunction).evaluate({u : u, v: v}));
 
-								zPoints.push(math.evaluate(zFunction, {u : u, v: v}));
+								zPoints.push(math.compile(zFunction).evaluate({u : u, v: v}));
 
 							}
 
@@ -758,11 +758,11 @@
 
 					try {
 
-						for(var iterationCount = -10; iterationCount < 10; iterationCount += 0.001){
+						for(var x = -10; x < 10; x += 0.001){
 
-							xPoints.push(iterationCount);
+							xPoints.push(x);
 
-							yPoints.push(math.evaluate(mathFunction, {x : iterationCount}));						
+							yPoints.push(math.compile(mathFunction).evaluate({x : x}));						
 
 						}
 
