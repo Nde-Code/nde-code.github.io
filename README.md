@@ -32,11 +32,11 @@ Le site est totalement statique, c'est-à-dire qu'il n'y a aucun contact entre v
   
   - Pixlr: https://pixlr.com/fr/
 
+  - Getavataaars: https://getavataaars.com/
+
 # Ressources utilisées:
 
   - Flaticon: https://www.flaticon.com/
-
-  - Getavataaars: https://getavataaars.com/
   
   - Pixabay pour l'image de fond: https://pixabay.com/photos/technology-background-abstract-5912098/
 
