@@ -37,7 +37,7 @@
 
 	#equation-plot-id {
 		color: #005DD9;
-		font-size: 30px;
+		font-size: 25px;
 		font-style: italic;
 		font-weight: bold;
 	}
@@ -93,6 +93,18 @@
 		font-size: 20px;
 		font-weight: bold;
 		color: #005DD9;
+	}
+
+	.robot-img {
+		width: 220px;
+		height: 220px;
+	}
+
+	@media screen and (max-width: 768px) {
+		.robot-img {
+			width: 180px;
+			height: 180px;
+		}
 	}
 	</style>
 	<meta charset="UTF-8">
@@ -164,12 +176,12 @@
 				<div class="main-website-row-panel" style="padding-left: 7px;">
 					<div class="main-website-panel-style">
 						<div class="center-elements">
-							<i class="fa-solid fa-square-root-variable square-root-icon"></i>
+							<img class="robot-img" src="../assets/robot.png" alt="Robot">
 							<h1 style="margin-top: 30px; color: white; font-weight: bold; font-size: 24px;">Logiciel résolveur d'équation du type: </h1>
 							<span id="equation-plot-id"> Ax<sup>2</sup> + Bx + C = 0 </span>
 							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit et qui propose une prévisualisation de votre entrée. </p>
-							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui ne travaille que dans les réels et donc pas dans les complexes pour les fans de mathématique.</p>
-							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui ne donne pas calcul complet et qui arrondit le résultat à 3 chiffres après la virgule.</p>
+							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui ne travaille que dans les réels.</p>
+							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit le résultat à 3 chiffres après la virgule.</p>
 							<p class="result-sentence" id="display-result-id"></p>
 						</div>
 					</div>
@@ -188,7 +200,8 @@
 					</div>
 					<div class="copyright-notice">
 						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
-						<p class="footer-page-text"> Mes dessins sont faits avec Canva et mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
+						<p class="footer-page-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="footer-page-link">Flaticon</a>.</p>
+						<p class="footer-page-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
 						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
 					</div>
 				</div>

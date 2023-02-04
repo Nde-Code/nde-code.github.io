@@ -8,7 +8,7 @@
 }
 
 body.main-body-class {
-    background: url('assets/font.png') no-repeat;
+    background: url('assets/fond.png') no-repeat;
     margin: 0;
     padding: 0;
     background-size: cover;
@@ -53,7 +53,7 @@ i.twitter {
 
 i.facebook {
     font-size: 25px;
-    color: #4267B2;
+    color: #1778f2;
     padding: 19px 20px;
     cursor: pointer;
 }

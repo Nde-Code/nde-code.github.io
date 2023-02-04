@@ -41,21 +41,16 @@
 		background: #4690F2;
 	}
 
-	.error-icon {
-		font-size: 350px;
-		color: firebrick;
-	} 
-
-	@media only screen and (max-width: 550px) {
-    	.error-icon {
-			font-size: 180px;
-		} 
+	.error-img {
+		width: 220px;
+		height: 220px;
 	}
 
-	@media only screen and (max-width: 768px) {
-    	.error-icon {
-			font-size: 280px;
-		} 
+	@media screen and (max-width: 768px) {
+		.error-img {
+			width: 180px;
+			height: 180px;
+		}
 	}
 	</style>
 	<meta charset="UTF-8">
@@ -136,9 +131,11 @@
 				<div class="main-website-row-panel" style="padding-left: 7px;">
 					<div class="main-website-panel-style">
 						<div class="center-elements" style="margin-top: 20px;">
-							<i class="fa-solid fa-xmark error-icon"></i>
+							<img class="error-img" src="assets/erreur.png" alt="Erreur">
 							<h1 style="font-size: 24px; color: white; font-weight: bold; margin-bottom: 20px;">Oups, erreur 404:</h1>
 							<p class="main-website-panel-notice">La page désirée est tout simplement inconnue au bataillon. </p>
+							<p class="main-website-panel-notice">Si vous êtes sur cette page, c'est que vous en avez cherché une qui n'existe pas ou plus. </p>
+							<p class="main-website-panel-notice">Vous seriez bien gentil de me contacter si vous arrivez ici. </p>
 						</div>
 					</div>
 				</div>
@@ -157,7 +154,8 @@
 					</div>
 					<div class="copyright-notice">
 						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
-						<p class="footer-page-text"> Mes dessins sont faits avec Canva et mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
+						<p class="footer-page-text"> L'icône d’erreur est fait par Freepik sur <a href="https://www.flaticon.com/free-icon/error_4457164?term=error&page=1&position=12&origin=search&related_id=4457164#" class="footer-page-link">Flaticon</a>.</p>
+						<p class="footer-page-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
 						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
 					</div>
 				</div>

@@ -73,23 +73,6 @@
 	.stop-pinwheel-animation:hover {
 		background: #FF6661;
 	}
-
-	.license-btn {
-		font-size: 20px;
-		border-radius: 50px;
-		color: white;
-		background: #038C0C;
-		transition: all 0.2s ease-out 0s;
-		font-weight: bold;
-		border: 4px solid #027313;
-		padding: 15px 31px;
-		cursor: pointer;
-		margin-left: 0.5%;
-	}
-
-	.license-btn:hover {
-		background: #52BF04;
-	}
 	</style>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -169,7 +152,6 @@
             <div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
 			<div class="website-bottom-menu">
 				<a onclick="startAnimation();" class="active-animation-btn"><i class="fa-solid fa-play"></i> Démarrer le moulin</a>
-				<a href="https://www.flaticon.com/free-icon/pinwheel_1512972?related_id=1512972&origin=search#" class="license-btn"><i class="fa-solid fa-scale-balanced"></i> Icône par Freepik - Flaticon</a>
 			</div>
 			<div style="margin-top: 20px;" class="foot-page">
 				<div class="main-footer-page">
@@ -180,7 +162,8 @@
 					</div>
 					<div class="copyright-notice">
 						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
-						<p class="footer-page-text"> Mes dessins sont faits avec Canva et mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
+						<p class="footer-page-text"> L'icône de moulin à vent est fait par Freepik sur <a href="https://www.flaticon.com/free-icon/pinwheel_257607?term=pinwheel&page=1&position=12&origin=search&related_id=257607#" class="footer-page-link">Flaticon</a>.</p>
+						<p class="footer-page-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
 						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
 					</div>
 				</div>
@@ -243,15 +226,13 @@
 
 				$(".main-website-row-panel").css("paddingLeft", "unset");
 
-				$(".license-btn").html('<i class="fa-solid fa-scale-balanced"></i>');
-
 			}
 
 			if ($(window).width() <= 768) {
 
-				$(".pinwheel-image").css("width", "200px");
+				$(".pinwheel-image").css("width", "150px");
 
-				$(".pinwheel-image").css("height", "200px");
+				$(".pinwheel-image").css("height", "150px");
 
 			}
 

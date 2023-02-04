@@ -79,6 +79,10 @@ function openAboutBox() {
                     <p class="modalbox-description"> · Visual Studio Code: <a href="https://code.visualstudio.com/" class="link-btn">https://code.visualstudio.com/</a></p>
                     <p class="modalbox-description"> · Canva: <a href="https://www.canva.com/" class="link-btn">https://www.canva.com/</a></p>
                     <p class="modalbox-description"> · Pixlr: <a href="https://pixlr.com/fr/" class="link-btn">https://pixlr.com/fr/</a></p>
+                    <h2>Ressources utilisées:</h2>
+                    <p class="modalbox-description"> · Flaticon: <a href="https://www.flaticon.com/" class="link-btn">https://www.flaticon.com/</a></p>
+                    <p class="modalbox-description"> · Getavataaars: <a href="https://getavataaars.com/" class="link-btn">https://getavataaars.com/</a></p>
+                    <p class="modalbox-description"> · Pixabay pour l'image de fond: <a href="https://pixabay.com/photos/technology-background-abstract-5912098/" class="link-btn">https://pixabay.com/photos/technology-background-abstract-5912098/</a></p>
                     <h2>Licence:</h2>
                     <p class="modalbox-description">À obligatoirement respecter: "GNU General Public License v3.0"</p>
                 </div>
@@ -202,7 +206,7 @@ $(document).ready(function () {
                 <div class="modalbox-text-contenaire">
                     <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 200px; color: #FF941A;"></i>
                     <h2>Navigateur incompatible:</h2>
-                    <p class="modalbox-description"> Impossible d'interpréter le code Javascript ! Il est temps de changer de navigateur ! </p>
+                    <p class="modalbox-description"> Impossible d'interpréter le code Javascript car votre navigateur utilise l'ES5 ! Il est temps de changer de navigateur... </p>
                 </div>
     
             </div>

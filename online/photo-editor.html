@@ -12,11 +12,6 @@
 		text-align: center;
 	}
 
-	.image-icon {
-		font-size: 230px;
-		color: rgb(0, 123, 211);
-	}
-
 	.white-lines {
 		height: 1px;
 		margin-left: 20%;
@@ -118,12 +113,6 @@
 		background: #FF6661;
 	}
 
-	@media screen and (max-width: 1024px) {
-		.image-icon {
-			font-size: 130px;
-		}
-	}
-
 	.loading-data-btn {
 		font-size: 20px;
 		border-radius: 50px;
@@ -161,6 +150,18 @@
 			-webkit-transform: rotate(360deg); 
 			transform:rotate(360deg); 
 		} 
+	}
+
+	.robot-img {
+		width: 220px;
+		height: 220px;
+	}
+
+	@media screen and (max-width: 768px) {
+		.robot-img {
+			width: 180px;
+			height: 180px;
+		}
 	}
 	</style>
 	<meta charset="UTF-8">
@@ -233,11 +234,11 @@
 				<div class="main-website-row-panel" style="padding-left: 7px;">
 					<div class="main-website-panel-style" id="image-contenaire">
 						<div class="center-elements">
-							<i class="fa-solid fa-image image-icon"></i>
+							<img class="robot-img" src="../assets/robot.png" alt="Robot">
 							<h1 style="margin-top: 20px; color: white; font-size: 24px; font-weight: bold;">Logiciel d'édition d'image:</h1>
-							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide et relativement complet.</p>
-							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui ne permet que d'appliquer quelques filtres et non pas retoucher voire transformer complètement une image.</p>
-							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui a une limite d'importation de 10 mégabits dont la durée de l'importation est de minimums 2 seconds.</p>
+							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide et puissant.</p>
+							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui ne permet que d'appliquer quelques filtres.</p>
+							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui a une limite d'importation de 10 mégabits.</p>
 						</div>
 					</div>
 				</div>
@@ -258,7 +259,8 @@
 					</div>
 					<div class="copyright-notice">
 						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
-						<p class="footer-page-text"> Mes dessins sont faits avec Canva et mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
+						<p class="footer-page-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="footer-page-link">Flaticon</a>.</p>
+						<p class="footer-page-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
 						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
 					</div>
 				</div>
