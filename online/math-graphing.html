@@ -282,7 +282,7 @@
 						<p class="modalbox-description">Sélectionnez l'échelle de couleur que vous souhaitez.</p>
 					</div>
 	
-					<select title="Sélectionnez l'échelle de couleur que vous souhaitez:" id="colorScale-id" class="colorScale-class">
+					<select title="Sélectionnez l'échelle de couleur que vous souhaitez:" id="color-scale-id">
 						<option value="Jet">Jet</option>
 						<option value="YlOrRd">YlOrRd</option>
 						<option value="YlGnBu">YlGnBu</option>
@@ -366,7 +366,7 @@
 				
 				$("#options-function-graph").css('display', "none")
 				
-				$(".modalbox-go-btn").attr("onclick", "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#colorScale-id').val(), $('#accuracy-id').val())")
+				$(".modalbox-go-btn").attr("onclick", "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#color-scale-id').val(), $('#accuracy-id').val())")
 				
 				$("#options-3d-parametric-graph").css('display', "block");
 
@@ -396,7 +396,7 @@
 
 			if(!paramEquationX) {
 
-				$("#modalbox-errors-warnings-id").html("L'équation en X est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("L'équation en X est vide !");
 
 				return false;
 				
@@ -404,7 +404,7 @@
 
 			else if(!paramEquationY) {
 
-				$("#modalbox-errors-warnings-id").html("L'équation en Y est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("L'équation en Y est vide !");
 
 				return false;
 
@@ -412,7 +412,7 @@
 
 			else if(!paramEquationZ) {
 
-				$("#modalbox-errors-warnings-id").html("L'équation en Z est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("L'équation en Z est vide !");
 
 				return false;
 
@@ -456,7 +456,7 @@
 
 						$("#modalbox-errors-warnings-id").html("Impossible de compiler votre expression !");
 
-						cancelOnErrors();
+						cancelOnError();
 
 						return false;
 
@@ -466,7 +466,7 @@
 
 						$("#modalbox-errors-warnings-id").html("Les données générées sont invalides !");
 
-						cancelOnErrors();
+						cancelOnError();
 
 						return false;
 
@@ -642,7 +642,7 @@
 
 			if (!func) {
 
-				$("#modalbox-errors-warnings-id").html("L'équation de la fonction est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("L'équation de la fonction est vide !");
 
 				return false;
 
@@ -770,7 +770,7 @@
 
 						$("#modalbox-errors-warnings-id").html("Impossible de compiler votre expression !");
 
-						cancelOnErrors();
+						cancelOnError();
 
 						return false;
 
@@ -780,7 +780,7 @@
 
 						$("#modalbox-errors-warnings-id").html("Les données générées sont invalides !");
 
-						cancelOnErrors();
+						cancelOnError();
 
 						return false;
 
@@ -828,7 +828,7 @@
 
 			if($("#graph-type-id").val() === "3d-parametric-graph") {
 
-				$("#from-modalbox-create-id").attr('onclick', "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#colorScale-id').val(), $('#accuracy-id').val())")
+				$("#from-modalbox-create-id").attr('onclick', "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#color-scale-id').val(), $('#accuracy-id').val())")
 
 			} else {
 
@@ -872,7 +872,7 @@
 
 		}
 
-		function cancelOnErrors() {
+		function cancelOnError() {
 
 			if ($(window).width() >= 1024) {
 
@@ -881,6 +881,16 @@
 			} else {
 
 				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
+
+			}
+
+			if($("#graph-type-id").val() === "3d-parametric-graph") {
+
+				$("#from-modalbox-create-id").attr('onclick', "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#color-scale-id').val(), $('#accuracy-id').val())")
+
+			} else {
+
+				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());`)
 
 			}
 

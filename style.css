@@ -226,6 +226,7 @@ select,
     font-size: 20px;
     color: orange;
     font-weight: bold;
+    font-style: italic;
     margin-bottom: 40px;
 }
 
