@@ -632,7 +632,7 @@
 
 					Plotly.newPlot('graphing-box', data, layer, {displayModeBar: false});
 
-				}, 5000)
+				}, 6000)
 
 			}
 
@@ -812,7 +812,7 @@
 
 					Plotly.newPlot('graphing-box', data, layout, {staticPlot: true});
 
-				}, 3500)
+				}, 4000)
 
 			}
 
@@ -855,6 +855,8 @@
 		function loadingData() {
 
 			inLoading = true;
+
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...")
 
 			if ($(window).width() >= 1024) {
 
