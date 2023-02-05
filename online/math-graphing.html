@@ -454,9 +454,7 @@
 
 					} catch(err) {
 
-						$("#modalbox-errors-warnings-id").html("Impossible de compiler votre expression !");
-
-						cancelOnError();
+						errorInData();
 
 						return false;
 
@@ -464,9 +462,7 @@
 
 					if (onlyNumbers(xPoints) === false || onlyNumbers(yPoints) === false || onlyNumbers(zPoints) === false) {
 
-						$("#modalbox-errors-warnings-id").html("Les données générées sont invalides !");
-
-						cancelOnError();
+						errorInData();
 
 						return false;
 
@@ -768,9 +764,7 @@
 
 					} catch(err) {
 
-						$("#modalbox-errors-warnings-id").html("Impossible de compiler votre expression !");
-
-						cancelOnError();
+						errorInData();
 
 						return false;
 
@@ -778,9 +772,7 @@
 
 					if (onlyNumbers(yPoints) === false) {
 
-						$("#modalbox-errors-warnings-id").html("Les données générées sont invalides !");
-
-						cancelOnError();
+						errorInData();
 
 						return false;
 
@@ -874,7 +866,11 @@
 
 		}
 
-		function cancelOnError() {
+		function errorInData() {
+
+			inLoading = false;
+
+			$("#modalbox-errors-warnings-id").html("Il y a une erreur dans votre expression !");
 
 			if ($(window).width() >= 1024) {
 
