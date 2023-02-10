@@ -20,11 +20,6 @@
 		background: #4690F2
 	}
 
-	.square-root-icon {
-		font-size: 160px;
-		color: crimson;
-	}
-
 	.center-elements {
 		text-align: center;
 	}
@@ -37,16 +32,9 @@
 
 	#equation-plot-id {
 		color: #005DD9;
-		font-size: 25px;
+		font-size: 26px;
 		font-style: italic;
 		font-weight: bold;
-	}
-
-	@media screen and (max-width: 768px) {
-		.square-root-icon {
-			font-size: 130px;
-			margin-top: 20px;
-		}
 	}
 
 	.modalbox-go-btn {
@@ -93,6 +81,8 @@
 		font-size: 20px;
 		font-weight: bold;
 		color: #005DD9;
+		margin-top: 10px;
+    	margin-bottom: 10px;
 	}
 
 	.robot-img {
@@ -163,7 +153,6 @@
 									<i class="fa fa-caret-down"></i>
 								</button>
 								<div class="menu-dropdown-items">
-									<a href="photo-gallery-creator">Créer un album photo</a>
 									<a href="photo-editor">Retoucher une image </a>
 									<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
 									<a href="math-graphing">Traceur de graphique mathématique</a>
@@ -177,7 +166,7 @@
 					<div class="main-website-panel-style">
 						<div class="center-elements">
 							<img class="robot-img" src="../assets/robot.png" alt="Robot">
-							<h1 style="margin-top: 30px; color: white; font-weight: bold; font-size: 24px;">Logiciel résolveur d'équation du type: </h1>
+							<h1 id="software-subtitle-id" style="margin-top: 30px; color: white; font-weight: bold; font-size: 24px;">Logiciel résolveur d'équation du type: </h1>
 							<span id="equation-plot-id"> Ax<sup>2</sup> + Bx + C = 0 </span>
 							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit et qui propose une prévisualisation de votre entrée. </p>
 							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui ne travaille que dans les réels.</p>
@@ -358,47 +347,39 @@
 
 		function solve(a, b, c) {
 
-			let aValue = Number(a);
+			let aValue = 0;
 
-			let bValue = Number(b);
+			let bValue = 0;
 
-			let cValue = Number(c);
+			let cValue = 0;
 
-			if (aValue === '' || isNaN(a) || aValue > 10000) {
+			if (!a || isNaN(a) === true) {
 				
-				$("#modalbox-errors-warnings-id").html("Le A de votre équation est invalide, trop grand ou vide !");
+				$("#modalbox-errors-warnings-id").html("Le A de votre équation est invalide ou vide !");
 
 				return false;
 
 			}
 
-			else if (bValue === '' || isNaN(b) || bValue > 10000) {
+			else if (!b || isNaN(b) === true) {
 				
-				$("#modalbox-errors-warnings-id").html("Le B de votre équation est invalide, trop grand ou vide !");
+				$("#modalbox-errors-warnings-id").html("Le B de votre équation est invalide ou vide !");
 
 				return false;
 
 			}
 
-			else if (cValue === '' || isNaN(c) || cValue > 10000) {
+			else if (!c || isNaN(c) === true) {
 				
-				$("#modalbox-errors-warnings-id").html("Le C de votre équation est invalide, trop grand ou vide !");
+				$("#modalbox-errors-warnings-id").html("Le C de votre équation est invalide ou vide !");
 
 				return false;
 
 			} 
 
-			else if (bValue === 0 && aValue === 0) {
+			else if (Number(a) === 0 && Number(b) === 0 || Number(a) === 0) {
 
-				$("#modalbox-errors-warnings-id").html('Votre équation n\'a aucune solution !');
-
-				return false;
-
-			}
-
-			else if (aValue === 0) {
-
-				$("#modalbox-errors-warnings-id").html('L\'équation n\'est pas du second degré !');
+				$("#modalbox-errors-warnings-id").html("Votre équation est invalide !");
 
 				return false;
 
@@ -406,7 +387,7 @@
 
 			else {
 
-				if (isRunning === false)	$(".website-bottom-menu").append(`<a onclick="shareUrl('${a}', '${b}', '${c}')" id="share-btn-id" class="share-btn"><i class="fa-solid fa-share-nodes"></i> Partager le résultat</a>`);
+				if (isRunning === false) $(".website-bottom-menu").append(`<a onclick="shareUrl('${a}', '${b}', '${c}')" id="share-btn-id" class="share-btn"><i class="fa-solid fa-share-nodes"></i> Partager le résultat</a>`);
 				
 				else {
 
@@ -418,12 +399,17 @@
 				
 				isRunning = true;
 
+				aValue = Number(a);
+
+				bValue = Number(b);
+
+				cValue = Number(c);
+
+				$("#software-subtitle-id").html("L'équation du second degré:");
+				
 				$("#modalbox-equation").css("display", "none");
 
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
-
-
-				if ($(window).width() >= 768) $(".square-root-icon").css("fontSize", "150px");
 
 				$(".main-website-panel-notice").remove();
 
@@ -433,25 +419,27 @@
 
 				if (discriminant > 0) {
 
-					let resultOne = ((-bValue) + Math.sqrt(discriminant)) / (2 * (aValue));
+					let x1 = ((-bValue) + Math.sqrt(discriminant)) / (2 * (aValue));
 
-					let resultTwo = ((-bValue) - Math.sqrt(discriminant)) / (2 * (aValue));
+					let x2 = ((-bValue) - Math.sqrt(discriminant)) / (2 * (aValue));
 
-					$("#display-result-id").html(`A pour ensemble de solution: <p class="result-text">{x<sub>1</sub> = ${resultOne.toFixed(3)}; x<sub>2</sub> = ${resultTwo.toFixed(3)}}</p> avec un discriminant de <p class="result-text">${discriminant}</p>`);
+					$("#display-result-id").html(`a pour ensemble de solution: <p class="result-text">{x<sub>1</sub> = ${x1.toFixed(3)}; x<sub>2</sub> = ${x2.toFixed(3)}}</p> avec un discriminant de
+					<p class="result-text">${discriminant}</p>`);
 
 				}
 
 				if (discriminant === 0) {
 
-					let resultThree = (-bValue) / (2 * (aValue));
+					let x = (-bValue) / (2 * (aValue));
 
-					$("#display-result-id").html(`A pour unique solution: <p class="result-text">x = ${resultThree.toFixed(3)}</p> car votre discriminant est de <p class="result-text">0</p>`);
+					$("#display-result-id").html(`a pour unique solution: <p class="result-text">x = ${x.toFixed(3)}</p> avec un discriminant de
+					<p class="result-text">0</p>`);
 
 				}
 
 				if (discriminant < 0) {
 
-					$("#display-result-id").html(`N'a aucune solution réelle car le discriminant est: <p class="result-text">${discriminant}</p> donc négatif ce qui implique qu'il faut travailler avec les nombres complexes.`);
+					$("#display-result-id").html(`n'a aucune solution réelle car le discriminant est: <p class="result-text">${discriminant}</p> donc négatif.`);
 
 				}
 
