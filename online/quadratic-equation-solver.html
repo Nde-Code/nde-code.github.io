@@ -227,7 +227,6 @@
 				</div>
 				<input type="text" inputmode="numeric" id="c-equation" class="modalbox-input" placeholder="C:">
 
-
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
@@ -333,7 +332,7 @@
 
 		var urlParams = new URLSearchParams(new URL(window.location.href).search);
 
-			if (!urlParams.get("a") || !urlParams.get("b") || !urlParams.get("c")) {
+			if (!urlParams.get("a") || !urlParams.get("b") || !urlParams.get("c") || Number(urlParams.get("a")) === NaN || Number(urlParams.get("b")) === NaN || Number(urlParams.get("c")) === NaN) {
 
 				return;
 
@@ -353,7 +352,7 @@
 
 			let cValue = 0;
 
-			if (!a || isNaN(a) === true) {
+			if (!a || isNaN(a) === true || Number(a) === NaN) {
 				
 				$("#modalbox-errors-warnings-id").html("Le A de votre équation est invalide ou vide !");
 
@@ -361,7 +360,7 @@
 
 			}
 
-			else if (!b || isNaN(b) === true) {
+			else if (!b || isNaN(b) === true || Number(b) === NaN) {
 				
 				$("#modalbox-errors-warnings-id").html("Le B de votre équation est invalide ou vide !");
 
@@ -369,7 +368,7 @@
 
 			}
 
-			else if (!c || isNaN(c) === true) {
+			else if (!c || isNaN(c) === true || Number(c) === NaN) {
 				
 				$("#modalbox-errors-warnings-id").html("Le C de votre équation est invalide ou vide !");
 
