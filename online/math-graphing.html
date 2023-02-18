@@ -250,7 +250,7 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>La borne maximum:</h2>
-						<p class="modalbox-description"> Entrez la borne a affiché la plus grande sur l’intervalle d'affichage souhaité. Le maximum est fixé à 100.</p>
+						<p class="modalbox-description"> Entrez le supremum de votre fonction de manière à définir la borne supérieure.</p>
 					</div>
 					<input id="max-range" class="modalbox-input" placeholder="Maximum:" type="text" inputmode="numeric">
 
@@ -258,7 +258,7 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>Le borne minimum:</h2>
-						<p class="modalbox-description"> Entrez la borne a affiché la plus petite sur l’intervalle d'affichage souhaité. Le minimum est fixé à -100.</p>
+						<p class="modalbox-description"> Entrez l'infimum de votre fonction de manière à définir la borne inférieure.</p>
 					</div>
 					<input id="min-range" class="modalbox-input" placeholder="Minimum:" type="text" inputmode="numeric">
 					
@@ -453,9 +453,9 @@
 
 					try {
 
-					 	for (var v = -8; v < 8; v += Number(accuracy)) {
+					 	for (var v = -10; v < 10; v += Number(accuracy)) {
 
-							for (var u = -8; u < 8; u += Number(accuracy)) {
+							for (var u = -10; u < 10; u += Number(accuracy)) {
 
 								xPoints.push(math.compile(xFunction).evaluate({u : u, v: v}));
 
@@ -733,7 +733,7 @@
 
 							zerolinewidth: 0.8,
 
-							range: [-10, 10],
+							range: [-16, 16],
 
 							title: 'X',
 
@@ -769,7 +769,7 @@
 
 					try {
 
-						for(var x = -10; x < 10; x += 0.001){
+						for(var x = -16; x < 16; x += 0.003){
 
 							xPoints.push(x);
 
