@@ -175,7 +175,7 @@
 							<img class="robot-img" src="../assets/robot.png" alt="Robot">
 							<h1 style="margin-top: 20px; color: white; font-size: 24px; font-weight: bold;">Logiciel de tracer graphique:</h1>
 							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide et vraiment super facile à utiliser.</p>
-							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui ne vous permet que de tracer qu'une seule équation ou surface à la fois.</p>
+							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui ne vous permet que de tracer qu'une seule courbe ou surface à la fois.</p>
 							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui est plus recommandé pour une esquisse graphique.</p>
 						</div>
 					</div>
@@ -215,7 +215,7 @@
 					<p class="modalbox-description">Sélectionnez le type de graphique que vous désirez tracer. </p>
 				</div>
 
-				<select title="Sélectionnez le type de graphique que vous désirez tracer:" onchange="setPlotType();" id="graph-type-id" class="graph-type-class">
+				<select title="Type de graphique:" onchange="setPlotType();" id="graph-type-id" class="graph-type-class">
 					<option value="2d-function-graph">Classique d'une fonction de R dans R</option>
 					<option value="3d-parametric-graph">Paramétrique jusqu'à R² dans R³</option>
 				</select>
@@ -225,10 +225,26 @@
 				<div id="options-function-graph">
 	
 					<div class="modalbox-text-contenaire">
-						<h2>L'équation de votre fonction:</h2>
+						<h2>Votre fonction:</h2>
 						<p class="modalbox-description"> Entrez votre fonction en utilisant x comme variable. </p>
 					</div>
-					<input id="graph-equation" class="modalbox-input" placeholder="Équation:">
+					<input id="graph-function" class="modalbox-input" placeholder="Fonction:">
+
+					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+					<div class="modalbox-text-contenaire">
+						<h2>Couleur:</h2>
+						<p class="modalbox-description">Sélectionnez la couleur à donner à votre graphique.</p>
+					</div>
+	
+					<select title="Couleur:" id="color-curve-id">
+						<option value="firebrick">Rouge</option>
+						<option value="orange">Orange</option>
+						<option value="gold">Jaune</option>
+						<option value="limegreen">Vert</option>
+						<option value="royalblue">Bleu</option>
+						<option value="purple">Violet</option>
+					</select>
 
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -281,7 +297,7 @@
 						<p class="modalbox-description">Sélectionnez l'échelle de couleur que vous souhaitez.</p>
 					</div>
 	
-					<select title="Sélectionnez l'échelle de couleur que vous souhaitez:" id="color-scale-id">
+					<select title="Échelle de couleur:" id="color-scale-id">
 						<option value="Jet">Jet</option>
 						<option value="YlOrRd">YlOrRd</option>
 						<option value="YlGnBu">YlGnBu</option>
@@ -307,7 +323,7 @@
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
+					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#max-range').val(), $('#min-range').val(), $('#color-curve-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
 				</div>
 	
 			</div>
@@ -381,7 +397,7 @@
 
 				$("#options-3d-parametric-graph").css('display', "none")
 
-				$(".modalbox-go-btn").attr("onclick", `functionGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());`)
+				$(".modalbox-go-btn").attr("onclick", `functionGraphing($('#graph-function').val(), $('#max-range').val(), $('#min-range').val(), $('#color-curve-id').val());`)
 			
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 			
@@ -633,11 +649,11 @@
 
 		}
 
-		function functionGraphing(func, maxRange, minRange) {
+		function functionGraphing(func, maxRange, minRange, curveColor) {
 
 			if (!func) {
 
-				$("#modalbox-errors-warnings-id").html("L'équation de la fonction est vide !");
+				$("#modalbox-errors-warnings-id").html("Votre fonction est vide !");
 
 				return false;
 
@@ -789,9 +805,9 @@
 
 						marker: {
 
-							color: '#005DD9',
+							color: curveColor,
 
-							size: '2'
+							size: '3'
 
 						}
 
@@ -823,7 +839,7 @@
 
 			} else {
 
-				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());`)
+				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#max-range').val(), $('#min-range').val(), $('#color-curve-id').val());`)
 
 			}
 
@@ -887,7 +903,7 @@
 
 			} else {
 
-				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-equation').val(), $('#max-range').val(), $('#min-range').val());`)
+				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#max-range').val(), $('#min-range').val(), $('#color-curve-id').val());`)
 
 			}
 

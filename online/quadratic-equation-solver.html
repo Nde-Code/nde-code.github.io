@@ -332,7 +332,7 @@
 
 		var urlParams = new URLSearchParams(new URL(window.location.href).search);
 
-			if (!urlParams.get("a") || !urlParams.get("b") || !urlParams.get("c") || Number(urlParams.get("a")) === NaN || Number(urlParams.get("b")) === NaN || Number(urlParams.get("c")) === NaN) {
+			if (!urlParams.get("a") || !urlParams.get("b") || !urlParams.get("c") || isNaN(urlParams.get("a")) === true || isNaN(urlParams.get("b")) === true || isNaN(urlParams.get("c")) === true) {
 
 				return;
 
@@ -352,7 +352,7 @@
 
 			let cValue = 0;
 
-			if (!a || isNaN(a) === true || Number(a) === NaN) {
+			if (!a || isNaN(a) === true) {
 				
 				$("#modalbox-errors-warnings-id").html("Le A de votre équation est invalide ou vide !");
 
@@ -360,7 +360,7 @@
 
 			}
 
-			else if (!b || isNaN(b) === true || Number(b) === NaN) {
+			else if (!b || isNaN(b) === true) {
 				
 				$("#modalbox-errors-warnings-id").html("Le B de votre équation est invalide ou vide !");
 
@@ -368,7 +368,7 @@
 
 			}
 
-			else if (!c || isNaN(c) === true || Number(c) === NaN) {
+			else if (!c || isNaN(c) === true) {
 				
 				$("#modalbox-errors-warnings-id").html("Le C de votre équation est invalide ou vide !");
 

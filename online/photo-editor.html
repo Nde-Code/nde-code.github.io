@@ -486,8 +486,6 @@
 
 						$(".loading-data-btn").remove();
 
-						window.scrollTo(0, 0);
-
 						return $("#actions").append(`
 									<a onclick="openDownloadBox();" id="img-download-btn-id" class="download-btn"><i class="fas fa-download"></i> Télécharger l\'image</a>
 									<a id="edit-filters-btn-id" onclick="openEditFiltersBox();" class="edit-filters-btn-class"><i class="fa-solid fa-pen-to-square"></i> Éditer l\'image</a>
@@ -495,6 +493,8 @@
 								`);
 
 					});
+
+					window.scrollTo(0, 0);
 
 					return readingFile.readAsDataURL(inputValue.files[0]);
 

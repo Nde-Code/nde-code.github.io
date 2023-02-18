@@ -226,7 +226,7 @@ select,
 .modalbox-errors-warnings-class {
     text-align: center;
     font-size: 20px;
-    color: orange;
+    color: #005DD9;
     font-weight: bold;
     font-style: italic;
     margin-bottom: 40px;
