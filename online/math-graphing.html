@@ -250,7 +250,7 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>La borne maximum:</h2>
-						<p class="modalbox-description"> Entrez le supremum de votre fonction de manière à définir la borne supérieure.</p>
+						<p class="modalbox-description"> Entrez la borne supérieure de votre fonction.</p>
 					</div>
 					<input id="max-range" class="modalbox-input" placeholder="Maximum:" type="text" inputmode="numeric">
 
@@ -258,7 +258,7 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>Le borne minimum:</h2>
-						<p class="modalbox-description"> Entrez l'infimum de votre fonction de manière à définir la borne inférieure.</p>
+						<p class="modalbox-description"> Entrez la borne inférieure de votre fonction.</p>
 					</div>
 					<input id="min-range" class="modalbox-input" placeholder="Minimum:" type="text" inputmode="numeric">
 					
@@ -659,17 +659,17 @@
 
 			} 
 
-			else if (!maxRange || isNaN(maxRange) || Number(maxRange) > 100) {
+			else if (!maxRange || isNaN(maxRange)) {
 
-				$("#modalbox-errors-warnings-id").html("La borne maximum est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("La borne supérieure est invalide ou vide !");
 
 				return false;
 
 			}
 
-			else if (!minRange || isNaN(minRange) || Number(minRange) < -100) {
+			else if (!minRange || isNaN(minRange)) {
 
-				$("#modalbox-errors-warnings-id").html("La borne minimum est invalide ou vide !");
+				$("#modalbox-errors-warnings-id").html("La borne inférieure est invalide ou vide !");
 
 				return false;
 
