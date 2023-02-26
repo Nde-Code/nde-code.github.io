@@ -53,23 +53,6 @@
 		background: #4690F2;
 	}
 
-	.share-btn {
-		font-size: 20px;
-		border-radius: 50px;
-		color: white;
-		background: #6E00FF;
-		transition: all 0.2s ease-out 0s;
-		font-weight: bold;
-		border: 4px solid #5800CC;
-		padding: 15px 31px;
-		cursor: pointer;
-		margin: 8px;
-	}
-
-	.share-btn:hover {
-		background: #9D52FF;
-	}
-
 	.result-sentence {
     	font-size: 22px;
     	margin-right: 5%;
@@ -78,7 +61,7 @@
 	}
 
 	.result-text {
-		font-size: 20px;
+		font-size: 16px;
 		font-weight: bold;
 		color: #005DD9;
 		margin-top: 10px;
@@ -168,8 +151,8 @@
 							<img class="robot-img" src="../assets/robot.png" alt="Robot">
 							<h1 id="software-subtitle-id" style="margin-top: 30px; color: white; font-weight: bold; font-size: 24px;">Logiciel résolveur d'équation du type: </h1>
 							<span id="equation-plot-id"> Ax<sup>2</sup> + Bx + C = 0 </span>
-							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit et qui propose une prévisualisation de votre entrée. </p>
-							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui ne travaille que dans les réels.</p>
+							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit et qui tant dans les réels que dans les complexes.</p>
+							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui n'affiche pas les étapes de calcul.</p>
 							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit le résultat à 3 chiffres après la virgule.</p>
 							<p class="result-sentence" id="display-result-id"></p>
 						</div>
@@ -239,6 +222,7 @@
 	</div>
 	<script src="../js/jquery.js"></script>
 	<script src="../js/app.js"></script>
+	<script src="../js/math.js"></script>
 	<script type="text/javascript">	
 		var isRunning = false;	
 
@@ -253,12 +237,6 @@
 				$(".main-website-row-panel").css("paddingLeft", "unset");
 
 			}
-
-			if ($(window).width() <= 1024 && isRunning == true) {
-
-				$("#share-btn-id").html('<i class="fa-solid fa-share-nodes"></i>');
-
-			}	
 
 			if ($(window).width() <= 745) {
 
@@ -282,77 +260,161 @@
 
 		}, 500);
 
-		function buildEquation(a, b, c) {
+		function beautifyMath(numb, charTag) {
 
-			if (b >= 0) {
+			if (numb < 0) {
 
-				b = "+ " + b;
+				numb = " - " + math.abs(numb)
 
-			}
+			} 
 
-			if (c >= 0) {
+			else if (numb >= 0 && charTag !== "a") {
 
-				c = "+ " + c;
+				numb = " + " + numb
 
-			}
+			} 
 
-			if (a < 0) {
+			else if (numb >= 0 && charTag === "a") {
 
-				a = "- " + Math.abs(a);
-
-			}
-
-			if (b < 0) {
-
-				b = "- " + Math.abs(b);
+				numb = numb
 
 			}
 
-			if (c < 0) {
+			else {
 
-				c = "- " + Math.abs(c);
+				let complexNumber = math.complex(numb);
+
+				if (complexNumber.re === 0 && complexNumber.im !== 0 && charTag !== "a") {
+
+					if (complexNumber.im === 1) {
+
+						numb = "+ i"
+
+					} 
+					
+					else if (complexNumber.im === -1) {
+
+						numb = "- i"
+
+					}
+					
+					else {
+
+						if (charTag === "c" && complexNumber.im > 0) {
+
+							numb = "+ "+complexNumber.im+"i"
+
+						} else {
+
+							numb = "- "+math.abs(complexNumber.im)+"i"
+
+						}
+
+					}
+
+				}
+
+				else if (complexNumber.re > 0 && complexNumber.im === 0 && charTag !== "a") {
+
+					numb = "+ "+complexNumber.re
+
+				}
+
+				else if (complexNumber.re > 0 && complexNumber.im === 0 && charTag === "a") {
+
+					numb = complexNumber.re
+
+				}
+
+				else if (complexNumber.re < 0 && complexNumber.im === 0) {
+
+					numb = "- "+math.abs(complexNumber.re)
+
+				}
+
+				else if (complexNumber.re === 0 && complexNumber.im === 0) {
+
+					numb = " + 0" 
+
+				}
+
+				else if (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag !== "a") {
+
+					numb = " + ("+numb+")"
+
+				} 
+				
+				else {
+
+					if (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag === "a") {
+
+						numb = "("+numb+")"
+					
+					} else {
+
+						if (complexNumber.im === 1) {
+
+							numb = "i"
+
+						} 
+
+						else if (complexNumber.im === -1) {
+
+							numb = "- i"
+
+						}
+
+						else {
+
+							numb = complexNumber.im+"i"
+
+						}
+
+					}
+
+				}
 
 			}
 
-			$("#equation-plot-id").html(`${a}x<sup>2</sup> ${b}x ${c} = 0`);
+			return numb
 
 		}
 
-		function shareUrl(a, b, c) {
+		function isValidInput(val) {
 
-			var urlToShare = location.protocol + '//' + location.host + location.pathname + "?a="+a+"&b="+b+"&c="+c;
+			try {
 
+				let dataType = math.typeOf(math.complex(val));
 
-			window.location.href = urlToShare;
+				if (dataType === 'Complex') return true
+				
+			} catch (err) {
+
+				return false;
+				
+			}
 
 		}
 
+		function isNull(val) {
 
-		document.addEventListener('DOMContentLoaded', function() {
+			let complexNumb = math.complex(val);
 
-		var urlParams = new URLSearchParams(new URL(window.location.href).search);
+			if (complexNumb.re === 0 && complexNumb.im === 0) {
 
-			if (!urlParams.get("a") || !urlParams.get("b") || !urlParams.get("c") || isNaN(urlParams.get("a")) === true || isNaN(urlParams.get("b")) === true || isNaN(urlParams.get("c")) === true) {
-
-				return;
+				return true
 
 			} else {
 
-				solve(urlParams.get("a"), urlParams.get("b"), urlParams.get("c"));
+				return false;
 
 			}
 
-		});
+		}
 
 		function solve(a, b, c) {
 
-			let aValue = 0;
-
-			let bValue = 0;
-
-			let cValue = 0;
-
-			if (!a || isNaN(a) === true) {
+			if (!a || isValidInput(a) === false) {
 				
 				$("#modalbox-errors-warnings-id").html("Le A de votre équation est invalide ou vide !");
 
@@ -360,7 +422,7 @@
 
 			}
 
-			else if (!b || isNaN(b) === true) {
+			else if (!b || isValidInput(b) === false) {
 				
 				$("#modalbox-errors-warnings-id").html("Le B de votre équation est invalide ou vide !");
 
@@ -368,7 +430,7 @@
 
 			}
 
-			else if (!c || isNaN(c) === true) {
+			else if (!c || isValidInput(c) === false) {
 				
 				$("#modalbox-errors-warnings-id").html("Le C de votre équation est invalide ou vide !");
 
@@ -376,7 +438,7 @@
 
 			} 
 
-			else if (Number(a) === 0 && Number(b) === 0 || Number(a) === 0) {
+			else if (isNull(a) === true && isNull(b) === true || isNull(a) === true) {
 
 				$("#modalbox-errors-warnings-id").html("Votre équation est invalide !");
 
@@ -385,24 +447,8 @@
 			}
 
 			else {
-
-				if (isRunning === false) $(".website-bottom-menu").append(`<a onclick="shareUrl('${a}', '${b}', '${c}')" id="share-btn-id" class="share-btn"><i class="fa-solid fa-share-nodes"></i> Partager le résultat</a>`);
-				
-				else {
-
-					$("#share-btn-id").remove();
-
-					$(".website-bottom-menu").append(`<a onclick="shareUrl('${a}', '${b}', '${c}')" id="share-btn-id" class="share-btn"><i class="fa-solid fa-share-nodes"></i> Partager le résultat</a>`);
-
-				}
 				
 				isRunning = true;
-
-				aValue = Number(a);
-
-				bValue = Number(b);
-
-				cValue = Number(c);
 
 				$("#software-subtitle-id").html("L'équation du second degré:");
 				
@@ -412,33 +458,34 @@
 
 				$(".main-website-panel-notice").remove();
 
-				buildEquation(aValue, bValue, cValue);
+				$("#equation-plot-id").html(`${beautifyMath(math.evaluate(a), "a")}x<sup>2</sup> ${beautifyMath(math.evaluate(b), "b")}x ${beautifyMath(math.evaluate(c), "c")} = 0`);
 
-				var discriminant = Math.pow(bValue, 2) - 4 * (aValue) * (cValue);
-
-				if (discriminant > 0) {
-
-					let x1 = ((-bValue) + Math.sqrt(discriminant)) / (2 * (aValue));
-
-					let x2 = ((-bValue) - Math.sqrt(discriminant)) / (2 * (aValue));
-
-					$("#display-result-id").html(`a pour ensemble de solution: <p class="result-text">{x<sub>1</sub> = ${x1.toFixed(3)}; x<sub>2</sub> = ${x2.toFixed(3)}}</p> avec un discriminant de
-					<p class="result-text">${discriminant}</p>`);
-
-				}
+				var discriminant = math.round(math.evaluate(`(${b})^2-4*(${a})*(${c})`), 3);
 
 				if (discriminant === 0) {
 
-					let x = (-bValue) / (2 * (aValue));
+					let x =  math.round(math.evaluate(`(${-b}) / (2 * (${a}))`), 3)
 
-					$("#display-result-id").html(`a pour unique solution: <p class="result-text">x = ${x.toFixed(3)}</p> avec un discriminant de
+					$("#display-result-id").html(`a pour unique solution: <p class="result-text">x ≈ ${x}</p> avec un discriminant de
 					<p class="result-text">0</p>`);
 
-				}
+				} else {
 
-				if (discriminant < 0) {
+					let x1 = math.round(math.evaluate(`(-1*(${b}) + sqrt(${discriminant})) / (2 * (${a}))`), 3).toString()
 
-					$("#display-result-id").html(`n'a aucune solution réelle car le discriminant est: <p class="result-text">${discriminant}</p> donc négatif.`);
+					let x2 =  math.round(math.evaluate(`(-1*(${b}) - sqrt(${discriminant})) / (2 * (${a}))`), 3).toString()
+
+					if (x1 === x2) {
+
+						$("#display-result-id").html(`a pour unique solution: <p class="result-text">x ≈ ${x1}</p> avec un discriminant de
+						<p class="result-text">0</p>`);
+
+					} else {
+
+						$("#display-result-id").html(`a pour ensemble de solution: <p class="result-text">{x<sub>1</sub> ≈ ${x1}; x<sub>2</sub> ≈ ${x2}}</p> avec un discriminant de
+						<p class="result-text">${discriminant}</p>`);
+
+					}
 
 				}
 
