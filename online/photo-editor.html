@@ -12,13 +12,6 @@
 		text-align: center;
 	}
 
-	.white-lines {
-		height: 1px;
-		margin-left: 20%;
-		margin-right: 20%;
-		background-color: #ffffff;
-	}
-
 	.load-image-class {
 		font-size: 20px;
 		border-radius: 50px;
@@ -42,7 +35,9 @@
 
 	.canvas-picture {
 		max-width: 100%;
-		height: auto;
+		height: 90%;
+		margin-top: 15px;
+		margin-bottom: 15px;
 	}
 
 	.download-btn {
@@ -405,7 +400,7 @@
 
 				<div class="modalbox-text-contenaire">
 					<h2>La longueur de votre image:</h2>
-					<p class="modalbox-description"> La longueur de votre image en pixel. Le logiciel règle la longueur automatiquement et de la manière la plus adaptée à votre appareil.</p>
+					<p class="modalbox-description"> La longueur de votre image en pixel. Le logiciel conserve la longueur de l'image par défaut.</p>
 				</div>
 				<input id="image-file-width" class="modalbox-input" title="La longueur de votre image:" readonly>
 
@@ -413,7 +408,7 @@
 
 				<div class="modalbox-text-contenaire">
 					<h2>La largeur de votre image:</h2>
-					<p class="modalbox-description"> La largeur de votre image en pixel. Le logiciel règle la largeur automatiquement et de la manière la plus adaptée à votre appareil.</p>
+					<p class="modalbox-description"> La largeur de votre image en pixel. Le logiciel conserve la largeur de l'image par défaut.</p>
 				</div>
 				<input id="image-file-height" class="modalbox-input" title="La largeur de votre image:" readonly>
 
@@ -439,6 +434,10 @@
 		var canvas;
 
 		var imageBase64;
+
+		var heightImg;
+
+		var widthImg;
 
 		$("#upload-btn-id").on("change", function (data) {
 
@@ -485,6 +484,18 @@
 						$("#load-image-id").css("display", "none");
 
 						$(".loading-data-btn").remove();
+
+  						const imageObj = new Image();
+
+						imageObj.src = base64input.target.result;
+
+						imageObj.onload = function () {
+
+							widthImg = this.height;
+
+							heightImg = this.width;
+
+						};
 
 						return $("#actions").append(`
 									<a onclick="openDownloadBox();" id="img-download-btn-id" class="download-btn"><i class="fas fa-download"></i> Télécharger l\'image</a>
@@ -546,9 +557,9 @@
 
 			canvas = $("#nodeCanvas")[0];
 
-			canvas.width = $("#edit-properties")[0].getBoundingClientRect().width;
+			canvas.width = widthImg;
 
-			canvas.height = $("#edit-properties")[0].getBoundingClientRect().height;
+			canvas.height = heightImg;
 
 			var ctx = canvas.getContext('2d');
 
@@ -556,7 +567,7 @@
 
 			var img = $("#edit-properties")[0];
 
-			ctx.drawImage(img, 0, 0, $("#edit-properties")[0].getBoundingClientRect().width, $("#edit-properties")[0].getBoundingClientRect().height);
+			ctx.drawImage(img, 0, 0, widthImg, heightImg);
 
 			imageBase64 = canvas.toDataURL()
 
@@ -684,9 +695,9 @@
 
 			$("#image-file-size").attr("value", (atob(getImageBase64().substr(22)).length / 1e6).toFixed(3) + "Mo"); 
 
-			$("#image-file-width").attr("value", ($("#edit-properties")[0].getBoundingClientRect().width).toFixed(3) + "px");
+			$("#image-file-width").attr("value", (widthImg + "px"));
 
-			$("#image-file-height").attr("value", ($("#edit-properties")[0].getBoundingClientRect().height).toFixed(3) + "px");
+			$("#image-file-height").attr("value", (heightImg + "px"));
 
 			window.scrollTo(0, 0)
 
