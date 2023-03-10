@@ -412,6 +412,32 @@
 
 		}
 
+		function hasMoreThanThreeDecimal(num) {
+
+			let str = num.toString();
+			
+			let decimalIndex = str.indexOf(".");
+			
+			let numDecimals = str.length - decimalIndex - 1;
+			
+			return numDecimals > 3;
+
+		}
+
+		function setEquals(nbr) {
+
+			if (hasMoreThanThreeDecimal(nbr) === true) {
+
+				return "≈"
+
+			} else {
+
+				return "="
+
+			}
+
+		}
+
 		function solve(a, b, c) {
 
 			if (!a || isValidInput(a) === false) {
@@ -464,25 +490,31 @@
 
 				if (discriminant === 0) {
 
-					let x =  math.round(math.evaluate(`(${-b}) / (2 * (${a}))`), 3)
+					let x =  math.evaluate(`(${-b}) / (2 * (${a}))`)
 
-					$("#display-result-id").html(`a pour unique solution: <p class="result-text">x ≈ ${x}</p> avec un discriminant de
+					let resX = math.round(x, 3)
+
+					$("#display-result-id").html(`a pour unique solution: <p class="result-text">x ${setEquals(x)} ${resX}</p> avec un discriminant de
 					<p class="result-text">0</p>`);
 
 				} else {
 
-					let x1 = math.round(math.evaluate(`(-1*(${b}) + sqrt(${discriminant})) / (2 * (${a}))`), 3).toString()
+					let x1 = math.evaluate(`(-1*(${b}) + sqrt(${discriminant})) / (2 * (${a}))`)
 
-					let x2 =  math.round(math.evaluate(`(-1*(${b}) - sqrt(${discriminant})) / (2 * (${a}))`), 3).toString()
+					let x2 =  math.evaluate(`(-1*(${b}) - sqrt(${discriminant})) / (2 * (${a}))`)
 
-					if (x1 === x2) {
+					let resX1 = math.round(x1, 3)
 
-						$("#display-result-id").html(`a pour unique solution: <p class="result-text">x ≈ ${x1}</p> avec un discriminant de
+					let resX2 = math.round(x2, 3)
+
+					if (resX1 === resX2) {
+
+						$("#display-result-id").html(`a pour unique solution: <p class="result-text">x ${setEquals(x1)} ${resX1}</p> avec un discriminant de
 						<p class="result-text">0</p>`);
 
 					} else {
 
-						$("#display-result-id").html(`a pour ensemble de solution: <p class="result-text">{x<sub>1</sub> ≈ ${x1}; x<sub>2</sub> ≈ ${x2}}</p> avec un discriminant de
+						$("#display-result-id").html(`a pour ensemble de solution: <p class="result-text">{x<sub>1</sub> ${setEquals(x1)} ${resX1}; x<sub>2</sub> ${setEquals(x2)} ${resX2}}</p> avec un discriminant de
 						<p class="result-text">${discriminant}</p>`);
 
 					}

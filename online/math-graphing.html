@@ -227,7 +227,7 @@
 	
 					<div class="modalbox-text-contenaire">
 						<h2>Votre fonction:</h2>
-						<p class="modalbox-description"> Entrez votre fonction en utilisant x comme variable. Une partie des fonctions mathématiques supportées sont listées ici: <a href="https://mathjs.org/docs/reference/functions.html" class="link-btn">https://mathjs.org/docs/reference/functions.html</a></p>
+						<p class="modalbox-description"> Entrez votre fonction en utilisant x comme variable. </p>
 					</div>
 					<input id="graph-function" class="modalbox-input" placeholder="Fonction:">
 
@@ -271,7 +271,7 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>L'équation en X:</h2>
-						<p class="modalbox-description"> Entrez l'équation en X en utilisant u et v comme variables. Une partie des fonctions mathématiques supportées sont listées ici: <a href="https://mathjs.org/docs/reference/functions.html" class="link-btn">https://mathjs.org/docs/reference/functions.html</a></p>
+						<p class="modalbox-description"> Entrez l'équation en X en utilisant u et v comme variables.</p>
 					</div>
 					<input id="param-equation-x" class="modalbox-input" placeholder="X:">
 
@@ -295,7 +295,7 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>Échelle de couleur:</h2>
-						<p class="modalbox-description">Sélectionnez l'échelle de couleur que vous souhaitez. Certaines couleurs ne sont pas prises en charge mais peuvent être ajoutées sur demande. Voici la liste de toutes les échelles de couleur disponible: <a href="https://plotly.com/javascript/colorscales/" class="link-btn">https://plotly.com/javascript/colorscales/</a></p>
+						<p class="modalbox-description">Sélectionnez l'échelle de couleur que vous souhaitez. J'ai mis les échelles prises par défaut en charge par la librairie Plotly.js et qui me plaisait le plus maintenant je peux en rajouter sur demande.</p>
 					</div>
 	
 					<select title="Échelle de couleur:" id="params-color-scale-id">
@@ -326,7 +326,7 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>Votre fonction:</h2>
-						<p class="modalbox-description"> Entrez votre fonction en utilisant x et y comme variables. Une partie des fonctions mathématiques supportées sont listées ici: <a href="https://mathjs.org/docs/reference/functions.html" class="link-btn">https://mathjs.org/docs/reference/functions.html</a></p>
+						<p class="modalbox-description"> Entrez votre fonction en utilisant x et y comme variables.</p>
 					</div>
 					<input id="surface-function" class="modalbox-input" placeholder="Fonction:">
 						
@@ -334,7 +334,7 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>Échelle de couleur:</h2>
-						<p class="modalbox-description">Sélectionnez l'échelle de couleur que vous souhaitez. Certaines couleurs ne sont pas prises en charge mais peuvent être ajoutées sur demande. Voici la liste de toutes les échelles de couleur disponible: <a href="https://plotly.com/javascript/colorscales/" class="link-btn">https://plotly.com/javascript/colorscales/</a></p></p>
+						<p class="modalbox-description">Sélectionnez l'échelle de couleur que vous souhaitez. Certaines couleurs ne sont pas prises en charge mais peuvent être ajoutées sur demande.</p>
 					</div>
 	
 					<select title="Échelle de couleur:" id="surface-color-scale-id">
@@ -706,6 +706,36 @@
 
 		}
 
+		function hasOnlyOneVariable(expr) {
+
+			const node = math.parse(expr);
+
+			const variables = node.filter((i) => i.isSymbolNode).map((i) => i.name);
+
+			return variables.length === 1 && variables[0] === 'x';
+
+		}
+
+		function isANumber(nbr) {
+
+			let success = true;
+
+			try {
+
+				let resNumber = math.typeOf(math.evaluate(nbr));
+
+			} catch(err) {
+
+				success = false
+
+			} finally {
+
+				return success;
+
+			}
+
+		}
+
 		function isValidGeneratedData(dataArray) {
 
 			var complexCounter = 0
@@ -730,9 +760,9 @@
 
 		function surfaceGraphing(funcXY, colorScale) {
 
-			if(!funcXY) {
+			if(!funcXY || hasOnlyOneVariable(funcXY) === true || isANumber(funcXY) === true) {
 
-				$("#modalbox-errors-warnings-id").html("Aucune fonction n'a été renseigner !");
+				$("#modalbox-errors-warnings-id").html("Votre fonction n'est tout simplement pas correcte !");
 
 				return false;
 
@@ -973,7 +1003,7 @@
 
 			if (!func) {
 
-				$("#modalbox-errors-warnings-id").html("Aucune fonction n'a été renseigner !");
+				$("#modalbox-errors-warnings-id").html("Votre fonction est me semble bien vide !");
 
 				return false;
 
