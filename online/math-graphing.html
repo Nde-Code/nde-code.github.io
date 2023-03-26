@@ -144,30 +144,30 @@
 						<a href="/" class="menu-header-title"><strong>Nathan Debilloëz</strong></a>
 						<a onclick="openContactBox();" class="menu-item">Contact</a>
 						<a onclick="openAboutBox();" class="menu-item">À propos</a>
-							<div class="menu-dropdown">
-								<button class="menu-dropdown-btn">Projets
-									<i class="fa fa-caret-down"></i>
-								</button>
-								<div class="menu-dropdown-items">
-									<a href="pinwheel">Jouer avec un moulin à vent</a>
-									<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
-									<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
-								</div>
-							</div> 
-							<div class="menu-dropdown">
-								<button class="menu-dropdown-btn">Logiciels
-									<i class="fa fa-caret-down"></i>
-								</button>
-								<div class="menu-dropdown-items">
-									<a href="photo-editor">Retoucher une image </a>
-									<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
-									<a href="math-graphing">Traceur de graphique mathématique</a>
-								</div>
+						<div class="menu-dropdown">
+							<button class="menu-dropdown-btn">Tutoriels
+								<i class="fa fa-caret-down"></i>
+							</button>
+							<div class="menu-dropdown-items">
+								<!-- Bientôt -->
 							</div>
 						</div>
-					<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
+						<div class="menu-dropdown">
+							<button class="menu-dropdown-btn">Projets
+								<i class="fa fa-caret-down"></i>
+							</button>
+							<div class="menu-dropdown-items">
+								<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
+								<a href="math-graphing">Traceur de graphique mathématique</a>
+								<a href="pinwheel">Jouer avec un moulin à vent</a>
+								<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
+								<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
+			<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
 			<div class="main-website-panel">
 				<div class="main-website-row-panel" style="padding-left: 7px;">
 					<div class="main-website-panel-style">
@@ -229,7 +229,7 @@
 						<h2>Votre fonction:</h2>
 						<p class="modalbox-description"> Entrez votre fonction en utilisant x comme variable. </p>
 					</div>
-					<input id="graph-function" class="modalbox-input" placeholder="Fonction:">
+					<input id="graph-function" class="modalbox-input" placeholder="f(x):">
 
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -250,19 +250,25 @@
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 					<div class="modalbox-text-contenaire">
-						<h2>La borne maximum:</h2>
-						<p class="modalbox-description"> Entrez la borne supérieure de votre fonction. En d'autres termes, il s'agit du Y maximum que vous voulez afficher.</p>
+						<h2>Intérvalle d'affichage:</h2>
+						<p class="modalbox-description">Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction par apport à l'axe Y. </p>
 					</div>
-					<input id="max-range" class="modalbox-input" placeholder="Maximum:" type="text" inputmode="numeric">
+	
+					<select title="Échelle de couleur:" id="display-range-curve-id">
+						<option value="false">Automatique</option>
+						<option value="[-5, 5]">[-5, 5]</option>
+						<option value="[-10, 10]">[-10, 10]</option>
+						<option value="[-20, 20]">[-20, 20]</option>
+						<option value="[-30, 30]">[-30, 30]</option>
+						<option value="[-40, 40]">[-40, 40]</option>
+						<option value="[-50, 50]">[-50, 50]</option>
+						<option value="[-60, 60]">[-60, 60]</option>
+						<option value="[-70, 70]">[-70, 70]</option>
+						<option value="[-80, 80]">[-80, 80]</option>
+						<option value="[-90, 90]">[-90, 90]</option>
+						<option value="[-100, 100]">[-100, 100]</option>
+					</select>
 
-					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
-					<div class="modalbox-text-contenaire">
-						<h2>Le borne minimum:</h2>
-						<p class="modalbox-description"> Entrez la borne inférieure de votre fonction. En d'autres termes, il s'agit du Y minimum que vous voulez afficher.</p>
-					</div>
-					<input id="min-range" class="modalbox-input" placeholder="Minimum:" type="text" inputmode="numeric">
-					
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				</div>
@@ -273,7 +279,7 @@
 						<h2>L'équation en X:</h2>
 						<p class="modalbox-description"> Entrez l'équation en X en utilisant u et v comme variables.</p>
 					</div>
-					<input id="param-equation-x" class="modalbox-input" placeholder="X:">
+					<input id="param-equation-x" class="modalbox-input" placeholder="x(u, v):">
 
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -281,7 +287,7 @@
 						<h2>L'équation en Y:</h2>
 						<p class="modalbox-description"> Entrez l'équation Y en utilisant u et v comme variables.</p>
 					</div>
-					<input id="param-equation-y" class="modalbox-input" placeholder="Y:">
+					<input id="param-equation-y" class="modalbox-input" placeholder="y(u, v):">
 
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -289,7 +295,7 @@
 						<h2>L'équation en Z:</h2>
 						<p class="modalbox-description"> Entrez l'équation Z en utilisant u et v comme variables.</p>
 					</div>
-					<input id="param-equation-z" class="modalbox-input" placeholder="Z:">
+					<input id="param-equation-z" class="modalbox-input" placeholder="z(u, v):">
 						
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -311,15 +317,6 @@
 
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
-					<div class="modalbox-text-contenaire">
-						<h2>Précision:</h2>
-						<p style="font-size: 20px; font-weight: bold;">Précision des points: <span class="display-value-class" id="display-accuracy-id" style="color: #005DD9"></span></p>
-						<p class="modalbox-description">Il s'agit plus singulièrement de l'espace entre les points. Attention qu'une précision plus importante implique un calcul plus long. </p>
-					</div>
-					<input onchange="getAccuracy();" value="0.3" type="range" min="0.1" max="1" step="0.1" id="accuracy-id" class="modalbox-range-btn" placeholder="Précision:">
-						
-					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
 				</div>
 
 				<div id="options-3d-surface-graph" style="display: none;">
@@ -328,7 +325,7 @@
 						<h2>Votre fonction:</h2>
 						<p class="modalbox-description"> Entrez votre fonction en utilisant x et y comme variables.</p>
 					</div>
-					<input id="surface-function" class="modalbox-input" placeholder="Fonction:">
+					<input id="surface-function" class="modalbox-input" placeholder="f(x, y):">
 						
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
@@ -349,13 +346,35 @@
 					</select>
 
 					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+					<div class="modalbox-text-contenaire">
+						<h2>Intérvalle d'affichage:</h2>
+						<p class="modalbox-description">Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction par apport à l'axe Z. </p>
+					</div>
+	
+					<select title="Échelle de couleur:" id="display-range-surface-id">
+						<option value="false">Automatique</option>
+						<option value="[-5, 5]">[-5, 5]</option>
+						<option value="[-10, 10]">[-10, 10]</option>
+						<option value="[-20, 20]">[-20, 20]</option>
+						<option value="[-30, 30]">[-30, 30]</option>
+						<option value="[-40, 40]">[-40, 40]</option>
+						<option value="[-50, 50]">[-50, 50]</option>
+						<option value="[-60, 60]">[-60, 60]</option>
+						<option value="[-70, 70]">[-70, 70]</option>
+						<option value="[-80, 80]">[-80, 80]</option>
+						<option value="[-90, 90]">[-90, 90]</option>
+						<option value="[-100, 100]">[-100, 100]</option>
+					</select>
+
+					<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 				
 				</div>
 
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#max-range').val(), $('#min-range').val(), $('#color-curve-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
+					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
 				</div>
 	
 			</div>
@@ -367,6 +386,8 @@
 	<script src="../js/math.js" defer></script>
     <script>
 		var inLoading = false;
+
+		var inValidText = "L'expression de votre fonction est invalide !";
 
 		setInterval(function () {
 
@@ -424,12 +445,10 @@
 
 				$("#options-3d-surface-graph").css('display', "none");
 				
-				$(".modalbox-go-btn").attr("onclick", "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#params-color-scale-id').val(), $('#accuracy-id').val())")
+				$(".modalbox-go-btn").attr("onclick", "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#params-color-scale-id').val())")
 			
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 				
-				getAccuracy();
-
 			}
 
 			else if ($("#graph-type-id").val() === "3d-surface") {
@@ -440,7 +459,7 @@
 
 				$("#options-3d-parametric-graph").css('display', "none");
 				
-				$(".modalbox-go-btn").attr("onclick", "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val())")
+				$(".modalbox-go-btn").attr("onclick", "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val(), $('#display-range-surface-id').val())")
 				
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 				
@@ -454,7 +473,7 @@
 
 				$("#options-3d-surface-graph").css('display', "none");
 
-				$(".modalbox-go-btn").attr("onclick", `functionGraphing($('#graph-function').val(), $('#max-range').val(), $('#min-range').val(), $('#color-curve-id').val());`)
+				$(".modalbox-go-btn").attr("onclick", `functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());`)
 			
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 			
@@ -462,29 +481,85 @@
 
 		}
 
-		function getAccuracy() { $("#display-accuracy-id").html($("#accuracy-id").val()); }
+		function isMathExpression(mathExpr, mathType) {
 
-		function parametricGraphing(paramEquationX, paramEquationY, paramEquationZ, colorScale, accuracy) {
+			var resOfCompute;
 
-			if(!paramEquationX) {
+			if(mathType === "R1") {
 
-				$("#modalbox-errors-warnings-id").html("L'équation en X est vide !");
+				try {
+
+					resOfCompute = math.compile(mathExpr).evaluate({ x : 1 });
+
+				}catch(err) {
+
+					return false
+
+				}
+
+			}
+			
+			if(mathType === "R2") {
+
+				try {
+
+					resOfCompute = math.compile(mathExpr).evaluate({ x : 1, y : 1 });
+
+				}catch(err) {
+
+					return false
+
+				}
+
+			} 
+			
+			if(mathType === "R3") {
+
+				try {
+
+					resOfCompute = math.compile(mathExpr).evaluate({ u : 1, v : 1 });
+
+				}catch(err) {
+
+					return false
+
+				}
+
+			}
+
+			if(math.typeOf(resOfCompute) === "number" || math.typeOf(resOfCompute) === "Complex") {
+
+				return true;
+
+			} else {
+
+				return false;
+
+			}
+
+		}
+
+		function parametricGraphing(paramEquationX, paramEquationY, paramEquationZ, colorScale) {
+
+			if(!paramEquationX || isMathExpression(paramEquationX, "R3") === false) {
+
+				$("#modalbox-errors-warnings-id").html("L'équation en X est invalide !");
 
 				return false;
 				
 			}
 
-			else if(!paramEquationY) {
+			else if(!paramEquationY || isMathExpression(paramEquationY, "R3") === false) {
 
-				$("#modalbox-errors-warnings-id").html("L'équation en Y est vide !");
+				$("#modalbox-errors-warnings-id").html("L'équation en Y est invalide !");
 
 				return false;
 
 			}
 
-			else if(!paramEquationZ) {
+			else if(!paramEquationZ || isMathExpression(paramEquationZ, "R3") === false) {
 
-				$("#modalbox-errors-warnings-id").html("L'équation en Z est vide !");
+				$("#modalbox-errors-warnings-id").html("L'équation en Z est invalide !");
 
 				return false;
 
@@ -510,9 +585,9 @@
 
 					try {
 
-					 	for (var v = -10; v < 10; v += Number(accuracy)) {
+					 	for (var v = -10; v < 10; v += 0.01) {
 
-							for (var u = -10; u < 10; u += Number(accuracy)) {
+							for (var u = -10; u < 10; u += 0.01) {
 
 								xPoints.push(math.compile(xFunction).evaluate({u : u, v: v}));
 
@@ -548,11 +623,11 @@
 
 								eye: {
 
-									x: 0.95,
+									x: 1.25,
 
-									y: 0.95,
+									y: 1.25,
 									
-									z: 0.95
+									z: 1.25
 
 								}
 
@@ -700,19 +775,9 @@
 
 					Plotly.newPlot('graphing-box', data, layer, {displayModeBar: false});
 
-				}, 6000)
+				}, 4000)
 
 			}
-
-		}
-
-		function hasOnlyOneVariable(expr) {
-
-			const node = math.parse(expr);
-
-			const variables = node.filter((i) => i.isSymbolNode).map((i) => i.name);
-
-			return variables.length === 1 && variables[0] === 'x';
 
 		}
 
@@ -758,11 +823,19 @@
 
 		}
 
-		function surfaceGraphing(funcXY, colorScale) {
+		function surfaceGraphing(funcXY, colorScale, displayRange) {
 
-			if(!funcXY || hasOnlyOneVariable(funcXY) === true || isANumber(funcXY) === true) {
+			if (isMathExpression(funcXY, "R2") === false) {
 
-				$("#modalbox-errors-warnings-id").html("Votre fonction n'est tout simplement pas correcte !");
+				$("#modalbox-errors-warnings-id").html(inValidText);
+
+				return false;
+
+			}
+
+			else if(!funcXY || isANumber(funcXY) === true || hasOneVariable(funcXY) === true) {
+
+				$("#modalbox-errors-warnings-id").html(inValidText);
 
 				return false;
 
@@ -863,11 +936,11 @@
 
 								eye: {
 
-									x: 0.8,
+									x: 1.25,
 
-									y: 0.8,
+									y: 1.25,
 									
-									z: 0.8
+									z: 1.25
 
 								}
 
@@ -941,7 +1014,7 @@
 
 								title: 'Z',
 
-								range: [-10, 10],
+								range: JSON.parse(displayRange),
 
 								titlefont : {
 
@@ -993,41 +1066,59 @@
 
 					Plotly.newPlot('graphing-box', data, layer, {displayModeBar: false});
 					
-				}, 5000)
+				}, 3000)
 
 			}
 
 		}
 
-		function functionGraphing(func, maxRange, minRange, curveColor) {
+		function hasOneVariable(func) {
 
-			if (!func) {
+			let node = math.parse(func)
 
-				$("#modalbox-errors-warnings-id").html("Votre fonction est me semble bien vide !");
+			let hasX = false
 
-				return false;
+			let hasY = false
+			
+			let filtered = node.filter( (node) => {
 
-			} 
+				return node.isSymbolNode && node.name === 'x' || node.name === 'y'
 
-			else if (!maxRange || isNaN(maxRange)) {
+			})
 
-				$("#modalbox-errors-warnings-id").html("La borne supérieure est invalide ou vide !");
+			for(let j = 0; j < filtered.length; j++) {
+
+				if (filtered[j].name === "x" && hasX === false) hasX = true
+
+				if (filtered[j].name === "y" && hasY === false) hasY = true
+
+			}
+
+			if (hasX === true && hasY === true) {
+
+				return false
+
+			} else {
+
+				return true
+
+			}
+
+		}
+
+		function functionGraphing(func, curveColor, displayRg) {
+
+			if (isMathExpression(func, "R1") === false) {
+
+				$("#modalbox-errors-warnings-id").html(inValidText);
 
 				return false;
 
 			}
 
-			else if (!minRange || isNaN(minRange)) {
+			else if (!func || hasOneVariable(func) === false) {
 
-				$("#modalbox-errors-warnings-id").html("La borne inférieure est invalide ou vide !");
-
-				return false;
-
-			}
-
-			else if (Number(minRange) > Number(maxRange) || Number(minRange) === Number(maxRange)) {
-
-				$("#modalbox-errors-warnings-id").html("La borne minimum est plus grand ou égal au point maximum !");
+				$("#modalbox-errors-warnings-id").html(inValidText);
 
 				return false;
 
@@ -1107,7 +1198,7 @@
 
 							title: 'Y',
 
-							range: [minRange, maxRange]
+							range: JSON.parse(displayRg)
 
 						}
 
@@ -1185,19 +1276,19 @@
 
 			if($("#graph-type-id").val() === "3d-parametric-graph") {
 
-				$("#from-modalbox-create-id").attr('onclick', "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#params-color-scale-id').val(), $('#accuracy-id').val())")
+				$("#from-modalbox-create-id").attr('onclick', "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val())")
 
 			} 
 			
 			else if ($("#graph-type-id").val() === "3d-surface") {
 
-				$("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val())")
+				$("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val(), $('#display-range-surface-id').val())")
 
 			}
 			
 			else {
 
-				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#max-range').val(), $('#min-range').val(), $('#color-curve-id').val());`)
+				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());`)
 
 			}
 
@@ -1243,7 +1334,7 @@
 
 			inLoading = false;
 
-			$("#modalbox-errors-warnings-id").html("Votre expression n'est pas valide !");
+			$("#modalbox-errors-warnings-id").html("Les données générées sont inutilisables avec le logiciel !");
 
 			if ($(window).width() >= 1024) {
 
@@ -1257,19 +1348,19 @@
 
 			if($("#graph-type-id").val() === "3d-parametric-graph") {
 
-				$("#from-modalbox-create-id").attr('onclick', "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#params-color-scale-id').val(), $('#accuracy-id').val())")
+				$("#from-modalbox-create-id").attr('onclick', "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#params-color-scale-id').val())")
 
 			} 
 
 			else if ($("#graph-type-id").val() === "3d-surface") {
 
-				$("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val())")
+				$("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val(), $('#display-range-surface-id').val())")
 
 			}
 			
 			else {
 
-				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#max-range').val(), $('#min-range').val(), $('#color-curve-id').val());`)
+				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());`)
 
 			}
 

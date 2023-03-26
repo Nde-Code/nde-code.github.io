@@ -22,25 +22,17 @@ function openContactBox() {
 
                 <div class="modalbox-text-contenaire">
                     <h2>Règles à respecter:</h2>
-                    <p class="modalbox-description"><i class="fas fa-check" style="color: green;"></i> Vous pouvez me contacter pour des questions pertinentes en rapport avec mon site ou mes projets. Vous pouvez me soumettre vos travaux faits avec mes logiciels, mais aussi me dire ce que va (pas) sur le thème, la police d'écriture, etc... </p>
-                    <p class="modalbox-description"><i class="fas fa-times" style="color: red;"></i> Hors de question de me contacter pour des bêtises ou des tentatives néfastes à mon égard. </p>
-                    <p class="modalbox-description"><i class="fas fa-exclamation-triangle" style="color: orange;"></i> Je ne répondrai pas dans l'immédiat voir peut-être même plus tard, mais je lirai bien évidemment vos emails le plus vite possible. </p>
+                    <p class="modalbox-description"><i class="fas fa-check" style="color: green;"></i> Vous pouvez me contacter pour des questions pertinentes ou me rapporter des problèmes en rapport avec mon site ou mes projets.</p>
+                    <p class="modalbox-description"><i class="fas fa-times" style="color: red;"></i> Hors de question de me contacter pour des bêtises ou des tentatives néfastes à mon égard. Le spam est également proscrit !</p>
+                    <p class="modalbox-description"><i class="fas fa-exclamation-triangle" style="color: orange;"></i> Vous pouvez m'écrire en français, anglais et éventuellement dans un néerlandais assez simple. </p>
                 </div>
 
                 <div class="white-lines"></div>
 
-                <div class="modalbox-text-contenaire">
-                    <h2>Mon E-Mail:</h2>
-                    <p class="modalbox-description"> Cet E-Mail est la seule que je vous laisse pour me contacter. </p>
+                <div class="modalbox-text-contenaire" style="text-align: center;">
+                    <p class="modalbox-description" style="color: #005DD9; font-size: 28px; font-style: italic;"><i class="fa-solid fa-arrow-right" style="color: white;"></i> nathan.debilloez@outlook.com </p>
                 </div>
-
-                <input title="Mon E-Mail:" style="text-align: center;" id="email" class="modalbox-email-input" value="nathan.debilloez@outlook.com" readonly>
                 
-                <div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
-                <div style="margin-bottom: 40px; text-align: center;">
-                    <a class="modalbox-close-btn" onclick="$('#modalbox-contact').remove(); isOpenContactBox = false;"><i class="fa fa-times"></i> Fermer</a>
-                </div>
             </div>
         </div>`;
 
@@ -67,8 +59,9 @@ function openAboutBox() {
             <div class="modalbox-main-content">
 
                 <div class="modalbox-text-contenaire">
-                    <h2>Information:</h2>
-                    <p class="modalbox-description"> Le site est totalement statique, c'est-à-dire qu'il n'y a aucun contact entre vous et le serveur. Par conséquent je ne recueille et ne stocke aucune donnée personnelle. Le code est intégralement visible sur GitHub. </p>
+                    <h2>Lien disponible: </h2>
+                    <p class="modalbox-description"> · Azure: <a href="https://nathande.azurewebsites.net/" class="link-btn">https://nathande.azurewebsites.net/</a></p>
+                    <p class="modalbox-description"> · Github Pages: <a href="https://nde-code.github.io/" class="link-btn">https://nde-code.github.io/</a></p>
                     <h2>Librairies utilisées:</h2>
                     <p class="modalbox-description"> · Font Awesome: <a href="https://fontawesome.com/" class="link-btn">https://fontawesome.com/</a></p>
                     <p class="modalbox-description"> · FileSaver: <a href="https://github.com/eligrey/FileSaver.js/" class="link-btn">https://github.com/eligrey/FileSaver.js/</a></p>
@@ -82,9 +75,9 @@ function openAboutBox() {
                     <p class="modalbox-description"> · Getavataaars: <a href="https://getavataaars.com/" class="link-btn">https://getavataaars.com/</a></p>
                     <h2>Ressources utilisées:</h2>
                     <p class="modalbox-description"> · Flaticon: <a href="https://www.flaticon.com/" class="link-btn">https://www.flaticon.com/</a></p>
-                    <p class="modalbox-description"> · Pixabay pour l'image de fond: <a href="https://pixabay.com/photos/technology-background-abstract-5912098/" class="link-btn">https://pixabay.com/photos/technology-background-abstract-5912098/</a></p>
+                    <p class="modalbox-description"> · Pixabay pour l'image de fond: <a href="https://pixabay.com/fr/illustrations/les-triangles-formes-la-forme-de-la-3334152/" class="link-btn">https://pixabay.com/</a></p>
                     <h2>Licence:</h2>
-                    <p class="modalbox-description">À obligatoirement respecter: "GNU General Public License v3.0"</p>
+                    <p class="modalbox-description">GNU General Public License v3.0</p>
                 </div>
             </div>
         </div>`;
@@ -206,7 +199,7 @@ $(document).ready(function () {
                 <div class="modalbox-text-contenaire">
                     <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 200px; color: #FF941A;"></i>
                     <h2>Navigateur incompatible:</h2>
-                    <p class="modalbox-description"> Impossible d'interpréter le code Javascript car votre navigateur utilise l'ES5 ! Il est temps de changer de navigateur... </p>
+                    <p class="modalbox-description"> Impossible d'interpréter le code Javascript ! Il est temps de changer de navigateur... </p>
                 </div>
     
             </div>
