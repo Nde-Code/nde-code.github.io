@@ -37,22 +37,6 @@
 		font-weight: bold;
 	}
 
-	.modalbox-go-btn {
-		padding: 15px 31px;
-		color: white;
-		font-size: 20px;
-		border-radius: 50px;
-		background: #005DD9;
-		transition: all 0.2s ease-out 0s;
-		font-weight: bold;
-		border: 4px solid #0047A6;
-		cursor: pointer;
-	}
-
-	.modalbox-go-btn:hover {
-		background: #4690F2;
-	}
-
 	.result-sentence {
     	font-size: 22px;
     	margin-right: 5%;
@@ -216,7 +200,7 @@
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="text-align: center; margin-bottom: 40px;">
-					<a class="modalbox-go-btn" onclick="solve($('#a-equation').val(), $('#b-equation').val(), $('#c-equation').val());"><i class="fa-solid fa-pencil"></i> Résoudre</a>
+					<a id="compute-btn-id" class="modalbox-go-btn" onclick="solve($('#a-equation').val(), $('#b-equation').val(), $('#c-equation').val());"><i class="fa-solid fa-pencil"></i> Résoudre</a>
 				</div>
 			</div>
 		</div>
@@ -231,7 +215,7 @@
 
 			if ($(window).width() <= 1024) {
 
-				$(".modalbox-go-btn").html('<i class="fa-solid fa-pencil"></i>');
+				$("#compute-btn-id").html('<i class="fa-solid fa-pencil"></i>');
 
 				$("#calculate-btn-id").html('<i class="fa-solid fa-pencil"></i>');
 

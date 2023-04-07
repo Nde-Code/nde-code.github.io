@@ -24,22 +24,6 @@
 		background: #4690F2;
 	}
 
-	.modalbox-go-btn {
-		color: white;
-		font-size: 20px;
-		border-radius: 50px;
-		background: #005DD9;
-		transition: all 0.2s ease-out 0s;
-		font-weight: bold;
-		border: 4px solid #0047A6;
-		padding: 15px 31px;
-		cursor: pointer;
-	}
-
-	.modalbox-go-btn:hover {
-		background: #4690F2;
-	}
-
 	.another-create-graph-btn {
 		font-size: 20px;
 		border-radius: 50px;
@@ -374,7 +358,7 @@
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
+					<a id="plot-btn-id" class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
 				</div>
 	
 			</div>
@@ -401,7 +385,7 @@
 
 			if ($(window).width() <= 1024 && inLoading === false) {
 
-				$(".modalbox-go-btn").html('<i class="fa-solid fa-pencil"></i>');
+				$("#plot-btn-id").html('<i class="fa-solid fa-pencil"></i>');
 
 			}
 
@@ -445,7 +429,7 @@
 
 				$("#options-3d-surface-graph").css('display', "none");
 				
-				$(".modalbox-go-btn").attr("onclick", "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#params-color-scale-id').val())")
+				$("#plot-btn-id").attr("onclick", "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#params-color-scale-id').val())")
 			
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 				
@@ -459,7 +443,7 @@
 
 				$("#options-3d-parametric-graph").css('display', "none");
 				
-				$(".modalbox-go-btn").attr("onclick", "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val(), $('#display-range-surface-id').val())")
+				$("#plot-btn-id").attr("onclick", "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val(), $('#display-range-surface-id').val())")
 				
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 				
@@ -473,7 +457,7 @@
 
 				$("#options-3d-surface-graph").css('display', "none");
 
-				$(".modalbox-go-btn").attr("onclick", `functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());`)
+				$("#plot-btn-id").attr("onclick", `functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());`)
 			
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 			
