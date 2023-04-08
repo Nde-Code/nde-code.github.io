@@ -167,7 +167,7 @@
 			</div>
 			<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
 			<div class="website-bottom-menu">
-				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0);"><i class="fa-solid fa-pencil"></i> Tracer un graphique</a>
+				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0);"><i class="fa-solid fa-chart-line"></i> Tracer un graphique</a>
 			</div>
 			<div style="margin-top: 20px;" class="foot-page">
 				<div class="main-footer-page">
@@ -187,7 +187,7 @@
 		</div>
 		<div class="modalbox-class" id="modalbox-graphing" style="display: none;">
 			<header class="modalbox-header-class" id="modalbox-header-id">
-				<i class="fa-solid fa-pencil"></i> Tracer
+				<i class="fa-solid fa-chart-line"></i> Tracer
 				<a class="modalbox-header-close" onclick="$('#modalbox-graphing').css('display', 'none');">
 					<i class="fa fa-times" aria-hidden="true"></i>
 				</a>
@@ -200,9 +200,9 @@
 				</div>
 
 				<select title="Type de graphique:" onchange="setPlotType();" id="graph-type-id" class="graph-type-class">
-					<option value="2d-function-graph">Classique d'une fonction de R dans R</option>
-					<option value="3d-surface">Surface jusqu'à R² dans R</option>
-					<option value="3d-parametric-graph">Paramétrique jusqu'à R² dans R³</option>
+					<option value="2d-function-graph">De R dans R</option>
+					<option value="3d-surface">De R² dans R</option>
+					<option value="3d-parametric-graph">De R² dans R³</option>
 				</select>
 
 				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
@@ -358,7 +358,7 @@
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="margin-bottom: 40px; text-align: center;">
-					<a id="plot-btn-id" class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
+					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-chart-line"></i> Tracer</a>
 				</div>
 	
 			</div>
@@ -377,7 +377,7 @@
 
 			if ($(window).width() <= 1024) {
 
-				$(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i>');
+				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i>');
 
 				$(".main-website-row-panel").css("paddingLeft", "unset");
 
@@ -385,7 +385,7 @@
 
 			if ($(window).width() <= 1024 && inLoading === false) {
 
-				$("#plot-btn-id").html('<i class="fa-solid fa-pencil"></i>');
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i>');
 
 			}
 
@@ -429,7 +429,7 @@
 
 				$("#options-3d-surface-graph").css('display', "none");
 				
-				$("#plot-btn-id").attr("onclick", "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#params-color-scale-id').val())")
+				$("#from-modalbox-create-id").attr("onclick", "parametricGraphing($('#param-equation-x').val(), $('#param-equation-y').val(), $('#param-equation-z').val(), $('#params-color-scale-id').val())")
 			
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 				
@@ -443,7 +443,7 @@
 
 				$("#options-3d-parametric-graph").css('display', "none");
 				
-				$("#plot-btn-id").attr("onclick", "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val(), $('#display-range-surface-id').val())")
+				$("#from-modalbox-create-id").attr("onclick", "surfaceGraphing($('#surface-function').val(), $('#surface-color-scale-id').val(), $('#display-range-surface-id').val())")
 				
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 				
@@ -457,7 +457,7 @@
 
 				$("#options-3d-surface-graph").css('display', "none");
 
-				$("#plot-btn-id").attr("onclick", `functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());`)
+				$("#from-modalbox-create-id").attr("onclick", `functionGraphing($('#graph-function').val(), $('#color-curve-id').val(), $('#display-range-curve-id').val());`)
 			
 				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 			
@@ -1148,7 +1148,7 @@
 
 							gridcolor: '#757375',
 
-							dtick: 2,
+							dtick: 4,
 
 							gridwidth: 1,
 
@@ -1278,9 +1278,9 @@
 
 			if ($(window).width() >= 1024) {
 
-				$(".another-create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Retracer un graphique');
+				$(".another-create-graph-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer un graphique');
 
-				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
 
 			}
 
@@ -1322,11 +1322,11 @@
 
 			if ($(window).width() >= 1024) {
 
-				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
 
 			} else {
 
-				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i>');
 
 			}
 
