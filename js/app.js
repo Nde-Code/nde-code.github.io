@@ -22,9 +22,9 @@ function openContactBox() {
 
                 <div class="modalbox-text-contenaire">
                     <h2>Règles à respecter:</h2>
-                    <p class="modalbox-description"><i class="fas fa-check" style="color: green;"></i> Vous pouvez me contacter pour des questions pertinentes mais aussi pour des explications du fonctionnement ou du code de mes projets. Il est également et certainement permis de me rapporter des problèmes en rapport avec mon site ou mes projets.</p>
+                    <p class="modalbox-description"><i class="fas fa-check" style="color: green;"></i> Vous pouvez me contacter pour des questions pertinentes mais aussi pour des explications sur le fonctionnement ou sur le code de mes projets. Il est également et certainement permis de me rapporter des problèmes en rapport avec mon site ou mes projets.</p>
                     <p class="modalbox-description"><i class="fas fa-times" style="color: red;"></i> Hors de question de me contacter pour des bêtises ou des tentatives néfastes à mon égard. Les mails sans la moindre des politesses ou écrit avec un vocabulaire inadéquat ne seront même pas lus. Le spam est également proscrit !</p>
-                    <p class="modalbox-description"><i class="fas fa-exclamation-triangle" style="color: orange;"></i> Vous pouvez m'écrire en français, anglais et éventuellement dans un néerlandais assez simple. Fait également attention à l'orthographe et aux mots utilisés dans vos demandes...</p>
+                    <p class="modalbox-description"><i class="fas fa-exclamation-triangle" style="color: orange;"></i> Vous pouvez m'écrire en français, anglais et éventuellement dans un néerlandais assez simple. </p>
                 </div>
 
                 <div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
