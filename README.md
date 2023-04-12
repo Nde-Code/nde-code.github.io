@@ -8,8 +8,6 @@
 
   - Font Awesome: https://fontawesome.com/
 
-  - FileSaver: https://github.com/eligrey/FileSaver.js/
-
   - JQuery: https://jquery.com/
   
   - Math.js: https://mathjs.org/

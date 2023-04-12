@@ -64,7 +64,6 @@ function openAboutBox() {
                     <p class="modalbox-description"> · Github Pages: <a href="https://nde-code.github.io/" class="link-btn">https://nde-code.github.io/</a></p>
                     <h2>Librairies utilisées:</h2>
                     <p class="modalbox-description"> · Font Awesome: <a href="https://fontawesome.com/" class="link-btn">https://fontawesome.com/</a></p>
-                    <p class="modalbox-description"> · FileSaver: <a href="https://github.com/eligrey/FileSaver.js/" class="link-btn">https://github.com/eligrey/FileSaver.js/</a></p>
                     <p class="modalbox-description"> · JQuery: <a href="https://jquery.com/" class="link-btn">https://jquery.com/</a></p>
                     <p class="modalbox-description"> · Math.js: <a href="https://mathjs.org/" class="link-btn">https://mathjs.org/</a></p>
                     <p class="modalbox-description"> · Plotly: <a href="https://plotly.com/javascript/" class="link-btn">https://plotly.com/javascript/</a></p>
