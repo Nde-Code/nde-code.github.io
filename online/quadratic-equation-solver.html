@@ -32,7 +32,7 @@
 
 	#equation-plot-id {
 		color: #005DD9;
-		font-size: 26px;
+		font-size: 22px;
 		font-style: italic;
 		font-weight: bold;
 	}
@@ -45,7 +45,7 @@
 	}
 
 	.result-text {
-		font-size: 16px;
+		font-size: 20px;
 		font-weight: bold;
 		color: #005DD9;
 		margin-top: 10px;
@@ -179,7 +179,7 @@
 				</div>
 				<input type="text" inputmode="numeric" id="a-equation" class="modalbox-input" placeholder="A:"> 
 
-				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				<div class="modalbox-text-contenaire">
 					<h2>Le B de votre équation:</h2>
@@ -187,7 +187,7 @@
 				</div>
 				<input type="text" inputmode="numeric" id="b-equation" class="modalbox-input" placeholder="B:">
 
-				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				<div class="modalbox-text-contenaire">
 					<h2>Le C de votre équation:</h2>
@@ -195,7 +195,7 @@
 				</div>
 				<input type="text" inputmode="numeric" id="c-equation" class="modalbox-input" placeholder="C:">
 
-				<div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
@@ -251,112 +251,42 @@
 
 				numb = " - " + math.abs(numb)
 
-			} 
-
-			else if (numb >= 0 && charTag !== "a") {
+			} else if (numb >= 0 && charTag !== "a") {
 
 				numb = " + " + numb
 
-			} 
-
-			else if (numb >= 0 && charTag === "a") {
+			} else if (numb >= 0 && charTag === "a") {
 
 				numb = numb
 
-			}
-
-			else {
+			} else {
 
 				let complexNumber = math.complex(numb);
 
 				if (complexNumber.re === 0 && complexNumber.im !== 0 && charTag !== "a") {
 
-					if (complexNumber.im === 1) {
-
-						numb = "+ i"
-
-					} 
-					
-					else if (complexNumber.im === -1) {
-
-						numb = "- i"
-
-					}
-					
-					else {
-
-						if (charTag === "c" && complexNumber.im > 0) {
-
-							numb = "+ "+complexNumber.im+"i"
-
-						} else {
-
-							numb = "- "+math.abs(complexNumber.im)+"i"
-
-						}
-
-					}
-
-				}
-
-				else if (complexNumber.re > 0 && complexNumber.im === 0 && charTag !== "a") {
-
-					numb = "+ "+complexNumber.re
-
-				}
-
-				else if (complexNumber.re > 0 && complexNumber.im === 0 && charTag === "a") {
-
-					numb = complexNumber.re
-
-				}
-
-				else if (complexNumber.re < 0 && complexNumber.im === 0) {
-
-					numb = "- "+math.abs(complexNumber.re)
-
-				}
-
-				else if (complexNumber.re === 0 && complexNumber.im === 0) {
-
-					numb = " + 0" 
-
-				}
-
-				else if (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag !== "a") {
-
-					numb = " + ("+numb+")"
-
-				} 
+					numb = (complexNumber.im === 1) ? "+ i" : (complexNumber.im === -1) ? "- i" : (charTag === "c" && complexNumber.im > 0) ? "+ " + complexNumber.im + "i" : "- " + math.abs(complexNumber.im) + "i"
 				
-				else {
+				} else if (complexNumber.re > 0 && complexNumber.im === 0) {
 
-					if (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag === "a") {
+					numb = (charTag !== "a") ? "+ " + complexNumber.re : complexNumber.re
 
-						numb = "("+numb+")"
-					
-					} else {
+				} else if (complexNumber.re < 0 && complexNumber.im === 0) {
 
-						if (complexNumber.im === 1) {
+					numb = "- " + math.abs(complexNumber.re)
 
-							numb = "i"
+				} else if (complexNumber.re === 0 && complexNumber.im === 0) {
 
-						} 
+					numb = " + 0"
 
-						else if (complexNumber.im === -1) {
+				} else if (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag !== "a") {
 
-							numb = "- i"
+					numb = " + (" + numb + ")"
 
-						}
+				} else {
 
-						else {
-
-							numb = complexNumber.im+"i"
-
-						}
-
-					}
-
+					numb = (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag === "a") ? "(" + numb + ")" : (complexNumber.im === 1) ? "i" : (complexNumber.im === -1) ? "- i" : complexNumber.im + "i"
+				
 				}
 
 			}

@@ -27,7 +27,7 @@ function openContactBox() {
                     <p class="modalbox-description"><i class="fas fa-exclamation-triangle" style="color: orange;"></i> Vous pouvez m'écrire en français, anglais et éventuellement dans un néerlandais assez simple. </p>
                 </div>
 
-                <div class="white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+                <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
                 <div style="margin-bottom: 40px; text-align: center;">
                     <a title="Mon adresse mail:" onclick="$('#modalbox-contact').remove(); isOpenContactBox = false;" class="modalbox-go-btn" id="contact-btn-id"><i class="fa-solid fa-envelope"></i> nathan.debilloez@outlook.com</a>
@@ -59,24 +59,24 @@ function openAboutBox() {
             <div class="modalbox-main-content">
 
                 <div class="modalbox-text-contenaire">
-                    <h2>Lien disponible: </h2>
-                    <p class="modalbox-description"> · Azure: <a href="https://nathande.azurewebsites.net/" class="link-btn">https://nathande.azurewebsites.net/</a></p>
-                    <p class="modalbox-description"> · Github Pages: <a href="https://nde-code.github.io/" class="link-btn">https://nde-code.github.io/</a></p>
                     <h2>Librairies utilisées:</h2>
-                    <p class="modalbox-description"> · Font Awesome: <a href="https://fontawesome.com/" class="link-btn">https://fontawesome.com/</a></p>
-                    <p class="modalbox-description"> · JQuery: <a href="https://jquery.com/" class="link-btn">https://jquery.com/</a></p>
-                    <p class="modalbox-description"> · Math.js: <a href="https://mathjs.org/" class="link-btn">https://mathjs.org/</a></p>
-                    <p class="modalbox-description"> · Plotly: <a href="https://plotly.com/javascript/" class="link-btn">https://plotly.com/javascript/</a></p>
+                    <p class="modalbox-description"><strong> · Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
+                    <p class="modalbox-description"><strong> · JQuery:</strong> pour une gestion plus éfficace du DOM Javascript. </p>
+                    <p class="modalbox-description"><strong> · Math.js:</strong> pour les outils mathématiques dans mes projets. </p>
+                    <p class="modalbox-description"><strong> · Plotly:</strong> pour dessiner des graphiques dans le navigateur. </p>
+                    <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
                     <h2>Outils utilisés:</h2>
-                    <p class="modalbox-description"> · Visual Studio Code: <a href="https://code.visualstudio.com/" class="link-btn">https://code.visualstudio.com/</a></p>
-                    <p class="modalbox-description"> · Canva: <a href="https://www.canva.com/" class="link-btn">https://www.canva.com/</a></p>
-                    <p class="modalbox-description"> · Pixlr: <a href="https://pixlr.com/fr/" class="link-btn">https://pixlr.com/fr/</a></p>
-                    <p class="modalbox-description"> · Getavataaars: <a href="https://getavataaars.com/" class="link-btn">https://getavataaars.com/</a></p>
+                    <p class="modalbox-description"><strong> · Visual Studio Code:</strong> pour rédiger et modifier le code de ce chaleureux site internet. </p>
+                    <p class="modalbox-description"><strong> · Canva:</strong> pour modifier et réaliser quelques graphismes. </p>
+                    <p class="modalbox-description"><strong> · Pixlr:</strong> pour retoucher les images.</p>
+                    <p class="modalbox-description"><strong> · Getavataaars:</strong> pour créer mon "favicon".</p>
+                    <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
                     <h2>Ressources utilisées:</h2>
-                    <p class="modalbox-description"> · Flaticon: <a href="https://www.flaticon.com/" class="link-btn">https://www.flaticon.com/</a></p>
-                    <p class="modalbox-description"> · Pixabay pour l'image de fond: <a href="https://pixabay.com/fr/illustrations/les-triangles-formes-la-forme-de-la-3334152/" class="link-btn">https://pixabay.com/</a></p>
+                    <p class="modalbox-description"><strong> · Flaticon:</strong> pour les différentes ressources utilisés dans mes projets. je renseigne toujours l'utilisation de ces graphismes dans les pieds de page ou dans un fichier README.Md. </p>
+                    <p class="modalbox-description"><strong> · Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
+                    <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
                     <h2>Licence:</h2>
-                    <p class="modalbox-description">GNU General Public License v3.0</p>
+                    <p class="modalbox-description"><strong>GNU General Public License v3.0</strong></p>
                 </div>
             </div>
         </div>`;
@@ -97,7 +97,7 @@ function detectES6() {
 
     }
 
-    catch (invalid) {
+    catch (err) {
 
         return false;
 
@@ -198,9 +198,9 @@ $(document).ready(function () {
             <div class="modalbox-main-content" style="text-align: center; overflow-y: hidden;">
     
                 <div class="modalbox-text-contenaire">
-                    <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 200px; color: #FF941A;"></i>
+                    <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 240px; color: #FF941A;"></i>
                     <h2>Navigateur incompatible:</h2>
-                    <p class="modalbox-description"> Impossible d'interpréter le code Javascript ! Il est temps de changer de navigateur... </p>
+                    <p class="modalbox-description"> Impossible d'interpréter le code Javascript ! </p>
                 </div>
     
             </div>

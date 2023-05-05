@@ -1,9 +1,3 @@
-# Lien disponible:
-
-- ### Microsoft Azure: https://nathande.azurewebsites.net/
-
-- ### Github Pages: https://nde-code.github.io/
-
 # Librairies utilisées:
 
   - Font Awesome: https://fontawesome.com/
