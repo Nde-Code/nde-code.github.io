@@ -131,7 +131,7 @@
 			<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
 			<div class="main-website-panel" id="main-website-content-id">
 				<div class="main-website-row-panel" style="padding-left: 7px;">
-					<div class="main-website-panel-style">
+					<div class="main-website-panel-style" style="overflow-y: hidden;">
 						<div class="center-elements">
 							<img class="robot-img" src="../assets/robot.png" alt="Robot">
 							<h1 id="software-subtitle-id" style="margin-top: 30px; color: white; font-weight: bold; font-size: 24px;">Logiciel résolveur d'équation du type: </h1>
@@ -220,6 +220,8 @@
 				$("#calculate-btn-id").html('<i class="fa-solid fa-terminal"></i>');
 
 				$(".main-website-row-panel").css("paddingLeft", "unset");
+
+				$(".main-website-panel-style").css("overflowY", "auto");
 
 			}
 
