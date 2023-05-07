@@ -116,11 +116,11 @@ p.footer-page-text a.footer-page-link {
 }
 
 .modalbox-white-lines {
-    height: 3px;
-    margin-left: 25%;
-    margin-right: 25%;
-    background-color: gray;
-    border: 2px solid dimgray;
+    height: 4px;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #005DD9;
+    border: 4px solid #0047A6;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -154,7 +154,7 @@ p.footer-page-text a.footer-page-link {
 
 header.modalbox-header-class {
     padding: 20px;
-    background: #005DD9;
+    background: linear-gradient(to left top, #005DD9, #0047A6);
     color: white;
     font-weight: bold;
     font-size: 28px;
@@ -245,10 +245,10 @@ select,
 
 p.modalbox-errors-warnings-class {
     text-align: center;
-    font-size: 22px;
+    font-size: 24px;
     color: orange;
     font-weight: bold;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .modalbox-close-btn {
