@@ -24,23 +24,6 @@
 		background: #4690F2;
 	}
 
-	.another-create-graph-btn {
-		font-size: 20px;
-		border-radius: 50px;
-		color: white;
-		background: #038C0C;
-		transition: all 0.2s ease-out 0s;
-		font-weight: bold;
-		border: 4px solid #027313;
-		padding: 15px 31px;
-		cursor: pointer;
-		margin-left: 0.5%;
-	}
-
-	.another-create-graph-btn:hover {
-		background: #52BF04;
-	}
-
 	.js-plotly-plot .plotly .cursor-ns-resize {
 		cursor: default !important;
 	}
@@ -151,7 +134,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
+			<div class="white-lines" style="margin-left: 30%; margin-right: 30%; margin-top: 30px;"></div>
 			<div class="main-website-panel">
 				<div class="main-website-row-panel" style="padding-left: 7px;">
 					<div class="main-website-panel-style">
@@ -165,7 +148,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="white-lines" style="margin-left: 25%; margin-right: 25%; margin-top: 30px;"></div>
+			<div class="white-lines" style="margin-left: 30%; margin-right: 30%; margin-top: 30px;"></div>
 			<div class="website-bottom-menu">
 				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0);"><i class="fa-sharp fa-solid fa-pencil"></i> Esquisser un graphique</a>
 			</div>
@@ -196,7 +179,7 @@
 
 				<div class="modalbox-text-contenaire">
 					<h2>Type de graphique:</h2>
-					<p class="modalbox-description">Sélectionnez le type de fonction mathématique que vous désirez tracer. </p>
+					<p class="modalbox-description"> Pour tracer votre graphique, vous pouvez choisir parmi différents types de fonctions mathématiques. Sélectionnez simplement celle qui vous désirez. </p>
 				</div>
 
 				<select title="Type de graphique:" onchange="setPlotType();" id="graph-type-id" class="graph-type-class">
@@ -210,7 +193,8 @@
 	
 					<div class="modalbox-text-contenaire">
 						<h2>Votre fonction:</h2>
-						<p class="modalbox-description"> Entrez votre fonction en utilisant x comme variable. </p>
+						<p class="modalbox-description"> Entrez l'équation de votre fonction mathématique en utilisant la variable x.</p>
+						<p class="modalbox-description"><span class="quote-style"> "Il est important de respecter la syntaxe mathématique ainsi que d'utiliser les opérateurs et les fonctions appropriés pour exprimer votre fonction de manière claire et précise."</span></p>
 					</div>
 					<input id="graph-function" class="modalbox-input" placeholder="f(x):">
 
@@ -218,7 +202,8 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>Intérvalle d'affichage:</h2>
-						<p class="modalbox-description">Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction par apport à l'axe Y. </p>
+						<p class="modalbox-description"> Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction par apport à l'axe Y.</p>
+						<p class="modalbox-description"><span class="quote-style"> "Choisissez un intervalle qui met en évidence les caractéristiques de votre fonction et qui facilite sa visualisation."</span></p>
 					</div>
 	
 					<select title="Échelle de couleur:" id="display-range-curve-id">
@@ -244,7 +229,8 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>Votre fonction:</h2>
-						<p class="modalbox-description"> Entrez votre fonction en utilisant x et y comme variables. </p>
+						<p class="modalbox-description"> Entrez votre fonction en utilisant x et y comme variables.</p>
+						<p class="modalbox-description"><span class="quote-style"> "Il est important de respecter la syntaxe mathématique ainsi que d'utiliser les opérateurs et les fonctions appropriés pour exprimer votre fonction de manière claire et précise."</span></p>
 					</div>
 					<input id="surface-function" class="modalbox-input" placeholder="f(x, y):">
 						
@@ -252,7 +238,8 @@
 
 					<div class="modalbox-text-contenaire">
 						<h2>Intérvalle d'affichage:</h2>
-						<p class="modalbox-description">Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction par apport à l'axe Z. </p>
+						<p class="modalbox-description">Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction par apport à l'axe Z.</p>
+						<p class="modalbox-description"><span class="quote-style"> "Choisissez un intervalle qui met en évidence les caractéristiques de votre fonction et qui facilite sa visualisation."</span></p>
 					</div>
 	
 					<select title="Échelle de couleur:" id="display-range-surface-id">
@@ -440,7 +427,7 @@
 
 		function surfaceGraphing(funcXY, displayRange) {
 
-			if (isMathExpression(funcXY, "surface-3d") === false) {
+			if (isMathExpression(funcXY, "surface-3d") === false || !funcXY || isANumber(funcXY) === true) {
 
 				$("#modalbox-errors-warnings-id").html(inValidText);
 
@@ -448,11 +435,17 @@
 
 			}
 
-			else if(!funcXY || isANumber(funcXY) === true || hasOneVariable(funcXY) === true) {
+			else if (hasOneVariable(funcXY) === true) {
 
-				$("#modalbox-errors-warnings-id").html(inValidText);
+				functionGraphing(funcXY, displayRange);
 
-				return false;
+				$("#graph-type-id").val("2d-function-graph")
+
+				$("#graph-function").val(funcXY)
+
+				$("#surface-function").val("")
+
+				setPlotType()
 
 			}
 
@@ -882,8 +875,6 @@
 		function endOfLoadingData() {
 
 			$("#graph-contenaire").html('<div id="graphing-box"></div>');
-
-			$(".create-graph-btn").attr("class", "another-create-graph-btn");
 			
 			$("#modalbox-graphing").css("display", "none");
 			
@@ -901,7 +892,7 @@
 
 			if ($(window).width() >= 1024) {
 
-				$(".another-create-graph-btn").html('<i class="fa-sharp fa-solid fa-pencil"></i> Retracer un graphique');
+				$(".create-graph-btn").html('<i class="fa-sharp fa-solid fa-pencil"></i> Retracer un graphique');
 
 				$("#from-modalbox-create-id").html('<i class="fa-sharp fa-solid fa-pencil"></i> Esquisser');
 
