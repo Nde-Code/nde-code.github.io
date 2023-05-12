@@ -378,7 +378,7 @@
 				catch (err) {
 
 					return false;
-					
+
 			}
 
 		}
@@ -700,15 +700,7 @@
 
 		function functionGraphing(func, displayRg) {
 
-			if (isMathExpression(func, "function-2d") === false) {
-
-				$("#modalbox-errors-warnings-id").html(inValidText);
-
-				return false;
-
-			}
-
-			else if (!func || hasOneVariable(func) === false) {
+			if (isMathExpression(func, "function-2d") === false || !func || hasOneVariable(func) === false) {
 
 				$("#modalbox-errors-warnings-id").html(inValidText);
 
