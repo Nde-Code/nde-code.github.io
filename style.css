@@ -163,6 +163,8 @@ header.modalbox-header-class {
 .modalbox-main-content {
     overflow-y: scroll;
     height: 450px;
+    /* Maquer la "scrollbar" sur Firefox. */
+    scrollbar-width: none;
 }
 
 .modalbox-main-content::-webkit-scrollbar {
