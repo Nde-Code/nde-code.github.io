@@ -378,7 +378,7 @@
 				catch (err) {
 
 					return false;
-
+					
 			}
 
 		}
@@ -427,25 +427,11 @@
 
 		function surfaceGraphing(funcXY, displayRange) {
 
-			if (isMathExpression(funcXY, "surface-3d") === false || !funcXY || isANumber(funcXY) === true) {
+			if (isMathExpression(funcXY, "surface-3d") === false || !funcXY || isANumber(funcXY) === true || hasOneVariable(funcXY) === true) {
 
 				$("#modalbox-errors-warnings-id").html(inValidText);
 
 				return false;
-
-			}
-
-			else if (hasOneVariable(funcXY) === true) {
-
-				functionGraphing(funcXY, displayRange);
-
-				$("#graph-type-id").val("2d-function-graph")
-
-				$("#graph-function").val(funcXY)
-
-				$("#surface-function").val("")
-
-				setPlotType()
 
 			}
 
