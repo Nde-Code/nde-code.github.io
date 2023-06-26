@@ -207,7 +207,7 @@
 					</div>
 	
 					<select title="Échelle de couleur:" id="display-range-curve-id">
-						<option value="false">Automatique</option>
+						<option value="[-2, 2]">[-2, 2]</option>
 						<option value="[-5, 5]">[-5, 5]</option>
 						<option value="[-10, 10]">[-10, 10]</option>
 						<option value="[-20, 20]">[-20, 20]</option>
@@ -243,7 +243,7 @@
 					</div>
 	
 					<select title="Échelle de couleur:" id="display-range-surface-id">
-						<option value="false">Automatique</option>
+						<option value="[-2, 2]">[-2, 2]</option>
 						<option value="[-5, 5]">[-5, 5]</option>
 						<option value="[-10, 10]">[-10, 10]</option>
 						<option value="[-20, 20]">[-20, 20]</option>
@@ -452,7 +452,7 @@
 					try {
 
 						// Merci: https://stackoverflow.com/questions/65659892/plotly-js-surface-plot-data-formatting
-						for(x = -10; x < 10; x += 0.05) {
+						for(x = -10; x < 10; x += 0.25) {
 
 							let xPointsLine = [];
 							
@@ -460,7 +460,7 @@
 							
 							let zPointsLine = [];
 
-							for (y = -10; y < 10; y += 0.05) {
+							for (y = -10; y < 10; y += 0.25) {
 
 								xPointsLine.push(x);
 
@@ -505,6 +505,8 @@
 						showscale: false,
 
 						type: 'surface',
+
+						lighting: { ambient: 1 },
 
 						colorscale: surfaceColor[Math.floor(Math.random() * surfaceColor.length)],
 
@@ -748,7 +750,7 @@
 
 							gridcolor: '#757375',
 
-							dtick: 4,
+							dtick: 2,
 
 							gridwidth: 1,
 
@@ -758,7 +760,7 @@
 
 							zerolinewidth: 0.8,
 
-							range: [-16, 16],
+							range: [-10, 10],
 
 							title: 'X',
 
@@ -794,7 +796,7 @@
 
 					try {
 
-						for(var x = -16; x < 16; x += 0.003){
+						for(var x = -10; x < 10; x += 0.001){
 
 							xPoints.push(x);
 
