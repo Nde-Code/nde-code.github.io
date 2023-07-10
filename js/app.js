@@ -30,7 +30,7 @@ function openContactBox() {
                 <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
                 <div style="margin-bottom: 40px; text-align: center;">
-                    <a title="Mon adresse mail:" onclick="$('#modalbox-contact').remove(); isOpenContactBox = false;" class="modalbox-go-btn" id="contact-btn-id"><i class="fa-solid fa-envelope"></i> nathan.debilloez@outlook.com</a>
+                    <a href="mailto:nathan.debilloez@outlook.com" onclick="$('#modalbox-contact').remove(); isOpenContactBox = false;" class="modalbox-go-btn" id="contact-btn-id"><i class="fa-solid fa-envelope"></i> nathan.debilloez@outlook.com</a>
                 </div>
                 
             </div>

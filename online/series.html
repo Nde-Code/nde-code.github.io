@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<style>
+	.center-elements {
+		text-align: center;
+	}
+
+	.robot-img {
+		width: 220px;
+		height: 220px;
+	}
+
+	@media screen and (max-width: 768px) {
+		.robot-img {
+			width: 180px;
+			height: 180px;
+		}
+	}
+
+	.calculate-series-btn {
+		padding: 15px 31px;
+		color: #fff;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #005DD9;
+		transition: all .2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0047A6;
+		cursor: pointer;
+		margin: 8px;
+	}
+
+	.calculate-series-btn:hover {
+		background: #4690F2;
+	}
+
+	.converge-btn {
+		padding: 15px 31px;
+		color: #fff;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #00C853; 
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #00A64F; 
+		cursor: pointer;
+		margin: 8px;
+	}
+
+	.converge-btn:hover {
+		background: #64DD17;
+	}
+
+	.diverge-btn {
+		padding: 15px 31px;
+		color: #fff;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #FF1744; 
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #D50000; 
+		cursor: pointer;
+		margin: 8px;
+	}
+
+	.diverge-btn:hover {
+		background: #FF5252;
+	}
+
+	.js-plotly-plot .plotly .cursor-ns-resize {
+		cursor: default !important;
+	}
+
+	.js-plotly-plot .plotly .cursor-s-resize {
+		cursor: default !important;
+	}
+
+	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
+	.rotate-animation {
+		-webkit-animation: spin 2s linear infinite;
+    	-moz-animation: spin 2s linear infinite;
+    	animation: spin 2s linear infinite;
+	}
+
+	@-moz-keyframes spin { 
+    	100% { -moz-transform: rotate(360deg); } 
+	}
+
+	@-webkit-keyframes spin { 
+    	100% { -webkit-transform: rotate(360deg); } 
+	} 
+
+	@keyframes spin { 
+		100% { 
+			-webkit-transform: rotate(360deg); 
+			transform:rotate(360deg); 
+		} 
+	}
+
+	@media screen and (max-width: 319px) {
+		.converge-btn {
+			font-size: 14px;
+		}
+	}
+	</style>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Nathan Debilloëz · Projet</title>
+	<meta name="description" content="Une calculatrice de série numérique en ligne.">
+	<meta name="keywords" content="Nathan Debilloëz · Projet">
+	<meta name="author" content="Nathan Debilloëz">
+	<link rel="stylesheet" href="../style.css">
+	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../assets/favicon/manifest.json">
+	<meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+</head>
+
+<body class="main-body-class">
+    <div id="modalbox-open-div"></div>
+	<div id="main-elements-contenaire">
+		<div class="main-contenaire">
+			<div class="header-contenaire">
+				<div class="header-content">
+					<div class="menu-header">
+						<div class="mobile-menu">
+							<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+						</div>
+						<a href="/" class="menu-header-title"><strong>Nathan Debilloëz</strong></a>
+						<a onclick="openContactBox();" class="menu-item">Contact</a>
+						<a onclick="openAboutBox();" class="menu-item">À propos</a>
+						<div class="menu-dropdown">
+							<button class="menu-dropdown-btn">Tutoriels
+								<i class="fa fa-caret-down"></i>
+							</button>
+							<div class="menu-dropdown-items">
+								<!-- Bientôt -->
+							</div>
+						</div>
+						<div class="menu-dropdown">
+							<button class="menu-dropdown-btn">Projets
+								<i class="fa fa-caret-down"></i>
+							</button>
+							<div class="menu-dropdown-items">
+                                <a href="series">Calculer une série numérique</a>
+								<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
+								<a href="math-graphing">Traceur de fonction mathématique</a>
+								<a href="pinwheel">Jouer avec un moulin à vent</a>
+								<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
+								<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="white-lines" style="margin-left: 30%; margin-right: 30%; margin-top: 30px;"></div>
+			<div class="main-website-panel" id="main-website-content-id">
+				<div class="main-website-row-panel" style="padding-left: 7px;">
+					<div class="main-website-panel-style">
+						<div class="center-elements" id="graph-contenaire">
+							<img class="robot-img" src="../assets/robot.png" alt="Robot">
+							<h1 id="software-subtitle-id" style="margin-top: 20px; color: white; font-size: 24px; font-weight: bold;">Logiciel de calcul de série numérique:</h1>
+							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide et relativement précis.</p>
+							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui n'affiche pas le développement du calcule. </p>
+							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit les réponses à 4 chiffres après la virgule. Les valeurs calculées sont obtenues par approximation.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+            <div class="white-lines" style="margin-left: 30%; margin-right: 30%; margin-top: 30px;"></div>
+			<div class="website-bottom-menu">
+				<a onclick="$('#modalbox-series').css('display', 'block'); window.scrollTo(0, 0);" class="calculate-series-btn"><i class="fa-solid fa-infinity"></i> Calculer une série</a>
+			</div>
+			<div style="margin-top: 20px;" class="foot-page">
+				<div class="main-footer-page">
+					<div class="social-media">
+						<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
+						<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
+						<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
+					</div>
+					<div class="copyright-notice">
+						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+						<p class="footer-page-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="footer-page-link">Flaticon</a>.</p>
+						<p class="footer-page-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
+						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modalbox-class" id="modalbox-series" style="display: none;">
+			<header class="modalbox-header-class" id="modalbox-header-id">
+				<i class="fa-solid fa-infinity"></i> Calculer
+				<a class="modalbox-header-close" onclick="$('#modalbox-series').css('display', 'none');">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</a>
+			</header>
+			<div class="modalbox-main-content">
+
+				<div class="modalbox-text-contenaire">
+					<h2>Exemples:</h2>
+					<p class="modalbox-description"> Sélectionnez une série pour pouvoir voir le logiciel en fonctionnement sans avoir à effectuer de saisie. </p>
+				</div>
+
+				<select title="Exemples:" id="example" onchange="loadExample($('#example').val())">
+					<option value="-1"> Aucun </option>
+					<option value="0"> 1/n^3 </option>
+					<option value="1"> 1/2^n </option>
+					<option value="2"> 1/n </option>
+					<option value="3"> (-1)^n+1 </option>
+					<option value="4"> ((-1)^n)/n </option>
+					<option value="5"> sin(1/n) </option>
+					<option value="6"> (2+sin(n))/3^n </option>
+					<option value="7"> (-n^4+2*n^2+1)/(2*n^7-3*n^4-n+1) </option>
+				</select>
+
+				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+				
+				<div class="modalbox-text-contenaire">
+					<h2>Votre suite numérique:</h2>
+					<p class="modalbox-description"> Entrez la suite numérique U<sub>n</sub> à sommer. Utilisez n comme variable. </p>
+					<p class="modalbox-description"><span class="quote-style"> > Il est important de respecter la syntaxe mathématique ainsi que d'utiliser les opérateurs appropriés.</span></p>
+				</div>
+				<input type="text" inputmode="numeric" id="numeric-sequence" class="modalbox-input" placeholder="Un:"> 
+
+				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<div class="modalbox-text-contenaire">
+					<h2>Limite inférieur:</h2>
+					<p class="modalbox-description"> Entrez l'indice de sommation à partir duquel la série doit commencer à sommer. Seuls 0 et 1 sont acceptés.</p>
+					<p class="modalbox-description"><span class="quote-style"> > Veillez aux conditions d'existence de la série saisie. Le résultat obtenu dépend de cet indice de sommation !</span></p>
+				</div>
+				<input type="text" inputmode="numeric" id="start-index" class="modalbox-input" placeholder="n:">
+
+				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<div class="modalbox-text-contenaire">
+					<h2>Modes:</h2>
+					<p class="modalbox-description"> Sélectionnez le type de graphique que vous désirez avoir pour visualiser la progression de la suite et série numérique que vous avez saisie. </p>
+				</div>
+
+				<select title="Exemples:" id="graph-mode">
+					<option value="markers"> Points </option>
+					<option value="lines+markers"> Points avec lignes </option>
+				</select>
+
+				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<div class="modalbox-text-contenaire">
+					<h2>Légende des résultats:</h2>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Points sur le graphique qui indiquent l'évolution de la série numérique.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: gold;"></i> Points sur le graphique qui indiquent l'évolution de la suite numérique.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle-check" style="font-size: 18px; color: #00C853;"></i> Indique que la série saisie est convergente + le nombre (arrondi à 4 décimal après la virgule) vers lequel elle converge.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle-xmark" style="font-size: 18px; color: #FF1744;"></i> Indique que la série saisie est divergente.</p>
+				</div>
+
+				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
+
+				<div style="margin-bottom: 40px; text-align: center;">
+					<a class="modalbox-go-btn" onclick="runAction($('#start-index').val(), $('#numeric-sequence').val(), $('#graph-mode').val());" id="from-modalbox-compute-id"><i class="fa-solid fa-infinity"></i> Calculer</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery.js"></script>
+    <script src="../js/app.js"></script>
+	<script src="../js/math.js"></script>
+	<script src="../js/plotly.js"></script>
+    <script> 
+		var epsilon = 1 / Math.pow(10, 10); 
+
+		var tryEpsilon = 1 / Math.pow(10, 9); 
+
+		var variationEpsilon = 0.001; 
+
+		var runningSate = false;
+
+		var graphRange = 10
+
+		function runAction(index, un, mode) {
+
+			if (!un || isMathExpression(un) === false || isANumber(un) === true) {
+
+				$("#modalbox-errors-warnings-id").html("L'expression de votre suite numérique est invalide !");
+
+				return false;
+
+			}
+
+			else if (!Number.isInteger(Number(index)) || Number(index) > 1 || Number(index) < 0 || !index) {
+
+				$("#modalbox-errors-warnings-id").html("L'indice de sommation est invalide !");
+
+				return false;
+
+			}
+
+			else {
+
+				generateDataBtn();
+
+				setTimeout(() => {
+
+					let mainVal = getConvergence(un, index, epsilon);
+
+					if (mainVal === Infinity || mainVal === -Infinity || isNaN(mainVal) === true) {
+
+						cancel();
+	
+						$("#modalbox-errors-warnings-id").html("La série saisie tend vers une valeur qui n'est pas prise en charge par le logiciel !");
+
+						return false
+
+					} else {
+
+						let subVal = getConvergence(un, index, tryEpsilon)
+	
+						let isSeriesConvergente = isConvergente(mainVal, subVal);
+	
+						makeHTMLResponse(math.round(mainVal, 4), isSeriesConvergente, index, un, mode)
+
+					}
+							
+				}, 2000)
+
+			}
+
+		}
+
+		setInterval(function () {
+
+			if ($(window).width() <= 1024 && runningSate !== true) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
+
+			if ($(window).width() <= 1024) {
+
+				$(".main-website-row-panel").css("paddingLeft", "unset");
+
+				$(".calculate-series-btn").html('<i class="fa-solid fa-infinity"></i>');
+
+			}
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-series").css('marginLeft', 'unset');
+
+				$("#modalbox-series").css('left', 'unset');
+
+				$("#modalbox-series").css('width', Math.round(window.innerWidth - 10) + "px");
+
+			}
+
+		}, 500);
+
+		function generateDataBtn() {
+
+			runningSate = true;
+
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...")
+
+			$("#from-modalbox-compute-id").attr('onclick', '');
+
+			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...'); 
+			
+			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+
+		}
+
+		function getConvergence(un, index, eps) {
+
+			let sum = 0;
+
+            let term = 1;
+
+            let n = Number(index);
+
+            let seconds = 1;
+
+            let startTime = Date.now();
+
+            while (Math.abs(term) >= eps) {
+
+                term = math.compile(un.toLowerCase()).evaluate({ n: n });
+
+                sum += term;
+
+                n++;
+
+                if ((Date.now() - startTime) / 1000 >= seconds) {
+
+                    break;
+
+                }
+
+            }
+
+            return sum;
+
+        }
+		
+		function isConvergente(mainValue, subValue) {
+
+			let diffVal = math.abs(mainValue - subValue);
+
+			if (diffVal === 0 && Number.isInteger(mainValue) === false && Number.isInteger(subValue) === false && mainValue === subValue) return "converge";
+
+			if (diffVal >= variationEpsilon || isNaN(diffVal) || diffVal === 0) return "diverge";				
+
+			else return "converge";
+
+		}
+
+		function isMathExpression(seriesExpr) {
+
+			try {
+
+				let responseVal = math.evaluate(seriesExpr.toLowerCase(), { n: 1 });
+
+				if (math.typeOf(responseVal) === 'Complex') return false;
+
+				else return true;
+				
+			} catch (err) {
+				
+				return false;
+
+			}
+
+		}
+
+		function isANumber(nbr) {
+
+			let success = true;
+
+			try {
+
+				math.typeOf(math.evaluate(nbr));
+
+			} catch(err) {
+
+				success = false
+
+			} finally {
+
+				return success;
+
+			}
+
+		}
+
+		function seriesGraph(un, index) {
+
+			let xSeries = []
+
+			let ySeries = []
+
+			let sum = 0
+
+			for (var i = Number(index); i < (graphRange + Number(index)); i++) {
+
+				xSeries.push(i)
+				
+				sum += math.compile(un.toLowerCase()).evaluate({n : i})
+
+				ySeries.push(sum);
+
+			}
+
+			return [xSeries, ySeries]
+
+		}
+
+		function sequenceGraph(un, index) {
+
+			let sequenceX = [];
+
+			let sequenceY = []
+
+			for (var y = 1; y < (graphRange + Number(index)); y++) {
+
+				sequenceX.push(y)
+
+				sequenceY.push(math.compile(un.toLowerCase()).evaluate({n : y}))
+
+			}
+
+			return [sequenceX, sequenceY]
+
+		}
+
+		function makeHTMLResponse(seriesSum, convergence, index, un, mode) {
+
+			let graphSeriesPoints = seriesGraph(un, index)
+			
+			let graphSequencePoints = sequenceGraph(un, index)
+
+			makeConvergenceBtn(convergence, seriesSum)
+
+			$("#modalbox-series").css("display", "none");
+
+			cancel();
+
+			const series = {
+
+				x: graphSeriesPoints[0],
+
+				y: graphSeriesPoints[1],
+
+				mode: mode,
+
+				type: 'scatter',
+
+				marker: {
+
+					color: '#005DD9', 
+
+					size: 8, 
+
+					line: {
+
+						color: '#0047A6',
+
+						width: 2,
+
+						dash: 'solid',
+
+					},
+
+  				},
+
+			};
+
+			const sequence = {
+
+				x: graphSequencePoints[0],
+
+				y: graphSequencePoints[1],
+
+				mode: mode,
+
+				type: 'scatter',
+
+				marker: {
+
+					color: 'gold', 
+
+					size: 8, 
+
+					line: {
+
+						color: 'goldenrod',
+
+						width: 2,
+
+						dash: 'solid',
+
+    				},
+
+				},
+
+			};
+
+			const data = [series, sequence];
+
+			var layout = {
+
+				displayModeBar: false,
+
+				hovermode: false,
+
+				showlegend: false,
+
+				plot_bgcolor: "transparent",
+
+				paper_bgcolor: "transparent",
+
+				height: 490,
+
+				margin: {
+
+					l: 10,
+
+					r: 10,
+						
+					b: 10,
+						
+					t: 10,
+						
+					pad: 5
+					
+				},
+
+				xaxis: {
+
+					color: 'white',
+
+					gridcolor: 'grey',
+
+					dtick: 1,
+
+					gridwidth: 1,
+
+					zerolinecolor: 'white',
+
+					automargin: true,
+
+					zerolinewidth: 0.8,
+
+					range: [-0.5, 10.5],
+
+					title: {
+					
+						text: 'n',
+
+						font: {
+
+							size: 18,
+
+							weight: 'bold'
+
+						}
+
+					},
+
+					fixedrange: true
+
+				},
+
+				yaxis: {
+						
+					color: 'white',
+
+					gridcolor: 'grey',
+
+					gridwidth: 1,
+
+					zerolinecolor: 'white',
+
+					zerolinewidth: 0.8,
+
+					automargin: true,
+
+					title: {
+
+						standoff: 10,
+						
+						text: 'U<sub>n</sub>',
+
+						font: {
+
+							size: 18,
+
+							weight: 'bold'
+
+						}
+
+					},
+
+					autorange: true,
+
+				}
+
+			}
+
+			$("#graph-contenaire").html('<div id="graphing-box"></div>');
+
+			Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
+
+			window.scrollTo(0, 0);
+
+		}
+
+		function loadExample(val) {
+
+			let unArr = ['1/n^3', '1/2^n', '1/n', '(-1)^n+1', '((-1)^n)/n', 'sin(1/n)', '(2+sin(n))/3^n', '(-n^4+2*n^2+1)/(2*n^7-3*n^4-n+1)'];
+
+			let indexArr = ["1", "0", "1", "0", "1", "1", "1", "0"];
+			
+			if (val === -1) return;				
+
+			else {
+
+				$('#numeric-sequence').val(unArr[val])
+
+				$('#start-index').val(indexArr[val])
+
+			}
+
+		}
+
+		function cancel() {
+
+			$("#from-modalbox-compute-id").attr('onclick', `runAction($('#start-index').val(), $('#numeric-sequence').val(), $('#graph-mode').val());`);
+
+			$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
+
+			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i> Calculer');
+
+			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
+
+		}
+
+		function makeConvergenceBtn(val, sumVal) {
+
+			const convergeBtnExists = $(".website-bottom-menu .converge-btn").length > 0;
+
+			const divergeBtnExists = $(".website-bottom-menu .diverge-btn").length > 0;
+
+			if (convergeBtnExists) $(".website-bottom-menu .converge-btn").remove();
+
+			if (divergeBtnExists) $(".website-bottom-menu .diverge-btn").remove();
+
+			if (val === "converge" && $(window).width() >= 1024) $(".website-bottom-menu").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> Converge vers ${sumVal}</a>`);
+				
+			else if (val === "converge" && $(window).width() <= 1024) $(".website-bottom-menu").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> ${sumVal}</a>`);
+				
+			else if (val === "diverge" && $(window).width() >= 1024) $(".website-bottom-menu").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i> Série Divergente</a>`);
+
+			else $(".website-bottom-menu").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i></a>`);
+
+		}
+
+    </script>
+</body>
+
+</html>

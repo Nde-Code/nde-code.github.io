@@ -32,10 +32,6 @@
 		cursor: default !important;
 	}
 
-	div.plotly-notifier {
-  		display: none;
-	}
-
 	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
 	.rotate-animation {
 		-webkit-animation: spin 2s linear infinite;
@@ -75,7 +71,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Nathan Debilloëz · Logiciel</title>
 	<meta name="description" content="Un traceur de fonction mathématique en ligne.">
-	<meta name="keywords" content="Nathan Debilloëz · Site internet">
+	<meta name="keywords" content="Nathan Debilloëz · Projet">
 	<meta name="author" content="Nathan Debilloëz">
 	<link rel="stylesheet" href="../style.css">
 	<link rel="stylesheet" href="../assets/css/fontawesome.css">
@@ -124,6 +120,7 @@
 								<i class="fa fa-caret-down"></i>
 							</button>
 							<div class="menu-dropdown-items">
+								<a href="series">Calculer une série numérique</a>
 								<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
 								<a href="math-graphing">Traceur de fonction mathématique</a>
 								<a href="pinwheel">Jouer avec un moulin à vent</a>
@@ -150,7 +147,7 @@
 			</div>
 			<div class="white-lines" style="margin-left: 30%; margin-right: 30%; margin-top: 30px;"></div>
 			<div class="website-bottom-menu">
-				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0);"><i class="fa-sharp fa-solid fa-pencil"></i> Esquisser un graphique</a>
+				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0);"><i class="fa-solid fa-chart-line"></i> Tracer un graphique</a>
 			</div>
 			<div style="margin-top: 20px;" class="foot-page">
 				<div class="main-footer-page">
@@ -170,7 +167,7 @@
 		</div>
 		<div class="modalbox-class" id="modalbox-graphing" style="display: none;">
 			<header class="modalbox-header-class" id="modalbox-header-id">
-				<i class="fa-sharp fa-solid fa-pencil"></i> Esquisser
+				<i class="fa-solid fa-chart-line"></i> Tracer
 				<a class="modalbox-header-close" onclick="$('#modalbox-graphing').css('display', 'none');">
 					<i class="fa fa-times" aria-hidden="true"></i>
 				</a>
@@ -206,7 +203,7 @@
 						<p class="modalbox-description"><span class="quote-style"> > Choisissez un intervalle qui met bien en évidence votre fonction et qui facilite sa visualisation.</span> </p>
 					</div>
 	
-					<select title="Échelle de couleur:" id="display-range-curve-id">
+					<select title="Intérvalle d'affichage:" id="display-range-curve-id">
 						<option value="[-2, 2]">[-2, 2]</option>
 						<option value="[-5, 5]">[-5, 5]</option>
 						<option value="[-10, 10]">[-10, 10]</option>
@@ -242,7 +239,7 @@
 						<p class="modalbox-description"><span class="quote-style"> > Choisissez un intervalle qui met bien en évidence votre fonction et qui facilite sa visualisation.</span> </p>
 					</div>
 	
-					<select title="Échelle de couleur:" id="display-range-surface-id">
+					<select title="Intérvalle d'affichage:" id="display-range-surface-id">
 						<option value="[-2, 2]">[-2, 2]</option>
 						<option value="[-5, 5]">[-5, 5]</option>
 						<option value="[-10, 10]">[-10, 10]</option>
@@ -264,7 +261,7 @@
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());" id="from-modalbox-create-id"><i class="fa-sharp fa-solid fa-pencil"></i> Esquisser</a>
+					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-chart-line"></i> Tracer</a>
 				</div>
 	
 			</div>
@@ -277,7 +274,7 @@
     <script>
 		var inLoading = false;
 
-		var inValidText = "L'expression de votre fonction est invalide !";
+		var errorText = "L'expression de votre fonction est invalide !";
 
 		var functionColor = ["firebrick", "orange", "gold", "limegreen", "royalblue", "violet"]
 
@@ -287,17 +284,13 @@
 
 			if ($(window).width() <= 1024) {
 
-				$(".create-graph-btn").html('<i class="fa-sharp fa-solid fa-pencil"></i>');
+				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i>');
 
 				$(".main-website-row-panel").css("paddingLeft", "unset");
 
 			}
 
-			if ($(window).width() <= 1024 && inLoading === false) {
-
-				$("#from-modalbox-create-id").html('<i class="fa-sharp fa-solid fa-pencil"></i>');
-
-			}
+			if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i>');
 
 			if ($(window).width() <= 768) {
 
@@ -338,9 +331,7 @@
 				$("#options-function-graph").css('display', "none");
 				
 				$("#from-modalbox-create-id").attr("onclick", "surfaceGraphing($('#surface-function').val(), $('#display-range-surface-id').val())")
-				
-				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
-				
+								
 			}
 
 			else{
@@ -350,10 +341,10 @@
 				$("#options-3d-surface-graph").css('display', "none");
 
 				$("#from-modalbox-create-id").attr("onclick", `functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());`)
-			
-				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
-			
+						
 			}
+
+			$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 
 		}
 
@@ -375,9 +366,9 @@
 
 				}
 
-				catch (err) {
+			catch (err) {
 
-					return false;
+				return false;
 
 			}
 
@@ -389,7 +380,7 @@
 
 			try {
 
-				let resNumber = math.typeOf(math.evaluate(nbr));
+				math.typeOf(math.evaluate(nbr));
 
 			} catch(err) {
 
@@ -413,23 +404,17 @@
 
 			}
 
-			if (complexCounter === dataArray.length) {
+			if (complexCounter === dataArray.length) return false;
 
-				return false
-
-			} else {
-
-				return true;
-
-			}
-
+			else return true;
+			
 		}
 
 		function surfaceGraphing(funcXY, displayRange) {
 
 			if (isMathExpression(funcXY, "surface-3d") === false || !funcXY || isANumber(funcXY) === true || hasOneVariable(funcXY) === true) {
 
-				$("#modalbox-errors-warnings-id").html(inValidText);
+				$("#modalbox-errors-warnings-id").html(errorText);
 
 				return false;
 
@@ -437,7 +422,7 @@
 
 			else {
 
-				loadingData();
+				generateDataBtn();
 
 				setTimeout(function () {
 
@@ -480,7 +465,7 @@
 						
 					} catch (error) {
 
-						errorInData();
+						cancel();
 
 						return false;
 						
@@ -488,7 +473,7 @@
 					
 					if (isValidData([].concat.apply([], zPoints)) === false || isValidGeneratedData([].concat.apply([], zPoints)) === false) {
 
-						errorInData();
+						cancel();
 
 						return false;
 
@@ -506,7 +491,7 @@
 
 						type: 'surface',
 
-						lighting: { ambient: 1 },
+						lighting: { ambient: 0.75 },
 
 						colorscale: surfaceColor[Math.floor(Math.random() * surfaceColor.length)],
 
@@ -544,7 +529,7 @@
 
 								color: 'white',
 
-								gridcolor: '#757375',
+								gridcolor: 'grey',
 
 								gridwidth: 1,
 
@@ -558,9 +543,11 @@
 
 								titlefont : {
 
-									size : 22,
+									size : 18,
 
-									color : 'red'
+									color : 'red',
+
+									weight: 'bold'
 
 								}
 
@@ -570,7 +557,7 @@
 
 								color: 'white',
 
-								gridcolor: '#757375',
+								gridcolor: 'grey',
 
 								gridwidth: 1,
 
@@ -584,9 +571,11 @@
 
 								titlefont : {
 
-									size : 22,
+									size : 18,
 
-									color : 'green'
+									color : 'green',
+
+									weight: 'bold'
 
 								}
 
@@ -596,7 +585,7 @@
 
 								color: 'white',
 
-								gridcolor: '#757375',
+								gridcolor: 'grey',
 
 								gridwidth: 1,
 
@@ -612,9 +601,11 @@
 
 								titlefont : {
 
-									size : 22,
+									size : 18,
 
-									color : 'blue'
+									color : 'blue',
+
+									weight: 'bold'
 
 								}
 
@@ -654,13 +645,11 @@
 								
 					}
 					
-					$("#graph-contenaire").html('<div id="graphing-box"></div>');
+					makeHTMLResponse();
 
-					endOfLoadingData();
-
-					Plotly.newPlot('graphing-box', data, layer, {displayModeBar: false});
+					Plotly.newPlot('graphing-box', data, layer, { displayModeBar: false });
 					
-				}, 3000)
+				}, 4000)
 
 			}
 
@@ -688,15 +677,9 @@
 
 			}
 
-			if (hasX === true && hasY === true) {
+			if (hasX === true && hasY === true) return false
 
-				return false
-
-			} else {
-
-				return true
-
-			}
+			else return true
 
 		}
 
@@ -704,7 +687,7 @@
 
 			if (isMathExpression(func, "function-2d") === false || !func || hasOneVariable(func) === false) {
 
-				$("#modalbox-errors-warnings-id").html(inValidText);
+				$("#modalbox-errors-warnings-id").html(errorText);
 
 				return false;
 
@@ -712,7 +695,7 @@
 
 			else {
 
-				loadingData();
+				generateDataBtn();
 
 				setTimeout(function() {
 
@@ -732,15 +715,15 @@
 
 						margin: {
 
-							l: 20,
+							l: 10,
 
-							r: 20,
+							r: 10,
 								
-							b: 20,
+							b: 10,
 								
-							t: 20,
+							t: 10,
 								
-							pad: 8
+							pad: 5
 								
 						},
 
@@ -748,7 +731,7 @@
 
 							color: 'white',
 
-							gridcolor: '#757375',
+							gridcolor: 'grey',
 
 							dtick: 2,
 
@@ -762,7 +745,19 @@
 
 							range: [-10, 10],
 
-							title: 'X',
+							title: {
+								
+								text: 'X',
+
+								font: {
+
+									size: 18,
+
+									weight: 'bold'
+
+								}
+
+							},
 
 							fixedrange: true
 
@@ -772,7 +767,7 @@
 								
 							color: 'white',
 
-							gridcolor: '#757375',
+							gridcolor: 'grey',
 
 							gridwidth: 1,
 
@@ -782,7 +777,19 @@
 
 							automargin: true,
 
-							title: 'Y',
+							title: {
+								
+								text: 'Y',
+
+								font: {
+
+									size: 18,
+
+									weight: 'bold'
+
+								}
+
+							},
 
 							range: JSON.parse(displayRg)
 
@@ -806,7 +813,7 @@
 
 					} catch(err) {
 
-						errorInData();
+						cancel();
 
 						return false;
 
@@ -814,7 +821,7 @@
 
 					if (isValidData(yPoints) === false || isValidGeneratedData(yPoints) === false) {
 
-						errorInData();
+						cancel();
 
 						return false;
 
@@ -842,39 +849,31 @@
 					
 					let data = [mathGraph];	
 
-					endOfLoadingData();
+					makeHTMLResponse();
 
 					Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
 
-				}, 4000)
+				}, 3000)
 
 			}
 
 		}
 
-		function endOfLoadingData() {
+		function makeHTMLResponse() {
 
 			$("#graph-contenaire").html('<div id="graphing-box"></div>');
 			
 			$("#modalbox-graphing").css("display", "none");
 			
-			if ($("#graph-type-id").val() === "3d-surface") {
-
-				$("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#display-range-surface-id').val())")
-
-			}
+			if ($("#graph-type-id").val() === "3d-surface") $("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#display-range-surface-id').val())");
 			
-			else {
-
-				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());`)
-
-			}
+			else $("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());`)
 
 			if ($(window).width() >= 1024) {
 
-				$(".create-graph-btn").html('<i class="fa-sharp fa-solid fa-pencil"></i> Retracer un graphique');
+				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer un graphique');
 
-				$("#from-modalbox-create-id").html('<i class="fa-sharp fa-solid fa-pencil"></i> Esquisser');
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
 
 			}
 
@@ -886,7 +885,7 @@
 
 		}
 
-		function loadingData() {
+		function generateDataBtn() {
 
 			inLoading = true;
 
@@ -908,34 +907,19 @@
 
 		}
 
-		function errorInData() {
+		function cancel() {
 
 			inLoading = false;
 
-			$("#modalbox-errors-warnings-id").html("Les données générées sont inutilisables avec le logiciel !");
+			$("#modalbox-errors-warnings-id").html("Les données générées sont complexes !");
 
-			if ($(window).width() >= 1024) {
+			if ($(window).width() >= 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
 
-				$("#from-modalbox-create-id").html('<i class="fa-sharp fa-solid fa-pencil"></i> Esquisser');
+			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i>');
 
-			} else {
-
-				$("#from-modalbox-create-id").html('<i class="fa-sharp fa-solid fa-pencil"></i>');
-
-			}
-
-			if ($("#graph-type-id").val() === "3d-surface") {
-
-
-				$("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#display-range-surface-id').val())")
-
-			}
+			if ($("#graph-type-id").val() === "3d-surface") $("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#display-range-surface-id').val())")
 			
-			else {
-
-				$("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());`)
-
-			}
+			else $("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());`)
 
 		}
     </script>
