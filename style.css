@@ -466,10 +466,3 @@ p.modalbox-errors-warnings-class {
 .modalbox-go-btn:hover {
     background: #4690F2;
 }
-
-
-.quote-style {
-    font-style: italic;
-    color: #E1D9D1;
-    font-weight: bold;
-}

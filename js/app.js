@@ -1,46 +1,6 @@
-var isOpenContactBox = false;
-
-var isOpenAboutBox = false;
-
 var isES6 = true;
 
-function openContactBox() {
-
-    if (isOpenContactBox === false) {
-
-        isOpenContactBox = true
-
-        var contactBoxHtml = `
-        <div class="modalbox-class" id="modalbox-contact">
-            <header class="modalbox-header-class" id="modalbox-header-id">
-                <i class="fas fa-envelope"></i> Contact 
-                <a class="modalbox-header-close" onclick="$('#modalbox-contact').remove(); isOpenContactBox = false;">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </a>
-            </header>
-            <div class="modalbox-main-content">
-
-                <div class="modalbox-text-contenaire">
-                    <h2>Règles à respecter:</h2>
-                    <p class="modalbox-description"><i class="fas fa-check" style="color: green;"></i> Vous pouvez me contacter pour des questions pertinentes mais aussi pour des explications sur le fonctionnement ou sur le code de mes projets. Il est également et certainement permis de me rapporter des problèmes en rapport avec mon site ou mes projets.</p>
-                    <p class="modalbox-description"><i class="fas fa-times" style="color: red;"></i> Hors de question de me contacter pour des bêtises ou des tentatives néfastes à mon égard. Les mails sans la moindre des politesses ou écrit avec un vocabulaire inadéquat ne seront même pas lus. Le spam est également proscrit !</p>
-                    <p class="modalbox-description"><i class="fas fa-exclamation-triangle" style="color: orange;"></i> Vous pouvez m'écrire en français, anglais et éventuellement dans un néerlandais assez simple. </p>
-                </div>
-
-                <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
-                <div style="margin-bottom: 40px; text-align: center;">
-                    <a href="mailto:nathan.debilloez@outlook.com" onclick="$('#modalbox-contact').remove(); isOpenContactBox = false;" class="modalbox-go-btn" id="contact-btn-id"><i class="fa-solid fa-envelope"></i> nathan.debilloez@outlook.com</a>
-                </div>
-                
-            </div>
-        </div>`;
-
-        $("#modalbox-open-div").append(contactBoxHtml);
-
-    }
-
-}
+var isOpenAboutBox = false;
 
 function openAboutBox() {
 
@@ -109,18 +69,6 @@ setInterval(function () {
 
     let mobileBoxSize = Math.round(window.innerWidth - 10) + "px";
 
-    if ($(window).width() <= 768 && isOpenContactBox === true) {
-
-        $("#modalbox-contact").css('marginLeft', 'unset');
-
-        $("#modalbox-contact").css('left', 'unset');
-
-        $("#modalbox-contact").css('width', mobileBoxSize);
-
-        $("#contact-btn-id").css('fontSize', '10px');
-
-    }
-
     if ($(window).width() <= 768 && isOpenAboutBox === true) {
 
         $("#modalbox-about").css('marginLeft', 'unset');
@@ -143,7 +91,7 @@ setInterval(function () {
 
     }
 
-    if ($(window).width() <= 1024 && isOpenContactBox === true || $(window).width() <= 1024 && isOpenAboutBox === true) {
+    if ($(window).width() <= 1024 && isOpenAboutBox === true) {
 
         $(".modalbox-close-btn").each(function () {
 
@@ -199,7 +147,7 @@ $(document).ready(function () {
     
                 <div class="modalbox-text-contenaire">
                     <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 240px; color: #FF941A;"></i>
-                    <h2>Navigateur incompatible:</h2>
+                    <h2>Navigateur obsolète:</h2>
                     <p class="modalbox-description"> Impossible d'interpréter le code Javascript ! </p>
                 </div>
     
