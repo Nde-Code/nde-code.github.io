@@ -175,89 +175,48 @@
 			<div class="modalbox-main-content">
 
 				<div class="modalbox-text-contenaire">
-					<h2>Type de graphique:</h2>
-					<p class="modalbox-description"> Pour tracer votre graphique, vous pouvez choisir parmi différents types de fonctions mathématiques. Sélectionnez simplement celle qui vous désirez. </p>
-				</div>
+                    <h2>Votre fonction:</h2>
+                    <p class="modalbox-description"> Entrez l'équation de votre fonction en utilisant x et y comme variables.</p>
+                </div>
+                <input id="mathexpr-function-id" class="modalbox-input" placeholder="f(x, y):">
 
-				<select title="Type de graphique:" onchange="setPlotType();" id="graph-type-id" class="graph-type-class">
-					<option value="2d-function-graph">Fonction de R dans R</option>
-					<option value="3d-surface">Fonction de R² dans R</option>
-				</select>
+                <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+
+                <div class="modalbox-text-contenaire">
+                    <h2>Intérvalle d'affichage:</h2>
+                    <p class="modalbox-description"> Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction (par apport à l'axe Y en 2D et l'axe Z en 3D).</p>
+                </div>
+
+                <select title="Intérvalle d'affichage:" id="display-range-id">
+                    <option value="[-2, 2]">[-2, 2]</option>
+                    <option value="[-5, 5]">[-5, 5]</option>
+                    <option value="[-10, 10]">[-10, 10]</option>
+                    <option value="[-20, 20]">[-20, 20]</option>
+                    <option value="[-30, 30]">[-30, 30]</option>
+                    <option value="[-40, 40]">[-40, 40]</option>
+                    <option value="[-50, 50]">[-50, 50]</option>
+                    <option value="[-60, 60]">[-60, 60]</option>
+                    <option value="[-70, 70]">[-70, 70]</option>
+                    <option value="[-80, 80]">[-80, 80]</option>
+                    <option value="[-90, 90]">[-90, 90]</option>
+                    <option value="[-100, 100]">[-100, 100]</option>
+                </select>
 
 				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
-				<div id="options-function-graph">
-	
-					<div class="modalbox-text-contenaire">
-						<h2>Votre fonction:</h2>
-						<p class="modalbox-description"> Entrez l'équation de votre fonction mathématique en utilisant la variable x.</p>
-					</div>
-					<input id="graph-function" class="modalbox-input" placeholder="f(x):">
-
-					<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
-					<div class="modalbox-text-contenaire">
-						<h2>Intérvalle d'affichage:</h2>
-						<p class="modalbox-description"> Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction par apport à l'axe Y.</p>
-					</div>
-	
-					<select title="Intérvalle d'affichage:" id="display-range-curve-id">
-						<option value="[-2, 2]">[-2, 2]</option>
-						<option value="[-5, 5]">[-5, 5]</option>
-						<option value="[-10, 10]">[-10, 10]</option>
-						<option value="[-20, 20]">[-20, 20]</option>
-						<option value="[-30, 30]">[-30, 30]</option>
-						<option value="[-40, 40]">[-40, 40]</option>
-						<option value="[-50, 50]">[-50, 50]</option>
-						<option value="[-60, 60]">[-60, 60]</option>
-						<option value="[-70, 70]">[-70, 70]</option>
-						<option value="[-80, 80]">[-80, 80]</option>
-						<option value="[-90, 90]">[-90, 90]</option>
-						<option value="[-100, 100]">[-100, 100]</option>
-					</select>
-
-					<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
+				<div class="modalbox-text-contenaire">
+					<h2>Légende des axes:</h2>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: red;"></i> X: Axe des abscisses compris entre -10 et 10 autant pour les graphiques en 2D qu'en 3D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: green;"></i> Y: Axe des ordonnées ou y = f(x) en 2D et où y est compris entre -10 et 10 en 3D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: blue;"></i> Z: Axe des côtes qui équivaut à f(x, y) et n'est disponible que pour les graphiques en 3D.</p>
 				</div>
 
-				<div id="options-3d-surface-graph" style="display: none;">
+				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
-					<div class="modalbox-text-contenaire">
-						<h2>Votre fonction:</h2>
-						<p class="modalbox-description"> Entrez l'équation de votre fonction mathématique en utilisant x et y comme variables.</p>
-					</div>
-					<input id="surface-function" class="modalbox-input" placeholder="f(x, y):">
-						
-					<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
-					<div class="modalbox-text-contenaire">
-						<h2>Intérvalle d'affichage:</h2>
-						<p class="modalbox-description">Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction par apport à l'axe Z.</p>
-					</div>
-	
-					<select title="Intérvalle d'affichage:" id="display-range-surface-id">
-						<option value="[-2, 2]">[-2, 2]</option>
-						<option value="[-5, 5]">[-5, 5]</option>
-						<option value="[-10, 10]">[-10, 10]</option>
-						<option value="[-20, 20]">[-20, 20]</option>
-						<option value="[-30, 30]">[-30, 30]</option>
-						<option value="[-40, 40]">[-40, 40]</option>
-						<option value="[-50, 50]">[-50, 50]</option>
-						<option value="[-60, 60]">[-60, 60]</option>
-						<option value="[-70, 70]">[-70, 70]</option>
-						<option value="[-80, 80]">[-80, 80]</option>
-						<option value="[-90, 90]">[-90, 90]</option>
-						<option value="[-100, 100]">[-100, 100]</option>
-					</select>
-
-					<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-				
-				</div>
-				
-				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
+                <p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici.</p>
 
 				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-chart-line"></i> Tracer</a>
+					<a class="modalbox-go-btn" onclick="createGraph($('#mathexpr-function-id').val(), $('#display-range-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-chart-line"></i> Tracer</a>
 				</div>
 	
 			</div>
@@ -270,11 +229,9 @@
     <script>
 		var inLoading = false;
 
-		var errorText = "L'expression de votre fonction est invalide !";
+		var functionColor = ["gold", "royalblue", "violet", "magenta"]
 
-		var functionColor = ["firebrick", "orange", "gold", "limegreen", "royalblue", "violet"]
-
-		var surfaceColor = ["Jet", "YlOrRd", "YlGnBu", "Picnic", "Electric", "Greens", "Bluered", "Viridis"]
+		var surfaceColor = ["Rainbow", "Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"]
 
 		setInterval(function () {
 
@@ -318,51 +275,21 @@
 
 		}
 
-		function setPlotType() {
+		function isMathExpression(mathExpr) {
 
-			if ($("#graph-type-id").val() === "3d-surface") {
+            try {
 
-				$("#options-3d-surface-graph").css('display', "block");
+                math.evaluate(mathExpr.toLowerCase(), { x: 1, y: 1 });
 
-				$("#options-function-graph").css('display', "none");
-				
-				$("#from-modalbox-create-id").attr("onclick", "surfaceGraphing($('#surface-function').val(), $('#display-range-surface-id').val())")
-								
-			}
+                return true;
 
-			else{
+            } catch (err) {
 
-				$("#options-function-graph").css('display', "block");
+                return false;
 
-				$("#options-3d-surface-graph").css('display', "none");
+            }
 
-				$("#from-modalbox-create-id").attr("onclick", `functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());`)
-						
-			}
-
-			$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
-
-		}
-
-		function isMathExpression(mathExpr, mathType) {
-
-			try {
-
-				if (mathType === "function-2d") math.evaluate(mathExpr.toLowerCase(), { x: 1 });					
-
-				else if (mathType === "surface-3d") math.evaluate(mathExpr.toLowerCase(), { x: 1, y: 1 });
-
-				return true;
-
-				}
-
-			catch (err) {
-
-				return false;
-
-			}
-
-		}
+        }
 
 		function isANumber(nbr) {
 
@@ -400,248 +327,263 @@
 			
 		}
 
-		function surfaceGraphing(funcXY, displayRange) {
+        function createGraph(expr, range) {
 
-			if (isMathExpression(funcXY, "surface-3d") === false || !funcXY || isANumber(funcXY) === true || hasOneVariable(funcXY) === true) {
+            if (!expr || isANumber(expr) === true || isMathExpression(expr) === false) {
 
-				$("#modalbox-errors-warnings-id").html(errorText);
+                $("#modalbox-errors-warnings-id").html("L'expression de votre fonction est invalide !");
 
-				return false;
+                return false;
 
-			}
+            }
 
-			else {
+            else if (hasOneVariable(expr) === false) surfaceGraphing(expr, range)
 
-				generateDataBtn();
+            else functionGraphing(expr, range)
 
-				setTimeout(function () {
+        }
 
-					let xPoints = [];
+        function createSurfaceData(expr) {
+
+            let xPoints = [];
 					
-					let yPoints = [];
+			let yPoints = [];
 					
-					let zPoints = []; 
+			let zPoints = [];
 
-					var functionInXY = funcXY.toLowerCase();
+            for(x = -10; x < 10; x += 0.25) {
 
-					try {
+                let xPointsLine = [];
 
-						// Merci: https://stackoverflow.com/questions/65659892/plotly-js-surface-plot-data-formatting
-						for(x = -10; x < 10; x += 0.25) {
+                let yPointsLine = [];
 
-							let xPointsLine = [];
-							
-							let yPointsLine = [];
-							
-							let zPointsLine = [];
+                let zPointsLine = [];
 
-							for (y = -10; y < 10; y += 0.25) {
+                for (y = -10; y < 10; y += 0.25) {
 
-								xPointsLine.push(x);
+                    xPointsLine.push(x);
 
-								yPointsLine.push(y);
+                    yPointsLine.push(y);
 
-								zPointsLine.push(math.compile(functionInXY).evaluate({x : x, y: y}));
+                    zPointsLine.push(math.compile(expr.toLowerCase()).evaluate({x : x, y: y}));
 
-							}
+                }
 
-							xPoints.push(xPointsLine);
-							
-							yPoints.push(yPointsLine);
-							
-							zPoints.push(zPointsLine);
+                xPoints.push(xPointsLine);
 
-						}
-						
-					} catch (error) {
+                yPoints.push(yPointsLine);
 
-						cancel();
+                zPoints.push(zPointsLine);
 
-						return false;
-						
-					}	
+            }
+
+            return [xPoints, yPoints, zPoints];
+            
+        }
+
+        function createFunctionData(expr) {
+
+            let xPoints = [];
+
+            let yPoints = [];
+
+            for (var x = -10; x < 10; x += (1 / 1000)) {
+
+                xPoints.push(x);
+
+                yPoints.push(math.compile(expr.toLowerCase()).evaluate({x : x}));						
+
+            }
+
+            return [xPoints, yPoints];
+
+        }
+
+		function surfaceGraphing(expr, dspRange) {
+
+			generateDataBtn();
+
+			setTimeout(function () {
 					
-					if (isValidData([].concat.apply([], zPoints)) === false || isValidGeneratedData([].concat.apply([], zPoints)) === false) {
+				if (isValidData([].concat.apply([], createSurfaceData(expr)[2])) === false || isValidGeneratedData([].concat.apply([], createSurfaceData(expr)[2])) === false) {
 
-						cancel();
+					cancel();
 
-						return false;
+					return false;
+
+				}
+
+				var data = [{
+
+					x: createSurfaceData(expr)[0],
+
+					y: createSurfaceData(expr)[1],
+
+					z: createSurfaceData(expr)[2],
+
+					showscale: false,
+
+					type: 'surface',
+
+					lighting: { ambient: 0.75 },
+
+					colorscale: surfaceColor[Math.floor(Math.random() * surfaceColor.length)],
+
+					contours: {
+
+						x: { highlight: false },
+
+						y: { highlight: false },
+
+						z: { highlight: false }
 
 					}
 
-					var data = [{
-
-						x: xPoints,
-
-						y: yPoints,
-
-						z: zPoints,
-
-						showscale: false,
-
-						type: 'surface',
-
-						lighting: { ambient: 0.75 },
-
-						colorscale: surfaceColor[Math.floor(Math.random() * surfaceColor.length)],
-
-						contours: {
-
-							x: { highlight: false },
-
-							y: { highlight: false },
-
-							z: { highlight: false }
-
-						}
-
-					}];
+				}];
 					
-					var layer = {
+				var layer = {
 
-						scene: {
+					scene: {
 
-							camera: {
+						camera: {
 
-								eye: {
+							eye: {
 
-									x: 1,
+								x: 1,
 
-									y: 1,
+								y: 1,
 									
-									z: 1
-
-								}
-
-							},
-
-							xaxis: {
-
-								color: 'white',
-
-								gridcolor: 'grey',
-
-								gridwidth: 1,
-
-								zerolinecolor: 'red',
-
-								showspikes: false,
-
-								zerolinewidth: 4,
-
-								title: 'X',
-
-								titlefont : {
-
-									size : 18,
-
-									color : 'red',
-
-									weight: 'bold'
-
-								}
-
-							},
-
-							yaxis: {
-
-								color: 'white',
-
-								gridcolor: 'grey',
-
-								gridwidth: 1,
-
-								zerolinecolor: 'green',
-
-								showspikes: false,
-
-								zerolinewidth: 4,
-
-								title: 'Y',
-
-								titlefont : {
-
-									size : 18,
-
-									color : 'green',
-
-									weight: 'bold'
-
-								}
-
-							},
-
-							zaxis: {
-
-								color: 'white',
-
-								gridcolor: 'grey',
-
-								gridwidth: 1,
-
-								zerolinecolor: 'blue',
-
-								showspikes: false,
-
-								zerolinewidth: 4,
-
-								title: 'Z',
-
-								range: JSON.parse(displayRange),
-
-								titlefont : {
-
-									size : 18,
-
-									color : 'blue',
-
-									weight: 'bold'
-
-								}
+								z: 1
 
 							}
 
 						},
 
-						hovermode: false,
+						xaxis: {
 
-						plot_bgcolor: "transparent",
+							color: 'white',
 
-						paper_bgcolor: "transparent",
+							gridcolor: 'grey',
 
-						height: 500,
+							gridwidth: 1,
 
-						aspectratio: {
+							zerolinecolor: 'red',
 
-							x: 2,
+							showspikes: false,
 
-							y: 2,
+							zerolinewidth: 4,
 
-							z: 2
+							title: 'x',
+
+							titlefont : {
+
+								size : 18,
+
+								color : 'red',
+
+								weight: 'bold'
+
+							}
 
 						},
 
-						margin: {
+						yaxis: {
 
-							l: 5,
+							color: 'white',
 
-							r: 5,
+							gridcolor: 'grey',
+
+							gridwidth: 1,
+
+							zerolinecolor: 'green',
+
+							showspikes: false,
+
+							zerolinewidth: 4,
+
+							title: 'y',
+
+							titlefont : {
+
+								size : 18,
+
+								color : 'green',
+
+								weight: 'bold'
+
+							}
+
+						},
+
+						zaxis: {
+
+							color: 'white',
+
+							gridcolor: 'grey',
+
+							gridwidth: 1,
+
+							zerolinecolor: 'blue',
+
+							showspikes: false,
+
+							zerolinewidth: 4,
+
+							title: 'z',
+
+							range: JSON.parse(dspRange),
+
+							titlefont : {
+
+								size : 18,
+
+								color : 'blue',
+
+								weight: 'bold'
+
+							}
+
+						}
+
+					},
+
+					hovermode: false,
+
+					plot_bgcolor: "transparent",
+
+					paper_bgcolor: "transparent",
+
+					height: 500,
+
+					aspectratio: {
+
+						x: 2,
+
+						y: 2,
+
+						z: 2
+
+					},
+
+					margin: {
+
+						l: 5,
+
+						r: 5,
 								
-							b: 5,
+						b: 5,
 								
-							t: 5
+						t: 5
 							
-						},
+					},
 								
-					}
+				}
 					
-					makeHTMLResponse();
+				makeHTMLResponse();
 
-					Plotly.newPlot('graphing-box', data, layer, { displayModeBar: false });
+				Plotly.newPlot('graphing-box', data, layer, { displayModeBar: false });
 					
-				}, 4000)
-
-			}
+			}, 4000)
 
 		}
 
@@ -659,7 +601,7 @@
 
 			})
 
-			for(let j = 0; j < filtered.length; j++) {
+			for (let j = 0; j < filtered.length; j++) {
 
 				if (filtered[j].name === "x" && hasX === false) hasX = true
 
@@ -673,192 +615,158 @@
 
 		}
 
-		function functionGraphing(func, displayRg) {
+		function functionGraphing(expr, dspRange) {
 
-			if (isMathExpression(func, "function-2d") === false || !func || hasOneVariable(func) === false) {
+			generateDataBtn();
 
-				$("#modalbox-errors-warnings-id").html(errorText);
+			setTimeout(function() {
 
-				return false;
+				var layout = {
 
-			}
+					displayModeBar: false,
 
-			else {
+					hovermode: false,
 
-				generateDataBtn();
+					plot_bgcolor: "transparent",
 
-				setTimeout(function() {
+					paper_bgcolor: "transparent",
 
-					let mathFunction = func.toLowerCase();
+					height: 490,
 
-					var layout = {
+					margin: {
 
-						displayModeBar: false,
+						l: 10,
 
-						hovermode: false,
-
-						plot_bgcolor: "transparent",
-
-						paper_bgcolor: "transparent",
-
-						height: 490,
-
-						margin: {
-
-							l: 10,
-
-							r: 10,
+						r: 10,
 								
-							b: 10,
+						b: 10,
 								
-							t: 10,
+						t: 10,
 								
-							pad: 5
+						pad: 5
 								
-						},
+					},
 
-						xaxis: {
+					xaxis: {
 
-							color: 'white',
+						color: 'white',
 
-							gridcolor: 'grey',
+						gridcolor: 'grey',
 
-							dtick: 2,
+						dtick: 2,
 
-							gridwidth: 1,
+						gridwidth: 1,
 
-							zerolinecolor: 'white',
+						zerolinecolor: 'red',
 
-							automargin: true,
+						automargin: true,
 
-							zerolinewidth: 0.8,
+						zerolinewidth: 1.5,
 
-							range: [-10, 10],
+						range: [-10.5, 10.5],
 
-							title: {
+						title: {
 								
-								text: 'X',
+							text: 'x',
 
-								font: {
+							font: {
 
-									size: 18,
+								size: 18,
 
-									weight: 'bold'
+								color: 'red',
 
-								}
+								weight: 'bold'
 
-							},
-
-							fixedrange: true
+							}
 
 						},
 
-						yaxis: {
+						fixedrange: true
+
+					},
+
+					yaxis: {
 								
-							color: 'white',
+						color: 'white',
 
-							gridcolor: 'grey',
+						gridcolor: 'grey',
 
-							gridwidth: 1,
+						gridwidth: 1,
 
-							zerolinecolor: 'white',
+						zerolinecolor: 'green',
 
-							zerolinewidth: 0.8,
+						zerolinewidth: 1.5,
 
-							automargin: true,
+						automargin: true,
 
-							title: {
+						title: {
 								
-								text: 'f(x)',
+							text: 'y',
 
-								font: {
+							font: {
 
-									size: 18,
+								size: 18,
 
-									weight: 'bold'
+								color: 'green',
 
-								}
+								weight: 'bold'
 
-							},
+							}
 
-							range: JSON.parse(displayRg)
+						},
 
-						}
-
-					}
-
-					let xPoints = [];
-
-					let yPoints = [];
-
-					try {
-
-						for(var x = -10; x < 10; x += 0.001){
-
-							xPoints.push(x);
-
-							yPoints.push(math.compile(mathFunction).evaluate({x : x}));						
-
-						}
-
-					} catch(err) {
-
-						cancel();
-
-						return false;
-
-					}	
-
-					if (isValidData(yPoints) === false || isValidGeneratedData(yPoints) === false) {
-
-						cancel();
-
-						return false;
+						range: JSON.parse(dspRange)
 
 					}
 
-					let mathGraph = {
+				}
 
-						x: xPoints,
+				if (isValidData(createFunctionData(expr)[1]) === false || isValidGeneratedData(createFunctionData(expr)[1]) === false) {
 
-						y: yPoints,
+					cancel();
 
-						mode: 'markers',
+					return false;
 
-						type: 'scatter',
+				}
 
-						marker: {
+				let functionGraph = {
 
-							color: functionColor[Math.floor(Math.random() * functionColor.length)],
+					x: createFunctionData(expr)[0],
 
-							size: '3'
+					y: createFunctionData(expr)[1],
 
-						}
+					mode: 'markers',
+
+					type: 'scatter',
+
+					marker: {
+
+						color: functionColor[Math.floor(Math.random() * functionColor.length)],
+
+						size: '3'
 
 					}
+
+				}
 					
-					let data = [mathGraph];	
+				let data = [functionGraph];	
 
-					makeHTMLResponse();
+				makeHTMLResponse();
 
-					Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
+				Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
 
-				}, 3000)
+		    }, 3000)
 
-			}
-
-		}
+	    }
 
 		function makeHTMLResponse() {
 
 			$("#graph-contenaire").html('<div id="graphing-box"></div>');
 			
 			$("#modalbox-graphing").css("display", "none");
-			
-			if ($("#graph-type-id").val() === "3d-surface") $("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#display-range-surface-id').val())");
-			
-			else $("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());`)
 
+            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#mathexpr-function-id').val(), $('#display-range-id').val());`)
+		
 			if ($(window).width() >= 1024) {
 
 				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer un graphique');
@@ -907,9 +815,7 @@
 
 			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i>');
 
-			if ($("#graph-type-id").val() === "3d-surface") $("#from-modalbox-create-id").attr('onclick', "surfaceGraphing($('#surface-function').val(), $('#display-range-surface-id').val())")
-			
-			else $("#from-modalbox-create-id").attr('onclick', `functionGraphing($('#graph-function').val(), $('#display-range-curve-id').val());`)
+            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#mathexpr-function-id').val(), $('#display-range-id').val());`)
 
 		}
     </script>
