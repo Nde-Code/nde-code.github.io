@@ -83,6 +83,10 @@ p.footer-page-text a.footer-page-link {
     text-decoration: none;
 }
 
+.main-website-row-panel {
+    padding-left: 8px;
+}
+
 .main-website-row-panel:after {
     content: "";
     display: table;
