@@ -20,7 +20,7 @@
 	}
 
 	.calculate-series-btn {
-		padding: 15px 31px;
+		padding: 15px 30px;
 		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
@@ -37,7 +37,7 @@
 	}
 
 	.converge-btn {
-		padding: 15px 31px;
+		padding: 15px 30px;
 		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
@@ -54,7 +54,7 @@
 	}
 
 	.diverge-btn {
-		padding: 15px 31px;
+		padding: 15px 30px;
 		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
@@ -162,7 +162,7 @@
 							<div class="menu-dropdown-items">
                                 <a href="series">Calculer une série numérique</a>
 								<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
-								<a href="math-graphing">Traceur de fonction mathématique</a>
+								<a href="math-graphing">Tracer une fonction mathématique</a>
 								<a href="pinwheel">Jouer avec un moulin à vent</a>
 								<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
 								<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
@@ -297,7 +297,7 @@
 
 		function runAction(index, un, mode) {
 
-			if (!un || isMathExpression(un) === false || isANumber(un) === true) {
+			if (!un || isMathExpression(un) === false || isAType(un) === true) {
 
 				$("#modalbox-errors-warnings-id").html("L'expression de votre suite numérique est invalide !");
 
@@ -445,7 +445,7 @@
 
 		}
 
-		function isANumber(nbr) {
+		function isAType(nbr) {
 
 			let success = true;
 

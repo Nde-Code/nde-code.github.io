@@ -15,7 +15,7 @@
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
 		border: 4px solid #0047A6;
-		padding: 15px 31px;
+		padding: 15px 30px;
 		cursor: pointer;
 		margin-left: 0.5%;
 	}
@@ -70,7 +70,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Nathan Debilloëz · Projet</title>
-	<meta name="description" content="Un traceur de fonction mathématique en ligne.">
+	<meta name="description" content="Traceur de fonction mathématique en ligne.">
 	<meta name="keywords" content="Nathan Debilloëz · Projet">
 	<meta name="author" content="Nathan Debilloëz">
 	<link rel="stylesheet" href="../style.css">
@@ -122,7 +122,7 @@
 							<div class="menu-dropdown-items">
 								<a href="series">Calculer une série numérique</a>
 								<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
-								<a href="math-graphing">Traceur de fonction mathématique</a>
+								<a href="math-graphing">Tracer une fonction mathématique</a>
 								<a href="pinwheel">Jouer avec un moulin à vent</a>
 								<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
 								<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
@@ -216,7 +216,7 @@
                 <p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici.</p>
 
 				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="createGraph($('#mathexpr-function-id').val(), $('#display-range-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-chart-line"></i> Tracer</a>
+					<a class="modalbox-go-btn" onclick="createGraph($('#mathexpr-function-id').val(), $('#display-range-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
 				</div>
 	
 			</div>
@@ -229,7 +229,7 @@
     <script>
 		var inLoading = false;
 
-		var functionColor = ["gold", "royalblue", "violet", "magenta"]
+		var functionColor = ["gold", "royalblue", "violet", "magenta", "limegreen", "white", "orange"];
 
 		var surfaceColor = ["Rainbow", "Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"]
 
@@ -243,7 +243,7 @@
 
 			}
 
-			if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i>');
+			if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
 			if ($(window).width() <= 768) {
 
@@ -291,7 +291,7 @@
 
         }
 
-		function isANumber(nbr) {
+		function isAType(nbr) {
 
 			let success = true;
 
@@ -329,7 +329,7 @@
 
         function createGraph(expr, range) {
 
-            if (!expr || isANumber(expr) === true || isMathExpression(expr) === false) {
+            if (!expr || isAType(expr) === true || isMathExpression(expr) === false) {
 
                 $("#modalbox-errors-warnings-id").html("L'expression de votre fonction est invalide !");
 
@@ -771,7 +771,7 @@
 
 				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer un graphique');
 
-				$("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
+				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
 			}
 
@@ -811,9 +811,9 @@
 
 			$("#modalbox-errors-warnings-id").html("Les données générées sont trop grandes ou inutilisables avec le logiciel !");
 
-			if ($(window).width() >= 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
+			if ($(window).width() >= 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
-			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-chart-line"></i>');
+			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
             $("#from-modalbox-create-id").attr('onclick', `createGraph($('#mathexpr-function-id').val(), $('#display-range-id').val());`)
 
