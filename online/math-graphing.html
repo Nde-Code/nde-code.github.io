@@ -329,7 +329,7 @@
 
         function createGraph(expr, range) {
 
-            if (!expr || isAType(expr) === true || isMathExpression(expr) === false) {
+            if (!expr || isAType(expr) === true || isMathExpression(expr) === false || hasOneVariable(expr) === "Invalid") {
 
                 $("#modalbox-errors-warnings-id").html("L'expression de votre fonction est invalide !");
 
@@ -589,29 +589,39 @@
 
 		function hasOneVariable(func) {
 
-			let node = math.parse(func)
+			try {
 
-			let hasX = false
+				let node = math.parse(func)
 
-			let hasY = false
-			
-			let filtered = node.filter( (node) => {
+				let hasX = false
 
-				return node.isSymbolNode && node.name === 'x' || node.name === 'y'
+				let hasY = false
+				
+				let filtered = node.filter( (node) => {
 
-			})
+					return node.isSymbolNode && node.name === 'x' || node.name === 'y'
 
-			for (let j = 0; j < filtered.length; j++) {
+				})
 
-				if (filtered[j].name === "x" && hasX === false) hasX = true
+				for (let j = 0; j < filtered.length; j++) {
 
-				if (filtered[j].name === "y" && hasY === false) hasY = true
+					if (filtered[j].name === "x" && hasX === false) hasX = true
+
+					if (filtered[j].name === "y" && hasY === false) hasY = true
+
+				}
+
+				if (hasX === true && hasY === true) return false
+
+				else if (hasX === true && hasY === false) return true
+
+				else return "Invalid"
+
+			} catch(err) {
+
+				return "Invalid"
 
 			}
-
-			if (hasX === true && hasY === true) return false
-
-			else return true
 
 		}
 
