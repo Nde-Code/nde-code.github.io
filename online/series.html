@@ -179,7 +179,7 @@
 							<img class="robot-img" src="../assets/robot.png" alt="Robot">
 							<h1 id="software-subtitle-id" style="margin-top: 20px; color: white; font-size: 24px; font-weight: bold;">Logiciel de calcul de série numérique:</h1>
 							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide et relativement précis.</p>
-							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui n'affiche pas le développement du calcule. </p>
+							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui n'affiche ni le développement, ni la méthode de calcule. </p>
 							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit les réponses à 4 chiffres après la virgule. </p>
 						</div>
 					</div>
@@ -213,29 +213,10 @@
 				</a>
 			</header>
 			<div class="modalbox-main-content">
-
-				<div class="modalbox-text-contenaire">
-					<h2>Exemples:</h2>
-					<p class="modalbox-description"> Sélectionnez une série pour pouvoir voir le logiciel en fonctionnement sans avoir à effectuer de saisie. </p>
-				</div>
-
-				<select title="Exemples:" id="example" onchange="loadExample($('#example').val())">
-					<option value="-1"> Aucun </option>
-					<option value="0"> 1/n^3 </option>
-					<option value="1"> 1/2^n </option>
-					<option value="2"> 1/n </option>
-					<option value="3"> (-1)^n+1 </option>
-					<option value="4"> ((-1)^n)/n </option>
-					<option value="5"> sin(1/n) </option>
-					<option value="6"> (2+sin(n))/3^n </option>
-					<option value="7"> (-n^4+2*n^2+1)/(2*n^7-3*n^4-n+1) </option>
-				</select>
-
-				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 				
 				<div class="modalbox-text-contenaire">
 					<h2>Votre suite numérique:</h2>
-					<p class="modalbox-description"> Entrez la suite numérique U<sub>n</sub> à sommer. Utilisez n comme variable. </p>
+					<p class="modalbox-description"> Entrez la suite numérique U<sub>n</sub> à sommer en utilisant n comme variable. </p>
 				</div>
 				<input type="text" inputmode="numeric" id="numeric-sequence" class="modalbox-input" placeholder="Un:"> 
 
@@ -684,24 +665,6 @@
 			Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
 
 			window.scrollTo(0, 0);
-
-		}
-
-		function loadExample(val) {
-
-			let unArr = ['1/n^3', '1/2^n', '1/n', '(-1)^n+1', '((-1)^n)/n', 'sin(1/n)', '(2+sin(n))/3^n', '(-n^4+2*n^2+1)/(2*n^7-3*n^4-n+1)'];
-
-			let indexArr = ["1", "0", "1", "0", "1", "1", "1", "0"];
-			
-			if (val === -1) return;				
-
-			else {
-
-				$('#numeric-sequence').val(unArr[val])
-
-				$('#start-index').val(indexArr[val])
-
-			}
 
 		}
 
