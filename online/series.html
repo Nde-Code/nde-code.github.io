@@ -236,7 +236,6 @@
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: gold;"></i> Indiquent l'évolution de la suite numérique.</p>
 					<p class="modalbox-description"><i class="fa-solid fa-circle-check" style="font-size: 18px; color: #00C853;"></i> Indique que la série saisie est convergente + le nombre (arrondi à 4 décimal après la virgule) vers lequel elle converge.</p>
 					<p class="modalbox-description"><i class="fa-solid fa-circle-xmark" style="font-size: 18px; color: #FF1744;"></i> Indique que la série saisie est divergente.</p>
-					<p class="modalbox-description">NB: les points jaunes sont reliés en jaune et de même pour les points bleus afin de mieux visualiser le graphique.</p>
 				</div>
 
 				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
@@ -265,7 +264,7 @@
 
 		var graphRange = 10
 
-		function runAction(index, un, mode) {
+		function runAction(index, un) {
 
 			if (!un || isMathExpression(un) === false || isAType(un) === true) {
 
@@ -305,7 +304,7 @@
 	
 						let isSeriesConvergente = isConvergente(mainVal, subVal);
 	
-						makeHTMLResponse(math.round(mainVal, 4), isSeriesConvergente, index, un, mode)
+						makeHTMLResponse(math.round(mainVal, 4), isSeriesConvergente, index, un)
 
 					}
 							
@@ -483,7 +482,7 @@
 
 		}
 
-		function makeHTMLResponse(seriesSum, convergence, index, un, mode) {
+		function makeHTMLResponse(seriesSum, convergence, index, un) {
 
 			let graphSeriesPoints = seriesGraph(un, index)
 			
@@ -501,7 +500,7 @@
 
 				y: graphSeriesPoints[1],
 
-				mode: 'markers+lines',
+				mode: 'markers',
 
 				type: 'scatter',
 
@@ -509,13 +508,13 @@
 
 					color: '#005DD9', 
 
-					size: 8, 
+					size: 10, 
 
 					line: {
 
 						color: '#0047A6',
 
-						width: 2,
+						width: 3,
 
 						dash: 'solid',
 
@@ -531,7 +530,7 @@
 
 				y: graphSequencePoints[1],
 
-				mode: 'markers+lines',
+				mode: 'markers',
 
 				type: 'scatter',
 
@@ -539,13 +538,13 @@
 
 					color: 'gold', 
 
-					size: 8, 
+					size: 10, 
 
 					line: {
 
 						color: 'goldenrod',
 
-						width: 2,
+						width: 3,
 
 						dash: 'solid',
 
