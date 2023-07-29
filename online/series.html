@@ -161,7 +161,7 @@
 							</button>
 							<div class="menu-dropdown-items">
                                 <a href="series">Calculer une série numérique</a>
-								<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
+								<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
 								<a href="math-graphing">Tracer une fonction mathématique</a>
 								<a href="pinwheel">Jouer avec un moulin à vent</a>
 								<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
@@ -231,18 +231,6 @@
 				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
 
 				<div class="modalbox-text-contenaire">
-					<h2>Modes:</h2>
-					<p class="modalbox-description"> Sélectionnez le type de graphique que vous désirez avoir pour visualiser la progression de la suite et série numérique que vous avez saisie. </p>
-				</div>
-
-				<select title="Exemples:" id="graph-mode">
-					<option value="markers"> Points </option>
-					<option value="lines+markers"> Points avec lignes </option>
-				</select>
-
-				<div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
-
-				<div class="modalbox-text-contenaire">
 					<h2>Légende des résultats:</h2>
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Indiquent l'évolution de la série numérique.</p>
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: gold;"></i> Indiquent l'évolution de la suite numérique.</p>
@@ -255,7 +243,7 @@
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
 
 				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="runAction($('#start-index').val(), $('#numeric-sequence').val(), $('#graph-mode').val());" id="from-modalbox-compute-id"><i class="fa-solid fa-infinity"></i> Calculer</a>
+					<a class="modalbox-go-btn" onclick="runAction($('#start-index').val(), $('#numeric-sequence').val());" id="from-modalbox-compute-id"><i class="fa-solid fa-infinity"></i> Calculer</a>
 				</div>
 
 			</div>
@@ -366,33 +354,41 @@
 
 		function getConvergence(un, index, eps) {
 
-			let sum = 0;
+			try {
 
-            let term = 1;
+				let sum = 0;
 
-            let n = Number(index);
+				let term = 1;
 
-            let seconds = 1;
+				let n = Number(index);
 
-            let startTime = Date.now();
+				let seconds = 1;
 
-            while (Math.abs(term) >= eps) {
+				let startTime = Date.now();
 
-                term = math.compile(un.toLowerCase()).evaluate({ n: n });
+				while (Math.abs(term) >= eps) {
 
-                sum += term;
+					term = math.compile(un.toLowerCase()).evaluate({ n: n });
 
-                n++;
+					sum += term;
 
-                if ((Date.now() - startTime) / 1000 >= seconds) {
+					n++;
 
-                    break;
+					if ((Date.now() - startTime) / 1000 >= seconds) {
 
-                }
+						break;
 
-            }
+					}
 
-            return sum;
+				}
+
+				return sum;
+
+			} catch(err) {
+
+				window.location.reload()
+
+			}
 
         }
 		
@@ -504,7 +500,7 @@
 
 				y: graphSeriesPoints[1],
 
-				mode: mode,
+				mode: 'markers+lines',
 
 				type: 'scatter',
 
@@ -534,7 +530,7 @@
 
 				y: graphSequencePoints[1],
 
-				mode: mode,
+				mode: 'markers+lines',
 
 				type: 'scatter',
 
@@ -642,7 +638,7 @@
 
 						standoff: 10,
 						
-						text: 'U<sub>n</sub> - S<sub>k</sub>',
+						text: 'U<sub>n</sub> - S<sub>n</sub>',
 
 						font: {
 
@@ -670,7 +666,7 @@
 
 		function cancel() {
 
-			$("#from-modalbox-compute-id").attr('onclick', `runAction($('#start-index').val(), $('#numeric-sequence').val(), $('#graph-mode').val());`);
+			$("#from-modalbox-compute-id").attr('onclick', `runAction($('#start-index').val(), $('#numeric-sequence').val());`);
 
 			$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 

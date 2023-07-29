@@ -121,7 +121,7 @@
 							</button>
 							<div class="menu-dropdown-items">
 								<a href="series">Calculer une série numérique</a>
-								<a href="quadratic-equation-solver">Résoudre une équation du second degré</a>
+								<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
 								<a href="math-graphing">Tracer une fonction mathématique</a>
 								<a href="pinwheel">Jouer avec un moulin à vent</a>
 								<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
@@ -345,57 +345,73 @@
 
         function createSurfaceData(expr) {
 
-            let xPoints = [];
-					
-			let yPoints = [];
-					
-			let zPoints = [];
+			try {
 
-            for(x = -10; x < 10; x += 0.25) {
+				let xPoints = [];
+						
+				let yPoints = [];
+						
+				let zPoints = [];
 
-                let xPointsLine = [];
+				for(x = -10; x < 10; x += 0.25) {
 
-                let yPointsLine = [];
+					let xPointsLine = [];
 
-                let zPointsLine = [];
+					let yPointsLine = [];
 
-                for (y = -10; y < 10; y += 0.25) {
+					let zPointsLine = [];
 
-                    xPointsLine.push(x);
+					for (y = -10; y < 10; y += 0.25) {
 
-                    yPointsLine.push(y);
+						xPointsLine.push(x);
 
-                    zPointsLine.push(math.compile(expr.toLowerCase()).evaluate({x : x, y: y}));
+						yPointsLine.push(y);
 
-                }
+						zPointsLine.push(math.compile(expr.toLowerCase()).evaluate({x : x, y: y}));
 
-                xPoints.push(xPointsLine);
+					}
 
-                yPoints.push(yPointsLine);
+					xPoints.push(xPointsLine);
 
-                zPoints.push(zPointsLine);
+					yPoints.push(yPointsLine);
 
-            }
+					zPoints.push(zPointsLine);
 
-            return [xPoints, yPoints, zPoints];
+				}
+
+				return [xPoints, yPoints, zPoints];
+
+			} catch(err) {
+
+				window.location.reload();
+
+			}
             
         }
 
         function createFunctionData(expr) {
 
-            let xPoints = [];
+			try {
 
-            let yPoints = [];
+				let xPoints = [];
 
-            for (var x = -10; x < 10; x += (1 / 100)) {
+				let yPoints = [];
 
-                xPoints.push(x);
+				for (var x = -10; x < 10; x += (1 / 100)) {
 
-                yPoints.push(math.compile(expr.toLowerCase()).evaluate({x : x}));						
+					xPoints.push(x);
 
-            }
+					yPoints.push(math.compile(expr.toLowerCase()).evaluate({x : x}));						
 
-            return [xPoints, yPoints];
+				}
+
+				return [xPoints, yPoints];
+
+			} catch(err) {
+
+				window.location.reload()
+
+			}
 
         }
 
