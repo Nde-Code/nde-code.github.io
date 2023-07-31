@@ -290,7 +290,7 @@
 
 					let mainVal = getConvergence(un, index, epsilon);
 
-					if (mainVal === Infinity || mainVal === -Infinity || isNaN(mainVal) === true) {
+					if (!isFinite(mainVal) || isNaN(mainVal) === true || !validData(seriesGraph(un, index)[1])) {
 
 						cancel();
 	
@@ -480,6 +480,26 @@
 
 			return [sequenceX, sequenceY]
 
+		}
+
+		function validData(serieY) {
+
+			let isValid = true
+
+			for (var i = 0; i < serieY.length; i++) {
+
+				if (!isFinite(serieY[i]) || isNaN(serieY[i]) === true) {
+					
+					isValid = false;
+
+					break;
+				
+				}
+				
+			}
+
+			return isValid
+			
 		}
 
 		function makeHTMLResponse(seriesSum, convergence, index, un) {
