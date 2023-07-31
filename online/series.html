@@ -366,7 +366,7 @@
 
 				let startTime = Date.now();
 
-				while (Math.abs(term) >= eps) {
+				while (Math.abs(term) >= eps || term === 0) {
 
 					term = math.compile(un.toLowerCase()).evaluate({ n: n });
 
@@ -658,7 +658,7 @@
 
 						standoff: 10,
 						
-						text: 'U<sub>n</sub> - S<sub>n</sub>',
+						text: 'Suite U<sub>n</sub> - Série S<sub>n</sub>',
 
 						font: {
 
