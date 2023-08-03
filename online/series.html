@@ -19,7 +19,7 @@
 		}
 	}
 
-	.calculate-series-btn {
+	.calculate-serie-btn {
 		padding: 15px 30px;
 		color: #fff;
 		font-size: 20px;
@@ -32,7 +32,7 @@
 		margin: 8px;
 	}
 
-	.calculate-series-btn:hover {
+	.calculate-serie-btn:hover {
 		background: #4690F2;
 	}
 
@@ -178,7 +178,7 @@
 						<div class="center-elements" id="graph-contenaire">
 							<img class="robot-img" src="../assets/robot.png" alt="Robot">
 							<h1 id="software-subtitle-id" style="margin-top: 20px; color: white; font-size: 24px; font-weight: bold;">Logiciel de calcul de série numérique:</h1>
-							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide et relativement précis.</p>
+							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide, puissant et relativement précis.</p>
 							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui n'affiche ni le développement, ni la méthode de calcule. </p>
 							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit les réponses à 4 chiffres après la virgule. </p>
 						</div>
@@ -187,7 +187,7 @@
 			</div>
             <div class="white-lines" style="margin-left: 30%; margin-right: 30%; margin-top: 30px;"></div>
 			<div class="website-bottom-menu">
-				<a onclick="$('#modalbox-series').css('display', 'block'); window.scrollTo(0, 0);" class="calculate-series-btn"><i class="fa-solid fa-infinity"></i> Calculer une série</a>
+				<a onclick="$('#modalbox-serie').css('display', 'block'); window.scrollTo(0, 0);" class="calculate-serie-btn"><i class="fa-solid fa-infinity"></i> Calculer une série</a>
 			</div>
 			<div style="margin-top: 20px;" class="foot-page">
 				<div class="main-footer-page">
@@ -205,10 +205,10 @@
 				</div>
 			</div>
 		</div>
-		<div class="modalbox-class" id="modalbox-series" style="display: none;">
+		<div class="modalbox-class" id="modalbox-serie" style="display: none;">
 			<header class="modalbox-header-class" id="modalbox-header-id">
 				<i class="fa-solid fa-infinity"></i> Calculer
-				<a class="modalbox-header-close" onclick="$('#modalbox-series').css('display', 'none');">
+				<a class="modalbox-header-close" onclick="$('#modalbox-serie').css('display', 'none');">
 					<i class="fa fa-times" aria-hidden="true"></i>
 				</a>
 			</header>
@@ -290,7 +290,7 @@
 
 					let mainVal = getConvergence(un, index, epsilon);
 
-					if (!isFinite(mainVal) || isNaN(mainVal) === true || !validData(seriesGraph(un, index)[1])) {
+					if (!isFinite(mainVal) || isNaN(mainVal) === true || !validData(serieGraph(un, index)[1])) {
 
 						cancel();
 	
@@ -302,9 +302,9 @@
 
 						let subVal = getConvergence(un, index, tryEpsilon)
 	
-						let isSeriesConvergente = isConvergente(mainVal, subVal);
+						let isSerieConvergente = isConvergente(mainVal, subVal);
 	
-						makeHTMLResponse(math.round(mainVal, 4), isSeriesConvergente, index, un)
+						makeHTMLResponse(math.round(mainVal, 4), isSerieConvergente, index, un)
 
 					}
 							
@@ -322,17 +322,17 @@
 
 				$(".main-website-row-panel").css("paddingLeft", "unset");
 
-				$(".calculate-series-btn").html('<i class="fa-solid fa-infinity"></i>');
+				$(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i>');
 
 			}
 
 			if ($(window).width() <= 768) {
 
-				$("#modalbox-series").css('marginLeft', 'unset');
+				$("#modalbox-serie").css('marginLeft', 'unset');
 
-				$("#modalbox-series").css('left', 'unset');
+				$("#modalbox-serie").css('left', 'unset');
 
-				$("#modalbox-series").css('width', Math.round(window.innerWidth - 10) + "px");
+				$("#modalbox-serie").css('width', Math.round(window.innerWidth - 10) + "px");
 
 			}
 
@@ -404,11 +404,11 @@
 
 		}
 
-		function isMathExpression(seriesExpr) {
+		function isMathExpression(serieExpr) {
 
 			try {
 
-				let responseVal = math.evaluate(seriesExpr.toLowerCase(), { n: 1 });
+				let responseVal = math.evaluate(serieExpr.toLowerCase(), { n: 1 });
 
 				if (math.typeOf(responseVal) === 'Complex') return false;
 
@@ -442,25 +442,25 @@
 
 		}
 
-		function seriesGraph(un, index) {
+		function serieGraph(un, index) {
 
-			let xSeries = []
+			let xSumPoints = []
 
-			let ySeries = []
+			let ySumPoints = []
 
 			let sum = 0
 
 			for (var i = Number(index); i < (graphRange + Number(index)); i++) {
 
-				xSeries.push(i)
+				xSumPoints.push(i)
 				
 				sum += math.compile(un.toLowerCase()).evaluate({n : i})
 
-				ySeries.push(sum);
+				ySumPoints.push(sum);
 
 			}
 
-			return [xSeries, ySeries]
+			return [xSumPoints, ySumPoints]
 
 		}
 
@@ -502,23 +502,23 @@
 			
 		}
 
-		function makeHTMLResponse(seriesSum, convergence, index, un) {
+		function makeHTMLResponse(serieSum, convergence, index, un) {
 
-			let graphSeriesPoints = seriesGraph(un, index)
+			let graphSeriePoints = serieGraph(un, index)
 			
 			let graphSequencePoints = sequenceGraph(un, index)
 
-			makeConvergenceBtn(convergence, seriesSum)
+			makeConvergenceBtn(convergence, serieSum)
 
-			$("#modalbox-series").css("display", "none");
+			$("#modalbox-serie").css("display", "none");
 
 			cancel();
 
-			const series = {
+			const serie = {
 
-				x: graphSeriesPoints[0],
+				x: graphSeriePoints[0],
 
-				y: graphSeriesPoints[1],
+				y: graphSeriePoints[1],
 
 				mode: 'markers',
 
@@ -574,7 +574,7 @@
 
 			};
 
-			const data = [series, sequence];
+			const data = [serie, sequence];
 
 			var layout = {
 
@@ -624,11 +624,11 @@
 
 					title: {
 					
-						text: 'n',
+						text: 'Axe des naturels',
 
 						font: {
 
-							size: 18,
+							size: 16,
 
 							weight: 'bold'
 
@@ -656,13 +656,13 @@
 
 					title: {
 
-						standoff: 15,
+						standoff: 10,
 						
-						text: 'Suite U<sub>n</sub> - Série S<sub>n</sub>',
+						text: 'Axe de la suite U<sub>n</sub> + somme partielle de S<sub>n</sub>',
 
 						font: {
 
-							size: 18,
+							size: 16,
 
 							weight: 'bold'
 
