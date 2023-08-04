@@ -235,6 +235,8 @@
 
 		var diffSize = 5;
 
+		var bigNumberAllowed = 1e45;
+
 		setInterval(function () {
 
 			if ($(window).width() <= 1024) {
@@ -349,6 +351,8 @@
 
 			try {
 
+				let wasFullRunXYZ = true;
+
 				let xPoints = [];
 						
 				let yPoints = [];
@@ -365,11 +369,21 @@
 
 					for (y = -10; y < 10; y += 0.25) {
 
+						evaluateXY = math.round(math.compile(expr.toLowerCase()).evaluate({x : x, y: y}), 3)
+
 						xPointsLine.push(x);
 
 						yPointsLine.push(y);
 
-						zPointsLine.push(math.round(math.compile(expr.toLowerCase()).evaluate({x : x, y: y}), 3));
+						if (((evaluateXY > bigNumberAllowed || evaluateXY < (-1*bigNumberAllowed)) === true && isFinite(evaluateXY) === true) === true || evaluateXY === undefined || evaluateXY === NaN) {
+
+							wasFullRunXYZ = false;
+
+							break;
+
+						}
+
+						else zPointsLine.push(evaluateXY);
 
 					}
 
@@ -381,7 +395,7 @@
 
 				}
 
-				return [xPoints, yPoints, zPoints];
+				return [xPoints, yPoints, zPoints, wasFullRunXYZ];
 
 			} catch(err) {
 
@@ -395,21 +409,33 @@
 
 			try {
 
+				let wasFullRun = true
+
 				let xPoints = [];
 
 				let yPoints = [];
 
 				for (var x = -10; x < 10; x += (1 / 100)) {
 
-					const roundedX = math.round(x, 3)
+					const roundedX = math.round(x, 3);
+
+					let evaluateExpr = math.round(math.compile(expr.toLowerCase()).evaluate({x : roundedX}), 3);
 
 					xPoints.push(roundedX);
 
-					yPoints.push(math.round(math.compile(expr.toLowerCase()).evaluate({x : roundedX}), 3));						
+					if (((evaluateExpr > bigNumberAllowed || evaluateExpr < (-1*bigNumberAllowed)) === true && isFinite(evaluateExpr) === true) === true || evaluateExpr === undefined || evaluateExpr === NaN) {
+
+						wasFullRun = false;
+
+						break;
+
+					}
+
+					else yPoints.push(evaluateExpr);						
 
 				}
 
-				return [xPoints, yPoints];
+				return [xPoints, yPoints, wasFullRun];
 
 			} catch(err) {
 
@@ -467,6 +493,16 @@
 
 		}
 
+		function evaluateInOne(expr) {
+
+			let evaluateInOneExpr = math.compile(expr.toLowerCase()).evaluate( {x : 1, y: 1 } );
+
+			if ((evaluateInOneExpr > 80 || evaluateInOneExpr < -80) === true && isFinite(evaluateInOneExpr) === true) return true;
+
+			else return false;
+
+		}
+
 		function surfaceGraphing(expr, dspRange) {
 
 			generateDataBtn();
@@ -475,7 +511,7 @@
 
 				let zval = createSurfaceData(expr)[2];
 					
-				if (isValidData([].concat.apply([], zval)) === false || isValidGeneratedData([].concat.apply([], zval)) === false) {
+				if (evaluateInOne(expr) === true || isValidData([].concat.apply([], zval)) === false || isValidGeneratedData([].concat.apply([], zval)) === false || createSurfaceData(expr)[3] === false) {
 
 					cancel();
 
@@ -805,7 +841,7 @@
 
 				}
 
-				if (isValidData(yVal) === false || isValidGeneratedData(yVal) === false) {
+				if (evaluateInOne(expr) === true || isValidData(yVal) === false || isValidGeneratedData(yVal) === false || createFunctionData(expr)[2] === false) {
 
 					cancel();
 
@@ -827,7 +863,7 @@
 
 						color: functionColor[Math.floor(Math.random() * functionColor.length)],
 
-						width: '4'
+						width: '3'
 
 					}
 
