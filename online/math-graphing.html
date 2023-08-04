@@ -425,7 +425,7 @@
 
 			const modifiedYData = yData.map((y, i) => {
 
-				if ((math.abs(yData[i - 1] - y) > diffSize) === true && ((yData[i - 1] > 0 && y < 0) === true || (yData[i - 1] < 0 && y > 0) === true) || y === -Infinity || y === Infinity) {
+				if ((math.abs(yData[i - 1] - y) > diffSize) === true && ((yData[i - 1] >= 0 && y < 0) === true || (yData[i - 1] <= 0 && y > 0) === true) || y === -Infinity || y === Infinity) {
 
 					wasRun = true;
 
@@ -433,7 +433,19 @@
 
 					const nextValue = yData[i + 1];
 
-					const addInMore = (value) => (value > 0 ? value + Math.pow(10, 6) : value - Math.pow(10, 6));
+					const addInMore = (value) => {
+
+						if (value === 0) {
+
+							return 0; 
+							
+						} else {
+
+							return value > 0 ? value + 1e6 : value - 1e6;
+
+						}
+
+					};			
 
 					return [addInMore(prevValue), Infinity, addInMore(nextValue)];
 
