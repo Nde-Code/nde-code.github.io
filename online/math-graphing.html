@@ -233,7 +233,7 @@
 
 		var surfaceColor = ["Rainbow", "Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
 
-		var diffSize = 5;
+		var diffSize = 15;
 
 		var bigNumberAllowed = 1e45;
 
@@ -333,7 +333,7 @@
 
         function createGraph(expr, range) {
 
-            if (!expr || isAType(expr) === true || isMathExpression(expr) === false || hasOneVariable(expr) === "Invalid") {
+            if (!expr || isAType(expr) === true || isMathExpression(expr) === false || hasOneVariable(expr) === "Invalid" || evaluateInOne(expr) === true) {
 
                 $("#modalbox-errors-warnings-id").html("L'expression de votre fonction est invalide !");
 
@@ -452,7 +452,7 @@
 			const modifiedYData = yData.map((y, i) => {
 
 				if ((Math.abs(yData[i - 1] - y) > diffSize) === true && ((yData[i - 1] >= 0 && y < 0) === true || (yData[i - 1] <= 0 && y > 0) === true) || y === -Infinity || y === Infinity) {
-
+					
 					wasRun = true;
 					
 					const prevValue = yData[i - 1];
@@ -511,7 +511,7 @@
 
 				let zval = createSurfaceData(expr)[2];
 					
-				if (evaluateInOne(expr) === true || isValidData([].concat.apply([], zval)) === false || isValidGeneratedData([].concat.apply([], zval)) === false || createSurfaceData(expr)[3] === false) {
+				if (isValidData([].concat.apply([], zval)) === false || isValidGeneratedData([].concat.apply([], zval)) === false || createSurfaceData(expr)[3] === false) {
 
 					cancel();
 
@@ -841,7 +841,7 @@
 
 				}
 
-				if (evaluateInOne(expr) === true || isValidData(yVal) === false || isValidGeneratedData(yVal) === false || createFunctionData(expr)[2] === false) {
+				if (isValidData(yVal) === false || isValidGeneratedData(yVal) === false || createFunctionData(expr)[2] === false) {
 
 					cancel();
 
