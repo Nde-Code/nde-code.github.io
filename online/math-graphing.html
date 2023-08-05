@@ -449,48 +449,45 @@
 
 			let wasRun = false;
 
-			const modifiedYData = yData.map((y, i) => {
+			const modifiedYDataCopy = [...yData];
 
-				if ((Math.abs(yData[i - 1] - y) > diffSize) === true && ((yData[i - 1] >= 0 && y < 0) === true || (yData[i - 1] <= 0 && y > 0) === true) || y === -Infinity || y === Infinity) {
-					
-					wasRun = true;
-					
+				for (let i = 1; i < yData.length; i++) {
+
+					const y = yData[i];
+
 					const prevValue = yData[i - 1];
-					
+
 					const nextValue = yData[i + 1];
 
-					if (Math.abs(prevValue) === Math.abs(nextValue)) {
-
-						wasRun = false;
+					if (Math.abs(prevValue - y) > diffSize && ((prevValue >= 0 && y < 0) || (prevValue <= 0 && y > 0)) && isFinite(y) && !isNaN(y)) {
 						
-						return;
-					
+						wasRun = true;
+
+						const addInMore = (value) => {
+
+							if (value === 0) {
+
+								return 0;
+
+							} else {
+
+								return value > 0 ? value + 1e6 : value - 1e6;
+
+							}
+
+						};
+
+						modifiedYDataCopy[i - 1] = addInMore(prevValue);
+
+						modifiedYDataCopy[i] = Infinity;
+
+						modifiedYDataCopy[i + 1] = addInMore(nextValue);
+
 					}
-
-					const addInMore = (value) => {
-
-						if (value === 0) {
-
-							return 0; 
-							
-						} else {
-
-							return value > 0 ? value + 1e6 : value - 1e6;
-
-						}
-
-					};			
-
-					return [addInMore(prevValue), Infinity, addInMore(nextValue)];
-
+					
 				}
 
-				return y;
-
-			});
-
-			return [modifiedYData.flat(), wasRun];
-
+			return [modifiedYDataCopy, wasRun];
 		}
 
 		function evaluateInOne(expr) {
