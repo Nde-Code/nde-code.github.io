@@ -224,7 +224,7 @@
 
 				<div class="modalbox-text-contenaire">
 					<h2>Limite inférieur:</h2>
-					<p class="modalbox-description"> Entrez l'indice de sommation à partir duquel la série doit commencer à sommer. Seuls 0 et 1 sont acceptés.</p>
+					<p class="modalbox-description"> Entrez l'indice de sommation à partir duquel la série doit commencer à sommer. Seuls les nombres de 0 à 10 sont acceptés.</p>
 				</div>
 				<input type="text" inputmode="numeric" id="start-index" class="modalbox-input" placeholder="n:">
 
@@ -274,7 +274,7 @@
 
 			}
 
-			else if (!Number.isInteger(Number(index)) || Number(index) > 1 || Number(index) < 0 || !index) {
+			else if (!Number.isInteger(Number(index)) || Number(index) > 10 || !index) {
 
 				$("#modalbox-errors-warnings-id").html("L'indice de sommation est invalide !");
 
@@ -620,7 +620,7 @@
 
 					zerolinewidth: 1.5,
 
-					range: [-0.5, (Math.max(...graphSequencePoints[0]) + 0.5)],
+					range: [(Number(index) - 0.5), (Math.max(...graphSequencePoints[0]) + 0.5)],
 
 					title: {
 					
