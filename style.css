@@ -24,6 +24,10 @@ body.main-body-class {
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 30px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 .foot-page {
@@ -121,11 +125,10 @@ p.footer-page-text a.footer-page-link {
 }
 
 .modalbox-white-lines {
-    height: 3px;
+    height: 4px;
     margin-left: 20%;
     margin-right: 20%;
     background-color: #005DD9;
-    border: 2px solid #0047A6;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -466,7 +469,6 @@ p.modalbox-errors-warnings-class {
     margin-left: 5%;
     color: white;
 }
-
 
 .modalbox-go-btn {
     color: white;

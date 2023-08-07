@@ -690,7 +690,13 @@
 
 			$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
 
-			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i> Calculer');
+			if ($(window).width() >= 1024) {
+
+				$(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i> Recalculer une serie')
+				
+				$("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i> Calculer');
+			
+			}
 
 			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
 
