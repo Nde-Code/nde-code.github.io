@@ -24,17 +24,17 @@ function openAboutBox() {
                     <p class="modalbox-description"><strong> · JQuery:</strong> pour une gestion plus éfficace du DOM Javascript. </p>
                     <p class="modalbox-description"><strong> · Math.js:</strong> pour les outils mathématiques dans mes projets. </p>
                     <p class="modalbox-description"><strong> · Plotly:</strong> pour dessiner des graphiques dans le navigateur. </p>
-                    <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+                    <div class="modalbox-white-lines"></div>
                     <h2>Outils utilisés:</h2>
                     <p class="modalbox-description"><strong> · Visual Studio Code:</strong> pour rédiger et modifier le code de ce chaleureux site internet. </p>
                     <p class="modalbox-description"><strong> · Canva:</strong> pour modifier et réaliser quelques graphismes. </p>
                     <p class="modalbox-description"><strong> · Pixlr:</strong> pour retoucher les images.</p>
                     <p class="modalbox-description"><strong> · Getavataaars:</strong> pour créer mon "favicon".</p>
-                    <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+                    <div class="modalbox-white-lines"></div>
                     <h2>Ressources utilisées:</h2>
                     <p class="modalbox-description"><strong> · Flaticon:</strong> pour les différentes ressources utilisés dans mes projets. je renseigne toujours l'utilisation de ces graphismes dans les pieds de page ou dans un fichier README.Md. </p>
                     <p class="modalbox-description"><strong> · Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
-                    <div class="modalbox-white-lines" style="margin-top: 20px; margin-bottom: 40px;"></div>
+                    <div class="modalbox-white-lines"></div>
                     <h2>Licence:</h2>
                     <p class="modalbox-description"><strong>GNU General Public License v3.0</strong></p>
                 </div>

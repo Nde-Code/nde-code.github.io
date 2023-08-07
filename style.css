@@ -121,7 +121,7 @@ p.footer-page-text a.footer-page-link {
 }
 
 .modalbox-white-lines {
-    height: 2px;
+    height: 3px;
     margin-left: 20%;
     margin-right: 20%;
     background-color: #005DD9;
@@ -130,6 +130,8 @@ p.footer-page-text a.footer-page-link {
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .modalbox-class {
