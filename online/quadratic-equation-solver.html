@@ -1,8 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
+
 	<style>
+
 	.calculate-btn {
 		padding: 15px 30px;
 		color: #fff;
@@ -13,25 +16,14 @@
 		font-weight: bold;
 		border: 4px solid #0047A6;
 		cursor: pointer;
-		margin: 8px;
 	}
 
 	.calculate-btn:hover {
 		background: #4690F2
 	}
 
-	.center-elements {
-		text-align: center;
-	}
-
-	.website-box-notice-title {
-		color: white;
-		font-size: 24px;
-		font-weight: bold;
-	}
-
 	#equation-plot-id {
-		color: #005DD9;
+		color: #5C9DF2;
 		font-size: 22px;
 		font-style: italic;
 		font-weight: bold;
@@ -47,14 +39,15 @@
 	.result-text {
 		font-size: 20px;
 		font-weight: bold;
-		color: #005DD9;
+		color: #F1C31B;
 		margin-top: 10px;
     	margin-bottom: 10px;
 	}
 
 	.robot-img {
-		width: 220px;
-		height: 220px;
+		width: 245px;
+		height: 245px;
+		margin-top: 15px;
 	}
 
 	@media screen and (max-width: 768px) {
@@ -63,172 +56,302 @@
 			height: 180px;
 		}
 	}
+
 	</style>
+
 	<meta charset="UTF-8">
+
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Nathan Debilloëz · Projet</title>
+
 	<meta name="description" content="Une calculatrice d'équation du second degré en ligne.">
+
 	<meta name="keywords" content="Nathan Debilloëz · Projet">
+
 	<meta name="author" content="Nathan Debilloëz">
+
 	<link rel="stylesheet" href="../style.css">
+
 	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+
 	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+
 	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+
 	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+
 	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+
 	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+
 	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+
 	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+
 	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-icon-180x180.png">
+
 	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+
 	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+
 	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+
 	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+
 	<link rel="manifest" href="../assets/favicon/manifest.json">
+
 	<meta name="msapplication-TileColor" content="#ffffff">
+
 	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+
 	<meta name="theme-color" content="#ffffff">
+	
 </head>
 
-<body class="main-body-class">
+<body class="body-class">
+
 	<div id="modalbox-open-div"></div>
-	<div id="main-elements-contenaire">
+
+	<div id="main-html">
+
 		<div class="main-contenaire">
-			<div class="header-contenaire">
-				<div class="header-content">
-					<div class="menu-header">
-						<div class="mobile-menu">
-							<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
-						</div>
-						<a href="/" class="menu-header-title"><strong>Nathan Debilloëz</strong></a>
-						<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
-						<a onclick="openAboutBox();" class="menu-item">À propos</a>
-						<div class="menu-dropdown">
-							<button class="menu-dropdown-btn">Tutoriels
-								<i class="fa fa-caret-down"></i>
-							</button>
-							<div class="menu-dropdown-items">
-								<!-- Bientôt -->
-							</div>
-						</div>
-						<div class="menu-dropdown">
-							<button class="menu-dropdown-btn">Projets
-								<i class="fa fa-caret-down"></i>
-							</button>
-							<div class="menu-dropdown-items">
-								<a href="series">Calculer une série numérique</a>
-								<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
-								<a href="math-graphing">Tracer une fonction mathématique</a>
-								<a href="pinwheel">Jouer avec un moulin à vent</a>
-								<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
-								<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
-							</div>
-						</div>
+
+			<div class="website-header">
+
+				<div class="menu-class">
+
+					<div class="menu-mobile">
+
+						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+
 					</div>
+
+					<a href="/" class="menu-title"><strong>Nathan Debilloëz</strong></a>
+
+					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
+
+					<a onclick="openAboutBox();" class="menu-item">Informations</a>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Tutoriels
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<!--
+									
+								Bientôt
+								
+							-->
+
+						</div>
+
+					</div>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Projets
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<a href="series">Calculer une série numérique</a>
+
+							<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
+
+							<a href="math-graphing">Tracer une fonction mathématique</a>
+
+							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
+
+							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+
+						</div>
+
+					</div>
+
 				</div>
+
 			</div>
-			<div class="white-lines"></div>
-			<div class="main-website-panel" id="main-website-content-id">
-				<div class="main-website-row-panel">
-					<div class="main-website-panel-style" style="overflow-y: hidden;">
-						<div class="center-elements">
-							<img class="robot-img" src="../assets/robot.png" alt="Robot">
-							<h1 id="software-subtitle-id" style="margin-top: 30px; color: white; font-weight: bold; font-size: 24px;">Logiciel résolveur d'équation du type: </h1>
-							<span id="equation-plot-id"> Ax<sup>2</sup> + Bx + C = 0 </span>
-							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide et qui fonctionne avec les complexes.</p>
-							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui n'affiche ni les étapes de calcul, ni la méthode utilisée.</p>
-							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit le résultat à 3 chiffres après la virgule.</p>
-							<p class="result-sentence" id="display-result-id"></p>
-						</div>
-					</div>
-				</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-main-panel">
+
+				<img class="robot-img" src="../assets/robot.png" alt="Un robot.">
+
+				<h1 class="website-main-panel-title">Logiciel résolveur d'équation du type: </h1>
+				
+				<span id="equation-plot-id"> Ax<sup>2</sup> + Bx + C = 0 </span>
+									
+				<p class="website-main-panel-description"><i class="fas fa-check green"></i> Qui est gratuit, rapide et qui fonctionne avec les complexes.</p>
+					
+				<p class="website-main-panel-description"><i class="fas fa-times not"></i> Qui n'affiche ni les étapes de calcul, ni la méthode utilisée.</p>
+					
+				<p class="website-main-panel-description"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit le résultat à 3 chiffres après la virgule.</p>
+					
+				<p class="result-sentence" id="display-result"></p>
+
 			</div>
-			<div class="white-lines"></div>
-			<div class="website-bottom-menu">
-				<a onclick="$('#modalbox-equation').css('display', 'block'); window.scrollTo(0, 0);" id="calculate-btn-id" class="calculate-btn"><i class="fa-solid fa-terminal"></i> Calculer une équation</a>
-			</div>
-			<div style="margin-top: 20px;" class="foot-page">
-				<div class="main-footer-page">
-					<div class="social-media">
-						<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
-						<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
-						<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
-					</div>
-					<div class="copyright-notice">
-						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
-						<p class="footer-page-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="footer-page-link">Flaticon</a>.</p>
-						<p class="footer-page-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
-						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modalbox-class" id="modalbox-equation" style="display: none;">
-			<header class="modalbox-header-class" id="modalbox-header-id">
-				<i class="fa-solid fa-terminal"></i> Résoudre
-				<a class="modalbox-header-close" onclick="$('#modalbox-equation').css('display', 'none');">
-					<i class="fa fa-times" aria-hidden="true"></i>
+
+			<div class="white-line"></div>
+
+			<div class="website-bottom">
+
+				<a onclick="$('#modalbox-equation').css('display', 'block'); window.scrollTo(0, 0);" id="calculate-btn-id" class="calculate-btn">
+					
+					<i class="fa-solid fa-gears"></i>
+					
+					Calculer une équation
+				
 				</a>
-			</header>
-			<div class="modalbox-main-content">
-
-				<div class="modalbox-text-contenaire">
-					<h2>Le A de votre équation:</h2>
-					<p class="modalbox-description">Entrez le A de votre équation. Il s'agit du X au carré de votre équation. </p>
-				</div>
-				<input type="text" id="a-equation" class="modalbox-input" placeholder="A:"> 
-
-				<div class="modalbox-white-lines"></div>
-
-				<div class="modalbox-text-contenaire">
-					<h2>Le B de votre équation:</h2>
-					<p class="modalbox-description">Entrez le B de votre équation. Il s'agit du X (pas au carré) de votre équation. </p>
-				</div>
-				<input type="text" id="b-equation" class="modalbox-input" placeholder="B:">
-
-				<div class="modalbox-white-lines"></div>
-
-				<div class="modalbox-text-contenaire">
-					<h2>Le C de votre équation:</h2>
-					<p class="modalbox-description">Entrez le C de votre équation. Il s'agit de la constante de votre équation. </p>
-				</div>
-				<input type="text" id="c-equation" class="modalbox-input" placeholder="C:">
-
-				<div class="modalbox-white-lines"></div>
-
-				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
-
-				<div style="text-align: center; margin-bottom: 40px;">
-					<a id="compute-btn-id" class="modalbox-go-btn" onclick="solve($('#a-equation').val(), $('#b-equation').val(), $('#c-equation').val());"><i class="fa-solid fa-terminal"></i> Résoudre</a>
-				</div>
+			
 			</div>
+
+			<div class="website-footer">
+
+				<div class="social-media">
+
+					<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
+
+					<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
+
+					<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
+
+				</div>
+
+				<div class="copyright-contenaire">
+
+					<p class="copyright-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+
+					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
+						
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="copyright-link">Github</a>.</p>
+						
+					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
+					
+				</div>
+
+			</div>
+
 		</div>
+
+		<div class="modalbox-class" id="modalbox-equation" style="display: none;">
+
+			<header class="modalbox-header-class" id="modalbox-header-id">
+
+				<i class="fa-solid fa-gears"></i> Résoudre
+
+				<a class="modalbox-header-close" onclick="$('#modalbox-equation').css('display', 'none');">
+
+					<i class="fa fa-times" aria-hidden="true"></i>
+
+				</a>
+
+			</header>
+
+			<div class="modalbox-main-contenaire">
+
+				<div class="modalbox-text-contenaire">
+
+					<h2>Le A de votre équation:</h2>
+
+					<p class="modalbox-description">Veuillez entrer la valeur de "A" de votre équation. "A" représente le terme au carré de l'équation:</p>
+					
+					<input type="text" id="a-equation" class="modalbox-input" placeholder="A:"> 
+
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-contenaire">
+
+					<h2>Le B de votre équation:</h2>
+
+					<p class="modalbox-description">Veuillez saisir la valeur de "B" dans votre équation. "B" correspond au terme linéaire de l'équation:</p>
+					
+					<input type="text" id="b-equation" class="modalbox-input" placeholder="B:">
+
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-contenaire">
+
+					<h2>Le C de votre équation:</h2>
+					
+					<p class="modalbox-description">Merci de fournir la valeur de "C" dans votre équation. "C" représente la constante de l'équation: </p>
+					
+					<input type="text" id="c-equation" class="modalbox-input" placeholder="C:">
+
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-contenaire">
+
+					<h2>Code couleurs:</h2>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #5C9DF2;"></i> Affiche l'équation sur base de la saisie. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Affiche les solutions de l'équation saisie arrondis à 3 chiffre après la virgule. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #00C853;"></i> Affiche le discriminant de l'équation saisie arrondis à 3 chiffre après la virgule. </p>
+				
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les messages d'erreur et d'avertissement seront affichés dans cette section. </p>
+
+				<div class="modalbox-bottom">
+
+					<a id="compute-btn-id" class="modalbox-btn" onclick="solve($('#a-equation').val().toLowerCase(), $('#b-equation').val().toLowerCase(), $('#c-equation').val().toLowerCase());">
+						
+						<i class="fa-solid fa-gears"></i>
+						
+						Résoudre
+					
+					</a>
+				
+				</div>
+				
+			</div>
+			
+		</div>
+
 	</div>
+
 	<script src="../js/jquery.js"></script>
+
 	<script src="../js/app.js"></script>
+
 	<script src="../js/math.js"></script>
-	<script type="text/javascript">	
+
+	<script type="text/javascript">
+
 		var isRunning = false;	
 
 		setInterval(function () {
 
 			if ($(window).width() <= 1024) {
 
-				$("#compute-btn-id").html('<i class="fa-solid fa-terminal"></i>');
+				$("#compute-btn-id").html('<i class="fa-solid fa-gears"></i>');
 
-				$("#calculate-btn-id").html('<i class="fa-solid fa-terminal"></i>');
+				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i>');
 
 				$(".main-website-row-panel").css("paddingLeft", "unset");
-
-				$(".main-website-panel-style").css("overflowY", "auto");
-
-			}
-
-			if ($(window).width() <= 745) {
-
-				$("#equation-plot-id").css("fontSize", "20px");
 
 			}
 
@@ -240,13 +363,15 @@
 
 				$("#modalbox-equation").css('width', (window.innerWidth - 10) + "px");
 
-				$("#display-result-id").css("marginLeft", "unset");
+				$("#display-result").css("marginLeft", "unset");
 
-				$("#display-result-id").css("marginRight", "unset");
+				$("#display-result").css("marginRight", "unset");
+
+				$("#equation-plot-id").css("fontSize", "20px");
 
 			}
 
-		}, 500);
+		}, 1000);
 
 		function beautifyMath(numb, charTag) {
 
@@ -318,15 +443,9 @@
 
 			let complexNumb = math.complex(val);
 
-			if (complexNumb.re === 0 && complexNumb.im === 0) {
+			if (complexNumb.re === 0 && complexNumb.im === 0) return true
 
-				return true
-
-			} else {
-
-				return false;
-
-			}
+			else return false;
 
 		}
 
@@ -342,17 +461,11 @@
 
 		}
 
-		function setEquals(nbr) {
+		function setEqual(nbr) {
 
-			if (hasMoreThanThreeDecimal(nbr) === true) {
+			if (hasMoreThanThreeDecimal(nbr) === true) return "≈"
 
-				return "≈"
-
-			} else {
-
-				return "="
-
-			}
+			else return "="
 
 		}
 
@@ -382,29 +495,25 @@
 
 			} 
 
-			else if (isNull(a) === true && isNull(b) === true || isNull(a) === true) {
-
-				$("#modalbox-errors-warnings-id").html("Votre équation est invalide !");
-
-				return false;
-
-			}
+			else if (isNull(a) === true && isNull(b) === true || isNull(a) === true) $("#modalbox-errors-warnings-id").html("Votre équation est invalide car elle n'est pas du second degré !");
 
 			else {
 				
 				isRunning = true;
 
-				$("#software-subtitle-id").html("L'équation du second degré:");
+				$(".website-main-panel-title").html("L'équation du second degré:");
 				
 				$("#modalbox-equation").css("display", "none");
 
-				$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
+				$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
-				$(".main-website-panel-notice").remove();
+				$(".website-main-panel-description").remove();
+
+				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Recalculer une équation')
 
 				$("#equation-plot-id").html(`${beautifyMath(math.evaluate(a), "a")}x<sup>2</sup> ${beautifyMath(math.evaluate(b), "b")}x ${beautifyMath(math.evaluate(c), "c")} = 0`);
 
-				var discriminant = math.round(math.evaluate(`(${b})^2-4*(${a})*(${c})`), 3);
+				let discriminant = math.round(math.evaluate(`(${b})^2-4*(${a})*(${c})`), 3);
 
 				if (discriminant === 0) {
 
@@ -412,8 +521,8 @@
 
 					let resX = math.round(x, 3)
 
-					$("#display-result-id").html(`a pour unique solution: <p class="result-text">x ${setEquals(x)} ${resX}</p> avec un discriminant de
-					<p class="result-text">0</p>`);
+					$("#display-result").html(`a pour unique solution: <p class="result-text">x ${setEqual(x)} ${resX}</p> avec un discriminant de
+					<p class="result-text" style="color: #00C853;">0</p>`);
 
 				} else {
 
@@ -425,17 +534,13 @@
 
 					let resX2 = math.round(x2, 3)
 
-					if (resX1 === resX2) {
+					let resultText = (resX1 === resX2)
 
-						$("#display-result-id").html(`a pour unique solution: <p class="result-text">x ${setEquals(x1)} ${resX1}</p> avec un discriminant de
-						<p class="result-text">0</p>`);
+					? `a pour unique solution: <p class="result-text">x ${setEqual(x1)} ${resX1}</p> avec un discriminant de <p class="result-text" style="color: #00C853;">0</p>`
+					
+					: `a pour ensemble de solution: <p class="result-text">{x<sub>1</sub> ${setEqual(x1)} ${resX1}; x<sub>2</sub> ${setEqual(x2)} ${resX2}}</p> avec un discriminant de <p class="result-text" style="color: #00C853;">${discriminant}</p>`;
 
-					} else {
-
-						$("#display-result-id").html(`a pour ensemble de solution: <p class="result-text">{x<sub>1</sub> ${setEquals(x1)} ${resX1}; x<sub>2</sub> ${setEquals(x2)} ${resX2}}</p> avec un discriminant de
-						<p class="result-text">${discriminant}</p>`);
-
-					}
+					$("#display-result").html(resultText);
 
 				}
 
@@ -444,7 +549,9 @@
 			}
 
 		}
+
 	</script>
+
 </body>
 
 </html>

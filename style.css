@@ -7,39 +7,213 @@
     color-scheme: dark;
 }
 
-body.main-body-class {
-    background: url('assets/fond.jpg') no-repeat;
+body.body-class {
     margin: 0;
     padding: 0;
-    background-size: cover;
+    background-color: #404040;
 }
 
 .main-contenaire {
     position: relative;
+    background: url('assets/fond.jpg') no-repeat;
+    background-size: cover;
 }
 
-.white-lines {
-    height: 2px;
-    background-color: white;
+.website-header {
+    padding-top: 20px;
+}
+
+.menu-class {
+    overflow: hidden;
+    background: #333232;
+    margin-left: 15%;
+    margin-right: 15%;
+    border: 4px solid #404040;
+    border-radius: 25px;
+}
+
+.menu-class a {
+    float: left;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    padding: 24px 26px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu-dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.menu-dropdown .menu-dropdown-btn {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 24px 26px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    cursor: pointer;
+}
+
+.menu-class a:hover,
+.menu-dropdown:hover .menu-dropdown-btn {
+    background-color: rgb(78, 78, 78);
+}
+
+.menu-dropdown-items {
+    display: none;
+    position: absolute;
+    background-color: #404040;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.menu-dropdown-items a {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    width: auto;
+}
+
+.menu-dropdown-items a:hover {
+    background-color: rgb(78, 78, 78);
+}
+
+.menu-dropdown:hover .menu-dropdown-items {
+    display: block;
+}
+
+.menu-mobile {
+    display: none;
+    margin-left: 25px;
+    font-size: 42px;
+}
+
+@media only screen and (max-width: 1175px) {
+    .menu-mobile {
+        color: white;
+        display: block;
+        float: right;
+    }
+
+    .menu-class a.menu-item {
+        display: none;
+    }
+
+    .menu-dropdown .menu-dropdown-btn {
+        display: none;
+        width: 100%;
+    }
+
+    .menu-class {
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    .menu-class a.menu-title {
+        text-align: left;
+    }
+
+    .menu-class a {
+        float: none;
+        display: block;
+    }
+
+    .menu-dropdown {
+        float: none;
+        text-align: left;
+    }
+}
+
+.white-line {
+    height: 4px;
+    background-color: #c3c3c3;
     margin-left: 30%;
     margin-right: 30%;
-    margin-top: 30px;
+    margin-top: 25px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
 }
 
-.foot-page {
-    background: #292829;
-    width: 100%;
+.website-main-panel {
+    overflow-y: scroll;
+    background: linear-gradient(to left top, #333232, #404040);
+    padding: 20px;
+    margin-top: 20px;
+    border: 4px solid #404040;
     color: white;
-    margin-top: -18px;
+    -webkit-box-shadow: 5px 5px 15px 5px #000000;
+    box-shadow: 5px 5px 15px 5px #000000;
+    border-radius: 40px;
+    height: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-left: 8px;
+    text-align: center;
+    min-height: 535px;
+    /* Maquer la "scrollbar" sur Firefox. */
+    scrollbar-width: none;
 }
 
-div.main-footer-page {
+.website-main-panel::-webkit-scrollbar {
+    display: none;
+}
+
+h1.website-main-panel-title {
+    margin-top: 20px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.green {
+    color: #00C853;
+}
+
+.not {
+    color: #FF1744;
+}
+
+.warn {
+    color: #FF5722;
+}
+
+.website-main-panel-description {
+    font-size: 22px;
+    margin-right: 5%;
+    margin-left: 5%;
+    color: white;
+}
+
+@media only screen and (max-width: 728px) {
+    .website-main-panel {
+        padding: unset;
+    }
+}
+
+.website-bottom {
     text-align: center;
-    align-items: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.website-footer {
+    background: #333232;
+    width: 100%;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
 }
 
 div.social-media {
@@ -52,100 +226,53 @@ div.social-media {
 i.twitter {
     font-size: 25px;
     color: rgb(29, 161, 242);
-    padding: 19px 20px;
+    padding: 15px 20px;
     cursor: pointer;
 }
 
 i.facebook {
     font-size: 25px;
     color: #1778f2;
-    padding: 19px 20px;
+    padding: 15px 20px;
     cursor: pointer;
 }
 
 i.github {
     font-size: 25px;
     color: white;
-    padding: 19px 20px;
+    padding: 15px 20px;
     cursor: pointer;
 }
 
-div.copyright-notice {
-    background: #363536;
+div.copyright-contenaire {
+    background: #404040;
     margin: 0;
     padding: 0;
 }
 
-.footer-page-text {
+.copyright-text {
     color: white;
     margin: 0;
     padding: 0;
     font-size: 22px;
 }
 
-p.footer-page-text a.footer-page-link {
+p.copyright-text a.copyright-link {
     color: white;
     margin: 0;
     padding: 0;
     text-decoration: none;
 }
 
-.main-website-row-panel {
-    padding-left: 8px;
-}
-
-.main-website-row-panel:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-.main-website-panel-style {
-    overflow-y: auto;
-    height: 505px;
-    background: linear-gradient(to left top, #292829, #363536);
-    padding: 20px;
-    margin-top: 20px;
-    border: 4px solid #363536;
-    color: white;
-    -webkit-box-shadow: 5px 5px 15px 5px #000000;
-    box-shadow: 5px 5px 15px 5px #000000;
-    border-radius: 40px;
-}
-
-.main-website-components-box {
-    float: left;
-    width: 100%;
-}
-
-.main-website-panel {
-    height: 100%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
-.modalbox-white-lines {
-    height: 4px;
-    margin-left: 20%;
-    margin-right: 20%;
-    background-color: #005DD9;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border-bottom-right-radius: 25px;
-    margin-top: 20px;
-    margin-bottom: 40px;
-}
-
 .modalbox-class {
     top: 40%;
     left: 50%;
-    margin-left: -400px;
+    margin-left: -337.5px;
     margin-top: -200px;
-    width: 800px;
-    background: #292829;
+    width: 675px;
+    background: #333232;
     z-index: 2;
-    border: 4px solid #363536;
+    border: 4px solid #404040;
     color: white;
     position: fixed;
     font-size: 20px;
@@ -172,14 +299,14 @@ header.modalbox-header-class {
     border-top-left-radius: 36px;
 }
 
-.modalbox-main-content {
+.modalbox-main-contenaire {
     overflow-y: scroll;
     height: 450px;
     /* Maquer la "scrollbar" sur Firefox. */
     scrollbar-width: none;
 }
 
-.modalbox-main-content::-webkit-scrollbar {
+.modalbox-main-contenaire::-webkit-scrollbar {
     display: none;
 }
 
@@ -190,67 +317,34 @@ header.modalbox-header-class {
     margin-top: 20px;
 }
 
-.modalbox-textarea {
-    resize: none;
-    width: 88%;
-    height: 230px;
-    background: #323232;
-    border: 4px solid #757375;
-    outline: none;
-    color: white;
-    font-size: 22px;
-    margin-left: 5%;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    -webkit-box-shadow: 3px 5px 15px 5px #000;
-    box-shadow: 3px 5px 15px 5px #000000;
-}
-
-.modalbox-range-btn {
-    appearance: none;
-    width: 90%;
-    height: 40px;
-    background: #323232;
-    border: 4px solid #757375;
-    margin-left: 5%;
-    box-shadow: 3px 5px 15px 5px #000000;
-    -webkit-box-shadow: 3px 5px 15px 5px #000000;
-}
-
-.modalbox-range-btn::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background: #005DD9;
-    border: 4px solid #0047A6;
-    width: 50px;
-    height: 40px;
-    cursor: pointer;
-}
-
-.modalbox-range-btn::-webkit-slider-thumb:hover {
-    background: #4690F2;
-}
-
-.modalbox-range-btn::-moz-range-thumb {
-    cursor: pointer;
-    height: 40px;
-    width: 50px;
+.modalbox-line {
+    height: 4px;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #c3c3c3;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 select,
 .modalbox-input {
     box-sizing: border-box;
-    width: 90%;
+    width: 100%;
     height: 50px;
-    background: #323232;
+    background: #333232;
     border: 4px solid #757375;
     outline: none;
     color: white;
     font-size: 22px;
-    margin-left: 5%;
     -webkit-box-shadow: 3px 5px 15px 5px #000;
     box-shadow: 3px 5px 15px 5px #000;
     border-radius: 40px;
     text-indent: 15px;
+    appearance: none;
 }
 
 select,
@@ -265,212 +359,22 @@ select,
 p.modalbox-errors-warnings-class {
     text-align: center;
     font-size: 24px;
-    color: #E96979;
+    color: #FF1744;
+    font-style: italic;
     font-weight: bold;
     margin-bottom: 50px;
     margin-right: 40px;
     margin-left: 40px;
     text-shadow: 3px 3px 7px #000000;
+    cursor: default;
 }
 
-.modalbox-close-btn {
-    padding: 15px 30px;
-    color: white;
-    font-size: 20px;
-    border-radius: 50px;
-    background: #005DD9;
-    transition: all 0.2s ease-out 0s;
-    font-weight: bold;
-    border: 4px solid #0047A6;
-    cursor: pointer;
-}
-
-.modalbox-close-btn:hover {
-    background: #4690F2;
-}
-
-.main-website-panel-style::-webkit-scrollbar-track {
-    display: none;
-}
-
-.main-website-panel-style::-webkit-scrollbar {
-    display: none;
-}
-
-.main-website-panel-style::-webkit-scrollbar-thumb {
-    display: none;
-}
-
-.modalbox-email-input {
-    width: 90%;
-    box-sizing: border-box;
-    height: 50px;
-    background: #323232;
-    border: 4px solid #757375;
-    outline: none;
-    color: white;
+.modalbox-bottom {
+    margin-bottom: 40px;
     text-align: center;
-    font-size: 22px;
-    margin-left: 5%;
-    box-shadow: 3px 5px 15px 5px #000000;
-    -webkit-box-shadow: 3px 5px 15px 5px #000000;
 }
 
-.menu-header {
-    overflow: hidden;
-    background: #292829;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-top: 20px;
-    border: 4px solid #363536;
-    border-radius: 25px;
-}
-
-.menu-header a {
-    float: left;
-    font-size: 16px;
-    color: white;
-    text-align: center;
-    padding: 24px 26px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.menu-dropdown {
-    float: right;
-    overflow: hidden;
-}
-
-.menu-dropdown .menu-dropdown-btn {
-    font-size: 16px;
-    border: none;
-    outline: none;
-    color: white;
-    padding: 24px 26px;
-    background-color: inherit;
-    font-family: inherit;
-    margin: 0;
-    cursor: pointer;
-}
-
-.menu-header a:hover,
-.menu-dropdown:hover .menu-dropdown-btn {
-    background-color: rgb(78, 78, 78);
-}
-
-.menu-dropdown-items {
-    display: none;
-    position: absolute;
-    background-color: #363536;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.menu-dropdown-items a {
-    float: none;
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-    cursor: pointer;
-    width: auto;
-}
-
-.menu-dropdown-items a:hover {
-    background-color: rgb(78, 78, 78);
-}
-
-.menu-dropdown:hover .menu-dropdown-items {
-    display: block;
-}
-
-.mobile-menu {
-    display: none;
-    margin-left: 25px;
-    font-size: 42px;
-}
-
-@media only screen and (max-width: 1075px) {
-    .mobile-menu {
-        color: white;
-        display: block;
-        float: right;
-    }
-
-    .menu-header a.menu-item {
-        display: none;
-    }
-
-    .menu-dropdown .menu-dropdown-btn {
-        display: none;
-        width: 100%;
-    }
-
-    .menu-header {
-        margin-left: unset;
-        margin-right: unset;
-    }
-
-    .menu-header a.menu-header-title {
-        text-align: left;
-    }
-
-    .menu-header a {
-        float: none;
-        display: block;
-    }
-
-    .menu-dropdown {
-        float: none;
-        text-align: left;
-    }
-}
-
-.link-btn {
-    color: #005DD9;
-    font-size: 22px;
-    text-decoration: underline;
-    word-break: break-word;
-}
-
-.link-btn:hover {
-    color: #4690F2;
-}
-
-.website-bottom-menu {
-    text-align: center;
-    margin-bottom: 50px;
-    margin-top: 50px;
-}
-
-@media only screen and (max-width: 728px) {
-    .main-website-panel-style {
-        padding: unset;
-    }
-}
-
-.green {
-    color: #038C0C;
-}
-
-.not {
-    color: #E2392B;
-}
-
-.warn {
-    color: #FF941A;
-}
-
-.main-website-panel-notice {
-    font-size: 22px;
-    margin-right: 5%;
-    margin-left: 5%;
-    color: white;
-}
-
-.modalbox-go-btn {
+.modalbox-btn {
     color: white;
     font-size: 20px;
     border-radius: 50px;
@@ -482,6 +386,6 @@ p.modalbox-errors-warnings-class {
     cursor: pointer;
 }
 
-.modalbox-go-btn:hover {
+.modalbox-btn:hover {
     background: #4690F2;
 }

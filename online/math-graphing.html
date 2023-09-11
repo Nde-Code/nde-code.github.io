@@ -1,11 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
+	
 	<style>
-	.center-elements {
-		text-align: center;
-	}
 
 	.create-graph-btn {
 		font-size: 20px;
@@ -17,19 +16,10 @@
 		border: 4px solid #0047A6;
 		padding: 15px 30px;
 		cursor: pointer;
-		margin-left: 0.5%;
 	}
 
 	.create-graph-btn:hover {
 		background: #4690F2;
-	}
-
-	.js-plotly-plot .plotly .cursor-ns-resize {
-		cursor: default !important;
-	}
-
-	.js-plotly-plot .plotly .cursor-s-resize {
-		cursor: default !important;
 	}
 
 	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
@@ -53,10 +43,12 @@
 			transform:rotate(360deg); 
 		} 
 	}
+	/* Fin */
 
 	.robot-img {
-		width: 220px;
-		height: 220px;
+		width: 245px;
+		height: 245px;
+		margin-top: 15px;
 	}
 
 	@media screen and (max-width: 768px) {
@@ -65,177 +57,312 @@
 			height: 180px;
 		}
 	}
+
 	</style>
+
 	<meta charset="UTF-8">
+
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Nathan Debilloëz · Projet</title>
+
 	<meta name="description" content="Traceur de fonction mathématique en ligne.">
+
 	<meta name="keywords" content="Nathan Debilloëz · Projet">
+
 	<meta name="author" content="Nathan Debilloëz">
+
 	<link rel="stylesheet" href="../style.css">
+
 	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+
 	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+
 	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+
 	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+
 	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+
 	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+
 	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+
 	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+
 	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-icon-180x180.png">
+
 	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+
 	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+
 	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+
 	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+
 	<link rel="manifest" href="../assets/favicon/manifest.json">
+
 	<meta name="msapplication-TileColor" content="#ffffff">
+
 	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+
 	<meta name="theme-color" content="#ffffff">
+	
 </head>
 
-<body class="main-body-class">
+<body class="body-class">
+
     <div id="modalbox-open-div"></div>
-	<div id="main-elements-contenaire">
+
+	<div id="main-html">
+
 		<div class="main-contenaire">
-			<div class="header-contenaire">
-				<div class="header-content">
-					<div class="menu-header">
-						<div class="mobile-menu">
-							<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
-						</div>
-						<a href="/" class="menu-header-title"><strong>Nathan Debilloëz</strong></a>
-						<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
-						<a onclick="openAboutBox();" class="menu-item">À propos</a>
-						<div class="menu-dropdown">
-							<button class="menu-dropdown-btn">Tutoriels
-								<i class="fa fa-caret-down"></i>
-							</button>
-							<div class="menu-dropdown-items">
-								<!-- Bientôt -->
-							</div>
-						</div>
-						<div class="menu-dropdown">
-							<button class="menu-dropdown-btn">Projets
-								<i class="fa fa-caret-down"></i>
-							</button>
-							<div class="menu-dropdown-items">
-								<a href="series">Calculer une série numérique</a>
-								<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
-								<a href="math-graphing">Tracer une fonction mathématique</a>
-								<a href="pinwheel">Jouer avec un moulin à vent</a>
-								<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
-								<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
-							</div>
-						</div>
+
+			<div class="website-header">
+
+				<div class="menu-class">
+
+					<div class="menu-mobile">
+
+						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+
 					</div>
+
+					<a href="/" class="menu-title"><strong>Nathan Debilloëz</strong></a>
+
+					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
+
+					<a onclick="openAboutBox();" class="menu-item">Informations</a>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Tutoriels
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<!--
+									
+								Bientôt
+								
+							-->
+
+						</div>
+
+					</div>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Projets
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<a href="series">Calculer une série numérique</a>
+
+							<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
+
+							<a href="math-graphing">Tracer une fonction mathématique</a>
+
+							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
+
+							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+
+						</div>
+
+					</div>
+
 				</div>
+
 			</div>
-			<div class="white-lines"></div>
-			<div class="main-website-panel">
-				<div class="main-website-row-panel">
-					<div class="main-website-panel-style">
-						<div class="center-elements" id="graph-contenaire">
-							<img class="robot-img" src="../assets/robot.png" alt="Robot">
-							<h1 style="margin-top: 20px; color: white; font-size: 24px; font-weight: bold;">Logiciel de tracé de courbe et de surface:</h1>
-							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide et vraiment super facile à utiliser.</p>
-							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui ne vous permet que de tracer une courbe ou surface à la fois.</p>
-							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui est plus recommandé pour une esquisse graphique.</p>
-						</div>
-					</div>
-				</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-main-panel" id="graph-contenaire">
+
+				<img class="robot-img" src="../assets/robot.png" alt="Un robot.">
+
+				<h1 class="website-main-panel-title">Logiciel de tracé de courbe et de surface:</h1>
+					
+				<p class="website-main-panel-description"><i class="fas fa-check green"></i> Qui est gratuit, rapide et vraiment super facile à utiliser.</p>
+					
+				<p class="website-main-panel-description"><i class="fas fa-times not"></i> Qui ne vous permet que de tracer une courbe ou surface à la fois.</p>
+					
+				<p class="website-main-panel-description"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui peut retourner un résultat pas tout à fait correct.</p>
+				
 			</div>
-			<div class="white-lines"></div>
-			<div class="website-bottom-menu">
-				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0);"><i class="fa-solid fa-chart-line"></i> Tracer un graphique</a>
-			</div>
-			<div style="margin-top: 20px;" class="foot-page">
-				<div class="main-footer-page">
-					<div class="social-media">
-						<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
-						<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
-						<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
-					</div>
-					<div class="copyright-notice">
-						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
-						<p class="footer-page-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="footer-page-link">Flaticon</a>.</p>
-						<p class="footer-page-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
-						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modalbox-class" id="modalbox-graphing" style="display: none;">
-			<header class="modalbox-header-class" id="modalbox-header-id">
-				<i class="fa-solid fa-chart-line"></i> Tracer
-				<a class="modalbox-header-close" onclick="$('#modalbox-graphing').css('display', 'none');">
-					<i class="fa fa-times" aria-hidden="true"></i>
+
+			<div class="white-line"></div>
+
+			<div class="website-bottom">
+
+				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0);">
+					
+					<i class="fa-solid fa-chart-line"></i>
+					
+					Tracer un graphique
+				
 				</a>
+			
+			</div>
+
+			<div class="website-footer">
+
+				<div class="social-media">
+
+					<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
+
+					<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
+
+					<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
+
+				</div>
+
+				<div class="copyright-contenaire">
+
+					<p class="copyright-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+
+					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
+						
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="copyright-link">Github</a>.</p>
+						
+					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
+					
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="modalbox-class" id="modalbox-graphing" style="display: none;">
+
+			<header class="modalbox-header-class" id="modalbox-header-id">
+
+				<i class="fa-solid fa-chart-line"></i> Tracer
+
+				<a class="modalbox-header-close" onclick="$('#modalbox-graphing').css('display', 'none');">
+
+					<i class="fa fa-times" aria-hidden="true"></i>
+
+				</a>
+
 			</header>
-			<div class="modalbox-main-content">
+
+			<div class="modalbox-main-contenaire">
 
 				<div class="modalbox-text-contenaire">
-                    <h2>Votre fonction:</h2>
-                    <p class="modalbox-description"> Entrez l'équation de votre fonction en utilisant x et y comme variables.</p>
-                </div>
-                <input id="mathexpr-function-id" class="modalbox-input" placeholder="f(x, y):">
 
-                <div class="modalbox-white-lines"></div>
+                    <h2>Votre fonction:</h2>
+
+                    <p class="modalbox-description"> Veuillez entrer l'équation de votre fonction en utilisant "x" pour les graphiques en 2D ou "x" et "y" pour les graphiques en 3D :</p>
+					
+					<input id="mathexpr-function-id" class="modalbox-input" placeholder="f(x, y):">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
 
                 <div class="modalbox-text-contenaire">
+
                     <h2>Intérvalle d'affichage:</h2>
-                    <p class="modalbox-description"> Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction (par apport à l'axe Y en 2D et l'axe Z en 3D).</p>
+
+                    <p class="modalbox-description"> Sélectionnez l'intervalle sur laquelle vous souhaitez afficher votre fonction (par apport à l'axe Y en 2D et l'axe Z en 3D):</p>
+					
+					<select title="Intérvalle d'affichage:" id="display-range-id">
+
+						<option value="[-1.45, 1.45]">[-1, 1]</option>
+
+						<option value="[-2.45, 2.45]">[-2, 2]</option>
+
+						<option value="[-5.45, 5.45]">[-5, 5]</option>
+
+						<option value="[-10.45, 10.45]" selected="selected">[-10, 10]</option>
+
+						<option value="[-20.45, 20.45]">[-20, 20]</option>
+
+						<option value="[-30.45, 30.45]">[-30, 30]</option>
+
+						<option value="[-40.45, 40.45]">[-40, 40]</option>
+
+						<option value="[-50.45, 50.45]">[-50, 50]</option>
+
+						<option value="[-60.45, 60.45]">[-60, 60]</option>
+
+						<option value="[-70.45, 70.45]">[-70, 70]</option>
+
+						<option value="[-80.45, 80.45]">[-80, 80]</option>
+
+						<option value="[-90.45, 90.45]">[-90, 90]</option>
+
+						<option value="[-100.45, 100.45]">[-100, 100]</option>
+						
+					</select>
+
                 </div>
 
-                <select title="Intérvalle d'affichage:" id="display-range-id">
-					<option value="[-2.45, 2.45]">[-2, 2]</option>
-                    <option value="[-5.45, 5.45]">[-5, 5]</option>
-                    <option value="[-10.45, 10.45]">[-10, 10]</option>
-                    <option value="[-20.45, 20.45]">[-20, 20]</option>
-                    <option value="[-30.45, 30.45]">[-30, 30]</option>
-                    <option value="[-40.45, 40.45]">[-40, 40]</option>
-                    <option value="[-50.45, 50.45]">[-50, 50]</option>
-					<option value="[-60.45, 60.45]">[-60, 60]</option>
-					<option value="[-70.45, 70.45]">[-70, 70]</option>
-					<option value="[-80.45, 80.45]">[-80, 80]</option>
-					<option value="[-90.45, 90.45]">[-90, 90]</option>
-					<option value="false">Automatique</option>
-                </select>
-
-				<div class="modalbox-white-lines"></div>
+				<div class="modalbox-line"></div>
 
 				<div class="modalbox-text-contenaire">
+					
 					<h2>Légende des axes:</h2>
+					
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: red;"></i> X: Axe des abscisses compris entre -10 et 10 autant pour les graphiques en 2D qu'en 3D.</p>
+					
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: green;"></i> Y: Axe des ordonnées ou y = f(x) en 2D et où y est compris entre -10 et 10 en 3D.</p>
+					
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: blue;"></i> Z: Axe des côtes qui équivaut à f(x, y) et n'est disponible que pour les graphiques en 3D.</p>
+				
 				</div>
 
-				<div class="modalbox-white-lines"></div>
+				<div class="modalbox-line"></div>
 
-                <p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici.</p>
+                <p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les messages d'erreur et d'avertissement seront affichés dans cette section.</p>
 
-				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="createGraph($('#mathexpr-function-id').val(), $('#display-range-id').val());" id="from-modalbox-create-id"><i class="fa-solid fa-pencil"></i> Tracer</a>
+				<div class="modalbox-bottom">
+
+					<a class="modalbox-btn" onclick="createGraph($('#mathexpr-function-id').val().toLowerCase(), $('#display-range-id').val());" id="from-modalbox-create-id">
+						
+						<i class="fa-solid fa-pencil"></i>
+						
+						Tracer
+					
+					</a>
+				
 				</div>
 	
 			</div>
-		</div>
-	</div>
-	<script src="../js/jquery.js"></script>
-    <script src="../js/app.js"></script>
-	<script src="../js/plotly.js" defer></script>
-	<script src="../js/math.js" defer></script>
-    <script>
-		var inLoading = false;
 
-		var functionColor = ["gold", "royalblue", "violet", "magenta", "limegreen", "white", "orange"];
+		</div>
+		
+	</div>
+
+	<script src="../js/jquery.js"></script>
+
+    <script src="../js/app.js"></script>
+
+	<script src="../js/plotly.js" defer></script>
+
+	<script src="../js/math.js" defer></script>
+
+    <script>
+
+		var inLoading = false;
 
 		var surfaceColor = ["Rainbow", "Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
 
-		var diffSize = 15;
+		var functionColor = ["#5C9DF2", "#F1C31B", "#00C853", "#FF1744", "#FF5722", "#9C6EF2", "#F28B35"];
 
-		var bigNumberAllowed = 1e45;
+		var diffSize = 10;
 
 		setInterval(function () {
 
@@ -255,35 +382,17 @@
 
 				$("#modalbox-graphing").css('left', 'unset');
 
-				$("#modalbox-graphing").css('width', Math.round(window.innerWidth - 10) + "px");
+				$("#modalbox-graphing").css('width', Math.round($(window).width() - 10) + "px");
 
 			}
 
-		}, 500);
-
-		function isValidData(dataArray) {
-
-			for (let element of dataArray) {
-
-				if (math.typeOf(element) !== 'number' || math.typeOf(element) !== 'Complex') {
-
-					break;
-
-					return false;
-
-				}
-
-			}
-
-			return true;
-
-		}
+		}, 1000);
 
 		function isMathExpression(mathExpr) {
 
             try {
 
-                math.evaluate(mathExpr.toLowerCase(), { x: 1, y: 1 });
+                math.evaluate(mathExpr, { x: 1, y: 1 });
 
                 return true;
 
@@ -297,27 +406,23 @@
 
 		function isAType(nbr) {
 
-			let success = true;
-
 			try {
 
 				math.typeOf(math.evaluate(nbr));
 
+				return true
+
 			} catch(err) {
 
-				success = false
-
-			} finally {
-
-				return success;
+				return false
 
 			}
-
+			
 		}
 
 		function isValidGeneratedData(dataArray) {
 
-			var complexCounter = 0
+			let complexCounter = 0;
 					
 			for (var i = 0; i < dataArray.length; i++) {			
 
@@ -328,30 +433,58 @@
 			if (complexCounter === dataArray.length) return false;
 
 			else return true;
-			
+
+		}
+
+		function hasNumberOutOfRange(arr) {
+
+			for (const num of arr) {
+
+				if (!isNaN(num) && isFinite(num)) {
+
+					if (num > 1e45 || num < -1e45) return true;
+
+				}
+
+			}
+
+			return false;
+
 		}
 
         function createGraph(expr, range) {
 
-            if (!expr || isAType(expr) === true || isMathExpression(expr) === false || hasOneVariable(expr) === "Invalid" || evaluateInOne(expr) === true) {
+            if (!expr || isAType(expr) === true || isMathExpression(expr) === false || hasOneVariable(expr) === "Invalid" || isAllowed(expr) === false) $("#modalbox-errors-warnings-id").html("L'expression de votre fonction est invalide !");
 
-                $("#modalbox-errors-warnings-id").html("L'expression de votre fonction est invalide !");
+            else {
 
-                return false;
+				generateDataBtn();
 
-            }
+				setTimeout(() => {
 
-            else if (hasOneVariable(expr) === false) surfaceGraphing(expr, range)
+					let datas = (hasOneVariable(expr) === false) ? createSurfaceData(expr) : createFunctionData(expr)
 
-            else functionGraphing(expr, range)
+					let isAValidGeneration = (hasOneVariable(expr) === false) ? isValidGeneratedData([].concat.apply([], datas[2])) : isValidGeneratedData(datas[1])
+					
+					let workOnArr = (hasOneVariable(expr) === false) ? [].concat.apply([], datas[2]) : datas[1];
+
+					if (isAValidGeneration === false) abortProcess("Les données générées sont des nombres complexes.")
+
+					else if (hasNumberOutOfRange(workOnArr)) abortProcess("Les données dépassent la limite tolérée de +/- 1e45.")
+
+					else if (hasOneVariable(expr) === false) surfaceGraphing(datas[0], datas[1], datas[2], range);
+
+					else functionGraphing(datas[0], setAsymptotesOnXYPlot(datas[1]), range)
+				
+				}, 4000)
+
+			}
 
         }
 
         function createSurfaceData(expr) {
 
 			try {
-
-				let wasFullRunXYZ = true;
 
 				let xPoints = [];
 						
@@ -369,21 +502,11 @@
 
 					for (y = -10; y < 10; y += 0.25) {
 
-						evaluateXY = math.round(math.compile(expr.toLowerCase()).evaluate({x : x, y: y}), 3)
-
 						xPointsLine.push(x);
 
 						yPointsLine.push(y);
 
-						if (((evaluateXY > bigNumberAllowed || evaluateXY < (-1*bigNumberAllowed)) === true && isFinite(evaluateXY) === true) === true || evaluateXY === undefined || evaluateXY === NaN) {
-
-							wasFullRunXYZ = false;
-
-							break;
-
-						}
-
-						else zPointsLine.push(evaluateXY);
+						zPointsLine.push(math.compile(expr).evaluate({x : x, y: y}));
 
 					}
 
@@ -395,11 +518,11 @@
 
 				}
 
-				return [xPoints, yPoints, zPoints, wasFullRunXYZ];
+				return [xPoints, yPoints, zPoints];
 
 			} catch(err) {
 
-				window.location.reload();
+				abortProcess("Une erreur est survenue lors du calcul des données.")
 
 			}
             
@@ -409,45 +532,29 @@
 
 			try {
 
-				let wasFullRun = true
-
 				let xPoints = [];
 
 				let yPoints = [];
 
-				for (var x = -10; x < 10; x += (1 / 100)) {
+				for (var x = -10; x < 10; x += (1 / 50)) {
 
-					const roundedX = math.round(x, 3);
-
-					let evaluateExpr = math.round(math.compile(expr.toLowerCase()).evaluate({x : roundedX}), 3);
-
-					xPoints.push(roundedX);
-
-					if (((evaluateExpr > bigNumberAllowed || evaluateExpr < (-1*bigNumberAllowed)) === true && isFinite(evaluateExpr) === true) === true || evaluateExpr === undefined || evaluateExpr === NaN) {
-
-						wasFullRun = false;
-
-						break;
-
-					}
-
-					else yPoints.push(evaluateExpr);						
+					xPoints.push(math.round(x, 3));
+					
+					yPoints.push(math.round(math.compile(expr).evaluate({x : math.round(x, 3)}), 3));
 
 				}
 
-				return [xPoints, yPoints, wasFullRun];
+				return [xPoints, yPoints];
 
 			} catch(err) {
 
-				window.location.reload()
+				abortProcess("Une erreur est survenue lors du calcul des données.")
 
 			}
 
         }
 
 		function setAsymptotesOnXYPlot(yData) {
-
-			let wasRun = false;
 
 			const modifiedYDataCopy = [...yData];
 
@@ -459,242 +566,201 @@
 
 					const nextValue = yData[i + 1];
 
-					if (Math.abs(prevValue - y) > diffSize && ((prevValue >= 0 && y < 0) || (prevValue <= 0 && y > 0)) && isFinite(y) && !isNaN(y)) {
+					if (Math.abs(prevValue - nextValue) > diffSize && ((prevValue >= 0 && y < 0) || (prevValue <= 0 && y > 0)) && isFinite(y) && !isNaN(y)) {
 						
-						wasRun = true;
+						const editValue = (value) => {
 
-						const addInMore = (value) => {
+							if (value === 0) return 0;
 
-							if (value === 0) {
-
-								return 0;
-
-							} else {
-
-								return value > 0 ? value + 1e6 : value - 1e6;
-
-							}
-
+							else return (value > 0) ? value + 200 : value - 200;
+								
 						};
 
-						modifiedYDataCopy[i - 1] = addInMore(prevValue);
+						modifiedYDataCopy[i - 1] = editValue(prevValue);
 
 						modifiedYDataCopy[i] = Infinity;
 
-						modifiedYDataCopy[i + 1] = addInMore(nextValue);
+						modifiedYDataCopy[i + 1] = editValue(nextValue);
 
 					}
 					
 				}
 
-			return [modifiedYDataCopy, wasRun];
-		}
-
-		function evaluateInOne(expr) {
-
-			try {
-
-				let evaluateInOneExpr = math.compile(expr.toLowerCase()).evaluate( {x : 1, y: 1 } );
-
-				if ((evaluateInOneExpr > 80 || evaluateInOneExpr < -80) === true && isFinite(evaluateInOneExpr) === true) return true;
-
-				else return false;
-
-			} catch(err) {
-
-				return true
-
-			}
+			return modifiedYDataCopy;
 
 		}
 
-		function surfaceGraphing(expr, dspRange) {
+		function surfaceGraphing(xValues, yValues, zValues, dspRange) {
 
-			generateDataBtn();
+			let data = [{
 
-			setTimeout(function () {
+				x: xValues,
 
-				let zval = createSurfaceData(expr)[2];
-					
-				if (isValidData([].concat.apply([], zval)) === false || isValidGeneratedData([].concat.apply([], zval)) === false || createSurfaceData(expr)[3] === false) {
+				y: yValues,
 
-					cancel();
+				z: zValues,
 
-					return false;
+				showscale: false,
+
+				type: 'surface',
+
+				lighting: { ambient: 0.85 },
+
+				colorscale: surfaceColor[Math.floor(Math.random() * surfaceColor.length)],
+
+				contours: {
+
+					x: { highlight: false },
+
+					y: { highlight: false },
+
+					z: { highlight: false }
 
 				}
 
-				var data = [{
-
-					x: createSurfaceData(expr)[0],
-
-					y: createSurfaceData(expr)[1],
-
-					z: zval,
-
-					showscale: false,
-
-					type: 'surface',
-
-					lighting: { ambient: 0.75 },
-
-					colorscale: surfaceColor[Math.floor(Math.random() * surfaceColor.length)],
-
-					contours: {
-
-						x: { highlight: false },
-
-						y: { highlight: false },
-
-						z: { highlight: false }
-
-					}
-
-				}];
+			}];
 					
-				var layer = {
+			let layout = {
 
-					scene: {
+				scene: {
 
-						camera: {
+					camera: {
 
-							eye: {
+						eye: {
 
-								x: 1,
+							x: 1,
 
-								y: 1,
+							y: 1,
 									
-								z: 1
-
-							}
-
-						},
-
-						xaxis: {
-
-							color: 'white',
-
-							gridcolor: 'grey',
-
-							gridwidth: 1,
-
-							zerolinecolor: 'red',
-
-							showspikes: false,
-
-							zerolinewidth: 4,
-
-							title: 'x',
-
-							titlefont : {
-
-								size : 18,
-
-								color : 'red',
-
-								weight: 'bold'
-
-							}
-
-						},
-
-						yaxis: {
-
-							color: 'white',
-
-							gridcolor: 'grey',
-
-							gridwidth: 1,
-
-							zerolinecolor: 'green',
-
-							showspikes: false,
-
-							zerolinewidth: 4,
-
-							title: 'y',
-
-							titlefont : {
-
-								size : 18,
-
-								color : 'green',
-
-								weight: 'bold'
-
-							}
-
-						},
-
-						zaxis: {
-
-							color: 'white',
-
-							gridcolor: 'grey',
-
-							gridwidth: 1,
-
-							zerolinecolor: 'blue',
-
-							showspikes: false,
-
-							zerolinewidth: 4,
-
-							title: 'z',
-
-							range: JSON.parse(dspRange),
-
-							titlefont : {
-
-								size : 18,
-
-								color : 'blue',
-
-								weight: 'bold'
-
-							}
+							z: 1
 
 						}
 
 					},
 
-					hovermode: false,
+					xaxis: {
 
-					plot_bgcolor: "transparent",
+						color: 'white',
 
-					paper_bgcolor: "transparent",
+						gridcolor: 'grey',
 
-					height: 500,
+						gridwidth: 1,
 
-					aspectratio: {
+						zerolinecolor: 'red',
 
-						x: 2,
+						showspikes: false,
 
-						y: 2,
+						zerolinewidth: 4,
 
-						z: 2
+						title: 'X',
+
+						titlefont : {
+
+							size : 18,
+
+							color : 'red',
+
+							weight: 'bold'
+
+						}
 
 					},
 
-					margin: {
+					yaxis: {
 
-						l: 5,
+						color: 'white',
 
-						r: 5,
+						gridcolor: 'grey',
+
+						gridwidth: 1,
+
+						zerolinecolor: 'green',
+
+						showspikes: false,
+
+						zerolinewidth: 4,
+
+						title: 'Y',
+
+						titlefont : {
+
+							size : 18,
+
+							color : 'green',
+
+							weight: 'bold'
+
+						}
+
+					},
+
+					zaxis: {
+
+						color: 'white',
+
+						gridcolor: 'grey',
+
+						gridwidth: 1,
+
+						zerolinecolor: 'blue',
+
+						showspikes: false,
+
+						zerolinewidth: 4,
+
+						title: 'Z',
+
+						range: JSON.parse(dspRange),
+
+						titlefont : {
+
+							size : 18,
+
+							color : 'blue',
+
+							weight: 'bold'
+
+						}
+
+					}
+
+				},
+
+				hovermode: false,
+
+				plot_bgcolor: "transparent",
+
+				paper_bgcolor: "transparent",
+
+				height: 530,
+
+				aspectratio: {
+
+					x: 2,
+
+					y: 2,
+
+					z: 2
+
+				},
+
+				margin: {
+
+					l: 5,
+
+					r: 5,
 								
-						b: 5,
+					b: 5,
 								
-						t: 5
+					t: 5
 							
-					},
+				},
 								
-				}
+			}
 					
-				makeHTMLResponse();
+			constructHTML();
 
-				Plotly.newPlot('graphing-box', data, layer, { displayModeBar: false });
-					
-			}, 4000)
+			Plotly.newPlot('graphing-box', data, layout, { displayModeBar: false });
 
 		}
 
@@ -706,8 +772,8 @@
 
 				let hasX = false
 
-				let hasY = false
-				
+				let hasY = false;
+
 				let filtered = node.filter( (node) => {
 
 					return node.isSymbolNode && node.name === 'x' || node.name === 'y'
@@ -736,161 +802,149 @@
 
 		}
 
-		function functionGraphing(expr, dspRange) {
+		function functionGraphing(xValues, yValues, dspRange) {
+						
+			let layout = {
 
-			generateDataBtn();
+				displayModeBar: false,
 
-			setTimeout(function() {
+				hovermode: false,
 
-				let yVal = createFunctionData(expr)[1];
+				showlegend: false,
 
-				var layout = {
+				plot_bgcolor: "transparent",
 
-					displayModeBar: false,
+				paper_bgcolor: "transparent",
 
-					hovermode: false,
+				height: 530,
 
-					plot_bgcolor: "transparent",
+				margin: {
 
-					paper_bgcolor: "transparent",
+					l: 10,
 
-					height: 490,
-
-					margin: {
-
-						l: 10,
-
-						r: 10,
+					r: 10,
 								
-						b: 10,
+					b: 10,
 								
-						t: 10,
+					t: 10,
 								
-						pad: 5
+					pad: 5
 								
-					},
+				},
 
-					xaxis: {
+				xaxis: {
 
-						color: 'white',
+					color: 'white',
 
-						gridcolor: 'grey',
+					gridcolor: 'grey',
 
-						dtick: 2,
+					dtick: 2,
 
-						gridwidth: 1,
+					gridwidth: 1,
 
-						zerolinecolor: 'red',
+					zerolinecolor: 'red',
 
-						automargin: true,
+					automargin: true,
 
-						zerolinewidth: 2,
+					zerolinewidth: 2,
 
-						range: [-10.5, 10.5],
+					range: [-10.5, 10.5],
 
-						title: {
+					title: {
 								
-							text: 'Axe des abscisses',
+						text: 'Axe des X',
 
-							font: {
+						font: {
 
-								size: 16,
+							size: 16,
 
-								color: 'red',
+							color: 'red',
 
-								weight: 'bold'
+							weight: 'bold'
 
-							}
-
-						},
-
-						fixedrange: true
+						}
 
 					},
 
-					yaxis: {
+					fixedrange: true
+
+				},
+
+				yaxis: {
 								
-						color: 'white',
+					color: 'white',
 
-						gridcolor: 'grey',
+					gridcolor: 'grey',
 
-						gridwidth: 1,
+					gridwidth: 1,
 
-						zerolinecolor: 'green',
+					zerolinecolor: 'green',
 
-						zerolinewidth: 2,
+					zerolinewidth: 2,
 
-						automargin: true,
+					automargin: true,
 
-						title: {
+					dtick: (Math.trunc(JSON.parse(dspRange)[1]) / 5),
 
-							standoff: 10,
+					title: {
+
+						standoff: 10,
 								
-							text: 'Axe des ordonnées',
+						text: 'Axe des Y',
 
-							font: {
+						font: {
 
-								size: 16,
+							size: 16,
 
-								color: 'green',
+							color: 'green',
 
-								weight: 'bold'
+							weight: 'bold'
 
-							}
+						}
 
-						},
+					},
 
-						range: (setAsymptotesOnXYPlot(yVal)[1] && JSON.parse(dspRange) === false) ? [-80.45, 80.45] : JSON.parse(dspRange)
-
-					}
+					range: JSON.parse(dspRange)
 
 				}
 
-				if (isValidData(yVal) === false || isValidGeneratedData(yVal) === false || createFunctionData(expr)[2] === false) {
+			}
 
-					cancel();
+			let functionGraph = {
 
-					return false;
+				x: xValues,
 
-				}
+				y: yValues,
 
-				let functionGraph = {
+				mode: 'lines',
 
-					x: createFunctionData(expr)[0],
+				type: 'scatter',
 
-					y: setAsymptotesOnXYPlot(yVal)[0],
+				line: {
 
-					mode: 'lines',
+					color: functionColor[Math.floor(Math.random() * functionColor.length)],
 
-					type: 'scatter',
-
-					line: {
-
-						color: functionColor[Math.floor(Math.random() * functionColor.length)],
-
-						width: '3'
-
-					}
+					width: '2'
 
 				}
-					
-				let data = [functionGraph];	
 
-				makeHTMLResponse();
+			}
+	
+			let data = [functionGraph];	
 
-				Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
+			constructHTML();
 
-		    }, 3000)
+			Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
 
 	    }
 
-		function makeHTMLResponse() {
+		function constructHTML() {
 
 			$("#graph-contenaire").html('<div id="graphing-box"></div>');
 			
 			$("#modalbox-graphing").css("display", "none");
 
-            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#mathexpr-function-id').val(), $('#display-range-id').val());`)
+            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#mathexpr-function-id').val().toLowerCase(), $('#display-range-id').val());`)
 		
 			if ($(window).width() >= 1024) {
 
@@ -900,7 +954,7 @@
 
 			}
 
-			$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
+			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 			inLoading = false;
 
@@ -914,36 +968,87 @@
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...")
 
-			if ($(window).width() >= 1024) {
+			$("#from-modalbox-create-id").attr('onclick', '');
 
-				$("#from-modalbox-create-id").attr('onclick', '');
-
-				$("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
-
-			} else {
-
-				$("#from-modalbox-create-id").attr('onclick', '');
-
-				$("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
-
-			}
+			if ($(window).width() >= 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			
+			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
 		}
 
-		function cancel() {
+		function abortProcess(msg) {
 
 			inLoading = false;
 
-			$("#modalbox-errors-warnings-id").html("Les données générées sont inutilisables avec le logiciel !");
+			$("#modalbox-errors-warnings-id").html(msg);
 
 			if ($(window).width() >= 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
 			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
-            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#mathexpr-function-id').val(), $('#display-range-id').val());`)
+            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#mathexpr-function-id').val().toLowerCase(), $('#display-range-id').val());`)
 
 		}
+
+		function isAllowed(expr) {
+
+			try {
+			
+				let parsedExpr = math.parse(expr);
+
+				let allFunctions = [];
+
+				let allowedFunctions = [
+					'abs',
+					'pow',
+					'sqrt',
+					'cbrt',
+					'exp',
+					'log',
+					'acos',
+					'acosh',
+					'acot',
+					'acoth',
+					'acsc',
+					'acsch',
+					'asec',
+					'asech',
+					'asin',
+					'asinh',
+					'atan',
+					'atanh',
+					'cos',
+					'cosh',
+					'cot',
+					'coth',
+					'csc',
+					'csch',
+					'sec',
+					'sech',
+					'sin',
+					'sinh',
+					'tan',
+					'tanh'
+				];
+
+				parsedExpr.traverse(node => {
+
+					if (node.isFunctionNode) allFunctions.push(node.name);
+
+				});
+
+				return allFunctions.every(func => allowedFunctions.includes(func));
+
+			} catch(err) {
+
+				return false;
+
+			}
+
+		}
+		
     </script>
+
 </body>
 
 </html>

@@ -1,3 +1,7 @@
+# nde-code.github.io:
+
+Miroir du code source de mon site internet personnel.
+
 # Librairies utilisées:
 
   - Font Awesome: https://fontawesome.com/
@@ -22,7 +26,7 @@
 
   - Flaticon pour les diverses icônes utilisées: https://www.flaticon.com/
   
-  - Pixabay pour l'image de fond: https://pixabay.com/fr/illustrations/les-triangles-formes-la-forme-de-la-3334152/
+  - Pixabay pour l'image de fond: https://pixabay.com/fr/illustrations/bleu-triangles-polygone-contexte-1761175/
 
 # Licence:
 

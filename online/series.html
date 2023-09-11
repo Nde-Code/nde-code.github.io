@@ -1,15 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 
 <head>
+
 	<style>
-	.center-elements {
-		text-align: center;
-	}
 
 	.robot-img {
-		width: 220px;
-		height: 220px;
+		width: 245px;
+		height: 245px;
+		margin-top: 15px;
 	}
 
 	@media screen and (max-width: 768px) {
@@ -53,6 +53,23 @@
 		background: #64DD17;
 	}
 
+	.notfound-btn {
+		padding: 15px 30px;
+		color: #fff;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #757575; 
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #424242; 
+		cursor: pointer;
+		margin: 8px;
+	}
+
+	.notfound-btn:hover {
+		background: #9E9E9E;
+	}
+
 	.diverge-btn {
 		padding: 15px 30px;
 		color: #fff;
@@ -68,14 +85,6 @@
 
 	.diverge-btn:hover {
 		background: #FF5252;
-	}
-
-	.js-plotly-plot .plotly .cursor-ns-resize {
-		cursor: default !important;
-	}
-
-	.js-plotly-plot .plotly .cursor-s-resize {
-		cursor: default !important;
 	}
 
 	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
@@ -100,160 +109,288 @@
 		} 
 	}
 
+	/* Fin */
+
 	@media screen and (max-width: 319px) {
 		.converge-btn {
 			font-size: 14px;
 		}
 	}
+
 	</style>
+
 	<meta charset="UTF-8">
+
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	<title>Nathan Debilloëz · Projet</title>
+
 	<meta name="description" content="Une calculatrice de série numérique en ligne.">
+
 	<meta name="keywords" content="Nathan Debilloëz · Projet">
+
 	<meta name="author" content="Nathan Debilloëz">
+
 	<link rel="stylesheet" href="../style.css">
+
 	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+
 	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+
 	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+
 	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+
 	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+
 	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+
 	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+
 	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+
 	<link rel="apple-touch-icon" sizes="180x180" href="../assets/favicon/apple-icon-180x180.png">
+
 	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+
 	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+
 	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+
 	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+
 	<link rel="manifest" href="../assets/favicon/manifest.json">
+
 	<meta name="msapplication-TileColor" content="#ffffff">
+
 	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+
 	<meta name="theme-color" content="#ffffff">
+	
 </head>
 
-<body class="main-body-class">
+<body class="body-class">
+
     <div id="modalbox-open-div"></div>
-	<div id="main-elements-contenaire">
+
+	<div id="main-html">
+
 		<div class="main-contenaire">
-			<div class="header-contenaire">
-				<div class="header-content">
-					<div class="menu-header">
-						<div class="mobile-menu">
-							<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
-						</div>
-						<a href="/" class="menu-header-title"><strong>Nathan Debilloëz</strong></a>
-						<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
-						<a onclick="openAboutBox();" class="menu-item">À propos</a>
-						<div class="menu-dropdown">
-							<button class="menu-dropdown-btn">Tutoriels
-								<i class="fa fa-caret-down"></i>
-							</button>
-							<div class="menu-dropdown-items">
-								<!-- Bientôt -->
-							</div>
-						</div>
-						<div class="menu-dropdown">
-							<button class="menu-dropdown-btn">Projets
-								<i class="fa fa-caret-down"></i>
-							</button>
-							<div class="menu-dropdown-items">
-                                <a href="series">Calculer une série numérique</a>
-								<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
-								<a href="math-graphing">Tracer une fonction mathématique</a>
-								<a href="pinwheel">Jouer avec un moulin à vent</a>
-								<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
-								<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
-							</div>
-						</div>
+
+			<div class="website-header">
+
+				<div class="menu-class">
+
+					<div class="menu-mobile">
+
+						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+
 					</div>
+
+					<a href="/" class="menu-title"><strong>Nathan Debilloëz</strong></a>
+
+					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
+
+					<a onclick="openAboutBox();" class="menu-item">Informations</a>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Tutoriels
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<!--
+									
+								Bientôt
+								
+							-->
+
+						</div>
+
+					</div>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Projets
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<a href="series">Calculer une série numérique</a>
+
+							<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
+
+							<a href="math-graphing">Tracer une fonction mathématique</a>
+
+							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
+
+							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+
+						</div>
+
+					</div>
+
 				</div>
+
 			</div>
-			<div class="white-lines"></div>
-			<div class="main-website-panel" id="main-website-content-id">
-				<div class="main-website-row-panel">
-					<div class="main-website-panel-style">
-						<div class="center-elements" id="graph-contenaire">
-							<img class="robot-img" src="../assets/robot.png" alt="Robot">
-							<h1 id="software-subtitle-id" style="margin-top: 20px; color: white; font-size: 24px; font-weight: bold;">Logiciel de calcul de série numérique:</h1>
-							<p class="main-website-panel-notice"><i class="fas fa-check green"></i> Qui est gratuit, rapide, puissant et relativement précis.</p>
-							<p class="main-website-panel-notice"><i class="fas fa-times not"></i> Qui n'affiche ni le développement, ni la méthode de calcule. </p>
-							<p class="main-website-panel-notice"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit les réponses à 4 chiffres après la virgule. </p>
-						</div>
-					</div>
-				</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-main-panel" id="graph-contenaire">
+
+				<img class="robot-img" src="../assets/robot.png" alt="Un robot.">
+
+				<h1 class="website-main-panel-title">Logiciel de calcul de série numérique:</h1>
+					
+				<p class="website-main-panel-description"><i class="fas fa-check green"></i> Qui est gratuit, rapide, puissant et relativement précis.</p>
+					
+				<p class="website-main-panel-description"><i class="fas fa-times not"></i> Qui n'affiche ni le développement, ni la méthode de calcule. </p>
+					
+				<p class="website-main-panel-description"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit les réponses à 4 chiffres après la virgule. </p>
+				
 			</div>
-            <div class="white-lines"></div>
-			<div class="website-bottom-menu">
-				<a onclick="$('#modalbox-serie').css('display', 'block'); window.scrollTo(0, 0);" class="calculate-serie-btn"><i class="fa-solid fa-infinity"></i> Calculer une série</a>
-			</div>
-			<div style="margin-top: 20px;" class="foot-page">
-				<div class="main-footer-page">
-					<div class="social-media">
-						<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
-						<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
-						<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
-					</div>
-					<div class="copyright-notice">
-						<p class="footer-page-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
-						<p class="footer-page-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="footer-page-link">Flaticon</a>.</p>
-						<p class="footer-page-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="footer-page-link">Logomakr</a>.</p>
-						<p class="footer-page-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="footer-page-link">Github</a>.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="modalbox-class" id="modalbox-serie" style="display: none;">
-			<header class="modalbox-header-class" id="modalbox-header-id">
-				<i class="fa-solid fa-infinity"></i> Calculer
-				<a class="modalbox-header-close" onclick="$('#modalbox-serie').css('display', 'none');">
-					<i class="fa fa-times" aria-hidden="true"></i>
+
+            <div class="white-line"></div>
+
+			<div class="website-bottom">
+
+				<a onclick="$('#modalbox-serie').css('display', 'block'); window.scrollTo(0, 0);" class="calculate-serie-btn">
+					
+					<i class="fa-solid fa-infinity"></i>
+					
+					Calculer une série
+				
 				</a>
+			
+			</div>
+
+			<div class="website-footer">
+
+				<div class="social-media">
+
+					<a href="https://twitter.com/NDebilloez"><i class="fab fa-twitter twitter"></i></a>
+
+					<a href="https://www.facebook.com/nathan.debilloez"><i class="fab fa-facebook facebook"></i></a>
+
+					<a href="https://github.com/Nde-Code"><i class="fab fa-github github"></i></a>
+
+				</div>
+
+				<div class="copyright-contenaire">
+
+					<p class="copyright-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+						
+					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
+						
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="copyright-link">Github</a>.</p>
+						
+					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
+					
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="modalbox-class" id="modalbox-serie" style="display: none;">
+
+			<header class="modalbox-header-class" id="modalbox-header-id">
+
+				<i class="fa-solid fa-infinity"></i> Calculer
+
+				<a class="modalbox-header-close" onclick="$('#modalbox-serie').css('display', 'none');">
+
+					<i class="fa fa-times" aria-hidden="true"></i>
+
+				</a>
+				
 			</header>
-			<div class="modalbox-main-content">
+
+			<div class="modalbox-main-contenaire">
 				
 				<div class="modalbox-text-contenaire">
+
 					<h2>Votre suite numérique:</h2>
-					<p class="modalbox-description"> Entrez la suite numérique U<sub>n</sub> à sommer en utilisant n comme variable. </p>
-				</div>
-				<input type="text" id="numeric-sequence" class="modalbox-input" placeholder="Un:"> 
 
-				<div class="modalbox-white-lines"></div>
+					<p class="modalbox-description"> Entrez la suite numérique U<sub>n</sub> à sommer en utilisant "n" comme variable. </p>
+				
+					<input type="text" id="numeric-sequence" class="modalbox-input" placeholder="Un:"> 
+				
+				</div>
+
+				<div class="modalbox-line"></div>
 
 				<div class="modalbox-text-contenaire">
+
 					<h2>Limite inférieur:</h2>
+					
 					<p class="modalbox-description"> Entrez l'indice de sommation à partir duquel la série doit commencer à sommer. Seuls les nombres de 0 à 10 sont acceptés.</p>
+				
+					<input type="text" inputmode="numeric" id="start-index" class="modalbox-input" placeholder="n:">
+					
 				</div>
-				<input type="text" inputmode="numeric" id="start-index" class="modalbox-input" placeholder="n:">
 
-				<div class="modalbox-white-lines"></div>
+				<div class="modalbox-line"></div>
 
 				<div class="modalbox-text-contenaire">
+
 					<h2>Légende des résultats:</h2>
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: magenta;"></i> Indiquent l'évolution de la série numérique. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #5C9DF2;"></i> Indiquent l'évolution de la série numérique. </p>
+					
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Indiquent l'évolution de la suite numérique. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle-exclamation" style="font-size: 18px; color: #757575;"></i> Indique que le logiciel n'arrive pas à calculer la série saisie.</p>
+					
 					<p class="modalbox-description"><i class="fa-solid fa-circle-check" style="font-size: 18px; color: #00C853;"></i> Indique que la série saisie est convergente + le nombre (arrondi à 4 décimal après la virgule) vers lequel elle converge.</p>
+					
 					<p class="modalbox-description"><i class="fa-solid fa-circle-xmark" style="font-size: 18px; color: #FF1744;"></i> Indique que la série saisie est divergente.</p>
+				
 				</div>
 
-				<div class="modalbox-white-lines"></div>
+				<div class="modalbox-line"></div>
 
-				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les erreurs et avertissements apparaîtront ici. </p>
+				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les messages d'erreur et d'avertissement seront affichés dans cette section. </p>
 
-				<div style="margin-bottom: 40px; text-align: center;">
-					<a class="modalbox-go-btn" onclick="runAction($('#start-index').val(), $('#numeric-sequence').val());" id="from-modalbox-compute-id"><i class="fa-solid fa-infinity"></i> Calculer</a>
+				<div class="modalbox-bottom">
+					
+					<a class="modalbox-btn" onclick="computeSerie($('#start-index').val(), $('#numeric-sequence').val().toLowerCase());" id="from-modalbox-compute-id">
+						
+						<i class="fa-solid fa-infinity"></i>
+						
+						Calculer
+					
+					</a>
+				
 				</div>
 
 			</div>
+
 		</div>
+		
 	</div>
+
 	<script src="../js/jquery.js"></script>
+
     <script src="../js/app.js"></script>
+
 	<script src="../js/math.js"></script>
+
 	<script src="../js/plotly.js"></script>
+
     <script> 
+	
 		var epsilon = 1 / Math.pow(10, 10); 
 
 		var tryEpsilon = 1 / Math.pow(10, 9); 
@@ -262,11 +399,11 @@
 
 		var runningSate = false;
 
-		var graphRange = 10
+		var graphRange = 10;
 
-		function runAction(index, un) {
+		function computeSerie(index, un) {
 
-			if (!un || isMathExpression(un) === false || isAType(un) === true) {
+			if (!un || isMathExpression(un) === false || isAType(un) === true || isAllowed(un) === false) {
 
 				$("#modalbox-errors-warnings-id").html("L'expression de votre suite numérique est invalide !");
 
@@ -274,13 +411,7 @@
 
 			}
 
-			else if (!Number.isInteger(Number(index)) || Number(index) > 10 || !index) {
-
-				$("#modalbox-errors-warnings-id").html("L'indice de sommation est invalide !");
-
-				return false;
-
-			}
+			else if (!Number.isInteger(Number(index)) || Number(index) > 10 || !index) $("#modalbox-errors-warnings-id").html("L'indice de sommation est invalide !");
 
 			else {
 
@@ -288,25 +419,19 @@
 
 				setTimeout(() => {
 
-					let mainVal = getConvergence(un, index, epsilon);
+					let mainVal = getSerieSum(un, index, epsilon);
 
-					if (!isFinite(mainVal) || isNaN(mainVal) === true || !validData(serieGraph(un, index)[1])) {
-
-						cancel();
+					let subVal = getSerieSum(un, index, tryEpsilon)
 	
-						$("#modalbox-errors-warnings-id").html("Soit la série ne respecte pas le critère nécessaire de convergence (donc elle diverge), soit il y a un problème de division par 0, de logarithme nul ou négatif, etc... voire les deux...");
+					let isSerieConvergente = isConvergente(mainVal, subVal);
 
-						return false
+					let graphSeriePoints = serieGraph(un, index)
+			
+					let graphSequencePoints = sequenceGraph(un, index)
 
-					} else {
-
-						let subVal = getConvergence(un, index, tryEpsilon)
-	
-						let isSerieConvergente = isConvergente(mainVal, subVal);
-	
-						makeHTMLResponse(math.round(mainVal, 4), isSerieConvergente, index, un)
-
-					}
+					if (!isFinite(mainVal) || isNaN(mainVal) === true || !validData(graphSeriePoints[1])) abortProcess("Soit la série ne respecte pas le critère nécessaire de convergence (donc elle diverge), soit il y a un problème de division par 0, de logarithme nul ou négatif, etc... voire les deux...");
+					
+					else constructHTMLAndGraph(math.round(mainVal, 4), isSerieConvergente, index, graphSeriePoints[0], graphSeriePoints[1], graphSequencePoints[1]);
 							
 				}, 2000)
 
@@ -332,11 +457,11 @@
 
 				$("#modalbox-serie").css('left', 'unset');
 
-				$("#modalbox-serie").css('width', Math.round(window.innerWidth - 10) + "px");
+				$("#modalbox-serie").css('width', Math.round($(window).width() - 10) + "px");
 
 			}
 
-		}, 500);
+		}, 1000);
 
 		function generateDataBtn() {
 
@@ -352,7 +477,7 @@
 
 		}
 
-		function getConvergence(un, index, eps) {
+		function getSerieSum(un, index, eps) {
 
 			try {
 
@@ -368,17 +493,13 @@
 
 				while (Math.abs(term) >= eps || term === 0) {
 
-					term = math.compile(un.toLowerCase()).evaluate({ n: n });
+					term = math.compile(un).evaluate({ n: n });
 
 					sum += term;
 
 					n++;
 
-					if ((Date.now() - startTime) / 1000 >= seconds) {
-
-						break;
-
-					}
+					if ((Date.now() - startTime) / 1000 >= seconds) break;
 
 				}
 
@@ -386,7 +507,7 @@
 
 			} catch(err) {
 
-				window.location.reload()
+				abortProcess("Une erreur est survenue lors du calcul de la série.")
 
 			}
 
@@ -396,9 +517,9 @@
 
 			let diffVal = Math.abs(mainValue - subValue);
 
-			if (diffVal === 0 && Number.isInteger(mainValue) === false && Number.isInteger(subValue) === false && mainValue === subValue) return "converge";
+			if (diffVal === 0 && Number.isInteger(mainValue) === false && Number.isInteger(subValue) === false && mainValue === subValue) return "notfound";
 
-			if (diffVal >= variationEpsilon || isNaN(diffVal) || diffVal === 0) return "diverge";				
+			else if (diffVal >= variationEpsilon || diffVal === 0) return "diverge";				
 
 			else return "converge";
 
@@ -408,11 +529,9 @@
 
 			try {
 
-				let responseVal = math.evaluate(serieExpr.toLowerCase(), { n: 1 });
+				math.evaluate(serieExpr, { n: 1 });
 
-				if (math.typeOf(responseVal) === 'Complex') return false;
-
-				else return true;
+				return true;
 				
 			} catch (err) {
 				
@@ -424,22 +543,18 @@
 
 		function isAType(nbr) {
 
-			let success = true;
-
 			try {
 
 				math.typeOf(math.evaluate(nbr));
 
+				return true;
+
 			} catch(err) {
 
-				success = false
+				return false
 
-			} finally {
-
-				return success;
-
-			}
-
+			} 
+			
 		}
 
 		function serieGraph(un, index) {
@@ -454,7 +569,7 @@
 
 				xSumPoints.push(i)
 				
-				sum += math.compile(un.toLowerCase()).evaluate({n : i})
+				sum += math.compile(un).evaluate({n : i})
 
 				ySumPoints.push(sum);
 
@@ -470,11 +585,11 @@
 
 			let sequenceY = []
 
-			for (var y = 1; y < (graphRange + Number(index)); y++) {
+			for (var y = index; y < (graphRange + Number(index)); y++) {
 
 				sequenceX.push(y)
 
-				sequenceY.push(math.compile(un.toLowerCase()).evaluate({n : y}))
+				sequenceY.push(math.compile(un).evaluate({n : y}))
 
 			}
 
@@ -482,13 +597,13 @@
 
 		}
 
-		function validData(serieY) {
+		function validData(arr) {
 
 			let isValid = true
 
-			for (var i = 0; i < serieY.length; i++) {
+			for (var i = 0; i < arr.length; i++) {
 
-				if (!isFinite(serieY[i]) || isNaN(serieY[i]) === true) {
+				if (!isFinite(arr[i]) || isNaN(arr[i]) === true) {
 					
 					isValid = false;
 
@@ -502,23 +617,13 @@
 			
 		}
 
-		function makeHTMLResponse(serieSum, convergence, index, un) {
-
-			let graphSeriePoints = serieGraph(un, index)
-			
-			let graphSequencePoints = sequenceGraph(un, index)
-
-			makeConvergenceBtn(convergence, serieSum)
-
-			$("#modalbox-serie").css("display", "none");
-
-			cancel();
+		function constructHTMLAndGraph(serieSum, convergence, index, xValues, serieValues, sequenceValues) {
 
 			const serie = {
 
-				x: graphSeriePoints[0],
+				x: xValues,
 
-				y: graphSeriePoints[1],
+				y: serieValues,
 
 				mode: 'markers',
 
@@ -526,13 +631,13 @@
 
 				marker: {
 
-					color: 'magenta', 
+					color: '#5C9DF2', 
 
 					size: 12, 
 
 					line: {
 
-						color: 'darkmagenta',
+						color: '#0D65D9',
 
 						width: 3,
 
@@ -546,9 +651,9 @@
 
 			const sequence = {
 
-				x: graphSequencePoints[0],
+				x: xValues,
 
-				y: graphSequencePoints[1],
+				y: sequenceValues,
 
 				mode: 'markers',
 
@@ -556,13 +661,13 @@
 
 				marker: {
 
-					color: '#F1C31B', 
+					color: '#F2B705', 
 
 					size: 8, 
 
 					line: {
 
-						color: '#DC9A02',
+						color: '#F28705',
 
 						width: 2,
 
@@ -576,7 +681,7 @@
 
 			const data = [serie, sequence];
 
-			var layout = {
+			let layout = {
 
 				displayModeBar: false,
 
@@ -588,7 +693,7 @@
 
 				paper_bgcolor: "transparent",
 
-				height: 490,
+				height: 530,
 
 				margin: {
 
@@ -620,7 +725,7 @@
 
 					zerolinewidth: 1.5,
 
-					range: [(Number(index) - 0.5), (Math.max(...graphSequencePoints[0]) + 0.5)],
+					range: [(Number(index) - 0.5), (Math.max(...xValues) + 0.5)],
 
 					title: {
 					
@@ -658,7 +763,7 @@
 
 						standoff: 10,
 						
-						text: 'Axe de la suite U<sub>n</sub> + somme partielle de S<sub>n</sub>',
+						text: 'Axe de la suite U<sub>n</sub> et de la somme S<sub>n</sub>',
 
 						font: {
 
@@ -676,53 +781,139 @@
 
 			}
 
-			$("#graph-contenaire").html('<div id="graphing-box"></div>');
+			makeConvergenceBtn(convergence, serieSum);
+
+			addHTML();
 
 			Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
 
-			window.scrollTo(0, 0);
-
 		}
 
-		function cancel() {
+		function addHTML() {
+			
+			$("#graph-contenaire").html('<div id="graphing-box"></div>');
 
-			$("#from-modalbox-compute-id").attr('onclick', `runAction($('#start-index').val(), $('#numeric-sequence').val());`);
+			$("#modalbox-serie").css("display", "none");
 
-			$("#modalbox-errors-warnings-id").html("Les erreurs et avertissements apparaîtront ici.");
+			$("#from-modalbox-compute-id").attr('onclick', `computeSerie($('#start-index').val(), $('#numeric-sequence').val().toLowerCase());`);
 
 			if ($(window).width() >= 1024) {
 
 				$(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i> Recalculer une serie')
 				
 				$("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i> Calculer');
-			
+
 			}
 
+			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
+
+			runningSate = false
+
+			window.scrollTo(0, 0);
+
+		}
+
+		function abortProcess(msg) {
+
+			runningSate = false;
+
+			$("#modalbox-errors-warnings-id").html(msg);
+			
+			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i> Calculer');
+			
 			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
+
+			$("#from-modalbox-compute-id").attr('onclick', `computeSerie($('#start-index').val(), $('#numeric-sequence').val().toLowerCase());`);
 
 		}
 
 		function makeConvergenceBtn(val, sumVal) {
 
-			const convergeBtnExists = $(".website-bottom-menu .converge-btn").length > 0;
+			const convergeBtnExists = $(".website-bottom .converge-btn").length > 0;
 
-			const divergeBtnExists = $(".website-bottom-menu .diverge-btn").length > 0;
+			const divergeBtnExists = $(".website-bottom .diverge-btn").length > 0;
 
-			if (convergeBtnExists) $(".website-bottom-menu .converge-btn").remove();
+			const notFoundBtnExists = $(".website-bottom .notfound-btn").length > 0;
 
-			if (divergeBtnExists) $(".website-bottom-menu .diverge-btn").remove();
+			if (convergeBtnExists) $(".website-bottom .converge-btn").remove();
 
-			if (val === "converge" && $(window).width() >= 1024) $(".website-bottom-menu").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> Converge vers ${sumVal}</a>`);
+			if (divergeBtnExists) $(".website-bottom .diverge-btn").remove();
+
+			if (notFoundBtnExists) $(".website-bottom .notfound-btn").remove();
+
+			if (val === "converge" && $(window).width() >= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> Converge vers ${sumVal}</a>`);
 				
-			else if (val === "converge" && $(window).width() <= 1024) $(".website-bottom-menu").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> ${sumVal}</a>`);
+			else if (val === "converge" && $(window).width() <= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> ${sumVal}</a>`);
 				
-			else if (val === "diverge" && $(window).width() >= 1024) $(".website-bottom-menu").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i> Série divergente</a>`);
+			else if (val === "notfound" && $(window).width() >= 1024) $(".website-bottom").append(`<a class="notfound-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-exclamation"></i> Impossible à trouver </a>`);
+				
+			else if (val === "notfound" && $(window).width() <= 1024) $(".website-bottom").append(`<a class="notfound-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-exclamation"></i></a>`);
 
-			else $(".website-bottom-menu").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i></a>`);
+			else if (val === "diverge" && $(window).width() >= 1024) $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i> Série divergente</a>`);
+
+			else $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i></a>`);
+
+		}
+
+		function isAllowed(expr) {
+
+			try {
+
+				let parsedExpr = math.parse(expr);
+
+				let allFunctions = [];
+
+				let allowedFunctions = [
+					'abs',
+					'pow',
+					'sqrt',
+					'cbrt',
+					'exp',
+					'log',
+					'acos',
+					'acosh',
+					'acot',
+					'acoth',
+					'acsc',
+					'acsch',
+					'asec',
+					'asech',
+					'asin',
+					'asinh',
+					'atan',
+					'atanh',
+					'cos',
+					'cosh',
+					'cot',
+					'coth',
+					'csc',
+					'csch',
+					'sec',
+					'sech',
+					'sin',
+					'sinh',
+					'tan',
+					'tanh'
+				];
+
+				parsedExpr.traverse(node => {
+
+					if (node.isFunctionNode) allFunctions.push(node.name);
+
+				});
+
+				return allFunctions.every(func => allowedFunctions.includes(func));
+
+			} catch(err) {
+
+				return false;
+
+			}
 
 		}
 
     </script>
+
 </body>
 
 </html>
