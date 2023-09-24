@@ -517,7 +517,7 @@
 
 			let diffVal = Math.abs(mainValue - subValue);
 
-			if (diffVal === 0 && Number.isInteger(mainValue) === false && Number.isInteger(subValue) === false && mainValue === subValue) return "notfound";
+			if (Number.isInteger(mainValue) === false && Number.isInteger(subValue) === false && mainValue === subValue) return "notfound";
 
 			else if (diffVal >= variationEpsilon || diffVal === 0) return "diverge";				
 
