@@ -53,23 +53,6 @@
 		background: #64DD17;
 	}
 
-	.notfound-btn {
-		padding: 15px 30px;
-		color: #fff;
-		font-size: 20px;
-		border-radius: 50px;
-		background: #757575; 
-		transition: all 0.2s ease-out 0s;
-		font-weight: bold;
-		border: 4px solid #424242; 
-		cursor: pointer;
-		margin: 8px;
-	}
-
-	.notfound-btn:hover {
-		background: #9E9E9E;
-	}
-
 	.diverge-btn {
 		padding: 15px 30px;
 		color: #fff;
@@ -177,6 +160,8 @@
 
     <div id="modalbox-open-div"></div>
 
+	<div class="overlay"></div>
+
 	<div id="main-html">
 
 		<div class="main-contenaire">
@@ -265,7 +250,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-serie').css('display', 'block'); window.scrollTo(0, 0);" class="calculate-serie-btn">
+				<a onclick="$('#modalbox-serie').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" class="calculate-serie-btn">
 					
 					<i class="fa-solid fa-infinity"></i>
 					
@@ -309,7 +294,7 @@
 
 				<i class="fa-solid fa-infinity"></i> Calculer
 
-				<a class="modalbox-header-close" onclick="$('#modalbox-serie').css('display', 'none');">
+				<a class="modalbox-header-close" onclick="$('#modalbox-serie').css('display', 'none'); $('.overlay').css('display', 'none');">
 
 					<i class="fa fa-times" aria-hidden="true"></i>
 
@@ -350,12 +335,14 @@
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #5C9DF2;"></i> Indiquent l'évolution de la série numérique. </p>
 					
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Indiquent l'évolution de la suite numérique. </p>
+										
+					<p class="modalbox-description"><i class="fa-solid fa-circle-check" style="font-size: 18px; color: #00C853;"></i> Indique que la série saisie est convergente à converger vers une valeur au cours des 10 000 itérations fixées par le logiciel + la valeur vers laquelle la série à converger. </p>
+						
+					<p class="modalbox-description"> Attention cela ne garantit pas à 100% que la série est vraiment convergente.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle-exclamation" style="font-size: 18px; color: #757575;"></i> Indique que le logiciel n'arrive pas à calculer la série saisie.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle-xmark" style="font-size: 18px; color: #FF1744;"></i> Indique que la série saisie n'a pas convergé au cours des 10 000 itérations fixées par le logiciel.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle-check" style="font-size: 18px; color: #00C853;"></i> Indique que la série saisie est convergente + le nombre (arrondi à 4 décimal après la virgule) vers lequel elle converge.</p>
-					
-					<p class="modalbox-description"><i class="fa-solid fa-circle-xmark" style="font-size: 18px; color: #FF1744;"></i> Indique que la série saisie est divergente.</p>
+					<p class="modalbox-description"> Attention cela ne garantit pas à 100% que la série est divergente, la série que vous avez saisie peut converger mais de manière très lente ce qui peut fausser le résultat à cause du réglage par défaut du logiciel.</p>
 				
 				</div>
 
@@ -390,16 +377,14 @@
 	<script src="../js/plotly.js"></script>
 
     <script> 
-	
-		var epsilon = 1 / Math.pow(10, 10); 
-
-		var tryEpsilon = 1 / Math.pow(10, 9); 
-
-		var variationEpsilon = 0.001; 
 
 		var runningSate = false;
 
 		var graphRange = 10;
+
+		var maxiter = 10e4;
+
+		var tol = 1e-6;
 
 		function computeSerie(index, un) {
 
@@ -419,25 +404,40 @@
 
 				setTimeout(() => {
 
-					let mainVal = getSerieSum(un, index, epsilon);
-
-					let subVal = getSerieSum(un, index, tryEpsilon)
+					let serieComputing = checkConvergence(un, index, maxiter, tol);
 	
-					let isSerieConvergente = isConvergente(mainVal, subVal);
-
 					let graphSeriePoints = serieGraph(un, index)
 			
 					let graphSequencePoints = sequenceGraph(un, index)
 
-					if (!isFinite(mainVal) || isNaN(mainVal) === true || !validData(graphSeriePoints[1])) abortProcess("Soit la série ne respecte pas le critère nécessaire de convergence (donc elle diverge), soit il y a un problème de division par 0, de logarithme nul ou négatif, etc... voire les deux...");
+					if (!isFinite(serieComputing[0]) || isNaN(serieComputing[0]) === true || !validData(graphSeriePoints[1])) abortProcess("Soit la série ne respecte pas le critère nécessaire de convergence (donc elle diverge), soit il y a un problème de division par 0, de logarithme nul ou négatif, etc... voire les deux...");
 					
-					else constructHTMLAndGraph(math.round(mainVal, 4), isSerieConvergente, index, graphSeriePoints[0], graphSeriePoints[1], graphSequencePoints[1]);
+					else constructHTMLAndGraph(math.round(serieComputing[0], 4), serieComputing[1], index, graphSeriePoints[0], graphSeriePoints[1], graphSequencePoints[1]);
 							
-				}, 2000)
+				}, 3000)
 
 			}
 
 		}
+
+		// Code pour les tests.
+		/*
+		function runningUnitTest() {
+
+			let seriesEq = ['(e^n)/(e^(2*n)+2*n*e^n+1)', '(n^n)/(log(n)^n^2)', '(n*tan(1/n))/((n+1)/n)^n', '(-1)^n/sqrt(n)*sin(1/n)', '(3*n^2-n)/(cbrt(n^8+n))', '(2+sin(n))/(3^n)', 'sin(1/n)', '1/(n+(10/9)^n)', '(n+cos(n))/(e^n+sin(n))', '((-1)^n*(sqrt(2))^n)/(n^7+2*n^5+n^3+1)', '(-n^4+2*n^2+1)/(2*n^7-3*n^4-n+1)', '(-1)^n*(n^-2)/(e^(3*n))', 'sinh(1/n)/cos(1/n)', '(2^n+2*n)/(3^n+5)', '(-1)^n*(e^n+2^n)/(e^n-2^n)'];
+		
+			let seriesIndex = [1, 3, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1];
+
+			var fnResult = [true, true, false, true, false, true, false, true, true, false, true, true, false, true, false]
+
+			for (let u = 0; u < seriesIndex.length; u++) {
+
+				console.log(`%c ${u + 1}) ${seriesEq[u]} de ${seriesIndex[u]} à l'infini : converge ?= ${checkConvergence(seriesEq[u], seriesIndex[u], maxiter, tol)[1]} et ce vers ${checkConvergence(seriesEq[u], seriesIndex[u], maxiter, tol)[0]} pour un maximum de ${maxiter} et une tolérance de ${tol}.`, `color: ${(fnResult[u] === checkConvergence(seriesEq[u], seriesIndex[u], maxiter, tol)[1]) ? '#00C853' : '#FF1744'}`);
+			
+			}
+
+		}
+		*/
 
 		setInterval(function () {
 
@@ -477,51 +477,29 @@
 
 		}
 
-		function getSerieSum(un, index, eps) {
+		function checkConvergence(un, index, maxTerms, tolerance) {
 
 			try {
-
+				
 				let sum = 0;
 
-				let term = 1;
+				for (let n = Number(index); n <= maxTerms; n++) {
 
-				let n = Number(index);
-
-				let seconds = 1;
-
-				let startTime = Date.now();
-
-				while (Math.abs(term) >= eps || term === 0) {
-
-					term = math.compile(un).evaluate({ n: n });
-
+					const term = math.compile(un).evaluate({ n: n }); 
+					
 					sum += term;
 
-					n++;
-
-					if ((Date.now() - startTime) / 1000 >= seconds) break;
+					if (Math.abs(term) < tolerance) return [sum, true];
 
 				}
 
-				return sum;
-
+				return [sum, false];
+			
 			} catch(err) {
 
 				abortProcess("Une erreur est survenue lors du calcul de la série.")
 
 			}
-
-        }
-		
-		function isConvergente(mainValue, subValue) {
-
-			let diffVal = Math.abs(mainValue - subValue);
-
-			if (Number.isInteger(mainValue) === false && Number.isInteger(subValue) === false && mainValue === subValue) return "notfound";
-
-			else if (diffVal >= variationEpsilon || diffVal === 0) return "diverge";				
-
-			else return "converge";
 
 		}
 
@@ -763,7 +741,7 @@
 
 						standoff: 10,
 						
-						text: 'Axe de la suite U<sub>n</sub> et de la somme S<sub>n</sub>',
+						text: 'Axe image de la suite U<sub>n</sub> et de la somme S<sub>n</sub>',
 
 						font: {
 
@@ -795,6 +773,8 @@
 
 			$("#modalbox-serie").css("display", "none");
 
+			$('.overlay').css('display', 'none');
+			
 			$("#from-modalbox-compute-id").attr('onclick', `computeSerie($('#start-index').val(), $('#numeric-sequence').val().toLowerCase());`);
 
 			if ($(window).width() >= 1024) {
@@ -827,7 +807,7 @@
 
 		}
 
-		function makeConvergenceBtn(val, sumVal) {
+		function makeConvergenceBtn(convergence, sumVal) {
 
 			const convergeBtnExists = $(".website-bottom .converge-btn").length > 0;
 
@@ -841,15 +821,11 @@
 
 			if (notFoundBtnExists) $(".website-bottom .notfound-btn").remove();
 
-			if (val === "converge" && $(window).width() >= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> Converge vers ${sumVal}</a>`);
+			if (convergence === true && $(window).width() >= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> Converge vers ${sumVal}</a>`);
 				
-			else if (val === "converge" && $(window).width() <= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> ${sumVal}</a>`);
-				
-			else if (val === "notfound" && $(window).width() >= 1024) $(".website-bottom").append(`<a class="notfound-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-exclamation"></i> Impossible à trouver </a>`);
-				
-			else if (val === "notfound" && $(window).width() <= 1024) $(".website-bottom").append(`<a class="notfound-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-exclamation"></i></a>`);
+			else if (convergence === true && $(window).width() <= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> ${sumVal}</a>`);
 
-			else if (val === "diverge" && $(window).width() >= 1024) $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i> Série divergente</a>`);
+			else if (convergence === false && $(window).width() >= 1024) $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i> Série divergente</a>`);
 
 			else $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i></a>`);
 

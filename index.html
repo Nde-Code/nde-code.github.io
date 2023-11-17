@@ -94,6 +94,8 @@
 
     <div id="modalbox-open-div"></div>
 
+	<div class="overlay"></div>
+	
 	<div id="main-html">
 
 		<div class="main-contenaire">
@@ -184,7 +186,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-about-me').css('display', 'block'); window.scrollTo(0, 0);" class="faq-btn">
+				<a onclick="$('#modalbox-about-me').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" class="faq-btn">
 					
 					<i class="fa-solid fa-circle-question"></i>
 					
@@ -228,7 +230,7 @@
 
                 <i class="fa-solid fa-circle-question"></i> F.A.Q
 
-                <a class="modalbox-header-close" onclick="$('#modalbox-about-me').css('display', 'none');">
+                <a class="modalbox-header-close" onclick="$('#modalbox-about-me').css('display', 'none'); $('.overlay').css('display', 'none');">
 
                     <i class="fa fa-times" aria-hidden="true"></i>
 

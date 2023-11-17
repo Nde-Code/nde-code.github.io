@@ -118,6 +118,8 @@
 
     <div id="modalbox-open-div"></div>
 
+	<div class="overlay"></div>
+
 	<div id="main-html">
 
 		<div class="main-contenaire">
@@ -206,7 +208,7 @@
 
 			<div class="website-bottom">
 
-				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0);">
+				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');">
 					
 					<i class="fa-solid fa-chart-line"></i>
 					
@@ -250,7 +252,7 @@
 
 				<i class="fa-solid fa-chart-line"></i> Tracer
 
-				<a class="modalbox-header-close" onclick="$('#modalbox-graphing').css('display', 'none');">
+				<a class="modalbox-header-close" onclick="$('#modalbox-graphing').css('display', 'none'); $('.overlay').css('display', 'none');">
 
 					<i class="fa fa-times" aria-hidden="true"></i>
 
@@ -266,7 +268,7 @@
 
                     <p class="modalbox-description"> Veuillez entrer l'équation de votre fonction en utilisant "x" pour les graphiques en 2D ou "x" et "y" pour les graphiques en 3D :</p>
 					
-					<input id="mathexpr-function-id" class="modalbox-input" placeholder="f(x, y):">
+					<input id="math-function-id" class="modalbox-input" placeholder="f(x, y):">
                 
 				</div>
 
@@ -330,7 +332,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a class="modalbox-btn" onclick="createGraph($('#mathexpr-function-id').val().toLowerCase(), $('#display-range-id').val());" id="from-modalbox-create-id">
+					<a class="modalbox-btn" onclick="createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());" id="from-modalbox-create-id">
 						
 						<i class="fa-solid fa-pencil"></i>
 						
@@ -358,9 +360,9 @@
 
 		var inLoading = false;
 
-		var surfaceColor = ["Rainbow", "Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
+		var surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
 
-		var functionColor = ["#5C9DF2", "#F1C31B", "#00C853", "#FF1744", "#FF5722", "#9C6EF2", "#F28B35"];
+		var functionColor = ["#5C9DF2", "#F1C31B", "#00C853", "#9D5CF2", "#F28B35", "#FFF"];
 
 		var diffSize = 10;
 
@@ -944,7 +946,9 @@
 			
 			$("#modalbox-graphing").css("display", "none");
 
-            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#mathexpr-function-id').val().toLowerCase(), $('#display-range-id').val());`)
+			$('.overlay').css('display', 'none');
+
+            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());`)
 		
 			if ($(window).width() >= 1024) {
 
@@ -986,7 +990,7 @@
 
 			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
-            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#mathexpr-function-id').val().toLowerCase(), $('#display-range-id').val());`)
+            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());`)
 
 		}
 

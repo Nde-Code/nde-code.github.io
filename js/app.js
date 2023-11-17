@@ -15,7 +15,7 @@ function openAboutBox() {
 
                 <i class="fa-solid fa-circle-info"></i> Informations
 
-                <a class="modalbox-header-close" onclick="$('#modalbox-about').remove(); isOpenAboutBox = false;">
+                <a class="modalbox-header-close" onclick="$('#modalbox-about').remove(); isOpenAboutBox = false; $('.overlay').css('display', 'none');">
 
                     <i class="fa fa-times" aria-hidden="true"></i>
 
@@ -94,6 +94,8 @@ function openAboutBox() {
         </div>`;
 
         $("#modalbox-open-div").append(aboutBoxHtml);
+
+        $('.overlay').css('display', 'block');
 
     }
 
