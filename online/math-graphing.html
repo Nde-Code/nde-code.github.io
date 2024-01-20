@@ -45,19 +45,6 @@
 	}
 	/* Fin */
 
-	.robot-img {
-		width: 245px;
-		height: 245px;
-		margin-top: 15px;
-	}
-
-	@media screen and (max-width: 768px) {
-		.robot-img {
-			width: 180px;
-			height: 180px;
-		}
-	}
-
 	</style>
 
 	<meta charset="UTF-8">
@@ -169,6 +156,8 @@
 						</button>
 
 						<div class="menu-dropdown-items">
+
+							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
 							<a href="series">Calculer une série numérique</a>
 
@@ -362,19 +351,13 @@
 
 		var surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
 
-		var functionColor = ["#5C9DF2", "#F1C31B", "#00C853", "#9D5CF2", "#F28B35", "#FFF"];
+		var functionColor = ["#1F9B69", "#1773C6", "#F0B028", "#E4652C", "#E9599A", "#FFF"];
 
 		var diffSize = 10;
 
 		setInterval(function () {
 
-			if ($(window).width() <= 1024) {
-
-				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i>');
-
-				$(".main-website-row-panel").css("paddingLeft", "unset");
-
-			}
+			if ($(window).width() <= 1024) $(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i>');
 
 			if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
@@ -464,20 +447,28 @@
 
 				setTimeout(() => {
 
-					let datas = (hasOneVariable(expr) === false) ? createSurfaceData(expr) : createFunctionData(expr)
+					try {
 
-					let isAValidGeneration = (hasOneVariable(expr) === false) ? isValidGeneratedData([].concat.apply([], datas[2])) : isValidGeneratedData(datas[1])
-					
-					let workOnArr = (hasOneVariable(expr) === false) ? [].concat.apply([], datas[2]) : datas[1];
+						let datas = (hasOneVariable(expr) === false) ? createSurfaceData(expr) : createFunctionData(expr)
 
-					if (isAValidGeneration === false) abortProcess("Les données générées sont des nombres complexes.")
+						let isAValidGeneration = (hasOneVariable(expr) === false) ? isValidGeneratedData([].concat.apply([], datas[2])) : isValidGeneratedData(datas[1])
+						
+						let workOnArr = (hasOneVariable(expr) === false) ? [].concat.apply([], datas[2]) : datas[1];
 
-					else if (hasNumberOutOfRange(workOnArr)) abortProcess("Les données dépassent la limite tolérée de +/- 1e45.")
+						if (isAValidGeneration === false) abortProcess("Les données générées sont des nombres complexes.")
 
-					else if (hasOneVariable(expr) === false) surfaceGraphing(datas[0], datas[1], datas[2], range);
+						else if (hasNumberOutOfRange(workOnArr)) abortProcess("Les données dépassent la limite tolérée de +/- 1e45.")
 
-					else functionGraphing(datas[0], setAsymptotesOnXYPlot(datas[1]), range)
-				
+						else if (hasOneVariable(expr) === false) surfaceGraphing(datas[0], datas[1], datas[2], range);
+
+						else functionGraphing(datas[0], setAsymptotesOnXYPlot(datas[1]), range)
+						
+					} catch(err) {
+
+						abortProcess("La fonction saisie pose problème ! Cela peut arriver si la fonction que vous avez saisie est un peu trop compliquée.");
+
+					}
+
 				}, 4000)
 
 			}
@@ -524,7 +515,7 @@
 
 			} catch(err) {
 
-				abortProcess("Une erreur est survenue lors du calcul des données.")
+				abortProcess("Une erreur est survenue lors du calcul des données.");
 
 			}
             
@@ -532,29 +523,65 @@
 
         function createFunctionData(expr) {
 
-			try {
+    		try {
 
-				let xPoints = [];
+        		let xPoints = [];
 
-				let yPoints = [];
+        		let yPoints = [];
 
-				for (var x = -10; x < 10; x += (1 / 50)) {
+        		let numPoints = 1e4;
 
-					xPoints.push(math.round(x, 3));
-					
-					yPoints.push(math.round(math.compile(expr).evaluate({x : math.round(x, 3)}), 3));
+				for (let i = 0; i <= numPoints; i++) {
+
+					let x = -10 + (20 * (i / numPoints)); 
+
+					xPoints.push(x);
+
+					yPoints.push(math.compile(expr).evaluate({ x: x }));
 
 				}
 
-				return [xPoints, yPoints];
+				let interpolatedXPoints = [];
 
-			} catch(err) {
+        		let interpolatedYPoints = [];
 
-				abortProcess("Une erreur est survenue lors du calcul des données.")
+				for (let i = 0; i < xPoints.length - 1; i++) {
+
+					let x1 = xPoints[i];
+
+					let x2 = xPoints[i + 1];
+
+					let y1 = yPoints[i];
+
+					let y2 = yPoints[i + 1];
+
+					for (let j = 1; j < 10; j++) {
+
+						let xInterpolated = x1 + (j / 10) * (x2 - x1);
+
+						interpolatedXPoints.push(xInterpolated);
+
+						let yInterpolated = y1 + (y2 - y1) * ((xInterpolated - x1) / (x2 - x1));
+
+						interpolatedYPoints.push(yInterpolated);
+
+					}
+
+				}
+
+				interpolatedXPoints.push(xPoints[numPoints]);
+
+				interpolatedYPoints.push(yPoints[numPoints]);
+
+				return [interpolatedXPoints, interpolatedYPoints];
+
+			} catch (err) {	
+
+				abortProcess("Une erreur est survenue lors du calcul des données.");
 
 			}
-
-        }
+			
+		}
 
 		function setAsymptotesOnXYPlot(yData) {
 
@@ -848,7 +875,7 @@
 
 					automargin: true,
 
-					zerolinewidth: 2,
+					zerolinewidth: 1.5,
 
 					range: [-10.5, 10.5],
 
@@ -882,7 +909,7 @@
 
 					zerolinecolor: 'green',
 
-					zerolinewidth: 2,
+					zerolinewidth: 1.5,
 
 					automargin: true,
 

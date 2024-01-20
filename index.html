@@ -146,6 +146,8 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="online/harmonic-waves">Simuler des ondes harmoniques</a>
+
 							<a href="online/series">Calculer une série numérique</a>
 
 							<a href="online/quadratic-equation-solver">Calculer une équation du second degré</a>
@@ -392,13 +394,7 @@
 
 		setInterval(function () {
 
-			if ($(window).width() <= 1024) {
-
-				$(".faq-btn").html('<i class="fa-solid fa-circle-question"></i>');
-
-				$(".main-website-row-panel").css("paddingLeft", "unset")
-
-			}
+			if ($(window).width() <= 1024) $(".faq-btn").html('<i class="fa-solid fa-circle-question"></i>');
 
 			if ($(window).width() <= 768) {
 

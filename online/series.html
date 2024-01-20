@@ -6,19 +6,6 @@
 
 	<style>
 
-	.robot-img {
-		width: 245px;
-		height: 245px;
-		margin-top: 15px;
-	}
-
-	@media screen and (max-width: 768px) {
-		.robot-img {
-			width: 180px;
-			height: 180px;
-		}
-	}
-
 	.calculate-serie-btn {
 		padding: 15px 30px;
 		color: #fff;
@@ -211,6 +198,8 @@
 						</button>
 
 						<div class="menu-dropdown-items">
+
+							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
 							<a href="series">Calculer une série numérique</a>
 
@@ -428,7 +417,7 @@
 		
 			let seriesIndex = [1, 3, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1];
 
-			var fnResult = [true, true, false, true, false, true, false, true, true, false, true, true, false, true, false]
+			let fnResult = [true, true, false, true, false, true, false, true, true, false, true, true, false, true, false]
 
 			for (let u = 0; u < seriesIndex.length; u++) {
 
@@ -443,13 +432,7 @@
 
 			if ($(window).width() <= 1024 && runningSate !== true) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
 
-			if ($(window).width() <= 1024) {
-
-				$(".main-website-row-panel").css("paddingLeft", "unset");
-
-				$(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i>');
-
-			}
+			if ($(window).width() <= 1024) $(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i>');
 
 			if ($(window).width() <= 768) {
 
