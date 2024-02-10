@@ -179,7 +179,7 @@ body.body-class {
     padding-left: 8px;
     text-align: center;
     min-height: 535px;
-    /* Maquer la "scrollbar" sur Firefox. */
+    /* Masquer la "scrollbar" sur Firefox. */
     scrollbar-width: none;
 }
 
@@ -333,7 +333,7 @@ header.modalbox-header-class {
 .modalbox-main-contenaire {
     overflow-y: scroll;
     height: 500px;
-    /* Maquer la "scrollbar" sur Firefox. */
+    /* Masquer la "scrollbar" sur Firefox. */
     scrollbar-width: none;
 }
 
