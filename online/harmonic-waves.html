@@ -157,6 +157,8 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="regression">Tracer une courbe de régression</a>
+
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
 							<a href="series">Calculer une série numérique</a>
@@ -255,7 +257,7 @@
 
                     <h2>Amplitude de la première onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez l'amplitude de la première onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive: </p>
+                    <p class="modalbox-description"> Saisissez l'amplitude de la première onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 100: </p>
 					
 					<input id="A-value-1" class="modalbox-input" placeholder="A:">
                 
@@ -321,7 +323,7 @@
 
                     <h2>Amplitude de la deuxième onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez l'amplitude de la deuxième onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive: </p>
+                    <p class="modalbox-description"> Saisissez l'amplitude de la deuxième onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 100: </p>
 					
 					<input id="A-value-2" class="modalbox-input" placeholder="A:">
                 
@@ -707,7 +709,7 @@
 
 		function simulateWaves(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
 
-			if (isANumber(Number(AOne)) === false || !AOne || Number(AOne) < 1) {
+			if (isANumber(Number(AOne)) === false || !AOne || Number(AOne) < 1 || Number(AOne) >= 100) {
 
 				$("#modalbox-errors-warnings-id").html("L'amplitude de la première onde est invalide !");
 
@@ -739,7 +741,7 @@
 
 			}
 
-			else if (isANumber(Number(ATwo)) === false || !ATwo || Number(ATwo) < 1) {
+			else if (isANumber(Number(ATwo)) === false || !ATwo || Number(ATwo) < 1 || Number(ATwo) >= 100) {
 
 				$("#modalbox-errors-warnings-id").html("L'amplitude de la deuxième onde est invalide !");
 

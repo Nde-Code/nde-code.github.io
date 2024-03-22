@@ -157,6 +157,8 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="regression">Tracer une courbe de régression</a>
+
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
 							<a href="series">Calculer une série numérique</a>
@@ -307,11 +309,11 @@
 					
 					<h2>Légende des axes:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: red;"></i> X: Axe des abscisses compris entre -10 et 10 autant pour les graphiques en 2D qu'en 3D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #FF7F0E;"></i> X: Axe des abscisses compris entre -10 et 10 autant pour les graphiques en 2D qu'en 3D.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: green;"></i> Y: Axe des ordonnées ou y = f(x) en 2D et où y est compris entre -10 et 10 en 3D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #2CA02C;"></i> Y: Axe des ordonnées ou y = f(x) en 2D et où y est compris entre -10 et 10 en 3D.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: blue;"></i> Z: Axe des côtes qui équivaut à f(x, y) et n'est disponible que pour les graphiques en 3D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Z: Axe des côtes qui équivaut à f(x, y) et n'est disponible que pour les graphiques en 3D.</p>
 				
 				</div>
 
@@ -675,19 +677,19 @@
 
 						gridwidth: 1,
 
-						zerolinecolor: 'red',
-
-						showspikes: false,
-
-						zerolinewidth: 4,
-
 						title: 'X',
+						
+						showspikes: false,
+						
+						zerolinewidth: 4,
+						
+						zerolinecolor: '#FF7F0E',
 
 						titlefont : {
 
 							size : 18,
 
-							color : 'red',
+							color : '#FF7F0E',
 
 							weight: 'bold'
 
@@ -703,19 +705,19 @@
 
 						gridwidth: 1,
 
-						zerolinecolor: 'green',
-
-						showspikes: false,
-
-						zerolinewidth: 4,
-
 						title: 'Y',
+						
+						showspikes: false,
+						
+						zerolinewidth: 4,
+						
+						zerolinecolor: '#2CA02C',
 
 						titlefont : {
 
 							size : 18,
 
-							color : 'green',
+							color : '#2CA02C',
 
 							weight: 'bold'
 
@@ -731,13 +733,13 @@
 
 						gridwidth: 1,
 
-						zerolinecolor: 'blue',
-
-						showspikes: false,
-
-						zerolinewidth: 4,
-
 						title: 'Z',
+						
+						showspikes: false,
+						
+						zerolinewidth: 4,
+						
+						zerolinecolor: '#1F77B4',
 
 						range: JSON.parse(dspRange),
 
@@ -745,7 +747,7 @@
 
 							size : 18,
 
-							color : 'blue',
+							color : '#1F77B4',
 
 							weight: 'bold'
 
@@ -871,11 +873,11 @@
 
 					gridwidth: 1,
 
-					zerolinecolor: 'red',
-
 					automargin: true,
 
 					zerolinewidth: 1.5,
+
+					zerolinecolor: '#FF7F0E',
 
 					range: [-10.5, 10.5],
 
@@ -887,7 +889,7 @@
 
 							size: 16,
 
-							color: 'red',
+							color: '#FF7F0E',
 
 							weight: 'bold'
 
@@ -907,9 +909,9 @@
 
 					gridwidth: 1,
 
-					zerolinecolor: 'green',
-
 					zerolinewidth: 1.5,
+
+					zerolinecolor: '#2CA02C',
 
 					automargin: true,
 
@@ -925,7 +927,7 @@
 
 							size: 16,
 
-							color: 'green',
+							color: '#2CA02C',
 
 							weight: 'bold'
 

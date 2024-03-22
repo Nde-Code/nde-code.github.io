@@ -23,7 +23,7 @@
 	}
 
 	#equation-plot-id {
-		color: #5C9DF2;
+		color: #005DD9;
 		font-size: 22px;
 		font-style: italic;
 		font-weight: bold;
@@ -39,7 +39,7 @@
 
 	<title>Nathan Debilloëz · Projet</title>
 
-	<meta name="description" content="Une calculatrice d'équation du second degré en ligne.">
+	<meta name="description" content="Calculatrice d'équation du second degré en ligne.">
 
 	<meta name="keywords" content="Nathan Debilloëz · Projet">
 
@@ -140,6 +140,8 @@
 						</button>
 
 						<div class="menu-dropdown-items">
+
+							<a href="regression">Tracer une courbe de régression</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
@@ -276,14 +278,12 @@
 				<div class="modalbox-text-contenaire">
 
 					<h2>Code couleurs:</h2>
-
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #5C9DF2;"></i> Affiche l'équation sur base de la saisie. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #9D5CF2;"></i> Indique la première racine solution de l'équation saisie. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Indique la première racine solution de l'équation saisie. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Indique la deuxième racine solution de l'équation saisie. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #FF7F0E;"></i> Indique la deuxième racine solution de l'équation saisie. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #00C853;"></i> Indique le discriminant de l'équation saisie. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #2CA02C;"></i> Indique le discriminant de l'équation saisie. </p>
 				
 				</div>
 
@@ -439,13 +439,13 @@
 
 		}
 
-		function constrcutHTML(x1, x2, dis, isDisNull){
+		function constrcutHTML(x1, x2, dis, isDisNull) {
 
-			$("#1st-root").html(`<i class="fa-solid fa-circle" style="font-size: 18px; color: #9D5CF2;"></i> Admet comme première racine: <span class="first-root" style="font-weight: bold; color: #9D5CF2;">x<sub>1</sub> ${setEqual(x1)} ${math.round(x1, 3)}</span>`);
+			$("#1st-root").html(`Admet comme première racine: <span class="first-root" style="font-weight: bold; color: #1F77B4;">x<sub>1</sub> ${setEqual(x1)} ${math.round(x1, 3)}</span>`);
 			
-			(isDisNull === true) ? $("#2nd-root").html(`<i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Admet comme deuxième racine: <span class="second-root" style="font-weight: bold; color: #F1C31B;">Rien du tout</span>`) : $("#2nd-root").html(`<i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Admet comme deuxième racine: <span class="second-root" style="font-weight: bold; color: #F1C31B;">x<sub>2</sub> ${setEqual(x2)} ${math.round(x2, 3)}</span>`)
+			(isDisNull === true) ? $("#2nd-root").html(`Admet comme deuxième racine: <span class="second-root" style="font-weight: bold; color: #FF7F0E;">Rien du tout</span>`) : $("#2nd-root").html(`Admet comme deuxième racine: <span class="second-root" style="font-weight: bold; color: #FF7F0E;">x<sub>2</sub> ${setEqual(x2)} ${math.round(x2, 3)}</span>`)
 
-			$("#discriminant-text-id").html(`<i class="fa-solid fa-circle" style="font-size: 18px; color: #00C853;"></i> Admet un discriminant égal à: <span class="discriminant-text" style="font-weight: bold; color: #00C853;">${dis}</span>`);
+			$("#discriminant-text-id").html(`Admet un discriminant égal à: <span class="discriminant-text" style="font-weight: bold; color: #2CA02C;">${dis}</span>`);
 		
 		}
 

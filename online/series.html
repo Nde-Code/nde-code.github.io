@@ -28,33 +28,33 @@
 		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
-		background: #00C853; 
+		background: #2CA02C; 
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #00A64F; 
+		border: 4px solid #1E7E1E; 
 		cursor: pointer;
 		margin: 8px;
 	}
 
 	.converge-btn:hover {
-		background: #64DD17;
+		background: #4CAF50;
 	}
 
 	.diverge-btn {
-		padding: 15px 30px;
-		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
-		background: #FF1744; 
+		color: white;
+		background: #FF7F0E; 
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #D50000; 
+		border: 4px solid #D9480F;
+		padding: 15px 30px;
 		cursor: pointer;
 		margin: 8px;
 	}
 
 	.diverge-btn:hover {
-		background: #FF5252;
+		background: #FFA726;
 	}
 
 	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
@@ -199,6 +199,8 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="regression">Tracer une courbe de régression</a>
+
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
 							<a href="series">Calculer une série numérique</a>
@@ -321,15 +323,15 @@
 
 					<h2>Légende des résultats:</h2>
 
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #5C9DF2;"></i> Indiquent l'évolution de la série numérique. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Indiquent l'évolution de la série numérique. </p>
 					
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Indiquent l'évolution de la suite numérique. </p>
 										
-					<p class="modalbox-description"><i class="fa-solid fa-circle-check" style="font-size: 18px; color: #00C853;"></i> Indique que la série saisie a convergé vers une valeur au cours des 10 000 itérations fixées par le logiciel, ainsi que la valeur vers laquelle la série a convergé. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle-check" style="font-size: 18px; color: #2CA02C;"></i> Indique que la série saisie a convergé vers une valeur au cours des 10 000 itérations fixées par le logiciel, ainsi que la valeur vers laquelle la série a convergé. </p>
 						
 					<p class="modalbox-description"> Attention cela ne garantit pas à 100% que la série est vraiment convergente.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle-xmark" style="font-size: 18px; color: #FF1744;"></i> Indique que la série saisie n'a pas convergé au cours des 10 000 itérations fixées par le logiciel.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle-xmark" style="font-size: 18px; color: #FF7F0E;"></i> Indique que la série saisie n'a pas convergé au cours des 10 000 itérations fixées par le logiciel.</p>
 					
 					<p class="modalbox-description"> Attention cela ne garantit pas à 100% que la série est divergente, la série que vous avez saisie peut converger mais de manière très lente ce qui peut fausser le résultat à cause du réglage par défaut du logiciel.</p>
 				
@@ -592,13 +594,13 @@
 
 				marker: {
 
-					color: '#5C9DF2', 
+					color: '#1F77B4', 
 
 					size: 12, 
 
 					line: {
 
-						color: '#0D65D9',
+						color: '#0D47A1',
 
 						width: 3,
 
@@ -622,13 +624,13 @@
 
 				marker: {
 
-					color: '#F2B705', 
+					color: '#F1C31B', 
 
 					size: 8, 
 
 					line: {
 
-						color: '#F28705',
+						color: '#B39D02',
 
 						width: 2,
 
