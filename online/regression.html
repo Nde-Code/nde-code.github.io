@@ -413,7 +413,7 @@
 
 		function setDTick(minVal, maxVal) {
 
-			if ($(window).width() >= 1024) return (getDTick(minVal, maxVal) === 0) ? 0.5 : getDTick(minVal, maxVal);
+			if ($(window).width() >= 1024) return (getDTick(minVal, maxVal) === 0 && (maxVal - minVal) < 9) ? 0.5 : getDTick(minVal, maxVal);
 
 			else return '';
 
@@ -427,15 +427,11 @@
 
 				let coeff = Number(coeffs[i]).toFixed(2)
 
-				if (coeff !== "-0.00" && coeff !== "0.00") {
-
-					if (i === 0) polynomialString += coeff.toString() + " ";
+				if (i === 0) polynomialString += coeff.toString() + " ";
 	
-					else if (i === 1) polynomialString += ` ${getCoeffSgn(coeff)} ${Math.abs(coeff)}x`;
+				else if (i === 1) polynomialString += ` ${getCoeffSgn(coeff)} ${Math.abs(coeff)}*x`;
 	
-					else polynomialString += ` ${getCoeffSgn(coeff)} ${Math.abs(coeff)}x^${i}`;
-
-				}
+				else polynomialString += ` ${getCoeffSgn(coeff)} ${Math.abs(coeff)}*x^${i}`;
 
 			}
 
