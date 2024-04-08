@@ -427,11 +427,11 @@
 
 				let coeff = Number(coeffs[i]).toFixed(2)
 
-				if (i === 0) polynomialString += coeff.toString() + " ";
+				if (i === 0) polynomialString += coeff.toString();
 	
-				else if (i === 1) polynomialString += ` ${getCoeffSgn(coeff)} ${Math.abs(coeff)}*x`;
+				else if (i === 1) polynomialString += `${getCoeffSgn(coeff)}${Math.abs(coeff)}*x`;
 	
-				else polynomialString += ` ${getCoeffSgn(coeff)} ${Math.abs(coeff)}*x^${i}`;
+				else polynomialString += `${getCoeffSgn(coeff)}${Math.abs(coeff)}*x^${i}`;
 
 			}
 
