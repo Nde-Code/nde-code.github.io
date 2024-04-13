@@ -474,7 +474,7 @@
 					
 					sum += term;
 
-					if (Math.abs(term) < tolerance) return [sum, true];
+					if (Math.abs(term) < tolerance && Math.abs(term) !== 0) return [sum, true];
 
 				}
 
