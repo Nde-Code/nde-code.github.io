@@ -16,10 +16,28 @@
 		border: 4px solid #0047A6;
 		padding: 15px 30px;
 		cursor: pointer;
+		margin: 8px;
 	}
 
 	.create-graph-btn:hover {
 		background: #4690F2;
+	}
+
+	.derivative-btn {
+		padding: 15px 30px;
+		color: #fff;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #2CA02C; 
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #1E7E1E; 
+		cursor: pointer;
+		margin: 8px;
+	}
+
+	.derivative-btn:hover {
+		background: #4CAF50;
 	}
 
 	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
@@ -273,31 +291,31 @@
 					
 					<select title="Intérvalle d'affichage:" id="display-range-id">
 
-						<option value="[-1.45, 1.45]">[-1, 1]</option>
+						<option value="[-1.1, 1.1]">[-1, 1]</option>
 
-						<option value="[-2.45, 2.45]">[-2, 2]</option>
+						<option value="[-2.1, 2.1]">[-2, 2]</option>
 
-						<option value="[-5.45, 5.45]">[-5, 5]</option>
+						<option value="[-5.1, 5.1]">[-5, 5]</option>
 
-						<option value="[-10.45, 10.45]" selected="selected">[-10, 10]</option>
+						<option value="[-10.1, 10.1]" selected="selected">[-10, 10]</option>
 
-						<option value="[-20.45, 20.45]">[-20, 20]</option>
+						<option value="[-20.1, 20.1]">[-20, 20]</option>
 
-						<option value="[-30.45, 30.45]">[-30, 30]</option>
+						<option value="[-30.1, 30.1]">[-30, 30]</option>
 
-						<option value="[-40.45, 40.45]">[-40, 40]</option>
+						<option value="[-40.1, 40.1]">[-40, 40]</option>
 
-						<option value="[-50.45, 50.45]">[-50, 50]</option>
+						<option value="[-50.1, 50.1]">[-50, 50]</option>
 
-						<option value="[-60.45, 60.45]">[-60, 60]</option>
+						<option value="[-60.1, 60.1]">[-60, 60]</option>
 
-						<option value="[-70.45, 70.45]">[-70, 70]</option>
+						<option value="[-70.1, 70.1]">[-70, 70]</option>
 
-						<option value="[-80.45, 80.45]">[-80, 80]</option>
+						<option value="[-80.1, 80.1]">[-80, 80]</option>
 
-						<option value="[-90.45, 90.45]">[-90, 90]</option>
+						<option value="[-90.1, 90.1]">[-90, 90]</option>
 
-						<option value="[-100.45, 100.45]">[-100, 100]</option>
+						<option value="[-100.1, 100.1]">[-100, 100]</option>
 						
 					</select>
 
@@ -309,11 +327,13 @@
 					
 					<h2>Légende des axes:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #FF7F0E;"></i> X: Axe des abscisses compris entre -10 et 10 autant pour les graphiques en 2D qu'en 3D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Couleur de la courbe sur un graphique en 2D.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #2CA02C;"></i> Y: Axe des ordonnées ou y = f(x) en 2D et où y est compris entre -10 et 10 en 3D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Couleur de la courbe de la dérivée sur un graphique en 2D.</p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #2CA02C;"></i> Couleur du bouton permettant de calculer et tracer la dérivée de la fonction saisie.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Z: Axe des côtes qui équivaut à f(x, y) et n'est disponible que pour les graphiques en 3D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle-info" style="font-size: 18px; color: #FF7F0E;"></i> La couleur d'un graphique en 3D est sélectionnée aléatoirement parmi une liste d'échelles disponibles dans la bibliothèque plotly.js.</p>
 				
 				</div>
 
@@ -347,13 +367,11 @@
 
 	<script src="../js/math.js" defer></script>
 
-    <script>
+    <script> 
 
 		var inLoading = false;
 
 		var surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
-
-		var functionColor = ["#1F9B69", "#1773C6", "#F0B028", "#E4652C", "#E9599A", "#FFF"];
 
 		var diffSize = 10;
 
@@ -463,7 +481,13 @@
 
 						else if (hasOneVariable(expr) === false) surfaceGraphing(datas[0], datas[1], datas[2], range);
 
-						else functionGraphing(datas[0], setAsymptotesOnXYPlot(datas[1]), range)
+						else {
+
+							addDerivativeBtn(expr, range, false);
+							
+							functionGraphing(datas[0], setAsymptotesOnXYPlot(datas[1]), range, false, [], [])
+						
+						}
 						
 					} catch(err) {
 
@@ -487,7 +511,7 @@
 						
 				let zPoints = [];
 
-				for(x = -10; x < 10; x += 0.25) {
+				for(x = -10; x < 10; x += (1 / 10)) {
 
 					let xPointsLine = [];
 
@@ -495,7 +519,7 @@
 
 					let zPointsLine = [];
 
-					for (y = -10; y < 10; y += 0.25) {
+					for (y = -10; y < 10; y += (1 / 10)) {
 
 						xPointsLine.push(x);
 
@@ -587,19 +611,19 @@
 
 		function setAsymptotesOnXYPlot(yData) {
 
-			const modifiedYDataCopy = [...yData];
+			let modifiedYDataCopy = [...yData];
 
 				for (let i = 1; i < yData.length; i++) {
 
-					const y = yData[i];
+					let y = yData[i];
 
-					const prevValue = yData[i - 1];
+					let prevValue = yData[i - 1];
 
-					const nextValue = yData[i + 1];
+					let nextValue = yData[i + 1];
 
 					if (Math.abs(prevValue - nextValue) > diffSize && ((prevValue >= 0 && y < 0) || (prevValue <= 0 && y > 0)) && isFinite(y) && !isNaN(y)) {
 						
-						const editValue = (value) => {
+						let editValue = (value) => {
 
 							if (value === 0) return 0;
 
@@ -681,15 +705,11 @@
 						
 						showspikes: false,
 						
-						zerolinewidth: 4,
-						
-						zerolinecolor: '#FF7F0E',
+						zerolinewidth: 2,
 
 						titlefont : {
 
 							size : 18,
-
-							color : '#FF7F0E',
 
 							weight: 'bold'
 
@@ -709,15 +729,11 @@
 						
 						showspikes: false,
 						
-						zerolinewidth: 4,
+						zerolinewidth: 2,
 						
-						zerolinecolor: '#2CA02C',
-
 						titlefont : {
 
 							size : 18,
-
-							color : '#2CA02C',
 
 							weight: 'bold'
 
@@ -737,17 +753,13 @@
 						
 						showspikes: false,
 						
-						zerolinewidth: 4,
+						zerolinewidth: 2,
 						
-						zerolinecolor: '#1F77B4',
-
 						range: JSON.parse(dspRange),
 
 						titlefont : {
 
 							size : 18,
-
-							color : '#1F77B4',
 
 							weight: 'bold'
 
@@ -791,6 +803,8 @@
 					
 			constructHTML();
 
+			deleteDerivativeBtn();
+
 			Plotly.newPlot('graphing-box', data, layout, { displayModeBar: false });
 
 		}
@@ -833,7 +847,7 @@
 
 		}
 
-		function functionGraphing(xValues, yValues, dspRange) {
+		function functionGraphing(xValues, yValues, dspRange, derivative, derivativeX, derivativeY) {
 						
 			let layout = {
 
@@ -877,8 +891,6 @@
 
 					zerolinewidth: 1.5,
 
-					zerolinecolor: '#FF7F0E',
-
 					range: [-10.5, 10.5],
 
 					title: {
@@ -888,8 +900,6 @@
 						font: {
 
 							size: 16,
-
-							color: '#FF7F0E',
 
 							weight: 'bold'
 
@@ -911,8 +921,6 @@
 
 					zerolinewidth: 1.5,
 
-					zerolinecolor: '#2CA02C',
-
 					automargin: true,
 
 					dtick: (Math.trunc(JSON.parse(dspRange)[1]) / 5),
@@ -926,8 +934,6 @@
 						font: {
 
 							size: 16,
-
-							color: '#2CA02C',
 
 							weight: 'bold'
 
@@ -953,9 +959,29 @@
 
 				line: {
 
-					color: functionColor[Math.floor(Math.random() * functionColor.length)],
+					color: '#1F77B4',
 
-					width: '2'
+					width: 2
+
+				}
+
+			}
+
+			let dGraph = {
+
+				x: derivativeX,
+
+				y: derivativeY,
+
+				mode: 'lines',
+
+				type: 'scatter',
+
+				line: {
+
+					color: '#F1C31B',
+
+					width: 2
 
 				}
 
@@ -963,11 +989,59 @@
 	
 			let data = [functionGraph];	
 
+			if (derivative === true) data.push(dGraph);
+
 			constructHTML();
 
 			Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
 
 	    }
+
+		function deleteDerivativeBtn() {
+
+			const convergeBtnExists = $(".website-bottom .derivative-btn").length > 0;
+
+			if (convergeBtnExists) $(".website-bottom .derivative-btn").remove();
+
+		}
+
+		function addDerivativeBtn(funcExpr, displayRange) {
+
+			deleteDerivativeBtn();
+
+			if ($(window).width() > 1024) $(".website-bottom").append(`<a class="derivative-btn" onclick="window.scrollTo(0, 0); addDerivative('${funcExpr}', '${displayRange}');"><i class="fa-solid fa-circle-plus"></i> Ajouter la dérivée</a>`);
+				
+			else $(".website-bottom").append(`<a class="derivative-btn" onclick="window.scrollTo(0, 0); addDerivative('${funcExpr}', '${displayRange}');"><i class="fa-solid fa-circle-plus"></i></a>`);
+
+		}
+
+		function addDerivative(funcExpr, dspRange) {
+
+			$(".derivative-btn").attr('onclick', '');
+
+			if ($(window).width() > 1024) $(".derivative-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement des données...');
+			
+			else $(".derivative-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+
+			setTimeout(() => {
+
+				let derivativeStr = math.derivative(funcExpr, 'x').toString();
+				
+				let derivedDatas = createFunctionData(derivativeStr);
+	
+				let realDatas = createFunctionData(funcExpr);
+	
+				if (hasNumberOutOfRange(derivedDatas[1]) === false) functionGraphing(realDatas[0], setAsymptotesOnXYPlot(realDatas[1]), dspRange, true, derivedDatas[0], setAsymptotesOnXYPlot(derivedDatas[1]))
+
+				$(".derivative-btn").attr('onclick', `window.scrollTo(0, 0); navigator.clipboard.writeText('${derivativeStr}')`);
+
+				if ($(window).width() > 1024) $(".derivative-btn").html('<i class="fa-solid fa-copy"></i> Copier la dérivée');
+			
+				else $(".derivative-btn").html('<i class="fa-solid fa-copy"></i>');
+
+			}, 4000)
+
+		}
 
 		function constructHTML() {
 
@@ -979,7 +1053,7 @@
 
             $("#from-modalbox-create-id").attr('onclick', `createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());`)
 		
-			if ($(window).width() >= 1024) {
+			if ($(window).width() > 1024) {
 
 				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer un graphique');
 
@@ -1003,7 +1077,7 @@
 
 			$("#from-modalbox-create-id").attr('onclick', '');
 
-			if ($(window).width() >= 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() > 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 			
 			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
@@ -1015,7 +1089,7 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() >= 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
+			if ($(window).width() > 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
 			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 

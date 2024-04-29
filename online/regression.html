@@ -303,7 +303,7 @@
 
                     <p class="modalbox-description"> Sélectionnez le degré du polynôme de régression à tracer et à générer: </p>
 					
-					<input onchange="setDegValueInHTML($('#deg-data').val());" title="Degré du polynôme:" type="range" id="deg-data" class="modalbox-range" value="1" min="1" max="5" step="1">
+					<input onchange="setDegValueInHTML($('#deg-data').val());" title="Degré du polynôme:" type="range" id="deg-data" class="modalbox-range" value="1" min="1" max="10" step="1">
                 
 				</div>
 
@@ -403,20 +403,6 @@
 
 			return true;
 			
-		}
-
-		function getDTick(min, max) {
-
-			return Math.trunc((max - min) / 10);
-
-		}
-
-		function setDTick(minVal, maxVal) {
-
-			if ($(window).width() >= 1024) return (getDTick(minVal, maxVal) === 0 && (maxVal - minVal) < 9) ? 0.5 : getDTick(minVal, maxVal);
-
-			else return '';
-
 		}
 
 		function generatePolynomialStr(coeffs) {
@@ -600,8 +586,6 @@
 					zerolinewidth: 1.5,
 					
 					range: [(Math.min(xData) - 0.25), (Math.max(xData) + 0.25)],
-
-					dtick: setDTick(minX, maxX),
 					
 					title: {
 								
@@ -626,8 +610,6 @@
 					automargin: true,
 
 					range: [(Math.min(yData) - 0.25), (Math.max(yData) + 0.25)],
-
-					dtick: setDTick(minY, maxY),
 
 					title: {
 
@@ -655,7 +637,7 @@
 
 					color: '#1F77B4',
 
-					width: '2'
+					width: 2
 
 				}
 
@@ -705,7 +687,7 @@
 
 			if (polynomialBtn) $(".website-bottom .polynomial-btn").remove();
 
-			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="polynomial-btn" onclick="window.scrollTo(0, 0); copyPolynomial('${polynomialStr}');"><i class="fa-solid fa-copy"></i> Copier le polynôme</a>`);
+			if ($(window).width() > 1024) $(".website-bottom").append(`<a class="polynomial-btn" onclick="window.scrollTo(0, 0); copyPolynomial('${polynomialStr}');"><i class="fa-solid fa-copy"></i> Copier le polynôme</a>`);
 
 			else $(".website-bottom").append(`<a class="polynomial-btn" onclick="window.scrollTo(0, 0); copyPolynomial('${polynomialStr}');"><i class="fa-solid fa-copy"></i></a>`);
 
@@ -727,7 +709,7 @@
 
 			$("#compute-regression-id").attr('onclick', `computeCurve($('#x-data').val(), $('#y-data').val(), $('#deg-data').val());`);
 
-			if ($(window).width() >= 1024) {
+			if ($(window).width() > 1024) {
 
 				$(".regression-btn").html('<i class="fa-solid fa-pencil"></i> Tracer une courbe');
 
@@ -751,7 +733,7 @@
 
 			$("#compute-regression-id").attr('onclick', '');
 
-			if ($(window).width() >= 1024) $("#compute-regression-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() > 1024) $("#compute-regression-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
 			else $("#compute-regression-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
@@ -763,7 +745,7 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() >= 1024) $("#compute-regression-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
+			if ($(window).width() > 1024) $("#compute-regression-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
 			else $("#compute-regression-id").html('<i class="fa-solid fa-pencil"></i>');
 

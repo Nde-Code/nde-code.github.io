@@ -456,7 +456,7 @@
 
 			$("#from-modalbox-compute-id").attr('onclick', '');
 
-			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...'); 
+			if ($(window).width() > 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...'); 
 			
 			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
@@ -470,7 +470,7 @@
 
 				for (let n = Number(index); n <= maxTerms; n++) {
 
-					const term = math.compile(un).evaluate({ n: n }); 
+					let term = math.compile(un).evaluate({ n: n }); 
 					
 					sum += term;
 
@@ -582,7 +582,7 @@
 
 		function constructHTMLAndGraph(serieSum, convergence, index, xValues, serieValues, sequenceValues) {
 
-			const serie = {
+			let serie = {
 
 				x: xValues,
 
@@ -612,7 +612,7 @@
 
 			};
 
-			const sequence = {
+			let sequence = {
 
 				x: xValues,
 
@@ -642,7 +642,7 @@
 
 			};
 
-			const data = [serie, sequence];
+			let data = [serie, sequence];
 
 			let layout = {
 
@@ -762,7 +762,7 @@
 			
 			$("#from-modalbox-compute-id").attr('onclick', `computeSerie($('#start-index').val(), $('#numeric-sequence').val().toLowerCase());`);
 
-			if ($(window).width() >= 1024) {
+			if ($(window).width() > 1024) {
 
 				$(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i> Recalculer une serie')
 				
@@ -784,7 +784,7 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 			
-			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i> Calculer');
+			if ($(window).width() > 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i> Calculer');
 			
 			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
 
@@ -806,11 +806,11 @@
 
 			if (notFoundBtnExists) $(".website-bottom .notfound-btn").remove();
 
-			if (convergence === true && $(window).width() >= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> Converge vers ${sumVal}</a>`);
+			if (convergence === true && $(window).width() > 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> Converge vers ${sumVal}</a>`);
 				
 			else if (convergence === true && $(window).width() <= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-check"></i> ${sumVal}</a>`);
 
-			else if (convergence === false && $(window).width() >= 1024) $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i> Série divergente</a>`);
+			else if (convergence === false && $(window).width() > 1024) $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i> Série divergente</a>`);
 
 			else $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-circle-xmark"></i></a>`);
 

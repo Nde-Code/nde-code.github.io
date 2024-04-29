@@ -601,7 +601,7 @@
 
 						color: '#FF7F0E',
 
-						width: '2'
+						width: 2
 
 					}
 
@@ -619,7 +619,7 @@
 
 						color: '#1F77B4',
 
-						width: '2'
+						width: 2
 
 					}
 
@@ -637,7 +637,7 @@
 
 						color: '#2CA02C',
 
-						width: '2'
+						width: 2
 
 					}
 
@@ -821,7 +821,7 @@
 
 			$("#emulate-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
 
-			if ($(window).width() >= 1024) {
+			if ($(window).width() > 1024) {
 
 				$(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i> Simuler des perturbations');
 
@@ -845,7 +845,7 @@
 
 			$("#emulate-btn").attr('onclick', '');
 
-			if ($(window).width() >= 1024) $("#emulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() > 1024) $("#emulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
 			else $("#emulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
@@ -857,7 +857,7 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() >= 1024) $("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+			if ($(window).width() > 1024) $("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
 			else $("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i>');
 

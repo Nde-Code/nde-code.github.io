@@ -137,7 +137,7 @@ body.body-class {
 
 .white-line {
     height: 3px;
-    background-color: #b4b4b4;
+    background-color: #D3D3D3;
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 25px;
@@ -353,7 +353,7 @@ header.modalbox-header-class {
     height: 3px;
     margin-left: 25%;
     margin-right: 25%;
-    background-color: #b4b4b4;
+    background-color: #D3D3D3;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
@@ -437,14 +437,17 @@ select,
 p.modalbox-errors-warnings-class {
     text-align: center;
     font-size: 24px;
-    color: #FF1744;
-    font-style: italic;
+    color: #D62728;
     font-weight: bold;
     margin-bottom: 50px;
     margin-right: 50px;
     margin-left: 50px;
     text-shadow: 3px 3px 7px #000000;
-    cursor: default;
+    cursor: pointer;
+}
+
+p.modalbox-errors-warnings-class:hover {
+    color: #E1444A;
 }
 
 .modalbox-bottom {
