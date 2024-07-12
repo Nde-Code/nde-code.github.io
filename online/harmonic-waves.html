@@ -481,7 +481,7 @@
 
 			for (var i = 0; i < numPoints; i++) {
 
-				let t = i / numPoints * 8;
+				let t = i / numPoints * 11;
 
 				wavesXYDatas["wave_x"][i] = t;
 
@@ -535,7 +535,7 @@
 
 					zerolinewidth: 1.5,
 
-					range: [-0.15, 7.5],
+					range: [-0.15, 10.5],
 
 					title: {
 
@@ -657,7 +657,7 @@
 
 			for (var i = 0; i < numPoints; i++) {
 
-				let t = i / numPoints * 8;
+				let t = i / numPoints * 11;
 
 				wavesXYDatas["wave_1_y"][i] = wavesDatas.amplitude_1 * Math.sin(wavesDatas.wave_number_1 * t + wavesDatas.angular_frequency_1 * (currentTime / 1000) + wavesDatas.initial_phase_1);
 
