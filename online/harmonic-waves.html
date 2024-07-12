@@ -157,6 +157,8 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+
 							<a href="regression">Tracer une courbe de régression</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
@@ -183,7 +185,7 @@
 
 			<div class="website-main-panel" id="graph-contenaire">
 
-				<img class="robot-img" src="../assets/robot.png" alt="Un robot.">
+				<img class="project-img" src="../assets/robot.png" alt="Un robot.">
 
 				<h1 class="website-main-panel-title"> Logiciel de simulation d'ondes harmoniques: </h1>
 					
@@ -441,11 +443,7 @@
 
 		var wavesXYDatas = {};
 
-		function isANumber(value) {
-
-			return typeof value === 'number' && !isNaN(value);
-
-		}
+		function isANumber(value) { return typeof value === 'number' && !isNaN(value); }
 
 		function editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
 
@@ -468,6 +466,8 @@
 		}
 
 		function createPlot() {
+
+			let xLabelTitle = ($(window).width() <= 768) ? 'x(m), t(s)' : 'Évolution de la position (m) et du temps (s)'
 
 			currentTime = 0;
 
@@ -539,7 +539,7 @@
 
 					title: {
 
-						text: 'Progrès: x[m], t[s]',
+						text: xLabelTitle,
 
 						font: {
 

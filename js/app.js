@@ -2,6 +2,8 @@ var isES6 = true;
 
 var isOpenAboutBox = false;
 
+var mobileBoxSize = Math.round($(window).width() - 10) + "px";
+
 function openAboutBox() {
 
     if (isOpenAboutBox === false) {
@@ -95,6 +97,8 @@ function openAboutBox() {
 
         $("#modalbox-open-div").append(aboutBoxHtml);
 
+        mobileAboutBox(mobileBoxSize);
+
         $('.overlay').css('display', 'block');
 
     }
@@ -119,9 +123,7 @@ function detectES6() {
 
 }
 
-setInterval(function () {
-
-    let mobileBoxSize = Math.round($(window).width() - 10) + "px";
+function mobileAboutBox(windowSize) {
 
     if ($(window).width() <= 768 && isOpenAboutBox === true) {
 
@@ -129,9 +131,15 @@ setInterval(function () {
 
         $("#modalbox-about").css('left', 'unset');
 
-        $("#modalbox-about").css('width', mobileBoxSize);
+        $("#modalbox-about").css('width', windowSize);
 
     }
+
+}
+
+setInterval(function () {
+
+    mobileAboutBox(mobileBoxSize);
 
     if ($(window).width() <= 768 && isES6 === false) {
 

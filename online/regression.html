@@ -175,6 +175,8 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+
 							<a href="regression">Tracer une courbe de régression</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
@@ -201,7 +203,7 @@
 
 			<div class="website-main-panel" id="plot-contenaire">
 
-				<img class="robot-img" src="../assets/robot.png" alt="Un robot.">
+				<img class="project-img" src="../assets/robot.png" alt="Un robot.">
 
 				<h1 class="website-main-panel-title">Logiciel de tracé de courbe de régression:</h1>
 					
@@ -353,11 +355,7 @@
 
 		var isInLoadState = false;
         
-		function setDegValueInHTML(val) {
-
-			$("#deg-id").html(val);
-
-		}
+		function setDegValueInHTML(val) { $("#deg-id").html(val); }
 
 		function getCoeffSgn(coeff) {
 
@@ -367,11 +365,7 @@
 
 		}
 
-		function parseNumber(element) {
-
-    		return element === '' ? NaN : Number(element);
-
-		}
+		function parseNumber(element) { return element === '' ? NaN : Number(element); }
 
 		function isArrayWithOnlyNumbers(arr) {
 

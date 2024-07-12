@@ -175,6 +175,8 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+
 							<a href="regression">Tracer une courbe de régression</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
@@ -201,7 +203,7 @@
 
 			<div class="website-main-panel" id="graph-contenaire">
 
-				<img class="robot-img" src="../assets/robot.png" alt="Un robot.">
+				<img class="project-img" src="../assets/robot.png" alt="Un robot.">
 
 				<h1 class="website-main-panel-title">Logiciel de tracé de courbe et de surface:</h1>
 					
@@ -370,10 +372,6 @@
     <script> 
 
 		var inLoading = false;
-
-		var surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
-
-		var diffSize = 10;
 
 		setInterval(function () {
 
@@ -611,6 +609,8 @@
 
 		function setAsymptotesOnXYPlot(yData) {
 
+			let diffSize = 10;
+
 			let modifiedYDataCopy = [...yData];
 
 				for (let i = 1; i < yData.length; i++) {
@@ -646,6 +646,8 @@
 		}
 
 		function surfaceGraphing(xValues, yValues, zValues, dspRange) {
+
+			let surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
 
 			let data = [{
 
@@ -885,11 +887,11 @@
 
 					dtick: 2,
 
-					gridwidth: 1,
+					gridwidth: 1.25,
 
 					automargin: true,
 
-					zerolinewidth: 1.5,
+					zerolinewidth: 1,
 
 					range: [-10.5, 10.5],
 
@@ -919,7 +921,7 @@
 
 					gridwidth: 1,
 
-					zerolinewidth: 1.5,
+					zerolinewidth: 1.25,
 
 					automargin: true,
 

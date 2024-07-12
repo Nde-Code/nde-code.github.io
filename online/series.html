@@ -97,7 +97,7 @@
 
 	<title>Nathan Debilloëz · Projet</title>
 
-	<meta name="description" content="Une calculatrice de série numérique en ligne.">
+	<meta name="description" content="Calculateur de série numérique en ligne.">
 
 	<meta name="keywords" content="Nathan Debilloëz · Projet">
 
@@ -199,6 +199,8 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+
 							<a href="regression">Tracer une courbe de régression</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
@@ -225,7 +227,7 @@
 
 			<div class="website-main-panel" id="graph-contenaire">
 
-				<img class="robot-img" src="../assets/robot.png" alt="Un robot.">
+				<img class="project-img" src="../assets/robot.png" alt="Un robot.">
 
 				<h1 class="website-main-panel-title">Logiciel de calcul de série numérique:</h1>
 					
@@ -371,13 +373,13 @@
 
 		var runningSate = false;
 
-		var graphRange = 10;
-
-		var maxiter = 10e4;
-
-		var tol = 1e-6;
-
 		function computeSerie(index, un) {
+
+			let tol = 1e-6;
+
+			let graphRange = 10;
+
+			let maxiter = 10e4;
 
 			if (!un || isMathExpression(un) === false || isAType(un) === true || isAllowed(un) === false) {
 
@@ -397,9 +399,9 @@
 
 					let serieComputing = checkConvergence(un, index, maxiter, tol);
 	
-					let graphSeriePoints = serieGraph(un, index)
+					let graphSeriePoints = serieGraph(un, index, graphRange)
 			
-					let graphSequencePoints = sequenceGraph(un, index)
+					let graphSequencePoints = sequenceGraph(un, index, graphRange)
 
 					if (!isFinite(serieComputing[0]) || isNaN(serieComputing[0]) === true || !validData(graphSeriePoints[1])) abortProcess("Soit la série ne respecte pas le critère nécessaire de convergence (donc elle diverge), soit il y a un problème de division par 0, de logarithme nul ou négatif, etc... voire les deux...");
 					
@@ -414,6 +416,10 @@
 		// Code pour les tests.
 		/*
 		function runningUnitTest() {
+
+			let tol = 1e-6;
+
+			let maxiter = 10e4;
 
 			let seriesEq = ['(e^n)/(e^(2*n)+2*n*e^n+1)', '(n^n)/(log(n)^n^2)', '(n*tan(1/n))/((n+1)/n)^n', '(-1)^n/sqrt(n)*sin(1/n)', '(3*n^2-n)/(cbrt(n^8+n))', '(2+sin(n))/(3^n)', 'sin(1/n)', '1/(n+(10/9)^n)', '(n+cos(n))/(e^n+sin(n))', '((-1)^n*(sqrt(2))^n)/(n^7+2*n^5+n^3+1)', '(-n^4+2*n^2+1)/(2*n^7-3*n^4-n+1)', '(-1)^n*(n^-2)/(e^(3*n))', 'sinh(1/n)/cos(1/n)', '(2^n+2*n)/(3^n+5)', '(-1)^n*(e^n+2^n)/(e^n-2^n)'];
 		
@@ -520,13 +526,13 @@
 			
 		}
 
-		function serieGraph(un, index) {
+		function serieGraph(un, index, graphRange) {
 
-			let xSumPoints = []
+			let xSumPoints = [];
 
-			let ySumPoints = []
+			let ySumPoints = [];
 
-			let sum = 0
+			let sum = 0;
 
 			for (var i = Number(index); i < (graphRange + Number(index)); i++) {
 
@@ -542,11 +548,11 @@
 
 		}
 
-		function sequenceGraph(un, index) {
+		function sequenceGraph(un, index, graphRange) {
 
 			let sequenceX = [];
 
-			let sequenceY = []
+			let sequenceY = [];
 
 			for (var y = index; y < (graphRange + Number(index)); y++) {
 

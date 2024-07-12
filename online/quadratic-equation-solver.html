@@ -39,7 +39,7 @@
 
 	<title>Nathan Debilloëz · Projet</title>
 
-	<meta name="description" content="Calculatrice d'équation du second degré en ligne.">
+	<meta name="description" content="Calculateur d'équation du second degré en ligne.">
 
 	<meta name="keywords" content="Nathan Debilloëz · Projet">
 
@@ -141,6 +141,8 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+
 							<a href="regression">Tracer une courbe de régression</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
@@ -167,7 +169,7 @@
 
 			<div class="website-main-panel">
 
-				<img class="robot-img" src="../assets/robot.png" alt="Un robot.">
+				<img class="project-img" src="../assets/robot.png" alt="Un robot.">
 
 				<h1 class="website-main-panel-title">Logiciel résolveur d'équation du type: </h1>
 				
@@ -317,7 +319,7 @@
 
 	<script type="text/javascript">
 
-		var isRunning = false;	
+		var hasRun = false;
 
 		setInterval(function () {
 
@@ -439,13 +441,13 @@
 
 		}
 
-		function constrcutHTML(x1, x2, dis, isDisNull) {
+		function constructHTML(x1, x2, dis, isDisNull) {
 
-			$("#1st-root").html(`Admet comme première racine: <span class="first-root" style="font-weight: bold; color: #1F77B4;">x<sub>1</sub> ${setEqual(x1)} ${math.round(x1, 3)}</span>`);
+			$("#1st-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme première racine: <span style="font-weight: bold; color: #1F77B4;">x<sub>1</sub> ${setEqual(x1)} ${math.round(x1, 3)}</span>`);
 			
-			(isDisNull === true) ? $("#2nd-root").html(`Admet comme deuxième racine: <span class="second-root" style="font-weight: bold; color: #FF7F0E;">Rien du tout</span>`) : $("#2nd-root").html(`Admet comme deuxième racine: <span class="second-root" style="font-weight: bold; color: #FF7F0E;">x<sub>2</sub> ${setEqual(x2)} ${math.round(x2, 3)}</span>`)
+			(isDisNull === true) ? $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #FF7F0E;">Rien du tout</span>`) : $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #FF7F0E;">x<sub>2</sub> ${setEqual(x2)} ${math.round(x2, 3)}</span>`)
 
-			$("#discriminant-text-id").html(`Admet un discriminant égal à: <span class="discriminant-text" style="font-weight: bold; color: #2CA02C;">${dis}</span>`);
+			$("#discriminant-text-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet un discriminant égal à: <span class="discriminant-text" style="font-weight: bold; color: #2CA02C;">${dis}</span>`);
 		
 		}
 
@@ -479,9 +481,7 @@
 
 			else {
 				
-				isRunning = true;
-
-				$(".website-main-panel-title").html("L'équation du second degré:");
+				if (hasRun === false) $(".website-main-panel-title").html("L'équation du second degré:");
 				
 				$("#modalbox-equation").css("display", "none");
 
@@ -499,7 +499,7 @@
 
 					let x =  math.evaluate(`(${-b}) / (2 * (${a}))`)
 
-					constrcutHTML(x, 0, discriminant, true)
+					constructHTML(x, 0, discriminant, true)
 
 				} else {
 
@@ -507,7 +507,7 @@
 
 					let x2 =  math.evaluate(`(-1*(${b}) - sqrt(${discriminant})) / (2 * (${a}))`)
 
-					constrcutHTML(x1, x2, discriminant, false)
+					constructHTML(x1, x2, discriminant, false)
 
 				}
 
