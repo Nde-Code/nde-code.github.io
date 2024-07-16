@@ -149,14 +149,14 @@ body.body-class {
 }
 
 /*Pour les projets en ligne: */
-.project-img {
+.website-main-panel-img {
     width: 245px;
     height: 245px;
     margin-top: 15px;
 }
 
 @media screen and (max-width: 768px) {
-    .project-img {
+    .website-main-panel-img {
         width: 180px;
         height: 180px;
     }
