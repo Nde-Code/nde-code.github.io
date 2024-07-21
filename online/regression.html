@@ -681,7 +681,7 @@
 
 			if (polynomialBtn) $(".website-bottom .polynomial-btn").remove();
 
-			if ($(window).width() > 1024) $(".website-bottom").append(`<a class="polynomial-btn" onclick="window.scrollTo(0, 0); copyPolynomial('${polynomialStr}');"><i class="fa-solid fa-copy"></i> Copier le polynôme</a>`);
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="polynomial-btn" onclick="window.scrollTo(0, 0); copyPolynomial('${polynomialStr}');"><i class="fa-solid fa-copy"></i> Copier le polynôme</a>`);
 
 			else $(".website-bottom").append(`<a class="polynomial-btn" onclick="window.scrollTo(0, 0); copyPolynomial('${polynomialStr}');"><i class="fa-solid fa-copy"></i></a>`);
 
@@ -703,7 +703,7 @@
 
 			$("#compute-regression-id").attr('onclick', `computeCurve($('#x-data').val(), $('#y-data').val(), $('#deg-data').val());`);
 
-			if ($(window).width() > 1024) {
+			if ($(window).width() >= 1024) {
 
 				$(".regression-btn").html('<i class="fa-solid fa-pencil"></i> Tracer une courbe');
 
@@ -727,7 +727,7 @@
 
 			$("#compute-regression-id").attr('onclick', '');
 
-			if ($(window).width() > 1024) $("#compute-regression-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() >= 1024) $("#compute-regression-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
 			else $("#compute-regression-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
@@ -739,7 +739,7 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() > 1024) $("#compute-regression-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
+			if ($(window).width() >= 1024) $("#compute-regression-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
 			else $("#compute-regression-id").html('<i class="fa-solid fa-pencil"></i>');
 

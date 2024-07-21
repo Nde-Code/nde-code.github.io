@@ -589,7 +589,7 @@
 
 			$("#radioactive-decay-btn-id").attr('onclick', '');
 
-			if ($(window).width() > 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement des données...');
+			if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement des données...');
 			
 			else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
@@ -605,7 +605,7 @@
 						
 							$("#radioactive-decay-btn-id").attr('onclick', '$("#modalbox-decay").css("display", "block"); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
 
-							if ($(window).width() > 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i> Établir une équation radioactive');
+							if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i> Établir une équation radioactive');
 							
 							else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>');
 
@@ -629,7 +629,7 @@
 
 							$("#radioactive-decay-btn-id").attr('onclick', 'window.location.reload(); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
 
-							if ($(window).width() > 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-circle-xmark"></i> Une erreur s\'est produite !');
+							if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-circle-xmark"></i> Une erreur s\'est produite !');
 							
 							else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-circle-xmark"></i>');
 
@@ -784,7 +784,7 @@
 
             $("#from-modalbox-decay-id").attr('onclick', 'radioactiveDecay($("#element-id").val(), $("#radioisotope-id").val(), $("#decay-mode-id").val())');
 		
-			if ($(window).width() > 1024) {
+			if ($(window).width() >= 1024) {
 
 				$("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i> Établir une équation radioactive');
 

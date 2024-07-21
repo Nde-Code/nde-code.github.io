@@ -1011,7 +1011,7 @@
 
 			deleteDerivativeBtn();
 
-			if ($(window).width() > 1024) $(".website-bottom").append(`<a class="derivative-btn" onclick="window.scrollTo(0, 0); addDerivative('${funcExpr}', '${displayRange}');"><i class="fa-solid fa-circle-plus"></i> Ajouter la dérivée</a>`);
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="derivative-btn" onclick="window.scrollTo(0, 0); addDerivative('${funcExpr}', '${displayRange}');"><i class="fa-solid fa-circle-plus"></i> Ajouter la dérivée</a>`);
 				
 			else $(".website-bottom").append(`<a class="derivative-btn" onclick="window.scrollTo(0, 0); addDerivative('${funcExpr}', '${displayRange}');"><i class="fa-solid fa-circle-plus"></i></a>`);
 
@@ -1021,7 +1021,7 @@
 
 			$(".derivative-btn").attr('onclick', '');
 
-			if ($(window).width() > 1024) $(".derivative-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement des données...');
+			if ($(window).width() >= 1024) $(".derivative-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement des données...');
 			
 			else $(".derivative-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
@@ -1037,7 +1037,7 @@
 
 				$(".derivative-btn").attr('onclick', `window.scrollTo(0, 0); navigator.clipboard.writeText('${derivativeStr}')`);
 
-				if ($(window).width() > 1024) $(".derivative-btn").html('<i class="fa-solid fa-copy"></i> Copier la dérivée');
+				if ($(window).width() >= 1024) $(".derivative-btn").html('<i class="fa-solid fa-copy"></i> Copier la dérivée');
 			
 				else $(".derivative-btn").html('<i class="fa-solid fa-copy"></i>');
 
@@ -1055,7 +1055,7 @@
 
             $("#from-modalbox-create-id").attr('onclick', `createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());`)
 		
-			if ($(window).width() > 1024) {
+			if ($(window).width() >= 1024) {
 
 				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer un graphique');
 
@@ -1079,7 +1079,7 @@
 
 			$("#from-modalbox-create-id").attr('onclick', '');
 
-			if ($(window).width() > 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() >= 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 			
 			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
@@ -1091,7 +1091,7 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() > 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
+			if ($(window).width() >= 1024) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
 			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 

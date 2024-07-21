@@ -261,7 +261,7 @@
 
                     <p class="modalbox-description"> Saisissez l'amplitude de la première onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 100: </p>
 					
-					<input id="A-value-1" class="modalbox-input" placeholder="A:">
+					<input id="A-value-1" inputmode="numeric" class="modalbox-input" placeholder="A:">
                 
 				</div>
 
@@ -273,7 +273,7 @@
 
                     <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la première onde à simuler. Cette valeur doit être comprise entre 1 et 500 et exprimée en radian par mètre: </p>
 					
-					<input id="k-value-1" class="modalbox-input" placeholder="k:">
+					<input id="k-value-1" inputmode="numeric" class="modalbox-input" placeholder="k:">
                 
 				</div>
 
@@ -285,7 +285,7 @@
 
                     <p class="modalbox-description"> Saisissez la valeur de la pulsation de la première onde à simuler. Cette valeur doit être comprise entre 1 et 1000 et exprimée en radian par seconde: </p>
 					
-					<input id="w-value-1" class="modalbox-input" placeholder="w:">
+					<input id="w-value-1" inputmode="numeric" class="modalbox-input" placeholder="w:">
                 
 				</div>
 
@@ -297,7 +297,7 @@
 
                     <p class="modalbox-description"> Saisissez la phase initiale (exprimée en radian) de la première onde à simuler: </p>
 					
-					<input id="phi-value-1" class="modalbox-input" placeholder="phi:">
+					<input id="phi-value-1" inputmode="numeric" class="modalbox-input" placeholder="phi:">
                 
 				</div>
 
@@ -327,7 +327,7 @@
 
                     <p class="modalbox-description"> Saisissez l'amplitude de la deuxième onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 100: </p>
 					
-					<input id="A-value-2" class="modalbox-input" placeholder="A:">
+					<input id="A-value-2" inputmode="numeric" class="modalbox-input" placeholder="A:">
                 
 				</div>
 
@@ -339,7 +339,7 @@
 
                     <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 500 et exprimée en radian par mètre: </p>
 					
-					<input id="k-value-2" class="modalbox-input" placeholder="k:">
+					<input id="k-value-2" inputmode="numeric" class="modalbox-input" placeholder="k:">
                 
 				</div>
 
@@ -351,7 +351,7 @@
 
                     <p class="modalbox-description"> Saisissez la valeur de la pulsation de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 1000 et exprimée en radian par seconde: </p>
 					
-					<input id="w-value-2" class="modalbox-input" placeholder="w:">
+					<input id="w-value-2" inputmode="numeric" class="modalbox-input" placeholder="w:">
                 
 				</div>
 
@@ -363,7 +363,7 @@
 
                     <p class="modalbox-description"> Saisissez la phase initiale (exprimée en radian) de la deuxième onde à simuler: </p>
 					
-					<input id="phi-value-2" class="modalbox-input" placeholder="phi:">
+					<input id="phi-value-2" inputmode="numeric" class="modalbox-input" placeholder="phi:">
                 
 				</div>
 
@@ -821,7 +821,7 @@
 
 			$("#emulate-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
 
-			if ($(window).width() > 1024) {
+			if ($(window).width() >= 1024) {
 
 				$(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i> Simuler des perturbations');
 
@@ -845,7 +845,7 @@
 
 			$("#emulate-btn").attr('onclick', '');
 
-			if ($(window).width() > 1024) $("#emulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() >= 1024) $("#emulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
 			else $("#emulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
@@ -857,7 +857,7 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() > 1024) $("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+			if ($(window).width() >= 1024) $("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
 			else $("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i>');
 
