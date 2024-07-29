@@ -43,13 +43,13 @@ function openAboutBox() {
 
                     <h2>Librairies utilisées:</h2>
                     
-                    <p class="modalbox-description"><strong> · Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
                     
-                    <p class="modalbox-description"><strong> · JQuery:</strong> pour une gestion plus éfficace du DOM Javascript. </p>
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>JQuery:</strong> pour une gestion plus éfficace du DOM en Javascript. </p>
                    
-                    <p class="modalbox-description"><strong> · Math.js:</strong> pour les outils mathématiques utilisés dans mes projets. </p>
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Math.js:</strong> pour les outils mathématiques utilisés dans mes projets. </p>
                     
-                    <p class="modalbox-description"><strong> · Plotly:</strong> pour dessiner des graphiques dans le navigateur. </p>
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Plotly:</strong> pour dessiner des graphiques dans le navigateur. </p>
                 
                 </div>
 
@@ -59,13 +59,11 @@ function openAboutBox() {
 
                     <h2>Outils utilisés:</h2>
                     
-                    <p class="modalbox-description"><strong> · Visual Studio Code:</strong> pour rédiger et modifier le code de ce chaleureux site internet. </p>
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Visual Studio Code:</strong> pour rédiger et modifier le code de ce chaleureux site internet. </p>
+                                        
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Pixlr:</strong> pour retoucher l'image de fond du site.</p>
                     
-                    <p class="modalbox-description"><strong> · Canva:</strong> pour modifier et réaliser quelques graphismes. </p>
-                    
-                    <p class="modalbox-description"><strong> · Pixlr:</strong> pour retoucher les images.</p>
-                    
-                    <p class="modalbox-description"><strong> · Logomakr:</strong> pour créer mon "favicon".</p>
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Logomakr:</strong> pour créer mon "favicon".</p>
                     
                 </div>
 
@@ -75,9 +73,9 @@ function openAboutBox() {
 
                     <h2>Ressources utilisées:</h2>
                     
-                    <p class="modalbox-description"><strong> · Flaticon:</strong> pour les différentes ressources utilisés dans mes projets. je renseigne toujours l'utilisation de ces graphismes dans les pieds de page ou dans un fichier README.Md. </p>
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Flaticon:</strong> pour les différentes ressources utilisés dans mes projets. je renseigne toujours l'utilisation de ces graphismes dans les pieds de page ou dans un fichier README.Md. </p>
                     
-                    <p class="modalbox-description"><strong> · Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
                   
                 </div>
 
