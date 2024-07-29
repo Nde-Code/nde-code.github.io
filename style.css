@@ -336,8 +336,9 @@ header.modalbox-header-class {
 .modalbox-main-contenaire {
     overflow-y: scroll;
     height: 500px;
-    /* Ajouter des bords arrondis ici aussi. */
-    border-radius: 40px;
+    /* Ajouter des bords arrondis ici aussi (36px pour compenser les 4px de la bordure). */
+    border-bottom-right-radius: 36px;
+    border-bottom-left-radius: 36px;
     /* Masquer la "scrollbar" sur Firefox. */
     scrollbar-width: none;
 }
