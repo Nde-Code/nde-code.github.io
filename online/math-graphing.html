@@ -220,7 +220,7 @@
 
 				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');">
 					
-					<i class="fa-solid fa-chart-line"></i>
+					<i class="fa-solid fa-pencil"></i>
 					
 					Tracer un graphique
 				
@@ -260,7 +260,7 @@
 
 			<header class="modalbox-header-class" id="modalbox-header-id">
 
-				<i class="fa-solid fa-chart-line"></i> Tracer
+				<i class="fa-solid fa-pencil"></i> Tracer
 
 				<a class="modalbox-header-close" onclick="$('#modalbox-graphing').css('display', 'none'); $('.overlay').css('display', 'none');">
 
@@ -374,7 +374,7 @@
 
 		setInterval(function () {
 
-			if ($(window).width() <= 1024) $(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i>');
+			if ($(window).width() <= 1024) $(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i>');
 
 			if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
@@ -1056,7 +1056,7 @@
 		
 			if ($(window).width() >= 1024) {
 
-				$(".create-graph-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer un graphique');
+				$(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Retracer un graphique');
 
 				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
