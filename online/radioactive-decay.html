@@ -607,7 +607,7 @@
 
 							$.each(datas.elements, function (index, element) {
 
-								let option = $('<option>').val(element.symbol).text(`${element.name} - ${element.symbol} - ${element.atomic_number}`);
+								let option = $('<option>').val(element.symbol).text(`${element.name} (${element.symbol}) - Z: ${element.atomic_number}`);
 
 								$('#element-id').append(option);
 
