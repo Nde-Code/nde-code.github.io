@@ -27,15 +27,15 @@
 		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
-		background: #2CA02C; 
+		background: #28A745; 
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #1E7E1E; 
+		border: 4px solid #218838; 
 		cursor: pointer;
 	}
 
 	.derivative-btn:hover {
-		background: #4CAF50;
+		background: #34D058;
 	}
 
 	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
@@ -221,7 +221,7 @@
 					
 					<i class="fa-solid fa-pencil"></i>
 					
-					Tracer un graphique
+					Tracer une fonction mathématique
 				
 				</a>
 			
@@ -245,7 +245,7 @@
 
 					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
 						
-					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="copyright-link">Github</a>.</p>
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io/blob/main/online/math-graphing.html" class="copyright-link">Github</a>.</p>
 						
 					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
 					
@@ -325,16 +325,14 @@
 
 				<div class="modalbox-text-contenaire">
 					
-					<h2>Légende des axes:</h2>
+					<h2>Code couleurs:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Couleur de la courbe sur un graphique en 2D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Couleur de la fonction mathématique saisie, sur un graphique en 2D. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Couleur de la courbe de la dérivée sur un graphique en 2D.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Couleur de fonction mathématique dérivée de celle saisie, sur un graphique en 2D. </p>
 
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #2CA02C;"></i> Couleur du bouton permettant de calculer et tracer la dérivée de la fonction saisie.</p>
-					
-					<p class="modalbox-description"><i class="fa-solid fa-circle-info" style="font-size: 18px; color: #FF7F0E;"></i> La couleur d'un graphique en 3D est sélectionnée aléatoirement parmi une liste d'échelles disponibles dans la bibliothèque plotly.js.</p>
-				
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Couleur du bouton permettant de calculer et tracer la dérivée de la fonction saisie. Seuls les graphiques en 2D sont concernés par ce bouton.</p>
+									
 				</div>
 
 				<div class="modalbox-line"></div>
@@ -371,23 +369,24 @@
 
 		var inLoading = false;
 
-		setInterval(function () {
+		var hasWebGL = true;
 
-			if ($(window).width() <= 1024) $(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i>');
+		// Merci: https://stackoverflow.com/questions/11871077/proper-way-to-detect-webgl-support
+		function missingWebGL() {
 
-			if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
+			try {
 
-			if ($(window).width() <= 768) {
+				let canvas = document.createElement('canvas');
 
-				$("#modalbox-graphing").css('marginLeft', 'unset');
+				return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
 
-				$("#modalbox-graphing").css('left', 'unset');
+			} catch (e) {
 
-				$("#modalbox-graphing").css('width', Math.round($(window).width() - 10) + "px");
+				return false;
 
 			}
 
-		}, 1000);
+		}
 
 		function isMathExpression(mathExpr) {
 
@@ -411,11 +410,11 @@
 
 				math.typeOf(math.evaluate(nbr));
 
-				return true
+				return true;
 
 			} catch(err) {
 
-				return false
+				return false;
 
 			}
 			
@@ -427,7 +426,7 @@
 					
 			for (var i = 0; i < dataArray.length; i++) {			
 
-				if (math.typeOf(dataArray[i]) === 'Complex') complexCounter++
+				if (math.typeOf(dataArray[i]) === 'Complex') complexCounter++;
 
 			}
 
@@ -452,50 +451,6 @@
 			return false;
 
 		}
-
-        function createGraph(expr, range) {
-
-            if (!expr || isAType(expr) === true || isMathExpression(expr) === false || hasOneVariable(expr) === "Invalid" || isAllowed(expr) === false) $("#modalbox-errors-warnings-id").html("L'expression de votre fonction est invalide !");
-
-            else {
-
-				generateDataBtn();
-
-				setTimeout(() => {
-
-					try {
-
-						let datas = (hasOneVariable(expr) === false) ? createSurfaceData(expr) : createFunctionData(expr)
-
-						let isAValidGeneration = (hasOneVariable(expr) === false) ? isValidGeneratedData([].concat.apply([], datas[2])) : isValidGeneratedData(datas[1])
-						
-						let workOnArr = (hasOneVariable(expr) === false) ? [].concat.apply([], datas[2]) : datas[1];
-
-						if (isAValidGeneration === false) abortProcess("Les données générées sont des nombres complexes.")
-
-						else if (hasNumberOutOfRange(workOnArr)) abortProcess("Les données dépassent la limite tolérée de +/- 1e45.")
-
-						else if (hasOneVariable(expr) === false) surfaceGraphing(datas[0], datas[1], datas[2], range);
-
-						else {
-
-							addDerivativeBtn(expr, range, false);
-							
-							functionGraphing(datas[0], setAsymptotesOnXYPlot(datas[1]), range, false, [], [])
-						
-						}
-						
-					} catch(err) {
-
-						abortProcess("La fonction saisie pose problème ! Cela peut arriver si la fonction que vous avez saisie est un peu trop compliquée.");
-
-					}
-
-				}, 4000)
-
-			}
-
-        }
 
         function createSurfaceData(expr) {
 
@@ -813,9 +768,9 @@
 
 			try {
 
-				let node = math.parse(func)
+				let node = math.parse(func);
 
-				let hasX = false
+				let hasX = false;
 
 				let hasY = false;
 
@@ -827,21 +782,21 @@
 
 				for (let j = 0; j < filtered.length; j++) {
 
-					if (filtered[j].name === "x" && hasX === false) hasX = true
+					if (filtered[j].name === "x" && hasX === false) hasX = true;
 
-					if (filtered[j].name === "y" && hasY === false) hasY = true
+					if (filtered[j].name === "y" && hasY === false) hasY = true;
 
 				}
 
-				if (hasX === true && hasY === true) return false
+				if (hasX === true && hasY === true) return false;
 
-				else if (hasX === true && hasY === false) return true
+				else if (hasX === true && hasY === false) return true;
 
-				else return "Invalid"
+				else return "Invalid";
 
 			} catch(err) {
 
-				return "Invalid"
+				return "Invalid";
 
 			}
 
@@ -959,9 +914,9 @@
 
 				line: {
 
-					color: '#1F77B4',
+					color: '#005DD9',
 
-					width: 2
+					width: 2.5
 
 				}
 
@@ -981,7 +936,7 @@
 
 					color: '#F1C31B',
 
-					width: 2
+					width: 2.5
 
 				}
 
@@ -996,6 +951,131 @@
 			Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
 
 	    }
+
+		$(document).ready(function () {
+
+			if (missingWebGL() === false && isES6 === true) {
+
+				hasWebGL = false;
+
+				let invalidBrowserBox = `
+				<div class="modalbox-class" id="modalbox-warning">
+
+					<header class="modalbox-header-class" id="modalbox-header-id">
+
+						<i class="fa-solid fa-circle-exclamation"></i> Attention
+
+					</header>
+
+					<div class="modalbox-main-contenaire" style="text-align: center;">
+
+						<div class="modalbox-text-contenaire">
+
+							<i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 220px; color: #FD7E14;"></i>
+
+							<h2>Absence WebGL - Navigateur ancien:</h2>
+
+							<p class="modalbox-description"><strong> Impossible d'effectuer un rendu 3D... </strong></p>
+
+							<p class="modalbox-description"> Un navigateur disposant de WebGL est nécessaire pour utiliser ce logiciel. </p>
+
+						</div>
+
+					</div>
+					
+				</div>`;
+
+				$(".body-class").css("background", "#212121");
+
+				$("#main-html").remove();
+				
+				$("#modalbox-open-div").append(invalidBrowserBox);
+
+				mobileWebGLWarningBox(modalboxSize);
+
+			}
+
+		});
+
+		function createGraph(expr, range) {
+
+			if (!expr || isAType(expr) === true || isMathExpression(expr) === false || hasOneVariable(expr) === "Invalid" || isAllowed(expr) === false) $("#modalbox-errors-warnings-id").html("L'expression de votre fonction est invalide !");
+
+			else {
+
+				generateDataBtn();
+
+				setTimeout(() => {
+
+					try {
+
+						let datas = (hasOneVariable(expr) === false) ? createSurfaceData(expr) : createFunctionData(expr);
+
+						let isAValidGeneration = (hasOneVariable(expr) === false) ? isValidGeneratedData([].concat.apply([], datas[2])) : isValidGeneratedData(datas[1]);
+						
+						let workOnArr = (hasOneVariable(expr) === false) ? [].concat.apply([], datas[2]) : datas[1];
+
+						if (isAValidGeneration === false) abortProcess("Les données générées sont des nombres complexes.");
+
+						else if (hasNumberOutOfRange(workOnArr)) abortProcess("Les données dépassent la limite tolérée de +/- 1e45.");
+
+						else if (hasOneVariable(expr) === false) surfaceGraphing(datas[0], datas[1], datas[2], range);
+
+						else {
+
+							addDerivativeBtn(expr, range, false);
+							
+							functionGraphing(datas[0], setAsymptotesOnXYPlot(datas[1]), range, false, [], []);
+						
+						}
+						
+					} catch(err) {
+
+						abortProcess("La fonction saisie pose problème ! Cela peut arriver si la fonction que vous avez saisie est un peu trop compliquée.");
+
+					}
+
+				}, 4000)
+
+			}
+
+		}
+
+		function mobileWebGLWarningBox(windowSize) {
+
+			if ($(window).width() <= 768 && hasWebGL === false) {
+
+				$("#modalbox-warning").css('marginLeft', 'unset');
+
+				$(".warning-browser").css('fontSize', '150px');
+
+				$("#modalbox-warning").css('left', 'unset');
+
+				$("#modalbox-warning").css('width', modalboxSize);
+
+			}
+
+		}
+
+		setInterval(function () {
+
+			mobileWebGLWarningBox(modalboxSize);
+
+			if ($(window).width() <= 1024) $(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i>');
+
+			if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-graphing").css('marginLeft', 'unset');
+
+				$("#modalbox-graphing").css('left', 'unset');
+
+				$("#modalbox-graphing").css('width', modalboxSize);
+
+			}
+
+		}, 1000);
 
 		function deleteDerivativeBtn() {
 
@@ -1031,7 +1111,7 @@
 	
 				let realDatas = createFunctionData(funcExpr);
 	
-				if (hasNumberOutOfRange(derivedDatas[1]) === false) functionGraphing(realDatas[0], setAsymptotesOnXYPlot(realDatas[1]), dspRange, true, derivedDatas[0], setAsymptotesOnXYPlot(derivedDatas[1]))
+				if (hasNumberOutOfRange(derivedDatas[1]) === false) functionGraphing(realDatas[0], setAsymptotesOnXYPlot(realDatas[1]), dspRange, true, derivedDatas[0], setAsymptotesOnXYPlot(derivedDatas[1]));
 
 				$(".derivative-btn").attr('onclick', `window.scrollTo(0, 0); navigator.clipboard.writeText('${derivativeStr}')`);
 
@@ -1051,11 +1131,11 @@
 
 			$('.overlay').css('display', 'none');
 
-            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());`)
+            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());`);
 		
 			if ($(window).width() >= 1024) {
 
-				$(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Retracer un graphique');
+				$(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Retracer une fonction mathématique');
 
 				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
@@ -1073,7 +1153,7 @@
 
 			inLoading = true;
 
-			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...")
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
 			$("#from-modalbox-create-id").attr('onclick', '');
 
@@ -1093,7 +1173,7 @@
 
 			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
-            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());`)
+            $("#from-modalbox-create-id").attr('onclick', `createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());`);
 
 		}
 

@@ -7,14 +7,14 @@
 	<style>
 
 	.calculate-serie-btn {
-		padding: 15px 30px;
-		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
+		color: white;
 		background: #005DD9;
-		transition: all .2s ease-out 0s;
+		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
 		border: 4px solid #0047A6;
+		padding: 15px 30px;
 		cursor: pointer;
 	}
 
@@ -27,31 +27,31 @@
 		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
-		background: #2CA02C; 
+		background: #28A745; 
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #1E7E1E; 
+		border: 4px solid #218838; 
 		cursor: pointer;
 	}
 
 	.converge-btn:hover {
-		background: #4CAF50;
+		background: #34D058;
 	}
 
 	.diverge-btn {
 		font-size: 20px;
 		border-radius: 50px;
 		color: white;
-		background: #FF7F0E; 
+		background: #DC3545; 
 		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
-		border: 4px solid #D9480F;
+		border: 4px solid #B52A37;
 		padding: 15px 30px;
 		cursor: pointer;
 	}
 
 	.diverge-btn:hover {
-		background: #FFA726;
+		background: #E55361;
 	}
 
 	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
@@ -244,7 +244,7 @@
 					
 					<i class="fa-solid fa-infinity"></i>
 					
-					Calculer une série
+					Calculer une série numérique
 				
 				</a>
 			
@@ -268,7 +268,7 @@
 						
 					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
 						
-					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="copyright-link">Github</a>.</p>
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io/blob/main/online/series.html" class="copyright-link">Github</a>.</p>
 						
 					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
 					
@@ -308,29 +308,31 @@
 
 				<div class="modalbox-text-contenaire">
 
-					<h2>Limite inférieur:</h2>
+                    <h2>Indice initial:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Indice initial: <span style="color: #005DD9;" id="start-id">0</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez l'indice à partir duquel la série doit commencer à sommer: </p>
 					
-					<p class="modalbox-description"> Entrez l'indice de sommation à partir duquel la série doit commencer à sommer. Seuls les nombres de 0 à 10 sont acceptés.</p>
-				
-					<input type="text" inputmode="numeric" id="start-index" class="modalbox-input" placeholder="n:">
-					
+					<input onchange="setStartIndex($('#start-index').val());" title="Indice initial:" type="range" id="start-index" class="modalbox-range" value="0" min="0" max="10" step="1">
+                
 				</div>
 
 				<div class="modalbox-line"></div>
 
 				<div class="modalbox-text-contenaire">
 
-					<h2>Légende des résultats:</h2>
+					<h2>Code couleurs:</h2>
 
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Indiquent l'évolution de la série numérique. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Indiquent l'évolution de la série numérique. </p>
 					
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Indiquent l'évolution de la suite numérique. </p>
 										
-					<p class="modalbox-description"><i class="fa-solid fa-circle-check" style="font-size: 18px; color: #2CA02C;"></i> Indique que la série saisie a convergé vers une valeur au cours des 10 000 itérations fixées par le logiciel, ainsi que la valeur vers laquelle la série a convergé. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle-check" style="font-size: 18px; color: #28A745;"></i> Indique que la série saisie a convergé vers une valeur au cours des 10 000 itérations fixées par le logiciel, ainsi que la valeur vers laquelle la série a convergé. </p>
 						
 					<p class="modalbox-description"> Attention cela ne garantit pas à 100% que la série est vraiment convergente.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle-xmark" style="font-size: 18px; color: #FF7F0E;"></i> Indique que la série saisie n'a pas convergé au cours des 10 000 itérations fixées par le logiciel.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle-xmark" style="font-size: 18px; color: #DC3545;"></i> Indique que la série saisie n'a pas convergé au cours des 10 000 itérations fixées par le logiciel.</p>
 					
 					<p class="modalbox-description"> Attention cela ne garantit pas à 100% que la série est divergente, la série que vous avez saisie peut converger mais de manière très lente ce qui peut fausser le résultat à cause du réglage par défaut du logiciel.</p>
 				
@@ -370,45 +372,7 @@
 
 		var runningSate = false;
 
-		function computeSerie(index, un) {
-
-			let tol = 1e-6;
-
-			let graphRange = 10;
-
-			let maxiter = 10e4;
-
-			if (!un || isMathExpression(un) === false || isAType(un) === true || isAllowed(un) === false) {
-
-				$("#modalbox-errors-warnings-id").html("L'expression de votre suite numérique est invalide !");
-
-				return false;
-
-			}
-
-			else if (!Number.isInteger(Number(index)) || Number(index) > 10 || !index) $("#modalbox-errors-warnings-id").html("L'indice de sommation est invalide !");
-
-			else {
-
-				generateDataBtn();
-
-				setTimeout(() => {
-
-					let serieComputing = checkConvergence(un, index, maxiter, tol);
-	
-					let graphSeriePoints = serieGraph(un, index, graphRange)
-			
-					let graphSequencePoints = sequenceGraph(un, index, graphRange)
-
-					if (!isFinite(serieComputing[0]) || isNaN(serieComputing[0]) === true || !validData(graphSeriePoints[1])) abortProcess("Soit la série ne respecte pas le critère nécessaire de convergence (donc elle diverge), soit il y a un problème de division par 0, de logarithme nul ou négatif, etc... voire les deux...");
-					
-					else constructHTMLAndGraph(math.round(serieComputing[0], 4), serieComputing[1], index, graphSeriePoints[0], graphSeriePoints[1], graphSequencePoints[1]);
-							
-				}, 3000)
-
-			}
-
-		}
+		function setStartIndex(val) { $("#start-id").html(val); }
 
 		// Code pour les tests.
 		/*
@@ -433,38 +397,6 @@
 		}
 		*/
 
-		setInterval(function () {
-
-			if ($(window).width() <= 1024 && runningSate !== true) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
-
-			if ($(window).width() <= 1024) $(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i>');
-
-			if ($(window).width() <= 768) {
-
-				$("#modalbox-serie").css('marginLeft', 'unset');
-
-				$("#modalbox-serie").css('left', 'unset');
-
-				$("#modalbox-serie").css('width', Math.round($(window).width() - 10) + "px");
-
-			}
-
-		}, 1000);
-
-		function generateDataBtn() {
-
-			runningSate = true;
-
-			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...")
-
-			$("#from-modalbox-compute-id").attr('onclick', '');
-
-			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...'); 
-			
-			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
-
-		}
-
 		function checkConvergence(un, index, maxTerms, tolerance) {
 
 			try {
@@ -485,7 +417,7 @@
 			
 			} catch(err) {
 
-				abortProcess("Une erreur est survenue lors du calcul de la série.")
+				abortProcess("Une erreur est survenue lors du calcul de la série.");
 
 			}
 
@@ -517,7 +449,7 @@
 
 			} catch(err) {
 
-				return false
+				return false;
 
 			} 
 			
@@ -533,9 +465,9 @@
 
 			for (var i = Number(index); i < (graphRange + Number(index)); i++) {
 
-				xSumPoints.push(i)
+				xSumPoints.push(i);
 				
-				sum += math.compile(un).evaluate({n : i})
+				sum += math.compile(un).evaluate({n : i});
 
 				ySumPoints.push(sum);
 
@@ -553,9 +485,9 @@
 
 			for (var y = index; y < (graphRange + Number(index)); y++) {
 
-				sequenceX.push(y)
+				sequenceX.push(y);
 
-				sequenceY.push(math.compile(un).evaluate({n : y}))
+				sequenceY.push(math.compile(un).evaluate({n : y}));
 
 			}
 
@@ -579,7 +511,7 @@
 				
 			}
 
-			return isValid
+			return isValid;
 			
 		}
 
@@ -597,13 +529,13 @@
 
 				marker: {
 
-					color: '#1F77B4', 
+					color: '#005DD9', 
 
 					size: 12, 
 
 					line: {
 
-						color: '#0D47A1',
+						color: '#0047A6',
 
 						width: 3,
 
@@ -755,6 +687,76 @@
 
 		}
 
+		function computeSerie(index, un) {
+
+			let tol = 1e-6;
+
+			let graphRange = 10;
+
+			let maxiter = 10e4;
+
+			if (!un || isMathExpression(un) === false || isAType(un) === true || isAllowed(un) === false) {
+
+				$("#modalbox-errors-warnings-id").html("L'expression de votre suite numérique est invalide !");
+
+				return false;
+
+			}
+
+			else {
+
+				generateDataBtn();
+
+				setTimeout(() => {
+
+					let serieComputing = checkConvergence(un, index, maxiter, tol);
+
+					let graphSeriePoints = serieGraph(un, index, graphRange);
+
+					let graphSequencePoints = sequenceGraph(un, index, graphRange);
+
+					if (!isFinite(serieComputing[0]) || isNaN(serieComputing[0]) === true || !validData(graphSeriePoints[1])) abortProcess("Soit la série ne respecte pas le critère nécessaire de convergence (donc elle diverge), soit il y a un problème de division par 0, de logarithme nul ou négatif, etc... voire les deux...");
+					
+					else constructHTMLAndGraph(math.round(serieComputing[0], 4), serieComputing[1], index, graphSeriePoints[0], graphSeriePoints[1], graphSequencePoints[1]);
+							
+				}, 3000)
+
+			}
+
+		}
+
+		setInterval(function () {
+
+			if ($(window).width() <= 1024 && runningSate !== true) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
+
+			if ($(window).width() <= 1024) $(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i>');
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-serie").css('marginLeft', 'unset');
+
+				$("#modalbox-serie").css('left', 'unset');
+
+				$("#modalbox-serie").css('width', modalboxSize);
+
+			}
+
+		}, 1000);
+
+		function generateDataBtn() {
+
+			runningSate = true;
+
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
+
+			$("#from-modalbox-compute-id").attr('onclick', '');
+
+			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...'); 
+
+			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+
+		}
+
 		function addHTML() {
 			
 			$("#graph-contenaire").html('<div id="graphing-box"></div>');
@@ -767,7 +769,7 @@
 
 			if ($(window).width() >= 1024) {
 
-				$(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i> Recalculer une serie')
+				$(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i> Recalculer une série numérique');
 				
 				$("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i> Calculer');
 
@@ -775,7 +777,7 @@
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
-			runningSate = false
+			runningSate = false;
 
 			window.scrollTo(0, 0);
 

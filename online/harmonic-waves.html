@@ -6,44 +6,44 @@
 
 	<style>
 
-		.waves-btn-class {
-			font-size: 20px;
-			border-radius: 50px;
-			color: white;
-			background: #005DD9;
-			transition: all 0.2s ease-out 0s;
-			font-weight: bold;
-			border: 4px solid #0047A6;
-			padding: 15px 30px;
-			cursor: pointer;
-		}
+	.waves-btn-class {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #005DD9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0047A6;
+		padding: 15px 30px;
+		cursor: pointer;
+	}
 
-		.waves-btn-class:hover {
-			background: #4690F2;
-		}
+	.waves-btn-class:hover {
+		background: #4690F2;
+	}
 
-		/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
-		.rotate-animation {
-			-webkit-animation: spin 2s linear infinite;
-			-moz-animation: spin 2s linear infinite;
-			animation: spin 2s linear infinite;
-		}
+	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
+	.rotate-animation {
+		-webkit-animation: spin 2s linear infinite;
+		-moz-animation: spin 2s linear infinite;
+		animation: spin 2s linear infinite;
+	}
 
-		@-moz-keyframes spin { 
-			100% { -moz-transform: rotate(360deg); } 
-		}
+	@-moz-keyframes spin { 
+		100% { -moz-transform: rotate(360deg); } 
+	}
 
-		@-webkit-keyframes spin { 
-			100% { -webkit-transform: rotate(360deg); } 
+	@-webkit-keyframes spin { 
+		100% { -webkit-transform: rotate(360deg); } 
+	} 
+
+	@keyframes spin { 
+		100% { 
+			-webkit-transform: rotate(360deg); 
+			transform:rotate(360deg); 
 		} 
-
-		@keyframes spin { 
-			100% { 
-				-webkit-transform: rotate(360deg); 
-				transform:rotate(360deg); 
-			} 
-		}
-		/* Fin */
+	}
+	/* Fin */
 
 	</style>
 
@@ -205,7 +205,7 @@
 					
 					<i class="fa-solid fa-wave-square"></i>
 					
-					Simuler des perturbations
+					Simuler des ondes harmoniques
 				
 				</a>
 			
@@ -229,7 +229,7 @@
 
 					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
 						
-					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="copyright-link">Github</a>.</p>
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io/blob/main/online/harmonic-waves.html" class="copyright-link">Github</a>.</p>
 						
 					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
 					
@@ -259,7 +259,7 @@
 
                     <h2>Amplitude de la première onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez l'amplitude de la première onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 100: </p>
+                    <p class="modalbox-description"> Saisissez l'amplitude de la première onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 50: </p>
 					
 					<input id="A-value-1" inputmode="numeric" class="modalbox-input" placeholder="A:">
                 
@@ -271,7 +271,7 @@
 
                     <h2>Nombre d'onde de la première onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la première onde à simuler. Cette valeur doit être comprise entre 1 et 500 et exprimée en radian par mètre: </p>
+                    <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la première onde à simuler. Cette valeur doit être comprise entre 1 et 20 et exprimée en radian par mètre: </p>
 					
 					<input id="k-value-1" inputmode="numeric" class="modalbox-input" placeholder="k:">
                 
@@ -283,7 +283,7 @@
 
                     <h2>Pulsation de la première onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez la valeur de la pulsation de la première onde à simuler. Cette valeur doit être comprise entre 1 et 1000 et exprimée en radian par seconde: </p>
+                    <p class="modalbox-description"> Saisissez la valeur de la pulsation de la première onde à simuler. Cette valeur doit être comprise entre 1 et 50 et exprimée en radian par seconde: </p>
 					
 					<input id="w-value-1" inputmode="numeric" class="modalbox-input" placeholder="w:">
                 
@@ -325,7 +325,7 @@
 
                     <h2>Amplitude de la deuxième onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez l'amplitude de la deuxième onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 100: </p>
+                    <p class="modalbox-description"> Saisissez l'amplitude de la deuxième onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 50: </p>
 					
 					<input id="A-value-2" inputmode="numeric" class="modalbox-input" placeholder="A:">
                 
@@ -337,7 +337,7 @@
 
                     <h2>Nombre d'onde de la deuxième onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 500 et exprimée en radian par mètre: </p>
+                    <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 20 et exprimée en radian par mètre: </p>
 					
 					<input id="k-value-2" inputmode="numeric" class="modalbox-input" placeholder="k:">
                 
@@ -349,7 +349,7 @@
 
                     <h2>Pulsation de la deuxième onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez la valeur de la pulsation de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 1000 et exprimée en radian par seconde: </p>
+                    <p class="modalbox-description"> Saisissez la valeur de la pulsation de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 50 et exprimée en radian par seconde: </p>
 					
 					<input id="w-value-2" inputmode="numeric" class="modalbox-input" placeholder="w:">
                 
@@ -389,13 +389,13 @@
 
 				<div class="modalbox-text-contenaire">
 					
-					<h2>Légende des courbes:</h2>
+					<h2>Code couleurs:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #FF7F0E;"></i> Représentation graphique de l'évolution de la première onde harmonique au fil du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Représentation graphique de l'évolution de la première onde harmonique au fil du temps. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Représentation graphique de l'évolution de la deuxième onde harmonique au fil du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Représentation graphique de l'évolution de la deuxième onde harmonique au fil du temps. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #2CA02C;"></i> Représentation graphique de l'évolution résultante de l'addition de la première et de la deuxième onde harmonique au fil du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Représentation graphique de l'évolution résultante de l'addition de la première et de la deuxième onde harmonique au fil du temps. </p>
 				
 				</div>
 
@@ -431,7 +431,7 @@
 
 		var isInLoading = false;
 
-		var numPoints = 1000;
+		var numPoints = 2000;
 
 		var isRun = false;
 
@@ -597,9 +597,9 @@
 
 					line: {
 
-						color: '#FF7F0E',
+						color: '#005DD9',
 
-						width: 2
+						width: 2.5
 
 					}
 
@@ -615,9 +615,9 @@
 
 					line: {
 
-						color: '#1F77B4',
+						color: '#F1C31B',
 
-						width: 2
+						width: 2.5
 
 					}
 
@@ -633,9 +633,9 @@
 
 					line: {
 
-						color: '#2CA02C',
+						color: '#28A745',
 
-						width: 2
+						width: 2.5
 
 					}
 
@@ -707,7 +707,7 @@
 
 		function simulateWaves(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
 
-			if (isANumber(Number(AOne)) === false || !AOne || Number(AOne) < 1 || Number(AOne) >= 100) {
+			if (isANumber(Number(AOne)) === false || !AOne || Number(AOne) < 1 || Number(AOne) > 50) {
 
 				$("#modalbox-errors-warnings-id").html("L'amplitude de la première onde est invalide !");
 
@@ -715,7 +715,7 @@
 
 			} 
 
-			else if (isANumber(Number(kOne)) === false || !kOne || Number(kOne) < 1 || Number(kOne) > 500) {
+			else if (isANumber(Number(kOne)) === false || !kOne || Number(kOne) < 1 || Number(kOne) > 20) {
 
 				$("#modalbox-errors-warnings-id").html("Le nombre d'onde de la première onde est invalide !");
 
@@ -723,7 +723,7 @@
 
 			} 	
 			
-			else if (isANumber(Number(wOne)) === false || !wOne || Number(wOne) < 1 || Number(wOne) > 1000) {
+			else if (isANumber(Number(wOne)) === false || !wOne || Number(wOne) < 1 || Number(wOne) > 50) {
 
 				$("#modalbox-errors-warnings-id").html("La pulsation de la première onde est invalide !");
 
@@ -739,7 +739,7 @@
 
 			}
 
-			else if (isANumber(Number(ATwo)) === false || !ATwo || Number(ATwo) < 1 || Number(ATwo) >= 100) {
+			else if (isANumber(Number(ATwo)) === false || !ATwo || Number(ATwo) < 1 || Number(ATwo) > 50) {
 
 				$("#modalbox-errors-warnings-id").html("L'amplitude de la deuxième onde est invalide !");
 
@@ -747,7 +747,7 @@
 
 			}
 
-			else if (isANumber(Number(kTwo)) === false || !kTwo || Number(kTwo) < 1 || Number(kTwo) > 500) {
+			else if (isANumber(Number(kTwo)) === false || !kTwo || Number(kTwo) < 1 || Number(kTwo) > 20) {
 
 				$("#modalbox-errors-warnings-id").html("Le nombre d'onde de la deuxième onde est invalide !");
 
@@ -755,7 +755,7 @@
 
 			}
 
-			else if (isANumber(Number(wTwo)) === false || !wTwo || Number(wTwo) < 1 || Number(wTwo) > 1000) {
+			else if (isANumber(Number(wTwo)) === false || !wTwo || Number(wTwo) < 1 || Number(wTwo) > 50) {
 
 				$("#modalbox-errors-warnings-id").html("La pulsation de la deuxième onde est invalide !");
 
@@ -781,7 +781,7 @@
 
 					} catch(err) {
 
-						abortProcess("Une erreur s'est produite lors du chargement des données !")
+						abortProcess("Une erreur s'est produite lors du chargement des données !");
 
 					}
 
@@ -803,7 +803,7 @@
 
 				$("#modalbox-waves").css('left', 'unset');
 
-				$("#modalbox-waves").css('width', Math.round($(window).width() - 10) + "px");
+				$("#modalbox-waves").css('width', modalboxSize);
 
 			}
 
@@ -821,7 +821,7 @@
 
 			if ($(window).width() >= 1024) {
 
-				$(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i> Simuler des perturbations');
+				$(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i> Resimuler des ondes harmoniques');
 
 				$("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
@@ -839,7 +839,7 @@
 
 			isInLoading = true;
 
-			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...")
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
 			$("#emulate-btn").attr('onclick', '');
 

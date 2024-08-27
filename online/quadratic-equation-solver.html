@@ -7,14 +7,14 @@
 	<style>
 
 	.calculate-btn {
-		padding: 15px 30px;
-		color: #fff;
 		font-size: 20px;
 		border-radius: 50px;
+		color: white;
 		background: #005DD9;
-		transition: all .2s ease-out 0s;
+		transition: all 0.2s ease-out 0s;
 		font-weight: bold;
 		border: 4px solid #0047A6;
+		padding: 15px 30px;
 		cursor: pointer;
 	}
 
@@ -22,7 +22,7 @@
 		background: #4690F2
 	}
 
-	#equation-plot-id {
+	.equation-plot {
 		color: #005DD9;
 		font-size: 22px;
 		font-style: italic;
@@ -173,7 +173,7 @@
 
 				<h1 class="website-main-panel-title">Logiciel résolveur d'équation du type: </h1>
 				
-				<span id="equation-plot-id"> Ax<sup>2</sup> + Bx + C = 0 </span>
+				<span id="equation-plot-id" class="equation-plot"> Ax<sup>2</sup> + Bx + C = 0 </span>
 									
 				<p class="website-main-panel-description" id="1st-root"><i class="fas fa-check green"></i> Qui est gratuit, rapide et qui fonctionne avec les complexes.</p>
 					
@@ -215,7 +215,7 @@
 
 					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
 						
-					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="copyright-link">Github</a>.</p>
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io/blob/main/online/quadratic-equation-solver.html" class="copyright-link">Github</a>.</p>
 						
 					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
 					
@@ -283,11 +283,11 @@
 
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Indique l'équation du second degré pour les valeurs de A, B et C saisies. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Indique la première racine solution de l'équation saisie. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Indique la première racine solution de l'équation saisie. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #FF7F0E;"></i> Indique la deuxième racine solution de l'équation saisie. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Indique la deuxième racine solution de l'équation saisie. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #2CA02C;"></i> Indique le discriminant de l'équation saisie. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #DC3545;"></i> Indique le discriminant de l'équation saisie. </p>
 				
 				</div>
 
@@ -323,77 +323,33 @@
 
 		var hasRun = false;
 
-		setInterval(function () {
-
-			if ($(window).width() <= 1024) {
-
-				$("#compute-btn-id").html('<i class="fa-solid fa-gears"></i>');
-
-				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i>');
-
-			}
-
-			if ($(window).width() <= 768) {
-
-				$("#modalbox-equation").css('marginLeft', 'unset');
-
-				$("#modalbox-equation").css('left', 'unset');
-
-				$("#modalbox-equation").css('width', (window.innerWidth - 10) + "px");
-
-				$("#equation-plot-id").css("fontSize", "20px");
-
-			}
-
-		}, 1000);
-
 		function beautifyMath(numb, charTag) {
 
-			if (numb < 0) {
+			if (numb < 0) numb = " - " + math.abs(numb);				
 
-				numb = " - " + math.abs(numb)
+			else if (numb > 0 && charTag !== "a") numb = " + " + numb;
 
-			} else if (numb >= 0 && charTag !== "a") {
+			else if (numb > 0 && charTag === "a") numb = numb;
 
-				numb = " + " + numb
-
-			} else if (numb >= 0 && charTag === "a") {
-
-				numb = numb
-
-			} else {
+			else {
 
 				let complexNumber = math.complex(numb);
 
-				if (complexNumber.re === 0 && complexNumber.im !== 0 && charTag !== "a") {
+				if (complexNumber.re === 0 && complexNumber.im !== 0 && charTag !== "a") numb = (complexNumber.im === 1) ? "+ i" : (complexNumber.im === -1) ? "- i" : (charTag === "c" && complexNumber.im > 0) ? "+ " + complexNumber.im + "i" : "- " + math.abs(complexNumber.im) + "i";
 
-					numb = (complexNumber.im === 1) ? "+ i" : (complexNumber.im === -1) ? "- i" : (charTag === "c" && complexNumber.im > 0) ? "+ " + complexNumber.im + "i" : "- " + math.abs(complexNumber.im) + "i"
-				
-				} else if (complexNumber.re > 0 && complexNumber.im === 0) {
+				else if (complexNumber.re > 0 && complexNumber.im === 0) numb = (charTag !== "a") ? "+ " + complexNumber.re : complexNumber.re;
 
-					numb = (charTag !== "a") ? "+ " + complexNumber.re : complexNumber.re
+				else if (complexNumber.re < 0 && complexNumber.im === 0) numb = "- " + math.abs(complexNumber.re);
 
-				} else if (complexNumber.re < 0 && complexNumber.im === 0) {
+				else if (complexNumber.re === 0 && complexNumber.im === 0) numb = " + 0";
 
-					numb = "- " + math.abs(complexNumber.re)
+				else if (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag !== "a") numb = " + (" + numb + ")";
 
-				} else if (complexNumber.re === 0 && complexNumber.im === 0) {
-
-					numb = " + 0"
-
-				} else if (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag !== "a") {
-
-					numb = " + (" + numb + ")"
-
-				} else {
-
-					numb = (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag === "a") ? "(" + numb + ")" : (complexNumber.im === 1) ? "i" : (complexNumber.im === -1) ? "- i" : complexNumber.im + "i"
-				
-				}
+				else numb = (complexNumber.re !== 0 && complexNumber.im !== 0 && charTag === "a") ? "(" + numb + ")" : (complexNumber.im === 1) ? "i" : (complexNumber.im === -1) ? "- i" : complexNumber.im + "i";
 
 			}
 
-			return numb
+			return numb;
 
 		}
 
@@ -403,7 +359,7 @@
 
 				let dataType = math.typeOf(math.complex(val));
 
-				if (dataType === 'Complex') return true
+				if (dataType === 'Complex') return true;
 				
 			} catch (err) {
 
@@ -417,7 +373,7 @@
 
 			let complexNumb = math.complex(val);
 
-			if (complexNumb.re === 0 && complexNumb.im === 0) return true
+			if (complexNumb.re === 0 && complexNumb.im === 0) return true;
 
 			else return false;
 
@@ -435,21 +391,45 @@
 
 		}
 
+		setInterval(function () {
+
+			if ($(window).width() <= 1024) {
+
+				$("#compute-btn-id").html('<i class="fa-solid fa-gears"></i>');
+
+				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i>');
+
+			}
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-equation").css('marginLeft', 'unset');
+
+				$("#modalbox-equation").css('left', 'unset');
+
+				$("#modalbox-equation").css('width', modalboxSize);
+
+				$("#equation-plot-id").css("fontSize", "20px");
+
+			}
+
+		}, 1000);
+
 		function setEqual(nbr) {
 
-			if (hasMoreThanThreeDecimal(nbr) === true) return "≈"
+			if (hasMoreThanThreeDecimal(nbr) === true) return "≈";
 
-			else return "="
+			else return "=";
 
 		}
 
 		function constructHTML(x1, x2, dis, isDisNull) {
 
-			$("#1st-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme première racine: <span style="font-weight: bold; color: #1F77B4;">x<sub>1</sub> ${setEqual(x1)} ${math.round(x1, 3)}</span>`);
+			$("#1st-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme première racine: <span style="font-weight: bold; color: #F1C31B;">x<sub>1</sub> ${setEqual(x1)} ${math.round(x1, 3)}</span>`);
 			
-			(isDisNull === true) ? $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #FF7F0E;">Rien du tout</span>`) : $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #FF7F0E;">x<sub>2</sub> ${setEqual(x2)} ${math.round(x2, 3)}</span>`)
+			(isDisNull === true) ? $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #28A745;">Rien du tout</span>`) : $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #28A745;">x<sub>2</sub> ${setEqual(x2)} ${math.round(x2, 3)}</span>`);
 
-			$("#discriminant-text-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet un discriminant égal à: <span class="discriminant-text" style="font-weight: bold; color: #2CA02C;">${dis}</span>`);
+			$("#discriminant-text-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet un discriminant égal à: <span class="discriminant-text" style="font-weight: bold; color: #DC3545;">${dis}</span>`);
 		
 		}
 
@@ -491,7 +471,7 @@
 
 				$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
-				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Recalculer une équation')
+				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Recalculer une équation');
 
 				$("#equation-plot-id").html(`${beautifyMath(math.evaluate(a), "a")}x<sup>2</sup> ${beautifyMath(math.evaluate(b), "b")}x ${beautifyMath(math.evaluate(c), "c")} = 0`);
 
@@ -499,17 +479,17 @@
 
 				if (discriminant === 0) {
 
-					let x =  math.evaluate(`(${-b}) / (2 * (${a}))`)
+					let x =  math.evaluate(`(${-b}) / (2 * (${a}))`);
 
-					constructHTML(x, 0, discriminant, true)
+					constructHTML(x, 0, discriminant, true);
 
 				} else {
 
-					let x1 = math.evaluate(`(-1*(${b}) + sqrt(${discriminant})) / (2 * (${a}))`)
+					let x1 = math.evaluate(`(-1*(${b}) + sqrt(${discriminant})) / (2 * (${a}))`);
 
-					let x2 =  math.evaluate(`(-1*(${b}) - sqrt(${discriminant})) / (2 * (${a}))`)
+					let x2 =  math.evaluate(`(-1*(${b}) - sqrt(${discriminant})) / (2 * (${a}))`);
 
-					constructHTML(x1, x2, discriminant, false)
+					constructHTML(x1, x2, discriminant, false);
 
 				}
 

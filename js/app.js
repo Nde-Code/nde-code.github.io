@@ -2,7 +2,37 @@ var isES6 = true;
 
 var isOpenAboutBox = false;
 
-var mobileBoxSize = Math.round($(window).width() - 10) + "px";
+var modalboxSize = Math.round($(window).width() - 8) + "px";
+
+var startingWidth = $(document).width();
+
+$(window).on('resize', () => {
+
+    var newWidth = $(document).width();
+
+    if (startingWidth !== newWidth) document.location.reload(true);
+
+});
+
+function detectES6() {
+
+    try {
+
+        Function("() => {};");
+
+        return true;
+
+    }
+
+    catch (err) {
+
+        return false;
+
+    }
+
+}
+
+document.oncontextmenu = () => { return false; }
 
 function openAboutBox() {
 
@@ -85,7 +115,7 @@ function openAboutBox() {
 
                     <h2>Licence:</h2>
                     
-                    <p class="modalbox-description"><strong>"GNU General Public License v3.0"</strong></p>
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>GNU General Public License v3.0:</strong> consultez le dépôt GitHub du projet pour en savoir plus sur cette licence.</p>
                 
                 </div>
 
@@ -95,27 +125,9 @@ function openAboutBox() {
 
         $("#modalbox-open-div").append(aboutBoxHtml);
 
-        mobileAboutBox(mobileBoxSize);
+        mobileAboutBox(modalboxSize);
 
         $('.overlay').css('display', 'block');
-
-    }
-
-}
-
-function detectES6() {
-
-    try {
-
-        Function("() => {};");
-
-        return true;
-
-    }
-
-    catch (err) {
-
-        return false;
 
     }
 
@@ -135,27 +147,33 @@ function mobileAboutBox(windowSize) {
 
 }
 
-setInterval(function () {
-
-    mobileAboutBox(mobileBoxSize);
+function mobileES6WarningBox(windowSize) {
 
     if ($(window).width() <= 768 && isES6 === false) {
 
         $("#modalbox-warning").css('marginLeft', 'unset');
 
-        $(".warning-browser").css('fontSize', '150px')
+        $(".warning-browser").css('fontSize', '150px');
 
         $("#modalbox-warning").css('left', 'unset');
 
-        $("#modalbox-warning").css('width', mobileBoxSize);
+        $("#modalbox-warning").css('width', modalboxSize);
 
     }
+
+}
+
+setInterval(function () {
+
+    mobileAboutBox(modalboxSize);
+
+    mobileES6WarningBox(modalboxSize);
 
     if ($(window).width() <= 1024 && isOpenAboutBox === true) {
 
         $(".modalbox-close-btn").each(function () {
 
-            $(this).html('<i class="fa fa-times"></i>')
+            $(this).html('<i class="fa fa-times"></i>');
 
         });
 
@@ -190,8 +208,6 @@ $('#displayMobileMenu').on('click', function () {
 
 });
 
-document.oncontextmenu = () => { return false; }
-
 $(document).ready(function () {
 
     if (detectES6() === false) {
@@ -207,15 +223,17 @@ $(document).ready(function () {
 
             </header>
 
-            <div class="modalbox-main-contenaire" style="text-align: center; overflow-y: hidden;">
+            <div class="modalbox-main-contenaire" style="text-align: center;">
     
                 <div class="modalbox-text-contenaire">
 
-                    <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 240px; color: #FF941A;"></i>
+                    <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 220px; color: #FD7E14;"></i>
 
-                    <h2>Navigateur obsolète:</h2>
+                    <h2>Absence ES6 - Navigateur obsolète:</h2>
 
-                    <p class="modalbox-description"> Impossible d'interpréter le code Javascript ! </p>
+                    <p class="modalbox-description"><strong> Impossible d'interpréter le code JavaScript... </strong></p>
+
+                    <p class="modalbox-description"> Pour des raisons de sécurité évidentes, afin de pouvoir consulter mon site Internet, un navigateur moderne, c'est-à-dire doté de au minimum d'ES6, est nécessaire. </p>
 
                 </div>
     
@@ -229,17 +247,9 @@ $(document).ready(function () {
 
         $("#modalbox-open-div").append(invalidBrowserBox);
 
+        mobileES6WarningBox(modalboxSize);
+
     }
-
-});
-
-var startingWidth = $(document).width();
-
-$(window).on('resize', () => {
-
-    var newWidth = $(document).width();
-
-    if (startingWidth !== newWidth) document.location.reload(true);
 
 });
 

@@ -6,60 +6,60 @@
 
 	<style>
 
-		.regression-btn {
-			font-size: 20px;
-			border-radius: 50px;
-			color: white;
-			background: #005DD9;
-			transition: all 0.2s ease-out 0s;
-			font-weight: bold;
-			border: 4px solid #0047A6;
-			padding: 15px 30px;
-			cursor: pointer;
-		}
+	.regression-btn {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #005DD9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0047A6;
+		padding: 15px 30px;
+		cursor: pointer;
+	}
 
-		.regression-btn:hover {
-			background: #4690F2;
-		}
+	.regression-btn:hover {
+		background: #4690F2;
+	}
 
-		.polynomial-btn {
-			font-size: 20px;
-			border-radius: 50px;
-			color: white;
-			background: #FF7F0E; 
-			transition: all 0.2s ease-out 0s;
-			font-weight: bold;
-			border: 4px solid #D9480F;
-			padding: 15px 30px;
-			cursor: pointer;
-		}
+	.polynomial-btn {
+		padding: 15px 30px;
+		color: #fff;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #28A745; 
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #218838; 
+		cursor: pointer;
+	}
 
-		.polynomial-btn:hover {
-			background: #FFA726;
-		}
+	.polynomial-btn:hover {
+		background: #34D058;
+	}
 
-		/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
-		.rotate-animation {
-			-webkit-animation: spin 2s linear infinite;
-			-moz-animation: spin 2s linear infinite;
-			animation: spin 2s linear infinite;
-		}
+	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
+	.rotate-animation {
+		-webkit-animation: spin 2s linear infinite;
+		-moz-animation: spin 2s linear infinite;
+		animation: spin 2s linear infinite;
+	}
 
-		@-moz-keyframes spin { 
-			100% { -moz-transform: rotate(360deg); } 
-		}
+	@-moz-keyframes spin { 
+		100% { -moz-transform: rotate(360deg); } 
+	}
 
-		@-webkit-keyframes spin { 
-			100% { -webkit-transform: rotate(360deg); } 
+	@-webkit-keyframes spin { 
+		100% { -webkit-transform: rotate(360deg); } 
+	} 
+
+	@keyframes spin { 
+		100% { 
+			-webkit-transform: rotate(360deg); 
+			transform:rotate(360deg); 
 		} 
-
-		@keyframes spin { 
-			100% { 
-				-webkit-transform: rotate(360deg); 
-				transform:rotate(360deg); 
-			} 
-		}
-		/* Fin */
+	}
+	/* Fin */
 
 	</style>
 
@@ -221,7 +221,7 @@
 					
 					<i class="fa-solid fa-pencil"></i>
 					
-					Tracer une courbe
+					Tracer une courbe de régression
 				
 				</a>
 			
@@ -245,7 +245,7 @@
 
 					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
 						
-					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" class="copyright-link">Github</a>.</p>
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io/blob/main/online/regression.html" class="copyright-link">Github</a>.</p>
 						
 					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
 					
@@ -275,7 +275,7 @@
 
                     <h2>Coordonnées selon l'axe des X des points:</h2>
 
-                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des X des points à tracer. Une limite de 100 points est établie. Merci de les séparer par des virgules sans espace (Exemple: 1,2,3):</p>
+                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des X des points à tracer. Une limite de maximum 100 points et minimum 5 points est établie. Merci de les séparer par des virgules sans espace (Exemple: 1,2,3):</p>
 					
 					<input id="x-data" class="modalbox-input" placeholder="X:">
                 
@@ -287,7 +287,7 @@
 
                     <h2>Coordonnées selon l'axe des Y des points:</h2>
 
-                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des Y des points à tracer. Une limite de 100 points est établie. Merci de les séparer par des virgules sans espace (Exemple: 1,2,3):</p>
+                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des Y des points à tracer. Une limite de maximum 100 points et minimum 5 points est établie. Merci de les séparer par des virgules sans espace (Exemple: 1,2,3):</p>
 					
 					<input id="y-data" class="modalbox-input" placeholder="Y:">
                 
@@ -311,13 +311,13 @@
 
 				<div class="modalbox-text-contenaire">
 					
-					<h2>Légende des axes:</h2>
+					<h2>Code couleurs:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #1F77B4;"></i> Couleur sur le graphique, du polynôme de régression passant au mieux par les points saisis.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Couleur sur le graphique, du polynôme de régression passant au mieux par les points saisis.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #2CA02C;"></i> Couleur sur le graphique, des points qui ont été saisis.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Couleur sur le graphique, des points qui ont été saisis.</p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #FF7F0E;"></i> Bouton qui permet d'afficher et de copier dans le presse-papiers, le polynôme passant au mieux par les points saisis.</p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #DC3545;"></i> Bouton qui permet d'afficher et de copier dans le presse-papiers, le polynôme passant au mieux par les points saisis.</p>
 									
 				</div>
 
@@ -385,11 +385,7 @@
 
 			for (let i = 1; i < arr.length; i++) {
 
-				if (arr[i] !== firstElement) {
-
-					return false; 
-					
-				}
+				if (arr[i] !== firstElement) return false;
 
 			}
 
@@ -403,7 +399,7 @@
 
 			for (let i = 0; i < coeffs.length; i++) {
 
-				let coeff = Number(coeffs[i]).toFixed(2)
+				let coeff = Number(coeffs[i]).toFixed(2);
 
 				if (i === 0) polynomialString += coeff.toString();
 	
@@ -425,7 +421,7 @@
 
 			for (let i = (min - 0.25); i < (max + 0.25); i += (1 / iter)) {
 
-				xData.push(i)
+				xData.push(i);
 
 				yData.push(math.compile(str).evaluate({ x: i }));
 
@@ -458,80 +454,6 @@
 			const ATy = math.multiply(math.transpose(A), math.matrix(y)); 
 
 			return math.lusolve(ATA, ATy)._data;
-
-		}
-
-		function computeCurve(x, y, deg) {
-
-			let xVal = x.split(",").map(parseNumber).map(Number);
-
-			let yVal = y.split(",").map(parseNumber).map(Number);
-			
-			if (!x || isFullSame(xVal) || isArrayWithOnlyNumbers(xVal) === false || xVal.length > 100 || xVal.length < 3) {
-
-				$("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des X des points sont invalide !");
-
-				return false;
-
-			}
-
-			else if (!y || isFullSame(yVal) || isArrayWithOnlyNumbers(yVal) === false || yVal.lenngth > 100 || yVal.length < 3) {
-
-				$("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des Y des points sont invalide !");
-
-				return false;
-
-			}
-
-			else if (xVal.length !== yVal.length) {
-
-				$("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des X et celles selon l'axe des Y n'ont pas la même taille !");
-
-				return false;
-
-			}
-
-			else {
-
-				generateDataBtn();
-
-				setTimeout(function(){
-					
-					try {
-
-						let coeffs = leastSquare(xVal, yVal, Number(deg));
-		
-						let polynomialStr = generatePolynomialStr(coeffs);
-
-						if (polynomialStr === "") abortProcess("Aucun polynôme passant au mieux par les points saisis n'existe !")
-
-						else {
-
-							let minOfX = Math.min(...xVal);
-			
-							let maxOfX = Math.max(...xVal);
-	
-							let minOfY = Math.min(...yVal);
-	
-							let maxOfY = Math.max(...yVal);
-			
-							let plotDatas = generateData(polynomialStr, minOfX, maxOfX, 100);
-	
-							renderPlot(plotDatas[0], plotDatas[1], xVal, yVal, minOfX, maxOfX, minOfY, maxOfY);
-	
-							getPolynomialBtn(polynomialStr);
-
-						}
-
-					} catch(err) {
-
-						abortProcess("Une erreur s'est produite lors du chargement des données !")
-
-					}
-
-				}, 2000);
-
-			}
 
 		}
 
@@ -627,9 +549,9 @@
 
 				line: {
 
-					color: '#1F77B4',
+					color: '#005DD9',
 
-					width: 2
+					width: 2.5
 
 				}
 
@@ -647,13 +569,13 @@
 
 				marker: {
 
-					color: '#2CA02C', 
+					color: '#DC3545', 
 
 					size: 8, 
 
 					line: {
 
-						color: '#1E7E1E',
+						color: '#B52A37',
 
 						width: 2,
 
@@ -670,6 +592,80 @@
 			constructHTML();
 
 			Plotly.newPlot('plot-box', data, layout, { staticPlot: true });
+
+		}
+
+		function computeCurve(x, y, deg) {
+
+			let xVal = x.split(",").map(parseNumber).map(Number);
+
+			let yVal = y.split(",").map(parseNumber).map(Number);
+
+			if (!x || isFullSame(xVal) || isArrayWithOnlyNumbers(xVal) === false || xVal.length > 100 || xVal.length < 5) {
+
+				$("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des X des points sont invalide !");
+
+				return false;
+
+			}
+
+			else if (!y || isFullSame(yVal) || isArrayWithOnlyNumbers(yVal) === false || yVal.lenngth > 100 || yVal.length < 5) {
+
+				$("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des Y des points sont invalide !");
+
+				return false;
+
+			}
+
+			else if (xVal.length !== yVal.length) {
+
+				$("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des X et celles selon l'axe des Y n'ont pas la même taille !");
+
+				return false;
+
+			}
+
+			else {
+
+				generateDataBtn();
+
+				setTimeout(function(){
+					
+					try {
+
+						let coeffs = leastSquare(xVal, yVal, Number(deg));
+
+						let polynomialStr = generatePolynomialStr(coeffs);
+
+						if (polynomialStr === "") abortProcess("Aucun polynôme passant au mieux par les points saisis n'existe !");
+
+						else {
+
+							let minOfX = Math.min(...xVal);
+
+							let maxOfX = Math.max(...xVal);
+
+							let minOfY = Math.min(...yVal);
+
+							let maxOfY = Math.max(...yVal);
+
+							let plotDatas = generateData(polynomialStr, minOfX, maxOfX, 100);
+
+							renderPlot(plotDatas[0], plotDatas[1], xVal, yVal, minOfX, maxOfX, minOfY, maxOfY);
+
+							getPolynomialBtn(polynomialStr);
+
+						}
+
+					} catch(err) {
+
+						abortProcess("Une erreur s'est produite lors du chargement des données !")
+
+					}
+
+				}, 2000);
+
+			}
 
 		}
 
@@ -703,7 +699,7 @@
 
 			if ($(window).width() >= 1024) {
 
-				$(".regression-btn").html('<i class="fa-solid fa-pencil"></i> Tracer une courbe');
+				$(".regression-btn").html('<i class="fa-solid fa-pencil"></i> Retracer une courbe de régression');
 
 				$("#compute-regression-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
@@ -721,7 +717,7 @@
 
 			isInLoadState = true;
 
-			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...")
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
 			$("#compute-regression-id").attr('onclick', '');
 
@@ -757,7 +753,7 @@
 
 				$("#modalbox-regression").css('left', 'unset');
 
-				$("#modalbox-regression").css('width', Math.round($(window).width() - 10) + "px");
+				$("#modalbox-regression").css('width', modalboxSize);
 
 			}
 
