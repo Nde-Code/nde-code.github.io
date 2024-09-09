@@ -22,6 +22,22 @@
 		background: #4690F2;
 	}
 
+	.unable-btn {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #DC3545; 
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #B52A37;
+		padding: 15px 30px;
+		cursor: pointer;
+	}
+
+	.unable-btn:hover {
+		background: #E55361;
+	}
+
 	.derivative-btn {
 		padding: 15px 30px;
 		color: #fff;
@@ -217,7 +233,7 @@
 
 			<div class="website-bottom">
 
-				<a class="create-graph-btn" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');">
+				<a class="create-graph-btn" id="create-graph-btn-id" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');">
 					
 					<i class="fa-solid fa-pencil"></i>
 					
@@ -332,7 +348,9 @@
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Couleur de fonction mathématique dérivée de celle saisie, sur un graphique en 2D. </p>
 
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Couleur du bouton permettant de calculer et tracer la dérivée de la fonction saisie. Seuls les graphiques en 2D sont concernés par ce bouton.</p>
-									
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #DC3545;"></i> Indique que le bouton pour retracer un graphique en 2D n'est pas disponible en raison du fait que la génération des données de la fonction dérivée soit en cours. </p>
+					
 				</div>
 
 				<div class="modalbox-line"></div>
@@ -1004,7 +1022,7 @@
 
 		setInterval(function () {
 
-			if ($(window).width() <= 1024) $(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i>');
+			if ($(window).width() <= 1024) $("#create-graph-btn-id").html('<i class="fa-solid fa-pencil"></i>');
 
 			if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
@@ -1042,6 +1060,10 @@
 
 			$(".derivative-btn").attr('onclick', '');
 
+			$("#create-graph-btn-id").attr('onclick', '');
+
+			$("#create-graph-btn-id").attr('class', 'unable-btn');
+
 			if ($(window).width() >= 1024) $(".derivative-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement des données...');
 			
 			else $(".derivative-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
@@ -1062,6 +1084,10 @@
 			
 				else $(".derivative-btn").html('<i class="fa-solid fa-copy"></i>');
 
+				$("#create-graph-btn-id").attr('onclick', `$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`);
+
+				$("#create-graph-btn-id").attr('class', 'create-graph-btn');
+
 			}, 4000)
 
 		}
@@ -1078,7 +1104,7 @@
 		
 			if ($(window).width() >= 1024) {
 
-				$(".create-graph-btn").html('<i class="fa-solid fa-pencil"></i> Retracer une fonction mathématique');
+				$("#create-graph-btn-id").html('<i class="fa-solid fa-pencil"></i> Retracer une fonction mathématique');
 
 				$("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i> Tracer');
 
