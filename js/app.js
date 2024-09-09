@@ -94,6 +94,8 @@ function openAboutBox() {
                     <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Pixlr:</strong> pour retoucher l'image de fond du site.</p>
                     
                     <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Logomakr:</strong> pour créer mon "favicon".</p>
+                   
+                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Getavataaars:</strong> pour réaliser l'avatar sur la page d'accueil.</p>
                     
                 </div>
 

@@ -15,11 +15,11 @@ Miroir du code source de mon site internet personnel.
 # Outils utilisés:
 
   - Visual Studio Code: https://code.visualstudio.com/
-
-  - Canva: https://www.canva.com/
   
   - Pixlr: https://pixlr.com/fr/
 
+  - Logomakr: https://logomakr.com/
+  
   - Getavataaars: https://getavataaars.com/
 
 # Ressources utilisées:
