@@ -22,38 +22,6 @@
 		background: #4690F2;
 	}
 
-	.unable-btn {
-		font-size: 20px;
-		border-radius: 50px;
-		color: white;
-		background: #DC3545; 
-		transition: all 0.2s ease-out 0s;
-		font-weight: bold;
-		border: 4px solid #B52A37;
-		padding: 15px 30px;
-		cursor: pointer;
-	}
-
-	.unable-btn:hover {
-		background: #E55361;
-	}
-
-	.derivative-btn {
-		padding: 15px 30px;
-		color: #fff;
-		font-size: 20px;
-		border-radius: 50px;
-		background: #28A745; 
-		transition: all 0.2s ease-out 0s;
-		font-weight: bold;
-		border: 4px solid #218838; 
-		cursor: pointer;
-	}
-
-	.derivative-btn:hover {
-		background: #34D058;
-	}
-
 	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
 	.rotate-animation {
 		-webkit-animation: spin 2s linear infinite;
@@ -311,7 +279,19 @@
 
 						<option value="[-2.1, 2.1]">[-2, 2]</option>
 
+						<option value="[-3.1, 3.1]">[-3, 3]</option>
+
+						<option value="[-4.1, 4.1]">[-4, 4]</option>
+
 						<option value="[-5.1, 5.1]">[-5, 5]</option>
+
+						<option value="[-6.1, 6.1]">[-6, 6]</option>
+
+						<option value="[-7.1, 7.1]">[-7, 7]</option>
+
+						<option value="[-8.1, 8.1]">[-8, 8]</option>
+
+						<option value="[-9.1, 9.1]">[-9, 9]</option>
 
 						<option value="[-10.1, 10.1]" selected="selected">[-10, 10]</option>
 
@@ -614,6 +594,44 @@
 
 		}
 
+		function hasOneVariable(func) {
+
+			try {
+
+				let node = math.parse(func);
+
+				let hasX = false;
+
+				let hasY = false;
+
+				let filtered = node.filter( (node) => {
+
+					return node.isSymbolNode && node.name === 'x' || node.name === 'y'
+
+				})
+
+				for (let j = 0; j < filtered.length; j++) {
+
+					if (filtered[j].name === "x" && hasX === false) hasX = true;
+
+					if (filtered[j].name === "y" && hasY === false) hasY = true;
+
+				}
+
+				if (hasX === true && hasY === true) return false;
+
+				else if (hasX === true && hasY === false) return true;
+
+				else return null;
+
+			} catch(err) {
+
+				return null;
+
+			}
+
+		}
+
 		function surfaceGraphing(xValues, yValues, zValues, dspRange) {
 
 			let surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
@@ -774,51 +792,11 @@
 					
 			constructHTML();
 
-			deleteDerivativeBtn();
-
 			Plotly.newPlot('graphing-box', data, layout, { displayModeBar: false });
 
 		}
 
-		function hasOneVariable(func) {
-
-			try {
-
-				let node = math.parse(func);
-
-				let hasX = false;
-
-				let hasY = false;
-
-				let filtered = node.filter( (node) => {
-
-					return node.isSymbolNode && node.name === 'x' || node.name === 'y'
-
-				})
-
-				for (let j = 0; j < filtered.length; j++) {
-
-					if (filtered[j].name === "x" && hasX === false) hasX = true;
-
-					if (filtered[j].name === "y" && hasY === false) hasY = true;
-
-				}
-
-				if (hasX === true && hasY === true) return false;
-
-				else if (hasX === true && hasY === false) return true;
-
-				else return null;
-
-			} catch(err) {
-
-				return null;
-
-			}
-
-		}
-
-		function functionGraphing(xValues, yValues, dspRange, derivative, derivativeX, derivativeY) {
+		function functionGraphing(xValues, yValues, dspRange) {
 						
 			let layout = {
 
@@ -937,30 +915,8 @@
 				}
 
 			}
-
-			let dGraph = {
-
-				x: derivativeX,
-
-				y: derivativeY,
-
-				mode: 'lines',
-
-				type: 'scatter',
-
-				line: {
-
-					color: '#F1C31B',
-
-					width: 2.5
-
-				}
-
-			}
 	
 			let data = [functionGraph];	
-
-			if (derivative === true) data.push(dGraph);
 
 			constructHTML();
 
@@ -1000,13 +956,7 @@
 
 						else if (hasOneVariable(expr) === false) surfaceGraphing(datas[0], datas[1], datas[2], range);
 
-						else {
-
-							addDerivativeBtn(expr, range, false);
-							
-							functionGraphing(datas[0], setAsymptotesOnXYPlot(datas[1]), range, false, [], []);
-						
-						}
+						else functionGraphing(datas[0], setAsymptotesOnXYPlot(datas[1]), range);
 						
 					} catch(err) {
 
@@ -1037,60 +987,6 @@
 			}
 
 		}, 1000);
-
-		function deleteDerivativeBtn() {
-
-			const derivativeBtnExists = $(".website-bottom .derivative-btn").length > 0;
-
-			if (derivativeBtnExists) $(".website-bottom .derivative-btn").remove();
-
-		}
-
-		function addDerivativeBtn(funcExpr, displayRange) {
-
-			deleteDerivativeBtn();
-
-			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="derivative-btn" onclick="window.scrollTo(0, 0); addDerivative('${funcExpr}', '${displayRange}');"><i class="fa-solid fa-circle-plus"></i> Ajouter la dérivée</a>`);
-				
-			else $(".website-bottom").append(`<a class="derivative-btn" onclick="window.scrollTo(0, 0); addDerivative('${funcExpr}', '${displayRange}');"><i class="fa-solid fa-circle-plus"></i></a>`);
-
-		}
-
-		function addDerivative(funcExpr, dspRange) {
-
-			$(".derivative-btn").attr('onclick', '');
-
-			$("#create-graph-btn-id").attr('onclick', '');
-
-			$("#create-graph-btn-id").attr('class', 'unable-btn');
-
-			if ($(window).width() >= 1024) $(".derivative-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement des données...');
-			
-			else $(".derivative-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
-
-			setTimeout(() => {
-
-				let derivativeStr = math.derivative(funcExpr, 'x').toString();
-				
-				let derivedDatas = createFunctionData(derivativeStr);
-	
-				let realDatas = createFunctionData(funcExpr);
-	
-				if (hasNumberOutOfRange(derivedDatas[1]) === false) functionGraphing(realDatas[0], setAsymptotesOnXYPlot(realDatas[1]), dspRange, true, derivedDatas[0], setAsymptotesOnXYPlot(derivedDatas[1]));
-
-				$(".derivative-btn").attr('onclick', `window.scrollTo(0, 0); navigator.clipboard.writeText('${derivativeStr}')`);
-
-				if ($(window).width() >= 1024) $(".derivative-btn").html('<i class="fa-solid fa-copy"></i> Copier la dérivée');
-			
-				else $(".derivative-btn").html('<i class="fa-solid fa-copy"></i>');
-
-				$("#create-graph-btn-id").attr('onclick', `$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`);
-
-				$("#create-graph-btn-id").attr('class', 'create-graph-btn');
-
-			}, 4000)
-
-		}
 
 		function constructHTML() {
 
