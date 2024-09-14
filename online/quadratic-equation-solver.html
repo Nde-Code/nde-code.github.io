@@ -175,11 +175,11 @@
 				
 				<span id="equation-plot-id" class="equation-plot"> Ax<sup>2</sup> + Bx + C = 0 </span>
 									
-				<p class="website-main-panel-description" id="1st-root"><i class="fas fa-check green"></i> Qui est gratuit et qui fonctionne avec les complexes.</p>
+				<p class="website-main-panel-description" id="1st-root"><i class="fa-solid fa-circle-check green"></i> Qui est gratuit et qui fonctionne avec les complexes. </p>
 					
-				<p class="website-main-panel-description" id="2nd-root"><i class="fas fa-times not"></i> Qui n'affiche ni les étapes de calcul, ni la méthode utilisée.</p>
+				<p class="website-main-panel-description" id="2nd-root"><i class="fa-solid fa-circle-xmark red"></i> Qui n'affiche ni les étapes de calcul, ni la méthode utilisée. </p>
 					
-				<p class="website-main-panel-description" id="discriminant-text-id"><i class="fa-solid fa-triangle-exclamation warn"></i> Qui arrondit le résultat à 3 chiffres après la virgule.</p>
+				<p class="website-main-panel-description" id="discriminant-text-id"><i class="fa-solid fa-circle-exclamation orange"></i> Qui arrondit le résultat à 3 chiffres après la virgule. </p>
 					
 			</div>
 
@@ -191,7 +191,7 @@
 					
 					<i class="fa-solid fa-gears"></i>
 					
-					Calculer une équation
+					Calculer une équation quadratique
 				
 				</a>
 			
@@ -471,7 +471,7 @@
 
 				$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
-				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Recalculer une équation');
+				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Recalculer une équation quadratique');
 
 				$("#equation-plot-id").html(`${beautifyMath(math.evaluate(a), "a")}x<sup>2</sup> ${beautifyMath(math.evaluate(b), "b")}x ${beautifyMath(math.evaluate(c), "c")} = 0`);
 

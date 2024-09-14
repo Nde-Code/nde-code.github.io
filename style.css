@@ -201,11 +201,11 @@ h1.website-main-panel-title {
     color: #28A745;
 }
 
-.not {
+.red {
     color: #DC3545;
 }
 
-.warn {
+.orange {
     color: #FD7E14;
 }
 
@@ -214,6 +214,10 @@ h1.website-main-panel-title {
     margin-right: 5%;
     margin-left: 5%;
     color: white;
+}
+
+.website-main-panel-description i {
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 728px) {
@@ -326,6 +330,7 @@ p.copyright-text a.copyright-link {
 header.modalbox-header-class {
     padding: 20px;
     background: linear-gradient(to left top, #005DD9, #0047A6);
+    border-bottom: 4px solid #404040;
     color: white;
     font-weight: bold;
     font-size: 28px;

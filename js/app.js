@@ -59,18 +59,6 @@ function openAboutBox() {
 
                 <div class="modalbox-text-contenaire">
 
-                    <h2>Introduction:</h2>
-
-                    <p class="modalbox-description">Ici, vous trouverez toutes les informations sur ce que j'ai utilisé pour concevoir ce site.</p>
-                    
-                    <p class="modalbox-description">Je justifie certains de ces choix techniques dans la foire aux questions sur la page d'accueil.</p>
-                    
-                </div>
-
-                <div class="modalbox-line"></div>
-
-                <div class="modalbox-text-contenaire">
-
                     <h2>Librairies utilisées:</h2>
                     
                     <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
@@ -229,7 +217,7 @@ $(document).ready(function () {
     
                 <div class="modalbox-text-contenaire">
 
-                    <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 220px; color: #FD7E14;"></i>
+                    <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 200px; color: #FD7E14;"></i>
 
                     <h2>Absence ES6 - Navigateur obsolète:</h2>
 
