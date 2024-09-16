@@ -326,9 +326,7 @@
 					<p class="modalbox-description"> Pour les courbes en 2D, une couleur parmi les suivantes est sélectionnée aléatoirement: </p>
 
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9"></i> <strong>Bleu foncé:</strong> #005DD9, rgb(0, 93, 217).</p>
-					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #8000FF"></i> <strong>Mauve:</strong> #8000FF, rgb(128, 0, 255).</p>
-					
+										
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #DC3545"></i> <strong>Rouge vif:</strong> #DC3545, rgb(220, 53, 69).</p>
 					
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B"></i> <strong>Jaune éclatant:</strong> #F1C31B, rgb(241, 195, 27).</p>
@@ -806,7 +804,7 @@
 
 		function functionGraphing(xValues, yValues, dspRange) {
 
-			let curveColor = ["#005DD9", "#8000FF", "#DC3545", "#F1C31B", "#28A745", "#FFF"];
+			let curveColor = ["#005DD9", "#DC3545", "#F1C31B", "#28A745", "#FFF"];
 						
 			let layout = {
 
@@ -938,7 +936,7 @@
 
 			if (!expr || isAType(expr) === true || isMathExpression(expr) === false || hasOneVariable(expr) === null || isAllowed(expr) === false) {
 				
-				$("#modalbox-errors-warnings-id").html("L'expression de votre fonction n'est pas valide !");
+				$("#modalbox-errors-warnings-id").html("L'expression de votre fonction mathématique est invalide !");
 
 				return false;
 			
