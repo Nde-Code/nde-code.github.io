@@ -45,7 +45,7 @@ function openAboutBox() {
 
             <header class="modalbox-header-class" id="modalbox-header-id">
 
-                <i class="fa-solid fa-circle-info"></i> Informations
+                Informations
 
                 <a class="modalbox-header-close" onclick="$('#modalbox-about').remove(); isOpenAboutBox = false; $('.overlay').css('display', 'none');">
 
