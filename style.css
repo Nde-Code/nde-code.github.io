@@ -140,7 +140,7 @@ body.body-class {
 
 .white-line {
     height: 3px;
-    background-color: #B8B7B8;
+    background-color: #B0B0B0;
     margin-left: 30%;
     margin-right: 30%;
     margin-top: 25px;
@@ -363,7 +363,7 @@ header.modalbox-header-class {
     height: 3px;
     margin-left: 25%;
     margin-right: 25%;
-    background-color: #B8B7B8;
+    background-color: #B0B0B0;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-left-radius: 25px;
