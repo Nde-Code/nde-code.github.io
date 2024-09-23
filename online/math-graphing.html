@@ -464,7 +464,7 @@
 						
 				let zPoints = [];
 
-				for(x = -10; x < 10; x += (1 / 10)) {
+				for(x = -10; x < 10; x += (1 / 4)) {
 
 					let xPointsLine = [];
 
@@ -472,7 +472,7 @@
 
 					let zPointsLine = [];
 
-					for (y = -10; y < 10; y += (1 / 10)) {
+					for (y = -10; y < 10; y += (1 / 4)) {
 
 						xPointsLine.push(x);
 
@@ -640,7 +640,7 @@
 
 		function surfaceGraphing(xValues, yValues, zValues, dspRange) {
 
-			let surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis"];
+			let surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis", "Jet", "Hot", "Blackbody"];
 
 			let data = [{
 
