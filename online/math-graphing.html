@@ -157,9 +157,9 @@
 
 						<div class="menu-dropdown-items">
 
-							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+							<a href="foucault">Simuler un pendule de Foucault</a>
 
-							<a href="regression">Tracer une courbe de régression</a>
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
@@ -340,6 +340,18 @@
 				</div>
 
 				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-contenaire">
+
+					<h2>Notes:</h2>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le logiciel est muni de nombreux algorithmes numériques pour essayer d'obtenir le meilleur graphique possible, sans erreurs dues aux approximations. Bien que les performances soient relativement bonnes dans la majorité des cas, il est toutefois possible d'obtenir des résultats erronés lorsqu'une fonction très compliquée est saisie. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Pour limiter ce problème, le logiciel dispose d'une liste restreignant l'utilisation à certaines fonctions uniquement. Si une fonction n'y figure pas, c'est que j'ai choisi de ne pas l'inclure. Si vous souhaitez en ajouter une, n'hésitez pas à me contacter. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si vous souhaitez que j'ajoute des couleurs pour les graphiques 2D ou des échelles de couleurs pour les graphiques 3D, n'hésitez pas à me contacter également. </p>
+														
+				</div>
 
                 <p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id"> Les messages d'erreur et d'avertissement seront affichés dans cette section.</p>
 
@@ -641,34 +653,6 @@
 		function surfaceGraphing(xValues, yValues, zValues, dspRange) {
 
 			let surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis", "Jet", "Hot", "Blackbody"];
-
-			let data = [{
-
-				x: xValues,
-
-				y: yValues,
-
-				z: zValues,
-
-				showscale: false,
-
-				type: 'surface',
-
-				lighting: { ambient: 0.85 },
-
-				colorscale: surfaceColor[Math.floor(Math.random() * surfaceColor.length)],
-
-				contours: {
-
-					x: { highlight: false },
-
-					y: { highlight: false },
-
-					z: { highlight: false }
-
-				}
-
-			}];
 					
 			let layout = {
 
@@ -692,11 +676,11 @@
 
 						color: 'white',
 
-						gridcolor: 'grey',
+						gridcolor: '#B0B0B0',
 
-						gridwidth: 1,
+						gridwidth: 0.5,
 
-						title: 'X',
+						title: 'x',
 						
 						showspikes: false,
 						
@@ -704,9 +688,7 @@
 
 						titlefont : {
 
-							size : 18,
-
-							weight: 'bold'
+							size : 18
 
 						}
 
@@ -716,11 +698,11 @@
 
 						color: 'white',
 
-						gridcolor: 'grey',
+						gridcolor: '#B0B0B0',
 
-						gridwidth: 1,
+						gridwidth: 0.5,
 
-						title: 'Y',
+						title: 'y',
 						
 						showspikes: false,
 						
@@ -728,9 +710,7 @@
 						
 						titlefont : {
 
-							size : 18,
-
-							weight: 'bold'
+							size : 18
 
 						}
 
@@ -740,11 +720,11 @@
 
 						color: 'white',
 
-						gridcolor: 'grey',
+						gridcolor: '#B0B0B0',
 
-						gridwidth: 1,
+						gridwidth: 0.5,
 
-						title: 'Z',
+						title: 'z',
 						
 						showspikes: false,
 						
@@ -754,9 +734,7 @@
 
 						titlefont : {
 
-							size : 18,
-
-							weight: 'bold'
+							size : 18
 
 						}
 
@@ -795,6 +773,38 @@
 				},
 								
 			}
+
+			let data = [
+				
+				{
+
+					x: xValues,
+
+					y: yValues,
+
+					z: zValues,
+
+					showscale: false,
+
+					type: 'surface',
+
+					lighting: { ambient: 0.75 },
+
+					colorscale: surfaceColor[Math.floor(Math.random() * surfaceColor.length)],
+
+					contours: {
+
+						x: { highlight: false },
+
+						y: { highlight: false },
+
+						z: { highlight: false }
+
+					}
+
+				}
+		
+			];
 					
 			constructHTML();
 
@@ -838,27 +848,25 @@
 
 					color: 'white',
 
-					gridcolor: 'grey',
+					gridcolor: '#B0B0B0',
 
 					dtick: 2,
 
-					gridwidth: 1.25,
+					gridwidth: 0.5,
 
 					automargin: true,
 
-					zerolinewidth: 1,
+					zerolinewidth: 1.5,
 
-					range: [-10.5, 10.5],
+					range: [-10.30, 10.30],
 
 					title: {
 								
-						text: 'Axe des abscisses',
+						text: 'x',
 
 						font: {
 
-							size: 16,
-
-							weight: 'bold'
+							size: 16
 
 						}
 
@@ -872,11 +880,11 @@
 								
 					color: 'white',
 
-					gridcolor: 'grey',
+					gridcolor: '#B0B0B0',
 
-					gridwidth: 1,
+					gridwidth: 0.5,
 
-					zerolinewidth: 1.25,
+					zerolinewidth: 1.5,
 
 					automargin: true,
 
@@ -886,13 +894,11 @@
 
 						standoff: 10,
 								
-						text: 'Axe des ordonnées',
+						text: 'y = f(x)',
 
 						font: {
 
-							size: 16,
-
-							weight: 'bold'
+							size: 16
 
 						}
 
@@ -903,28 +909,30 @@
 				}
 
 			}
+	
+			let data = [
 
-			let functionGraph = {
+				{
 
-				x: xValues,
+					x: xValues,
 
-				y: yValues,
+					y: yValues,
 
-				mode: 'lines',
+					mode: 'lines',
 
-				type: 'scatter',
+					type: 'scatter',
 
-				line: {
+					line: {
 
-					color: curveColor[Math.floor(Math.random() * curveColor.length)],
+						color: curveColor[Math.floor(Math.random() * curveColor.length)],
 
-					width: 2.5
+						width: 2.5
+
+					}
 
 				}
 
-			}
-	
-			let data = [functionGraph];	
+			];	
 
 			constructHTML();
 
@@ -968,7 +976,7 @@
 						
 					} catch(err) {
 
-						abortProcess("La fonction saisie pose problème ! Cela peut arriver si la fonction que vous avez saisie est un peu trop compliquée.");
+						abortProcess("Une erreur s'est produite lors du chargement des données.");
 
 					}
 

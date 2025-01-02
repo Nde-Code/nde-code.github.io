@@ -157,9 +157,9 @@
 
 						<div class="menu-dropdown-items">
 
-							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+							<a href="foucault">Simuler un pendule de Foucault</a>
 
-							<a href="regression">Tracer une courbe de régression</a>
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
@@ -259,7 +259,7 @@
 
                     <h2>Amplitude de la première onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez l'amplitude de la première onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 50: </p>
+                    <p class="modalbox-description"> Saisissez l'amplitude de la première onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 10: </p>
 					
 					<input id="A-value-1" inputmode="numeric" class="modalbox-input" placeholder="A:">
                 
@@ -271,7 +271,7 @@
 
                     <h2>Nombre d'onde de la première onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la première onde à simuler. Cette valeur doit être comprise entre 1 et 20 et exprimée en radian par mètre: </p>
+                    <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la première onde à simuler. Cette valeur doit être comprise entre 1 et 10 et exprimée en radian par mètre: </p>
 					
 					<input id="k-value-1" inputmode="numeric" class="modalbox-input" placeholder="k:">
                 
@@ -283,7 +283,7 @@
 
                     <h2>Pulsation de la première onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez la valeur de la pulsation de la première onde à simuler. Cette valeur doit être comprise entre 1 et 50 et exprimée en radian par seconde: </p>
+                    <p class="modalbox-description"> Saisissez la valeur de la pulsation de la première onde à simuler. Cette valeur doit être comprise entre 1 et 30 et exprimée en radian par seconde: </p>
 					
 					<input id="w-value-1" inputmode="numeric" class="modalbox-input" placeholder="w:">
                 
@@ -325,7 +325,7 @@
 
                     <h2>Amplitude de la deuxième onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez l'amplitude de la deuxième onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 50: </p>
+                    <p class="modalbox-description"> Saisissez l'amplitude de la deuxième onde à simuler. Veuillez noter que l'amplitude doit obligatoirement être positive et inférieur ou égal à 10: </p>
 					
 					<input id="A-value-2" inputmode="numeric" class="modalbox-input" placeholder="A:">
                 
@@ -337,7 +337,7 @@
 
                     <h2>Nombre d'onde de la deuxième onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 20 et exprimée en radian par mètre: </p>
+                    <p class="modalbox-description"> Saisissez la valeur du nombre d'onde de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 10 et exprimée en radian par mètre: </p>
 					
 					<input id="k-value-2" inputmode="numeric" class="modalbox-input" placeholder="k:">
                 
@@ -349,7 +349,7 @@
 
                     <h2>Pulsation de la deuxième onde:</h2>
 
-                    <p class="modalbox-description"> Saisissez la valeur de la pulsation de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 50 et exprimée en radian par seconde: </p>
+                    <p class="modalbox-description"> Saisissez la valeur de la pulsation de la deuxième onde à simuler. Cette valeur doit être comprise entre 1 et 30 et exprimée en radian par seconde: </p>
 					
 					<input id="w-value-2" inputmode="numeric" class="modalbox-input" placeholder="w:">
                 
@@ -391,21 +391,31 @@
 					
 					<h2>Code couleurs:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Représentation graphique de l'évolution de la première onde harmonique au fil du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Courbe sur le graphique indiquant l'évolution de la première onde harmonique au fil du temps. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Représentation graphique de l'évolution de la deuxième onde harmonique au fil du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Courbe sur le graphique indiquant l'évolution de la deuxième onde harmonique au fil du temps. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Représentation graphique de l'évolution résultante de l'addition de la première et de la deuxième onde harmonique au fil du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Courbe sur le graphique indiquant l'évolution résultante de l'addition de la première et de la deuxième onde harmonique au fil du temps. </p>
 				
 				</div>
 
 				<div class="modalbox-line"></div>
 
+				<div class="modalbox-text-contenaire">
+
+					<h2>Notes:</h2>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si votre PC est peu puissant ou trop chargé en logiciels en cours d'exécution, la simulation pourrait être légèrement saccadée, ce qui est normal. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Bien que ce logiciel fonctionne parfaitement sur mobile, je vous recommande toutefois vivement de l'utiliser sur un PC. </p>
+														
+				</div>
+
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id"> Les messages d'erreur et d'avertissement seront affichés dans cette section. </p>
 
 				<div class="modalbox-bottom">
 
-					<a id="emulate-btn" class="modalbox-btn" onclick="simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());">
+					<a id="simulate-btn" class="modalbox-btn" onclick="simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());">
 						
 						<i class="fa-solid fa-wave-square"></i>
 						
@@ -431,7 +441,7 @@
 
 		var isInLoading = false;
 
-		var numPoints = 2000;
+		var numPoints = 1000;
 
 		var isRun = false;
 
@@ -465,8 +475,6 @@
 
 		function createPlot() {
 
-			let xLabelTitle = ($(window).width() <= 768) ? 'x(m), t(s)' : 'Évolution de la position (m) et du temps (s)'
-
 			currentTime = 0;
 
 			wavesXYDatas["wave_x"] = new Array(numPoints).fill(0);
@@ -479,7 +487,7 @@
 
 			for (var i = 0; i < numPoints; i++) {
 
-				let t = i / numPoints * 11;
+				let t = i / numPoints * 10;
 
 				wavesXYDatas["wave_x"][i] = t;
 
@@ -523,27 +531,25 @@
 
 					color: 'white',
 
-					gridcolor: 'grey',
+					gridcolor: '#B0B0B0',
 
 					dtick: 1,
 
-					gridwidth: 1,
+					gridwidth: 0.5,
 
 					automargin: true,
 
 					zerolinewidth: 1.5,
 
-					range: [-0.15, 10.5],
+					range: [-0.15, 10.15],
 
 					title: {
 
-						text: xLabelTitle,
+						text: ($(window).width() <= 768) ? 'x[m], t[s]' : 'Évolution de la position [m] et du temps [s]',
 
 						font: {
 
-							size: 16,
-
-							weight: 'bold'
+							size: 16
 
 						}
 
@@ -557,29 +563,31 @@
 								
 					color: 'white',
 
-					gridcolor: 'grey',
+					gridcolor: '#B0B0B0',
 
-					gridwidth: 1,
-
+					gridwidth: 0.5,
+					
 					zerolinewidth: 1.5,
-
+					
 					automargin: true,
+
+					autotick: true,
+
+					range: [-(wavesDatas.amplitude_1 + wavesDatas.amplitude_2 + 0.75), (wavesDatas.amplitude_1 + wavesDatas.amplitude_2 + 0.75)],
 
 					title: {
 
-						text: 'Évolution des perturbations p(x, t)',
+						standoff: 10,
+
+						text: ($(window).width() <= 768) ? 'p(x, t)' : 'Évolution des perturbations p(x, t)',
 
 						font: {
 
-							size: 16,
-
-							weight: 'bold'
+							size: 16
 
 						}
 
 					},
-
-					range: [-(wavesDatas.amplitude_1 + wavesDatas.amplitude_2 + 0.75), (wavesDatas.amplitude_1 + wavesDatas.amplitude_2 + 0.75)]
 
 				}
 
@@ -655,7 +663,7 @@
 
 			for (var i = 0; i < numPoints; i++) {
 
-				let t = i / numPoints * 11;
+				let t = i / numPoints * 10;
 
 				wavesXYDatas["wave_1_y"][i] = wavesDatas.amplitude_1 * Math.sin(wavesDatas.wave_number_1 * t + wavesDatas.angular_frequency_1 * (currentTime / 1000) + wavesDatas.initial_phase_1);
 
@@ -707,7 +715,7 @@
 
 		function simulateWaves(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
 
-			if (isANumber(Number(AOne)) === false || !AOne || Number(AOne) < 1 || Number(AOne) > 50) {
+			if (isANumber(Number(AOne)) === false || !AOne || Number(AOne) < 1 || Number(AOne) > 10) {
 
 				$("#modalbox-errors-warnings-id").html("L'amplitude de la première onde est invalide !");
 
@@ -715,7 +723,7 @@
 
 			} 
 
-			else if (isANumber(Number(kOne)) === false || !kOne || Number(kOne) < 1 || Number(kOne) > 20) {
+			else if (isANumber(Number(kOne)) === false || !kOne || Number(kOne) < 1 || Number(kOne) > 10) {
 
 				$("#modalbox-errors-warnings-id").html("Le nombre d'onde de la première onde est invalide !");
 
@@ -723,7 +731,7 @@
 
 			} 	
 			
-			else if (isANumber(Number(wOne)) === false || !wOne || Number(wOne) < 1 || Number(wOne) > 50) {
+			else if (isANumber(Number(wOne)) === false || !wOne || Number(wOne) < 1 || Number(wOne) > 30) {
 
 				$("#modalbox-errors-warnings-id").html("La pulsation de la première onde est invalide !");
 
@@ -739,7 +747,7 @@
 
 			}
 
-			else if (isANumber(Number(ATwo)) === false || !ATwo || Number(ATwo) < 1 || Number(ATwo) > 50) {
+			else if (isANumber(Number(ATwo)) === false || !ATwo || Number(ATwo) < 1 || Number(ATwo) > 10) {
 
 				$("#modalbox-errors-warnings-id").html("L'amplitude de la deuxième onde est invalide !");
 
@@ -747,7 +755,7 @@
 
 			}
 
-			else if (isANumber(Number(kTwo)) === false || !kTwo || Number(kTwo) < 1 || Number(kTwo) > 20) {
+			else if (isANumber(Number(kTwo)) === false || !kTwo || Number(kTwo) < 1 || Number(kTwo) > 10) {
 
 				$("#modalbox-errors-warnings-id").html("Le nombre d'onde de la deuxième onde est invalide !");
 
@@ -755,7 +763,7 @@
 
 			}
 
-			else if (isANumber(Number(wTwo)) === false || !wTwo || Number(wTwo) < 1 || Number(wTwo) > 50) {
+			else if (isANumber(Number(wTwo)) === false || !wTwo || Number(wTwo) < 1 || Number(wTwo) > 30) {
 
 				$("#modalbox-errors-warnings-id").html("La pulsation de la deuxième onde est invalide !");
 
@@ -781,7 +789,7 @@
 
 					} catch(err) {
 
-						abortProcess("Une erreur s'est produite lors du chargement des données !");
+						abortProcess("Une erreur s'est produite lors du chargement des données.");
 
 					}
 
@@ -795,7 +803,7 @@
 
 			if ($(window).width() <= 1024) $(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i>');
 
-			if ($(window).width() <= 1024 && isInLoading === false) $("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i>');
+			if ($(window).width() <= 1024 && isInLoading === false) $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i>');
 
 			if ($(window).width() <= 768) {
 
@@ -817,13 +825,13 @@
 
 			$('.overlay').css('display', 'none');
 
-			$("#emulate-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
+			$("#simulate-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
 
 			if ($(window).width() >= 1024) {
 
 				$(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i> Resimuler des ondes harmoniques');
 
-				$("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+				$("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
 			}
 
@@ -841,11 +849,11 @@
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
-			$("#emulate-btn").attr('onclick', '');
+			$("#simulate-btn").attr('onclick', '');
 
-			if ($(window).width() >= 1024) $("#emulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() >= 1024) $("#simulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
-			else $("#emulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+			else $("#simulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
 		}
 
@@ -855,11 +863,11 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() >= 1024) $("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+			if ($(window).width() >= 1024) $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
-			else $("#emulate-btn").html('<i class="fa-solid fa-wave-square"></i>');
+			else $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i>');
 
-			$("#emulate-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
+			$("#simulate-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
 
 		}
 		

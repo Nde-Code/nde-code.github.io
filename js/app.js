@@ -2,6 +2,7 @@ var isES6 = true;
 
 var isOpenAboutBox = false;
 
+// Pour compenser les 2 × 4 px de la bordure grise, je soustrais 8 px à la taille de la fenêtre.
 var modalboxSize = Math.round($(window).width() - 8) + "px";
 
 var startingWidth = $(document).width();

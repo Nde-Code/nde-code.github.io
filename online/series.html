@@ -24,7 +24,7 @@
 
 	.converge-btn {
 		padding: 15px 30px;
-		color: #fff;
+		color: white;
 		font-size: 20px;
 		border-radius: 50px;
 		background: #28A745; 
@@ -196,9 +196,9 @@
 
 						<div class="menu-dropdown-items">
 
-							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+							<a href="foucault">Simuler un pendule de Foucault</a>
 
-							<a href="regression">Tracer une courbe de régression</a>
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
@@ -329,16 +329,22 @@
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Indiquent l'évolution de la suite numérique. </p>
 										
 					<p class="modalbox-description"><i class="fa-solid fa-check" style="font-size: 18px; color: #28A745; font-weight: bold;"></i> Indique que la série saisie a convergé vers une valeur au cours des 10 000 itérations fixées par le logiciel, ainsi que la valeur vers laquelle la série a convergé. </p>
-						
-					<p class="modalbox-description"> Attention cela ne garantit pas à 100% que la série est vraiment convergente.</p>
-					
+											
 					<p class="modalbox-description"><i class="fa fa-times" style="font-size: 18px; color: #DC3545; font-weight: bold;"></i> Indique que la série saisie n'a pas convergé au cours des 10 000 itérations fixées par le logiciel.</p>
-					
-					<p class="modalbox-description"> Attention cela ne garantit pas à 100% que la série est divergente, la série que vous avez saisie peut converger mais de manière très lente ce qui peut fausser le résultat à cause du réglage par défaut du logiciel.</p>
-				
+									
 				</div>
 
 				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-contenaire">
+
+					<h2>Notes:</h2>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le logiciel fonctionne exclusivement avec des algorithmes numériques et itératifs. Par conséquent, le résultat (convergence ou divergence) n'est en aucun cas garanti, il s'agit uniquement du résultat après itération. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Pour garder le logiciel optimal, le nombre maximum d'itérations est fixé à 1000 et le seuil de tolérance à 1e-6. </p>
+														
+				</div>
 
 				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id"> Les messages d'erreur et d'avertissement seront affichés dans cette section. </p>
 
@@ -517,68 +523,6 @@
 
 		function constructHTMLAndGraph(serieSum, convergence, index, xValues, serieValues, sequenceValues) {
 
-			let serie = {
-
-				x: xValues,
-
-				y: serieValues,
-
-				mode: 'markers',
-
-				type: 'scatter',
-
-				marker: {
-
-					color: '#005DD9', 
-
-					size: 12, 
-
-					line: {
-
-						color: '#0047A6',
-
-						width: 3,
-
-						dash: 'solid',
-
-					},
-
-  				},
-
-			};
-
-			let sequence = {
-
-				x: xValues,
-
-				y: sequenceValues,
-
-				mode: 'markers',
-
-				type: 'scatter',
-
-				marker: {
-
-					color: '#F1C31B', 
-
-					size: 8, 
-
-					line: {
-
-						color: '#B39D02',
-
-						width: 2,
-
-						dash: 'solid',
-
-    				},
-
-				},
-
-			};
-
-			let data = [serie, sequence];
-
 			let layout = {
 
 				displayModeBar: false,
@@ -611,29 +555,25 @@
 
 					color: 'white',
 
-					gridcolor: 'grey',
+					gridcolor: '#B0B0B0',
 
 					dtick: 1,
 
-					gridwidth: 1,
-
-					zerolinecolor: 'white',
+					gridwidth: 0.5,
 
 					automargin: true,
 
 					zerolinewidth: 1.5,
 
-					range: [(Number(index) - 0.5), (Math.max(...xValues) + 0.5)],
+					range: [(Number(index) - 0.45), (Math.max(...xValues) + 0.45)],
 
 					title: {
 					
-						text: 'Axe des naturels',
+						text: ($(window).width() <= 768) ? 'N<sub>0</sub>' : 'Axe des naturels',
 
 						font: {
 
-							size: 16,
-
-							weight: 'bold'
+							size: 16
 
 						}
 
@@ -647,27 +587,25 @@
 						
 					color: 'white',
 
-					gridcolor: 'grey',
+					gridcolor: '#B0B0B0',
 
-					gridwidth: 1,
-
-					zerolinecolor: 'white',
+					gridwidth: 0.5,
 
 					zerolinewidth: 1.5,
 
 					automargin: true,
 
+					autotick: true,
+
 					title: {
 
 						standoff: 10,
 						
-						text: 'Axe image de la suite U<sub>n</sub> et de la somme S<sub>n</sub>',
+						text: ($(window).width() <= 768) ? 'U<sub>n</sub> - S<sub>n</sub>' : 'Axe image de la suite U<sub>n</sub> et de la somme S<sub>n</sub>',
 
 						font: {
 
-							size: 16,
-
-							weight: 'bold'
+							size: 16
 
 						}
 
@@ -679,9 +617,71 @@
 
 			}
 
+			let serie = {
+
+				x: xValues,
+
+				y: serieValues,
+
+				mode: 'markers',
+
+				type: 'scatter',
+
+				marker: {
+
+					color: '#005DD9', 
+
+					size: 12, 
+
+					line: {
+
+						color: '#0047A6',
+
+						width: 3,
+
+						dash: 'solid',
+
+					},
+
+				},
+
+			};
+
+			let sequence = {
+
+				x: xValues,
+
+				y: sequenceValues,
+
+				mode: 'markers',
+
+				type: 'scatter',
+
+				marker: {
+
+					color: '#F1C31B', 
+
+					size: 8, 
+
+					line: {
+
+						color: '#B39D02',
+
+						width: 2,
+
+						dash: 'solid',
+
+					},
+
+				},
+
+			};
+
+			let data = [serie, sequence];
+
 			makeConvergenceBtn(convergence, serieSum);
 
-			addHTML();
+			constructHTML();
 
 			Plotly.newPlot('graphing-box', data, layout, { staticPlot: true });
 
@@ -725,6 +725,22 @@
 
 		}
 
+		function makeConvergenceBtn(convergence, sumVal) {
+
+			if ($(".website-bottom .converge-btn").length > 0) $(".website-bottom .converge-btn").remove();
+
+			if ($(".website-bottom .diverge-btn").length > 0) $(".website-bottom .diverge-btn").remove();
+
+			if (convergence === true && $(window).width() >= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-check"></i> Converge vers ${sumVal}</a>`);
+				
+			else if (convergence === true && $(window).width() <= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-check"></i> ${sumVal}</a>`);
+
+			else if (convergence === false && $(window).width() >= 1024) $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa fa-times"></i> Série divergente</a>`);
+
+			else $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa fa-times"></i></a>`);
+
+		}
+
 		setInterval(function () {
 
 			if ($(window).width() <= 1024 && runningSate !== true) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
@@ -757,7 +773,7 @@
 
 		}
 
-		function addHTML() {
+		function constructHTML() {
 			
 			$("#graph-contenaire").html('<div id="graphing-box"></div>');
 
@@ -794,30 +810,6 @@
 			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
 
 			$("#from-modalbox-compute-id").attr('onclick', `computeSerie($('#start-index').val(), $('#numeric-sequence').val().toLowerCase());`);
-
-		}
-
-		function makeConvergenceBtn(convergence, sumVal) {
-
-			const convergeBtnExists = $(".website-bottom .converge-btn").length > 0;
-
-			const divergeBtnExists = $(".website-bottom .diverge-btn").length > 0;
-
-			const notFoundBtnExists = $(".website-bottom .notfound-btn").length > 0;
-
-			if (convergeBtnExists) $(".website-bottom .converge-btn").remove();
-
-			if (divergeBtnExists) $(".website-bottom .diverge-btn").remove();
-
-			if (notFoundBtnExists) $(".website-bottom .notfound-btn").remove();
-
-			if (convergence === true && $(window).width() >= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-check"></i> Converge vers ${sumVal}</a>`);
-				
-			else if (convergence === true && $(window).width() <= 1024) $(".website-bottom").append(`<a class="converge-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-check"></i> ${sumVal}</a>`);
-
-			else if (convergence === false && $(window).width() >= 1024) $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa fa-times"></i> Série divergente</a>`);
-
-			else $(".website-bottom").append(`<a class="diverge-btn" onclick="window.scrollTo(0, 0);"><i class="fa fa-times"></i></a>`);
 
 		}
 

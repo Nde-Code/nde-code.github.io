@@ -74,6 +74,9 @@ body.body-class {
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.25);
     -webkit-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.25);
     z-index: 1;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
 .menu-dropdown-items a {
@@ -90,6 +93,17 @@ body.body-class {
 
 .menu-dropdown-items a:hover {
     background-color: #4e4e4e;
+}
+
+.menu-dropdown-items a:first-child:hover {
+    background-color: #555555; 
+    border-top-right-radius: 25px;
+}
+
+.menu-dropdown-items a:last-child:hover {
+    background-color: #555555; 
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
 .menu-dropdown:hover .menu-dropdown-items {
@@ -141,8 +155,8 @@ body.body-class {
 .white-line {
     height: 3px;
     background-color: #B0B0B0;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 28.5%;
+    margin-right: 28.5%;
     margin-top: 25px;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
@@ -361,8 +375,8 @@ header.modalbox-header-class {
 
 .modalbox-line {
     height: 3px;
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 22.5%;
+    margin-right: 22.5%;
     background-color: #B0B0B0;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
