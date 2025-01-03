@@ -150,6 +150,14 @@ body.body-class {
         float: none;
         text-align: left;
     }
+
+    .menu-dropdown-items {
+        border-top-left-radius: 25px;
+    }
+
+    .menu-dropdown-items a:first-child:hover {
+        border-top-left-radius: 25px;
+    }
 }
 
 .white-line {
