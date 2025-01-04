@@ -153,6 +153,11 @@ body.body-class {
 
     .menu-dropdown-items {
         border-top-left-radius: 25px;
+        width: calc(100% - 8px);
+    }
+
+    .menu-dropdown-items a {
+        max-width: unset;
     }
 
     .menu-dropdown-items a:first-child:hover {
@@ -331,7 +336,7 @@ p.copyright-text a.copyright-link {
 
 @keyframes modalanimation {
     from {
-        top: 20%;
+        top: 30%;
         opacity: 0;
     }
 
