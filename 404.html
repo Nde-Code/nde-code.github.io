@@ -197,13 +197,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="history.back();" class="last-page-btn">
-					
-					<i class="fa-solid fa-rotate-left"></i>
-					
-					Retourner à la page précédente
-				
-				</a>
+				<a onclick="history.back();" class="last-page-btn"></a>
 
 			</div>
 
@@ -243,7 +237,13 @@
 
     <script>   
 
-		setInterval(function () { if ($(window).width() <= 1024) $(".last-page-btn").html('<i class="fa-solid fa-rotate-left"></i>'); }, 1000);
+	window.onload = () => { 
+
+		if ($(window).width() <= 1024) $(".last-page-btn").html('<i class="fa-solid fa-rotate-left"></i>');
+
+		else $(".last-page-btn").html('<i class="fa-solid fa-rotate-left"></i> Retourner à la page précédente');
+
+	}
 		
     </script>
 	

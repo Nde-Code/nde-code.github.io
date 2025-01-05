@@ -190,13 +190,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-about-me').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" class="faq-btn">
-					
-					<i class="fa-solid fa-user"></i>
-
-					F.A.Q à propos de moi et de mes projets
-				
-				</a>
+				<a onclick="$('#modalbox-about-me').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" class="faq-btn"></a>
 			
 			</div>
 
@@ -350,21 +344,23 @@
 
 		}
 
-		setInterval(function () {
+		window.onload = () => {
 
 			if ($(window).width() <= 1024) $(".faq-btn").html('<i class="fa-solid fa-user-large"></i>');
 
+			else $(".faq-btn").html('<i class="fa-solid fa-user-large"></i> F.A.Q à propos de moi et de mes projets');
+	
 			if ($(window).width() <= 768) {
-
+	
 				$("#modalbox-about-me").css('marginLeft', 'unset');
-
+	
 				$("#modalbox-about-me").css('left', 'unset');
-
+	
 				$("#modalbox-about-me").css('width', modalboxSize);
-
+	
 			}
 
-		}, 1000);
+		}
 		
     </script>
 	

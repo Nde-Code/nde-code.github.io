@@ -281,13 +281,7 @@
 
 			<div class="website-bottom">
 
-				<a id="radioactive-decay-btn-id" class="radioactive-decay-btn">
-					
-					<i class="fa-solid fa-gear rotate-animation"></i>
-					
-					Chargement...
-				
-				</a>
+				<a id="radioactive-decay-btn-id" class="radioactive-decay-btn"></a>
 			
 			</div>
 
@@ -624,6 +618,8 @@
 							updateRadioisotopes();
 
 							isLoadedDatas = true;
+
+							setCorrectButtonOnMobileInModalbox();
 							
 						} else {
 
@@ -639,7 +635,21 @@
 
 					})
 
-			}, 4000)			
+			}, 4000)	
+			
+			if ($(window).width() <= 1024) $("#from-modalbox-decay-id").html('<i class="fa-solid fa-atom"></i>');
+
+			else $("#from-modalbox-decay-id").html('<i class="fa-solid fa-atom"></i> Établir');
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-decay").css('marginLeft', 'unset');
+
+				$("#modalbox-decay").css('left', 'unset');
+
+				$("#modalbox-decay").css('width', modalboxSize);
+
+			}
 
 		}
 
@@ -759,25 +769,6 @@
 
 		}
 
-		setInterval(function () {
-
-			if($(window).width() <= 1024) $("#from-modalbox-decay-id").html('<i class="fa-solid fa-atom"></i>');
-
-			if ($(window).width() <= 1024 && isLoadedDatas === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>');
-
-			if ($(window).width() <= 768) {
-
-				$("#modalbox-decay").css('marginLeft', 'unset');
-
-				$("#modalbox-decay").css('left', 'unset');
-
-				$("#modalbox-decay").css('width', modalboxSize);
-
-			}
-
-		}, 1000);
-
-
 		function constructHTML() {
 			
 			$("#modalbox-decay").css("display", "none");
@@ -801,6 +792,8 @@
 			window.scrollTo(0, 0);
 
 		}
+
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && isLoadedDatas === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
 
 		$('#element-id').on('change', function() {
 

@@ -199,13 +199,7 @@
 
 			<div class="website-bottom">
 
-				<a class="create-graph-btn" id="create-graph-btn-id" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');">
-					
-					<i class="fa-solid fa-pencil"></i>
-					
-					Tracer une fonction mathématique
-				
-				</a>
+				<a class="create-graph-btn" id="create-graph-btn-id" onclick="$('#modalbox-graphing').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');"></a>
 			
 			</div>
 
@@ -984,24 +978,6 @@
 
 		}
 
-		setInterval(function () {
-
-			if ($(window).width() <= 1024) $("#create-graph-btn-id").html('<i class="fa-solid fa-pencil"></i>');
-
-			if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
-
-			if ($(window).width() <= 768) {
-
-				$("#modalbox-graphing").css('marginLeft', 'unset');
-
-				$("#modalbox-graphing").css('left', 'unset');
-
-				$("#modalbox-graphing").css('width', modalboxSize);
-
-			}
-
-		}, 1000);
-
 		function constructHTML() {
 
 			$("#graph-contenaire").html('<div id="graphing-box"></div>');
@@ -1023,6 +999,8 @@
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 			inLoading = false;
+
+			setCorrectButtonOnMobileInModalbox();
 
 			window.scrollTo(0, 0);
 
@@ -1053,6 +1031,28 @@
 			else $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>');
 
             $("#from-modalbox-create-id").attr('onclick', `createGraph($('#math-function-id').val().toLowerCase(), $('#display-range-id').val());`);
+
+		}
+
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && inLoading === false) $("#from-modalbox-create-id").html('<i class="fa-solid fa-pencil"></i>'); }
+
+		window.onload = () => {
+
+			if ($(window).width() <= 1024) $("#create-graph-btn-id").html('<i class="fa-solid fa-pencil"></i>');
+	
+			else $("#create-graph-btn-id").html('<i class="fa-solid fa-pencil"></i> Tracer une fonction mathématique');
+
+			setCorrectButtonOnMobileInModalbox();
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-graphing").css('marginLeft', 'unset');
+
+				$("#modalbox-graphing").css('left', 'unset');
+
+				$("#modalbox-graphing").css('width', modalboxSize);
+
+			}
 
 		}
 

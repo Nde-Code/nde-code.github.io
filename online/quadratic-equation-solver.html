@@ -185,13 +185,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-equation').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" id="calculate-btn-id" class="calculate-btn">
-					
-					<i class="fa-solid fa-gears"></i>
-					
-					Calculer une équation quadratique
-				
-				</a>
+				<a onclick="$('#modalbox-equation').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" id="calculate-btn-id" class="calculate-btn"></a>
 			
 			</div>
 
@@ -387,13 +381,21 @@
 
 		}
 
-		setInterval(function () {
+		window.onload = () => {
 
 			if ($(window).width() <= 1024) {
 
 				$("#compute-btn-id").html('<i class="fa-solid fa-gears"></i>');
 
 				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i>');
+
+			}
+
+			else {
+				
+				$("#compute-btn-id").html('<i class="fa-solid fa-gears"></i> Résoudre');
+
+				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Calculer une équation quadratique');
 
 			}
 
@@ -409,7 +411,7 @@
 
 			}
 
-		}, 1000);
+		}
 
 		function setEqual(nbr) {
 
@@ -467,7 +469,7 @@
 
 				$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
-				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Recalculer une équation quadratique');
+				($(window).width() <= 1024) ? $("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i>') : $("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Recalculer une équation quadratique');
 
 				$("#equation-plot-id").html(`${beautifyMath(math.evaluate(a), "a")}x<sup>2</sup> ${beautifyMath(math.evaluate(b), "b")}x ${beautifyMath(math.evaluate(c), "c")} = 0`);
 

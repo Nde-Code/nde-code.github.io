@@ -211,13 +211,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-foucault').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="foucault-btn-id" class="foucault-btn-class">
-					
-					<i class="fa-solid fa-flask"></i>
-					
-					Simuler un pendule de Foucault
-				
-				</a>
+				<a onclick="$('#modalbox-foucault').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="foucault-btn-id" class="foucault-btn-class"></a>
 			
 			</div>
 
@@ -777,6 +771,8 @@
 
 						createGraph(graphType, x0, solutions, Trev);
 
+						setCorrectButtonOnMobileInModalbox();
+
 					} catch(err) {
 
 						abortProcess("Une erreur s'est produite lors du chargement des données." + err);
@@ -855,11 +851,15 @@
 
 		}
 
-		setInterval(function () {
-			
-			if ($(window).width() <= 1024) $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i>');
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && isInLoading === false) $("#solve-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); }
 
-			if ($(window).width() <= 1024 && isInLoading === false) $("#solve-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>');
+		window.onload = () => {
+
+			if ($(window).width() <= 1024) $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); 
+	
+			else $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler un pendule de Foucault');
+
+			setCorrectButtonOnMobileInModalbox();
 
 			if ($(window).width() <= 768) {
 
@@ -870,8 +870,9 @@
 				$("#modalbox-foucault").css('width', modalboxSize);
 
 			}
-		
-		}, 1000);
+
+		};
+
 
 	</script>
 

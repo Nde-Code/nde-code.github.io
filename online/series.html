@@ -238,13 +238,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-serie').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" class="calculate-serie-btn">
-					
-					<i class="fa-solid fa-infinity"></i>
-					
-					Calculer une série numérique
-				
-				</a>
+				<a onclick="$('#modalbox-serie').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" class="calculate-serie-btn"></a>
 			
 			</div>
 
@@ -739,11 +733,15 @@
 
 		}
 
-		setInterval(function () {
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && runningSate === false) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>'); }
 
-			if ($(window).width() <= 1024 && runningSate !== true) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>');
+		window.onload = () => {
 
 			if ($(window).width() <= 1024) $(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i>');
+
+			else $(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i> Calculer une série numérique');
+
+			setCorrectButtonOnMobileInModalbox();
 
 			if ($(window).width() <= 768) {
 
@@ -755,7 +753,7 @@
 
 			}
 
-		}, 1000);
+		}
 
 		function generateDataBtn() {
 
@@ -792,6 +790,8 @@
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 			runningSate = false;
+
+			setCorrectButtonOnMobileInModalbox();
 
 			window.scrollTo(0, 0);
 

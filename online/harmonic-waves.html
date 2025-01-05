@@ -199,13 +199,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-waves').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="waves-btn-id" class="waves-btn-class">
-					
-					<i class="fa-solid fa-wave-square"></i>
-					
-					Simuler des ondes harmoniques
-				
-				</a>
+				<a onclick="$('#modalbox-waves').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="waves-btn-id" class="waves-btn-class"></a>
 			
 			</div>
 
@@ -797,24 +791,6 @@
 
 		}
 
-		setInterval(function () {
-
-			if ($(window).width() <= 1024) $(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i>');
-
-			if ($(window).width() <= 1024 && isInLoading === false) $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i>');
-
-			if ($(window).width() <= 768) {
-
-				$("#modalbox-waves").css('marginLeft', 'unset');
-
-				$("#modalbox-waves").css('left', 'unset');
-
-				$("#modalbox-waves").css('width', modalboxSize);
-
-			}
-
-		}, 1000);
-
 		function constructHTML() {
 
 			$("#graph-contenaire").html('<div id="waves-contenaire"></div>');
@@ -836,6 +812,8 @@
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 			isInLoading = false;
+
+			setCorrectButtonOnMobileInModalbox();
 
 			window.scrollTo(0, 0);
 
@@ -866,6 +844,28 @@
 			else $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i>');
 
 			$("#simulate-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
+
+		}
+
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && isInLoading === false) $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i>'); }
+
+		window.onload = () => {
+
+			if ($(window).width() <= 1024) $(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i>');
+	
+			else $(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i> Simuler des ondes harmoniques');
+
+			setCorrectButtonOnMobileInModalbox();
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-waves").css('marginLeft', 'unset');
+
+				$("#modalbox-waves").css('left', 'unset');
+
+				$("#modalbox-waves").css('width', modalboxSize);
+
+			}
 
 		}
 		
