@@ -285,7 +285,7 @@
 
                     <p class="modalbox-description"> Veuillez entrer la latitude, en degrés (comprise entre 90° au pôle Nord et -90° au pôle Sud), avec un maximum de 2 décimales, de l'endroit où vous souhaitez simuler le pendule: </p>
 					
-					<input id="latitude-id" class="modalbox-input" placeholder="Latitude:">
+					<input id="latitude-id" inputmode="numeric" class="modalbox-input" placeholder="Latitude:">
                 
 				</div>
 
@@ -729,7 +729,7 @@
 
 		function solveFoucaultSystem(graphType, latitude, length, numberOfPeriods, initialAngle) {
 
-			if (!latitude || (Number(latitude) < -90) === true || (Number(latitude) > 90) === true || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false) $("#modalbox-errors-warnings-id").html("La latitude saisie est vide ou n'est pas comprise entre -90° et 90°.");
+			if (!latitude || (Number(latitude) < -90) === true || (Number(latitude) > 90) === true || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false) $("#modalbox-errors-warnings-id").html("La latitude saisie est invalide.");
 
 			else if (Number(latitude) >= -10 && Number(latitude) <= 10) $("#modalbox-errors-warnings-id").html("L'installation d'un pendule de foucault près de l'équateur est inutile.");
 
