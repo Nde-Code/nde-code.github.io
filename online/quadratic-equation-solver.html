@@ -381,54 +381,12 @@
 
 		}
 
-		window.onload = () => {
-
-			if ($(window).width() <= 1024) {
-
-				$("#compute-btn-id").html('<i class="fa-solid fa-gears"></i>');
-
-				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i>');
-
-			}
-
-			else {
-				
-				$("#compute-btn-id").html('<i class="fa-solid fa-gears"></i> Résoudre');
-
-				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Calculer une équation quadratique');
-
-			}
-
-			if ($(window).width() <= 768) {
-
-				$("#modalbox-equation").css('marginLeft', 'unset');
-
-				$("#modalbox-equation").css('left', 'unset');
-
-				$("#modalbox-equation").css('width', modalboxSize);
-
-				$("#equation-plot-id").css("fontSize", "20px");
-
-			}
-
-		}
-
 		function setEqual(nbr) {
 
 			if (hasMoreThanThreeDecimal(nbr) === true) return "≈";
 
 			else return "=";
 
-		}
-
-		function constructHTML(x1, x2, dis, isDisNull) {
-
-			$("#1st-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme première racine: <span style="font-weight: bold; color: #F1C31B;">x<sub>1</sub> ${setEqual(x1)} ${math.round(x1, 3)}</span>`);
-			
-			(isDisNull === true) ? $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #28A745;">Rien du tout</span>`) : $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #28A745;">x<sub>2</sub> ${setEqual(x2)} ${math.round(x2, 3)}</span>`);
-
-			$("#discriminant-text-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet un discriminant égal à: <span class="discriminant-text" style="font-weight: bold; color: #DC3545;">${dis}</span>`);
-		
 		}
 
 		function solve(a, b, c) {
@@ -492,6 +450,48 @@
 				}
 
 				window.scrollTo(0, 0);
+
+			}
+
+		}
+
+		function constructHTML(x1, x2, dis, isDisNull) {
+
+			$("#1st-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme première racine: <span style="font-weight: bold; color: #F1C31B;">x<sub>1</sub> ${setEqual(x1)} ${math.round(x1, 3)}</span>`);
+
+			(isDisNull === true) ? $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #28A745;">Rien du tout</span>`) : $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #28A745;">x<sub>2</sub> ${setEqual(x2)} ${math.round(x2, 3)}</span>`);
+
+			$("#discriminant-text-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet un discriminant égal à: <span class="discriminant-text" style="font-weight: bold; color: #DC3545;">${dis}</span>`);
+
+		}
+
+		window.onload = () => {
+
+			if ($(window).width() <= 1024) {
+
+				$("#compute-btn-id").html('<i class="fa-solid fa-gears"></i>');
+
+				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i>');
+
+			}
+
+			else {
+				
+				$("#compute-btn-id").html('<i class="fa-solid fa-gears"></i> Résoudre');
+
+				$("#calculate-btn-id").html('<i class="fa-solid fa-gears"></i> Calculer une équation quadratique');
+
+			}
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-equation").css('marginLeft', 'unset');
+
+				$("#modalbox-equation").css('left', 'unset');
+
+				$("#modalbox-equation").css('width', modalboxSize);
+
+				$("#equation-plot-id").css("fontSize", "20px");
 
 			}
 

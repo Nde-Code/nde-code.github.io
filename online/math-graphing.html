@@ -642,6 +642,63 @@
 
 		}
 
+		function isAllowed(expr) {
+
+			try {
+
+				let parsedExpr = math.parse(expr);
+
+				let allFunctions = [];
+
+				let allowedFunctions = [
+					'abs',
+					'pow',
+					'sqrt',
+					'cbrt',
+					'exp',
+					'log',
+					'acos',
+					'acosh',
+					'acot',
+					'acoth',
+					'acsc',
+					'acsch',
+					'asec',
+					'asech',
+					'asin',
+					'asinh',
+					'atan',
+					'atanh',
+					'cos',
+					'cosh',
+					'cot',
+					'coth',
+					'csc',
+					'csch',
+					'sec',
+					'sech',
+					'sin',
+					'sinh',
+					'tan',
+					'tanh'
+				];
+
+				parsedExpr.traverse(node => {
+
+					if (node.isFunctionNode) allFunctions.push(node.name);
+
+				});
+
+				return allFunctions.every(func => allowedFunctions.includes(func));
+
+			} catch(err) {
+
+				return false;
+
+			}
+
+		}
+
 		function surfaceGraphing(xValues, yValues, zValues, dspRange) {
 
 			let surfaceColor = ["Portland", "Electric", "Greens", "Bluered", "Viridis", "Cividis", "Jet", "Hot", "Blackbody"];
@@ -1051,63 +1108,6 @@
 				$("#modalbox-graphing").css('left', 'unset');
 
 				$("#modalbox-graphing").css('width', modalboxSize);
-
-			}
-
-		}
-
-		function isAllowed(expr) {
-
-			try {
-			
-				let parsedExpr = math.parse(expr);
-
-				let allFunctions = [];
-
-				let allowedFunctions = [
-					'abs',
-					'pow',
-					'sqrt',
-					'cbrt',
-					'exp',
-					'log',
-					'acos',
-					'acosh',
-					'acot',
-					'acoth',
-					'acsc',
-					'acsch',
-					'asec',
-					'asech',
-					'asin',
-					'asinh',
-					'atan',
-					'atanh',
-					'cos',
-					'cosh',
-					'cot',
-					'coth',
-					'csc',
-					'csch',
-					'sec',
-					'sech',
-					'sin',
-					'sinh',
-					'tan',
-					'tanh'
-				];
-
-				parsedExpr.traverse(node => {
-
-					if (node.isFunctionNode) allFunctions.push(node.name);
-
-				});
-
-				return allFunctions.every(func => allowedFunctions.includes(func));
-
-			} catch(err) {
-
-				return false;
 
 			}
 

@@ -513,6 +513,63 @@
 			
 		}
 
+		function isAllowed(expr) {
+
+			try {
+
+				let parsedExpr = math.parse(expr);
+
+				let allFunctions = [];
+
+				let allowedFunctions = [
+					'abs',
+					'pow',
+					'sqrt',
+					'cbrt',
+					'exp',
+					'log',
+					'acos',
+					'acosh',
+					'acot',
+					'acoth',
+					'acsc',
+					'acsch',
+					'asec',
+					'asech',
+					'asin',
+					'asinh',
+					'atan',
+					'atanh',
+					'cos',
+					'cosh',
+					'cot',
+					'coth',
+					'csc',
+					'csch',
+					'sec',
+					'sech',
+					'sin',
+					'sinh',
+					'tan',
+					'tanh'
+				];
+
+				parsedExpr.traverse(node => {
+
+					if (node.isFunctionNode) allFunctions.push(node.name);
+
+				});
+
+				return allFunctions.every(func => allowedFunctions.includes(func));
+
+			} catch(err) {
+
+				return false;
+
+			}
+
+		}
+
 		function constructHTMLAndGraph(serieSum, convergence, index, xValues, serieValues, sequenceValues) {
 
 			let layout = {
@@ -733,42 +790,6 @@
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && runningSate === false) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>'); }
-
-		window.onload = () => {
-
-			if ($(window).width() <= 1024) $(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i>');
-
-			else $(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i> Calculer une série numérique');
-
-			setCorrectButtonOnMobileInModalbox();
-
-			if ($(window).width() <= 768) {
-
-				$("#modalbox-serie").css('marginLeft', 'unset');
-
-				$("#modalbox-serie").css('left', 'unset');
-
-				$("#modalbox-serie").css('width', modalboxSize);
-
-			}
-
-		}
-
-		function generateDataBtn() {
-
-			runningSate = true;
-
-			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
-
-			$("#from-modalbox-compute-id").attr('onclick', '');
-
-			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...'); 
-
-			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
-
-		}
-
 		function constructHTML() {
 			
 			$("#graph-contenaire").html('<div id="graphing-box"></div>');
@@ -797,6 +818,20 @@
 
 		}
 
+		function generateDataBtn() {
+
+			runningSate = true;
+
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
+
+			$("#from-modalbox-compute-id").attr('onclick', '');
+
+			if ($(window).width() >= 1024) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...'); 
+
+			else $("#from-modalbox-compute-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+
+		}
+
 		function abortProcess(msg) {
 
 			runningSate = false;
@@ -811,58 +846,23 @@
 
 		}
 
-		function isAllowed(expr) {
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && runningSate === false) $("#from-modalbox-compute-id").html('<i class="fa-solid fa-infinity"></i>'); }
 
-			try {
+		window.onload = () => {
 
-				let parsedExpr = math.parse(expr);
+			if ($(window).width() <= 1024) $(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i>');
 
-				let allFunctions = [];
+			else $(".calculate-serie-btn").html('<i class="fa-solid fa-infinity"></i> Calculer une série numérique');
 
-				let allowedFunctions = [
-					'abs',
-					'pow',
-					'sqrt',
-					'cbrt',
-					'exp',
-					'log',
-					'acos',
-					'acosh',
-					'acot',
-					'acoth',
-					'acsc',
-					'acsch',
-					'asec',
-					'asech',
-					'asin',
-					'asinh',
-					'atan',
-					'atanh',
-					'cos',
-					'cosh',
-					'cot',
-					'coth',
-					'csc',
-					'csch',
-					'sec',
-					'sech',
-					'sin',
-					'sinh',
-					'tan',
-					'tanh'
-				];
+			setCorrectButtonOnMobileInModalbox();
 
-				parsedExpr.traverse(node => {
+			if ($(window).width() <= 768) {
 
-					if (node.isFunctionNode) allFunctions.push(node.name);
+				$("#modalbox-serie").css('marginLeft', 'unset');
 
-				});
+				$("#modalbox-serie").css('left', 'unset');
 
-				return allFunctions.every(func => allowedFunctions.includes(func));
-
-			} catch(err) {
-
-				return false;
+				$("#modalbox-serie").css('width', modalboxSize);
 
 			}
 
