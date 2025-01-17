@@ -665,7 +665,7 @@
 
 				let decayModes = element.decay_modes[selectedIndex];
 
-				if ($.isArray(decayModes)) {
+				if (Object.prototype.toString.call(decayModes) === '[object Array]') {
 
 					$.each(decayModes, function (index, decay) {
 
