@@ -461,8 +461,6 @@
 
 		var wavesXYDatas = {};
 
-		function isANumber(value) { return typeof value === 'number' && !isNaN(value); }
-
 		function setHTMLValueFormRange(val, id, unit) { return $('#' + id).html(val + unit); }
 
 		function editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
@@ -727,87 +725,25 @@
 
 		function simulateWaves(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
 
-			if (isANumber(Number(AOne)) === false || !AOne || Number(AOne) < 1 || Number(AOne) > 10) {
+			generateDataBtn();	
 
-				$("#modalbox-errors-warnings-id").html("L'amplitude de la première onde est invalide !");
+			setTimeout(function() {	
 
-				return false;
+				try {	
 
-			} 
+					editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo);
+					
+					constructHTML();
+					
+					createPlot();	
 
-			else if (isANumber(Number(kOne)) === false || !kOne || Number(kOne) < 1 || Number(kOne) > 10) {
+				} catch(err) {	
 
-				$("#modalbox-errors-warnings-id").html("Le nombre d'onde de la première onde est invalide !");
+					abortProcess("Une erreur s'est produite lors du chargement des données.");	
 
-				return false;
+				}	
 
-			} 	
-			
-			else if (isANumber(Number(wOne)) === false || !wOne || Number(wOne) < 1 || Number(wOne) > 30) {
-
-				$("#modalbox-errors-warnings-id").html("La pulsation de la première onde est invalide !");
-
-				return false;
-
-			}
-
-			else if (isANumber(Number(phiOne)) === false || !phiOne) {
-
-				$("#modalbox-errors-warnings-id").html("La phase initiale de la première onde est invalide !");
-
-				return false;
-
-			}
-
-			else if (isANumber(Number(ATwo)) === false || !ATwo || Number(ATwo) < 1 || Number(ATwo) > 10) {
-
-				$("#modalbox-errors-warnings-id").html("L'amplitude de la deuxième onde est invalide !");
-
-				return false;
-
-			}
-
-			else if (isANumber(Number(kTwo)) === false || !kTwo || Number(kTwo) < 1 || Number(kTwo) > 10) {
-
-				$("#modalbox-errors-warnings-id").html("Le nombre d'onde de la deuxième onde est invalide !");
-
-				return false;
-
-			}
-
-			else if (isANumber(Number(wTwo)) === false || !wTwo || Number(wTwo) < 1 || Number(wTwo) > 30) {
-
-				$("#modalbox-errors-warnings-id").html("La pulsation de la deuxième onde est invalide !");
-
-				return false;
-
-			}
-
-			else if (isANumber(Number(phiTwo)) === false || !phiTwo) $("#modalbox-errors-warnings-id").html("La phase initiale de la deuxième onde est invalide !");
-
-			else {
-
-				generateDataBtn();
-
-				setTimeout(function() {
-
-					try {
-
-						editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo);
-		
-						constructHTML();
-		
-						createPlot();					
-
-					} catch(err) {
-
-						abortProcess("Une erreur s'est produite lors du chargement des données.");
-
-					}
-
-				}, 3000);
-
-			}
+			}, 3000);
 
 		}
 
