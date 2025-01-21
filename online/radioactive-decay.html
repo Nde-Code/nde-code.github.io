@@ -437,6 +437,14 @@
 
 		function getAtomicMassWithSymbol(index, symbol) { return datas.elements.find(el => el.symbol === symbol).atomic_masses[index]; }
 
+		function isAnArray(arr) {
+			
+			if (Object.prototype.toString.call(arr) === '[object Array]') return true
+			
+			else return false;
+		
+		}
+
 		function decayModeString(str) {
 
 			if (str === "A") return "Alpha";
@@ -665,7 +673,7 @@
 
 				let decayModes = element.decay_modes[selectedIndex];
 
-				if (Object.prototype.toString.call(decayModes) === '[object Array]') {
+				if (isAnArray(decayModes)) {
 
 					$.each(decayModes, function (index, decay) {
 
