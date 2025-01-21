@@ -261,6 +261,30 @@
 
 				<div class="modalbox-text-contenaire">
 
+                    <h2>Exemple prédéfinis:</h2>
+
+                    <p class="modalbox-description"> Sélectionnez un pendule de Foucault, déjà installé (ou ayant été installé) dans le monde, pour charger ses données caractéristiques: </p>
+					
+					<select title="Intérvalle d'affichage:" id="examples-id" onchange="loadExample($('#examples-id').val());">
+
+						<option value="0" selected>Aucun</option>
+
+						<option value="1">Panthéon à Paris - France</option>
+
+						<option value="2">Collégiale Sainte-Waudru à Mons - Belgique</option>
+
+						<option value="3">Siège des Nations unies à New York - USA</option>
+
+						<option value="4">Temple Fukusai-ji de Nagasaki - Japon</option>
+
+						<option value="5">Cathédrale Saint-Isaac à Saint-Pétersbourg - Russie</option>
+						
+					</select>
+                
+				</div>
+
+				<div class="modalbox-text-contenaire">
+
                     <h2>Type de graphique:</h2>
 
                     <p class="modalbox-description"> Sélectionnez le type de graphique pour afficher les solutions du système: </p>
@@ -285,7 +309,7 @@
 
                     <p class="modalbox-description"> Veuillez entrer la latitude, en degrés (comprise entre 90° au pôle Nord et -90° au pôle Sud), avec un maximum de 2 décimales, de l'endroit où vous souhaitez simuler le pendule: </p>
 					
-					<input id="latitude-id" inputmode="numeric" class="modalbox-input" placeholder="Latitude:">
+					<input id="latitude-value-id" inputmode="numeric" class="modalbox-input" placeholder="Latitude:">
                 
 				</div>
 
@@ -299,7 +323,7 @@
 
                     <p class="modalbox-description"> Sélectionnez la longueur du fil, en mètres, qui supporte la masse servant de pendule: </p>
 					
-					<input onchange="setLength($('#length-value-id').val()); setInitialAngle($('#initialangle-value-id').val(), $('#length-value-id').val());" title="Longeur du fil:" type="range" id="length-value-id" class="modalbox-range" value="60" min="10" max="100" step="1">
+					<input onchange="setLength($('#length-value-id').val()); setInitialAngle($('#initial-angle-value-id').val(), $('#length-value-id').val());" title="Longeur du fil:" type="range" id="length-value-id" class="modalbox-range" value="60" min="10" max="100" step="1">
                 
 				</div>
 
@@ -325,13 +349,13 @@
 
                     <h2>Angle du lancer initial:</h2>
 
-					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Position initial en x (x(0)): <span style="color: #005DD9;" id="initialposition-id">0.524m</span> </p>
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Position initial en x (x(0)): <span style="color: #005DD9;" id="initial-position-id">3.140m</span> </p>
 
-					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Angle initial: <span style="color: #005DD9;" id="initialangle-id">0.5°</span> </p>
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Angle initial: <span style="color: #005DD9;" id="initial-angle-id">3°</span> </p>
 
                     <p class="modalbox-description"> Sélectionnez l'angle initial d'inclinaison du pendule, en degrés, au moment du lâcher: </p>
 					
-					<input onchange="setInitialAngle($('#initialangle-value-id').val(), $('#length-value-id').val());" title="Angle initial:" type="range" id="initialangle-value-id" class="modalbox-range" value="0.5" min="0.1" max="10" step="0.1">
+					<input onchange="setInitialAngle($('#initial-angle-value-id').val(), $('#length-value-id').val());" title="Angle initial:" type="range" id="initial-angle-value-id" class="modalbox-range" value="3" min="1" max="10" step="0.1">
                 
 				</div>
 
@@ -369,7 +393,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="solve-foucault-btn-id" class="modalbox-btn" onclick="solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initialangle-value-id').val());">
+					<a id="solve-foucault-btn-id" class="modalbox-btn" onclick="solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());">
 						
 						<i class="fa-solid fa-flask"></i>
 						
@@ -415,7 +439,7 @@
 		
 		function setNumberOfPeriods(val) { return $("#number-of-periods-id").html(`${val}x`); }
 		
-		function setInitialAngle(angle, l) { return $("#initialangle-id").html(`${angle}°`) && $("#initialposition-id").html(`${getX0(angle, l).toFixed(3)}m`); }
+		function setInitialAngle(angle, l) { return $("#initial-angle-id").html(`${angle}°`) && $("#initial-position-id").html(`${getX0(angle, l).toFixed(3)}m`); }
 
 		function convertToHoursMinutes(decimalHours) {
 
@@ -426,6 +450,40 @@
 			const minutes = Math.floor(remainingMinutes); 
 						
 			return [hours, minutes];
+
+		}
+
+		function loadExample(number) {
+
+			let examples = {
+
+				"0": { latitude: '', length: 60, theta_0: 3, x_0: 3.140 },
+
+				"1": { latitude: '48.85', length: 67, theta_0: 5.2, x_0: 6.072 },
+
+				"2": { latitude: '50.45', length: 25, theta_0: 6.9, x_0: 3.003 },
+
+				"3": { latitude: '40.71', length: 23, theta_0: 5, x_0: 2.005 },
+
+				"4": { latitude: '32.75', length: 25, theta_0: 6.9, x_0: 3.003 },
+
+				"5": { latitude: '59.93', length: 98, theta_0: 3, x_0: 5.129 }
+
+			};
+
+			let data = examples[Number(number)];
+
+			$("#latitude-value-id").val(data.latitude);
+
+			$("#length-value-id").val(data.length);
+
+			$("#length-id").html(data.length + "m");
+
+			$('#initial-angle-value-id').val(data.theta_0);
+
+			$("#initial-angle-id").html(data.theta_0 + "°");
+
+			$("#initial-position-id").html(data.x_0 + "m");
 
 		}
 
@@ -805,7 +863,7 @@
 
 			$('.overlay').css('display', 'none');
 
-			$("#solve-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initialangle-value-id').val());`);
+			$("#solve-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
 
 			if ($(window).width() >= 1024) {
 
@@ -847,7 +905,7 @@
 
 			else $("#solve-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>');
 
-			$("#solve-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initialangle-value-id').val());`);
+			$("#solve-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
 
 		}
 
