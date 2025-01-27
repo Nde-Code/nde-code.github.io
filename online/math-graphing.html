@@ -428,18 +428,22 @@
 
 		function isValidGeneratedData(dataArray) {
 
-			let complexCounter = 0;
-					
-			for (var i = 0; i < dataArray.length; i++) {			
+			let notValidType = 0;
 
-				if (math.typeOf(dataArray[i]) === 'Complex') complexCounter++;
+			for (let i = 0; i < dataArray.length; i++) {
+
+				let type = math.typeOf(dataArray[i]);
+
+				if (type === 'Complex' || type === 'string' || type === 'Unit' || type === 'null' || type === 'boolean' || type === 'undefined' || type === 'Fraction' || type === 'Index' || type === 'ResultSet' || type === 'BigNumber' || type === 'Matrix' || type === 'Array' || type === 'Object' || type === 'Function') {
+
+					notValidType++;
+
+				}
 
 			}
 
-			if (complexCounter === dataArray.length) return false;
-
-			else return true;
-
+			return notValidType !== dataArray.length;
+			
 		}
 
 		function hasNumberOutOfRange(arr) {
@@ -1015,7 +1019,7 @@
 						
 						let workOnArr = (hasOneVariable(expr) === false) ? [].concat.apply([], datas[2]) : datas[1];
 
-						if (isAValidGeneration === false) abortProcess("Les données générées sont des nombres complexes.");
+						if (isAValidGeneration === false) abortProcess("Les données générées ne sont pas d'un type valide.");
 
 						else if (hasNumberOutOfRange(workOnArr)) abortProcess("Les données dépassent la limite tolérée de +/- 1e45.");
 

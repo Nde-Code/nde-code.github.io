@@ -766,7 +766,7 @@
 
 					if (!isFinite(serieComputing[0]) || isNaN(serieComputing[0]) === true || !validData(graphSeriePoints[1])) abortProcess("Soit la série ne respecte pas le critère nécessaire de convergence (donc elle diverge), soit il y a un problème de division par 0, de logarithme nul ou négatif, etc... voire les deux...");
 					
-					else constructHTMLAndGraph(math.round(serieComputing[0], 4), serieComputing[1], index, graphSeriePoints[0], graphSeriePoints[1], graphSequencePoints[1]);
+					else constructHTMLAndGraph(serieComputing[0].toFixed(4), serieComputing[1], index, graphSeriePoints[0], graphSeriePoints[1], graphSequencePoints[1]);
 							
 				}, 3000)
 
