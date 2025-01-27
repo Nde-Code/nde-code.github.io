@@ -149,8 +149,6 @@
 
 							<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
 
-							<a href="math-graphing">Tracer une fonction mathématique</a>
-
 							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
 
 							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
@@ -239,7 +237,7 @@
 
 					<p class="modalbox-description">Veuillez entrer la valeur de "A" de votre équation. "A" représente le terme au carré de l'équation:</p>
 					
-					<input type="text" id="a-equation" class="modalbox-input" placeholder="A:"> 
+					<input type="text" maxlength="10" id="a-equation" class="modalbox-input" placeholder="A:"> 
 
 				</div>
 
@@ -251,7 +249,7 @@
 
 					<p class="modalbox-description">Veuillez saisir la valeur de "B" dans votre équation. "B" correspond au terme linéaire de l'équation:</p>
 					
-					<input type="text" id="b-equation" class="modalbox-input" placeholder="B:">
+					<input type="text" maxlength="10" id="b-equation" class="modalbox-input" placeholder="B:">
 
 				</div>
 
@@ -263,7 +261,7 @@
 					
 					<p class="modalbox-description">Merci de fournir la valeur de "C" dans votre équation. "C" représente la constante de l'équation: </p>
 					
-					<input type="text" id="c-equation" class="modalbox-input" placeholder="C:">
+					<input type="text" id="c-equation" maxlength="10" class="modalbox-input" placeholder="C:">
 
 				</div>
 
@@ -391,7 +389,7 @@
 
 		function solve(a, b, c) {
 
-			if (!a || isValidInput(a) === false) {
+			if (!a || isValidInput(a) === false || a.length > 10) {
 				
 				$("#modalbox-errors-warnings-id").html("Le A de votre équation est invalide !");
 
@@ -399,7 +397,7 @@
 
 			}
 
-			else if (!b || isValidInput(b) === false) {
+			else if (!b || isValidInput(b) === false || b.length > 10) {
 				
 				$("#modalbox-errors-warnings-id").html("Le B de votre équation est invalide !");
 
@@ -407,7 +405,7 @@
 
 			}
 
-			else if (!c || isValidInput(c) === false) {
+			else if (!c || isValidInput(c) === false || c.length > 10) {
 				
 				$("#modalbox-errors-warnings-id").html("Le C de votre équation est invalide !");
 
