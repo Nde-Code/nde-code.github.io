@@ -1,11 +1,11 @@
 var isES6 = true;
 
-var isOpenAboutBox = false;
-
 // Pour compenser les 2 × 4 px de la bordure grise, je soustrais 8 px à la taille de la fenêtre.
 var modalboxSize = Math.round($(window).width() - 8) + "px";
 
 var startingWidth = $(document).width();
+
+document.oncontextmenu = () => { return false; }
 
 $(window).on('resize', () => {
 
@@ -33,100 +33,92 @@ function detectES6() {
 
 }
 
-document.oncontextmenu = () => { return false; }
-
 function openAboutBox() {
 
-    if (isOpenAboutBox === false) {
+    let aboutBoxHtml = `
+    <div class="modalbox-class" id="modalbox-about">
 
-        isOpenAboutBox = true;
+        <header class="modalbox-header-class" id="modalbox-header-id">
 
-        let aboutBoxHtml = `
-        <div class="modalbox-class" id="modalbox-about">
+            Informations
 
-            <header class="modalbox-header-class" id="modalbox-header-id">
+            <a class="modalbox-header-close" onclick="$('#modalbox-about').remove(); $('.overlay').css('display', 'none');">
 
-                Informations
+                <i class="fa fa-times" aria-hidden="true"></i>
 
-                <a class="modalbox-header-close" onclick="$('#modalbox-about').remove(); isOpenAboutBox = false; $('.overlay').css('display', 'none');">
-
-                    <i class="fa fa-times" aria-hidden="true"></i>
-
-                </a>
+            </a>
                 
-            </header>
+        </header>
 
-            <div class="modalbox-main-contenaire">
+        <div class="modalbox-main-contenaire">
 
-                <div class="modalbox-text-contenaire">
+            <div class="modalbox-text-contenaire">
 
-                    <h2>Librairies utilisées:</h2>
+                <h2>Librairies utilisées:</h2>
                     
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
                     
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>JQuery:</strong> pour une gestion plus éfficace du DOM en Javascript. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>JQuery:</strong> pour une gestion plus éfficace du DOM en Javascript. </p>
                    
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Math.js:</strong> pour les outils mathématiques utilisés dans mes projets. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Math.js:</strong> pour les outils mathématiques utilisés dans mes projets. </p>
                     
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Plotly:</strong> pour dessiner des graphiques dans le navigateur. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Plotly:</strong> pour dessiner des graphiques dans le navigateur. </p>
                 
-                </div>
-
-                <div class="modalbox-line"></div>
-                    
-                <div class="modalbox-text-contenaire">
-
-                    <h2>Outils utilisés:</h2>
-                    
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Visual Studio Code:</strong> pour rédiger et modifier le code de ce chaleureux site internet. </p>
-                                        
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Pixlr:</strong> pour retoucher l'image de fond du site.</p>
-                    
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Logomakr:</strong> pour créer mon "favicon".</p>
-                   
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Getavataaars:</strong> pour réaliser l'avatar sur la page d'accueil.</p>
-                    
-                </div>
-
-                <div class="modalbox-line"></div>
-                    
-                <div class="modalbox-text-contenaire">
-
-                    <h2>Ressources utilisées:</h2>
-                    
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Flaticon:</strong> pour les différentes ressources utilisés dans mes projets. je renseigne toujours l'utilisation de ces graphismes dans les pieds de page ou dans un fichier README.Md. </p>
-                    
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
-                  
-                </div>
-
-                <div class="modalbox-line"></div>
-                    
-                <div class="modalbox-text-contenaire">
-
-                    <h2>Licence:</h2>
-                    
-                    <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>GNU General Public License v3.0:</strong> consultez le dépôt GitHub du projet pour en savoir plus sur cette licence.</p>
-                
-                </div>
-
             </div>
 
-        </div>`;
+            <div class="modalbox-line"></div>
+                    
+            <div class="modalbox-text-contenaire">
 
-        $("#modalbox-open-div").append(aboutBoxHtml);
+                <h2>Outils utilisés:</h2>
+                    
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Visual Studio Code:</strong> pour rédiger et modifier le code de ce chaleureux site internet. </p>
+                                        
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Pixlr:</strong> pour retoucher l'image de fond du site.</p>
+                    
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Logomakr:</strong> pour créer mon "favicon".</p>
+                   
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Getavataaars:</strong> pour réaliser l'avatar sur la page d'accueil.</p>
+                    
+            </div>
 
-        mobileAboutBox(modalboxSize);
+            <div class="modalbox-line"></div>
+                    
+            <div class="modalbox-text-contenaire">
 
-        $('.overlay').css('display', 'block');
+                <h2>Ressources utilisées:</h2>
+                    
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Flaticon:</strong> pour les différentes ressources utilisés dans mes projets. je renseigne toujours l'utilisation de ces graphismes dans les pieds de page ou dans un fichier README.Md. </p>
+                    
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
+                  
+            </div>
 
-    }
+            <div class="modalbox-line"></div>
+                    
+            <div class="modalbox-text-contenaire">
+
+                <h2>Licence:</h2>
+                    
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>GNU General Public License v3.0:</strong> consultez le dépôt GitHub du projet pour en savoir plus sur cette licence.</p>
+                
+            </div>
+
+        </div>
+
+    </div>`;
+
+    $("#modalbox-open-div").append(aboutBoxHtml);
+
+    mobileAboutBox(modalboxSize);
+
+    $('.overlay').css('display', 'block');
 
 }
 
 function mobileAboutBox(windowSize) {
 
-    if ($(window).width() <= 768 && isOpenAboutBox === true) {
+    if ($(window).width() <= 768) {
 
         $("#modalbox-about").css('marginLeft', 'unset');
 
@@ -144,8 +136,6 @@ function mobileES6WarningBox(windowSize) {
 
         $("#modalbox-warning").css('marginLeft', 'unset');
 
-        $(".warning-browser").css('fontSize', '150px');
-
         $("#modalbox-warning").css('left', 'unset');
 
         $("#modalbox-warning").css('width', modalboxSize);
@@ -153,24 +143,6 @@ function mobileES6WarningBox(windowSize) {
     }
 
 }
-
-setInterval(function () {
-
-    mobileAboutBox(modalboxSize);
-
-    mobileES6WarningBox(modalboxSize);
-
-    if ($(window).width() <= 1024 && isOpenAboutBox === true) {
-
-        $(".modalbox-close-btn").each(function () {
-
-            $(this).html('<i class="fa fa-times"></i>');
-
-        });
-
-    }
-
-}, 1000);
 
 // Merci: https://stackoverflow.com/questions/48002147/how-to-activate-and-disable-jquery-click-events-on-an-html-element
 $('#displayMobileMenu').on('click', function () {
@@ -201,6 +173,10 @@ $('#displayMobileMenu').on('click', function () {
 
 $(document).ready(function () {
 
+    mobileAboutBox(modalboxSize);
+
+    mobileES6WarningBox(modalboxSize);
+
     if (detectES6() === false) {
 
         isES6 = false;
@@ -210,7 +186,7 @@ $(document).ready(function () {
 
             <header class="modalbox-header-class" id="modalbox-header-id">
 
-                <i class="fa-solid fa-circle-exclamation"></i> Attention
+                Attention
 
             </header>
 
