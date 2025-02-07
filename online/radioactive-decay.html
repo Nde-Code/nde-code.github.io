@@ -22,7 +22,7 @@
 		background: #4690F2;
 	}
 
-	.error-btn-class {
+	.error-btn {
 		font-size: 20px;
 		border-radius: 50px;
 		color: white;
@@ -34,32 +34,9 @@
 		cursor: pointer;
 	}
 
-	.error-btn-class:hover {
+	.error-btn:hover {
 		background: #E55361;
 	}
-
-	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
-	.rotate-animation {
-		-webkit-animation: spin 2s linear infinite;
-    	-moz-animation: spin 2s linear infinite;
-    	animation: spin 2s linear infinite;
-	}
-
-	@-moz-keyframes spin { 
-    	100% { -moz-transform: rotate(360deg); } 
-	}
-
-	@-webkit-keyframes spin { 
-    	100% { -webkit-transform: rotate(360deg); } 
-	} 
-
-	@keyframes spin { 
-		100% { 
-			-webkit-transform: rotate(360deg); 
-			transform:rotate(360deg); 
-		} 
-	}
-	/* Fin */
 
 	.decay-equation-plot {
 		color: #005DD9;
@@ -235,13 +212,13 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="interpolation-playground">Tracer un polynôme de Lagrange, une spline cubique et un polynôme de régression</a>
+
 							<a href="foucault">Simuler un pendule de Foucault</a>
 
 							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
-
-							<a href="series">Calculer une série numérique</a>
 
 							<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
 
@@ -279,7 +256,13 @@
 
 			<div class="website-bottom">
 
-				<a id="radioactive-decay-btn-id" class="radioactive-decay-btn"></a>
+				<a id="radioactive-decay-btn-id" class="radioactive-decay-btn">
+
+					<i class="fa-solid fa-gear rotate-animation"></i>
+
+					Chargement...
+
+				</a>
 			
 			</div>
 
@@ -313,7 +296,7 @@
 
 		<div class="modalbox-class" id="modalbox-decay" style="display: none;"> 
 
-			<header class="modalbox-header-class" id="modalbox-header-id">
+			<header class="modalbox-header-class">
 
 				Établir
 
@@ -367,13 +350,13 @@
 
 					<h2>Code couleurs:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Indique l'équation de désintégration radioactive. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #005DD9;"></i> Indique l'équation de désintégration radioactive. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Indique la masse atomique du noyau parent en unités de masse atomique (uma). </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #F1C31B;"></i> Indique la masse atomique du noyau parent en unités de masse atomique (uma). </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Indique la masse atomique du noyau résultant en unités de masse atomique (uma). </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #28A745;"></i> Indique la masse atomique du noyau résultant en unités de masse atomique (uma). </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #DC3545;"></i> Indique le nom chimique complet du noyau résultant </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #DC3545;"></i> Indique le nom chimique complet du noyau résultant </p>
 									
 				</div>
 
@@ -599,7 +582,7 @@
 							
 						} else {
 
-							$("#radioactive-decay-btn-id").attr("class", "error-btn-class");
+							$("#radioactive-decay-btn-id").attr("class", "error-btn");
 
 							$("#radioactive-decay-btn-id").attr('onclick', 'window.location.reload(); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
 

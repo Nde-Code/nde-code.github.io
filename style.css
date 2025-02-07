@@ -113,7 +113,7 @@ body.body-class {
 .menu-mobile {
     display: none;
     margin-left: 25px;
-    font-size: 42px;
+    font-size: 40px;
 }
 
 @media only screen and (max-width: 1175px) {
@@ -179,7 +179,7 @@ body.body-class {
     box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
-/*Pour les projets en ligne: */
+/* Pour les projets en ligne: */
 .website-main-panel-img {
     width: 245px;
     height: 245px;
@@ -192,7 +192,7 @@ body.body-class {
         height: 180px;
     }
 }
-/*Fin*/
+/* Fin */
 
 .website-main-panel {
     overflow-y: scroll;
@@ -252,6 +252,29 @@ h1.website-main-panel-title {
         padding: unset;
     }
 }
+
+/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
+.rotate-animation {
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-moz-keyframes spin { 
+    100% { -moz-transform: rotate(360deg); } 
+}
+
+@-webkit-keyframes spin { 
+    100% { -webkit-transform: rotate(360deg); } 
+} 
+
+@keyframes spin { 
+    100% { 
+        -webkit-transform: rotate(360deg); 
+        transform:rotate(360deg); 
+    } 
+}
+/* Fin */
 
 .website-bottom {
     text-align: center;
@@ -472,6 +495,10 @@ select,
 
 .modalbox-description {
     font-size: 22px;
+}
+
+.modalbox-description i {
+    font-size: 18px;
 }
 
 p.modalbox-errors-warnings-class {

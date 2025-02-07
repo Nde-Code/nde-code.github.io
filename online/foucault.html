@@ -6,7 +6,7 @@
 
 	<style>
 
-	.foucault-btn-class {
+	.foucault-btn {
 		font-size: 20px;
 		border-radius: 50px;
 		color: white;
@@ -18,7 +18,7 @@
 		cursor: pointer;
 	}
 
-	.foucault-btn-class:hover {
+	.foucault-btn:hover {
 		background: #4690F2;
 	}
 
@@ -37,29 +37,6 @@
 	.revolution-period-btn:hover {
 		background: #34D058;
 	}
-
-	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
-	.rotate-animation {
-		-webkit-animation: spin 2s linear infinite;
-    	-moz-animation: spin 2s linear infinite;
-    	animation: spin 2s linear infinite;
-	}
-
-	@-moz-keyframes spin { 
-    	100% { -moz-transform: rotate(360deg); } 
-	}
-
-	@-webkit-keyframes spin { 
-    	100% { -webkit-transform: rotate(360deg); } 
-	} 
-
-	@keyframes spin { 
-		100% { 
-			-webkit-transform: rotate(360deg); 
-			transform:rotate(360deg); 
-		} 
-	}
-	/* Fin */
 
 	</style>
 
@@ -151,7 +128,11 @@
 
 						<div class="menu-dropdown-items">
 
-							<!-- Ajouter les liens ici -->
+							<!--
+									
+								Bientôt
+								
+							-->
 
 						</div>
 
@@ -167,13 +148,13 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="interpolation-playground">Tracer un polynôme de Lagrange, une spline cubique et un polynôme de régression</a>
+
 							<a href="foucault">Simuler un pendule de Foucault</a>
 
 							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
-
-							<a href="series">Calculer une série numérique</a>
 
 							<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
 
@@ -209,7 +190,13 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-foucault').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="foucault-btn-id" class="foucault-btn-class"></a>
+				<a onclick="$('#modalbox-foucault').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="foucault-btn-id" class="foucault-btn">
+
+					<i class="fa-solid fa-gear rotate-animation"></i>
+
+					Chargement...
+
+				</a>
 			
 			</div>
 
@@ -243,7 +230,7 @@
 
 		<div class="modalbox-class" id="modalbox-foucault" style="display: none;"> 
 
-			<header class="modalbox-header-class" id="modalbox-header-id">
+			<header class="modalbox-header-class">
 
 				Simuler
 
@@ -363,15 +350,15 @@
 
 					<h2>Code couleurs:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Bouton qui indique la durée du jour pendulaire. Il apparaît, peu importe le type de graphique sélectionné. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #28A745;"></i> Bouton qui indique la durée du jour pendulaire. Il apparaît, peu importe le type de graphique sélectionné. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Courbe sur le graphique indiquant l'évolution de la position en x au cours du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #005DD9;"></i> Courbe sur le graphique indiquant l'évolution de la position en x au cours du temps. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Courbe sur le graphique indiquant l'évolution de la position en y au cours du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #F1C31B;"></i> Courbe sur le graphique indiquant l'évolution de la position en y au cours du temps. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #DC3545;"></i> Courbe sur le graphique indiquant l'évolution des oscillations du pendule dans le plan Oxy. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #DC3545;"></i> Courbe sur le graphique indiquant l'évolution des oscillations du pendule dans le plan Oxy. </p>
 
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #FD7E14;"></i> Point de lancement du pendule sur le graphique des oscillations. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #FD7E14;"></i> Point de lancement du pendule sur le graphique des oscillations. </p>
 									
 				</div>
 

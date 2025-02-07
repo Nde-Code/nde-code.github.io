@@ -139,13 +139,13 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="interpolation-playground">Tracer un polynôme de Lagrange, une spline cubique et un polynôme de régression</a>
+
 							<a href="foucault">Simuler un pendule de Foucault</a>
 
 							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
-
-							<a href="series">Calculer une série numérique</a>
 
 							<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
 
@@ -183,7 +183,13 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-equation').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" id="calculate-btn-id" class="calculate-btn"></a>
+				<a onclick="$('#modalbox-equation').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');" id="calculate-btn-id" class="calculate-btn">
+
+					<i class="fa-solid fa-gear rotate-animation"></i>
+
+					Chargement...
+
+				</a>
 			
 			</div>
 
@@ -217,7 +223,7 @@
 
 		<div class="modalbox-class" id="modalbox-equation" style="display: none;">
 
-			<header class="modalbox-header-class" id="modalbox-header-id">
+			<header class="modalbox-header-class">
 
 				Résoudre
 
@@ -271,13 +277,13 @@
 
 					<h2>Code couleurs:</h2>
 
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Indique l'équation du second degré pour les valeurs de A, B et C saisies. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #005DD9;"></i> Indique l'équation du second degré pour les valeurs de A, B et C saisies. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Indique la première racine solution de l'équation saisie. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #F1C31B;"></i> Indique la première racine solution de l'équation saisie. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Indique la deuxième racine solution de l'équation saisie. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #28A745;"></i> Indique la deuxième racine solution de l'équation saisie. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #DC3545;"></i> Indique le discriminant de l'équation saisie. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #DC3545;"></i> Indique le discriminant de l'équation saisie. </p>
 				
 				</div>
 
@@ -459,7 +465,7 @@
 
 			(isDisNull === true) ? $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #28A745;">Rien du tout</span>`) : $("#2nd-root").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme deuxième racine: <span style="font-weight: bold; color: #28A745;">x<sub>2</sub> ${setEqual(x2)} ${math.round(x2, 3)}</span>`);
 
-			$("#discriminant-text-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet un discriminant égal à: <span class="discriminant-text" style="font-weight: bold; color: #DC3545;">${dis}</span>`);
+			$("#discriminant-text-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet un discriminant égal à: <span style="font-weight: bold; color: #DC3545;">${dis}</span>`);
 
 		}
 

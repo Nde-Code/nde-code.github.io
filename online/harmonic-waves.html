@@ -6,7 +6,7 @@
 
 	<style>
 
-	.waves-btn-class {
+	.waves-btn {
 		font-size: 20px;
 		border-radius: 50px;
 		color: white;
@@ -18,32 +18,9 @@
 		cursor: pointer;
 	}
 
-	.waves-btn-class:hover {
+	.waves-btn:hover {
 		background: #4690F2;
 	}
-
-	/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
-	.rotate-animation {
-		-webkit-animation: spin 2s linear infinite;
-		-moz-animation: spin 2s linear infinite;
-		animation: spin 2s linear infinite;
-	}
-
-	@-moz-keyframes spin { 
-		100% { -moz-transform: rotate(360deg); } 
-	}
-
-	@-webkit-keyframes spin { 
-		100% { -webkit-transform: rotate(360deg); } 
-	} 
-
-	@keyframes spin { 
-		100% { 
-			-webkit-transform: rotate(360deg); 
-			transform:rotate(360deg); 
-		} 
-	}
-	/* Fin */
 
 	</style>
 
@@ -155,13 +132,13 @@
 
 						<div class="menu-dropdown-items">
 
+							<a href="interpolation-playground">Tracer un polynôme de Lagrange, une spline cubique et un polynôme de régression</a>
+
 							<a href="foucault">Simuler un pendule de Foucault</a>
 
 							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
-
-							<a href="series">Calculer une série numérique</a>
 
 							<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
 
@@ -197,7 +174,13 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-waves').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="waves-btn-id" class="waves-btn-class"></a>
+				<a onclick="$('#modalbox-waves').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="waves-btn-id" class="waves-btn">
+
+					<i class="fa-solid fa-gear rotate-animation"></i>
+
+					Chargement...
+
+				</a>
 			
 			</div>
 
@@ -231,7 +214,7 @@
 
 		<div class="modalbox-class" id="modalbox-waves" style="display: none;">
 
-			<header class="modalbox-header-class" id="modalbox-header-id">
+			<header class="modalbox-header-class">
 
 				Simuler
 
@@ -397,11 +380,11 @@
 					
 					<h2>Code couleurs:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #005DD9;"></i> Courbe sur le graphique indiquant l'évolution de la première onde harmonique au fil du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #005DD9;"></i> Courbe sur le graphique indiquant l'évolution de la première onde harmonique au fil du temps. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #F1C31B;"></i> Courbe sur le graphique indiquant l'évolution de la deuxième onde harmonique au fil du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #F1C31B;"></i> Courbe sur le graphique indiquant l'évolution de la deuxième onde harmonique au fil du temps. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="font-size: 18px; color: #28A745;"></i> Courbe sur le graphique indiquant l'évolution résultante de l'addition de la première et de la deuxième onde harmonique au fil du temps. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #28A745;"></i> Courbe sur le graphique indiquant l'évolution résultante de l'addition de la première et de la deuxième onde harmonique au fil du temps. </p>
 				
 				</div>
 
@@ -757,7 +740,7 @@
 
 			if ($(window).width() >= 1024) {
 
-				$(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i> Resimuler des ondes harmoniques');
+				$(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Resimuler des ondes harmoniques');
 
 				$("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
@@ -805,9 +788,9 @@
 
 		window.onload = () => {
 
-			if ($(window).width() <= 1024) $(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i>');
+			if ($(window).width() <= 1024) $(".waves-btn").html('<i class="fa-solid fa-wave-square"></i>');
 	
-			else $(".waves-btn-class").html('<i class="fa-solid fa-wave-square"></i> Simuler des ondes harmoniques');
+			else $(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler des ondes harmoniques');
 
 			setCorrectButtonOnMobileInModalbox();
 
