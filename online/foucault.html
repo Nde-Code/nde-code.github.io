@@ -408,7 +408,7 @@
 
 		var gravity = 9.81;
 
-		var foucaultPendulumDatas = {};
+		var foucaultPendulumProject = {};
 
 		function toRad(val) { return Number(val) * (Math.PI / 180); }
 
@@ -502,9 +502,9 @@
 
 			dydt[1] = y[3];  
 
-			dydt[2] = 2 * foucaultPendulumDatas.omega * y[3] - (gravity / foucaultPendulumDatas.length) * y[0];  
+			dydt[2] = 2 * foucaultPendulumProject.omega * y[3] - (gravity / foucaultPendulumProject.length) * y[0];  
 
-			dydt[3] = -2 * foucaultPendulumDatas.omega * y[2] - (gravity / foucaultPendulumDatas.length) * y[1];  
+			dydt[3] = -2 * foucaultPendulumProject.omega * y[2] - (gravity / foucaultPendulumProject.length) * y[1];  
 
 			return dydt;
 
@@ -542,21 +542,21 @@
 
 			let times = solutions[0];
 
-			let xDatas = solutions[1]; 
+			let xDataPoints = solutions[1]; 
 
-			let yDatas = solutions[2].map((x) => x * 1000);  
+			let yDataPoints = solutions[2].map((x) => x * 1000);  
 
 			let minT = Math.min(...times);
 
 			let maxT = Math.max(...times);
 
-			let minX = Math.min(...xDatas);
+			let minX = Math.min(...xDataPoints);
 
-			let maxX = Math.max(...xDatas);
+			let maxX = Math.max(...xDataPoints);
 
-			let minY = Math.min(...yDatas);
+			let minY = Math.min(...yDataPoints);
 
-			let maxY = Math.max(...yDatas);
+			let maxY = Math.max(...yDataPoints);
 
 			let tMargin = 0.015 * (maxT - minT);
 
@@ -662,7 +662,7 @@
 
 				x: times,
 
-				y: xDatas,
+				y: xDataPoints,
 
 				mode: 'lines',
 
@@ -682,7 +682,7 @@
 
 				x: times,
 
-				y: yDatas,
+				y: yDataPoints,
 
 				mode: 'lines',
 
@@ -700,9 +700,9 @@
 
 			let xy = {
 
-				x: xDatas,
+				x: xDataPoints,
 
-				y: yDatas,
+				y: yDataPoints,
 
 				mode: 'lines',
 
@@ -792,23 +792,23 @@
 
 						let Trev = (getPeriodOfRevolution(Math.abs(Number(latitude))) / 3600);
 
-						foucaultPendulumDatas = {};
+						foucaultPendulumProject = {};
 
-						foucaultPendulumDatas["latitude"] = latitude;
+						foucaultPendulumProject["latitude"] = latitude;
 
-						foucaultPendulumDatas["length"] = length;
+						foucaultPendulumProject["length"] = length;
 
-						foucaultPendulumDatas["number_of_periods"] = numberOfPeriods;
+						foucaultPendulumProject["number_of_periods"] = numberOfPeriods;
 
-						foucaultPendulumDatas["initial_angle"] = initialAngle;
+						foucaultPendulumProject["initial_angle"] = initialAngle;
 
-						foucaultPendulumDatas["x0"] = x0;
+						foucaultPendulumProject["x0"] = x0;
 
-						foucaultPendulumDatas["period_of_oscillation"] = periodOfOscillation;
+						foucaultPendulumProject["period_of_oscillation"] = periodOfOscillation;
 						
-						foucaultPendulumDatas["omega"] = omega;
+						foucaultPendulumProject["omega"] = omega;
 
-						foucaultPendulumDatas["period_of_revolution"] = convertToHoursMinutes(Trev);
+						foucaultPendulumProject["period_of_revolution"] = convertToHoursMinutes(Trev);
 
 						let solutions = solveSystem(x0, numberOfPeriods, periodOfOscillation);
 

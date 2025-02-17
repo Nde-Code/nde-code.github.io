@@ -438,29 +438,29 @@
 
         var currentTime = 0;
 
-		var wavesDatas = {};
+		var wavesSimulationProject = {};
 
-		var wavesXYDatas = {};
+		var wavesSimulationData = {};
 
 		function setHTMLValueFormRange(val, id, unit) { return $('#' + id).html(val + unit); }
 
 		function editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
 
-			wavesDatas["amplitude_1"] = Number(AOne);
+			wavesSimulationProject["amplitude_1"] = Number(AOne);
 
-			wavesDatas["wave_number_1"] = Number(kOne);
+			wavesSimulationProject["wave_number_1"] = Number(kOne);
 
-			wavesDatas["angular_frequency_1"] = (sgnOne === '-') ? Number(-1 * wOne) : Number(1 * wOne);
+			wavesSimulationProject["angular_frequency_1"] = (sgnOne === '-') ? Number(-1 * wOne) : Number(1 * wOne);
 			
-			wavesDatas["initial_phase_1"] = Number(phiOne);
+			wavesSimulationProject["initial_phase_1"] = Number(phiOne);
 
-			wavesDatas["amplitude_2"] = Number(ATwo);
+			wavesSimulationProject["amplitude_2"] = Number(ATwo);
 
-			wavesDatas["wave_number_2"] = Number(kTwo);
+			wavesSimulationProject["wave_number_2"] = Number(kTwo);
 
-			wavesDatas["angular_frequency_2"] = (sgnTwo === '-') ? Number(-1 * wTwo) : Number(1 * wTwo);
+			wavesSimulationProject["angular_frequency_2"] = (sgnTwo === '-') ? Number(-1 * wTwo) : Number(1 * wTwo);
 			
-			wavesDatas["initial_phase_2"] = Number(phiTwo);
+			wavesSimulationProject["initial_phase_2"] = Number(phiTwo);
 
 		}
 
@@ -468,25 +468,25 @@
 
 			currentTime = 0;
 
-			wavesXYDatas["wave_x"] = new Array(numPoints).fill(0);
+			wavesSimulationData["wave_x"] = new Array(numPoints).fill(0);
 
-			wavesXYDatas["wave_1_y"] = new Array(numPoints).fill(0);
+			wavesSimulationData["wave_1_y"] = new Array(numPoints).fill(0);
 
-			wavesXYDatas["wave_2_y"] = new Array(numPoints).fill(0);
+			wavesSimulationData["wave_2_y"] = new Array(numPoints).fill(0);
 
-			wavesXYDatas["wave_3_y"] = new Array(numPoints).fill(0);
+			wavesSimulationData["wave_3_y"] = new Array(numPoints).fill(0);
 
 			for (var i = 0; i < numPoints; i++) {
 
 				let t = i / numPoints * 10;
 
-				wavesXYDatas["wave_x"][i] = t;
+				wavesSimulationData["wave_x"][i] = t;
 
-				wavesXYDatas["wave_1_y"][i] = wavesDatas.amplitude_1 * Math.sin(wavesDatas.wave_number_1 * t + wavesDatas.angular_frequency_1 * (currentTime / 1000) + wavesDatas.initial_phase_1);
+				wavesSimulationData["wave_1_y"][i] = wavesSimulationProject.amplitude_1 * Math.sin(wavesSimulationProject.wave_number_1 * t + wavesSimulationProject.angular_frequency_1 * (currentTime / 1000) + wavesSimulationProject.initial_phase_1);
 
-				wavesXYDatas["wave_2_y"][i] = wavesDatas.amplitude_2 * Math.sin(wavesDatas.wave_number_2 * t + wavesDatas.angular_frequency_2 * (currentTime / 1000) + wavesDatas.initial_phase_2);
+				wavesSimulationData["wave_2_y"][i] = wavesSimulationProject.amplitude_2 * Math.sin(wavesSimulationProject.wave_number_2 * t + wavesSimulationProject.angular_frequency_2 * (currentTime / 1000) + wavesSimulationProject.initial_phase_2);
 
-				wavesXYDatas["wave_3_y"][i] = wavesXYDatas["wave_1_y"][i] + wavesXYDatas["wave_2_y"][i];
+				wavesSimulationData["wave_3_y"][i] = wavesSimulationData["wave_1_y"][i] + wavesSimulationData["wave_2_y"][i];
 			
 			}
 
@@ -564,7 +564,7 @@
 
 					autotick: true,
 
-					range: [-(wavesDatas.amplitude_1 + wavesDatas.amplitude_2 + 0.75), (wavesDatas.amplitude_1 + wavesDatas.amplitude_2 + 0.75)],
+					range: [-(wavesSimulationProject.amplitude_1 + wavesSimulationProject.amplitude_2 + 0.75), (wavesSimulationProject.amplitude_1 + wavesSimulationProject.amplitude_2 + 0.75)],
 
 					title: {
 
@@ -588,9 +588,9 @@
 
 				{
 
-					x: wavesXYDatas.wave_x,
+					x: wavesSimulationData.wave_x,
 
-					y: wavesXYDatas.wave_1_y,
+					y: wavesSimulationData.wave_1_y,
 
 					mode: 'lines',
 
@@ -606,9 +606,9 @@
 
 				{
 
-					x: wavesXYDatas.wave_x,
+					x: wavesSimulationData.wave_x,
 
-					y: wavesXYDatas.wave_2_y,
+					y: wavesSimulationData.wave_2_y,
 
 					mode: 'lines',
 
@@ -624,9 +624,9 @@
 
 				{
 
-					x: wavesXYDatas.wave_x,
+					x: wavesSimulationData.wave_x,
 
-					y: wavesXYDatas.wave_3_y,
+					y: wavesSimulationData.wave_3_y,
 
 					mode: 'lines',
 
@@ -656,11 +656,11 @@
 
 				let t = i / numPoints * 10;
 
-				wavesXYDatas["wave_1_y"][i] = wavesDatas.amplitude_1 * Math.sin(wavesDatas.wave_number_1 * t + wavesDatas.angular_frequency_1 * (currentTime / 1000) + wavesDatas.initial_phase_1);
+				wavesSimulationData["wave_1_y"][i] = wavesSimulationProject.amplitude_1 * Math.sin(wavesSimulationProject.wave_number_1 * t + wavesSimulationProject.angular_frequency_1 * (currentTime / 1000) + wavesSimulationProject.initial_phase_1);
 
-				wavesXYDatas["wave_2_y"][i] = wavesDatas.amplitude_2 * Math.sin(wavesDatas.wave_number_2 * t + wavesDatas.angular_frequency_2 * (currentTime / 1000) + wavesDatas.initial_phase_2);
+				wavesSimulationData["wave_2_y"][i] = wavesSimulationProject.amplitude_2 * Math.sin(wavesSimulationProject.wave_number_2 * t + wavesSimulationProject.angular_frequency_2 * (currentTime / 1000) + wavesSimulationProject.initial_phase_2);
 
-				wavesXYDatas["wave_3_y"][i] = wavesXYDatas["wave_1_y"][i] + wavesXYDatas["wave_2_y"][i];
+				wavesSimulationData["wave_3_y"][i] = wavesSimulationData["wave_1_y"][i] + wavesSimulationData["wave_2_y"][i];
 
 			}
 
@@ -668,11 +668,11 @@
 
 				data: [
 
-						{ y: wavesXYDatas.wave_1_y },
+						{ y: wavesSimulationData.wave_1_y },
 
-						{ y: wavesXYDatas.wave_2_y },
+						{ y: wavesSimulationData.wave_2_y },
 
-						{ y: wavesXYDatas.wave_3_y }
+						{ y: wavesSimulationData.wave_3_y }
 
 					]
 

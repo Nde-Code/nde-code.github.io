@@ -400,23 +400,23 @@
 
 	<script type="text/javascript">
 
-        var datas = "";
+        var dbData = "";
 
-		var isLoadedDatas = false;
+		var isLoaded = false;
 
 		var hasRun = false;
 
-		function getElementSymbolWithAtomicNumber(atomicNumber) { return datas.elements.find(el => el.atomic_number === atomicNumber).symbol; }
+		function getElementSymbolWithAtomicNumber(atomicNumber) { return dbData.elements.find(el => el.atomic_number === atomicNumber).symbol; }
 
-		function getRadioisotopeWithElement(symbol, index) { return datas.elements.find(el => el.symbol === symbol).radioisotopes[index]; }
+		function getRadioisotopeWithElement(symbol, index) { return dbData.elements.find(el => el.symbol === symbol).radioisotopes[index]; }
 
-		function getElementAtomicNumberWithSymbol(symbol) { return datas.elements.find(el => el.symbol === symbol).atomic_number; }
+		function getElementAtomicNumberWithSymbol(symbol) { return dbData.elements.find(el => el.symbol === symbol).atomic_number; }
 
-		function getElementNameWithSymbol(symbol) { return datas.elements.find(el => el.symbol === symbol).name; }
+		function getElementNameWithSymbol(symbol) { return dbData.elements.find(el => el.symbol === symbol).name; }
 
-		function getRadioisotopeIndexWithSymbol(symbol, radioisotope) { return datas.elements.find(el => el.symbol === symbol).radioisotopes.indexOf(radioisotope); }
+		function getRadioisotopeIndexWithSymbol(symbol, radioisotope) { return dbData.elements.find(el => el.symbol === symbol).radioisotopes.indexOf(radioisotope); }
 
-		function getAtomicMassWithSymbol(index, symbol) { return datas.elements.find(el => el.symbol === symbol).atomic_masses[index]; }
+		function getAtomicMassWithSymbol(index, symbol) { return dbData.elements.find(el => el.symbol === symbol).atomic_masses[index]; }
 
 		function isAnArray(arr) {
 			
@@ -528,7 +528,7 @@
 
 				let radioisotopesJSON = await reponse.json();
 
-				datas = radioisotopesJSON;
+				dbData = radioisotopesJSON;
 
 				return true;
 
@@ -564,7 +564,7 @@
 							
 							else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>');
 
-							$.each(datas.elements, function (index, element) {
+							$.each(dbData.elements, function (index, element) {
 
 								let option = $('<option>').val(element.symbol).text(`${element.name}, ${element.symbol} - Z: ${element.atomic_number}`);
 
@@ -576,7 +576,7 @@
 
 							updateRadioisotopes();
 
-							isLoadedDatas = true;
+							isLoaded = true;
 
 							setCorrectButtonOnMobileInModalbox();
 							
@@ -616,7 +616,7 @@
 
 			let selectedElement = $('#element-id').val();
 
-			let element = datas.elements.find(el => el.symbol === selectedElement);
+			let element = dbData.elements.find(el => el.symbol === selectedElement);
 
 			$('#radioisotope-id').empty();
 
@@ -646,7 +646,7 @@
 
 			let selectedIndex = $('#radioisotope-id').val();
 
-			let element = datas.elements.find(el => el.symbol === selectedElement);
+			let element = dbData.elements.find(el => el.symbol === selectedElement);
 
 			$('#decay-mode-id').empty();
 
@@ -784,7 +784,7 @@
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && isLoadedDatas === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && isLoaded === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
 
 		$('#element-id').on('change', function() {
 
