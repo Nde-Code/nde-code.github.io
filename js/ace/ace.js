@@ -36,7 +36,7 @@
 
 (function() {
 
-    var ACE_NAMESPACE = "ace";
+    var ACE_NAMESPACE = "";
     
     var global = (function() { return this; })();
     if (!global && typeof window != "undefined") global = window; // strict mode
@@ -173,7 +173,7 @@
     
     })();
     
-    ace.define("ace/lib/es6-shim",["require","exports","module"], function(require, exports, module){function defineProp(obj, name, val) {
+    define("ace/lib/es6-shim",["require","exports","module"], function(require, exports, module){function defineProp(obj, name, val) {
         Object.defineProperty(obj, name, {
             value: val,
             enumerable: false,
@@ -298,13 +298,13 @@
     
     });
     
-    ace.define("ace/lib/fixoldbrowsers",["require","exports","module","ace/lib/es6-shim"], function(require, exports, module){// vim:set ts=4 sts=4 sw=4 st:
+    define("ace/lib/fixoldbrowsers",["require","exports","module","ace/lib/es6-shim"], function(require, exports, module){// vim:set ts=4 sts=4 sw=4 st:
     "use strict";
     require("./es6-shim");
     
     });
     
-    ace.define("ace/lib/deep_copy",["require","exports","module"], function(require, exports, module){exports.deepCopy = function deepCopy(obj) {
+    define("ace/lib/deep_copy",["require","exports","module"], function(require, exports, module){exports.deepCopy = function deepCopy(obj) {
         if (typeof obj !== "object" || !obj)
             return obj;
         var copy;
@@ -325,7 +325,7 @@
     
     });
     
-    ace.define("ace/lib/lang",["require","exports","module","ace/lib/deep_copy"], function(require, exports, module){"use strict";
+    define("ace/lib/lang",["require","exports","module","ace/lib/deep_copy"], function(require, exports, module){"use strict";
     exports.last = function (a) {
         return a[a.length - 1];
     };
@@ -475,7 +475,7 @@
     
     });
     
-    ace.define("ace/lib/useragent",["require","exports","module"], function(require, exports, module){"use strict";
+    define("ace/lib/useragent",["require","exports","module"], function(require, exports, module){"use strict";
     exports.OS = {
         LINUX: "LINUX",
         MAC: "MAC",
@@ -520,7 +520,7 @@
     
     });
     
-    ace.define("ace/lib/dom",["require","exports","module","ace/lib/useragent"], function(require, exports, module){"use strict";
+    define("ace/lib/dom",["require","exports","module","ace/lib/useragent"], function(require, exports, module){"use strict";
     var useragent = require("./useragent");
     var XHTML_NS = "http://www.w3.org/1999/xhtml";
     exports.buildDom = function buildDom(arr, parent, refs) {
@@ -778,7 +778,7 @@
     
     });
     
-    ace.define("ace/lib/net",["require","exports","module","ace/lib/dom"], function(require, exports, module){/*
+    define("ace/lib/net",["require","exports","module","ace/lib/dom"], function(require, exports, module){/*
      * based on code from:
      *
      * @license RequireJS text 0.25.0 Copyright (c) 2010-2011, The Dojo Foundation All Rights Reserved.
@@ -818,7 +818,7 @@
     
     });
     
-    ace.define("ace/lib/oop",["require","exports","module"], function(require, exports, module){"use strict";
+    define("ace/lib/oop",["require","exports","module"], function(require, exports, module){"use strict";
     exports.inherits = function (ctor, superCtor) {
         ctor.super_ = superCtor;
         ctor.prototype = Object.create(superCtor.prototype, {
@@ -842,7 +842,7 @@
     
     });
     
-    ace.define("ace/lib/event_emitter",["require","exports","module"], function(require, exports, module){"use strict";
+    define("ace/lib/event_emitter",["require","exports","module"], function(require, exports, module){"use strict";
     var EventEmitter = {};
     var stopPropagation = function () { this.propagationStopped = true; };
     var preventDefault = function () { this.defaultPrevented = true; };
@@ -955,7 +955,7 @@
     
     });
     
-    ace.define("ace/lib/report_error",["require","exports","module"], function(require, exports, module){exports.reportError = function reportError(msg, data) {
+    define("ace/lib/report_error",["require","exports","module"], function(require, exports, module){exports.reportError = function reportError(msg, data) {
         var e = new Error(msg);
         e["data"] = data;
         if (typeof console == "object" && console.error)
@@ -965,7 +965,7 @@
     
     });
     
-    ace.define("ace/lib/default_english_messages",["require","exports","module"], function(require, exports, module){var defaultEnglishMessages = {
+    define("ace/lib/default_english_messages",["require","exports","module"], function(require, exports, module){var defaultEnglishMessages = {
         "autocomplete.popup.aria-roledescription": "Autocomplete suggestions",
         "autocomplete.popup.aria-label": "Autocomplete suggestions",
         "autocomplete.popup.item.aria-roledescription": "item",
@@ -1017,7 +1017,7 @@
     
     });
     
-    ace.define("ace/lib/app_config",["require","exports","module","ace/lib/oop","ace/lib/event_emitter","ace/lib/report_error","ace/lib/default_english_messages"], function(require, exports, module){"no use strict";
+    define("ace/lib/app_config",["require","exports","module","ace/lib/oop","ace/lib/event_emitter","ace/lib/report_error","ace/lib/default_english_messages"], function(require, exports, module){"no use strict";
     var oop = require("./oop");
     var EventEmitter = require("./event_emitter").EventEmitter;
     var reportError = require("./report_error").reportError;
@@ -1163,11 +1163,11 @@
     
     });
     
-    ace.define("ace/theme/textmate-css",["require","exports","module"], function(require, exports, module){module.exports = ".ace-tm .ace_gutter {\n  background: #f0f0f0;\n  color: #333;\n}\n\n.ace-tm .ace_print-margin {\n  width: 1px;\n  background: #e8e8e8;\n}\n\n.ace-tm .ace_fold {\n    background-color: #6B72E6;\n}\n\n.ace-tm {\n  background-color: #FFFFFF;\n  color: black;\n}\n\n.ace-tm .ace_cursor {\n  color: black;\n}\n        \n.ace-tm .ace_invisible {\n  color: rgb(191, 191, 191);\n}\n\n.ace-tm .ace_storage,\n.ace-tm .ace_keyword {\n  color: blue;\n}\n\n.ace-tm .ace_constant {\n  color: rgb(197, 6, 11);\n}\n\n.ace-tm .ace_constant.ace_buildin {\n  color: rgb(88, 72, 246);\n}\n\n.ace-tm .ace_constant.ace_language {\n  color: rgb(88, 92, 246);\n}\n\n.ace-tm .ace_constant.ace_library {\n  color: rgb(6, 150, 14);\n}\n\n.ace-tm .ace_invalid {\n  background-color: rgba(255, 0, 0, 0.1);\n  color: red;\n}\n\n.ace-tm .ace_support.ace_function {\n  color: rgb(60, 76, 114);\n}\n\n.ace-tm .ace_support.ace_constant {\n  color: rgb(6, 150, 14);\n}\n\n.ace-tm .ace_support.ace_type,\n.ace-tm .ace_support.ace_class {\n  color: rgb(109, 121, 222);\n}\n\n.ace-tm .ace_keyword.ace_operator {\n  color: rgb(104, 118, 135);\n}\n\n.ace-tm .ace_string {\n  color: rgb(3, 106, 7);\n}\n\n.ace-tm .ace_comment {\n  color: rgb(76, 136, 107);\n}\n\n.ace-tm .ace_comment.ace_doc {\n  color: rgb(0, 102, 255);\n}\n\n.ace-tm .ace_comment.ace_doc.ace_tag {\n  color: rgb(128, 159, 191);\n}\n\n.ace-tm .ace_constant.ace_numeric {\n  color: rgb(0, 0, 205);\n}\n\n.ace-tm .ace_variable {\n  color: rgb(49, 132, 149);\n}\n\n.ace-tm .ace_xml-pe {\n  color: rgb(104, 104, 91);\n}\n\n.ace-tm .ace_entity.ace_name.ace_function {\n  color: #0000A2;\n}\n\n\n.ace-tm .ace_heading {\n  color: rgb(12, 7, 255);\n}\n\n.ace-tm .ace_list {\n  color:rgb(185, 6, 144);\n}\n\n.ace-tm .ace_meta.ace_tag {\n  color:rgb(0, 22, 142);\n}\n\n.ace-tm .ace_string.ace_regex {\n  color: rgb(255, 0, 0)\n}\n\n.ace-tm .ace_marker-layer .ace_selection {\n  background: rgb(181, 213, 255);\n}\n.ace-tm.ace_multiselect .ace_selection.ace_start {\n  box-shadow: 0 0 3px 0px white;\n}\n.ace-tm .ace_marker-layer .ace_step {\n  background: rgb(252, 255, 0);\n}\n\n.ace-tm .ace_marker-layer .ace_stack {\n  background: rgb(164, 229, 101);\n}\n\n.ace-tm .ace_marker-layer .ace_bracket {\n  margin: -1px 0 0 -1px;\n  border: 1px solid rgb(192, 192, 192);\n}\n\n.ace-tm .ace_marker-layer .ace_active-line {\n  background: rgba(0, 0, 0, 0.07);\n}\n\n.ace-tm .ace_gutter-active-line {\n    background-color : #dcdcdc;\n}\n\n.ace-tm .ace_marker-layer .ace_selected-word {\n  background: rgb(250, 250, 255);\n  border: 1px solid rgb(200, 200, 250);\n}\n\n.ace-tm .ace_indent-guide {\n  background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==\") right repeat-y;\n}\n\n.ace-tm .ace_indent-guide-active {\n  background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAZSURBVHjaYvj///9/hivKyv8BAAAA//8DACLqBhbvk+/eAAAAAElFTkSuQmCC\") right repeat-y;\n}\n";
+    define("ace/theme/textmate-css",["require","exports","module"], function(require, exports, module){module.exports = ".ace-tm .ace_gutter {\n  background: #f0f0f0;\n  color: #333;\n}\n\n.ace-tm .ace_print-margin {\n  width: 1px;\n  background: #e8e8e8;\n}\n\n.ace-tm .ace_fold {\n    background-color: #6B72E6;\n}\n\n.ace-tm {\n  background-color: #FFFFFF;\n  color: black;\n}\n\n.ace-tm .ace_cursor {\n  color: black;\n}\n        \n.ace-tm .ace_invisible {\n  color: rgb(191, 191, 191);\n}\n\n.ace-tm .ace_storage,\n.ace-tm .ace_keyword {\n  color: blue;\n}\n\n.ace-tm .ace_constant {\n  color: rgb(197, 6, 11);\n}\n\n.ace-tm .ace_constant.ace_buildin {\n  color: rgb(88, 72, 246);\n}\n\n.ace-tm .ace_constant.ace_language {\n  color: rgb(88, 92, 246);\n}\n\n.ace-tm .ace_constant.ace_library {\n  color: rgb(6, 150, 14);\n}\n\n.ace-tm .ace_invalid {\n  background-color: rgba(255, 0, 0, 0.1);\n  color: red;\n}\n\n.ace-tm .ace_support.ace_function {\n  color: rgb(60, 76, 114);\n}\n\n.ace-tm .ace_support.ace_constant {\n  color: rgb(6, 150, 14);\n}\n\n.ace-tm .ace_support.ace_type,\n.ace-tm .ace_support.ace_class {\n  color: rgb(109, 121, 222);\n}\n\n.ace-tm .ace_keyword.ace_operator {\n  color: rgb(104, 118, 135);\n}\n\n.ace-tm .ace_string {\n  color: rgb(3, 106, 7);\n}\n\n.ace-tm .ace_comment {\n  color: rgb(76, 136, 107);\n}\n\n.ace-tm .ace_comment.ace_doc {\n  color: rgb(0, 102, 255);\n}\n\n.ace-tm .ace_comment.ace_doc.ace_tag {\n  color: rgb(128, 159, 191);\n}\n\n.ace-tm .ace_constant.ace_numeric {\n  color: rgb(0, 0, 205);\n}\n\n.ace-tm .ace_variable {\n  color: rgb(49, 132, 149);\n}\n\n.ace-tm .ace_xml-pe {\n  color: rgb(104, 104, 91);\n}\n\n.ace-tm .ace_entity.ace_name.ace_function {\n  color: #0000A2;\n}\n\n\n.ace-tm .ace_heading {\n  color: rgb(12, 7, 255);\n}\n\n.ace-tm .ace_list {\n  color:rgb(185, 6, 144);\n}\n\n.ace-tm .ace_meta.ace_tag {\n  color:rgb(0, 22, 142);\n}\n\n.ace-tm .ace_string.ace_regex {\n  color: rgb(255, 0, 0)\n}\n\n.ace-tm .ace_marker-layer .ace_selection {\n  background: rgb(181, 213, 255);\n}\n.ace-tm.ace_multiselect .ace_selection.ace_start {\n  box-shadow: 0 0 3px 0px white;\n}\n.ace-tm .ace_marker-layer .ace_step {\n  background: rgb(252, 255, 0);\n}\n\n.ace-tm .ace_marker-layer .ace_stack {\n  background: rgb(164, 229, 101);\n}\n\n.ace-tm .ace_marker-layer .ace_bracket {\n  margin: -1px 0 0 -1px;\n  border: 1px solid rgb(192, 192, 192);\n}\n\n.ace-tm .ace_marker-layer .ace_active-line {\n  background: rgba(0, 0, 0, 0.07);\n}\n\n.ace-tm .ace_gutter-active-line {\n    background-color : #dcdcdc;\n}\n\n.ace-tm .ace_marker-layer .ace_selected-word {\n  background: rgb(250, 250, 255);\n  border: 1px solid rgb(200, 200, 250);\n}\n\n.ace-tm .ace_indent-guide {\n  background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==\") right repeat-y;\n}\n\n.ace-tm .ace_indent-guide-active {\n  background: url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAZSURBVHjaYvj///9/hivKyv8BAAAA//8DACLqBhbvk+/eAAAAAElFTkSuQmCC\") right repeat-y;\n}\n";
     
     });
     
-    ace.define("ace/theme/textmate",["require","exports","module","ace/theme/textmate-css","ace/lib/dom"], function(require, exports, module){"use strict";
+    define("ace/theme/textmate",["require","exports","module","ace/theme/textmate-css","ace/lib/dom"], function(require, exports, module){"use strict";
     exports.isDark = false;
     exports.cssClass = "ace-tm";
     exports.cssText = require("./textmate-css");
@@ -1177,7 +1177,7 @@
     
     });
     
-    ace.define("ace/config",["require","exports","module","ace/lib/lang","ace/lib/net","ace/lib/dom","ace/lib/app_config","ace/theme/textmate"], function(require, exports, module){"no use strict";
+    define("ace/config",["require","exports","module","ace/lib/lang","ace/lib/net","ace/lib/dom","ace/lib/app_config","ace/theme/textmate"], function(require, exports, module){"no use strict";
     var lang = require("./lib/lang");
     var net = require("./lib/net");
     var dom = require("./lib/dom");
@@ -1322,11 +1322,11 @@
             reportErrorIfPathIsNotConfigured = function () { };
         }
     };
-    exports.version = "1.37.5";
+    exports.version = "1.39.0";
     
     });
     
-    ace.define("ace/loader_build",["require","exports","module","ace/lib/fixoldbrowsers","ace/config"], function(require, exports, module) {
+    define("ace/loader_build",["require","exports","module","ace/lib/fixoldbrowsers","ace/config"], function(require, exports, module) {
     "use strict";
     
     require("./lib/fixoldbrowsers");
@@ -1407,7 +1407,7 @@
     }
     });
     
-    ace.define("ace/range",["require","exports","module"], function(require, exports, module){"use strict";
+    define("ace/range",["require","exports","module"], function(require, exports, module){"use strict";
     var Range = /** @class */ (function () {
         function Range(startRow, startColumn, endRow, endColumn) {
             this.start = {
@@ -1634,7 +1634,7 @@
     
     });
     
-    ace.define("ace/lib/keys",["require","exports","module","ace/lib/oop"], function(require, exports, module){"use strict";
+    define("ace/lib/keys",["require","exports","module","ace/lib/oop"], function(require, exports, module){"use strict";
     var oop = require("./oop");
     var Keys = {
         MODIFIER_KEYS: {
@@ -1772,7 +1772,7 @@
     
     });
     
-    ace.define("ace/lib/event",["require","exports","module","ace/lib/keys","ace/lib/useragent"], function(require, exports, module){"use strict"; var keys = require("./keys");
+    define("ace/lib/event",["require","exports","module","ace/lib/keys","ace/lib/useragent"], function(require, exports, module){"use strict"; var keys = require("./keys");
     var useragent = require("./useragent");
     var pressedKeys = null;
     var ts = 0;
@@ -2044,7 +2044,7 @@
     
     });
     
-    ace.define("ace/clipboard",["require","exports","module"], function(require, exports, module){"use strict";
+    define("ace/clipboard",["require","exports","module"], function(require, exports, module){"use strict";
     var $cancelT;
     module.exports = {
         lineMode: false,
@@ -2060,7 +2060,7 @@
     
     });
     
-    ace.define("ace/keyboard/textinput",["require","exports","module","ace/lib/event","ace/config","ace/lib/useragent","ace/lib/dom","ace/lib/lang","ace/clipboard","ace/lib/keys"], function(require, exports, module){"use strict";
+    define("ace/keyboard/textinput",["require","exports","module","ace/lib/event","ace/config","ace/lib/useragent","ace/lib/dom","ace/lib/lang","ace/clipboard","ace/lib/keys"], function(require, exports, module){"use strict";
     var event = require("../lib/event");
     var nls = require("../config").nls;
     var useragent = require("../lib/useragent");
@@ -2077,7 +2077,7 @@
     var valueResetRegex = isIOS ? /\s/ : /\n/;
     var isMobile = useragent.isMobile;
     var TextInput;
-    TextInput = function (parentNode, host) {
+    TextInput = function (/**@type{HTMLTextAreaElement} */ parentNode, /**@type{import("../editor").Editor} */ host) {
         var text = dom.createElement("textarea");
         text.className = "ace_text-input";
         text.setAttribute("wrap", "off");
@@ -2085,8 +2085,7 @@
         text.setAttribute("autocapitalize", "off");
         text.setAttribute("spellcheck", "false");
         text.style.opacity = "0";
-        parentNode.insertBefore(text, parentNode.firstChild);
-        var copied = false;
+        parentNode.insertBefore(text, parentNode.firstChild); var copied = false;
         var pasted = false;
         var inComposition = false;
         var sendingText = false;
@@ -2106,7 +2105,7 @@
             var isFocused = document.activeElement === text;
         }
         catch (e) { }
-        this.setNumberOfExtraLines = function (number) {
+        this.setNumberOfExtraLines = function (/**@type{number}*/ number) {
             rowStart = Number.MAX_SAFE_INTEGER;
             rowEnd = Number.MIN_SAFE_INTEGER;
             if (number < 0) {
@@ -2647,7 +2646,7 @@
             var rect = host.container.getBoundingClientRect();
             var style = dom.computedStyle(host.container);
             var top = rect.top + (parseInt(style.borderTopWidth) || 0);
-            var left = rect.left + (parseInt(rect.borderLeftWidth) || 0);
+            var left = rect.left + (parseInt(style.borderLeftWidth) || 0);
             var maxTop = rect.bottom - top - text.clientHeight - 2;
             var move = function (e) {
                 dom.translate(text, e.clientX - left - 2, Math.min(e.clientY - top - 2, maxTop));
@@ -2777,7 +2776,7 @@
     
     });
     
-    ace.define("ace/mouse/default_handlers",["require","exports","module","ace/lib/useragent"], function(require, exports, module){"use strict";
+    define("ace/mouse/default_handlers",["require","exports","module","ace/lib/useragent"], function(require, exports, module){"use strict";
     var useragent = require("../lib/useragent");
     var DRAG_OFFSET = 0; // pixels
     var SCROLL_COOLDOWN_T = 550; // milliseconds
@@ -3015,7 +3014,7 @@
     
     });
     
-    ace.define("ace/lib/scroll",["require","exports","module"], function(require, exports, module){exports.preventParentScroll = function preventParentScroll(event) {
+    define("ace/lib/scroll",["require","exports","module"], function(require, exports, module){exports.preventParentScroll = function preventParentScroll(event) {
         event.stopPropagation();
         var target = event.currentTarget;
         var contentOverflows = target.scrollHeight > target.clientHeight;
@@ -3026,7 +3025,7 @@
     
     });
     
-    ace.define("ace/tooltip",["require","exports","module","ace/lib/dom","ace/lib/event","ace/range","ace/lib/scroll"], function(require, exports, module){"use strict";
+    define("ace/tooltip",["require","exports","module","ace/lib/dom","ace/lib/event","ace/range","ace/lib/scroll"], function(require, exports, module){"use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = function (d, b) {
             extendStatics = Object.setPrototypeOf ||
@@ -3366,7 +3365,7 @@
     
     });
     
-    ace.define("ace/mouse/default_gutter_handler",["require","exports","module","ace/lib/dom","ace/lib/event","ace/tooltip","ace/config","ace/lib/lang"], function(require, exports, module){"use strict";
+    define("ace/mouse/default_gutter_handler",["require","exports","module","ace/lib/dom","ace/lib/event","ace/tooltip","ace/config"], function(require, exports, module){"use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = function (d, b) {
             extendStatics = Object.setPrototypeOf ||
@@ -3397,11 +3396,14 @@
     var event = require("../lib/event");
     var Tooltip = require("../tooltip").Tooltip;
     var nls = require("../config").nls;
-    var lang = require("../lib/lang");
+    var GUTTER_TOOLTIP_LEFT_OFFSET = 5;
+    var GUTTER_TOOLTIP_TOP_OFFSET = 3;
+    exports.GUTTER_TOOLTIP_LEFT_OFFSET = GUTTER_TOOLTIP_LEFT_OFFSET;
+    exports.GUTTER_TOOLTIP_TOP_OFFSET = GUTTER_TOOLTIP_TOP_OFFSET;
     function GutterHandler(mouseHandler) {
         var editor = mouseHandler.editor;
         var gutter = editor.renderer.$gutterLayer;
-        var tooltip = new GutterTooltip(editor);
+        var tooltip = new GutterTooltip(editor, true);
         mouseHandler.editor.setDefaultHandler("guttermousedown", function (e) {
             if (!editor.isFocused() || e.getButton() != 0)
                 return;
@@ -3437,6 +3439,8 @@
             if (!tooltip.isOpen)
                 return;
             editor.on("mousewheel", hideTooltip);
+            editor.on("changeSession", hideTooltip);
+            window.addEventListener("keydown", hideTooltip, true);
             if (mouseHandler.$tooltipFollowsMouse) {
                 moveTooltip(mouseEvent);
             }
@@ -3447,20 +3451,26 @@
                     var gutterElement = gutterCell.element.querySelector(".ace_gutter_annotation");
                     var rect = gutterElement.getBoundingClientRect();
                     var style = tooltip.getElement().style;
-                    style.left = rect.right + "px";
-                    style.top = rect.bottom + "px";
+                    style.left = (rect.right - GUTTER_TOOLTIP_LEFT_OFFSET) + "px";
+                    style.top = (rect.bottom - GUTTER_TOOLTIP_TOP_OFFSET) + "px";
                 }
                 else {
                     moveTooltip(mouseEvent);
                 }
             }
         }
-        function hideTooltip() {
+        function hideTooltip(e) {
+            if (e && e.type === "keydown" && (e.ctrlKey || e.metaKey))
+                return;
+            if (e && e.type === "mouseout" && (!e.relatedTarget || tooltip.getElement().contains(e.relatedTarget)))
+                return;
             if (tooltipTimeout)
                 tooltipTimeout = clearTimeout(tooltipTimeout);
             if (tooltip.isOpen) {
                 tooltip.hideTooltip();
                 editor.off("mousewheel", hideTooltip);
+                editor.off("changeSession", hideTooltip);
+                window.removeEventListener("keydown", hideTooltip, true);
             }
         }
         function moveTooltip(e) {
@@ -3479,31 +3489,44 @@
                 tooltipTimeout = null;
                 if (mouseEvent && !mouseHandler.isMousePressed)
                     showTooltip();
-                else
-                    hideTooltip();
             }, 50);
         });
         event.addListener(editor.renderer.$gutter, "mouseout", function (e) {
             mouseEvent = null;
-            if (!tooltip.isOpen || tooltipTimeout)
+            if (!tooltip.isOpen)
                 return;
             tooltipTimeout = setTimeout(function () {
                 tooltipTimeout = null;
-                hideTooltip();
+                hideTooltip(e);
             }, 50);
         }, editor);
-        editor.on("changeSession", hideTooltip);
-        editor.on("input", hideTooltip);
     }
     exports.GutterHandler = GutterHandler;
     var GutterTooltip = /** @class */ (function (_super) {
         __extends(GutterTooltip, _super);
-        function GutterTooltip(editor) {
+        function GutterTooltip(editor, isHover) {
+            if (isHover === void 0) { isHover = false; }
             var _this = _super.call(this, editor.container) || this;
             _this.editor = editor;
             _this.visibleTooltipRow;
+            var el = _this.getElement();
+            el.setAttribute("role", "tooltip");
+            el.style.pointerEvents = "auto";
+            if (isHover) {
+                _this.onMouseOut = _this.onMouseOut.bind(_this);
+                el.addEventListener("mouseout", _this.onMouseOut);
+            }
             return _this;
         }
+        GutterTooltip.prototype.onMouseOut = function (e) {
+            if (!this.isOpen)
+                return;
+            if (!e.relatedTarget || this.getElement().contains(e.relatedTarget))
+                return;
+            if (e && e.currentTarget.contains(e.relatedTarget))
+                return;
+            this.hideTooltip();
+        };
         GutterTooltip.prototype.setPosition = function (x, y) {
             var windowWidth = window.innerWidth || document.documentElement.clientWidth;
             var windowHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -3651,7 +3674,7 @@
     
     });
     
-    ace.define("ace/mouse/mouse_event",["require","exports","module","ace/lib/event","ace/lib/useragent"], function(require, exports, module){"use strict";
+    define("ace/mouse/mouse_event",["require","exports","module","ace/lib/event","ace/lib/useragent"], function(require, exports, module){"use strict";
     var event = require("../lib/event");
     var useragent = require("../lib/useragent");
     var MouseEvent = /** @class */ (function () {
@@ -3717,7 +3740,7 @@
     
     });
     
-    ace.define("ace/mouse/dragdrop_handler",["require","exports","module","ace/lib/dom","ace/lib/event","ace/lib/useragent"], function(require, exports, module){"use strict";
+    define("ace/mouse/dragdrop_handler",["require","exports","module","ace/lib/dom","ace/lib/event","ace/lib/useragent"], function(require, exports, module){"use strict";
     var dom = require("../lib/dom");
     var event = require("../lib/event");
     var useragent = require("../lib/useragent");
@@ -4056,7 +4079,7 @@
     
     });
     
-    ace.define("ace/mouse/touch_handler",["require","exports","module","ace/mouse/mouse_event","ace/lib/event","ace/lib/dom"], function(require, exports, module){"use strict";
+    define("ace/mouse/touch_handler",["require","exports","module","ace/mouse/mouse_event","ace/lib/event","ace/lib/dom"], function(require, exports, module){"use strict";
     var MouseEvent = require("./mouse_event").MouseEvent;
     var event = require("../lib/event");
     var dom = require("../lib/dom");
@@ -4367,7 +4390,7 @@
     
     });
     
-    ace.define("ace/mouse/mouse_handler",["require","exports","module","ace/lib/event","ace/lib/useragent","ace/mouse/default_handlers","ace/mouse/default_gutter_handler","ace/mouse/mouse_event","ace/mouse/dragdrop_handler","ace/mouse/touch_handler","ace/config"], function(require, exports, module){"use strict";
+    define("ace/mouse/mouse_handler",["require","exports","module","ace/lib/event","ace/lib/useragent","ace/mouse/default_handlers","ace/mouse/default_gutter_handler","ace/mouse/mouse_event","ace/mouse/dragdrop_handler","ace/mouse/touch_handler","ace/config"], function(require, exports, module){"use strict";
     var event = require("../lib/event");
     var useragent = require("../lib/useragent");
     var DefaultHandlers = require("./default_handlers").DefaultHandlers;
@@ -4536,7 +4559,7 @@
     
     });
     
-    ace.define("ace/mouse/fold_handler",["require","exports","module","ace/lib/dom"], function(require, exports, module){"use strict";
+    define("ace/mouse/fold_handler",["require","exports","module","ace/lib/dom"], function(require, exports, module){"use strict";
     var dom = require("../lib/dom");
     var FoldHandler = /** @class */ (function () {
         function FoldHandler(editor) {
@@ -4599,7 +4622,7 @@
     
     });
     
-    ace.define("ace/keyboard/keybinding",["require","exports","module","ace/lib/keys","ace/lib/event"], function(require, exports, module){"use strict";
+    define("ace/keyboard/keybinding",["require","exports","module","ace/lib/keys","ace/lib/event"], function(require, exports, module){"use strict";
     var keyUtil = require("../lib/keys");
     var event = require("../lib/event");
     var KeyBinding = /** @class */ (function () {
@@ -4698,7 +4721,7 @@
     
     });
     
-    ace.define("ace/lib/bidiutil",["require","exports","module"], function(require, exports, module){"use strict";
+    define("ace/lib/bidiutil",["require","exports","module"], function(require, exports, module){"use strict";
     var ArabicAlefBetIntervalsBegine = ['\u0621', '\u0641'];
     var ArabicAlefBetIntervalsEnd = ['\u063A', '\u064a'];
     var dir = 0, hiLevel = 0;
@@ -5013,7 +5036,7 @@
     
     });
     
-    ace.define("ace/bidihandler",["require","exports","module","ace/lib/bidiutil","ace/lib/lang"], function(require, exports, module){"use strict";
+    define("ace/bidihandler",["require","exports","module","ace/lib/bidiutil","ace/lib/lang"], function(require, exports, module){"use strict";
     var bidiUtil = require("./lib/bidiutil");
     var lang = require("./lib/lang");
     var bidiRE = /[\u0590-\u05f4\u0600-\u06ff\u0700-\u08ac\u202B]/;
@@ -5270,7 +5293,7 @@
     
     });
     
-    ace.define("ace/selection",["require","exports","module","ace/lib/oop","ace/lib/lang","ace/lib/event_emitter","ace/range"], function(require, exports, module){"use strict";
+    define("ace/selection",["require","exports","module","ace/lib/oop","ace/lib/lang","ace/lib/event_emitter","ace/range"], function(require, exports, module){"use strict";
     var oop = require("./lib/oop");
     var lang = require("./lib/lang");
     var EventEmitter = require("./lib/event_emitter").EventEmitter;
@@ -5838,7 +5861,7 @@
     
     });
     
-    ace.define("ace/tokenizer",["require","exports","module","ace/lib/report_error"], function(require, exports, module){"use strict";
+    define("ace/tokenizer",["require","exports","module","ace/lib/report_error"], function(require, exports, module){"use strict";
     var reportError = require("./lib/report_error").reportError;
     var MAX_TOKEN_COUNT = 2000;
     var Tokenizer = /** @class */ (function () {
@@ -6126,7 +6149,7 @@
     
     });
     
-    ace.define("ace/mode/text_highlight_rules",["require","exports","module","ace/lib/deep_copy"], function(require, exports, module){"use strict";
+    define("ace/mode/text_highlight_rules",["require","exports","module","ace/lib/deep_copy"], function(require, exports, module){"use strict";
     var deepCopy = require("../lib/deep_copy").deepCopy;
     var TextHighlightRules;
     TextHighlightRules = function () {
@@ -6311,7 +6334,7 @@
     
     });
     
-    ace.define("ace/mode/behaviour",["require","exports","module"], function(require, exports, module){"use strict";
+    define("ace/mode/behaviour",["require","exports","module"], function(require, exports, module){"use strict";
     var Behaviour;
     Behaviour = function () {
         this.$behaviours = {};
@@ -6366,7 +6389,7 @@
     
     });
     
-    ace.define("ace/token_iterator",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
+    define("ace/token_iterator",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
     var Range = require("./range").Range;
     var TokenIterator = /** @class */ (function () {
         function TokenIterator(session, initialRow, initialColumn) {
@@ -6438,7 +6461,7 @@
     
     });
     
-    ace.define("ace/mode/behaviour/cstyle",["require","exports","module","ace/lib/oop","ace/mode/behaviour","ace/token_iterator","ace/lib/lang"], function(require, exports, module){"use strict";
+    define("ace/mode/behaviour/cstyle",["require","exports","module","ace/lib/oop","ace/mode/behaviour","ace/token_iterator","ace/lib/lang"], function(require, exports, module){"use strict";
     var oop = require("../../lib/oop");
     var Behaviour = require("../behaviour").Behaviour;
     var TokenIterator = require("../../token_iterator").TokenIterator;
@@ -6870,7 +6893,7 @@
     
     });
     
-    ace.define("ace/unicode",["require","exports","module"], function(require, exports, module){"use strict";
+    define("ace/unicode",["require","exports","module"], function(require, exports, module){"use strict";
     var wordChars = [48, 9, 8, 25, 5, 0, 2, 25, 48, 0, 11, 0, 5, 0, 6, 22, 2, 30, 2, 457, 5, 11, 15, 4, 8, 0, 2, 0, 18, 116, 2, 1, 3, 3, 9, 0, 2, 2, 2, 0, 2, 19, 2, 82, 2, 138, 2, 4, 3, 155, 12, 37, 3, 0, 8, 38, 10, 44, 2, 0, 2, 1, 2, 1, 2, 0, 9, 26, 6, 2, 30, 10, 7, 61, 2, 9, 5, 101, 2, 7, 3, 9, 2, 18, 3, 0, 17, 58, 3, 100, 15, 53, 5, 0, 6, 45, 211, 57, 3, 18, 2, 5, 3, 11, 3, 9, 2, 1, 7, 6, 2, 2, 2, 7, 3, 1, 3, 21, 2, 6, 2, 0, 4, 3, 3, 8, 3, 1, 3, 3, 9, 0, 5, 1, 2, 4, 3, 11, 16, 2, 2, 5, 5, 1, 3, 21, 2, 6, 2, 1, 2, 1, 2, 1, 3, 0, 2, 4, 5, 1, 3, 2, 4, 0, 8, 3, 2, 0, 8, 15, 12, 2, 2, 8, 2, 2, 2, 21, 2, 6, 2, 1, 2, 4, 3, 9, 2, 2, 2, 2, 3, 0, 16, 3, 3, 9, 18, 2, 2, 7, 3, 1, 3, 21, 2, 6, 2, 1, 2, 4, 3, 8, 3, 1, 3, 2, 9, 1, 5, 1, 2, 4, 3, 9, 2, 0, 17, 1, 2, 5, 4, 2, 2, 3, 4, 1, 2, 0, 2, 1, 4, 1, 4, 2, 4, 11, 5, 4, 4, 2, 2, 3, 3, 0, 7, 0, 15, 9, 18, 2, 2, 7, 2, 2, 2, 22, 2, 9, 2, 4, 4, 7, 2, 2, 2, 3, 8, 1, 2, 1, 7, 3, 3, 9, 19, 1, 2, 7, 2, 2, 2, 22, 2, 9, 2, 4, 3, 8, 2, 2, 2, 3, 8, 1, 8, 0, 2, 3, 3, 9, 19, 1, 2, 7, 2, 2, 2, 22, 2, 15, 4, 7, 2, 2, 2, 3, 10, 0, 9, 3, 3, 9, 11, 5, 3, 1, 2, 17, 4, 23, 2, 8, 2, 0, 3, 6, 4, 0, 5, 5, 2, 0, 2, 7, 19, 1, 14, 57, 6, 14, 2, 9, 40, 1, 2, 0, 3, 1, 2, 0, 3, 0, 7, 3, 2, 6, 2, 2, 2, 0, 2, 0, 3, 1, 2, 12, 2, 2, 3, 4, 2, 0, 2, 5, 3, 9, 3, 1, 35, 0, 24, 1, 7, 9, 12, 0, 2, 0, 2, 0, 5, 9, 2, 35, 5, 19, 2, 5, 5, 7, 2, 35, 10, 0, 58, 73, 7, 77, 3, 37, 11, 42, 2, 0, 4, 328, 2, 3, 3, 6, 2, 0, 2, 3, 3, 40, 2, 3, 3, 32, 2, 3, 3, 6, 2, 0, 2, 3, 3, 14, 2, 56, 2, 3, 3, 66, 5, 0, 33, 15, 17, 84, 13, 619, 3, 16, 2, 25, 6, 74, 22, 12, 2, 6, 12, 20, 12, 19, 13, 12, 2, 2, 2, 1, 13, 51, 3, 29, 4, 0, 5, 1, 3, 9, 34, 2, 3, 9, 7, 87, 9, 42, 6, 69, 11, 28, 4, 11, 5, 11, 11, 39, 3, 4, 12, 43, 5, 25, 7, 10, 38, 27, 5, 62, 2, 28, 3, 10, 7, 9, 14, 0, 89, 75, 5, 9, 18, 8, 13, 42, 4, 11, 71, 55, 9, 9, 4, 48, 83, 2, 2, 30, 14, 230, 23, 280, 3, 5, 3, 37, 3, 5, 3, 7, 2, 0, 2, 0, 2, 0, 2, 30, 3, 52, 2, 6, 2, 0, 4, 2, 2, 6, 4, 3, 3, 5, 5, 12, 6, 2, 2, 6, 67, 1, 20, 0, 29, 0, 14, 0, 17, 4, 60, 12, 5, 0, 4, 11, 18, 0, 5, 0, 3, 9, 2, 0, 4, 4, 7, 0, 2, 0, 2, 0, 2, 3, 2, 10, 3, 3, 6, 4, 5, 0, 53, 1, 2684, 46, 2, 46, 2, 132, 7, 6, 15, 37, 11, 53, 10, 0, 17, 22, 10, 6, 2, 6, 2, 6, 2, 6, 2, 6, 2, 6, 2, 6, 2, 6, 2, 31, 48, 0, 470, 1, 36, 5, 2, 4, 6, 1, 5, 85, 3, 1, 3, 2, 2, 89, 2, 3, 6, 40, 4, 93, 18, 23, 57, 15, 513, 6581, 75, 20939, 53, 1164, 68, 45, 3, 268, 4, 27, 21, 31, 3, 13, 13, 1, 2, 24, 9, 69, 11, 1, 38, 8, 3, 102, 3, 1, 111, 44, 25, 51, 13, 68, 12, 9, 7, 23, 4, 0, 5, 45, 3, 35, 13, 28, 4, 64, 15, 10, 39, 54, 10, 13, 3, 9, 7, 22, 4, 1, 5, 66, 25, 2, 227, 42, 2, 1, 3, 9, 7, 11171, 13, 22, 5, 48, 8453, 301, 3, 61, 3, 105, 39, 6, 13, 4, 6, 11, 2, 12, 2, 4, 2, 0, 2, 1, 2, 1, 2, 107, 34, 362, 19, 63, 3, 53, 41, 11, 5, 15, 17, 6, 13, 1, 25, 2, 33, 4, 2, 134, 20, 9, 8, 25, 5, 0, 2, 25, 12, 88, 4, 5, 3, 5, 3, 5, 3, 2];
     var code = 0;
     var str = [];
@@ -6883,7 +6906,7 @@
     
     });
     
-    ace.define("ace/mode/text",["require","exports","module","ace/config","ace/tokenizer","ace/mode/text_highlight_rules","ace/mode/behaviour/cstyle","ace/unicode","ace/lib/lang","ace/token_iterator","ace/range"], function(require, exports, module){"use strict";
+    define("ace/mode/text",["require","exports","module","ace/config","ace/tokenizer","ace/mode/text_highlight_rules","ace/mode/behaviour/cstyle","ace/unicode","ace/lib/lang","ace/token_iterator","ace/range"], function(require, exports, module){"use strict";
     var config = require("../config");
     var Tokenizer = require("../tokenizer").Tokenizer;
     var TextHighlightRules = require("./text_highlight_rules").TextHighlightRules;
@@ -7209,7 +7232,7 @@
     
     });
     
-    ace.define("ace/line_widgets",["require","exports","module","ace/lib/dom"], function(require, exports, module){"use strict";
+    define("ace/line_widgets",["require","exports","module","ace/lib/dom"], function(require, exports, module){"use strict";
     var dom = require("./lib/dom");
     var LineWidgets = /** @class */ (function () {
         function LineWidgets(session) {
@@ -7548,7 +7571,7 @@
     
     });
     
-    ace.define("ace/apply_delta",["require","exports","module"], function(require, exports, module){"use strict";
+    define("ace/apply_delta",["require","exports","module"], function(require, exports, module){"use strict";
     function throwDeltaError(delta, errorText) {
         console.log("Invalid Delta:", delta);
         throw "Invalid Delta: " + errorText;
@@ -7607,7 +7630,7 @@
     
     });
     
-    ace.define("ace/anchor",["require","exports","module","ace/lib/oop","ace/lib/event_emitter"], function(require, exports, module){"use strict";
+    define("ace/anchor",["require","exports","module","ace/lib/oop","ace/lib/event_emitter"], function(require, exports, module){"use strict";
     var oop = require("./lib/oop");
     var EventEmitter = require("./lib/event_emitter").EventEmitter;
     var Anchor = /** @class */ (function () {
@@ -7717,7 +7740,7 @@
     
     });
     
-    ace.define("ace/document",["require","exports","module","ace/lib/oop","ace/apply_delta","ace/lib/event_emitter","ace/range","ace/anchor"], function(require, exports, module){"use strict";
+    define("ace/document",["require","exports","module","ace/lib/oop","ace/apply_delta","ace/lib/event_emitter","ace/range","ace/anchor"], function(require, exports, module){"use strict";
     var oop = require("./lib/oop");
     var applyDelta = require("./apply_delta").applyDelta;
     var EventEmitter = require("./lib/event_emitter").EventEmitter;
@@ -8054,7 +8077,7 @@
     
     });
     
-    ace.define("ace/background_tokenizer",["require","exports","module","ace/lib/oop","ace/lib/event_emitter"], function(require, exports, module){"use strict";
+    define("ace/background_tokenizer",["require","exports","module","ace/lib/oop","ace/lib/event_emitter"], function(require, exports, module){"use strict";
     var oop = require("./lib/oop");
     var EventEmitter = require("./lib/event_emitter").EventEmitter;
     var BackgroundTokenizer = /** @class */ (function () {
@@ -8189,7 +8212,7 @@
     
     });
     
-    ace.define("ace/search_highlight",["require","exports","module","ace/lib/lang","ace/range"], function(require, exports, module){"use strict";
+    define("ace/search_highlight",["require","exports","module","ace/lib/lang","ace/range"], function(require, exports, module){"use strict";
     var lang = require("./lib/lang");
     var Range = require("./range").Range;
     var SearchHighlight = /** @class */ (function () {
@@ -8198,6 +8221,7 @@
             this.setRegexp(regExp);
             this.clazz = clazz;
             this.type = type;
+            this.docLen = 0;
         }
         SearchHighlight.prototype.setRegexp = function (regExp) {
             if (this.regExp + "" == regExp + "")
@@ -8208,19 +8232,38 @@
         SearchHighlight.prototype.update = function (html, markerLayer, session, config) {
             if (!this.regExp)
                 return;
-            var start = config.firstRow, end = config.lastRow;
+            var start = config.firstRow;
+            var end = config.lastRow;
             var renderedMarkerRanges = {};
+            var _search = session.$editor.$search;
+            var mtSearch = _search.$isMultilineSearch(session.$editor.getLastSearchOptions());
             for (var i = start; i <= end; i++) {
                 var ranges = this.cache[i];
-                if (ranges == null) {
-                    ranges = lang.getMatchOffsets(session.getLine(i), this.regExp);
-                    if (ranges.length > this.MAX_RANGES)
-                        ranges = ranges.slice(0, this.MAX_RANGES);
-                    ranges = ranges.map(function (match) {
-                        return new Range(i, match.offset, i, match.offset + match.length);
-                    });
+                if (ranges == null || session.getValue().length != this.docLen) {
+                    if (mtSearch) {
+                        ranges = [];
+                        var match = _search.$multiLineForward(session, this.regExp, i, end);
+                        if (match) {
+                            var end_row = match.endRow <= end ? match.endRow - 1 : end;
+                            if (end_row > i)
+                                i = end_row;
+                            ranges.push(new Range(match.startRow, match.startCol, match.endRow, match.endCol));
+                        }
+                        if (ranges.length > this.MAX_RANGES)
+                            ranges = ranges.slice(0, this.MAX_RANGES);
+                    }
+                    else {
+                        ranges = lang.getMatchOffsets(session.getLine(i), this.regExp);
+                        if (ranges.length > this.MAX_RANGES)
+                            ranges = ranges.slice(0, this.MAX_RANGES);
+                        ranges = ranges.map(function (match) {
+                            return new Range(i, match.offset, i, match.offset + match.length);
+                        });
+                    }
                     this.cache[i] = ranges.length ? ranges : "";
                 }
+                if (ranges.length === 0)
+                    continue;
                 for (var j = ranges.length; j--;) {
                     var rangeToAddMarkerTo = ranges[j].toScreenRange(session);
                     var rangeAsString = rangeToAddMarkerTo.toString();
@@ -8230,6 +8273,7 @@
                     markerLayer.drawSingleLineMarker(html, rangeToAddMarkerTo, this.clazz, config);
                 }
             }
+            this.docLen = session.getValue().length;
         };
         return SearchHighlight;
     }());
@@ -8238,7 +8282,7 @@
     
     });
     
-    ace.define("ace/undomanager",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
+    define("ace/undomanager",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
     var UndoManager = /** @class */ (function () {
         function UndoManager() {
             this.$keepRedoStack;
@@ -8719,7 +8763,7 @@
     
     });
     
-    ace.define("ace/edit_session/fold_line",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
+    define("ace/edit_session/fold_line",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
     var Range = require("../range").Range;
     var FoldLine = /** @class */ (function () {
         function FoldLine(foldData, folds) {
@@ -8912,7 +8956,7 @@
     
     });
     
-    ace.define("ace/range_list",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
+    define("ace/range_list",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
     var Range = require("./range").Range;
     var comparePoints = Range.comparePoints;
     var RangeList = /** @class */ (function () {
@@ -9135,7 +9179,7 @@
     
     });
     
-    ace.define("ace/edit_session/fold",["require","exports","module","ace/range_list"], function(require, exports, module){"use strict";
+    define("ace/edit_session/fold",["require","exports","module","ace/range_list"], function(require, exports, module){"use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = function (d, b) {
             extendStatics = Object.setPrototypeOf ||
@@ -9244,7 +9288,7 @@
     
     });
     
-    ace.define("ace/edit_session/folding",["require","exports","module","ace/range","ace/edit_session/fold_line","ace/edit_session/fold","ace/token_iterator","ace/mouse/mouse_event"], function(require, exports, module){// @ts-nocheck
+    define("ace/edit_session/folding",["require","exports","module","ace/range","ace/edit_session/fold_line","ace/edit_session/fold","ace/token_iterator","ace/mouse/mouse_event"], function(require, exports, module){// @ts-nocheck
     "use strict";
     var Range = require("../range").Range;
     var FoldLine = require("./fold_line").FoldLine;
@@ -9963,7 +10007,7 @@
     
     });
     
-    ace.define("ace/edit_session/bracket_match",["require","exports","module","ace/token_iterator","ace/range"], function(require, exports, module){"use strict";
+    define("ace/edit_session/bracket_match",["require","exports","module","ace/token_iterator","ace/range"], function(require, exports, module){"use strict";
     var TokenIterator = require("../token_iterator").TokenIterator;
     var Range = require("../range").Range;
     function BracketMatch() {
@@ -10316,7 +10360,7 @@
     
     });
     
-    ace.define("ace/edit_session",["require","exports","module","ace/lib/oop","ace/lib/lang","ace/bidihandler","ace/config","ace/lib/event_emitter","ace/selection","ace/mode/text","ace/range","ace/line_widgets","ace/document","ace/background_tokenizer","ace/search_highlight","ace/undomanager","ace/edit_session/folding","ace/edit_session/bracket_match"], function(require, exports, module){"use strict";
+    define("ace/edit_session",["require","exports","module","ace/lib/oop","ace/lib/lang","ace/bidihandler","ace/config","ace/lib/event_emitter","ace/selection","ace/mode/text","ace/range","ace/line_widgets","ace/document","ace/background_tokenizer","ace/search_highlight","ace/undomanager","ace/edit_session/folding","ace/edit_session/bracket_match"], function(require, exports, module){"use strict";
     var oop = require("./lib/oop");
     var lang = require("./lib/lang");
     var BidiHandler = require("./bidihandler").BidiHandler;
@@ -10841,6 +10885,9 @@
             }
             this.$modeId = path;
             config.loadModule(["mode", path], function (m) {
+                if (this.destroyed) {
+                    return;
+                }
                 if (this.$modeId !== path)
                     return cb && cb();
                 if (this.$modes[path] && !options) {
@@ -12049,7 +12096,7 @@
     
     });
     
-    ace.define("ace/search",["require","exports","module","ace/lib/lang","ace/lib/oop","ace/range"], function(require, exports, module){"use strict";
+    define("ace/search",["require","exports","module","ace/lib/lang","ace/lib/oop","ace/range"], function(require, exports, module){"use strict";
     var lang = require("./lib/lang");
     var oop = require("./lib/oop");
     var Range = require("./range").Range;
@@ -12117,11 +12164,23 @@
                 }
             }
             else {
-                for (var i = 0; i < lines.length; i++) {
-                    var matches = lang.getMatchOffsets(lines[i], re);
-                    for (var j = 0; j < matches.length; j++) {
-                        var match = matches[j];
-                        ranges.push(new Range(i, match.offset, i, match.offset + match.length));
+                for (var matches, i = 0; i < lines.length; i++) {
+                    if (this.$isMultilineSearch(options)) {
+                        var lng = lines.length - 1;
+                        matches = this.$multiLineForward(session, re, i, lng);
+                        if (matches) {
+                            var end_row = matches.endRow <= lng ? matches.endRow - 1 : lng;
+                            if (end_row > i)
+                                i = end_row;
+                            ranges.push(new Range(matches.startRow, matches.startCol, matches.endRow, matches.endCol));
+                        }
+                    }
+                    else {
+                        matches = lang.getMatchOffsets(lines[i], re);
+                        for (var j = 0; j < matches.length; j++) {
+                            var match = matches[j];
+                            ranges.push(new Range(i, match.offset, i, match.offset + match.length));
+                        }
                     }
                 }
             }
@@ -12142,6 +12201,64 @@
             }
             return ranges;
         };
+        Search.prototype.parseReplaceString = function (replaceString) {
+            var CharCode = {
+                DollarSign: 36,
+                Ampersand: 38,
+                Digit0: 48,
+                Digit1: 49,
+                Digit9: 57,
+                Backslash: 92,
+                n: 110,
+                t: 116
+            };
+            var replacement = '';
+            for (var i = 0, len = replaceString.length; i < len; i++) {
+                var chCode = replaceString.charCodeAt(i);
+                if (chCode === CharCode.Backslash) {
+                    i++;
+                    if (i >= len) {
+                        replacement += "\\";
+                        break;
+                    }
+                    var nextChCode = replaceString.charCodeAt(i);
+                    switch (nextChCode) {
+                        case CharCode.Backslash:
+                            replacement += "\\";
+                            break;
+                        case CharCode.n:
+                            replacement += "\n";
+                            break;
+                        case CharCode.t:
+                            replacement += "\t";
+                            break;
+                    }
+                    continue;
+                }
+                if (chCode === CharCode.DollarSign) {
+                    i++;
+                    if (i >= len) {
+                        replacement += "$";
+                        break;
+                    }
+                    var nextChCode_1 = replaceString.charCodeAt(i);
+                    if (nextChCode_1 === CharCode.DollarSign) {
+                        replacement += "$$";
+                        continue;
+                    }
+                    if (nextChCode_1 === CharCode.Digit0 || nextChCode_1 === CharCode.Ampersand) {
+                        replacement += "$&";
+                        continue;
+                    }
+                    if (CharCode.Digit1 <= nextChCode_1 && nextChCode_1 <= CharCode.Digit9) {
+                        replacement += "$" + replaceString[i];
+                        continue;
+                    }
+                }
+                replacement += replaceString[i];
+            }
+            return replacement || replaceString;
+        };
         Search.prototype.replace = function (input, replacement) {
             var options = this.$options;
             var re = this.$assembleRegExp(options);
@@ -12149,12 +12266,15 @@
                 return replacement;
             if (!re)
                 return;
+            var mtSearch = this.$isMultilineSearch(options);
+            if (mtSearch)
+                input = input.replace(/\r\n|\r|\n/g, "\n");
             var match = re.exec(input);
-            if (!match || match[0].length != input.length)
+            if (!match || (!mtSearch && match[0].length != input.length))
                 return null;
-            if (!options.regExp) {
-                replacement = replacement.replace(/\$/g, "$$$$");
-            }
+            replacement = options.regExp
+                ? this.parseReplaceString(replacement)
+                : replacement.replace(/\$/g, "$$$$");
             replacement = input.replace(re, replacement);
             if (options.preserveCase) {
                 replacement = replacement.split("");
@@ -12211,10 +12331,73 @@
                 }
             return re;
         };
+        Search.prototype.$isMultilineSearch = function (options) {
+            return options.re && /\\r\\n|\\r|\\n/.test(options.re.source) && options.regExp && !options.$isMultiLine;
+        };
+        Search.prototype.$multiLineForward = function (session, re, start, last) {
+            var line, chunk = chunkEnd(session, start);
+            for (var row = start; row <= last;) {
+                for (var i = 0; i < chunk; i++) {
+                    if (row > last)
+                        break;
+                    var next = session.getLine(row++);
+                    line = line == null ? next : line + "\n" + next;
+                }
+                var match = re.exec(line);
+                re.lastIndex = 0;
+                if (match) {
+                    var beforeMatch = line.slice(0, match.index).split("\n");
+                    var matchedText = match[0].split("\n");
+                    var startRow = start + beforeMatch.length - 1;
+                    var startCol = beforeMatch[beforeMatch.length - 1].length;
+                    var endRow = startRow + matchedText.length - 1;
+                    var endCol = matchedText.length == 1
+                        ? startCol + matchedText[0].length
+                        : matchedText[matchedText.length - 1].length;
+                    return {
+                        startRow: startRow,
+                        startCol: startCol,
+                        endRow: endRow,
+                        endCol: endCol
+                    };
+                }
+            }
+            return null;
+        };
+        Search.prototype.$multiLineBackward = function (session, re, endIndex, start, first) {
+            var line, chunk = chunkEnd(session, start), endMargin = session.getLine(start).length - endIndex;
+            for (var row = start; row >= first;) {
+                for (var i = 0; i < chunk && row >= first; i++) {
+                    var next = session.getLine(row--);
+                    line = line == null ? next : next + "\n" + line;
+                }
+                var match = multiLineBackwardMatch(line, re, endMargin);
+                if (match) {
+                    var beforeMatch = line.slice(0, match.index).split("\n");
+                    var matchedText = match[0].split("\n");
+                    var startRow = row + beforeMatch.length;
+                    var startCol = beforeMatch[beforeMatch.length - 1].length;
+                    var endRow = startRow + matchedText.length - 1;
+                    var endCol = matchedText.length == 1
+                        ? startCol + matchedText[0].length
+                        : matchedText[matchedText.length - 1].length;
+                    return {
+                        startRow: startRow,
+                        startCol: startCol,
+                        endRow: endRow,
+                        endCol: endCol
+                    };
+                }
+            }
+            return null;
+        };
         Search.prototype.$matchIterator = function (session, options) {
             var re = this.$assembleRegExp(options);
             if (!re)
                 return false;
+            var mtSearch = this.$isMultilineSearch(options);
+            var mtForward = this.$multiLineForward;
+            var mtBackward = this.$multiLineBackward;
             var backwards = options.backwards == true;
             var skipCurrent = options.skipCurrent != false;
             var supportsUnicodeFlag = re.unicode;
@@ -12280,45 +12463,68 @@
             }
             else if (backwards) {
                 var forEachInLine = function (row, endIndex, callback) {
-                    var line = session.getLine(row);
-                    var matches = [];
-                    var m, last = 0;
-                    re.lastIndex = 0;
-                    while ((m = re.exec(line))) {
-                        var length = m[0].length;
-                        last = m.index;
-                        if (!length) {
-                            if (last >= line.length)
-                                break;
-                            re.lastIndex = last += lang.skipEmptyMatch(line, last, supportsUnicodeFlag);
-                        }
-                        if (m.index + length > endIndex)
-                            break;
-                        matches.push(m.index, length);
-                    }
-                    for (var i = matches.length - 1; i >= 0; i -= 2) {
-                        var column = matches[i - 1];
-                        var length = matches[i];
-                        if (callback(row, column, row, column + length))
+                    if (mtSearch) {
+                        var pos = mtBackward(session, re, endIndex, row, firstRow);
+                        if (!pos)
+                            return false;
+                        if (callback(pos.startRow, pos.startCol, pos.endRow, pos.endCol))
                             return true;
+                    }
+                    else {
+                        var line = session.getLine(row);
+                        var matches = [];
+                        var m, last = 0;
+                        re.lastIndex = 0;
+                        while ((m = re.exec(line))) {
+                            var length = m[0].length;
+                            last = m.index;
+                            if (!length) {
+                                if (last >= line.length)
+                                    break;
+                                re.lastIndex = last += lang.skipEmptyMatch(line, last, supportsUnicodeFlag);
+                            }
+                            if (m.index + length > endIndex)
+                                break;
+                            matches.push(m.index, length);
+                        }
+                        for (var i = matches.length - 1; i >= 0; i -= 2) {
+                            var column = matches[i - 1];
+                            var length = matches[i];
+                            if (callback(row, column, row, column + length))
+                                return true;
+                        }
                     }
                 };
             }
             else {
                 var forEachInLine = function (row, startIndex, callback) {
-                    var line = session.getLine(row);
-                    var last;
-                    var m;
                     re.lastIndex = startIndex;
-                    while ((m = re.exec(line))) {
-                        var length = m[0].length;
-                        last = m.index;
-                        if (callback(row, last, row, last + length))
+                    if (mtSearch) {
+                        var pos = mtForward(session, re, row, lastRow);
+                        if (pos) {
+                            var end_row = pos.endRow <= lastRow ? pos.endRow - 1 : lastRow;
+                            if (end_row > row)
+                                row = end_row;
+                        }
+                        if (!pos)
+                            return false;
+                        if (callback(pos.startRow, pos.startCol, pos.endRow, pos.endCol))
                             return true;
-                        if (!length) {
-                            re.lastIndex = last += lang.skipEmptyMatch(line, last, supportsUnicodeFlag);
-                            if (last >= line.length)
-                                return false;
+                    }
+                    else {
+                        var line = session.getLine(row);
+                        var last;
+                        var m;
+                        while ((m = re.exec(line))) {
+                            var length = m[0].length;
+                            last = m.index;
+                            if (callback(row, last, row, last + length))
+                                return true;
+                            if (!length) {
+                                re.lastIndex = last += lang.skipEmptyMatch(line, last, supportsUnicodeFlag);
+                                if (last >= line.length)
+                                    return false;
+                            }
                         }
                     }
                 };
@@ -12347,11 +12553,32 @@
         var lastChar = needleArray[needleArray.length - 1];
         return wordBoundary(firstChar) + needle + wordBoundary(lastChar, false);
     }
+    function multiLineBackwardMatch(line, re, endMargin) {
+        var match = null;
+        var from = 0;
+        while (from <= line.length) {
+            re.lastIndex = from;
+            var newMatch = re.exec(line);
+            if (!newMatch)
+                break;
+            var end = newMatch.index + newMatch[0].length;
+            if (end > line.length - endMargin)
+                break;
+            if (!match || end > match.index + match[0].length)
+                match = newMatch;
+            from = newMatch.index + 1;
+        }
+        return match;
+    }
+    function chunkEnd(session, start) {
+        var base = 5000, startPosition = { row: start, column: 0 }, startIndex = session.doc.positionToIndex(startPosition), targetIndex = startIndex + base, targetPosition = session.doc.indexToPosition(targetIndex), targetLine = targetPosition.row;
+        return targetLine + 1;
+    }
     exports.Search = Search;
     
     });
     
-    ace.define("ace/keyboard/hash_handler",["require","exports","module","ace/lib/keys","ace/lib/useragent"], function(require, exports, module){"use strict";
+    define("ace/keyboard/hash_handler",["require","exports","module","ace/lib/keys","ace/lib/useragent"], function(require, exports, module){"use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = function (d, b) {
             extendStatics = Object.setPrototypeOf ||
@@ -12571,7 +12798,7 @@
     
     });
     
-    ace.define("ace/commands/command_manager",["require","exports","module","ace/lib/oop","ace/keyboard/hash_handler","ace/lib/event_emitter"], function(require, exports, module){"use strict";
+    define("ace/commands/command_manager",["require","exports","module","ace/lib/oop","ace/keyboard/hash_handler","ace/lib/event_emitter"], function(require, exports, module){"use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = function (d, b) {
             extendStatics = Object.setPrototypeOf ||
@@ -12687,7 +12914,7 @@
     
     });
     
-    ace.define("ace/commands/default_commands",["require","exports","module","ace/lib/lang","ace/config","ace/range"], function(require, exports, module){"use strict";
+    define("ace/commands/default_commands",["require","exports","module","ace/lib/lang","ace/config","ace/range"], function(require, exports, module){"use strict";
     var lang = require("../lib/lang");
     var config = require("../config");
     var Range = require("../range").Range;
@@ -13551,7 +13778,7 @@
     
     });
     
-    ace.define("ace/keyboard/gutter_handler",["require","exports","module","ace/lib/keys","ace/mouse/default_gutter_handler"], function(require, exports, module){"use strict";
+    define("ace/keyboard/gutter_handler",["require","exports","module","ace/lib/keys","ace/mouse/default_gutter_handler"], function(require, exports, module){"use strict";
     var keys = require('../lib/keys');
     var GutterTooltip = require("../mouse/default_gutter_handler").GutterTooltip;
     var GutterKeyboardHandler = /** @class */ (function () {
@@ -13915,7 +14142,7 @@
     
     });
     
-    ace.define("ace/editor",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/lang","ace/lib/useragent","ace/keyboard/textinput","ace/mouse/mouse_handler","ace/mouse/fold_handler","ace/keyboard/keybinding","ace/edit_session","ace/search","ace/range","ace/lib/event_emitter","ace/commands/command_manager","ace/commands/default_commands","ace/config","ace/token_iterator","ace/keyboard/gutter_handler","ace/config","ace/clipboard","ace/lib/keys"], function(require, exports, module){"use strict";
+    define("ace/editor",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/lang","ace/lib/useragent","ace/keyboard/textinput","ace/mouse/mouse_handler","ace/mouse/fold_handler","ace/keyboard/keybinding","ace/edit_session","ace/search","ace/range","ace/lib/event_emitter","ace/commands/command_manager","ace/commands/default_commands","ace/config","ace/token_iterator","ace/keyboard/gutter_handler","ace/config","ace/clipboard","ace/lib/keys"], function(require, exports, module){"use strict";
     var __values = (this && this.__values) || function(o) {
         var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
         if (m) return m.call(o);
@@ -15938,7 +16165,7 @@
     
     });
     
-    ace.define("ace/layer/lines",["require","exports","module","ace/lib/dom"], function(require, exports, module){"use strict";
+    define("ace/layer/lines",["require","exports","module","ace/lib/dom"], function(require, exports, module){"use strict";
     var dom = require("../lib/dom");
     var Lines = /** @class */ (function () {
         function Lines(element, canvasHeight) {
@@ -16042,7 +16269,7 @@
     
     });
     
-    ace.define("ace/layer/gutter",["require","exports","module","ace/lib/dom","ace/lib/oop","ace/lib/lang","ace/lib/event_emitter","ace/layer/lines","ace/config"], function(require, exports, module){"use strict";
+    define("ace/layer/gutter",["require","exports","module","ace/lib/dom","ace/lib/oop","ace/lib/lang","ace/lib/event_emitter","ace/layer/lines","ace/config"], function(require, exports, module){"use strict";
     var dom = require("../lib/dom");
     var oop = require("../lib/oop");
     var lang = require("../lib/lang");
@@ -16524,7 +16751,7 @@
     
     });
     
-    ace.define("ace/layer/marker",["require","exports","module","ace/range","ace/lib/dom"], function(require, exports, module){"use strict";
+    define("ace/layer/marker",["require","exports","module","ace/range","ace/lib/dom"], function(require, exports, module){"use strict";
     var Range = require("../range").Range;
     var dom = require("../lib/dom");
     var Marker = /** @class */ (function () {
@@ -16707,7 +16934,7 @@
     
     });
     
-    ace.define("ace/layer/text_util",["require","exports","module"], function(require, exports, module){// Tokens for which Ace just uses a simple TextNode and does not add any special className.
+    define("ace/layer/text_util",["require","exports","module"], function(require, exports, module){// Tokens for which Ace just uses a simple TextNode and does not add any special className.
     var textTokens = new Set(["text", "rparen", "lparen"]);
     exports.isTextToken = function (tokenType) {
         return textTokens.has(tokenType);
@@ -16715,7 +16942,7 @@
     
     });
     
-    ace.define("ace/layer/text",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/lang","ace/layer/lines","ace/lib/event_emitter","ace/config","ace/layer/text_util"], function(require, exports, module){"use strict";
+    define("ace/layer/text",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/lang","ace/layer/lines","ace/lib/event_emitter","ace/config","ace/layer/text_util"], function(require, exports, module){"use strict";
     var oop = require("../lib/oop");
     var dom = require("../lib/dom");
     var lang = require("../lib/lang");
@@ -17080,7 +17307,7 @@
                 var ranges = this.session.$bracketHighlight.ranges;
                 for (var i = 0; i < ranges.length; i++) {
                     if (cursor.row !== ranges[i].start.row) {
-                        this.$highlightIndentGuideMarker.end = ranges[i].start.row;
+                        this.$highlightIndentGuideMarker.end = ranges[i].start.row + 1;
                         if (cursor.row > ranges[i].start.row) {
                             this.$highlightIndentGuideMarker.dir = -1;
                         }
@@ -17108,24 +17335,24 @@
             this.$renderHighlightIndentGuide();
         };
         Text.prototype.$clearActiveIndentGuide = function () {
-            var cells = this.$lines.cells;
-            for (var i = 0; i < cells.length; i++) {
-                var cell = cells[i];
-                var childNodes = cell.element.childNodes;
-                if (childNodes.length > 0) {
-                    for (var j = 0; j < childNodes.length; j++) {
-                        if (childNodes[j].classList && childNodes[j].classList.contains("ace_indent-guide-active")) {
-                            childNodes[j].classList.remove("ace_indent-guide-active");
-                            break;
-                        }
-                    }
-                }
-            }
+            var activeIndentGuides = this.element.querySelectorAll(".ace_indent-guide-active");
+            activeIndentGuides.forEach(function (el) {
+                el.classList.remove("ace_indent-guide-active");
+            });
         };
         Text.prototype.$setIndentGuideActive = function (cell, indentLevel) {
             var line = this.session.doc.getLine(cell.row);
             if (line !== "") {
-                var childNodes = cell.element.childNodes;
+                var element = cell.element;
+                if (cell.element.classList && cell.element.classList.contains("ace_line_group")) {
+                    if (cell.element.childNodes.length > 0) {
+                        element = cell.element.childNodes[0];
+                    }
+                    else {
+                        return;
+                    }
+                }
+                var childNodes = element.childNodes;
                 if (childNodes) {
                     var node = childNodes[indentLevel - 1];
                     if (node && node.classList && node.classList.contains("ace_indent-guide"))
@@ -17155,7 +17382,7 @@
                     for (var i = cells.length - 1; i >= 0; i--) {
                         var cell = cells[i];
                         if (this.$highlightIndentGuideMarker.end && cell.row < this.$highlightIndentGuideMarker.start) {
-                            if (cell.row <= this.$highlightIndentGuideMarker.end)
+                            if (cell.row < this.$highlightIndentGuideMarker.end)
                                 break;
                             this.$setIndentGuideActive(cell, indentLevel);
                         }
@@ -17349,7 +17576,7 @@
     
     });
     
-    ace.define("ace/layer/cursor",["require","exports","module","ace/lib/dom"], function(require, exports, module){"use strict";
+    define("ace/layer/cursor",["require","exports","module","ace/lib/dom"], function(require, exports, module){"use strict";
     var dom = require("../lib/dom");
     var Cursor = /** @class */ (function () {
         function Cursor(parentEl) {
@@ -17547,7 +17774,7 @@
     
     });
     
-    ace.define("ace/scrollbar",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/event","ace/lib/event_emitter"], function(require, exports, module){"use strict";
+    define("ace/scrollbar",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/event","ace/lib/event_emitter"], function(require, exports, module){"use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = function (d, b) {
             extendStatics = Object.setPrototypeOf ||
@@ -17686,7 +17913,7 @@
     
     });
     
-    ace.define("ace/scrollbar_custom",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/event","ace/lib/event_emitter"], function(require, exports, module){"use strict";
+    define("ace/scrollbar_custom",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/event","ace/lib/event_emitter"], function(require, exports, module){"use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = function (d, b) {
             extendStatics = Object.setPrototypeOf ||
@@ -17925,7 +18152,7 @@
     
     });
     
-    ace.define("ace/renderloop",["require","exports","module","ace/lib/event"], function(require, exports, module){"use strict";
+    define("ace/renderloop",["require","exports","module","ace/lib/event"], function(require, exports, module){"use strict";
     var event = require("./lib/event");
     var RenderLoop = /** @class */ (function () {
         function RenderLoop(onRender, win) {
@@ -17971,7 +18198,7 @@
     
     });
     
-    ace.define("ace/layer/font_metrics",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/lang","ace/lib/event","ace/lib/useragent","ace/lib/event_emitter"], function(require, exports, module){var oop = require("../lib/oop");
+    define("ace/layer/font_metrics",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/lang","ace/lib/event","ace/lib/useragent","ace/lib/event_emitter"], function(require, exports, module){var oop = require("../lib/oop");
     var dom = require("../lib/dom");
     var lang = require("../lib/lang");
     var event = require("../lib/event");
@@ -18137,7 +18364,7 @@
     
     });
     
-    ace.define("ace/css/editor-css",["require","exports","module"], function(require, exports, module){/*
+    define("ace/css/editor-css",["require","exports","module"], function(require, exports, module){/*
     styles = []
     for (var i = 1; i < 16; i++) {
         styles.push(".ace_br" + i + "{" + (
@@ -18152,7 +18379,7 @@
     
     });
     
-    ace.define("ace/layer/decorators",["require","exports","module","ace/lib/dom","ace/lib/oop","ace/lib/event_emitter"], function(require, exports, module){"use strict";
+    define("ace/layer/decorators",["require","exports","module","ace/lib/dom","ace/lib/oop","ace/lib/event_emitter"], function(require, exports, module){"use strict";
     var dom = require("../lib/dom");
     var oop = require("../lib/oop");
     var EventEmitter = require("../lib/event_emitter").EventEmitter;
@@ -18273,7 +18500,7 @@
     
     });
     
-    ace.define("ace/virtual_renderer",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/lang","ace/config","ace/layer/gutter","ace/layer/marker","ace/layer/text","ace/layer/cursor","ace/scrollbar","ace/scrollbar","ace/scrollbar_custom","ace/scrollbar_custom","ace/renderloop","ace/layer/font_metrics","ace/lib/event_emitter","ace/css/editor-css","ace/layer/decorators","ace/lib/useragent","ace/layer/text_util"], function(require, exports, module){"use strict";
+    define("ace/virtual_renderer",["require","exports","module","ace/lib/oop","ace/lib/dom","ace/lib/lang","ace/config","ace/layer/gutter","ace/layer/marker","ace/layer/text","ace/layer/cursor","ace/scrollbar","ace/scrollbar","ace/scrollbar_custom","ace/scrollbar_custom","ace/renderloop","ace/layer/font_metrics","ace/lib/event_emitter","ace/css/editor-css","ace/layer/decorators","ace/lib/useragent","ace/layer/text_util"], function(require, exports, module){"use strict";
     var oop = require("./lib/oop");
     var dom = require("./lib/dom");
     var lang = require("./lib/lang");
@@ -18954,8 +19181,10 @@
                 this.scrollBarH.setVisible(horizScroll);
             }
             var vScrollBefore = this.$vScroll; // autosize can change vscroll value in which case we need to update longestLine
-            if (this.$maxLines && this.lineHeight > 1)
+            if (this.$maxLines && this.lineHeight > 1) {
                 this.$autosize();
+                hideScrollbars = size.height <= 2 * this.lineHeight;
+            }
             var minHeight = size.scrollerHeight + this.lineHeight;
             var scrollPastEnd = !this.$maxLines && this.$scrollPastEnd
                 ? (size.scrollerHeight - this.lineHeight) * this.$scrollPastEnd
@@ -19802,7 +20031,7 @@
     
     });
     
-    ace.define("ace/worker/worker_client",["require","exports","module","ace/lib/oop","ace/lib/net","ace/lib/event_emitter","ace/config"], function(require, exports, module) {
+    define("ace/worker/worker_client",["require","exports","module","ace/lib/oop","ace/lib/net","ace/lib/event_emitter","ace/config"], function(require, exports, module) {
     "use strict";
     
     var oop = require("../lib/oop");
@@ -20037,7 +20266,7 @@
     
     });
     
-    ace.define("ace/placeholder",["require","exports","module","ace/range","ace/lib/event_emitter","ace/lib/oop"], function(require, exports, module){"use strict";
+    define("ace/placeholder",["require","exports","module","ace/range","ace/lib/event_emitter","ace/lib/oop"], function(require, exports, module){"use strict";
     var Range = require("./range").Range;
     var EventEmitter = require("./lib/event_emitter").EventEmitter;
     var oop = require("./lib/oop");
@@ -20194,7 +20423,7 @@
     
     });
     
-    ace.define("ace/mouse/multi_select_handler",["require","exports","module","ace/lib/event","ace/lib/useragent"], function(require, exports, module){var event = require("../lib/event");
+    define("ace/mouse/multi_select_handler",["require","exports","module","ace/lib/event","ace/lib/useragent"], function(require, exports, module){var event = require("../lib/event");
     var useragent = require("../lib/useragent");
     function isSamePoint(p1, p2) {
         return p1.row == p2.row && p1.column == p2.column;
@@ -20341,7 +20570,7 @@
     
     });
     
-    ace.define("ace/commands/multi_select_commands",["require","exports","module","ace/keyboard/hash_handler"], function(require, exports, module){/**
+    define("ace/commands/multi_select_commands",["require","exports","module","ace/keyboard/hash_handler"], function(require, exports, module){/**
      * commands to enter multiselect mode
      * @type {import("../../ace-internal").Ace.Command[]}
      */
@@ -20445,7 +20674,7 @@
     
     });
     
-    ace.define("ace/multi_select",["require","exports","module","ace/range_list","ace/range","ace/selection","ace/mouse/multi_select_handler","ace/lib/event","ace/lib/lang","ace/commands/multi_select_commands","ace/search","ace/edit_session","ace/editor","ace/config"], function(require, exports, module){/**
+    define("ace/multi_select",["require","exports","module","ace/range_list","ace/range","ace/selection","ace/mouse/multi_select_handler","ace/lib/event","ace/lib/lang","ace/commands/multi_select_commands","ace/search","ace/edit_session","ace/editor","ace/config"], function(require, exports, module){/**
      * @typedef {import("./anchor").Anchor} Anchor
      * @typedef {import("../ace-internal").Ace.Point} Point
      * @typedef {import("../ace-internal").Ace.ScreenCoordinates} ScreenCoordinates
@@ -21168,7 +21397,7 @@
     
     });
     
-    ace.define("ace/mode/folding/fold_mode",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
+    define("ace/mode/folding/fold_mode",["require","exports","module","ace/range"], function(require, exports, module){"use strict";
     var Range = require("../../range").Range;
     var FoldMode = exports.FoldMode = function () { };
     (function () {
@@ -21240,7 +21469,7 @@
     
     });
     
-    ace.define("ace/ext/error_marker",["require","exports","module","ace/lib/dom","ace/range","ace/config"], function(require, exports, module){"use strict";
+    define("ace/ext/error_marker",["require","exports","module","ace/lib/dom","ace/range","ace/config"], function(require, exports, module){"use strict";
     var dom = require("../lib/dom");
     var Range = require("../range").Range;
     var nls = require("../config").nls;
@@ -21373,7 +21602,7 @@
     
     });
     
-    ace.define("ace/ace",["require","exports","module","ace/lib/dom","ace/range","ace/editor","ace/edit_session","ace/undomanager","ace/virtual_renderer","ace/worker/worker_client","ace/keyboard/hash_handler","ace/placeholder","ace/multi_select","ace/mode/folding/fold_mode","ace/theme/textmate","ace/ext/error_marker","ace/config","ace/loader_build"], function(require, exports, module){/**
+    define("ace/ace",["require","exports","module","ace/lib/dom","ace/range","ace/editor","ace/edit_session","ace/undomanager","ace/virtual_renderer","ace/worker/worker_client","ace/keyboard/hash_handler","ace/placeholder","ace/multi_select","ace/mode/folding/fold_mode","ace/theme/textmate","ace/ext/error_marker","ace/config","ace/loader_build"], function(require, exports, module){/**
      * The main class required to set up an Ace instance in the browser.
      *
      * @namespace Ace
@@ -21443,10 +21672,10 @@
     exports.version = version;
     
     });            (function() {
-                    ace.require(["ace/ace"], function(a) {
+                    window.require(["ace/ace"], function(a) {
                         if (a) {
                             a.config.init(true);
-                            a.define = ace.define;
+                            a.define = window.define;
                         }
                         var global = (function () {
                             return this;
