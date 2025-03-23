@@ -450,9 +450,13 @@
 
 	<script type="text/javascript">
 
-		var isInLoading = false;
+		var extendedData = {
 
-		var editor = null;
+			is_in_loading: false,
+
+			editor: null
+			
+		}
 
 		var interpolationProject = {};
 
@@ -1076,9 +1080,9 @@
 
 		function openEditor() {
 
-			editor.setValue(getCompiledPythonCode());
+			extendedData.editor.setValue(getCompiledPythonCode());
 
-			editor.clearSelection();
+			extendedData.editor.clearSelection();
 
 			$('#modalbox-editor').css('display', 'block');
 
@@ -1120,7 +1124,7 @@
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
-			isInLoading = false;
+			extendedData.is_in_loading = false;
 
 			window.scrollTo(0, 0);
 
@@ -1128,7 +1132,7 @@
 
 		function generateDataBtn() {
 
-			isInLoading = true;
+			extendedData.is_in_loading = true;
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
@@ -1142,7 +1146,7 @@
 
 		function abortProcess(msg) {
 
-			isInLoading = false;
+			extendedData.is_in_loading = false;
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
@@ -1154,17 +1158,17 @@
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && isInLoading === false) $("#compute-interpolation-id").html('<i class="fa-solid fa-chart-line"></i>'); }
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#compute-interpolation-id").html('<i class="fa-solid fa-chart-line"></i>'); }
 
 		window.onload = () => {
 
-			editor = ace.edit("editor");
+			extendedData.editor = ace.edit("editor");
 
-			editor.setTheme("ace/theme/github_dark");
+			extendedData.editor.setTheme("ace/theme/github_dark");
 
-			editor.session.setMode("ace/mode/python");
+			extendedData.editor.session.setMode("ace/mode/python");
 
-        	editor.getSession().setOption("useWorker", false);
+        	extendedData.editor.getSession().setOption("useWorker", false);
 
 			if ($(window).width() <= 1024) $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i>');
 

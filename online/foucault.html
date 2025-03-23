@@ -246,50 +246,6 @@
 
 				<div class="modalbox-text-contenaire">
 
-                    <h2>Exemple prédéfinis:</h2>
-
-                    <p class="modalbox-description"> Sélectionnez un pendule de Foucault, déjà installé (ou ayant été installé) dans le monde, pour charger ses données caractéristiques: </p>
-					
-					<select title="Exemple:" id="example-id" onchange="loadExample($('#example-id').val());">
-
-						<option value="0" selected>Aucun</option>
-
-						<option value="1">Panthéon à Paris</option>
-
-						<option value="2">Collégiale Sainte-Waudru à Mons</option>
-
-						<option value="3">Siège des Nations unies à New York</option>
-
-						<option value="4">Temple Fukusai-ji de Nagasaki</option>
-
-						<option value="5">Cathédrale Saint-Isaac à Saint-Pétersbourg</option>
-						
-					</select>
-                
-				</div>
-
-				<div class="modalbox-text-contenaire">
-
-                    <h2>Type de graphique:</h2>
-
-                    <p class="modalbox-description"> Sélectionnez le type de graphique pour afficher les solutions du système: </p>
-					
-					<select title="Intérvalle d'affichage:" id="graph-type-id">
-
-						<option value="x(t)">Évolution de x(t)</option>
-
-						<option value="y(t)">Évolution de y(t)</option>
-
-						<option value="x(y)">Oscillations</option>
-						
-					</select>
-                
-				</div>
-
-                <div class="modalbox-line"></div>
-
-				<div class="modalbox-text-contenaire">
-
                     <h2>La latitude:</h2>
 
                     <p class="modalbox-description"> Veuillez entrer la latitude, en degrés (comprise entre 90° au pôle Nord et -90° au pôle Sud), avec un maximum de 2 décimales, de l'endroit où vous souhaitez simuler le pendule: </p>
@@ -345,6 +301,26 @@
 				</div>
 
 				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-contenaire">
+
+                    <h2>Type de graphique:</h2>
+
+                    <p class="modalbox-description"> Sélectionnez le type de graphique pour afficher les solutions du système: </p>
+					
+					<select title="Intérvalle d'affichage:" id="graph-type-id">
+
+						<option value="x(t)">Évolution de x(t)</option>
+
+						<option value="y(t)">Évolution de y(t)</option>
+
+						<option value="x(y)">Oscillations</option>
+						
+					</select>
+                
+				</div>
+
+                <div class="modalbox-line"></div>
 
 				<div class="modalbox-text-contenaire">
 
@@ -404,9 +380,13 @@
 
 	<script type="text/javascript">
 
-		var isInLoading = false;
+		var extendedData = {
 
-		var gravity = 9.81;
+			gravity: 9.81,
+
+			is_in_loading: false
+
+		}
 
 		var foucaultPendulumProject = {};
 
@@ -416,7 +396,7 @@
 
 		function getPeriodOfRevolution(latitude) { return (2 * Math.PI) / getOmega(latitude); }
 
-		function getPeriodOfOscillation(l) { return 2 * Math.PI * Math.sqrt(Number(l) / gravity); }
+		function getPeriodOfOscillation(l) { return 2 * Math.PI * Math.sqrt(Number(l) / extendedData.gravity); }
 
 		function getX0(angle, l) { return Number(l) * Math.sin(toRad(angle)); }
 		
@@ -428,47 +408,13 @@
 
 		function convertToHoursMinutes(decimalHours) {
 
-			const hours = Math.floor(decimalHours); 
+			let hours = Math.floor(decimalHours); 
 
-			const remainingMinutes = (decimalHours - hours) * 60; 
+			let remainingMinutes = (decimalHours - hours) * 60; 
 
-			const minutes = Math.floor(remainingMinutes); 
+			let minutes = Math.floor(remainingMinutes); 
 						
 			return [hours, minutes];
-
-		}
-
-		function loadExample(number) {
-
-			let examples = {
-
-				"0": { latitude: '', length: 60, theta_0: 3, x_0: 3.140 },
-
-				"1": { latitude: '48.85', length: 67, theta_0: 5.2, x_0: 6.072 },
-
-				"2": { latitude: '50.45', length: 25, theta_0: 6.9, x_0: 3.003 },
-
-				"3": { latitude: '40.71', length: 23, theta_0: 5, x_0: 2.005 },
-
-				"4": { latitude: '32.75', length: 25, theta_0: 6.9, x_0: 3.003 },
-
-				"5": { latitude: '59.93', length: 98, theta_0: 3, x_0: 5.129 }
-
-			};
-
-			let data = examples[Number(number)];
-
-			$("#latitude-value-id").val(data.latitude);
-
-			$("#length-value-id").val(data.length);
-
-			$("#length-id").html(data.length + "m");
-
-			$('#initial-angle-value-id').val(data.theta_0);
-
-			$("#initial-angle-id").html(data.theta_0 + "°");
-
-			$("#initial-position-id").html(data.x_0 + "m");
 
 		}
 
@@ -502,9 +448,9 @@
 
 			dydt[1] = y[3];  
 
-			dydt[2] = 2 * foucaultPendulumProject.omega * y[3] - (gravity / foucaultPendulumProject.length) * y[0];  
+			dydt[2] = 2 * foucaultPendulumProject.omega * y[3] - (extendedData.gravity / foucaultPendulumProject.length) * y[0];  
 
-			dydt[3] = -2 * foucaultPendulumProject.omega * y[2] - (gravity / foucaultPendulumProject.length) * y[1];  
+			dydt[3] = -2 * foucaultPendulumProject.omega * y[2] - (extendedData.gravity / foucaultPendulumProject.length) * y[1];  
 
 			return dydt;
 
@@ -526,13 +472,13 @@
 
 			};
 
-			const solution = math.solveODE(foucaultSystem, tSpan, init, options);
+			let solution = math.solveODE(foucaultSystem, tSpan, init, options);
 
-			const times = solution.t;
+			let times = solution.t;
 
-			const xVal = solution.y.map(state => state[0]); 
+			let xVal = solution.y.map(state => state[0]); 
 
-			const yVal = solution.y.map(state => state[1]);  
+			let yVal = solution.y.map(state => state[1]);  
 
 			return [times, xVal, yVal];
 
@@ -860,7 +806,7 @@
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
-			isInLoading = false;
+			extendedData.is_in_loading = false;
 
 			window.scrollTo(0, 0);
 
@@ -868,7 +814,7 @@
 
 		function generateDataBtn() {
 
-			isInLoading = true;
+			extendedData.is_in_loading = true;
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
@@ -882,7 +828,7 @@
 
 		function abortProcess(msg) {
 
-			isInLoading = false;
+			extendedData.is_in_loading = false;
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
@@ -894,7 +840,7 @@
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && isInLoading === false) $("#solve-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); }
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#solve-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); }
 
 		window.onload = () => {
 

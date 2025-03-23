@@ -430,13 +430,17 @@
 
 	<script type="text/javascript">
 
-		var isInLoading = false;
+		var extendedData = {
 
-		var numPoints = 1000;
+			is_in_loading: false,
 
-		var isRun = false;
+			number_of_points: 1000,
 
-        var currentTime = 0;
+			is_run: false,
+
+			time_controller: 0
+
+		};
 
 		var wavesSimulationProject = {};
 
@@ -466,25 +470,25 @@
 
 		function createPlot() {
 
-			currentTime = 0;
+			extendedData.time_controller = 0;
 
-			wavesSimulationData["wave_x"] = new Array(numPoints).fill(0);
+			wavesSimulationData["wave_x"] = new Array(extendedData.number_of_points).fill(0);
 
-			wavesSimulationData["wave_1_y"] = new Array(numPoints).fill(0);
+			wavesSimulationData["wave_1_y"] = new Array(extendedData.number_of_points).fill(0);
 
-			wavesSimulationData["wave_2_y"] = new Array(numPoints).fill(0);
+			wavesSimulationData["wave_2_y"] = new Array(extendedData.number_of_points).fill(0);
 
-			wavesSimulationData["wave_3_y"] = new Array(numPoints).fill(0);
+			wavesSimulationData["wave_3_y"] = new Array(extendedData.number_of_points).fill(0);
 
-			for (var i = 0; i < numPoints; i++) {
+			for (var i = 0; i < extendedData.number_of_points; i++) {
 
-				let t = i / numPoints * 10;
+				let t = i / extendedData.number_of_points * 10;
 
 				wavesSimulationData["wave_x"][i] = t;
 
-				wavesSimulationData["wave_1_y"][i] = wavesSimulationProject.amplitude_1 * Math.sin(wavesSimulationProject.wave_number_1 * t + wavesSimulationProject.angular_frequency_1 * (currentTime / 1000) + wavesSimulationProject.initial_phase_1);
+				wavesSimulationData["wave_1_y"][i] = wavesSimulationProject.amplitude_1 * Math.sin(wavesSimulationProject.wave_number_1 * t + wavesSimulationProject.angular_frequency_1 * (extendedData.time_controller / 1000) + wavesSimulationProject.initial_phase_1);
 
-				wavesSimulationData["wave_2_y"][i] = wavesSimulationProject.amplitude_2 * Math.sin(wavesSimulationProject.wave_number_2 * t + wavesSimulationProject.angular_frequency_2 * (currentTime / 1000) + wavesSimulationProject.initial_phase_2);
+				wavesSimulationData["wave_2_y"][i] = wavesSimulationProject.amplitude_2 * Math.sin(wavesSimulationProject.wave_number_2 * t + wavesSimulationProject.angular_frequency_2 * (extendedData.time_controller / 1000) + wavesSimulationProject.initial_phase_2);
 
 				wavesSimulationData["wave_3_y"][i] = wavesSimulationData["wave_1_y"][i] + wavesSimulationData["wave_2_y"][i];
 			
@@ -644,21 +648,21 @@
 
 			Plotly.newPlot('waves-contenaire', data, layout, { staticPlot: true });
 
-			if (isRun === false) requestAnimationFrame(update);
+			if (extendedData.is_run === false) requestAnimationFrame(update);
 
-			isRun = true;
+			extendedData.is_run = true;
 
 		}
 
 		function update() {
 
-			for (var i = 0; i < numPoints; i++) {
+			for (var i = 0; i < extendedData.number_of_points; i++) {
 
-				let t = i / numPoints * 10;
+				let t = i / extendedData.number_of_points * 10;
 
-				wavesSimulationData["wave_1_y"][i] = wavesSimulationProject.amplitude_1 * Math.sin(wavesSimulationProject.wave_number_1 * t + wavesSimulationProject.angular_frequency_1 * (currentTime / 1000) + wavesSimulationProject.initial_phase_1);
+				wavesSimulationData["wave_1_y"][i] = wavesSimulationProject.amplitude_1 * Math.sin(wavesSimulationProject.wave_number_1 * t + wavesSimulationProject.angular_frequency_1 * (extendedData.time_controller / 1000) + wavesSimulationProject.initial_phase_1);
 
-				wavesSimulationData["wave_2_y"][i] = wavesSimulationProject.amplitude_2 * Math.sin(wavesSimulationProject.wave_number_2 * t + wavesSimulationProject.angular_frequency_2 * (currentTime / 1000) + wavesSimulationProject.initial_phase_2);
+				wavesSimulationData["wave_2_y"][i] = wavesSimulationProject.amplitude_2 * Math.sin(wavesSimulationProject.wave_number_2 * t + wavesSimulationProject.angular_frequency_2 * (extendedData.time_controller / 1000) + wavesSimulationProject.initial_phase_2);
 
 				wavesSimulationData["wave_3_y"][i] = wavesSimulationData["wave_1_y"][i] + wavesSimulationData["wave_2_y"][i];
 
@@ -698,7 +702,7 @@
 
 			});
 
-			currentTime += 0.75;
+			extendedData.time_controller += 0.55;
 
 			requestAnimationFrame(update);
 
@@ -748,7 +752,7 @@
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
-			isInLoading = false;
+			extendedData.is_in_loading = false;
 
 			setCorrectButtonOnMobileInModalbox();
 
@@ -758,7 +762,7 @@
 
 		function generateDataBtn() {
 
-			isInLoading = true;
+			extendedData.is_in_loading = true;
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
@@ -772,7 +776,7 @@
 
 		function abortProcess(msg) {
 
-			isInLoading = false;
+			extendedData.is_in_loading = false;
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
@@ -784,7 +788,7 @@
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && isInLoading === false) $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i>'); }
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i>'); }
 
 		window.onload = () => {
 

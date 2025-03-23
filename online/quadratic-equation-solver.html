@@ -315,7 +315,11 @@
 
 	<script type="text/javascript">
 
-		var hasRun = false;
+		var extendedData = {
+
+			is_run: false
+
+		}
 
 		function beautifyMath(numb, charTag) {
 
@@ -423,8 +427,10 @@
 
 			else {
 				
-				if (hasRun === false) $(".website-main-panel-title").html("L'équation du second degré:");
+				if (extendedData.is_run === false) $(".website-main-panel-title").html("L'équation du second degré:");
 				
+				extendedData.is_run = true;
+
 				$("#modalbox-equation").css("display", "none");
 
 				$('.overlay').css('display', 'none');
