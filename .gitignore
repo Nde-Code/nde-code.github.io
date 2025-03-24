@@ -1,1 +1,9 @@
 online/base.html
+js/leaflet.js
+assets/css/images/marker-shadow.png
+assets/css/images/marker-icon.png
+assets/css/images/marker-icon-2x.png
+assets/css/images/layers.png
+assets/css/images/layers-2x.png
+assets/css/leaflet.css
+online/maps.html

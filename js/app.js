@@ -140,7 +140,7 @@ function mobileES6WarningBox(windowSize) {
 
         $("#modalbox-warning").css('left', 'unset');
 
-        $("#modalbox-warning").css('width', modalboxSize);
+        $("#modalbox-warning").css('width', windowSize);
 
     }
 

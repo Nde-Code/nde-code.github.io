@@ -180,8 +180,6 @@
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
-							<a href="quadratic-equation-solver">Calculer une équation du second degré</a>
-
 							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
 
 							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
@@ -1178,22 +1176,19 @@
 
 			if ($(window).width() <= 768) {
 
-				$("#modalbox-interpolation").css('marginLeft', 'unset');
+				$('.modalbox-class').css({
 
-				$("#modalbox-interpolation").css('left', 'unset');
+					'marginLeft': 'unset',
 
-				$("#modalbox-interpolation").css('width', modalboxSize);
+					'left': 'unset',
 
-				$("#modalbox-editor").css('marginLeft', 'unset');
+					'width': modalboxSize
 
-				$("#modalbox-editor").css('left', 'unset');
-
-				$("#modalbox-editor").css('width', modalboxSize);
+				});
 
 			}
 
 		}
-
 	</script>
 
 </body>
