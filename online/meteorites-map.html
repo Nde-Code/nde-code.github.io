@@ -176,7 +176,7 @@
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le but du projet est de tester des services de cartographie et de me familiariser avec des bases de données. </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données sont hébergées sur une base de données Google (Firebase) en mode lecture seule pour certaines parties du fichier. Vous pouvez donc utiliser les liens vers ces données dans vos applications, notamment via les pop-ups, tout en veillant à ne pas en abuser. J'utilise le plan gratuit (Spark). </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données sont hébergées sur une base de données Google (Firebase) en mode lecture seule pour certaines parties du fichier. Vous pouvez donc utiliser les liens vers ces données dans vos applications, notamment via les pop-ups, tout en veillant à ne pas en abuser. J'utilise le plan gratuit (Spark). Afin d'éviter toute confusion ou problème technique lors de l'intégration de l'API dans vos projets, toutes les valeurs ont été converties en chaînes de caractères. </p>
                 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le service de tuiles utilisé pour la carte est OpenStreetMap (OSM). J'ai choisi ce service, bien que simple et un peu sobre, car il est entièrement gratuit et moins restrictif que d'autres solutions comme ESRI ou MapBox. Cela pourrait évoluer à l'avenir en fonction des mises à jour que j'apporterai aux projets. </p>
 
@@ -296,41 +296,45 @@
 
         function processMeteorites(data, linkTo) {
 
-            if (isValidDataFormat(data) === false) return;
+            if (isValidDataFormat(data) === false) return false;
 
-            let latitude = Number(data.latitude); 
+            else if (isNaN(data.latitude) || isNaN(data.longitude) || (Number(data.latitude) === 0 && Number(data.longitude) === 0) || Number(data.latitude) < extendedData.bounds_array[0][0] || Number(data.latitude) > extendedData.bounds_array[1][0] || Number(data.longitude) < extendedData.bounds_array[0][1] || Number(data.longitude) > extendedData.bounds_array[1][1]) return false;
 
-            let longitude = Number(data.longitude); 
+            else {
 
-            if (isNaN(latitude) || isNaN(longitude) || latitude === 0 || longitude === 0 || latitude < extendedData.bounds_array[0][0] || latitude > extendedData.bounds_array[1][0] || longitude < extendedData.bounds_array[0][1] || longitude > extendedData.bounds_array[1][1]) return;
+                let latitude = Number(data.latitude); 
+    
+                let longitude = Number(data.longitude); 
+    
+                let popUpContent = `
+    
+                    <b>Identifiant: </b> ${(data.id === '' || data.id === 'N/A' || data.id === "Unknown") ? 'Non renseigné' : data.id} <br>
+    
+                    <b>Nom: </b> ${(data.name === '' || data.name === 'N/A' || data.name === "Unknown") ? 'Non renseigné' : data.name} <br>
+    
+                    <b>Classe: </b> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : data.recclass} <br>
+    
+                    <b>Masse (en gramme): </b> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : data.mass + " g"} <br>
+    
+                    <b>Status: </b> ${(data.fall === 'Fell' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Tombée' : 'Trouvée'} <br>
+    
+                    <b>Année: </b> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} <br>
+    
+                    <b>Coordonnées: </b> (${latitude}°, ${longitude}°) <br>
+    
+                    <b>Lien vers les données: </b> <a href="${linkTo}"> [Cliquer] </a> <br>
+                
+                `;
+    
+                extendedData.last_latitude = latitude;
+    
+                extendedData.last_longitude = longitude;
+    
+                extendedData.meteorites_counter += 1;
+    
+                return L.marker([latitude, longitude]).addTo(extendedData.map).bindPopup(popUpContent);
 
-            let popUpContent = `
-
-                <b>Identifiant: </b> ${(data.id === '' || data.id === 'N/A' || data.id === "Unknown") ? 'Non renseigné' : data.id} <br>
-
-                <b>Nom: </b> ${(data.name === '' || data.name === 'N/A' || data.name === "Unknown") ? 'Non renseigné' : data.name} <br>
-
-                <b>Classe: </b> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : data.recclass} <br>
-
-                <b>Masse (en gramme): </b> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : data.mass + " g"} <br>
-
-                <b>Status: </b> ${(data.fall === 'Fell' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Tombée' : 'Trouvée'} <br>
-
-                <b>Année: </b> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} <br>
-
-                <b>Coordonnées: </b> (${latitude}°, ${longitude}°) <br>
-
-                <b>Lien vers les données: </b> <a href="${linkTo}"> [Cliquer] </a> <br>
-            
-            `;
-
-            extendedData.last_latitude = latitude;
-
-            extendedData.last_longitude = longitude;
-
-            extendedData.meteorites_counter += 1;
-
-            L.marker([latitude, longitude]).addTo(extendedData.map).bindPopup(popUpContent);
+            }
 
         }
 
