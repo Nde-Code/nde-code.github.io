@@ -347,6 +347,8 @@
 					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Bien que ce ne soit pas réellement le cas, la constante de pesanteur sur Terre (+/- 9.81 m/s<sup>2</sup>) est supposée identique par le logiciel, à toute latitude. </p>
 					
 					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Gardez en tête que le logiciel réalise une simulation en résolvant le système d'équations différentielles régissant le pendule de Foucault. Les résultats obtenus sont donc une approximation de la réalité. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si la latitude saisie ne passe pas, vérifiez que vous avez bien utilisé le point ('.') au lieu de la virgule (','). </p>
 									
 				</div>
 
@@ -781,9 +783,9 @@
 			if ($(".website-bottom .revolution-period-btn").length > 0) $(".website-bottom .revolution-period-btn").remove();
 
 			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]} heures et ${tRevHoursMinutes[1]} minutes</a>`);
-				
-			else $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]}h${tRevHoursMinutes[1]}</a>`);
-
+			
+			else $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]}h${tRevHoursMinutes[1].toString().padStart(2, '0')}</a>`);
+		
 		}
 
 		function constructHTML() {
