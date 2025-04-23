@@ -1,17 +1,20 @@
-var isES6 = true;
+var globalData = {
 
-// Pour compenser les 2 × 4 px de la bordure grise, je soustrais 8 px à la taille de la fenêtre.
-var modalboxSize = Math.round($(window).width() - 8) + "px";
+    is_ES6: true,
 
-var startingWidth = $(document).width();
+    modalbox_size: Math.round($(window).width() - 8) + "px",
+
+    starting_width: $(document).width()
+
+}
 
 document.oncontextmenu = () => { return false; }
 
 $(window).on('resize', () => {
 
-    var newWidth = $(document).width();
+    let newWidth = $(document).width();
 
-    if (startingWidth !== newWidth) document.location.reload(true);
+    if (globalData.starting_width !== newWidth) document.location.reload(true);
 
 });
 
@@ -55,6 +58,8 @@ function openAboutBox() {
             <div class="modalbox-text-contenaire">
 
                 <h2>Librairies utilisées:</h2>
+
+                <p class="modalbox-description"> Afin de rendre ce site encore plus convivial, j'utilise des bibliothèques soigneusement choisies, privilégiant celles qui sont personnalisables, légères et sécurisées, dans le but d'optimiser votre expérience utilisateur et de garantir un confort maximal. Voici celle que j'utilise actuellement: </p>
                     
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
                     
@@ -62,7 +67,7 @@ function openAboutBox() {
                    
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Math.js:</strong> pour les outils mathématiques utilisés dans mes projets. </p>
                     
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Plotly:</strong> pour dessiner des graphiques dans le navigateur. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Plotly.js:</strong> pour dessiner des graphiques dans le navigateur. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Ace.js:</strong> un petit éditeur de code écrit en JavaScript, accompagné des compléments nécessaires, notamment un ou plusieurs thèmes ainsi qu'une ou plusieurs colorations syntaxiques. </p>
 
@@ -74,7 +79,9 @@ function openAboutBox() {
                     
             <div class="modalbox-text-contenaire">
 
-                <h2>Outils utilisés:</h2>
+                <h2>Outils et ressources utilisés:</h2>
+
+                <p class="modalbox-description"> Pour créer ce site, je ne me suis pas contenté d'un simple bloc-notes et de quelques images trouvées sur Internet (d'autant plus que je porte une attention particulière aux droits d'auteur). C'est pourquoi j'ai utilisé différents outils et ressources pour le concevoir. Les voici: </p>
                     
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Visual Studio Code:</strong> pour rédiger et modifier le code de ce chaleureux site internet. </p>
                                         
@@ -84,14 +91,6 @@ function openAboutBox() {
                    
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Getavataaars:</strong> pour réaliser l'avatar sur la page d'accueil.</p>
                     
-            </div>
-
-            <div class="modalbox-line"></div>
-                    
-            <div class="modalbox-text-contenaire">
-
-                <h2>Ressources utilisées:</h2>
-                    
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Flaticon:</strong> pour les différentes ressources utilisés dans mes projets. je renseigne toujours l'utilisation de ces graphismes dans les pieds de page ou dans un fichier README.Md. </p>
                     
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
@@ -99,10 +98,26 @@ function openAboutBox() {
             </div>
 
             <div class="modalbox-line"></div>
+
+            <div class="modalbox-text-contenaire">
+
+                <h2>Services tiers:</h2>
+
+                <p class="modalbox-description"> Mon site est entièrement statique, ce qui signifie qu'aucun traitement côté serveur n'est effectué lorsque vous le consultez. Ce choix présente de nombreux avantages, mais aussi quelques inconvénients, notamment en ce qui concerne les limitations fonctionnelles. Pour certaines tâches, je dois donc faire appel à des services tiers. Je porte une attention particulière aux réglementations et au respect de la vie privée dans le choix des services que j'utilise. Voici ceux que j'utilise actuellement: </p>
+
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Firebase:</strong> Un service cloud proposé par Google permettant de créer des bases de données, des systèmes d'authentification, etc. Actuellement, je n'utilise que la base de données en temps réel, en lecture seule, et uniquement pour certains projets. </p>
+
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Goatcounter:</strong> Pour obtenir quelques statistiques sur les visites de mon site comme le nombre de visiteurs, leur localisation (pays uniquement), le système d'exploitation, ... j'utilise ces données uniquement dans le but d'améliorer le site. Bien que diantrement simpliste, GoatCounter fait partie des rares services gratuits à la fois honnêtes et pleinement respectueux des réglementations sur la vie privée, comme le RGPD. À tel point que je n'ai même pas besoin d'afficher de bannière de cookies ou d'alerte concernant la collecte de données. </p>
+
+            </div>
+
+            <div class="modalbox-line"></div>
                     
             <div class="modalbox-text-contenaire">
 
                 <h2>Licence:</h2>
+
+                <p class="modalbox-description">Bien que je ne voie pas trop l'intérêt de reprendre l'intégralité du code de mon site pour le réutiliser tel quel, j'ai tout de même décidé de le placer sous <span style="color: #28A745; font-weight: bold;">une licence permissive</span> mais <span style="color: #DC3545; font-weight: bold;">pas trop non plus</span> (ça reste à la base un site personnel, entièrement codé à la main, sans aucun outil). Si vous souhaitez simplement <span style="color: #28A745; font-weight: bold;">reprendre quelques morceaux de code ou des éléments de style</span>, pas de souci. En revanche, pour <span style="color: #DC3545; font-weight: bold;">une réutilisation plus large ou complète</span>, merci de me contacter au préalable pour qu'on en discute. Voici la licence: </p>
                     
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>GNU General Public License v3.0:</strong> consultez le dépôt GitHub du projet pour en savoir plus sur cette licence.</p>
                 
@@ -114,7 +129,7 @@ function openAboutBox() {
 
     $("#modalbox-open-div").append(aboutBoxHtml);
 
-    mobileAboutBox(modalboxSize);
+    mobileAboutBox(globalData.modalbox_size);
 
     $('.overlay').css('display', 'block');
 
@@ -136,7 +151,7 @@ function mobileAboutBox(windowSize) {
 
 function mobileES6WarningBox(windowSize) {
 
-    if ($(window).width() <= 768 && isES6 === false) {
+    if ($(window).width() <= 768 && globalData.is_ES6 === false) {
 
         $("#modalbox-warning").css('marginLeft', 'unset');
 
@@ -177,13 +192,13 @@ $('#displayMobileMenu').on('click', function () {
 
 $(document).ready(function () {
 
-    mobileAboutBox(modalboxSize);
+    mobileAboutBox(globalData.modalbox_size);
 
-    mobileES6WarningBox(modalboxSize);
+    mobileES6WarningBox(globalData.modalbox_size);
 
     if (detectES6() === false) {
 
-        isES6 = false;
+        globalData.is_ES6 = false;
 
         let invalidBrowserBox = `
         <div class="modalbox-class" id="modalbox-warning">
@@ -218,7 +233,7 @@ $(document).ready(function () {
 
         $("#modalbox-open-div").append(invalidBrowserBox);
 
-        mobileES6WarningBox(modalboxSize);
+        mobileES6WarningBox(globalData.modalbox_size);
 
     }
 

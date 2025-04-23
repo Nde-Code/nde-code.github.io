@@ -192,6 +192,8 @@
         
     </div>
 
+    <script data-goatcounter="https://nde-stats.goatcounter.com/count" async src="../js/goatcounter.js"></script>
+
     <script src="../js/jquery.js"></script>
 
     <script src="../js/leaflet.js"></script>
@@ -222,7 +224,9 @@
 
             default_view: [50.85, 4.35],
 
-            number_of_lines: 45716
+            number_of_lines: 45716,
+
+            starting_width: $(document).width()
         
         };
 
@@ -466,6 +470,14 @@
 
         };
 
+        $(window).on('resize', () => {
+
+            let newWidth = $(document).width();
+
+            if (extendedData.starting_width !== newWidth) document.location.reload(true);
+
+        });
+
         extendedData.bounds = L.latLngBounds(extendedData.bounds_array);
 
         extendedData.map = L.map('map', {
@@ -493,6 +505,8 @@
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(extendedData.map);
 
         extendedData.map.addControl(new L.Control.DropdownControl({ position: 'topright' }));
+
+        document.oncontextmenu = () => { return false; }
 
     </script>
 

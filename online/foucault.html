@@ -348,7 +348,7 @@
 					
 					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Gardez en tête que le logiciel réalise une simulation en résolvant le système d'équations différentielles régissant le pendule de Foucault. Les résultats obtenus sont donc une approximation de la réalité. </p>
 
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si la latitude saisie ne passe pas, vérifiez que vous avez bien utilisé le point ('.') au lieu de la virgule (','). </p>
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si la latitude saisie ne fonctionne pas, vérifiez que vous avez bien utilisé un point comme séparateur décimal, et non une virgule. Exemple: <span style="color: #DC3545; font-weight: bold;">48,85</span> mais <span style="color: #28A745; font-weight: bold;">48.85</span>. </p>
 									
 				</div>
 
@@ -371,6 +371,8 @@
 		</div>
 
 	</div>
+
+	<script data-goatcounter="https://nde-stats.goatcounter.com/count" async src="../js/goatcounter.js"></script>
 
 	<script src="../js/jquery.js"></script>
 
@@ -858,7 +860,7 @@
 
 				$("#modalbox-foucault").css('left', 'unset');
 
-				$("#modalbox-foucault").css('width', modalboxSize);
+				$("#modalbox-foucault").css('width', globalData.modalbox_size);
 
 			}
 
