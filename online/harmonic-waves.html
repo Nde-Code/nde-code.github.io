@@ -174,7 +174,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-waves').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="waves-btn-id" class="waves-btn">
+				<a id="waves-btn-id" class="waves-btn">
 
 					<i class="fa-solid fa-gear rotate-animation"></i>
 
@@ -797,6 +797,8 @@
 			if ($(window).width() <= 1024) $(".waves-btn").html('<i class="fa-solid fa-wave-square"></i>');
 	
 			else $(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler des ondes harmoniques');
+
+			$(".waves-btn").attr('onclick', `$('#modalbox-waves').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`)
 
 			setCorrectButtonOnMobileInModalbox();
 

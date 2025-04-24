@@ -214,7 +214,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-interpolation').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="interpolation-btn-id" class="interpolation-btn">
+				<a id="interpolation-btn-id" class="interpolation-btn">
 
 					<i class="fa-solid fa-gear rotate-animation"></i>
 
@@ -1175,6 +1175,8 @@
 			if ($(window).width() <= 1024) $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i>');
 
 			else $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i> Tracer des courbes d\'interpolation');
+
+			$(".interpolation-btn").attr('onclick', `$('#modalbox-interpolation').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`)
 
 			setCorrectButtonOnMobileInModalbox();
 

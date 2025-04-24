@@ -190,7 +190,7 @@
 
 			<div class="website-bottom">
 
-				<a onclick="$('#modalbox-foucault').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block')" id="foucault-btn-id" class="foucault-btn">
+				<a id="foucault-btn-id" class="foucault-btn">
 
 					<i class="fa-solid fa-gear rotate-animation"></i>
 
@@ -851,6 +851,8 @@
 			if ($(window).width() <= 1024) $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); 
 	
 			else $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler un pendule de Foucault');
+
+			$("#foucault-btn-id").attr('onclick', `$('#modalbox-foucault').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`)
 
 			setCorrectButtonOnMobileInModalbox();
 
