@@ -206,7 +206,7 @@
 
             default_zoom: 4,
             
-            bounds_array: [[-90, -180], [90, 180]],
+            bounds_array: [[-90, -Infinity], [90, Infinity]],
 
             bounds: null,
 
@@ -302,7 +302,7 @@
 
             if (isValidDataFormat(data) === false) return false;
 
-            else if (isNaN(data.latitude) || isNaN(data.longitude) || Number(data.latitude) === 0 || Number(data.longitude) === 0 || Number(data.latitude) < extendedData.bounds_array[0][0] || Number(data.latitude) > extendedData.bounds_array[1][0] || Number(data.longitude) < extendedData.bounds_array[0][1] || Number(data.longitude) > extendedData.bounds_array[1][1]) return false;
+            else if (isNaN(data.latitude) || isNaN(data.longitude) || Number(data.latitude) === 0 || Number(data.longitude) === 0 || Number(data.latitude) < extendedData.bounds_array[0][0] || Number(data.latitude) > (extendedData.bounds_array[1][0] - 7.5) || Number(data.longitude) < extendedData.bounds_array[0][1] || Number(data.longitude) > extendedData.bounds_array[1][1]) return false;
 
             else {
 
@@ -494,7 +494,9 @@
 
             minZoom: 4,
 
-            maxZoom: 11
+            maxZoom: 11,
+
+            worldCopyJump: true
 
         }).setView([extendedData.default_view[0], extendedData.default_view[1]], extendedData.default_zoom);
 
