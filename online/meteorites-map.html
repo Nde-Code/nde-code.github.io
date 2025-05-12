@@ -218,10 +218,6 @@
 
             used_numbers: [],
 
-            last_latitude: null,
-
-            last_longitude: null,
-
             default_view: [50.85, 4.35],
 
             number_of_lines: 31963,
@@ -327,11 +323,7 @@
                     <b>Lien vers les données: </b> <a href="${linkTo}"> [Cliquer] </a> <br>
                 
                 `;
-    
-                extendedData.last_latitude = latitude;
-    
-                extendedData.last_longitude = longitude;
-    
+            
                 extendedData.meteorites_counter += 1;
     
                 return L.marker([latitude, longitude]).addTo(extendedData.map).bindPopup(popUpContent);
@@ -403,8 +395,6 @@
                 let options = [
 
                     { text: 'Réinitialiser la vue', icon: 'fa-solid fa-refresh', color: '#9370DB', action: () => { resetView(); } }, 
-
-                    { text: 'Aller au dernier ajout', icon: 'fa-solid fa-bullseye', color: '#FFD700', action: () => { (extendedData.last_latitude === null || extendedData.last_longitude === null) ? false : goTo(extendedData.last_latitude, extendedData.last_longitude, extendedData.map.getZoom()) } }, 
 
                     { text: '<span id="meteorites-stats">Aucunes</span>', icon: 'fa-solid fa-meteor', color: '#FF5733' }, 
                     
