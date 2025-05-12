@@ -23,7 +23,7 @@
             "radioisotopes": [2, 3, 4, 5, 6, 7, 8, 9, 10],
             "atomic_masses": ["Inconnue", 3.016029, 4.002603, 5.01222, 6.018889, 7.028021, 8.033922, 9.04395, 10.05240],
             "decay_modes": [
-                "Aucun",
+                ["p", "B+"],
                 "stable",
                 "stable",
                 "n",
