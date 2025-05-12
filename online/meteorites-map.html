@@ -180,7 +180,7 @@
                 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le service de tuiles utilisé pour la carte est OpenStreetMap (OSM). J'ai choisi ce service, bien que simple et un peu sobre, car il est entièrement gratuit et moins restrictif que d'autres solutions comme ESRI ou MapBox. Cela pourrait évoluer à l'avenir en fonction des mises à jour que j'apporterai aux projets. </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Certaines météorites ne possèdent pas de latitude, de longitude (ou les deux), ces valeurs étant soit nulles, soit égales à zéro. Elles ne sont donc pas affichées sur la carte, mais comptent tout de même comme une requête. Cela explique parfois (voire souvent) la différence entre le compteur de requêtes et celui des météorites affichées. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données ont été triées afin de ne conserver que celles utiles pour ce projet. Toutes les météorites dépourvues de latitude, de longitude, ou des deux, ont été volontairement retirées afin d'alléger au maximum le fichier. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si le compteur des rejets commence à augmenter, c'est soit parce que le service de base de données est saturé, soit parce que votre connexion Internet est trop lente, voire inexistante. </p>
 
@@ -224,7 +224,7 @@
 
             default_view: [50.85, 4.35],
 
-            number_of_lines: 45716,
+            number_of_lines: 31963,
 
             starting_width: $(document).width()
         
@@ -301,8 +301,6 @@
         function processMeteorites(data, linkTo) {
 
             if (isValidDataFormat(data) === false) return false;
-
-            else if (isNaN(data.latitude) || isNaN(data.longitude) || Number(data.latitude) === 0 || Number(data.longitude) === 0 || Number(data.latitude) < extendedData.bounds_array[0][0] || Number(data.latitude) > (extendedData.bounds_array[1][0] - 7.5) || Number(data.longitude) < extendedData.bounds_array[0][1] || Number(data.longitude) > extendedData.bounds_array[1][1]) return false;
 
             else {
 
