@@ -4,6 +4,22 @@
 
 <head>
 
+	<meta charset="UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Nathan Debilloëz · Projet</title>
+
+	<meta name="description" content="Établisseur d'équations de désintégration radioactive en ligne.">
+
+	<meta name="keywords" content="Nathan Debilloëz · Projet">
+
+	<meta name="author" content="Nathan Debilloëz">
+
+	<link rel="stylesheet" href="../style.css">
+
 	<style>
 
     .radioactive-decay-btn {
@@ -38,7 +54,23 @@
 		background: #E55361;
 	}
 
-	.decay-equation-plot {
+	.chain-btn {
+		padding: 15px 30px;
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #28A745; 
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #218838; 
+		cursor: pointer;
+	}
+
+	.chain-btn:hover {
+		background: #34D058;
+	}
+
+	.decay-plot {
 		color: #005DD9;
 		font-size: 22px;
 		font-style: italic;
@@ -46,79 +78,12 @@
 		cursor: default;
 	}
 
-	.atomic-kernel {
-        display: inline-block;
-        font-family: Arial, sans-serif;
-        font-size: 22px;
-        text-align: center;
-    }
-
-    .atomic-symbol {
-        display: inline-block;
-        position: relative;
-    }
-
-    .atomic-symbol sup {
-        position: absolute;
-        top: -0.9em;
-        left: -0.9em;
-        font-size: 0.70em;
-    }
-
-    .atomic-symbol sub {
-        position: absolute;
-        bottom: -0.885em;
-        left: -0.85em;
-        font-size: 0.70em;
-    }
-
 	.atomic-arrow {
-    	margin: 0 25px; 
-
-	}
-
-	.atomic-plus {
-		margin: 0 8px; 
-	}
-
-	@media screen and (max-width: 768px) {
-		.decay-equation-plot {
-			font-size: 14px;
-		}
-	}
-
-	@media screen and (max-width: 480px) {
-		.decay-equation-plot {
-			font-size: 12px;
-		}
-
-		.atomic-plus {
-			margin: unset; 
-		}
-
-		.atomic-arrow {
-    		margin: 0 8px; 
-
-		}
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 
 	</style>
-
-	<meta charset="UTF-8">
-
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<title>Nathan Debilloëz · Projet</title>
-
-	<meta name="description" content="Établisseur d'équations de désintégration radioactive en ligne.">
-
-	<meta name="keywords" content="Nathan Debilloëz · Projet">
-
-	<meta name="author" content="Nathan Debilloëz">
-
-	<link rel="stylesheet" href="../style.css">
 
 	<link rel="stylesheet" href="../assets/css/fontawesome.css">
 
@@ -242,11 +207,11 @@
 
 				<h1 class="website-main-panel-title" id="title-id"> Logiciel de désintégration radioactive: </h1>
 
-				<div id="decay-equation-plot-id" class="decay-equation-plot" style="display: none;"></div>
+				<div id="decay-plot-id" class="decay-plot" style="display: none;"></div>
 					
 				<p class="website-main-panel-description" id="1st-mass"><i class="fa-regular fa-circle-check green"></i> Qui est gratuit et muni d'une large base de données. </p>
 					
-				<p class="website-main-panel-description" id="2nd-mass"><i class="fa-regular fa-circle-xmark red"></i> Qui ne contient pas les modes de désintégration en chaînes. </p>
+				<p class="website-main-panel-description" id="2nd-mass"><i class="fa-regular fa-circle-xmark red"></i> Qui ne prend pas en charge certains modes de désintégration. </p>
 					
 				<p class="website-main-panel-description" id="info-id"><i class="fa-regular fa-circle-dot orange"></i> Dont les masses atomiques sont tirées de diverses tables. </p>
 					
@@ -350,14 +315,16 @@
 
 					<h2>Code couleurs:</h2>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #005DD9;"></i> Indique l'équation de désintégration radioactive. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #005DD9;"></i> Indique l'équation ou les équations de désintégration radioactive. </p>
 					
 					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #F1C31B;"></i> Indique la masse atomique du noyau parent en unités de masse atomique (uma). </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #28A745;"></i> Indique la masse atomique du noyau résultant en unités de masse atomique (uma). </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #FD7E14;"></i> Indique la masse atomique, en unités de masse atomique (uma), du noyau final ainsi que celles des noyaux intermédiaires produits au cours d'une réaction en chaîne. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #DC3545;"></i> Indique le nom chimique complet du noyau résultant </p>
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #DC3545;"></i> Indique le nom chimique complet du noyau final ainsi que ceux des noyaux intermédiaires formés au cours d'une réaction en chaîne. </p>
 									
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #28A745;"></i> Bouton permettant d'afficher un rapport plus détaillé des désintégrations radioactives si la sélection correspond à une réaction en chaîne. </p>
+
 				</div>
 
 				<div class="modalbox-line"></div>
@@ -366,17 +333,15 @@
 
 					<h2>Notes:</h2>
 
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> La création de la base de données nécessaire au fonctionnement de ce logiciel a représenté un travail colossal, m'ayant demandé de nombreuses heures d'effort et la consultation de plusieurs sources différentes, afin d'élaborer une base aussi complète et précise que possible. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> La création de la base de données nécessaire au fonctionnement de ce logiciel a représenté un travail colossal, m'ayant demandé de nombreuses heures d'effort et la consultation de plusieurs sources différentes, afin d'élaborer une base aussi complète et précise que possible. Toute fois, les données sur les modes de désintégration peuvent (voir souvent) changer d'une base de données à l'autre. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Certains isotopes ont des modes de désintégration particuliers: ils se décomposent d'abord selon un mode, puis un autre... dans ces cas-là, j'ai simplement indiqué le premier mode de désintégration de l'isotope choisi. </p>
-
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Certains modes de désintégration ne sont pas pris en charge, essentiellement pour des considérations techniques (absence de formule directe pour effectuer la simulation). Cela inclut tout ce qui concerne la fission spontanée et les émissions de clusters. </p>
-
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si des radioisotopes ou des modes de désintégration ne figurent pas dans la base de données, mais que vous souhaitez que je les ajoute, n'hésitez pas à me contacter. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Certains modes de désintégration ne sont pas pris en charge, principalement pour des raisons techniques. En l'absence de formules directes permettant leur simulation, ces désintégrations nécessitent des données expérimentales ou statistiques, ce qui n'est pas réalisable dans le cadre actuel. Cela concerne notamment la fission spontanée, les émissions de clusters, ainsi que les états excités. </p>
 
 					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les modes de désintégration sont triés du plus probable au moins probable. </p>
 
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Veuillez faire preuve de prudence lors de l'utilisation des masses atomiques fournies pour le calcul de l'énergie libérée au cours d'une réaction. La précision de ces données pourrait être insuffisante pour des calculs rigoureux. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données relatives aux masses atomiques doivent être utilisées avec discernement. Ces valeurs peuvent varier d'une base de données à une autre, ce qui peut entraîner des écarts non négligeables, notamment dans les calculs d'énergie de réaction. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Dans ce logiciel, les noyaux sont représentés sous la forme (A, Z)Symbole. </p>
 														
 				</div>
 
@@ -398,6 +363,60 @@
 			
 		</div>
 
+		<div class="modalbox-class" id="modalbox-chain" style="display: none;"> 
+
+			<header class="modalbox-header-class">
+
+				Chaîne
+
+				<a class="modalbox-header-close" onclick="$('#modalbox-chain').css('display', 'none'); $('.overlay').css('display', 'none');">
+
+					<i class="fa fa-times" aria-hidden="true"></i>
+
+				</a>
+
+			</header>
+
+			<div class="modalbox-main-contenaire">
+
+				<div class="modalbox-text-contenaire">
+
+					<h2> Les équations intermédiaires impliquées dans la réaction en chaîne: </h2>
+
+					<p class="modalbox-description"> Toutes les désintégrations sont indiquées ci-dessous dans l'ordre, avec le mode précisé à chaque fois: </p>
+
+					<div id="chain-equations"></div>
+	
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-contenaire">
+
+					<h2> Le nom complet des espèces impliquées dans la réaction: </h2>
+
+					<p class="modalbox-description"> Les différentes espèces présentes dans les chaînes sont nommées ci-dessous: </p>
+	
+					<div id="chain-elements-names"></div>
+
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-contenaire">
+
+					<h2> Les masses atomiques des éléments intermédiaires: </h2>
+
+					<p class="modalbox-description"> Toutes les masses atomiques des isotopes présents dans la chaîne de désintégration sont notées ci-dessous: </p>
+	
+					<div id="chain-elements-masses"></div>
+
+				</div>
+
+			</div>
+
+		</div>
+
 	</div>
 
 	<script data-goatcounter="https://nde-stats.goatcounter.com/count" async src="../js/goatcounter.js"></script>
@@ -408,9 +427,16 @@
 
 	<script type="text/javascript">
 
+		// Coding: UTF-8
 		var extendedData = {
 
 			db_data: null,
+
+			chain_equations_html: '',
+
+			elements_names_chain_html: '',
+
+			elements_masses_chain_html: '',
 
 			is_in_loading: false,
 
@@ -418,17 +444,53 @@
 
 		}
 
-		function getElementSymbolWithAtomicNumber(atomicNumber) { return extendedData.db_data.elements.find(el => el.atomic_number === atomicNumber).symbol; }
+		function getElementSymbolWithAtomicNumber(atomicNumber) { return (extendedData.db_data.elements.find(el => el.atomic_number === atomicNumber) || {}).symbol || false; }
 
-		function getRadioisotopeWithElement(symbol, index) { return extendedData.db_data.elements.find(el => el.symbol === symbol).radioisotopes[index]; }
+		function getRadioisotopeWithElement(symbol, index) {
 
-		function getElementAtomicNumberWithSymbol(symbol) { return extendedData.db_data.elements.find(el => el.symbol === symbol).atomic_number; }
+			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
+			
+			return (element && Array.isArray(element.radioisotopes) && index < element.radioisotopes.length) ? element.radioisotopes[index] : false;
+		
+		}
 
-		function getElementNameWithSymbol(symbol) { return extendedData.db_data.elements.find(el => el.symbol === symbol).name; }
+		function getElementAtomicNumberWithSymbol(symbol) { return (extendedData.db_data.elements.find(el => el.symbol === symbol) || {}).atomic_number || false; }
 
-		function getRadioisotopeIndexWithSymbol(symbol, radioisotope) { return extendedData.db_data.elements.find(el => el.symbol === symbol).radioisotopes.indexOf(radioisotope); }
+		function getElementNameWithSymbol(symbol) { return (extendedData.db_data.elements.find(el => el.symbol === symbol) || {}).name || false; }
 
-		function getAtomicMassWithSymbol(index, symbol) { return extendedData.db_data.elements.find(el => el.symbol === symbol).atomic_masses[index]; }
+		function getRadioisotopeIndexWithSymbol(symbol, radioisotope) {
+
+			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
+
+			return (element && Array.isArray(element.radioisotopes)) ? (element.radioisotopes.includes(radioisotope) ? element.radioisotopes.indexOf(radioisotope) : false) : false;
+		
+		}
+
+		function getAtomicMassWithRadioisotopeNumber(symbol, number) {
+
+			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
+
+			if (element && Array.isArray(element.radioisotopes) && Array.isArray(element.atomic_masses)) {
+
+				let index = element.radioisotopes.indexOf(number);
+
+				return (index !== -1 && index < element.atomic_masses.length) ? element.atomic_masses[index] : false;
+
+			}
+
+			return false;
+
+		}
+
+		function getAtomicMassWithSymbol(index, symbol) {
+
+			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
+			
+			return (element && Array.isArray(element.atomic_masses) && index < element.atomic_masses.length) ? element.atomic_masses[index] : false;
+		
+		}
+
+		function hasChaine(arr) { return Array.isArray(arr) && arr.length > 1; }
 
 		function isAnArray(arr) {
 			
@@ -440,45 +502,67 @@
 
 		function decayModeString(str) {
 
-			if (str === "A") return "Alpha";
+			let decayModes = {
 
-			else if (str === "CE") return "Capture électronique";
+				"A": "α",
 
-			else if (str === "2CE") return "Double capture";
+				"CE": "CE",
 
-			else if (str === "stable") return "Stable";
+				"2CE": "2CE",
 
-			else if (str === "FS") return "Fission spontanée";
+				"stable": "Stable",
 
-			else if (str === "B-") return "Bêta moins";
+				"FS": "Fission spontanée",
 
-			else if (str === "B+") return "Bêta plus";
+				"B-": "β⁻",
 
-			else if (str === "2B-") return "Double Bêta moins";
+				"B+": "β⁺",
 
-			else if (str === "2B+") return "Double Bêta plus";
+				"2B-": "2β⁻",
 
-			else if (str === "2p") return "Émission de 2 protons";
+				"2B+": "2β⁺",
 
-			else if (str === "p") return "Émission d'un proton";
+				"5p": "5p",
 
-			else if (str === "n") return "Émission d'un neutron";
+				"2p": "2p",
 
-			else if (str === "2n") return "Émission de 2 neutrons";
+				"p": "p",
 
-			else if (str === "3n") return "Émission de 3 neutrons";
+				"n": "n",
 
-			else if (str === "4n") return "Émission de 4 neutrons";
+				"2n": "2n",
 
-			else if (str === "DC") return "Clusters";
+				"3n": "3n",
 
-			else if (str === "Aucun") return "Aucun";
+				"4n": "4n",
 
+				"d": "(2, 1)H",
+
+				"t": "(3, 1)H",
+
+				"DC": "Clusters",
+
+				"Aucun": "Aucun"
+
+			};
+
+			let parts = str.split("::");
+
+			let result = parts.map(part => {
+
+				part = part.trim();  
+				
+				return decayModes[part] || false;  
+				
+			});
+
+			if (result.every(r => r !== false)) return result.join(", ");  		
+				
 			else return false;
 
 		}
 
-		function emulateDecayMode(elem, atomicNumber, radioisotope, decayMode) {
+		function emulateDecayModes(elem, atomicNumber, radioisotope, decayModes) {
 
 			let decayConfig = {
 
@@ -496,9 +580,11 @@
 
 				"2B+": { Z: -2, A: 0 },
 
+				"p": { Z: -1, A: -1 },
+
 				"2p": { Z: -2, A: -2 },
 
-				"p": { Z: -1, A: -1 },
+				"5p": { Z: -5, A: -5 },
 
 				"n": { Z: 0, A: -1 },
 
@@ -506,29 +592,163 @@
 
 				"3n": { Z: 0, A: -3 },
 
-				"4n": { Z: 0, A: -4 }
+				"4n": { Z: 0, A: -4 },
+
+				"d": { Z: -1, A: -2 },
+
+				"t": { Z: -1, A: -3 }
 
 			};
 
-			let { Z: ZChange, A: AChange } = decayConfig[decayMode];
+			let modes = decayModes.split("::").map(m => m.trim());
 
-			let newAtomicNumber = (atomicNumber + ZChange);
+			let currentZ = atomicNumber;
 
-			let newIsotope = (radioisotope + AChange);
+			let currentA = radioisotope;
 
-			let elementSymbol = getElementSymbolWithAtomicNumber(newAtomicNumber);
+			for (let mode of modes) {
 
-			return {
+				let change = decayConfig[mode];
 
-				element: elementSymbol,
+				if (!change) continue;
 
-				full_name: getElementNameWithSymbol(elementSymbol),
+				currentZ += change.Z;
 
-				Z: newAtomicNumber,
+				currentA += change.A;
 
-				A: newIsotope
+			}
 
-			};
+			let elementSymbol = getElementSymbolWithAtomicNumber(currentZ);
+
+			return { element: elementSymbol, full_name: getElementNameWithSymbol(elementSymbol), Z: currentZ, A: currentA};
+
+		}
+
+		function generateNucleusSteps(elem, radioisotopeIndex, modes) {
+
+			let nucleusSteps = [];
+
+			let currentElement = elem;
+
+			let currentZ = getElementAtomicNumberWithSymbol(elem);
+
+			let currentA = getRadioisotopeWithElement(elem, Number(radioisotopeIndex));
+
+			nucleusSteps.push({ element: currentElement, full_name: getElementNameWithSymbol(currentElement), Z: currentZ, A: currentA });
+
+			for (let i = 0; i < modes.length; i++) {
+
+				let result = emulateDecayModes(currentElement, currentZ, currentA, modes[i]);
+
+				nucleusSteps.push(result);
+
+				currentElement = result.element;
+
+				currentZ = result.Z;
+
+				currentA = result.A;
+
+			}
+
+			return nucleusSteps;
+
+		}
+
+		function generateHTMLEquationResponse(pNucleus, dNucleus, decayMode) {
+
+			if (decayMode === "A") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> (4, 2)He <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "CE") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <span class="atomic-plus"> + </span> e<sup>-</sup> <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "2CE") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <span class="atomic-plus"> + </span> 2e<sup>-</sup> <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>2V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "B-") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  e<sup>-</sup> <span class="atomic-plus"> + </span><span style="text-decoration: overline;">V</span><sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "B+") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  e<sup>+</sup> <span class="atomic-plus"> + </span>V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "2B-") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  2e<sup>-</sup> <span class="atomic-plus"> + </span>2<span style="text-decoration: overline;">V</span><sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "2B+") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  2e<sup>+</sup> <span class="atomic-plus"> + </span>2V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "p") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> p <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "2p") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> 2p <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "5p") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> 5p <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "n") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> n <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "2n") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> 2n <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "3n") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> 3n <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "4n") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> 4n <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "d") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> (2, 1)H <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "t") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> (3, 1)H <span class="atomic-plus"> + </span> Q`;
+
+			else return "Qui n'a pu être établie...";
+
+		}
+
+		function generateHTMLChainData(steps, decayModes) {
+
+			let createParagraph = (content) => `
+
+				<p class="modalbox-description">
+
+					<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i>
+
+					${content}
+
+				</p>
+
+			`;
+
+			let elementsNamesData = steps.filter((step, index, self) => index === self.findIndex(s => s.element === step.element)).map(step =>
+
+				createParagraph(`
+
+					<span style="font-weight: bold; color: #005DD9;">${step.element}</span> à pour nom complet: 
+
+					<span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(step.element)}</span>.
+				
+				`)
+
+			).join('');
+
+			let elementsMassesData = steps.map(step =>
+
+				createParagraph(`
+
+					<span style="font-weight: bold; color: #005DD9;">(${step.A}, ${step.Z})${step.element}</span> à pour masse atomique: 
+					
+					<span style="font-weight: bold; color: #FD7E14;">${getAtomicMassWithRadioisotopeNumber(step.element, step.A)} uma</span>.
+				
+				`)
+
+			).join('');
+
+			let equationsHTML = decayModes.map((mode, i) => {
+
+				let p = steps[i];
+
+				let d = steps[i + 1];
+				
+				return createParagraph(`
+					
+					<strong>${i + 1}:</strong>
+					
+					<span style="font-weight: bold; color: #005DD9;">${generateHTMLEquationResponse(p, d, mode.trim())}</span>
+					
+					<strong>(${decayModeString(mode.trim())})</strong>
+				
+				`);
+
+			}).join('');
+
+			return [equationsHTML, elementsNamesData, elementsMassesData];
 
 		}
 
@@ -566,45 +786,45 @@
 
 				loadRadioisotopesData()
 
-					.then(result => {
+				.then(result => {
 
-						if (result) {
+					if (result) {
 						
-							$("#radioactive-decay-btn-id").attr('onclick', '$("#modalbox-decay").css("display", "block"); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
+						$("#radioactive-decay-btn-id").attr('onclick', '$("#modalbox-decay").css("display", "block"); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
 
-							if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i> Établir une équation radioactive');
+						if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i> Établir une équation radioactive');
 							
-							else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>');
+						else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>');
 
-							$.each(extendedData.db_data.elements, function (index, element) {
+						$.each(extendedData.db_data.elements, function (index, element) {
 
-								let option = $('<option>').val(element.symbol).text(`${element.name}, ${element.symbol} - Z: ${element.atomic_number}`);
+							let option = $('<option>').val(element.symbol).text(`${element.name}, ${element.symbol} - Z: ${element.atomic_number}`);
 
-								$('#element-id').append(option);
+							$('#element-id').append(option);
 
-							});
+						});
 
-							$('#element-id').val('H');
+						$('#element-id').val('H');
 
-							updateRadioisotopes();
+						updateRadioisotopes();
 
-							extendedData.is_in_loading = true;
+						extendedData.is_in_loading = true;
 
-							setCorrectButtonOnMobileInModalbox();
+						setCorrectButtonOnMobileInModalbox();
 							
-						} else {
+					} else {
 
-							$("#radioactive-decay-btn-id").attr("class", "error-btn");
+						$("#radioactive-decay-btn-id").attr("class", "error-btn");
 
-							$("#radioactive-decay-btn-id").attr('onclick', 'window.location.reload(); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
+						$("#radioactive-decay-btn-id").attr('onclick', 'window.location.reload(); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
 
-							if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-circle-xmark"></i> Une erreur s\'est produite !');
+						if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-circle-xmark"></i> Une erreur s\'est produite !');
 							
-							else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-circle-xmark"></i>');
+						else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-circle-xmark"></i>');
 
-						}
+					}
 
-					})
+				})
 
 			}, 4000)	
 			
@@ -614,11 +834,15 @@
 
 			if ($(window).width() <= 768) {
 
-				$("#modalbox-decay").css('marginLeft', 'unset');
+				$('.modalbox-class').css({
 
-				$("#modalbox-decay").css('left', 'unset');
+					'marginLeft': 'unset',
 
-				$("#modalbox-decay").css('width', globalData.modalbox_size);
+					'left': 'unset',
+
+					'width': globalData.modalbox_size
+
+				});
 
 			}
 
@@ -692,45 +916,81 @@
 
 		}
 
-		function radioactiveDecay(elem, radioisotopeIndex, decayMode) {
+		function radioactiveDecay(elem, radioisotopeIndex, decayModes) {
 
-			if (decayMode === "FS" || decayModeString(decayMode) === false || decayMode === "DC") $("#modalbox-errors-warnings-id").html("Le mode de désintégration choisi n'est actuellement pas supporté...");
+			let modes = decayModes.split("::").map(x => x.trim());
 
-			else if (decayMode === "stable") $("#modalbox-errors-warnings-id").html("L'isotope sélectionné est stable et donc il ne se désintègre pas !");
+			let errorMessages = {
 
-			else if (decayMode === "Aucun") $("#modalbox-errors-warnings-id").html("Aucun mode de désintégration n'est connu pour l'isotope sélectionné !");
+				"FS": "Le mode de désintégration choisi n'est actuellement pas supporté...",
+
+				"DC": "Le mode de désintégration choisi n'est actuellement pas supporté...",
+
+				"stable": "L'isotope sélectionné est stable et donc il ne se désintègre pas !",
+
+				"Aucun": "Aucun mode de désintégration n'est connu pour l'isotope sélectionné !"
+
+			};
+
+			let unsupported = modes.find(mode => errorMessages[mode]);
+
+			let invalid = modes.some(m => decayModeString(m) === false);
+
+			if (unsupported || invalid) {
+
+				let msg = "";
+
+				if (unsupported) msg = errorMessages[unsupported];
+
+				else msg = "Un ou plusieurs modes de désintégration sont invalides.";
+
+				$("#modalbox-errors-warnings-id").html(msg);
+
+				return;
+
+			}
 
 			else {
 
 				let mainNucleus = {"element": elem, "Z": getElementAtomicNumberWithSymbol(elem), "A": getRadioisotopeWithElement(elem, Number(radioisotopeIndex))};
 
-				let resultNucleus = emulateDecayMode(elem, getElementAtomicNumberWithSymbol(elem), getRadioisotopeWithElement(elem, Number(radioisotopeIndex)), decayMode);
+				let isAChaine = hasChaine(modes)
 
-				let mainNucleusMass = (isNaN(getAtomicMassWithSymbol(Number(radioisotopeIndex), elem)) === false) ? `≈ ${getAtomicMassWithSymbol(Number(radioisotopeIndex), elem)} uma` : 'Inconnue';
+				let nucleusSteps = generateNucleusSteps(elem, radioisotopeIndex, modes);
 
-				let resultNucleusMass = (isNaN(getAtomicMassWithSymbol(getRadioisotopeIndexWithSymbol(resultNucleus.element, resultNucleus.A), resultNucleus.element)) === false) ? `≈ ${getAtomicMassWithSymbol(getRadioisotopeIndexWithSymbol(resultNucleus.element, resultNucleus.A), resultNucleus.element)} uma` : 'Inconnue';
+				let lastNucleus = nucleusSteps[(nucleusSteps.length - 1)];
+
+				let lastIndex = getRadioisotopeIndexWithSymbol(lastNucleus.element, lastNucleus.A);
 
 				if (extendedData.is_run === false) {
 
 					$("#software-img").attr('src', '../assets/apps/atome.png');
 
 					$("#copyright-change").html(`L'icône d'atome est fait par Iconixar sur <a href="https://www.flaticon.com/free-icon/atom_3081530?term=atome&page=1&position=15&origin=search&related_id=3081530" class="copyright-link">Flaticon</a>.`);
-
+					
 					$("#software-img").attr('alt', 'Atome');
 					
 					$(".website-main-panel-title").html("L'équation de désintégration radioactive:");
-				
+
 				}
 
-				$("#decay-equation-plot-id").css('display', 'block');
+				extendedData.chain_equations_html = generateHTMLChainData(nucleusSteps, modes)[0];
+
+				extendedData.elements_names_chain_html = generateHTMLChainData(nucleusSteps, modes)[1]
 				
-				$("#decay-equation-plot-id").html(generateHTMLEquationResponse(mainNucleus, resultNucleus, decayMode));
+				extendedData.elements_masses_chain_html = generateHTMLChainData(nucleusSteps, modes)[2];
 
-				$("#1st-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau parent: <span style="font-weight: bold; color: #F1C31B;">${mainNucleusMass}</span>`);
+				$("#decay-plot-id").css('display', 'block');
 
-				$("#2nd-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau résultant: <span class="discriminant-text" style="font-weight: bold; color: #28A745;">${resultNucleusMass}</span>`);
+				$("#decay-plot-id").html(generateHTMLEquationResponse(mainNucleus, lastNucleus, modes[(modes.length - 1)]));
 
-				$("#info-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme nom complet du noyau résultant: <span style="font-weight: bold; color: #DC3545;">${resultNucleus.full_name}</span>`);
+				$("#1st-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau parent: <span style="font-weight: bold; color: #F1C31B;">${(isNaN(getAtomicMassWithSymbol(Number(radioisotopeIndex), elem)) === false) ? `≈ ${getAtomicMassWithSymbol(Number(radioisotopeIndex), elem)} uma` : 'Inconnue'}</span>`);
+
+				$("#2nd-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau résultant: <span class="discriminant-text" style="font-weight: bold; color: #FD7E14;;">${(isNaN(getAtomicMassWithSymbol(lastIndex, lastNucleus.element)) === false) ? `≈ ${getAtomicMassWithSymbol(lastIndex, lastNucleus.element)} uma` : 'Inconnue'}</span>`);
+
+				$("#info-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme nom complet du noyau résultant: <span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(lastNucleus.element)}</span>`);
+
+				(isAChaine === true) ? addChainButton() : (isAChaine === false && $(".website-bottom .chain-btn").length > 0 && $(".website-bottom .chain-btn").remove());
 
 				constructHTML();
 
@@ -740,36 +1000,30 @@
 
 		}
 
-		function generateHTMLEquationResponse(pNucleus, dNucleus, decayMode) {
+		function getChainElements() {
 
-			if (decayMode === "A") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span> a <span class="atomic-plus"> + </span> Q`;
+			$("#chain-equations").html(extendedData.chain_equations_html);
 
-			else if (decayMode === "CE") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <span class="atomic-plus"> + </span> e<sup>-</sup> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span>V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			$("#chain-elements-names").html(extendedData.elements_names_chain_html)
+			
+			$("#chain-elements-masses").html(extendedData.elements_masses_chain_html);
 
-			else if (decayMode === "2CE") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <span class="atomic-plus"> + </span> 2e<sup>-</sup> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span>2V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			$('#modalbox-chain').css('display', 'block');
 
-			else if (decayMode === "B-") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span>  e<sup>-</sup> <span class="atomic-plus"> + </span><span style="text-decoration: overline;">V</span><sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			$('.overlay').css('display', 'block');
 
-			else if (decayMode === "B+") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span>  e<sup>+</sup> <span class="atomic-plus"> + </span>V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			window.scrollTo(0, 0);
 
-			else if (decayMode === "2B-") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span>  2e<sup>-</sup> <span class="atomic-plus"> + </span>2<span style="text-decoration: overline;">V</span><sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+		}
 
-			else if (decayMode === "2B+") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span>  2e<sup>+</sup> <span class="atomic-plus"> + </span>2V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+		function addChainButton() {
 
-			else if (decayMode === "p") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span> p<sup>+</sup> <span class="atomic-plus"> + </span> Q`;
+			if ($(".website-bottom .chain-btn").length > 0) $(".website-bottom .chain-btn").remove();
 
-			else if (decayMode === "2p") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span> 2p<sup>+</sup> <span class="atomic-plus"> + </span> Q`;
-
-			else if (decayMode === "n") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span> n <span class="atomic-plus"> + </span> Q`;
-
-			else if (decayMode === "2n") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span> 2n <span class="atomic-plus"> + </span> Q`;
-
-			else if (decayMode === "3n") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span> 3n <span class="atomic-plus"> + </span> Q`;
-
-			else if (decayMode === "4n") return `<div class="atomic-symbol"><sup>${pNucleus.A} </sup> ${pNucleus.element} <sub>${pNucleus.Z} </sub></div> <i class="fa-solid fa-arrow-right atomic-arrow"></i> <div class="atomic-symbol"><sup>${dNucleus.A} </sup> ${dNucleus.element} <sub>${dNucleus.Z} </sub></div> <span class="atomic-plus"> + </span> 4n <span class="atomic-plus"> + </span> Q`;
-
-			else return "Qui n'a pu être établie...";
-
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="chain-btn" onclick="getChainElements();"><i class="fas fa-network-wired"></i> Voir les intermédiaires</a>`);
+			
+			else $(".website-bottom").append(`<a class="chain-btn" onclick="getChainElements();"><i class="fas fa-network-wired"></i> </a>`);
+		
 		}
 
 		function constructHTML() {
