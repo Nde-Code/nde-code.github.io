@@ -492,14 +492,6 @@
 
 		function hasChaine(arr) { return Array.isArray(arr) && arr.length > 1; }
 
-		function isAnArray(arr) {
-			
-			if (Object.prototype.toString.call(arr) === '[object Array]') return true
-			
-			else return false;
-		
-		}
-
 		function decayModeString(str) {
 
 			let decayModes = {
@@ -890,7 +882,7 @@
 
 				let decayModes = element.decay_modes[selectedIndex];
 
-				if (isAnArray(decayModes)) {
+				if (Array.isArray(decayModes)) {
 
 					$.each(decayModes, function (index, decay) {
 
