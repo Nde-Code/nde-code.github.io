@@ -222,11 +222,11 @@
 
             number_of_lines: 31963,
 
+            max_requests: 400,
+
             starting_width: $(document).width()
         
         };
-
-        function goTo(lat, long, zoomLevel) { return extendedData.map.setView([lat, long], zoomLevel); }
 
         function generateRandomNumber(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
@@ -338,13 +338,11 @@
 
             let randomUniqueNumber = generateUniqueRandomNumber();
 
-            if (extendedData.requests_counter >= 1250 || randomUniqueNumber === false) return;
+            if (extendedData.requests_counter >= 800 || randomUniqueNumber === false) return;
 
-            let initMaxRequests = 600;
+            let minDelay = (extendedData.requests_counter < extendedData.max_requests) ? 1 : 3;
 
-            let minDelay = (extendedData.requests_counter < initMaxRequests) ? 1 : 3;
-
-            let maxDelay = (extendedData.requests_counter < initMaxRequests) ? 1 : 6;
+            let maxDelay = (extendedData.requests_counter < extendedData.max_requests) ? 1 : 6;
             
             let firebaseURL = `https://nde-db-default-rtdb.europe-west1.firebasedatabase.app/meteorites/${randomUniqueNumber}.json`;
 
