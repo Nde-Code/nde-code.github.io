@@ -381,35 +381,11 @@
 
 				<div class="modalbox-text-contenaire">
 
-					<h2> Les équations intermédiaires impliquées dans la réaction en chaîne: </h2>
-
-					<p class="modalbox-description"> Toutes les désintégrations sont indiquées ci-dessous dans l'ordre, avec le mode précisé à chaque fois: </p>
-
 					<div id="chain-equations"></div>
 	
-				</div>
-
-				<div class="modalbox-line"></div>
-
-				<div class="modalbox-text-contenaire">
-
-					<h2> Le nom complet des espèces impliquées dans la réaction: </h2>
-
-					<p class="modalbox-description"> Les différentes espèces présentes dans les chaînes sont nommées ci-dessous: </p>
-	
-					<div id="chain-elements-names"></div>
-
-				</div>
-
-				<div class="modalbox-line"></div>
-
-				<div class="modalbox-text-contenaire">
-
-					<h2> Les masses atomiques des éléments intermédiaires: </h2>
-
-					<p class="modalbox-description"> Toutes les masses atomiques des isotopes présents dans la chaîne de désintégration sont notées ci-dessous: </p>
-	
 					<div id="chain-elements-masses"></div>
+					
+					<div id="chain-elements-names"></div>
 
 				</div>
 
@@ -729,13 +705,11 @@
 				let d = steps[i + 1];
 				
 				return createParagraph(`
-					
-					<strong>${i + 1}:</strong>
-					
+											
+					Réaction ${i + 1}, suivant le mode ${decayModeString(mode.trim())}:
+											
 					<span style="font-weight: bold; color: #005DD9;">${generateHTMLEquationResponse(p, d, mode.trim())}</span>
-					
-					<strong>(${decayModeString(mode.trim())})</strong>
-				
+									
 				`);
 
 			}).join('');
@@ -926,69 +900,65 @@
 
 			let unsupported = modes.find(mode => errorMessages[mode]);
 
-			let invalid = modes.some(m => decayModeString(m) === false);
+			let invalid = modes.some(mode => decayModeString(mode) === false);
 
 			if (unsupported || invalid) {
 
-				let msg = "";
-
-				if (unsupported) msg = errorMessages[unsupported];
-
-				else msg = "Un ou plusieurs modes de désintégration sont invalides.";
-
+				let msg = unsupported ? errorMessages[unsupported] : "Un ou plusieurs modes de désintégration sont invalides.";
+				
 				$("#modalbox-errors-warnings-id").html(msg);
-
+				
 				return;
 
 			}
 
-			else {
+			let mainNucleus = { element: elem, Z: getElementAtomicNumberWithSymbol(elem), A: getRadioisotopeWithElement(elem, Number(radioisotopeIndex)) };
 
-				let mainNucleus = {"element": elem, "Z": getElementAtomicNumberWithSymbol(elem), "A": getRadioisotopeWithElement(elem, Number(radioisotopeIndex))};
+			let nucleusSteps = generateNucleusSteps(elem, radioisotopeIndex, modes);
+			
+			let lastNucleus = nucleusSteps[(nucleusSteps.length - 1)];
+			
+			let lastIndex = getRadioisotopeIndexWithSymbol(lastNucleus.element, lastNucleus.A);
+			
+			let isDecayChain = hasChaine(modes);
 
-				let isAChaine = hasChaine(modes)
+			if (isDecayChain) {
 
-				let nucleusSteps = generateNucleusSteps(elem, radioisotopeIndex, modes);
+				let [chainHTML, namesHTML, massesHTML] = generateHTMLChainData(nucleusSteps, modes);
 
-				let lastNucleus = nucleusSteps[(nucleusSteps.length - 1)];
-
-				let lastIndex = getRadioisotopeIndexWithSymbol(lastNucleus.element, lastNucleus.A);
-
-				if (extendedData.is_run === false) {
-
-					$("#software-img").attr('src', '../assets/apps/atome.png');
-
-					$("#copyright-change").html(`L'icône d'atome est fait par Iconixar sur <a href="https://www.flaticon.com/free-icon/atom_3081530?term=atome&page=1&position=15&origin=search&related_id=3081530" class="copyright-link">Flaticon</a>.`);
-					
-					$("#software-img").attr('alt', 'Atome');
-					
-					$(".website-main-panel-title").html("L'équation de désintégration radioactive:");
-
-				}
-
-				extendedData.chain_equations_html = generateHTMLChainData(nucleusSteps, modes)[0];
-
-				extendedData.elements_names_chain_html = generateHTMLChainData(nucleusSteps, modes)[1]
-				
-				extendedData.elements_masses_chain_html = generateHTMLChainData(nucleusSteps, modes)[2];
-
-				$("#decay-plot-id").css('display', 'block');
-
-				$("#decay-plot-id").html(generateHTMLEquationResponse(mainNucleus, lastNucleus, modes[(modes.length - 1)]));
-
-				$("#1st-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau parent: <span style="font-weight: bold; color: #F1C31B;">${(isNaN(getAtomicMassWithSymbol(Number(radioisotopeIndex), elem)) === false) ? `≈ ${getAtomicMassWithSymbol(Number(radioisotopeIndex), elem)} uma` : 'Inconnue'}</span>`);
-
-				$("#2nd-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau résultant: <span class="discriminant-text" style="font-weight: bold; color: #FD7E14;;">${(isNaN(getAtomicMassWithSymbol(lastIndex, lastNucleus.element)) === false) ? `≈ ${getAtomicMassWithSymbol(lastIndex, lastNucleus.element)} uma` : 'Inconnue'}</span>`);
-
-				$("#info-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme nom complet du noyau résultant: <span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(lastNucleus.element)}</span>`);
-
-				(isAChaine === true) ? addChainButton() : (isAChaine === false && $(".website-bottom .chain-btn").length > 0 && $(".website-bottom .chain-btn").remove());
-
-				constructHTML();
-
-				extendedData.is_run = true;
+				Object.assign(extendedData, { chain_equations_html: chainHTML, elements_names_chain_html: namesHTML, elements_masses_chain_html: massesHTML });
+			
+				addChainButton();
 
 			}
+
+			if (!extendedData.is_run) {
+
+				$("#software-img").attr({ src: "../assets/apps/atome.png",alt: "Atome" });
+				
+				$("#copyright-change").html(`L'icône d'atome est fait par Iconixar sur <a href="https://www.flaticon.com/free-icon/atom_3081530?term=atome&page=1&position=15&origin=search&related_id=3081530" class="copyright-link">Flaticon</a>.`);
+				
+				$(".website-main-panel-title").html("L'équation de désintégration radioactive:");
+			
+			}
+
+			$("#decay-plot-id").css('display', 'block').html(generateHTMLEquationResponse(mainNucleus, lastNucleus, modes[modes.length - 1]));
+
+			let parentMass = getAtomicMassWithSymbol(Number(radioisotopeIndex), elem);
+			
+			let resultMass = getAtomicMassWithSymbol(lastIndex, lastNucleus.element);
+			
+			$("#1st-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau parent: <span style="font-weight: bold; color: #F1C31B;">${!isNaN(parentMass) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
+			
+			$("#2nd-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau résultant: <span class="discriminant-text" style="font-weight: bold; color: #FD7E14;">${!isNaN(resultMass) ? `≈ ${resultMass} uma` : 'Inconnue'}</span>`);
+
+			$("#info-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme nom complet du noyau résultant: <span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(lastNucleus.element)}</span>`);
+
+			if ($(".website-bottom .chain-btn").length > 0 && isDecayChain === false) $(".website-bottom .chain-btn").remove();
+
+			constructHTML();
+
+			extendedData.is_run = true;
 
 		}
 
