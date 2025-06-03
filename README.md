@@ -41,6 +41,12 @@ Comme précisé dans la section "Informations" du site, le code source est diffu
   - Goatcounter: https://www.goatcounter.com/ 
   > Interdiction d'utiliser mon script sur votre site ! Si cela devait arriver, je le remarquerai rapidement et des mesures seront prises.
 
+# Notes
+
+  - La carte interactive des chutes de météorites sur Terre utilise les données issues de la base [Meteorite Landings](https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh) de la NASA (domaine public). Le fichier compilé (de CSV à JSON) est mis à disposition (mais vidé des données inutiles ou trop incomplètes), tandis que le projet s’appuie sur Firebase pour son fonctionnement.
+
+  - La base de données utilisée dans mon logiciel de désintégration radioactive a été entièrement réalisée par moi, en m’appuyant sur diverses sources. Ce fut un travail conséquent. Deux fichiers sont à disposition : un plus lisible pour être modifié, l’autre minimisé pour optimiser au maximum le logiciel en ligne. Vous pouvez l’utiliser librement, mais un petit crédit serait très apprécié.
+
 # Licence:
 
 ## GNU General Public License v3.0
