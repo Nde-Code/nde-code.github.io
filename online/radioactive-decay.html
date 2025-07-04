@@ -420,13 +420,13 @@
 
 		}
 
-		function getElementSymbolWithAtomicNumber(atomicNumber) { return (extendedData.db_data.elements.find(el => el.atomic_number === Number(atomicNumber)) || {}).symbol || false; }
+		function getElementSymbolWithAtomicNumber(atomicNumber) { return (extendedData.db_data.elements.find(el => el.atomic_number === atomicNumber) || {}).symbol || false; }
 
 		function getRadioisotopeWithElement(symbol, index) {
 
 			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
 			
-			return (element && Array.isArray(element.radioisotopes) && Number(index) < element.radioisotopes.length) ? element.radioisotopes[Number(index)] : false;
+			return (element && Array.isArray(element.radioisotopes) && index < element.radioisotopes.length) ? element.radioisotopes[index] : false;
 		
 		}
 
@@ -462,7 +462,7 @@
 
 			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
 			
-			return (element && Array.isArray(element.atomic_masses) && Number(index) < element.atomic_masses.length) ? element.atomic_masses[Number(index)] : false;
+			return (element && Array.isArray(element.atomic_masses) && index < element.atomic_masses.length) ? element.atomic_masses[index] : false;
 		
 		}
 
@@ -946,7 +946,7 @@
 
 			let parentMass = getAtomicMassWithSymbol(Number(radioisotopeIndex), elem);
 			
-			let resultMass = getAtomicMassWithSymbol(lastIndex, lastNucleus.element);
+			let resultMass = getAtomicMassWithSymbol(Number(lastIndex), lastNucleus.element);
 			
 			$("#1st-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau parent: <span style="font-weight: bold; color: #F1C31B;">${!isNaN(parentMass) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
 			

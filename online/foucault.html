@@ -412,9 +412,9 @@
 
 		function convertToHoursMinutes(decimalHours) {
 
-			let hours = Math.floor(Number(decimalHours)); 
+			let hours = Math.floor(decimalHours); 
 
-			let remainingMinutes = (Number(decimalHours) - hours) * 60; 
+			let remainingMinutes = (decimalHours - hours) * 60; 
 
 			let minutes = Math.floor(remainingMinutes); 
 						
@@ -438,9 +438,9 @@
 
 		function setXAxisTick(param) {
 
-			if ($(window).width() <= 768) return [(Math.trunc(Number(param)) / 4), (Math.trunc(Number(param)) / 2)]
+			if ($(window).width() <= 768) return [(Math.trunc(param) / 4), (Math.trunc(param) / 2)]
 
-			else return [(Math.trunc(Number(param)) / 8), (Math.trunc(Number(param)) / 4)]
+			else return [(Math.trunc(param) / 8), (Math.trunc(param) / 4)]
 
 		}
 
@@ -448,13 +448,13 @@
 
 			let dydt = new Array(4).fill(0);
 
-			dydt[0] = Number(y[2]);  
+			dydt[0] = y[2];  
 
-			dydt[1] = Number(y[3]);  
+			dydt[1] = y[3];  
 
-			dydt[2] = 2 * foucaultPendulumProject.omega * Number(y[3]) - (extendedData.gravity / foucaultPendulumProject.length) * Number(y[0]);  
+			dydt[2] = 2 * foucaultPendulumProject.omega * y[3] - (extendedData.gravity / foucaultPendulumProject.length) * y[0];  
 
-			dydt[3] = -2 * foucaultPendulumProject.omega * Number(y[2]) - (extendedData.gravity / foucaultPendulumProject.length) * Number(y[1]);  
+			dydt[3] = -2 * foucaultPendulumProject.omega * y[2] - (extendedData.gravity / foucaultPendulumProject.length) * y[1];  
 
 			return dydt;
 
@@ -462,9 +462,9 @@
 
 		function solveSystem(x0, numberOfPeriods, oscillationPeriod) {
 
-			let init = [Number(x0), 0, 0, 0];
+			let init = [x0, 0, 0, 0];
 			
-			let tSpan = [0, (Number(numberOfPeriods) * Number(oscillationPeriod))]
+			let tSpan = [0, (numberOfPeriods * oscillationPeriod)]
 
 			let options = {
 
@@ -670,7 +670,7 @@
 
 			let xy0 = {
 
-				x: [Number(x0)], 
+				x: [x0], 
 				
 				y: [0], 
 
@@ -772,7 +772,7 @@
 
 						foucaultPendulumProject["period_of_revolution"] = convertToHoursMinutes(Trev);
 
-						let solutions = solveSystem(x0, numberOfPeriods, periodOfOscillation);
+						let solutions = solveSystem(x0, Number(numberOfPeriods), periodOfOscillation);
 
 						createGraph(graphType, x0, solutions, Trev);
 
@@ -792,7 +792,7 @@
 
 		function addRevolutionPeriod(Trev) {
 
-			let tRevHoursMinutes = convertToHoursMinutes(Trev);
+			let tRevHoursMinutes = convertToHoursMinutes(Number(Trev));
 
 			if ($(".website-bottom .revolution-period-btn").length > 0) $(".website-bottom .revolution-period-btn").remove();
 

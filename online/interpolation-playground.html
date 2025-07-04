@@ -480,7 +480,7 @@
 
 			for (let i = 1; i < arr.length; i++) {
 
-				if (Number(arr[i]) <= Number(arr[i - 1])) return false;
+				if (arr[i] <= arr[i - 1]) return false;
 
 			}
 
@@ -506,11 +506,11 @@
 
 			if (arr.length === 0 || Array.isArray(arr) === false) return false; 
 
-			let firstElement = Number(arr[0]);
+			let firstElement = arr[0];
 
 			for (let i = 1; i < arr.length; i++) {
 
-				if (Number(arr[i]) !== firstElement) return false;
+				if (arr[i] !== firstElement) return false;
 
 			}
 
@@ -522,7 +522,7 @@
 
 			let generatedX = [];
 
-			for (let i = Number(min); i <= Number(max); i += (1 / Number(iter))) {
+			for (let i = min; i <= max; i += (1 / iter)) {
 
 				generatedX.push(i);
 
@@ -544,11 +544,11 @@
 
 				for (let i = 0; i < n; i++) {
 
-					if (i !== j) v *= (Number(xp) - Number(x[i])) / (Number(x[j]) - Number(x[i]));
+					if (i !== j) v *= (xp - x[i]) / (x[j] - x[i]);
 
 				}
 
-				yp += v * Number(y[j]);
+				yp += v * y[j];
 
 			}
 
@@ -564,7 +564,7 @@
 
 			for (let i = 0; i < n - 1; i++) {
 
-				h[i] = Number(x[i + 1]) - Number(x[i]);
+				h[i] = x[i + 1] - x[i];
 
 			}
 
@@ -580,7 +580,7 @@
 
 				Q[i][i + 2] = h[i + 1];
 
-				p[i] = 6 * ((Number(y[i + 2]) - Number(y[i + 1])) / h[i + 1] - (Number(y[i + 1]) - Number(y[i])) / h[i]);
+				p[i] = 6 * ((y[i + 2] - y[i + 1]) / h[i + 1] - (y[i + 1] - y[i]) / h[i]);
 
 			}
 
@@ -606,9 +606,9 @@
 
 				b[i] = M[i] / 2;
 
-				c[i] = (Number(y[i + 1]) - Number(y[i])) / h[i] - (h[i] / 6) * (M[i + 1] + 2 * M[i]);
+				c[i] = (y[i + 1] - y[i]) / h[i] - (h[i] / 6) * (M[i + 1] + 2 * M[i]);
 
-				d[i] = Number(y[i]);
+				d[i] = y[i];
 
 			}
 
@@ -624,11 +624,11 @@
 
 			for (let i = 0; i < x.length - 1; i++) {
 
-				for (let j = 0; j < Number(accuracy); j++) {
+				for (let j = 0; j < accuracy; j++) {
 
-					let t = (Number(x[i]) + (j * (Number(x[i + 1]) - Number(x[i]))) / (Number(accuracy) - 1));
+					let t = (x[i] + (j * (x[i + 1] - x[i])) / (accuracy - 1));
 
-					let y_spline = (Number(a[i]) * Math.pow(t - Number(x[i]), 3) + Number(b[i]) * Math.pow(t - Number(x[i]), 2) + Number(c[i]) * (t - Number(x[i])) + Number(d[i]));
+					let y_spline = (a[i] * Math.pow(t - x[i], 3) + b[i] * Math.pow(t - x[i], 2) + c[i] * (t - x[i]) + d[i]);
 
 					splineXVal.push(t);
 
@@ -644,7 +644,7 @@
 
 		function getLeastSquaresCoefficients(x, y, m) {
 
-			let deg = Number(m + 1);
+			let deg = (m + 1);
 
     		let n = x.length;
 
@@ -654,7 +654,7 @@
 
 				for (let j = 0; j < n; j++) {
 
-					A.set([j, i], Math.pow(Number(x[j]), i));
+					A.set([j, i], Math.pow(x[j], i));
 
 				}
 
@@ -662,7 +662,7 @@
 
 			let ATA = math.multiply(math.transpose(A), A);
 
-			let ATy = math.multiply(math.transpose(A), math.matrix(y.map(item => Number(item)))); 
+			let ATy = math.multiply(math.transpose(A), math.matrix(y)); 
 
 			return math.lusolve(ATA, ATy)._data;
 
@@ -672,13 +672,13 @@
 
 			let yleastSquares = [];
 
-			for (let i = Number(min); i <= Number(max); i += (1 / Number(iter))) {
+			for (let i = min; i <= max; i += (1 / iter)) {
 
 				let y = 0;
 
 				for (let j = 0; j < coeffs.length; j++) {
 
-					y += Number(coeffs[j]) * Math.pow(i, j);
+					y += coeffs[j] * Math.pow(i, j);
 
 				}
 
@@ -822,9 +822,9 @@
 
 					zerolinewidth: 1.5,
 
-					dtick: (Number(maxX) - Number(minX)) / 10,
+					dtick: (maxX - minX) / 10,
 					
-					range: [(Number(minX) - xMargin), (Number(maxX) + xMargin)],
+					range: [(minX - xMargin), (maxX + xMargin)],
 					
 					title: {
 								
