@@ -780,6 +780,8 @@
 
 		function renderPlot(xScatter, yScatter, lagrangePlotPoints, splinePlotPoints, leastSquaresPlotPoints, minX, maxX) {
 
+			let xMargin = 0.015 * (maxX - minX);
+
 			let layout = {
 
 				displayModeBar: false,
@@ -822,7 +824,7 @@
 
 					dtick: (Number(maxX) - Number(minX)) / 10,
 					
-					range: [Number(minX - 0.25), Number(maxX + 0.25)],
+					range: [(Number(minX) - xMargin), (Number(maxX) + xMargin)],
 					
 					title: {
 								
