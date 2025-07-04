@@ -707,13 +707,13 @@
 			from numpy.polynomial.polynomial import Polynomial
 
 			# Les conditions:
-			plotLagrange = ${interpolationProject.plot_lagrange}
-			plotSpline = ${interpolationProject.plot_spline}
-			plotRegression = ${interpolationProject.plot_regression}
+			plotLagrange = ${interpolationProject.plot_lagrange.toString()}
+			plotSpline = ${interpolationProject.plot_spline.toString()}
+			plotRegression = ${interpolationProject.plot_regression.toString()}
 
 			# Les points saisis:
-			x = np.array([${interpolationProject.x}])
-			y = np.array([${interpolationProject.y}])
+			x = np.array([${interpolationProject.x.toString()}])
+			y = np.array([${interpolationProject.y.toString()}])
 
 			# Intervalle des valeurs de x pour un tracé plus précis:
 			x_fine = np.linspace(min(x), max(x), 1000)
@@ -731,7 +731,7 @@
 
 			if plotRegression:
 
-				poly_reg = np.poly1d(np.polyfit(x, y, ${interpolationProject.m}))
+				poly_reg = np.poly1d(np.polyfit(x, y, ${interpolationProject.m.toString()}))
 
 				curves['Régression Polynomiale'] = poly_reg(x_fine)
 
