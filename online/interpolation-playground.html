@@ -492,9 +492,9 @@
 
 			if (Array.isArray(arr) === false) return false;
 
-			for (elem of arr) {
+			for (let elem of arr) {
 
-				if (typeof elem !== 'number' || isNaN(elem) || elem === '' || elem > 50 || elem < -50) return false;
+				if (typeof elem !== 'number' || isNaN(elem) || elem > 50 || elem < -50) return false;
 				
 			}
 
@@ -990,9 +990,9 @@
 
 			let plotRegression = (regression === 'true') ? true : false;
 
-			let xVal = x.split(",").map(parseNumber).map(Number);
+			let xVal = x.split(",").map(parseNumber);
 
-			let yVal = y.split(",").map(parseNumber).map(Number);
+			let yVal = y.split(",").map(parseNumber);
 
 			if (!x || isFullSame(xVal) || isArrayWithOnlyValidNumbers(xVal) === false || isStrictlyIncreasing(xVal) === false || xVal.length > 15 || xVal.length < 3) {
 
@@ -1002,7 +1002,7 @@
 
 			}
 
-			else if (!y || isFullSame(yVal) || isArrayWithOnlyValidNumbers(yVal) === false || yVal.lenngth > 15 || yVal.length < 3) {
+			else if (!y || isFullSame(yVal) || isArrayWithOnlyValidNumbers(yVal) === false || yVal.length > 15 || yVal.length < 3) {
 
 				$("#modalbox-errors-warnings-id").html("Les coordonnées des points selon l'axe des Y sont invalides !");
 
@@ -1010,7 +1010,13 @@
 
 			}
 
-			else if (xVal.length !== yVal.length) $("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des X et celles selon l'axe des Y n'ont pas la même taille !");
+			else if (xVal.length !== yVal.length) {
+				
+				$("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des X et celles selon l'axe des Y n'ont pas la même taille !");
+			
+				return false
+
+			}
 
 			else {
 

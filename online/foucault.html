@@ -722,9 +722,21 @@
 
 		function solveFoucaultSystem(graphType, latitude, length, numberOfPeriods, initialAngle) {
 
-			if (!latitude || (Number(latitude) < -90) === true || (Number(latitude) > 90) === true || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false) $("#modalbox-errors-warnings-id").html("La latitude saisie est invalide.");
+			if (!latitude || isNaN(Number(latitude)) ||  Number(latitude) < -90 || Number(latitude) > 90 || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false) {
+				
+				$("#modalbox-errors-warnings-id").html("La latitude saisie est invalide.")
+			
+				return false;
 
-			else if (Number(latitude) >= -10 && Number(latitude) <= 10) $("#modalbox-errors-warnings-id").html("L'installation d'un pendule de foucault près de l'équateur est inutile.");
+			}
+
+			else if (Number(latitude) >= -10 && Number(latitude) <= 10) {
+				
+				$("#modalbox-errors-warnings-id").html("L'installation d'un pendule de foucault près de l'équateur est inutile.");
+			
+				return false;
+
+			}
 
 			else {
 				
