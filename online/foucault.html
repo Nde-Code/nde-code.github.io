@@ -248,8 +248,8 @@
 
                     <h2>La latitude:</h2>
 
-                    <p class="modalbox-description"> Veuillez entrer la latitude, en degrés (comprise entre 90° au pôle Nord et -90° au pôle Sud), avec un maximum de 2 décimales, de l'endroit où vous souhaitez simuler le pendule: </p>
-					
+                    <p class="modalbox-description"> Veuillez saisir la latitude, en degrés (comprise entre 90° au pôle Nord et -90° au pôle Sud, à l'exception de la zone entre -10° et 10°), avec un maximum de deux décimales, pour l'endroit où vous souhaitez simuler le pendule: </p>
+										
 					<input id="latitude-value-id" inputmode="numeric" class="modalbox-input" placeholder="Latitude:">
                 
 				</div>
@@ -436,13 +436,7 @@
 
 		}
 
-		function setXAxisTick(param) {
-
-			if ($(window).width() <= 768) return [(Math.trunc(param) / 4), (Math.trunc(param) / 2)]
-
-			else return [(Math.trunc(param) / 8), (Math.trunc(param) / 4)]
-
-		}
+		function setXAxisTick(param) { return ($(window).width() <= 768) ? [(Math.trunc(param) / 4), (Math.trunc(param) / 2)] : [(Math.trunc(param) / 8), (Math.trunc(param) / 4)] }
 
 		function foucaultSystem(t, y) {
 
@@ -722,17 +716,11 @@
 
 		function solveFoucaultSystem(graphType, latitude, length, numberOfPeriods, initialAngle) {
 
-			if (!latitude || isNaN(Number(latitude)) ||  Number(latitude) < -90 || Number(latitude) > 90 || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false) {
+			let latitudeNumber = Number(latitude)
+
+			if (!latitude || isNaN(latitudeNumber) ||  latitudeNumber < -90 || latitudeNumber > 90 || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false || (latitudeNumber >= -10 && latitudeNumber <= 10)) {
 				
 				$("#modalbox-errors-warnings-id").html("La latitude saisie est invalide.")
-			
-				return false;
-
-			}
-
-			else if (Number(latitude) >= -10 && Number(latitude) <= 10) {
-				
-				$("#modalbox-errors-warnings-id").html("L'installation d'un pendule de foucault près de l'équateur est inutile.");
 			
 				return false;
 
@@ -752,11 +740,11 @@
 
 						let omega = getOmega(latitude);
 
-						let Trev = (getPeriodOfRevolution(Math.abs(Number(latitude))) / 3600);
+						let Trev = (getPeriodOfRevolution(Math.abs(latitudeNumber)) / 3600);
 
 						foucaultPendulumProject = {};
 
-						foucaultPendulumProject["latitude"] = Number(latitude);
+						foucaultPendulumProject["latitude"] = latitudeNumber;
 
 						foucaultPendulumProject["length"] = Number(length);
 
@@ -792,7 +780,7 @@
 
 		function addRevolutionPeriod(Trev) {
 
-			let tRevHoursMinutes = convertToHoursMinutes(Number(Trev));
+			let tRevHoursMinutes = convertToHoursMinutes(Trev);
 
 			if ($(".website-bottom .revolution-period-btn").length > 0) $(".website-bottom .revolution-period-btn").remove();
 

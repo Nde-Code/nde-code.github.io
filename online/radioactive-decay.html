@@ -438,7 +438,7 @@
 
 			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
 
-			return (element && Array.isArray(element.radioisotopes)) ? (element.radioisotopes.includes(Number(radioisotope)) ? element.radioisotopes.indexOf(Number(radioisotope)) : false) : false;
+			return (element && Array.isArray(element.radioisotopes)) ? (element.radioisotopes.includes(radioisotope) ? element.radioisotopes.indexOf(radioisotope) : false) : false;
 		
 		}
 
@@ -448,7 +448,7 @@
 
 			if (element && Array.isArray(element.radioisotopes) && Array.isArray(element.atomic_masses)) {
 
-				let index = element.radioisotopes.indexOf(Number(number));
+				let index = element.radioisotopes.indexOf(number);
 
 				return (index !== -1 && index < element.atomic_masses.length) ? element.atomic_masses[index] : false;
 
@@ -466,7 +466,7 @@
 		
 		}
 
-		function hasChaine(arr) { return Array.isArray(arr) && arr.length > 1; }
+		function hasChaine(arr) { return (Array.isArray(arr) && arr.length > 1); }
 
 		function decayModeString(str) {
 
@@ -570,9 +570,9 @@
 
 			let modes = decayModes.split("::").map(m => m.trim());
 
-			let currentZ = Number(atomicNumber);
+			let currentZ = atomicNumber;
 
-			let currentA = Number(radioisotope);
+			let currentA = radioisotope;
 
 			for (let mode of modes) {
 
@@ -600,7 +600,7 @@
 
 			let currentZ = getElementAtomicNumberWithSymbol(elem);
 
-			let currentA = getRadioisotopeWithElement(elem, Number(radioisotopeIndex));
+			let currentA = getRadioisotopeWithElement(elem, radioisotopeIndex);
 
 			nucleusSteps.push({ element: currentElement, full_name: getElementNameWithSymbol(currentElement), Z: currentZ, A: currentA });
 
@@ -914,7 +914,7 @@
 
 			let mainNucleus = { element: elem, Z: getElementAtomicNumberWithSymbol(elem), A: getRadioisotopeWithElement(elem, Number(radioisotopeIndex)) };
 
-			let nucleusSteps = generateNucleusSteps(elem, radioisotopeIndex, modes);
+			let nucleusSteps = generateNucleusSteps(elem, Number(radioisotopeIndex), modes);
 			
 			let lastNucleus = nucleusSteps[(nucleusSteps.length - 1)];
 			
@@ -934,7 +934,7 @@
 
 			if (!extendedData.is_run) {
 
-				$("#software-img").attr({ src: "../assets/apps/atome.png",alt: "Atome" });
+				$("#software-img").attr({ src: "../assets/apps/atome.png", alt: "Atome" });
 				
 				$("#copyright-change").html(`L'icône d'atome est fait par Iconixar sur <a href="https://www.flaticon.com/free-icon/atom_3081530?term=atome&page=1&position=15&origin=search&related_id=3081530" class="copyright-link">Flaticon</a>.`);
 				
@@ -946,7 +946,7 @@
 
 			let parentMass = getAtomicMassWithSymbol(Number(radioisotopeIndex), elem);
 			
-			let resultMass = getAtomicMassWithSymbol(Number(lastIndex), lastNucleus.element);
+			let resultMass = getAtomicMassWithSymbol(lastIndex, lastNucleus.element);
 			
 			$("#1st-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau parent: <span style="font-weight: bold; color: #F1C31B;">${!isNaN(parentMass) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
 			

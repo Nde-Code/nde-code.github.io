@@ -990,11 +990,11 @@
 
 			let plotRegression = (regression === 'true') ? true : false;
 
-			let xVal = x.split(",").map(parseNumber);
+			let xVal = (x !== '') ? x.split(",").map(parseNumber) : false;
 
-			let yVal = y.split(",").map(parseNumber);
+			let yVal = (y !== '') ? y.split(",").map(parseNumber) : false;
 
-			if (!x || isFullSame(xVal) || isArrayWithOnlyValidNumbers(xVal) === false || isStrictlyIncreasing(xVal) === false || xVal.length > 15 || xVal.length < 3) {
+			if (xVal === false || isFullSame(xVal) || isArrayWithOnlyValidNumbers(xVal) === false || isStrictlyIncreasing(xVal) === false || xVal.length > 15 || xVal.length < 3) {
 
 				$("#modalbox-errors-warnings-id").html("Les coordonnées des points selon l'axe des X sont invalides !");
 
@@ -1002,7 +1002,7 @@
 
 			}
 
-			else if (!y || isFullSame(yVal) || isArrayWithOnlyValidNumbers(yVal) === false || yVal.length > 15 || yVal.length < 3) {
+			else if (yVal === false || isFullSame(yVal) || isArrayWithOnlyValidNumbers(yVal) === false || yVal.length > 15 || yVal.length < 3) {
 
 				$("#modalbox-errors-warnings-id").html("Les coordonnées des points selon l'axe des Y sont invalides !");
 
@@ -1048,22 +1048,21 @@
 
 						let splinePlot = plotSpline ? (() => {
 
-								let coeffs = getSplineCoeffs(xVal, yVal);
+							let coeffs = getSplineCoeffs(xVal, yVal);
 
-								let xySplinePlot = generateSplinePointsForPlot(xVal, coeffs[0], coeffs[1], coeffs[2], coeffs[3], iteration);
+							let xySplinePlot = generateSplinePointsForPlot(xVal, coeffs[0], coeffs[1], coeffs[2], coeffs[3], iteration);
 
-								return [xySplinePlot, true];
+							return [xySplinePlot, true];
 
-							})() : [[[], []], false];
-
+						})() : [[[], []], false];
 
 						let lagrangePlot = plotLagrange ? [xPlot, xPlot.map(x => getLagrangeInterpolationInX(x, xVal, yVal)), true] : [[], [], false];
 
 						let leastSquaresPlot = plotRegression ? (() => {
 
-								let coeffs = getLeastSquaresCoefficients(xVal, yVal, Number(deg));
+							let coeffs = getLeastSquaresCoefficients(xVal, yVal, Number(deg));
 
-								return [xPlot, generateYForLeastSquares(coeffs, minOfX, maxOfX, iteration), true];
+							return [xPlot, generateYForLeastSquares(coeffs, minOfX, maxOfX, iteration), true];
 
 						})() : [[], [], false];
 
