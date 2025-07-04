@@ -472,7 +472,7 @@
 		
 		}
 
-		function parseNumber(element) { return (element === '') ? NaN : Number(element); }
+		function parseNumber(element) { return (element.trim() === '') ? NaN : Number(element); }
 
 		function isStrictlyIncreasing(arr) {
 
