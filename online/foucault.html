@@ -116,7 +116,7 @@
 
 					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
 
-					<a onclick="openAboutBox();" class="menu-item">Informations</a>
+					<a onclick="openAboutBox();" class="menu-item">Notes</a>
 
 					<div class="menu-dropdown">
 
@@ -412,9 +412,9 @@
 
 		function convertToHoursMinutes(decimalHours) {
 
-			let hours = Math.floor(decimalHours); 
+			let hours = Math.floor(Number(decimalHours)); 
 
-			let remainingMinutes = (decimalHours - hours) * 60; 
+			let remainingMinutes = (Number(decimalHours) - hours) * 60; 
 
 			let minutes = Math.floor(remainingMinutes); 
 						
@@ -438,23 +438,23 @@
 
 		function setXAxisTick(param) {
 
-			if ($(window).width() <= 768) return [(Math.trunc(param) / 4), (Math.trunc(param) / 2)]
+			if ($(window).width() <= 768) return [(Math.trunc(Number(param)) / 4), (Math.trunc(Number(param)) / 2)]
 
-			else return [(Math.trunc(param) / 8), (Math.trunc(param) / 4)]
+			else return [(Math.trunc(Number(param)) / 8), (Math.trunc(Number(param)) / 4)]
 
 		}
 
 		function foucaultSystem(t, y) {
 
-			let dydt = new Array(4);
+			let dydt = new Array(4).fill(0);
 
-			dydt[0] = y[2];  
+			dydt[0] = Number(y[2]);  
 
-			dydt[1] = y[3];  
+			dydt[1] = Number(y[3]);  
 
-			dydt[2] = 2 * foucaultPendulumProject.omega * y[3] - (extendedData.gravity / foucaultPendulumProject.length) * y[0];  
+			dydt[2] = 2 * foucaultPendulumProject.omega * Number(y[3]) - (extendedData.gravity / foucaultPendulumProject.length) * Number(y[0]);  
 
-			dydt[3] = -2 * foucaultPendulumProject.omega * y[2] - (extendedData.gravity / foucaultPendulumProject.length) * y[1];  
+			dydt[3] = -2 * foucaultPendulumProject.omega * Number(y[2]) - (extendedData.gravity / foucaultPendulumProject.length) * Number(y[1]);  
 
 			return dydt;
 
@@ -462,9 +462,9 @@
 
 		function solveSystem(x0, numberOfPeriods, oscillationPeriod) {
 
-			let init = [x0, 0, 0, 0];
+			let init = [Number(x0), 0, 0, 0];
 			
-			let tSpan = [0, numberOfPeriods * oscillationPeriod]
+			let tSpan = [0, (Number(numberOfPeriods) * Number(oscillationPeriod))]
 
 			let options = {
 
@@ -490,11 +490,11 @@
 
 		function createGraph(graphType, x0, solutions, Trev) {
 
-			let times = solutions[0];
+			let times = solutions[0].map(elem => Number(elem));
 
-			let xDataPoints = solutions[1]; 
+			let xDataPoints = solutions[1].map(elem => Number(elem)); 
 
-			let yDataPoints = solutions[2].map((x) => x * 1000);  
+			let yDataPoints = solutions[2].map(x => Number(x) * 1000);  
 
 			let minT = Math.min(...times);
 
@@ -670,7 +670,7 @@
 
 			let xy0 = {
 
-				x: [x0], 
+				x: [Number(x0)], 
 				
 				y: [0], 
 
@@ -744,13 +744,13 @@
 
 						foucaultPendulumProject = {};
 
-						foucaultPendulumProject["latitude"] = latitude;
+						foucaultPendulumProject["latitude"] = Number(latitude);
 
-						foucaultPendulumProject["length"] = length;
+						foucaultPendulumProject["length"] = Number(length);
 
-						foucaultPendulumProject["number_of_periods"] = numberOfPeriods;
+						foucaultPendulumProject["number_of_periods"] = Number(numberOfPeriods);
 
-						foucaultPendulumProject["initial_angle"] = initialAngle;
+						foucaultPendulumProject["initial_angle"] = Number(initialAngle);
 
 						foucaultPendulumProject["x0"] = x0;
 
@@ -766,9 +766,9 @@
 
 						setCorrectButtonOnMobileInModalbox();
 
-					} catch(err) {
+					} catch(_err) {
 
-						abortProcess("Une erreur s'est produite lors du chargement des données: " + err);
+						abortProcess("Une erreur s'est produite lors du chargement des données.");
 
 					}
 					
@@ -784,9 +784,9 @@
 
 			if ($(".website-bottom .revolution-period-btn").length > 0) $(".website-bottom .revolution-period-btn").remove();
 
-			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]} heures et ${tRevHoursMinutes[1]} minutes</a>`);
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0].toString()} heures et ${tRevHoursMinutes[1].toString()} minutes</a>`);
 			
-			else $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]}h${tRevHoursMinutes[1].toString().padStart(2, '0')}</a>`);
+			else $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0].toString()}h${tRevHoursMinutes[1].toString().padStart(2, '0')}</a>`);
 		
 		}
 

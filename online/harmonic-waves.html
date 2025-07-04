@@ -100,7 +100,7 @@
 
 					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
 
-					<a onclick="openAboutBox();" class="menu-item">Informations</a>
+					<a onclick="openAboutBox();" class="menu-item">Notes</a>
 
 					<div class="menu-dropdown">
 
@@ -470,7 +470,7 @@
 
 		}
 
-		function createPlot() {
+		function initWavesData() {
 
 			extendedData.time_controller = 0;
 
@@ -495,6 +495,12 @@
 				wavesSimulationData["wave_3_y"][i] = wavesSimulationData["wave_1_y"][i] + wavesSimulationData["wave_2_y"][i];
 			
 			}
+
+		}
+
+		function createPlot() {
+
+			initWavesData();
 
 			let layout = {
 
@@ -724,9 +730,9 @@
 					
 					createPlot();	
 
-				} catch(err) {	
+				} catch(_err) {	
 
-					abortProcess("Une erreur s'est produite lors du chargement des données: " + err);	
+					abortProcess("Une erreur s'est produite lors du chargement des données.");	
 
 				}	
 

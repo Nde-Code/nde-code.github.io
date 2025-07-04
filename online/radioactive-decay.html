@@ -145,7 +145,7 @@
 
 					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
 
-					<a onclick="openAboutBox();" class="menu-item">Informations</a>
+					<a onclick="openAboutBox();" class="menu-item">Notes</a>
 
 					<div class="menu-dropdown">
 
@@ -420,13 +420,13 @@
 
 		}
 
-		function getElementSymbolWithAtomicNumber(atomicNumber) { return (extendedData.db_data.elements.find(el => el.atomic_number === atomicNumber) || {}).symbol || false; }
+		function getElementSymbolWithAtomicNumber(atomicNumber) { return (extendedData.db_data.elements.find(el => el.atomic_number === Number(atomicNumber)) || {}).symbol || false; }
 
 		function getRadioisotopeWithElement(symbol, index) {
 
 			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
 			
-			return (element && Array.isArray(element.radioisotopes) && index < element.radioisotopes.length) ? element.radioisotopes[index] : false;
+			return (element && Array.isArray(element.radioisotopes) && Number(index) < element.radioisotopes.length) ? element.radioisotopes[Number(index)] : false;
 		
 		}
 
@@ -438,7 +438,7 @@
 
 			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
 
-			return (element && Array.isArray(element.radioisotopes)) ? (element.radioisotopes.includes(radioisotope) ? element.radioisotopes.indexOf(radioisotope) : false) : false;
+			return (element && Array.isArray(element.radioisotopes)) ? (element.radioisotopes.includes(Number(radioisotope)) ? element.radioisotopes.indexOf(Number(radioisotope)) : false) : false;
 		
 		}
 
@@ -448,7 +448,7 @@
 
 			if (element && Array.isArray(element.radioisotopes) && Array.isArray(element.atomic_masses)) {
 
-				let index = element.radioisotopes.indexOf(number);
+				let index = element.radioisotopes.indexOf(Number(number));
 
 				return (index !== -1 && index < element.atomic_masses.length) ? element.atomic_masses[index] : false;
 
@@ -462,7 +462,7 @@
 
 			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
 			
-			return (element && Array.isArray(element.atomic_masses) && index < element.atomic_masses.length) ? element.atomic_masses[index] : false;
+			return (element && Array.isArray(element.atomic_masses) && Number(index) < element.atomic_masses.length) ? element.atomic_masses[Number(index)] : false;
 		
 		}
 
@@ -570,9 +570,9 @@
 
 			let modes = decayModes.split("::").map(m => m.trim());
 
-			let currentZ = atomicNumber;
+			let currentZ = Number(atomicNumber);
 
-			let currentA = radioisotope;
+			let currentA = Number(radioisotope);
 
 			for (let mode of modes) {
 
@@ -707,6 +707,8 @@
 				return createParagraph(`
 											
 					Réaction ${i + 1}, suivant le mode ${decayModeString(mode.trim())}:
+
+					<br>
 											
 					<span style="font-weight: bold; color: #005DD9;">${generateHTMLEquationResponse(p, d, mode.trim())}</span>
 									
@@ -724,13 +726,11 @@
 
 				let reponse = await fetch("db/radioisotopes-min.json");
 
-				let radioisotopesJSON = await reponse.json();
-
-				extendedData.db_data = radioisotopesJSON;
+				extendedData.db_data = await reponse.json();
 
 				return true;
 
-			} catch(err) {
+			} catch(_err) {
 
 				return false;
 

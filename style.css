@@ -36,7 +36,7 @@ body.body-class {
 
 .menu-class a {
     float: left;
-    font-size: 18px;
+    font-size: 20px;
     color: white;
     text-align: center;
     padding: 24px 26px;
@@ -50,7 +50,7 @@ body.body-class {
 }
 
 .menu-dropdown .menu-dropdown-btn {
-    font-size: 18px;
+    font-size: 20px;
     border: none;
     outline: none;
     color: white;

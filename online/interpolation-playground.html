@@ -58,7 +58,7 @@
 	#editor { 
 		overflow: hidden;
 		position: absolute;
-		font-size: 14px;
+		font-size: 16px;
 		right: 0;
 		bottom: 0;
 		left: 0;
@@ -140,7 +140,7 @@
 
 					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
 
-					<a onclick="openAboutBox();" class="menu-item">Informations</a>
+					<a onclick="openAboutBox();" class="menu-item">Notes</a>
 
 					<div class="menu-dropdown">
 
@@ -272,7 +272,7 @@
 
                     <h2>Coordonnées selon l'axe des X des points:</h2>
 
-                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des X des points à tracer. Une limite de maximum 15 points et minimum 5 points est établie. Les valeurs doivent être strictement croissantes. Merci de les séparer par des virgules. Exemple:</p>
+                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des X des points à tracer. Une limite de maximum 15 points et minimum 3 points est établie. Les valeurs doivent être strictement croissantes. Merci de les séparer par des virgules. Exemple:</p>
 					
 					<input id="x-data" class="modalbox-input" placeholder="X:" value="-3, -2, -1, 0, 1, 2, 3">
                 
@@ -284,7 +284,7 @@
 
                     <h2>Coordonnées selon l'axe des Y des points:</h2>
 
-                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des Y des points à tracer. Une limite de maximum 100 points et minimum 5 points est établie. Merci de les séparer par des virgules. Exemple:</p>
+                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des Y des points à tracer. Une limite de maximum 100 points et minimum 3 points est établie. Merci de les séparer par des virgules. Exemple:</p>
 					
 					<input id="y-data" class="modalbox-input" placeholder="Y:" value="-1, -0.5, -1, 0, 1, 0.5 , 1">
                 
@@ -461,24 +461,26 @@
 		}
 
 		var interpolationProject = {};
+        
+		function setDegValueInHTML(val) { return $("#deg-id").html(val); }
 
 		function setHTMLForDegInput(val) { 
 			
-			(val === false) ? $('#deg-html-id').css('display', 'none') : $('#deg-html-id').css('display', 'block');
+			let displayValue = (val === false) ? 'none' : 'block';
 
-			(val === false) ? $('#deg-white-line').css('display', 'none') : $('#deg-html-id').css('display', 'block');
+			return $('#deg-html-id').css('display', displayValue) && $('#deg-white-line').css('display', displayValue);
 		
 		}
-        
-		function setDegValueInHTML(val) { $("#deg-id").html(val); }
 
-		function parseNumber(element) { return element === '' ? NaN : Number(element); }
+		function parseNumber(element) { return (element === '') ? NaN : Number(element); }
 
 		function isStrictlyIncreasing(arr) {
 
+			if (Array.isArray(arr) === false) return false;
+
 			for (let i = 1; i < arr.length; i++) {
 
-				if (arr[i] <= arr[i - 1]) return false;
+				if (Number(arr[i]) <= Number(arr[i - 1])) return false;
 
 			}
 
@@ -487,6 +489,8 @@
 		}
 
 		function isArrayWithOnlyValidNumbers(arr) {
+
+			if (Array.isArray(arr) === false) return false;
 
 			for (elem of arr) {
 
@@ -500,13 +504,13 @@
 
 		function isFullSame(arr) {
 
-			if (arr.length === 0) return false; 
+			if (arr.length === 0 || Array.isArray(arr) === false) return false; 
 
-			let firstElement = arr[0];
+			let firstElement = Number(arr[0]);
 
 			for (let i = 1; i < arr.length; i++) {
 
-				if (arr[i] !== firstElement) return false;
+				if (Number(arr[i]) !== firstElement) return false;
 
 			}
 
@@ -519,9 +523,9 @@
 
 			let generatedX = [];
 
-			for (let i = min; i <= max; i += (1 / iter)) {
+			for (let i = Number(min); i <= Number(max); i += (1 / Number(iter))) {
 
-				generatedX.push(i)
+				generatedX.push(i);
 
 			}
 
@@ -541,11 +545,11 @@
 
 				for (let i = 0; i < n; i++) {
 
-					if (i !== j) v *= (xp - x[i]) / (x[j] - x[i]);
+					if (i !== j) v *= (Number(xp) - Number(x[i])) / (Number(x[j]) - Number(x[i]));
 
 				}
 
-				yp += v * y[j];
+				yp += v * Number(y[j]);
 
 			}
 
@@ -557,11 +561,11 @@
 
 			let n = x.length;
 
-			let h = new Array(n - 1);
+			let h = new Array(n - 1).fill(0);
 
 			for (let i = 0; i < n - 1; i++) {
 
-				h[i] = x[i + 1] - x[i];
+				h[i] = Number(x[i + 1]) - Number(x[i]);
 
 			}
 
@@ -577,7 +581,7 @@
 
 				Q[i][i + 2] = h[i + 1];
 
-				p[i] = 6 * ((y[i + 2] - y[i + 1]) / h[i + 1] - (y[i + 1] - y[i]) / h[i]);
+				p[i] = 6 * ((Number(y[i + 2]) - Number(y[i + 1])) / h[i + 1] - (Number(y[i + 1]) - Number(y[i])) / h[i]);
 
 			}
 
@@ -589,13 +593,13 @@
 
 			M = M.valueOf().flat(); 
 
-			let a = new Array(n - 1);
+			let a = new Array(n - 1).fill(0);
 
-			let b = new Array(n - 1);
+			let b = new Array(n - 1).fill(0);
 
-			let c = new Array(n - 1);
+			let c = new Array(n - 1).fill(0);
 
-			let d = new Array(n - 1);
+			let d = new Array(n - 1).fill(0);
 
 			for (let i = 0; i < n - 1; i++) {
 
@@ -603,9 +607,9 @@
 
 				b[i] = M[i] / 2;
 
-				c[i] = (y[i + 1] - y[i]) / h[i] - (h[i] / 6) * (M[i + 1] + 2 * M[i]);
+				c[i] = (Number(y[i + 1]) - Number(y[i])) / h[i] - (h[i] / 6) * (M[i + 1] + 2 * M[i]);
 
-				d[i] = y[i];
+				d[i] = Number(y[i]);
 
 			}
 
@@ -621,11 +625,11 @@
 
 			for (let i = 0; i < x.length - 1; i++) {
 
-				for (let j = 0; j < accuracy; j++) {
+				for (let j = 0; j < Number(accuracy); j++) {
 
-					let t = x[i] + (j * (x[i + 1] - x[i])) / (accuracy - 1);
+					let t = (Number(x[i]) + (j * (Number(x[i + 1]) - Number(x[i]))) / (Number(accuracy) - 1));
 
-					let y_spline = a[i] * Math.pow(t - x[i], 3) + b[i] * Math.pow(t - x[i], 2) + c[i] * (t - x[i]) + d[i];
+					let y_spline = (Number(a[i]) * Math.pow(t - Number(x[i]), 3) + Number(b[i]) * Math.pow(t - Number(x[i]), 2) + Number(c[i]) * (t - Number(x[i])) + Number(d[i]));
 
 					splineXVal.push(t);
 
@@ -641,7 +645,7 @@
 
 		function getLeastSquaresCoefficients(x, y, m) {
 
-			let deg = (m + 1);
+			let deg = Number(m + 1);
 
     		let n = x.length;
 
@@ -651,7 +655,7 @@
 
 				for (let j = 0; j < n; j++) {
 
-					A.set([j, i], Math.pow(x[j], i));
+					A.set([j, i], Math.pow(Number(x[j]), i));
 
 				}
 
@@ -659,7 +663,7 @@
 
 			let ATA = math.multiply(math.transpose(A), A);
 
-			let ATy = math.multiply(math.transpose(A), math.matrix(y)); 
+			let ATy = math.multiply(math.transpose(A), math.matrix(y.map(item => Number(item)))); 
 
 			return math.lusolve(ATA, ATy)._data;
 
@@ -669,13 +673,13 @@
 
 			let yleastSquares = [];
 
-			for (let i = min; i <= max; i += (1 / iter)) {
+			for (let i = Number(min); i <= Number(max); i += (1 / Number(iter))) {
 
 				let y = 0;
 
 				for (let j = 0; j < coeffs.length; j++) {
 
-					y += coeffs[j] * Math.pow(i, j);
+					y += Number(coeffs[j]) * Math.pow(i, j);
 
 				}
 
@@ -690,12 +694,11 @@
 		function getCompiledPythonCode() {
 
 			let pythonCode = `
-			# ---------------------------------------------------------------------
-			# Voici un peu de documentation sur les raccourcis clavier disponibles:
+			# ----------------------------------------------------------------
+			# Voici un peu de documentation sur les raccourcis clavier:
 			# https://github.com/ajaxorg/ace/wiki/default-keyboard-shortcuts
-			# ---------------------------------------------------------------------
-			# Pour exécuter ce code, assurez-vous d'avoir toutes les bibliothèques.
-			# correctement installées:
+			# ----------------------------------------------------------------
+			# Pour exécuter ce code, assurez-vous d'avoir les bibliothèques:
 			# - Matplotlib
 			# - Numpy
 			# - SciPy
@@ -716,7 +719,7 @@
 			# Intervalle des valeurs de x pour un tracé plus précis:
 			x_fine = np.linspace(min(x), max(x), 1000)
 
-			# Calcul des interpolations et régression.
+			# Calcul des interpolations et régression:
 			curves = {}
 
 			if plotSpline:
@@ -733,7 +736,8 @@
 
 				curves['Régression Polynomiale'] = poly_reg(x_fine)
 
-			# Fonction pour afficher le polynôme de régression sous une forme lisible.
+			# Fonction pour afficher le polynôme de régression
+			# sous une forme lisible.
 			# Retirer les guillemets en haut et en bas pour l'utiliser.
 			"""
 			def print_polynomial(coeffs):
@@ -753,7 +757,7 @@
 				print_polynomial(poly_reg.coefficients)
 			"""
 
-			# Tracé des résultats.
+			# Tracé des résultats:
 			plt.figure(figsize=(10, 6))
 			plt.scatter(x, y, color='red', label='Points de données')
 			for label, y_vals in curves.items():
@@ -817,9 +821,9 @@
 
 					zerolinewidth: 1.5,
 
-					dtick: (maxX - minX) / 10,
+					dtick: (Number(maxX) - Number(minX)) / 10,
 					
-					range: [(minX - 0.25), (maxX + 0.25)],
+					range: [Number(minX - 0.25), Number(maxX + 0.25)],
 					
 					title: {
 								
@@ -871,9 +875,9 @@
 
 			let lagrangeCurve = {
 
-				x: lagrangePlotPoints[0],
+				x: lagrangePlotPoints[0].map(item => Number(item)),
 
-				y: lagrangePlotPoints[1],
+				y: lagrangePlotPoints[1].map(item => Number(item)),
 
 				mode: 'lines',
 
@@ -891,9 +895,9 @@
 
 			let splineCurve = {
 
-				x: splinePlotPoints[0][0],
+				x: splinePlotPoints[0][0].map(item => Number(item)),
 
-				y: splinePlotPoints[0][1],
+				y: splinePlotPoints[0][1].map(item => Number(item)),
 
 				mode: 'lines',
 
@@ -911,9 +915,9 @@
 
 			let regressionCurve = {
 
-				x: leastSquaresPlotPoints[0],
+				x: leastSquaresPlotPoints[0].map(item => Number(item)),
 
-				y: leastSquaresPlotPoints[1],
+				y: leastSquaresPlotPoints[1].map(item => Number(item)),
 
 				mode: 'lines',
 
@@ -931,9 +935,9 @@
 
 			let markers = {
 
-				x: xScatter,
+				x: xScatter.map(item => Number(item)),
 
-				y: yScatter,
+				y: yScatter.map(item => Number(item)),
 
 				mode: 'markers',
 
@@ -989,7 +993,7 @@
 
 			let yVal = y.split(",").map(parseNumber).map(Number);
 
-			if (!x || isFullSame(xVal) || isArrayWithOnlyValidNumbers(xVal) === false || isStrictlyIncreasing(xVal) === false || xVal.length > 15 || xVal.length < 5) {
+			if (!x || isFullSame(xVal) || isArrayWithOnlyValidNumbers(xVal) === false || isStrictlyIncreasing(xVal) === false || xVal.length > 15 || xVal.length < 3) {
 
 				$("#modalbox-errors-warnings-id").html("Les coordonnées des points selon l'axe des X sont invalides !");
 
@@ -997,7 +1001,7 @@
 
 			}
 
-			else if (!y || isFullSame(yVal) || isArrayWithOnlyValidNumbers(yVal) === false || yVal.lenngth > 15 || yVal.length < 5) {
+			else if (!y || isFullSame(yVal) || isArrayWithOnlyValidNumbers(yVal) === false || yVal.lenngth > 15 || yVal.length < 3) {
 
 				$("#modalbox-errors-warnings-id").html("Les coordonnées des points selon l'axe des Y sont invalides !");
 
@@ -1027,7 +1031,7 @@
 
 						interpolationProject['y'] = yVal;
 
-						interpolationProject['m'] = deg;
+						interpolationProject['m'] = Number(deg);
 
 						interpolationProject['plot_lagrange'] = (plotLagrange === true) ? 'True' : 'False';
 
@@ -1068,9 +1072,9 @@
 
 						setCorrectButtonOnMobileInModalbox();
 
-					} catch(err) {
+					} catch(_err) {
 
-						abortProcess("Une erreur s'est produite lors du chargement des données: " + err)
+						abortProcess("Une erreur s'est produite lors du chargement des données.")
 
 					}
 
@@ -1195,6 +1199,7 @@
 			}
 
 		}
+		
 	</script>
 
 </body>

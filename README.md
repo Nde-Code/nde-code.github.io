@@ -1,10 +1,10 @@
 # nde-code.github.io:
 
-## Le but de ce README.md n’est pas de remplacer la rubrique "Informations", mais simplement d’offrir un aperçu aux personnes intéressées par les outils que j’ai utilisés, afin qu’elles puissent les utiliser elles aussi.
+> Le but de ce README.md n’est pas de remplacer la rubrique "Notes", mais simplement d’offrir un aperçu aux personnes intéressées par les outils que j’ai utilisés, afin qu’elles puissent les utiliser elles aussi.
 
 Code source de mon site web personnel.
 
-Comme précisé dans la section "Informations" du site, le code source est diffusé sous licence. Cette démarche vise à offrir à toute personne désirant explorer, utiliser ou s'inspirer d'extraits — qu'il s'agisse de portions de code, des bases de données se trouvant dans le répertoire online/db ou des éléments de style — la possibilité de découvrir la conception du site et d'en adapter les fondations pour créer son propre projet. Ces usages sont pleinement autorisés (une mention de crédit serait appréciée), toutefois, la réutilisation étendue voire intégrale du projet, même avec quelques modifications, n'est pas acceptable, car ce site représente un investissement considérable en temps et en effort. Je sollicite donc le respect de ce travail.
+Comme précisé dans la section "Notes" du site, le code source est diffusé sous licence. Cette démarche vise à offrir à toute personne désirant explorer, utiliser ou s'inspirer d'extraits qu'il s'agisse de portions de code, des bases de données se trouvant dans le répertoire online/db ou des éléments de style la possibilité de découvrir la conception du site et d'en adapter les fondations pour créer son propre projet. Ces usages sont pleinement autorisés (une mention de crédit serait appréciée), toutefois, la réutilisation étendue voire intégrale du projet, même avec quelques modifications, n'est pas acceptable, car ce site représente un investissement considérable en temps et en effort. Je sollicite donc le respect de ce travail.
 
 # Librairies utilisées:
 
@@ -28,7 +28,7 @@ Comme précisé dans la section "Informations" du site, le code source est diffu
 
   - Logomakr: https://logomakr.com/
   
-  - Getavataaars: https://getavataaars.com/
+  - Perchance: https://perchance.org/ai-icon-generator
 
   - Flaticon pour les diverses icônes utilisées: https://www.flaticon.com/
   
@@ -39,7 +39,6 @@ Comme précisé dans la section "Informations" du site, le code source est diffu
   - Firebase: https://firebase.google.com/
 
   - Goatcounter: https://www.goatcounter.com/ 
-  > Interdiction d'utiliser mon script sur votre site ! Si cela devait arriver, je le remarquerai rapidement et des mesures seront prises.
 
 # Notes
 
@@ -51,5 +50,5 @@ Comme précisé dans la section "Informations" du site, le code source est diffu
 
 ## GNU General Public License v3.0
 
-### (+ voir rubrique "Informations" ainsi que le haut de ce README.md)
+> (+ voir rubrique "Notes" ainsi que le haut de ce README.md)
 
