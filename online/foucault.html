@@ -788,9 +788,9 @@
 
 			if ($(".website-bottom .revolution-period-btn").length > 0) $(".website-bottom .revolution-period-btn").remove();
 
-			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0].toString()} heures et ${tRevHoursMinutes[1].toString()} minutes</a>`);
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]} heures et ${tRevHoursMinutes[1]} minutes</a>`);
 			
-			else $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0].toString()}h${tRevHoursMinutes[1].toString().padStart(2, '0')}</a>`);
+			else $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]}h${tRevHoursMinutes[1].toString().padStart(2, '0')}</a>`);
 		
 		}
 
