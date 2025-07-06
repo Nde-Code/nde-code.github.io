@@ -279,8 +279,8 @@ h1.website-main-panel-title {
 }
 
 .website-footer {
-    -webkit-box-shadow: 0 -10px 8px rgba(0, 0, 0, 0.5);
-    box-shadow: 0 -10px 8px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.65);
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.65);
     background: #323232;
     width: 100%;
     color: white;
