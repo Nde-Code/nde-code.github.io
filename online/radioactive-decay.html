@@ -954,7 +954,13 @@
 
 			$("#info-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme nom complet du noyau résultant: <span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(lastNucleus.element)}</span>`);
 
-			if ($(".website-bottom .chain-btn").length > 0 && isDecayChain === false) $(".website-bottom .chain-btn").remove();
+			if ($(".website-bottom .chain-btn").length > 0 && isDecayChain === false) {
+
+				Object.assign(extendedData, { chain_equations_html: '', elements_names_chain_html: '', elements_masses_chain_html: '' });
+				
+				$(".website-bottom .chain-btn").remove();
+			
+			}
 
 			constructHTML();
 
@@ -963,6 +969,8 @@
 		}
 
 		function getChainElements() {
+
+			if (extendedData.chain_equations_html === '' || extendedData.elements_names_chain_html === '' || extendedData.elements_masses_chain_html === '') return;
 
 			$("#chain-equations").html(extendedData.chain_equations_html);
 
@@ -982,7 +990,7 @@
 
 			if ($(".website-bottom .chain-btn").length > 0) $(".website-bottom .chain-btn").remove();
 
-			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="chain-btn" onclick="getChainElements();"><i class="fa-solid fa-list"></i> Voir la chaîne de désintégration</a>`);
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="chain-btn" onclick="getChainElements();"><i class="fa-solid fa-list"></i> Chaîne de désintégration</a>`);
 			
 			else $(".website-bottom").append(`<a class="chain-btn" onclick="getChainElements();"><i class="fa-solid fa-list"></i> </a>`);
 		
