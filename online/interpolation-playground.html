@@ -456,7 +456,11 @@
 
 			is_in_loading: false,
 
-			editor: null
+			editor: null,
+
+			x_limit: [-50, 50],
+
+			step: 1000
 			
 		}
 
@@ -494,7 +498,7 @@
 
 			for (let elem of arr) {
 
-				if (typeof elem !== 'number' || isNaN(elem) || elem > 50 || elem < -50) return false;
+				if (typeof elem !== 'number' || isNaN(elem) || elem >= extendedData.x_limit[1] || elem <= extendedData.x_limit[0]) return false;
 				
 			}
 
@@ -1026,7 +1030,7 @@
 					
 					try {
 
-						let iteration = 1000;
+						let iteration = extendedData.step;
 
 						let minOfX = Math.min(...xVal);
 

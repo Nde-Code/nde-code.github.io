@@ -248,7 +248,7 @@
 
                     <h2>La latitude:</h2>
 
-                    <p class="modalbox-description"> Veuillez saisir la latitude, en degrés (comprise entre 90° au pôle Nord et -90° au pôle Sud, à l'exception de la zone entre -10° et 10°), avec un maximum de deux décimales, pour l'endroit où vous souhaitez simuler le pendule: </p>
+                    <p class="modalbox-description"> Veuillez saisir la latitude, en degrés (comprise entre 90° au pôle Nord et -90° au pôle Sud), avec un maximum de deux décimales, de l'endroit où vous souhaitez simuler le pendule: </p>
 										
 					<input id="latitude-value-id" inputmode="numeric" class="modalbox-input" placeholder="Latitude:">
                 
@@ -348,6 +348,8 @@
 					
 					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Gardez en tête que le logiciel réalise une simulation en résolvant le système d'équations différentielles régissant le pendule de Foucault. Les résultats obtenus sont donc une approximation de la réalité. </p>
 
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le logiciel refusera les latitudes comprises entre -10 et 10 degrés, car l'installation d'un pendule de Foucault près de l'équateur est inutile. </p>
+
 					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si la latitude saisie ne fonctionne pas, vérifiez que vous avez bien utilisé un point comme séparateur décimal, et non une virgule. Exemple: <span style="color: #DC3545; font-weight: bold;">48,85</span> mais <span style="color: #28A745; font-weight: bold;">48.85</span>. </p>
 									
 				</div>
@@ -388,7 +390,9 @@
 
 			gravity: 9.81,
 
-			is_in_loading: false
+			is_in_loading: false,
+
+			bounds_limit: [-10, 10]
 
 		}
 
@@ -718,7 +722,7 @@
 
 			let latitudeNumber = Number(latitude)
 
-			if (!latitude || isNaN(latitudeNumber) ||  latitudeNumber < -90 || latitudeNumber > 90 || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false || (latitudeNumber >= -10 && latitudeNumber <= 10)) {
+			if (!latitude || isNaN(latitudeNumber) ||  latitudeNumber < -90 || latitudeNumber > 90 || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false || (latitudeNumber >= extendedData.bounds_limit[0] && latitudeNumber <= extendedData.bounds_limit[1])) {
 				
 				$("#modalbox-errors-warnings-id").html("La latitude saisie est invalide.")
 			
