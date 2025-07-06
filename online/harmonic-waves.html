@@ -448,7 +448,7 @@
 
 		var wavesSimulationData = {};
 
-		function setHTMLValueFormRange(val, id, unit) { return $('#' + id).html(val + unit); }
+		function setHTMLValueFormRange(val, id, unit) { return $(`#${id}`).html(`${val}${unit}`); }
 
 		function editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
 

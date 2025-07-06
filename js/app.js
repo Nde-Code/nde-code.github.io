@@ -2,7 +2,7 @@ var globalData = {
 
     is_ES6: true,
 
-    modalbox_size: Math.round($(window).width() - 8) + "px",
+    modalbox_size: `${Math.round($(window).width() - 8)}px`,
 
     starting_width: $(document).width()
 
