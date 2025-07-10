@@ -53,9 +53,9 @@ function openAboutBox() {
                 
         </header>
 
-        <div class="modalbox-main-contenaire">
+        <div class="modalbox-main-container">
 
-            <div class="modalbox-text-contenaire">
+            <div class="modalbox-text-container">
 
                 <h2>Librairies utilisées:</h2>
 
@@ -77,7 +77,7 @@ function openAboutBox() {
 
             <div class="modalbox-line"></div>
                     
-            <div class="modalbox-text-contenaire">
+            <div class="modalbox-text-container">
 
                 <h2>Outils et ressources utilisés:</h2>
 
@@ -99,7 +99,7 @@ function openAboutBox() {
 
             <div class="modalbox-line"></div>
 
-            <div class="modalbox-text-contenaire">
+            <div class="modalbox-text-container">
 
                 <h2>Services tiers:</h2>
 
@@ -113,7 +113,7 @@ function openAboutBox() {
 
             <div class="modalbox-line"></div>
                     
-            <div class="modalbox-text-contenaire">
+            <div class="modalbox-text-container">
 
                 <h2>Licence:</h2>
 
@@ -209,9 +209,9 @@ $(document).ready(function () {
 
             </header>
 
-            <div class="modalbox-main-contenaire" style="text-align: center;">
+            <div class="modalbox-main-container" style="text-align: center;">
     
-                <div class="modalbox-text-contenaire">
+                <div class="modalbox-text-container">
 
                     <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 200px; color: #FD7E14;"></i>
 

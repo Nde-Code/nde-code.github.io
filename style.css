@@ -13,7 +13,7 @@ body.body-class {
     background-color: #404040;
 }
 
-.main-contenaire {
+.main-container {
     position: relative;
     background: url('assets/fond.jpg') no-repeat;
     background-size: cover;
@@ -314,7 +314,7 @@ i.github {
     cursor: pointer;
 }
 
-div.copyright-contenaire {
+div.copyright-container {
     background: #404040;
     margin: 0;
     padding: 0;
@@ -384,7 +384,7 @@ header.modalbox-header-class {
     border-top-left-radius: 36px;
 }
 
-.modalbox-main-contenaire {
+.modalbox-main-container {
     overflow-y: scroll;
     height: 500px;
     /* Ajouter des bords arrondis ici aussi (36px pour compenser les 4px de la bordure). */
@@ -394,11 +394,11 @@ header.modalbox-header-class {
     scrollbar-width: none;
 }
 
-.modalbox-main-contenaire::-webkit-scrollbar {
+.modalbox-main-container::-webkit-scrollbar {
     display: none;
 }
 
-.modalbox-text-contenaire {
+.modalbox-text-container {
     margin-right: 5%;
     margin-left: 5%;
     margin-bottom: 20px;
