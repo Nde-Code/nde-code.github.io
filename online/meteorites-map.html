@@ -218,6 +218,8 @@
 
             used_numbers: [],
 
+            last_lat_long: [null, null],
+
             default_view: [50.85, 4.35],
 
             number_of_lines: 31963,
@@ -231,6 +233,14 @@
         function generateRandomNumber(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 
         function resetView() { return extendedData.map.setView([extendedData.default_view[0], extendedData.default_view[1]], extendedData.default_zoom); }
+
+        function gotToLast() {
+
+            if (Array.isArray(extendedData.last_lat_long) && extendedData.last_lat_long.length === 2 && extendedData.last_lat_long[0] === null && extendedData.last_lat_long[1] === null) return;
+            
+            return extendedData.map.setView([extendedData.last_lat_long[0], extendedData.last_lat_long[1]], extendedData.default_zoom);
+        
+        }
 
         function detectES6() {
 
@@ -300,9 +310,9 @@
 
             else {
 
-                let latitude = Number(data.latitude); 
-    
-                let longitude = Number(data.longitude); 
+                let latitude = isNaN(Number(data.latitude)) ? null : Number(data.latitude);
+
+                let longitude = isNaN(Number(data.longitude)) ? null : Number(data.longitude);
     
                 let popUpContent = `
     
@@ -318,13 +328,15 @@
     
                     <b>Année: </b> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} <br>
     
-                    <b>Coordonnées: </b> (${latitude}°, ${longitude}°) <br>
+                    <b>Coordonnées: </b> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) <br>
     
                     <b>Lien vers les données: </b> <a href="${linkTo}"> [Cliquer] </a> <br>
                 
                 `;
             
                 extendedData.meteorites_counter += 1;
+
+                extendedData.last_lat_long = [latitude, longitude];
     
                 return L.marker([latitude, longitude]).addTo(extendedData.map).bindPopup(popUpContent);
 
@@ -392,9 +404,11 @@
 
                 let options = [
 
-                    { text: 'Réinitialiser la vue', icon: 'fa-solid fa-location-crosshairs', color: '#FFD700', action: () => { resetView(); } }, 
+                    { text: 'Rechercher la dernière météorite ajoutée', icon: 'fa-solid fa-search', color: '#9370DB', action: () => { gotToLast(); } }, 
+                    
+                    { text: 'Réinitialiser la vue', icon: 'fa-solid fa-location-crosshairs', color: '#F1C31B', action: () => { resetView(); } }, 
 
-                    { text: '<span id="meteorites-stats">Aucunes</span>', icon: 'fa-solid fa-meteor', color: '#FF5733' }, 
+                    { text: '<span id="meteorites-stats">Aucunes</span>', icon: 'fa-solid fa-meteor', color: '#FD7E14' }, 
                     
                     { text: '<span id="requests-stats">Aucunes</span>', icon: 'fa-solid fa-check', color: '#28A745' }, 
                     
