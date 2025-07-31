@@ -92,7 +92,7 @@
 
 					<div class="menu-mobile">
 
-						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
 
 					</div>
 
@@ -142,9 +142,7 @@
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
-							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
-
-							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+							<a href="https://github.com/Nde-Code/">En voir d'autres sur mon GitHub</a>
 
 						</div>
 
@@ -406,7 +404,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="simulate-btn" class="modalbox-btn" onclick="simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());">
+					<a id="simulate-waves-btn" class="modalbox-btn" onclick="simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());">
 						
 						<i class="fa-solid fa-wave-square"></i>
 						
@@ -748,13 +746,13 @@
 
 			$('.overlay').css('display', 'none');
 
-			$("#simulate-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
+			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
 
 			if ($(window).width() >= 1024) {
 
 				$(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Resimuler des ondes harmoniques');
 
-				$("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+				$("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
 			}
 
@@ -774,11 +772,11 @@
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
-			$("#simulate-btn").attr('onclick', '');
+			$("#simulate-waves-btn").attr('onclick', '');
 
-			if ($(window).width() >= 1024) $("#simulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() >= 1024) $("#simulate-waves-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
-			else $("#simulate-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+			else $("#simulate-waves-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
 		}
 
@@ -788,15 +786,15 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() >= 1024) $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+			if ($(window).width() >= 1024) $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
-			else $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i>');
+			else $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i>');
 
-			$("#simulate-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
+			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-btn").html('<i class="fa-solid fa-wave-square"></i>'); }
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i>'); }
 
 		window.onload = () => {
 

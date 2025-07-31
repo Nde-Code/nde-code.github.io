@@ -39,13 +39,13 @@ function detectES6() {
 function openAboutBox() {
 
     let aboutBoxHtml = `
-    <div class="modalbox-class" id="modalbox-about">
+    <div class="modalbox-class" id="modalbox-notes">
 
         <header class="modalbox-header-class">
 
             Notes
 
-            <a class="modalbox-header-close" onclick="$('#modalbox-about').remove(); $('.overlay').css('display', 'none');">
+            <a class="modalbox-header-close" onclick="$('#modalbox-notes').remove(); $('.overlay').css('display', 'none');">
 
                 <i class="fa fa-times" aria-hidden="true"></i>
 
@@ -139,11 +139,11 @@ function mobileAboutBox(windowSize) {
 
     if ($(window).width() <= 768) {
 
-        $("#modalbox-about").css('marginLeft', 'unset');
+        $("#modalbox-notes").css('marginLeft', 'unset');
 
-        $("#modalbox-about").css('left', 'unset');
+        $("#modalbox-notes").css('left', 'unset');
 
-        $("#modalbox-about").css('width', windowSize);
+        $("#modalbox-notes").css('width', windowSize);
 
     }
 
@@ -164,7 +164,7 @@ function mobileES6WarningBox(windowSize) {
 }
 
 // Merci: https://stackoverflow.com/questions/48002147/how-to-activate-and-disable-jquery-click-events-on-an-html-element
-$('#displayMobileMenu').on('click', function () {
+$('#display-mobile-menu').on('click', function () {
 
     if (!$(this).is(".active")) {
 

@@ -132,7 +132,7 @@
 
 					<div class="menu-mobile">
 
-						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
 
 					</div>
 
@@ -182,9 +182,7 @@
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
-							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
-
-							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+							<a href="https://github.com/Nde-Code/">En voir d'autres sur mon GitHub</a>
 
 						</div>
 
@@ -196,7 +194,7 @@
 
 			<div class="white-line"></div>
 
-			<div class="website-main-panel" id="plot-container">
+			<div class="website-main-panel" id="graph-container">
 
 				<img class="website-main-panel-img" src="../assets/robot.png" alt="Robot">
 
@@ -398,7 +396,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="compute-interpolation-id" class="modalbox-btn" onclick="plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());">
+					<a id="run-playground-id" class="modalbox-btn" onclick="plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());">
 						
 						<i class="fa-solid fa-chart-line"></i> Tracer
 					
@@ -1122,19 +1120,19 @@
 
 		function constructHTML() {
 
-			$("#plot-container").html('<div id="plot-box"></div>');
+			$("#graph-container").html('<div id="plot-box"></div>');
 
 			$("#modalbox-interpolation").css("display", "none");
 
 			$('.overlay').css('display', 'none');
 
-			$("#compute-interpolation-id").attr('onclick', `plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());`);
+			$("#run-playground-id").attr('onclick', `plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());`);
 
 			if ($(window).width() >= 1024) {
 
 				$(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer des courbes d\'interpolation');
 
-				$("#compute-interpolation-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
+				$("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
 
 			}
 
@@ -1152,11 +1150,11 @@
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
-			$("#compute-interpolation-id").attr('onclick', '');
+			$("#run-playground-id").attr('onclick', '');
 
-			if ($(window).width() >= 1024) $("#compute-interpolation-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() >= 1024) $("#run-playground-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
-			else $("#compute-interpolation-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+			else $("#run-playground-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
 		}
 
@@ -1166,15 +1164,15 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() >= 1024) $("#compute-interpolation-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
+			if ($(window).width() >= 1024) $("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
 
-			else $("#compute-interpolation-id").html('<i class="fa-solid fa-chart-line"></i>');
+			else $("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i>');
 
-			$("#compute-interpolation-id").attr('onclick', `plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());`);
+			$("#run-playground-id").attr('onclick', `plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());`);
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#compute-interpolation-id").html('<i class="fa-solid fa-chart-line"></i>'); }
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i>'); }
 
 		window.onload = () => {
 

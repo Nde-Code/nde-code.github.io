@@ -108,7 +108,7 @@
 
 					<div class="menu-mobile">
 
-						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
 
 					</div>
 
@@ -158,9 +158,7 @@
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
-							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
-
-							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+							<a href="https://github.com/Nde-Code/">En voir d'autres sur mon GitHub</a>
 
 						</div>
 
@@ -180,7 +178,7 @@
 					
 				<p class="website-main-panel-description"><i class="fa-regular fa-circle-check green"></i> Qui est gratuit, rapide et suffisamment performant. </p>
 					
-				<p class="website-main-panel-description"><i class="fa-regular fa-circle-xmark red"></i> Qui est paramétré pour fonctionner uniquement sur Terre.</p>
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-xmark red"></i> Qui est paramétré pour fonctionner uniquement sur Terre. </p>
 					
 				<p class="website-main-panel-description"><i class="fa-regular fa-circle-dot orange"></i> Qui restreint les valeurs de certaines entrées. </p>
 					
@@ -358,7 +356,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="solve-foucault-btn-id" class="modalbox-btn" onclick="solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());">
+					<a id="simulate-foucault-btn-id" class="modalbox-btn" onclick="solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());">
 						
 						<i class="fa-solid fa-flask"></i>
 						
@@ -802,13 +800,13 @@
 
 			$('.overlay').css('display', 'none');
 
-			$("#solve-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
+			$("#simulate-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
 
 			if ($(window).width() >= 1024) {
 
 				$("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Resimuler un pendule de Foucault');
 
-				$("#solve-foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler');
+				$("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler');
 
 			}
 
@@ -826,11 +824,11 @@
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
-			$("#solve-foucault-btn-id").attr('onclick', '');
+			$("#simulate-foucault-btn-id").attr('onclick', '');
 
-			if ($(window).width() >= 1024) $("#solve-foucault-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() >= 1024) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
-			else $("#solve-foucault-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+			else $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
 		}
 
@@ -840,15 +838,15 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() >= 1024) $("#solve-foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler');
+			if ($(window).width() >= 1024) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler');
 
-			else $("#solve-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>');
+			else $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>');
 
-			$("#solve-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
+			$("#simulate-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#solve-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); }
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); }
 
 		window.onload = () => {
 

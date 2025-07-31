@@ -12,7 +12,7 @@
 
 	<title>Nathan Debilloëz</title>
 
-	<meta name="description" content="Bienvenue sur le repère de tous mes travaux informatiques.">
+	<meta name="description" content="Bienvenue sur la page personnelle et officielle de Nathan Debilloëz.">
 
 	<meta name="keywords" content="Nathan Debilloëz">
 
@@ -22,7 +22,7 @@
 
 	<style>
 
-	.faq-btn {
+	.about-btn {
 		font-size: 20px;
 		border-radius: 50px;
 		color: white;
@@ -34,7 +34,7 @@
 		cursor: pointer;
 	}
 
-	.faq-btn:hover {
+	.about-btn:hover {
 		background: #4690F2;
 	}
 
@@ -105,7 +105,7 @@
 
 					<div class="menu-mobile">
 
-						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
 
 					</div>
 
@@ -155,9 +155,7 @@
 
 							<a href="online/harmonic-waves">Simuler des ondes harmoniques</a>
 
-							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
-
-							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+							<a href="https://github.com/Nde-Code/">En voir d'autres sur mon GitHub</a>
 
 						</div>
 
@@ -189,7 +187,7 @@
 
 			<div class="website-bottom">
 
-				<a class="faq-btn">
+				<a class="about-btn">
 
 					<i class="fa-solid fa-gear rotate-animation"></i>
 
@@ -227,13 +225,13 @@
 
 		</div>
 
-		<div class="modalbox-class" id="modalbox-about-me" style="display: none;">
+		<div class="modalbox-class" id="modalbox-about" style="display: none;">
 
             <header class="modalbox-header-class">
 
-                F.A.Q
+                À propos
 
-                <a class="modalbox-header-close" onclick="$('#modalbox-about-me').css('display', 'none'); $('.overlay').css('display', 'none');">
+                <a class="modalbox-header-close" onclick="$('#modalbox-about').css('display', 'none'); $('.overlay').css('display', 'none');">
 
                     <i class="fa fa-times" aria-hidden="true"></i>
 
@@ -245,7 +243,7 @@
 
                 <div class="modalbox-text-container">
 
-					<h2>Qui suis-je dans la réalité ?</h2>
+					<h2>Quelques mots sur moi:</h2>
 
                     <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Je m'appelle Nathan, j'ai <span id="get-my-age"></span> ans. Je suis passionné par la création de logiciels, de jeux et par tout ce qui concerne le domaine de l'informatique. </p>
 
@@ -259,7 +257,7 @@
 
 				<div class="modalbox-text-container">
 
-					<h2>Quand ai-je commencé à apprendre à programmer, et pourquoi ?</h2>
+					<h2>Mon entrée dans le monde de l'informatique et mes contributions dans ce secteur:</h2>
 
 					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> J'ai débuté mon apprentissage de la programmation en autodidacte au début de l'année 2020, alors que j'avais 15 ans. </p>
 
@@ -278,7 +276,7 @@
 
 				<div class="modalbox-text-container">
 
-					<h2>Comment est programmé mon site et pourquoi ?</h2>
+					<h2>Quelques mots sur mon site:</h2>
 
 					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Pour commencer, l'intégralité du code de mon site est accessible sur mon compte GitHub. Consultez la rubrique "Notes" pour en savoir plus. </p>
 
@@ -294,7 +292,7 @@
 
 				<div class="modalbox-text-container">
 
-					<h2>Est-ce que tout ce qui est sur ce site est gratuit ?</h2>
+					<h2>Tout ce qui est sur ce site est gratuit ?</h2>
 
 					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Certainement, tout est gratuit et open source. De plus, aucune publicité n'est affichée pour générer des revenus, et j'aimerais que cela reste ainsi. </p>
 
@@ -338,19 +336,19 @@
 
 		window.onload = () => {
 
-			if ($(window).width() <= 1024) $(".faq-btn").html('<i class="fa-solid fa-user-large"></i>');
+			if ($(window).width() <= 1024) $(".about-btn").html('<i class="fa-solid fa-circle-info"></i>');
 
-			else $(".faq-btn").html('<i class="fa-solid fa-user-large"></i> F.A.Q à propos de moi et de mes projets');
+			else $(".about-btn").html('<i class="fa-solid fa-circle-info"></i> À propos de moi et de mes projets');
 
-			$(".faq-btn").attr('onclick', `$('#modalbox-about-me').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`);
+			$(".about-btn").attr('onclick', `$('#modalbox-about').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`);
 	
 			if ($(window).width() <= 768) {
 	
-				$("#modalbox-about-me").css('marginLeft', 'unset');
+				$("#modalbox-about").css('marginLeft', 'unset');
 	
-				$("#modalbox-about-me").css('left', 'unset');
+				$("#modalbox-about").css('left', 'unset');
 	
-				$("#modalbox-about-me").css('width', globalData.modalbox_size);
+				$("#modalbox-about").css('width', globalData.modalbox_size);
 	
 			}
 

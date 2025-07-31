@@ -78,6 +78,11 @@
 		cursor: default;
 	}
 
+	.decay-plot:hover {
+		cursor: pointer;
+		color: #4690F2;
+	}
+
 	.atomic-arrow {
 		margin-left: 10px;
 		margin-right: 10px;
@@ -137,7 +142,7 @@
 
 					<div class="menu-mobile">
 
-						<a id="displayMobileMenu"><i class="fa-solid fa-bars"></i></a>
+						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
 
 					</div>
 
@@ -187,9 +192,7 @@
 
 							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
 
-							<a href="https://github.com/Nde-Code/RobotGame">Jouer à RobotGame</a>
-
-							<a href="https://github.com/Nde-Code/DroneGame">Jouer à DroneGame</a>
+							<a href="https://github.com/Nde-Code/">En voir d'autres sur mon GitHub</a>
 
 						</div>
 
@@ -209,11 +212,11 @@
 
 				<div id="decay-plot-id" class="decay-plot" style="display: none;"></div>
 					
-				<p class="website-main-panel-description" id="1st-mass"><i class="fa-regular fa-circle-check green"></i> Qui est gratuit et muni d'une large base de données. </p>
+				<p class="website-main-panel-description" id="info-1"><i class="fa-regular fa-circle-check green"></i> Qui est gratuit et muni d'une large base de données. </p>
 					
-				<p class="website-main-panel-description" id="2nd-mass"><i class="fa-regular fa-circle-xmark red"></i> Qui ne prend pas en charge certains modes de désintégration. </p>
+				<p class="website-main-panel-description" id="info-2"><i class="fa-regular fa-circle-xmark red"></i> Qui ne prend pas en charge certains modes de désintégration. </p>
 					
-				<p class="website-main-panel-description" id="info-id"><i class="fa-regular fa-circle-dot orange"></i> Dont les masses atomiques sont tirées de diverses tables. </p>
+				<p class="website-main-panel-description" id="info-3"><i class="fa-regular fa-circle-dot orange"></i> Dont les masses atomiques sont tirées de diverses tables. </p>
 					
 			</div>
 
@@ -349,7 +352,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="from-modalbox-decay-id" class="modalbox-btn" onclick="radioactiveDecay($('#element-id').val(), $('#radioisotope-id').val(), $('#decay-mode-id').val());">
+					<a id="simulate-decay-id" class="modalbox-btn" onclick="radioactiveDecay($('#element-id').val(), $('#radioisotope-id').val(), $('#decay-mode-id').val());">
 						
 						<i class="fa-solid fa-atom"></i>
 					
@@ -381,11 +384,7 @@
 
 				<div class="modalbox-text-container">
 
-					<div id="chain-equations"></div>
-	
-					<div id="chain-elements-masses"></div>
-					
-					<div id="chain-elements-names"></div>
+					<div id="chain-container"></div>
 
 				</div>
 
@@ -408,11 +407,7 @@
 
 			db_data: null,
 
-			chain_equations_html: '',
-
-			elements_names_chain_html: '',
-
-			elements_masses_chain_html: '',
+			full_chain_html: '',
 
 			is_in_loading: false,
 
@@ -674,31 +669,9 @@
 
 			`;
 
-			let elementsNamesData = steps.filter((step, index, self) => index === self.findIndex(s => s.element === step.element)).map(step =>
+			let chainHTML = "";
 
-				createParagraph(`
-
-					<span style="font-weight: bold; color: #005DD9;">${step.element}</span> à pour nom complet: 
-
-					<span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(step.element)}</span>.
-				
-				`)
-
-			).join('');
-
-			let elementsMassesData = steps.map(step =>
-
-				createParagraph(`
-
-					<span style="font-weight: bold; color: #005DD9;">(${step.A}, ${step.Z})${step.element}</span> à pour masse atomique: 
-					
-					<span style="font-weight: bold; color: #FD7E14;"> ≈ ${getAtomicMassWithRadioisotopeNumber(step.element, step.A)} uma</span>.
-				
-				`)
-
-			).join('');
-
-			let equationsHTML = decayModes.map((mode, i) => {
+			chainHTML += decayModes.map((mode, i) => {
 
 				let p = steps[i];
 
@@ -716,7 +689,31 @@
 
 			}).join('');
 
-			return [equationsHTML, elementsNamesData, elementsMassesData];
+			chainHTML += steps.map(step =>
+
+				createParagraph(`
+
+					<span style="font-weight: bold; color: #005DD9;">(${step.A}, ${step.Z})${step.element}</span> à pour masse atomique: 
+					
+					<span style="font-weight: bold; color: #FD7E14;"> ≈ ${getAtomicMassWithRadioisotopeNumber(step.element, step.A)} uma</span>.
+				
+				`)
+
+			).join('');
+
+			chainHTML += steps.filter((step, index, self) => index === self.findIndex(s => s.element === step.element)).map(step =>
+
+				createParagraph(`
+
+					<span style="font-weight: bold; color: #005DD9;">${step.element}</span> à pour nom complet: 
+
+					<span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(step.element)}</span>.
+				
+				`)
+
+			).join('');
+
+			return chainHTML;
 
 		}
 
@@ -740,79 +737,74 @@
 
 		window.onload = () => {
 
-			$("#radioactive-decay-btn-id").attr('onclick', '');
+			let $decayBtn = $("#radioactive-decay-btn-id");
 
-			if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement des données...');
+			let setDecayBtnHTML = (iconClass, text = '') => {
+
+				$decayBtn.html(`<i class="fa-solid ${iconClass}"></i>${($(window).width() >= 1024 && text) ? ' ' + text : ''}`);
 			
-			else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+			};
+
+			$decayBtn.attr('onclick', '');
+
+			setDecayBtnHTML('fa-gear rotate-animation', 'Chargement des données...');
 
 			setTimeout(() => {
 
 				window.scrollTo(0, 0);
 
-				loadRadioisotopesData()
-
-				.then(result => {
+				loadRadioisotopesData().then(result => {
 
 					if (result) {
+
+						$decayBtn.attr('onclick', `$("#modalbox-decay").css("display", "block"); window.scrollTo(0, 0); $(".overlay").css("display", "block")`);
 						
-						$("#radioactive-decay-btn-id").attr('onclick', '$("#modalbox-decay").css("display", "block"); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
+						setDecayBtnHTML('fa-atom', 'Établir une équation radioactive');
 
-						if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i> Établir une équation radioactive');
-							
-						else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>');
+						let $elementSelect = $('#element-id');
 
-						$.each(extendedData.db_data.elements, function (index, element) {
+						extendedData.db_data.elements.forEach(el => {
 
-							let option = $('<option>').val(element.symbol).text(`${element.name}, ${element.symbol} - Z: ${element.atomic_number}`);
-
-							$('#element-id').append(option);
-
+							$elementSelect.append($('<option>').val(el.symbol).text(`${el.name}, ${el.symbol} - Z: ${el.atomic_number}`));
+						
 						});
 
-						$('#element-id').val('H');
+						$elementSelect.val('H');
 
 						updateRadioisotopes();
 
 						extendedData.is_in_loading = true;
 
-						setCorrectButtonOnMobileInModalbox();
-							
+						setCorrectButtonOnMobile();
+
 					} else {
 
-						$("#radioactive-decay-btn-id").attr("class", "error-btn");
+						$decayBtn.attr('class', 'error-btn').attr('onclick', 'window.location.reload(); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
 
-						$("#radioactive-decay-btn-id").attr('onclick', 'window.location.reload(); window.scrollTo(0, 0); $(".overlay").css("display", "block")');
-
-						if ($(window).width() >= 1024) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-circle-xmark"></i> Une erreur s\'est produite !');
-							
-						else $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-circle-xmark"></i>');
-
+						setDecayBtnHTML('fa-circle-xmark', 'Une erreur s\'est produite !');
 					}
 
-				})
+				});
 
-			}, 4000)	
-			
-			if ($(window).width() <= 1024) $("#from-modalbox-decay-id").html('<i class="fa-solid fa-atom"></i>');
+			}, 4000);
 
-			else $("#from-modalbox-decay-id").html('<i class="fa-solid fa-atom"></i> Établir');
+			$("#simulate-decay-id").html(`<i class="fa-solid fa-atom"></i>${($(window).width() <= 1024) ? '' : ' Établir'}`);
 
 			if ($(window).width() <= 768) {
 
 				$('.modalbox-class').css({
 
-					'marginLeft': 'unset',
+					marginLeft: 'unset',
 
-					'left': 'unset',
+					left: 'unset',
 
-					'width': globalData.modalbox_size
+					width: globalData.modalbox_size
 
 				});
 
 			}
 
-		}
+		};
 
 		function updateRadioisotopes() {
 
@@ -923,13 +915,11 @@
 			let isDecayChain = hasChaine(modes);
 
 			if (isDecayChain) {
+				
+				extendedData.full_chain_html = generateHTMLChainData(nucleusSteps, modes);
 
-				let [chainHTML, namesHTML, massesHTML] = generateHTMLChainData(nucleusSteps, modes);
-
-				Object.assign(extendedData, { chain_equations_html: chainHTML, elements_names_chain_html: namesHTML, elements_masses_chain_html: massesHTML });
-			
 				addChainButton();
-
+			
 			}
 
 			if (!extendedData.is_run) {
@@ -947,16 +937,16 @@
 			let parentMass = getAtomicMassWithSymbol(Number(radioisotopeIndex), elem);
 			
 			let resultMass = getAtomicMassWithSymbol(lastIndex, lastNucleus.element);
-			
-			$("#1st-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau parent: <span style="font-weight: bold; color: #F1C31B;">${!isNaN(parentMass) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
-			
-			$("#2nd-mass").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau résultant: <span class="discriminant-text" style="font-weight: bold; color: #FD7E14;">${!isNaN(resultMass) ? `≈ ${resultMass} uma` : 'Inconnue'}</span>`);
 
-			$("#info-id").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme nom complet du noyau résultant: <span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(lastNucleus.element)}</span>`);
+			$("#info-1").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau parent: <span style="font-weight: bold; color: #F1C31B;">${!isNaN(parentMass) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
+			
+			$("#info-2").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau résultant: <span class="discriminant-text" style="font-weight: bold; color: #FD7E14;">${!isNaN(resultMass) ? `≈ ${resultMass} uma` : 'Inconnue'}</span>`);
 
+			$("#info-3").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme nom complet du noyau résultant: <span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(lastNucleus.element)}</span>`);
+			
 			if ($(".website-bottom .chain-btn").length > 0 && isDecayChain === false) {
 
-				Object.assign(extendedData, { chain_equations_html: '', elements_names_chain_html: '', elements_masses_chain_html: '' });
+				extendedData.full_chain_html = '';
 				
 				$(".website-bottom .chain-btn").remove();
 			
@@ -970,13 +960,9 @@
 
 		function getChainElements() {
 
-			if (extendedData.chain_equations_html === '' || extendedData.elements_names_chain_html === '' || extendedData.elements_masses_chain_html === '') return;
+			if (!extendedData.full_chain_html) return;
 
-			$("#chain-equations").html(extendedData.chain_equations_html);
-
-			$("#chain-elements-names").html(extendedData.elements_names_chain_html)
-			
-			$("#chain-elements-masses").html(extendedData.elements_masses_chain_html);
+			$("#chain-container").html(extendedData.full_chain_html);
 
 			$('#modalbox-chain').css('display', 'block');
 
@@ -1002,25 +988,23 @@
 
 			$('.overlay').css('display', 'none');
 
-            $("#from-modalbox-decay-id").attr('onclick', 'radioactiveDecay($("#element-id").val(), $("#radioisotope-id").val(), $("#decay-mode-id").val())');
+            $("#simulate-decay-id").attr('onclick', 'radioactiveDecay($("#element-id").val(), $("#radioisotope-id").val(), $("#decay-mode-id").val())');
 		
 			if ($(window).width() >= 1024) {
 
 				$("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i> Réétablir une équation radioactive');
 
-				$("#from-modalbox-decay-id").html('<i class="fa-solid fa-atom"></i> Établir');
+				$("#simulate-decay-id").html('<i class="fa-solid fa-atom"></i> Établir');
 
 			}
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
-			isInLoad = false;
-
 			window.scrollTo(0, 0);
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
+		function setCorrectButtonOnMobile() { if ($(window).width() <= 1024 && extendedData.is_in_loading === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
 
 		$('#element-id').on('change', function() {
 

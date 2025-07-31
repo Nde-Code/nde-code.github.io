@@ -1,6 +1,6 @@
 # nde-code.github.io:
 
-> Le but de ce README.md n’est pas de remplacer la rubrique "Notes", mais simplement d’offrir un aperçu aux personnes intéressées par les outils que j’ai utilisés, afin qu’elles puissent les utiliser elles aussi.
+> Le but de ce README.md n'est pas de remplacer la rubrique "Notes", mais simplement d'offrir un aperçu aux personnes intéressées par les outils que j'ai utilisés, afin qu'elles puissent les utiliser elles aussi.
 
 Code source de mon site web personnel.
 
@@ -42,9 +42,9 @@ Comme précisé dans la section "Notes" du site, le code source est diffusé sou
 
 # Notes
 
-  - La carte interactive des chutes de météorites sur Terre utilise les données issues de la base [Meteorite Landings](https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh) de la NASA (domaine public). Le fichier compilé (de CSV à JSON) est mis à disposition (mais vidé des données inutiles ou trop incomplètes), tandis que le projet s’appuie sur Firebase pour son fonctionnement.
+  - La carte interactive des chutes de météorites sur Terre utilise les données issues de la base [Meteorite Landings](https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh) de la NASA (domaine public). Le fichier compilé (de CSV à JSON) est mis à disposition (mais vidé des données inutiles ou trop incomplètes), tandis que le projet s'appuie sur Firebase pour son fonctionnement.
 
-  - La base de données utilisée dans mon logiciel de désintégration radioactive a été entièrement réalisée par moi, en m’appuyant sur diverses sources. Ce fut un travail conséquent. Deux fichiers sont à disposition : un plus lisible pour être modifié, l’autre minimisé pour optimiser au maximum le logiciel en ligne. Vous pouvez l’utiliser librement, mais un petit crédit serait très apprécié.
+  - La base de données utilisée dans mon logiciel de désintégration radioactive a été entièrement réalisée par moi, en m'appuyant sur diverses sources. Ce fut un travail conséquent. Deux fichiers sont à disposition : un plus lisible pour être modifié, l'autre minimisé pour optimiser au maximum le logiciel en ligne. Vous pouvez l'utiliser librement, mais un petit crédit serait très apprécié.
 
 # Licence:
 
