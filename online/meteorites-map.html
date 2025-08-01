@@ -172,7 +172,7 @@
 
             <div class="modalbox-text-container">
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh/about_data" style="color: #4690F2;"> [NASA] </a> et ont été compilées au format JSON par mes soins. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/dataset/meteorite-landings" style="color: #4690F2;"> [NASA] </a> et ont été compilées au format JSON par mes soins. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le but du projet est de tester des services de cartographie et de me familiariser avec des bases de données. </p>
 
@@ -231,8 +231,6 @@
         };
 
         function generateRandomNumber(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
-
-        function resetView() { return extendedData.map.setView([extendedData.default_view[0], extendedData.default_view[1]], extendedData.default_zoom); }
 
         function gotToLast() {
 
@@ -404,10 +402,8 @@
 
                 let options = [
 
-                    { text: 'Rechercher la dernière météorite ajoutée', icon: 'fa-solid fa-search', color: '#9370DB', action: () => { gotToLast(); } }, 
+                    { text: 'Rechercher la dernière météorite ajoutée', icon: 'fa-solid fa-location-crosshairs', color: '#F1C31B', action: () => { gotToLast(); } }, 
                     
-                    { text: 'Réinitialiser la vue', icon: 'fa-solid fa-location-crosshairs', color: '#F1C31B', action: () => { resetView(); } }, 
-
                     { text: '<span id="meteorites-stats">Aucunes</span>', icon: 'fa-solid fa-meteor', color: '#FD7E14' }, 
                     
                     { text: '<span id="requests-stats">Aucunes</span>', icon: 'fa-solid fa-check', color: '#28A745' }, 
