@@ -1,0 +1,572 @@
+* {
+    font-family: monospace, sans-serif;
+    text-decoration: none;
+}
+
+:root {
+    color-scheme: dark;
+}
+
+body.body-class {
+    margin: 0;
+    padding: 0;
+    background-color: #404040;
+}
+
+.main-container {
+    position: relative;
+    background: url('assets/fond.webp') no-repeat;
+    background-size: cover;
+}
+
+.website-header {
+    padding-top: 20px;
+}
+
+.menu-class {
+    overflow: hidden;
+    background: #323232;
+    margin-left: 15%;
+    margin-right: 15%;
+    border: 4px solid #404040;
+    border-radius: 25px;
+    -webkit-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.menu-class a {
+    float: left;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 24px 26px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu-dropdown {
+    float: right;
+    overflow: hidden;
+}
+
+.menu-dropdown .menu-dropdown-btn {
+    font-size: 20px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 24px 26px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+    cursor: pointer;
+}
+
+.menu-class a:hover,
+.menu-dropdown:hover .menu-dropdown-btn {
+    background-color: #4e4e4e;
+}
+
+.menu-dropdown-items {
+    display: none;
+    position: absolute;
+    background-color: #404040;
+    min-width: 160px;
+    -webkit-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.25);
+    z-index: 1;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.menu-dropdown-items a {
+    float: none;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    width: auto;
+    max-width: 380px;
+}
+
+.menu-dropdown-items a:last-child {
+    text-align: center;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    font-weight: bold;
+    color: #4690F2;
+}
+
+.menu-dropdown-items a:hover {
+    background-color: #4e4e4e;
+}
+
+.menu-dropdown-items a:first-child:hover {
+    background-color: #555555;
+    border-top-right-radius: 25px;
+}
+
+.menu-dropdown-items a:last-child:hover {
+    background-color: #555555;
+    border-bottom-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.menu-dropdown:hover .menu-dropdown-items {
+    display: block;
+}
+
+.menu-mobile {
+    display: none;
+    margin-left: 25px;
+    font-size: 40px;
+}
+
+@media only screen and (max-width: 1175px) {
+    .menu-mobile {
+        color: white;
+        display: block;
+        float: right;
+    }
+
+    .menu-class a.menu-item {
+        display: none;
+    }
+
+    .menu-dropdown .menu-dropdown-btn {
+        display: none;
+        width: 100%;
+    }
+
+    .menu-class {
+        margin-left: unset;
+        margin-right: unset;
+    }
+
+    .menu-class a.menu-title {
+        display: inline-block;
+        width: auto;
+        text-align: left;
+    }
+
+    .menu-class a {
+        float: none;
+        display: block;
+    }
+
+    .menu-dropdown {
+        float: none;
+        text-align: left;
+    }
+
+    .menu-dropdown-items {
+        border-top-left-radius: 25px;
+        width: calc(100% - 8px);
+    }
+
+    .menu-dropdown-items a {
+        max-width: unset;
+    }
+
+    .menu-dropdown-items a:first-child:hover {
+        border-top-left-radius: 25px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .menu-dropdown .menu-dropdown-btn {
+        font-size: 16px !important;
+    }
+
+    .menu-class a {
+        font-size: 16px !important;
+    }
+
+    .menu-dropdown-items a {
+        font-size: 16px !important;
+    }
+}
+
+.white-line {
+    height: 3px;
+    background-color: #E0E0E0;
+    margin-left: 28.5%;
+    margin-right: 28.5%;
+    margin-top: 25px;
+    -webkit-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Pour les projets en ligne: */
+.website-main-panel-img {
+    width: 245px;
+    height: 245px;
+    margin-top: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    .website-main-panel-img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* Fin */
+
+.website-main-panel {
+    overflow-y: scroll;
+    background: linear-gradient(135deg, #555555 0%, #444444 40%, #333333 75%, #222222 100%);
+    padding: 20px;
+    margin-top: 20px;
+    border: 4px solid #404040;
+    color: white;
+    -webkit-box-shadow: 2px 4px 10px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 4px 10px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 40px;
+    height: 100%;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+    min-height: 550px;
+    /* Masquer la "scrollbar" sur Firefox. */
+    scrollbar-width: none;
+}
+
+.website-main-panel::-webkit-scrollbar {
+    display: none;
+}
+
+h1.website-main-panel-title {
+    margin-top: 20px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.green {
+    color: #28A745;
+}
+
+.red {
+    color: #DC3545;
+}
+
+.orange {
+    color: #FD7E14;
+}
+
+.website-main-panel-description {
+    font-size: 22px;
+    margin-right: 5%;
+    margin-left: 5%;
+    color: white;
+}
+
+.website-main-panel-description i {
+    font-size: 18px;
+}
+
+@media only screen and (max-width: 728px) {
+    .website-main-panel {
+        padding: unset;
+    }
+}
+
+/* Merci: https://stackoverflow.com/questions/16771225/css3-rotate-animation */
+.rotate-animation {
+    -webkit-animation: spin 2s linear infinite;
+    -moz-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+/* Fin */
+
+.website-bottom {
+    text-align: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.website-footer {
+    -webkit-box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.65);
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.65);
+    background: #323232;
+    width: 100%;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+}
+
+div.social-media {
+    padding: 18px 30px;
+    cursor: default;
+}
+
+i.x {
+    font-size: 25px;
+    color: white;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+i.facebook {
+    font-size: 25px;
+    color: #1778f2;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+i.github {
+    font-size: 25px;
+    color: white;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+div.copyright-container {
+    background: #404040;
+    margin: 0;
+    padding: 0;
+}
+
+.copyright-text {
+    color: white;
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+}
+
+p.copyright-text a.copyright-link {
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.modalbox-class {
+    top: 35%;
+    left: 50%;
+    margin-left: -337.5px;
+    margin-top: -200px;
+    width: 675px;
+    background: linear-gradient(135deg, #555555 0%, #444444 40%, #333333 75%, #222222 100%);
+    z-index: 2;
+    border: 4px solid #404040;
+    color: white;
+    position: fixed;
+    font-size: 20px;
+    -webkit-box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 40px;
+    animation-name: modalanimation;
+    animation-duration: 1s;
+}
+
+@keyframes modalanimation {
+    from {
+        top: 30%;
+        opacity: 0;
+    }
+
+    to {
+        top: 35%;
+        opacity: 1;
+    }
+}
+
+.modalbox-header-close {
+    float: right;
+    margin-right: 15px;
+    color: #ffffff;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+header.modalbox-header-class {
+    padding: 20px;
+    background: linear-gradient(135deg, #4690F2 0%, #005DD9 50%, #0047A6 100%);
+    border-bottom: 4px solid #404040;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+    border-top-right-radius: 36px;
+    border-top-left-radius: 36px;
+}
+
+.modalbox-main-container {
+    overflow-y: scroll;
+    height: 500px;
+    /* Ajouter des bords arrondis ici aussi (36px pour compenser les 4px de la bordure). */
+    border-bottom-right-radius: 36px;
+    border-bottom-left-radius: 36px;
+    /* Masquer la "scrollbar" sur Firefox. */
+    scrollbar-width: none;
+}
+
+.modalbox-main-container::-webkit-scrollbar {
+    display: none;
+}
+
+.modalbox-text-container {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.modalbox-line {
+    height: 3px;
+    margin-left: 20%;
+    margin-right: 20%;
+    background-color: #E0E0E0;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    -webkit-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+select,
+.modalbox-input {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    background: #323232;
+    border: 4px solid #757375;
+    outline: none;
+    color: white;
+    font-size: 22px;
+    -webkit-box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 1);
+    box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 1);
+    border-radius: 40px;
+    text-indent: 15px;
+    appearance: none;
+}
+
+select,
+.modalbox-input::placeholder {
+    text-indent: 15px;
+}
+
+.modalbox-range {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    background: #323232;
+    border: 4px solid #757375;
+    outline: none;
+    color: white;
+    font-size: 22px;
+    -webkit-box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 1);
+    box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 1);
+    border-radius: 40px;
+    text-indent: 15px;
+    appearance: none;
+}
+
+/* Style pour Firefox */
+/* Taille de 42px pour corriger (en moyenne) l'erreur avec la bordure grise. */
+.modalbox-range::-moz-range-thumb {
+    background: #005DD9;
+    border: 4px solid #0047A6;
+    height: 42px;
+    width: 60px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.modalbox-range::-moz-range-thumb:hover {
+    background: #4690F2;
+}
+
+/* Style navigateur traditionelle */
+/* Taille de 42px pour corriger (en moyenne) l'erreur avec la bordure grise. */
+.modalbox-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #005DD9;
+    border: 4px solid #0047A6;
+    height: 42px;
+    width: 60px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.modalbox-range::-webkit-slider-thumb:hover {
+    background: #4690F2;
+}
+
+.modalbox-description {
+    font-size: 22px;
+}
+
+.modalbox-description i {
+    font-size: 18px;
+}
+
+p.modalbox-errors-warnings-class {
+    text-align: center;
+    font-size: 24px;
+    color: #DC3545;
+    font-weight: bold;
+    margin-bottom: 50px;
+    margin-right: 50px;
+    margin-left: 50px;
+    text-shadow: 3px 3px 7px #000000;
+    cursor: pointer;
+}
+
+p.modalbox-errors-warnings-class:hover {
+    color: #E55361;
+}
+
+.modalbox-bottom {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.modalbox-btn {
+    font-size: 20px;
+    border-radius: 50px;
+    color: white;
+    background: #005DD9;
+    transition: all 0.2s ease-out 0s;
+    font-weight: bold;
+    border: 4px solid #0047A6;
+    padding: 15px 30px;
+    cursor: pointer;
+}
+
+.modalbox-btn:hover {
+    background: #4690F2;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}

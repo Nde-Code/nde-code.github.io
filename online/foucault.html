@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Nathan Debilloëz · Projet</title>
+
+	<meta name="description" content="Simulateur de pendule de Foucault en ligne.">
+
+	<meta name="keywords" content="Nathan Debilloëz · Projet">
+
+	<meta name="author" content="Nathan Debilloëz">
+
+	<link rel="stylesheet" href="../style.css">
+
+	<style>
+
+	.foucault-btn {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #005DD9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0047A6;
+		padding: 15px 30px;
+		cursor: pointer;
+	}
+
+	.foucault-btn:hover {
+		background: #4690F2;
+	}
+
+	.revolution-period-btn {
+		padding: 15px 30px;
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #28A745; 
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #218838; 
+		cursor: pointer;
+	}
+
+	.revolution-period-btn:hover {
+		background: #34D058;
+	}
+
+	</style>
+
+	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+
+	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+
+	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+
+	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-icon-180x180.png">
+
+	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+
+	<link rel="manifest" href="../assets/favicon/manifest.json">
+
+	<meta name="msapplication-TileColor" content="#ffffff">
+
+	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+	
+</head>
+
+<body class="body-class">
+
+	<div id="modalbox-open-div"></div>
+
+	<div class="overlay"></div>
+
+	<div id="main-html">
+
+		<div class="main-container">
+
+			<div class="website-header">
+
+				<div class="menu-class">
+
+					<div class="menu-mobile">
+
+						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
+
+					</div>
+
+					<a href="/" class="menu-title"><strong>Nathan Debilloëz</strong></a>
+
+					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
+
+					<a onclick="openAboutBox();" class="menu-item">Notes</a>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Articles
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<!--
+									
+								Bientôt
+								
+							-->
+
+						</div>
+
+					</div>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Projets
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<a href="meteorites-map">Carte interactive des chutes de météorites sur Terre, recensées par la NASA</a>
+
+							<a href="interpolation-playground">Tracer un polynôme de Lagrange, une spline cubique et un polynôme de régression</a>
+
+							<a href="foucault">Simuler un pendule de Foucault</a>
+
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+
+							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
+
+							<a href="https://github.com/Nde-Code/"><i class="fa-solid fa-plus"></i> En voir d'autres sur mon GitHub</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-main-panel" id="graph-container">
+
+				<img class="website-main-panel-img" src="../assets/robot.png" alt="Robot">
+
+				<h1 class="website-main-panel-title"> Simulateur de pendule de Foucault: </h1>
+					
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-check green"></i> Qui est gratuit, rapide et suffisamment performant. </p>
+					
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-xmark red"></i> Qui est paramétré pour fonctionner uniquement sur Terre. </p>
+					
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-dot orange"></i> Qui restreint les valeurs de certaines entrées. </p>
+					
+			</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-bottom">
+
+				<a id="foucault-btn-id" class="foucault-btn">
+
+					<i class="fa-solid fa-gear rotate-animation"></i>
+
+					Chargement...
+
+				</a>
+			
+			</div>
+
+			<div class="website-footer">
+
+				<div class="social-media">
+
+					<a href="https://x.com/nde_code" title="Mon X."><i class="fa-brands fa-x-twitter x"></i></a>
+
+					<a href="https://www.facebook.com/nathan.debilloez" title="Mon Facebook."><i class="fa-brands fa-facebook facebook"></i></a>
+
+					<a href="https://github.com/Nde-Code" title="Mon GitHub."><i class="fa-brands fa-github github"></i></a>
+
+				</div>
+
+				<div class="copyright-container">
+
+					<p class="copyright-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+
+					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
+						
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io/blob/main/online/foucault.html" class="copyright-link">Github</a>.</p>
+						
+					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
+					
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="modalbox-class" id="modalbox-foucault" style="display: none;"> 
+
+			<header class="modalbox-header-class">
+
+				Simuler
+
+				<a class="modalbox-header-close" onclick="$('#modalbox-foucault').css('display', 'none'); $('.overlay').css('display', 'none');">
+
+					<i class="fa fa-times" aria-hidden="true"></i>
+
+				</a>
+
+			</header>
+
+			<div class="modalbox-main-container">
+
+				<div class="modalbox-text-container">
+
+                    <h2>La latitude:</h2>
+
+                    <p class="modalbox-description"> Veuillez saisir la latitude, en degrés (comprise entre 90° au pôle Nord et -90° au pôle Sud), avec un maximum de deux décimales, de l'endroit où vous souhaitez simuler le pendule: </p>
+										
+					<input id="latitude-value-id" inputmode="numeric" class="modalbox-input" placeholder="Latitude:">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Longeur du fil:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Longeur du fil: <span style="color: #4690F2;" id="length-id">60m</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez la longueur du fil, en mètres, qui supporte la masse servant de pendule: </p>
+					
+					<input onchange="setLength($('#length-value-id').val()); setInitialAngle($('#initial-angle-value-id').val(), $('#length-value-id').val());" title="Longeur du fil:" type="range" id="length-value-id" class="modalbox-range" value="60" min="10" max="100" step="1">
+                
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Nombre de périodes d'oscillations:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Période d'oscillation du pendule: <span style="color: #4690F2;" id="oscillation-id">15.539s</span> </p>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Nombre de fois: <span style="color: #4690F2;" id="number-of-periods-id">3x</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez le nombre de fois que vous souhaitez simuler la période d'oscillation du pendule. </p>
+					
+					<input onchange="setNumberOfPeriods($('#number-of-periods-value-id').val());" title="Nombre de périodes:" type="range" id="number-of-periods-value-id" class="modalbox-range" value="3" min="2" max="10" step="1">
+                
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Angle du lancer initial:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Position initial en x (x(0)): <span style="color: #4690F2;" id="initial-position-id">3.140m</span> </p>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Angle initial: <span style="color: #4690F2;" id="initial-angle-id">3°</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez l'angle initial d'inclinaison du pendule, en degrés, au moment du lâcher: </p>
+					
+					<input onchange="setInitialAngle($('#initial-angle-value-id').val(), $('#length-value-id').val());" title="Angle initial:" type="range" id="initial-angle-value-id" class="modalbox-range" value="3" min="1" max="10" step="0.1">
+                
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Type de graphique:</h2>
+
+                    <p class="modalbox-description"> Sélectionnez le type de graphique pour afficher les solutions du système: </p>
+					
+					<select title="Intérvalle d'affichage:" id="graph-type-id">
+
+						<option value="x(t)">Évolution de x(t)</option>
+
+						<option value="y(t)">Évolution de y(t)</option>
+
+						<option value="x(y)">Oscillations</option>
+						
+					</select>
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+					<h2>Code couleurs:</h2>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #28A745;"></i> Indique la durée du jour pendulaire. Il apparaît, peu importe le type de graphique sélectionné. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #005DD9;"></i> Courbe sur le graphique indiquant l'évolution de la position en x au cours du temps. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #F1C31B;"></i> Courbe sur le graphique indiquant l'évolution de la position en y au cours du temps. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #DC3545;"></i> Courbe sur le graphique indiquant l'évolution des oscillations du pendule dans le plan Oxy. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #FD7E14;"></i> Point de lancement du pendule sur le graphique des oscillations. </p>
+									
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+					<h2>Notes:</h2>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Bien que ce ne soit pas réellement le cas, la constante de pesanteur sur Terre (+/- 9.81 m/s<sup>2</sup>) est supposée identique par le logiciel, à toute latitude. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Gardez en tête que le logiciel réalise une simulation en résolvant le système d'équations différentielles régissant le pendule de Foucault. Les résultats obtenus sont donc une approximation de la réalité. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le logiciel refusera les latitudes comprises entre -10 et 10 degrés, car l'installation d'un pendule de Foucault près de l'équateur est inutile. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si la latitude saisie ne fonctionne pas, vérifiez que vous avez bien utilisé un point comme séparateur décimal, et non une virgule. Exemple: <span style="color: #DC3545; font-weight: bold;">48,85</span> mais <span style="color: #28A745; font-weight: bold;">48.85</span>. </p>
+									
+				</div>
+
+				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id">Les messages d'erreur et d'avertissement seront affichés dans cette section. </p>
+
+				<div class="modalbox-bottom">
+
+					<a id="simulate-foucault-btn-id" class="modalbox-btn" onclick="solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());">
+						
+						<i class="fa-solid fa-flask"></i>
+						
+						Simuler
+					
+					</a>
+				
+				</div>
+				
+			</div>
+			
+		</div>
+
+	</div>
+
+	<script data-goatcounter="https://nde-stats.goatcounter.com/count" async src="../js/goatcounter.js"></script>
+
+	<script src="../js/jquery.js"></script>
+
+	<script src="../js/app.js"></script>
+
+	<script src="../js/math.js" defer></script>
+
+    <script src="../js/plotly.js" defer></script>
+
+	<script type="text/javascript">
+
+		var extendedData = {
+
+			GRAVITY: 9.81,
+
+			is_in_loading: false,
+
+			BOUNDS_LIMIT: [-10, 10]
+
+		}
+
+		var foucaultPendulumProject = {};
+
+		function toRad(val) { return Number(val) * (Math.PI / 180); }
+
+		function getOmega(latitude) { return (2 * Math.PI) / (23.9344696 * 3600) * Math.sin(toRad(latitude)); }
+
+		function getPeriodOfRevolution(latitude) { return (2 * Math.PI) / getOmega(latitude); }
+
+		function getPeriodOfOscillation(l) { return 2 * Math.PI * Math.sqrt(Number(l) / extendedData.GRAVITY); }
+
+		function getX0(angle, l) { return Number(l) * Math.sin(toRad(angle)); }
+		
+		function setLength(l) { return $("#length-id").html(`${l}m`) && $("#oscillation-id").html(`${getPeriodOfOscillation(l).toFixed(3)}s`); }
+		
+		function setNumberOfPeriods(val) { return $("#number-of-periods-id").html(`${val}x`); }
+		
+		function setInitialAngle(angle, l) { return $("#initial-angle-id").html(`${angle}°`) && $("#initial-position-id").html(`${getX0(angle, l).toFixed(3)}m`); }
+
+		function convertToHoursMinutes(decimalHours) {
+
+			let hours = Math.floor(decimalHours); 
+
+			let remainingMinutes = (decimalHours - hours) * 60; 
+
+			let minutes = Math.floor(remainingMinutes); 
+						
+			return [hours, minutes];
+
+		}
+
+		function setAxisLabel(graphType, axis) {
+
+			if (graphType === 'x(t)' && axis === 'y') { return ($(window).width() <= 768) ? "x[m]" : "Évolution de la coordonnée x en mètres."}
+
+			else if (graphType === 'y(t)' && axis === 'y') { return ($(window).width() <= 768) ? "y[mm]" : "Évolution de la coordonnée y en millimètres."}
+
+			else if (graphType === 'x(y)' && axis === 'x') { return ($(window).width() <= 768) ? "x[m]" : "Évolution de la coordonnée x en mètres."}
+
+			else if (graphType === 'x(y)' && axis === 'y') { return ($(window).width() <= 768) ? "y[mm]" : "Évolution de la coordonnée y en millimètres."}
+
+			else return ($(window).width() <= 768) ? "t[s]" : "Évolution du temps en secondes";
+
+		}
+
+		function setXAxisTick(param) { return ($(window).width() <= 768) ? [(Math.trunc(param) / 4), (Math.trunc(param) / 2)] : [(Math.trunc(param) / 8), (Math.trunc(param) / 4)] }
+
+		function foucaultSystem(t, y) {
+
+			let dydt = new Array(4).fill(0);
+
+			dydt[0] = y[2];  
+
+			dydt[1] = y[3];  
+
+			dydt[2] = 2 * foucaultPendulumProject.omega * y[3] - (extendedData.GRAVITY / foucaultPendulumProject.length) * y[0];  
+
+			dydt[3] = -2 * foucaultPendulumProject.omega * y[2] - (extendedData.GRAVITY / foucaultPendulumProject.length) * y[1];  
+
+			return dydt;
+
+		}
+
+		function solveSystem(x0, numberOfPeriods, oscillationPeriod) {
+
+			let init = [x0, 0, 0, 0];
+			
+			let tSpan = [0, (numberOfPeriods * oscillationPeriod)]
+
+			let options = {
+
+				method: 'RK45',  
+
+				maxStep: 0.1,
+
+				tol: '1e-6'     
+
+			};
+
+			let solution = math.solveODE(foucaultSystem, tSpan, init, options);
+
+			let times = solution.t;
+
+			let xVal = solution.y.map(state => state[0]); 
+
+			let yVal = solution.y.map(state => state[1]);  
+
+			return [times, xVal, yVal];
+
+		}
+
+		function createGraph(graphType, x0, solutions, Trev) {
+
+			let times = solutions[0].map(elem => Number(elem));
+
+			let xDataPoints = solutions[1].map(elem => Number(elem)); 
+
+			let yDataPoints = solutions[2].map(x => Number(x) * 1000);  
+
+			let minT = Math.min(...times);
+
+			let maxT = Math.max(...times);
+
+			let minX = Math.min(...xDataPoints);
+
+			let maxX = Math.max(...xDataPoints);
+
+			let minY = Math.min(...yDataPoints);
+
+			let maxY = Math.max(...yDataPoints);
+
+			let tMargin = 0.015 * (maxT - minT);
+
+			let xMargin = 0.05 * (maxX - minX);
+
+			let yMargin = 0.05 * (maxY - minY);
+
+			let layout = {
+
+				displayModeBar: false,
+
+				hovermode: false,
+
+				showlegend: false,
+
+				plot_bgcolor: "transparent",
+
+				paper_bgcolor: "transparent",
+
+				height: 545,
+
+				margin: {
+
+					l: 10,
+
+					r: 10,
+								
+					b: 10,
+								
+					t: 10,
+								
+					pad: 5
+								
+				},
+
+				xaxis: {
+
+					color: 'white',
+
+					gridcolor: '#B0B0B0',
+
+					dtick: (graphType === 'x(t)' || graphType === 'y(t)') ? setXAxisTick(maxT)[0] : setXAxisTick(Math.ceil(x0))[1],
+
+					gridwidth: 0.5,
+
+					automargin: true,
+
+					zerolinewidth: 1.5,
+
+					range: (graphType === 'x(t)' || graphType === 'y(t)') ? [(minT - tMargin), (maxT + tMargin)] : [(minX - xMargin), (maxX + xMargin)],
+
+					title: {
+								
+						text: setAxisLabel(graphType, 'x'),
+
+						font: {
+
+							size: 16
+
+						}
+
+					},
+
+					fixedrange: true
+
+				},
+
+				yaxis: {
+								
+					color: 'white',
+
+					gridcolor: '#B0B0B0',
+
+					gridwidth: 0.5,
+
+					zerolinewidth: 1.5,
+
+					automargin: true,
+
+					autotick: true,
+
+					range: (graphType === 'x(t)' || graphType === 'y(t)') ? [null, null] : [minY - yMargin, maxY + yMargin],
+
+					title: {
+
+						standoff: 10,
+								
+						text: setAxisLabel(graphType, 'y'),
+
+						font: {
+
+							size: 16
+
+						}
+
+					},
+
+				}
+
+			}
+
+			let xt = {
+
+				x: times,
+
+				y: xDataPoints,
+
+				mode: 'lines',
+
+				type: 'scatter',
+
+				line: {
+
+					color: '#005DD9',
+
+					width: 2.5
+
+				}
+
+			}
+
+			let yt = {
+
+				x: times,
+
+				y: yDataPoints,
+
+				mode: 'lines',
+
+				type: 'scatter',
+
+				line: {
+
+					color: '#F1C31B',
+
+					width: 2.5
+
+				}
+
+			}
+
+			let xy = {
+
+				x: xDataPoints,
+
+				y: yDataPoints,
+
+				mode: 'lines',
+
+				type: 'scatter',
+
+				line: {
+
+					color: '#DC3545',
+
+					width: 2.5
+
+				}
+
+			}
+
+			let xy0 = {
+
+				x: [x0], 
+				
+				y: [0], 
+
+				mode: 'markers', 
+				
+				type: 'scatter',
+
+				marker: {
+
+					color: '#FD7E14', 
+
+					size: 8, 
+
+					line: {
+
+						color: '#E86800',
+
+						width: 2,
+
+						dash: 'solid',
+
+					},
+
+				},
+
+			};
+
+			let data = [];
+						
+			if (graphType === 'x(t)') data.push(xt);
+
+			else if (graphType === 'y(t)') data.push(yt);
+
+			else {
+				
+				data.push(xy);
+			
+				data.push(xy0);
+
+			}
+
+			addRevolutionPeriod(Trev);
+
+			constructHTML();
+
+			Plotly.newPlot('pendulum-graph-box', data, layout, { staticPlot: true });
+
+		}
+
+		function solveFoucaultSystem(graphType, latitude, length, numberOfPeriods, initialAngle) {
+
+			let latitudeNumber = Number(latitude)
+
+			if (!latitude || isNaN(latitudeNumber) ||  latitudeNumber < -90 || latitudeNumber > 90 || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false || (latitudeNumber >= extendedData.BOUNDS_LIMIT[0] && latitudeNumber <= extendedData.BOUNDS_LIMIT[1])) {
+				
+				$("#modalbox-errors-warnings-id").html("La latitude saisie est invalide.")
+			
+				return false;
+
+			}
+
+			else {
+				
+				generateDataBtn();
+
+				setTimeout(() => {
+
+					try {
+
+						let periodOfOscillation = getPeriodOfOscillation(length);
+
+						let x0 = getX0(initialAngle, length)
+
+						let omega = getOmega(latitude);
+
+						let Trev = (getPeriodOfRevolution(Math.abs(latitudeNumber)) / 3600);
+
+						foucaultPendulumProject = {};
+
+						foucaultPendulumProject["latitude"] = latitudeNumber;
+
+						foucaultPendulumProject["length"] = Number(length);
+
+						foucaultPendulumProject["number_of_periods"] = Number(numberOfPeriods);
+
+						foucaultPendulumProject["initial_angle"] = Number(initialAngle);
+
+						foucaultPendulumProject["x0"] = x0;
+
+						foucaultPendulumProject["period_of_oscillation"] = periodOfOscillation;
+						
+						foucaultPendulumProject["omega"] = omega;
+
+						foucaultPendulumProject["period_of_revolution"] = convertToHoursMinutes(Trev);
+
+						let solutions = solveSystem(x0, Number(numberOfPeriods), periodOfOscillation);
+
+						createGraph(graphType, x0, solutions, Trev);
+
+						setCorrectButtonOnMobileInModalbox();
+
+					} catch(_err) {
+
+						abortProcess("Une erreur s'est produite lors du chargement des données.");
+
+					}
+					
+				}, 3000);
+
+			}
+
+		}
+
+		function addRevolutionPeriod(Trev) {
+
+			let tRevHoursMinutes = convertToHoursMinutes(Trev);
+
+			if ($(".website-bottom .revolution-period-btn").length > 0) $(".website-bottom .revolution-period-btn").remove();
+
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]} heures et ${tRevHoursMinutes[1]} minutes</a>`);
+			
+			else $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]}h${tRevHoursMinutes[1].toString().padStart(2, '0')}</a>`);
+		
+		}
+
+		function constructHTML() {
+
+			$("#graph-container").html('<div id="pendulum-graph-box"></div>');
+
+			$("#modalbox-foucault").css("display", "none");
+
+			$('.overlay').css('display', 'none');
+
+			$("#simulate-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
+
+			if ($(window).width() >= 1024) {
+
+				$("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Resimuler un pendule de Foucault');
+
+				$("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler');
+
+			}
+
+			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
+
+			extendedData.is_in_loading = false;
+
+			window.scrollTo(0, 0);
+
+		}
+
+		function generateDataBtn() {
+
+			extendedData.is_in_loading = true;
+
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
+
+			$("#simulate-foucault-btn-id").attr('onclick', '');
+
+			if ($(window).width() >= 1024) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+
+			else $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+
+		}
+
+		function abortProcess(msg) {
+
+			extendedData.is_in_loading = false;
+
+			$("#modalbox-errors-warnings-id").html(msg);
+
+			if ($(window).width() >= 1024) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler');
+
+			else $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>');
+
+			$("#simulate-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
+
+		}
+
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); }
+
+		window.onload = () => {
+
+			if ($(window).width() <= 1024) $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); 
+	
+			else $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler un pendule de Foucault');
+
+			$("#foucault-btn-id").attr('onclick', `$('#modalbox-foucault').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`)
+
+			setCorrectButtonOnMobileInModalbox();
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-foucault").css('marginLeft', 'unset');
+
+				$("#modalbox-foucault").css('left', 'unset');
+
+				$("#modalbox-foucault").css('width', globalData.modalbox_size);
+
+			}
+
+		};
+
+	</script>
+
+</body>
+
+</html>

@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Nathan Debilloëz · Projet</title>
+
+	<meta name="description" content="Simulateur d'ondes harmoniques en ligne."> 
+
+	<meta name="keywords" content="Nathan Debilloëz · Projet">
+
+	<meta name="author" content="Nathan Debilloëz">
+
+	<link rel="stylesheet" href="../style.css">
+
+	<style>
+
+	.waves-btn {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #005DD9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0047A6;
+		padding: 15px 30px;
+		cursor: pointer;
+	}
+
+	.waves-btn:hover {
+		background: #4690F2;
+	}
+
+	</style>
+
+	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+
+	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+
+	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+
+	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-icon-180x180.png">
+
+	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+
+	<link rel="manifest" href="../assets/favicon/manifest.json">
+
+	<meta name="msapplication-TileColor" content="#ffffff">
+
+	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+	
+</head>
+
+<body class="body-class">
+
+	<div id="modalbox-open-div"></div>
+
+	<div class="overlay"></div>
+
+	<div id="main-html">
+
+		<div class="main-container">
+
+			<div class="website-header">
+
+				<div class="menu-class">
+
+					<div class="menu-mobile">
+
+						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
+
+					</div>
+
+					<a href="/" class="menu-title"><strong>Nathan Debilloëz</strong></a>
+
+					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
+
+					<a onclick="openAboutBox();" class="menu-item">Notes</a>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Articles
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<!--
+									
+								Bientôt
+								
+							-->
+
+						</div>
+
+					</div>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Projets
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<a href="meteorites-map">Carte interactive des chutes de météorites sur Terre, recensées par la NASA</a>
+
+							<a href="interpolation-playground">Tracer un polynôme de Lagrange, une spline cubique et un polynôme de régression</a>
+
+							<a href="foucault">Simuler un pendule de Foucault</a>
+
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+
+							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
+
+							<a href="https://github.com/Nde-Code/"><i class="fa-solid fa-plus"></i> En voir d'autres sur mon GitHub</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-main-panel" id="graph-container">
+
+				<img class="website-main-panel-img" src="../assets/robot.png" alt="Robot">
+
+				<h1 class="website-main-panel-title"> Logiciel de simulation d'ondes harmoniques: </h1>
+					
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-check green"></i> Qui est gratuit, simple et particulièrement rapide. </p>
+					
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-xmark red"></i> Qui ne permet pas de faire plusieurs simulations à la fois. </p>
+					
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-dot orange"></i> Qui restreint les valeurs de certaines entrées. </p>
+					
+			</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-bottom">
+
+				<a id="waves-btn-id" class="waves-btn">
+
+					<i class="fa-solid fa-gear rotate-animation"></i>
+
+					Chargement...
+
+				</a>
+			
+			</div>
+
+			<div class="website-footer">
+
+				<div class="social-media">
+
+					<a href="https://x.com/nde_code" title="Mon X."><i class="fa-brands fa-x-twitter x"></i></a>
+
+					<a href="https://www.facebook.com/nathan.debilloez" title="Mon Facebook."><i class="fa-brands fa-facebook facebook"></i></a>
+
+					<a href="https://github.com/Nde-Code" title="Mon GitHub."><i class="fa-brands fa-github github"></i></a>
+
+				</div>
+
+				<div class="copyright-container">
+
+					<p class="copyright-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+
+					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
+						
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io/blob/main/online/harmonic-waves.html" class="copyright-link">Github</a>.</p>
+						
+					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
+					
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="modalbox-class" id="modalbox-waves" style="display: none;">
+
+			<header class="modalbox-header-class">
+
+				Simuler
+
+				<a class="modalbox-header-close" onclick="$('#modalbox-waves').css('display', 'none'); $('.overlay').css('display', 'none');">
+
+					<i class="fa fa-times" aria-hidden="true"></i>
+
+				</a>
+
+			</header>
+
+			<div class="modalbox-main-container">
+
+				<div class="modalbox-text-container">
+
+                    <h2>Amplitude de la première onde:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Amplitude sélectionnée: <span style="color: #4690F2;" id="A-1-value-html">6m</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez l'amplitude de la première onde à simuler: </p>
+					
+					<input onchange="setHTMLValueFormRange($('#A-value-1').val(), 'A-1-value-html', 'm');" title="Amplitude de la première onde:" type="range" id="A-value-1" class="modalbox-range" value="6" min="1" max="10" step="0.1">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Nombre d'onde de la première onde:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Nombre d'onde selectionné: <span style="color: #4690F2;" id="k-1-value-html">3 rad/m</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez le nombre d'onde de la première onde à simuler: </p>
+					
+					<input onchange="setHTMLValueFormRange($('#k-value-1').val(), 'k-1-value-html', ' rad/m');" title="Nombre d'onde de la première onde:" type="range" id="k-value-1" class="modalbox-range" value="3" min="1" max="10" step="0.1">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Pulsation de la première onde:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Pulsation selectionnée: <span style="color: #4690F2;" id="w-1-value-html">20 rad/s</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez la pulsation de la première onde à simuler: </p>
+					
+					<input onchange="setHTMLValueFormRange($('#w-value-1').val(), 'w-1-value-html', ' rad/s');" title="Pulsation de la première onde:" type="range" id="w-value-1" class="modalbox-range" value="20" min="10" max="30" step="0.25">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Phase initiale de la première onde:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Phase initiale selectionnée: <span style="color: #4690F2;" id="phi-1-value-html">0 rad</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez la phase initiale de la première onde à simuler: </p>
+					
+					<input onchange="setHTMLValueFormRange($('#phi-value-1').val(), 'phi-1-value-html', ' rad');" title="Phase initiale de la première onde:" type="range" id="phi-value-1" class="modalbox-range" value="0" min="0" max="6.28" step="0.01">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Sens de propagation de propagation de la première onde:</h2>
+
+                    <p class="modalbox-description"> Veuillez sélectionner le sens de propagation de la première onde à simuler: </p>
+					
+					<select title="Signe de la première onde:" id="sgn-value-1">
+
+						<option value="-" selected> Progressive </option>
+
+						<option value="+"> Régressive </option>
+
+					</select>
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Amplitude de la deuxième onde:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Amplitude sélectionnée: <span style="color: #4690F2;" id="A-2-value-html">6m</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez l'amplitude de la deuxième onde à simuler: </p>
+					
+					<input onchange="setHTMLValueFormRange($('#A-value-2').val(), 'A-2-value-html', 'm');" title="Amplitude de la deuxième onde:" type="range" id="A-value-2" class="modalbox-range" value="6" min="1" max="10" step="0.1">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Nombre d'onde de la deuxième onde:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Nombre d'onde selectionné: <span style="color: #4690F2;" id="k-2-value-html">3 rad/m</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez le nombre d'onde de la deuxième onde à simuler: </p>
+					
+					<input onchange="setHTMLValueFormRange($('#k-value-2').val(), 'k-2-value-html', ' rad/m');" title="Nombre d'onde de la deuxième onde:" type="range" id="k-value-2" class="modalbox-range" value="3" min="1" max="10" step="0.1">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Pulsation de la deuxième onde:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Pulsation selectionnée: <span style="color: #4690F2;" id="w-2-value-html">20 rad/s</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez la pulsation de la deuxième onde à simuler: </p>
+					
+					<input onchange="setHTMLValueFormRange($('#w-value-2').val(), 'w-2-value-html', ' rad/s');" title="Pulsation de la deuxième onde:" type="range" id="w-value-2" class="modalbox-range" value="20" min="10" max="30" step="0.25">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Phase initiale de la deuxième onde:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Phase initiale selectionnée: <span style="color: #4690F2;" id="phi-2-value-html">0 rad</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez la phase initiale de la deuxième onde à simuler: </p>
+					
+					<input onchange="setHTMLValueFormRange($('#phi-value-2').val(), 'phi-2-value-html', ' rad');" title="Phase initiale de la deuxième onde:" type="range" id="phi-value-2" class="modalbox-range" value="0" min="0" max="6.28" step="0.01">
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Sens propagation de propagation de la deuxième onde:</h2>
+
+                    <p class="modalbox-description"> Veuillez sélectionner le sens de propagation de la deuxième onde à simuler: </p>
+					
+					<select title="Signe de la deuxième onde:" id="sgn-value-2">
+
+						<option value="-"> Progressive </option>
+
+						<option value="+" selected> Régressive </option>
+
+					</select>
+                
+				</div>
+
+                <div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+					
+					<h2>Code couleurs:</h2>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #005DD9;"></i> Courbe sur le graphique indiquant l'évolution de la première onde harmonique au fil du temps. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #F1C31B;"></i> Courbe sur le graphique indiquant l'évolution de la deuxième onde harmonique au fil du temps. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #28A745;"></i> Courbe sur le graphique indiquant l'évolution résultante de l'addition de la première et de la deuxième onde harmonique au fil du temps. </p>
+				
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+					<h2>Notes:</h2>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Si votre PC est peu puissant ou trop chargé en logiciels en cours d'exécution, la simulation pourrait être légèrement saccadée, ce qui est normal. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le temps ne s'écoule bien entendu pas chaque seconde, ce qui serait beaucoup trop gourmand en ressources et rendrait l'animation peu visible. Un facteur a donc été programmé afin de rendre l'animation aussi optimale que possible. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Bien que ce logiciel fonctionne parfaitement sur mobile, je vous recommande toutefois vivement de l'utiliser sur un PC. </p>
+														
+				</div>
+
+				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id"> Les messages d'erreur et d'avertissement seront affichés dans cette section. </p>
+
+				<div class="modalbox-bottom">
+
+					<a id="simulate-waves-btn" class="modalbox-btn" onclick="simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());">
+						
+						<i class="fa-solid fa-wave-square"></i>
+						
+						Simuler
+					
+					</a>
+				
+				</div>
+				
+			</div>
+			
+		</div>
+
+	</div>
+
+	<script data-goatcounter="https://nde-stats.goatcounter.com/count" async src="../js/goatcounter.js"></script>
+
+	<script src="../js/jquery.js"></script>
+
+	<script src="../js/app.js"></script>
+	
+    <script src="../js/plotly.js" defer></script>
+
+	<script type="text/javascript">
+
+		var extendedData = {
+
+			is_in_loading: false,
+
+			NUMBER_OF_POINTS: 1000,
+
+			is_run: false,
+
+			time_controller: 0
+
+		};
+
+		var wavesSimulationProject = {};
+
+		var wavesSimulationData = {};
+
+		function setHTMLValueFormRange(val, id, unit) { return $(`#${id}`).html(`${val}${unit}`); }
+
+		function editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
+
+			wavesSimulationProject["amplitude_1"] = Number(AOne);
+
+			wavesSimulationProject["wave_number_1"] = Number(kOne);
+
+			wavesSimulationProject["angular_frequency_1"] = (sgnOne === '-') ? (-1 * Number(wOne)) : (1 * Number(wOne));
+			
+			wavesSimulationProject["initial_phase_1"] = Number(phiOne);
+
+			wavesSimulationProject["amplitude_2"] = Number(ATwo);
+
+			wavesSimulationProject["wave_number_2"] = Number(kTwo);
+
+			wavesSimulationProject["angular_frequency_2"] = (sgnTwo === '-') ? (-1 * Number(wTwo)) : (1 * Number(wTwo));
+			
+			wavesSimulationProject["initial_phase_2"] = Number(phiTwo);
+
+		}
+
+		function initWavesData() {
+
+			extendedData.time_controller = 0;
+
+			wavesSimulationData["wave_x"] = new Array(extendedData.NUMBER_OF_POINTS).fill(0);
+
+			wavesSimulationData["wave_1_y"] = new Array(extendedData.NUMBER_OF_POINTS).fill(0);
+
+			wavesSimulationData["wave_2_y"] = new Array(extendedData.NUMBER_OF_POINTS).fill(0);
+
+			wavesSimulationData["wave_3_y"] = new Array(extendedData.NUMBER_OF_POINTS).fill(0);
+
+			for (var i = 0; i < extendedData.NUMBER_OF_POINTS; i++) {
+
+				let t = i / extendedData.NUMBER_OF_POINTS * 10;
+
+				wavesSimulationData["wave_x"][i] = t;
+
+				wavesSimulationData["wave_1_y"][i] = wavesSimulationProject.amplitude_1 * Math.sin(wavesSimulationProject.wave_number_1 * t + wavesSimulationProject.angular_frequency_1 * (extendedData.time_controller / 1000) + wavesSimulationProject.initial_phase_1);
+
+				wavesSimulationData["wave_2_y"][i] = wavesSimulationProject.amplitude_2 * Math.sin(wavesSimulationProject.wave_number_2 * t + wavesSimulationProject.angular_frequency_2 * (extendedData.time_controller / 1000) + wavesSimulationProject.initial_phase_2);
+
+				wavesSimulationData["wave_3_y"][i] = wavesSimulationData["wave_1_y"][i] + wavesSimulationData["wave_2_y"][i];
+			
+			}
+
+		}
+
+		function createPlot() {
+
+			initWavesData();
+
+			let layout = {
+
+				displayModeBar: false,
+
+				hovermode: false,
+
+				showlegend: false,
+
+				plot_bgcolor: "transparent",
+
+				paper_bgcolor: "transparent",
+
+				height: 545,
+
+				margin: {
+
+					l: 10,
+
+					r: 10,
+								
+					b: 10,
+								
+					t: 10,
+								
+					pad: 5
+								
+				},
+
+				xaxis: {
+
+					color: 'white',
+
+					gridcolor: '#B0B0B0',
+
+					dtick: 1,
+
+					gridwidth: 0.5,
+
+					automargin: true,
+
+					zerolinewidth: 1.5,
+
+					range: [-0.15, 10.15],
+
+					title: {
+
+						text: ($(window).width() <= 768) ? 'x[m]' : 'Évolution de la position x en mètres',
+
+						font: {
+
+							size: 16
+
+						}
+
+					},
+
+					fixedrange: true
+
+				},
+
+				yaxis: {
+								
+					color: 'white',
+
+					gridcolor: '#B0B0B0',
+
+					gridwidth: 0.5,
+					
+					zerolinewidth: 1.5,
+					
+					automargin: true,
+
+					autotick: true,
+
+					range: [-(wavesSimulationProject.amplitude_1 + wavesSimulationProject.amplitude_2 + 0.75), (wavesSimulationProject.amplitude_1 + wavesSimulationProject.amplitude_2 + 0.75)],
+
+					title: {
+
+						standoff: 10,
+
+						text: ($(window).width() <= 768) ? 'p(x, t)[m]' : 'Évolution des amplitudes p(x, t) en mètres',
+
+						font: {
+
+							size: 16
+
+						}
+
+					},
+
+				}
+
+			}
+
+			let data = [
+
+				{
+
+					x: wavesSimulationData.wave_x,
+
+					y: wavesSimulationData.wave_1_y,
+
+					mode: 'lines',
+
+					line: {
+
+						color: '#005DD9',
+
+						width: 2.5
+
+					}
+
+				},
+
+				{
+
+					x: wavesSimulationData.wave_x,
+
+					y: wavesSimulationData.wave_2_y,
+
+					mode: 'lines',
+
+					line: {
+
+						color: '#F1C31B',
+
+						width: 2.5
+
+					}
+
+				},
+
+				{
+
+					x: wavesSimulationData.wave_x,
+
+					y: wavesSimulationData.wave_3_y,
+
+					mode: 'lines',
+
+					line: {
+
+						color: '#28A745',
+
+						width: 2.5
+
+					}
+
+				}
+
+			]
+
+			Plotly.newPlot('waves-container', data, layout, { staticPlot: true });
+
+			if (extendedData.is_run === false) requestAnimationFrame(update);
+
+			extendedData.is_run = true;
+
+		}
+
+		function update() {
+
+			for (var i = 0; i < extendedData.NUMBER_OF_POINTS; i++) {
+
+				let t = i / extendedData.NUMBER_OF_POINTS * 10;
+
+				wavesSimulationData["wave_1_y"][i] = wavesSimulationProject.amplitude_1 * Math.sin(wavesSimulationProject.wave_number_1 * t + wavesSimulationProject.angular_frequency_1 * (extendedData.time_controller / 1000) + wavesSimulationProject.initial_phase_1);
+
+				wavesSimulationData["wave_2_y"][i] = wavesSimulationProject.amplitude_2 * Math.sin(wavesSimulationProject.wave_number_2 * t + wavesSimulationProject.angular_frequency_2 * (extendedData.time_controller / 1000) + wavesSimulationProject.initial_phase_2);
+
+				wavesSimulationData["wave_3_y"][i] = wavesSimulationData["wave_1_y"][i] + wavesSimulationData["wave_2_y"][i];
+
+			}
+
+			Plotly.animate('waves-container', {
+
+				data: [
+
+						{ y: wavesSimulationData.wave_1_y },
+
+						{ y: wavesSimulationData.wave_2_y },
+
+						{ y: wavesSimulationData.wave_3_y }
+
+					]
+
+				},
+				
+				{
+
+				transition: {
+
+					duration: 1,
+
+					easing: 'linear'
+
+				},
+
+				frame: {
+
+					duration: 1,
+
+					redraw: false
+
+				}
+
+			});
+
+			extendedData.time_controller += 0.35;
+
+			requestAnimationFrame(update);
+
+		}
+
+		function simulateWaves(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
+
+			generateDataBtn();	
+
+			setTimeout(function() {	
+
+				try {	
+
+					editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo);
+					
+					constructHTML();
+					
+					createPlot();	
+
+				} catch(_err) {	
+
+					abortProcess("Une erreur s'est produite lors du chargement des données.");	
+
+				}	
+
+			}, 3000);
+
+		}
+
+		function constructHTML() {
+
+			$("#graph-container").html('<div id="waves-container"></div>');
+
+			$("#modalbox-waves").css("display", "none");
+
+			$('.overlay').css('display', 'none');
+
+			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
+
+			if ($(window).width() >= 1024) {
+
+				$(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Resimuler des ondes harmoniques');
+
+				$("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+
+			}
+
+			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
+
+			extendedData.is_in_loading = false;
+
+			setCorrectButtonOnMobileInModalbox();
+
+			window.scrollTo(0, 0);
+
+		}
+
+		function generateDataBtn() {
+
+			extendedData.is_in_loading = true;
+
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
+
+			$("#simulate-waves-btn").attr('onclick', '');
+
+			if ($(window).width() >= 1024) $("#simulate-waves-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+
+			else $("#simulate-waves-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+
+		}
+
+		function abortProcess(msg) {
+
+			extendedData.is_in_loading = false;
+
+			$("#modalbox-errors-warnings-id").html(msg);
+
+			if ($(window).width() >= 1024) $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+
+			else $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i>');
+
+			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
+
+		}
+
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i>'); }
+
+		window.onload = () => {
+
+			if ($(window).width() <= 1024) $(".waves-btn").html('<i class="fa-solid fa-wave-square"></i>');
+	
+			else $(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler des ondes harmoniques');
+
+			$(".waves-btn").attr('onclick', `$('#modalbox-waves').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`)
+
+			setCorrectButtonOnMobileInModalbox();
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-waves").css('marginLeft', 'unset');
+
+				$("#modalbox-waves").css('left', 'unset');
+
+				$("#modalbox-waves").css('width', globalData.modalbox_size);
+
+			}
+
+		}
+		
+	</script>
+
+</body>
+
+</html>

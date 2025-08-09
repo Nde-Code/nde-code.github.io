@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Nathan Debilloëz · Projet</title>
+
+	<meta name="description" content="Traceur de polynômes de Lagrange, de splines cubiques et de polynômes de régression en ligne.">
+
+	<meta name="keywords" content="Nathan Debilloëz · Projet">
+
+	<meta name="author" content="Nathan Debilloëz">
+
+	<link rel="stylesheet" href="../style.css">
+
+	<style>
+
+	.interpolation-btn {
+		font-size: 20px;
+		border-radius: 50px;
+		color: white;
+		background: #005DD9;
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #0047A6;
+		padding: 15px 30px;
+		cursor: pointer;
+	}
+
+	.interpolation-btn:hover {
+		background: #4690F2;
+	}
+
+	.python-btn {
+		padding: 15px 30px;
+		color: white;
+		font-size: 20px;
+		border-radius: 50px;
+		background: #28A745; 
+		transition: all 0.2s ease-out 0s;
+		font-weight: bold;
+		border: 4px solid #218838; 
+		cursor: pointer;
+	}
+
+	.python-btn:hover {
+		background: #34D058;
+	}
+
+	/* Ace.js CSS: */
+	#editor { 
+		overflow: hidden;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		height: 500px;
+		border-bottom-right-radius: calc(40px - 4px);
+		border-bottom-left-radius: calc(40px - 4px);
+    }
+
+	#editor .ace_scrollbar-v {
+		display: none;
+	}
+
+	#editor .ace_scrollbar-h {
+		display: none;
+	}
+	/* Fin */
+
+	</style>
+
+	<link rel="stylesheet" href="../assets/css/fontawesome.css">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+
+	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+
+	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+
+	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-icon-180x180.png">
+
+	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+
+	<link rel="manifest" href="../assets/favicon/manifest.json">
+
+	<meta name="msapplication-TileColor" content="#ffffff">
+
+	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+
+	<meta name="theme-color" content="#ffffff">
+	
+</head>
+
+<body class="body-class">
+
+	<div id="modalbox-open-div"></div>
+
+	<div class="overlay"></div>
+
+	<div id="main-html">
+
+		<div class="main-container">
+
+			<div class="website-header">
+
+				<div class="menu-class">
+
+					<div class="menu-mobile">
+
+						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
+
+					</div>
+
+					<a href="/" class="menu-title"><strong>Nathan Debilloëz</strong></a>
+
+					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
+
+					<a onclick="openAboutBox();" class="menu-item">Notes</a>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Articles
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<!--
+									
+								Bientôt
+								
+							-->
+
+						</div>
+
+					</div>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Projets
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<a href="meteorites-map">Carte interactive des chutes de météorites sur Terre, recensées par la NASA</a>
+
+							<a href="interpolation-playground">Tracer un polynôme de Lagrange, une spline cubique et un polynôme de régression</a>
+
+							<a href="foucault">Simuler un pendule de Foucault</a>
+
+							<a href="radioactive-decay">Établir une équation de désintégration radioactive</a>
+
+							<a href="harmonic-waves">Simuler des ondes harmoniques</a>
+
+							<a href="https://github.com/Nde-Code/"><i class="fa-solid fa-plus"></i> En voir d'autres sur mon GitHub</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-main-panel" id="graph-container">
+
+				<img class="website-main-panel-img" src="../assets/robot.png" alt="Robot">
+
+				<h1 class="website-main-panel-title">Logiciel de calcul d'interpolation:</h1>
+					
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-check green"></i> Qui est gratuit, facile à utiliser et performant. </p>
+					
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-xmark red"></i> Qui limite en grandeur et en nombre les points saisis. </p>
+					
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-dot orange"></i> Qui des algorithmes numériques en O(n<sup>3</sup>) et O(n<sup>2</sup>). </p>
+					
+			</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-bottom">
+
+				<a id="interpolation-btn-id" class="interpolation-btn">
+
+					<i class="fa-solid fa-gear rotate-animation"></i>
+
+					Chargement...
+
+				</a>
+			
+			</div>
+
+			<div class="website-footer">
+
+				<div class="social-media">
+
+					<a href="https://x.com/nde_code"><i class="fa-brands fa-x-twitter x"></i></a>
+
+					<a href="https://www.facebook.com/nathan.debilloez"><i class="fa-brands fa-facebook facebook"></i></a>
+
+					<a href="https://github.com/Nde-Code"><i class="fa-brands fa-github github"></i></a>
+
+				</div>
+
+				<div class="copyright-container">
+
+					<p class="copyright-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+
+					<p class="copyright-text"> Mon Favicon est fait avec <a href="https://logomakr.com/" class="copyright-link">Logomakr</a>.</p>
+						
+					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io/blob/main/online/interpolation-playground.html" class="copyright-link">Github</a>.</p>
+						
+					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
+					
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="modalbox-class" id="modalbox-interpolation" style="display: none;"> 
+
+			<header class="modalbox-header-class">
+
+				Tracer
+
+				<a class="modalbox-header-close" onclick="$('#modalbox-interpolation').css('display', 'none'); $('.overlay').css('display', 'none');">
+
+					<i class="fa fa-times" aria-hidden="true"></i>
+
+				</a>
+
+			</header>
+
+			<div class="modalbox-main-container">
+
+				<div class="modalbox-text-container">
+
+                    <h2>Coordonnées selon l'axe des X des points:</h2>
+
+                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des X des points à tracer. Une limite de maximum 15 points et minimum 3 points est établie. Les valeurs doivent être strictement croissantes. Merci de les séparer par des virgules. Exemple:</p>
+					
+					<input id="x-data" class="modalbox-input" placeholder="X:" value="-3, -2, -1, 0, 1, 2, 3">
+                
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Coordonnées selon l'axe des Y des points:</h2>
+
+                    <p class="modalbox-description"> Saisissez les coordonnées selon l'axe des Y des points à tracer. Une limite de maximum 100 points et minimum 3 points est établie. Merci de les séparer par des virgules. Exemple:</p>
+					
+					<input id="y-data" class="modalbox-input" placeholder="Y:" value="-1, -0.5, -1, 0, 1, 0.5 , 1">
+                
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Tracer le polynôme de Lagrange:</h2>
+
+                    <p class="modalbox-description"> Voulez-vous tracer le polynôme de Lagrange, c'est-à-dire la courbe passant par tous les points saisis ?: </p>
+					
+					<select title="Polynôme de langrage:" id="langrage-plot-id">
+
+						<option value="true" selected>Oui</option>
+
+						<option value="false">Non</option>
+						
+					</select>
+                
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Tracer la spline cubique:</h2>
+
+                    <p class="modalbox-description"> Voulez-vous tracer la spline cubique, c'est-à-dire la courbe passant au mieux par tous les points saisis ?: </p>
+					
+					<select title="Spline cubique:" id="spline-plot-id">
+
+						<option value="true" selected>Oui</option>
+
+						<option value="false">Non</option>
+						
+					</select>
+                
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container">
+
+                    <h2>Tracer le polynôme de régression:</h2>
+
+                    <p class="modalbox-description"> Voulez-vous tracer le polynôme de régression, c'est-à-dire la courbe passant au mieux entre les points saisis ?: </p>
+					
+					<select title="Polynôme de régression:" id="regression-plot-id" onchange="setHTMLForDegInput($('#regression-plot-id').val() === 'true');">
+
+						<option value="true" selected>Oui</option>
+
+						<option value="false">Non</option>
+						
+					</select>
+                
+				</div>
+
+				<div class="modalbox-line"></div>
+
+				<div class="modalbox-text-container" id="deg-html-id">
+
+                    <h2>Degré du polynôme de régression:</h2>
+
+					<p class="modalbox-description" style="font-weight: bold; font-size: 24px;">Degré du polynôme: <span style="color: #4690F2;" id="deg-id">1</span> </p>
+
+                    <p class="modalbox-description"> Sélectionnez le degré du polynôme de régression à tracer: </p>
+					
+					<input onchange="setDegValueInHTML($('#deg-data').val());" title="Degré du polynôme:" type="range" id="deg-data" class="modalbox-range" value="1" min="1" max="10" step="1">
+                
+				</div>
+
+				<div class="modalbox-line" id="deg-white-line"></div>
+
+				<div class="modalbox-text-container">
+					
+					<h2>Code couleurs:</h2>
+
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #FD7E14;"></i> Courbe sur le graphique indiquant le polynôme de Lagrange passant par les points saisis. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #F1C31B"></i> Courbe sur le graphique indiquant la spline cubique passant par les points saisis. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #DC3545;"></i> Couleur sur le graphique, du polynôme de régression passant au mieux par les points saisis.</p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-circle" style="color: #005DD9;"></i> Couleur sur le graphique, des points qui ont été saisis.</p>
+														
+				</div>
+
+				<div class="modalbox-line" id="deg-white-line"></div>
+
+				<div class="modalbox-text-container">
+
+					<h2>Notes:</h2>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le code Python généré peut être utilisé librement, sans aucune restriction. Une attribution est toujours appréciée, mais pour quelques lignes de code, cela n'a absolument aucune importance. En revanche, attention à la version en ligne (le logiciel que vous utilisez actuellement), qui est soumise, comme le reste du site, à une licence. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le code Python généré n'est bien entendu pas exécuté, car, comme déjà mentionné, mon site est entièrement statique. Bien que l'utilisation de technologies modernes comme Pyodide pourrait rendre une telle fonctionnalité possible, il s'agit pour l'instant seulement d'une note en vue d'une éventuelle mise à jour future. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> La version en ligne n'affiche pas les coefficients du polynôme de régression, contrairement au code Python, pour lequel j'ai ajouté un peu de code afin de les afficher. Pour le polynôme de Lagrange (dans la version en ligne et le code Python), j'ai choisi l'algorithme le plus optimisé. Cependant, ce dernier fonctionne sans résoudre de systèmes et ne calcule donc pas de coefficients. </p>
+
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Pour maintenir le logiciel optimisé et limiter les fortes oscillations, j'ai sciemment restreint le nombre et la valeur des points pouvant être saisis. </p>
+					
+					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Attention au phénomène de Runge lorsque vous utilisez l'interpolation polynomiale de Lagrange. </p>
+														
+				</div>
+
+				<p class="modalbox-errors-warnings-class" id="modalbox-errors-warnings-id"> Les messages d'erreur et d'avertissement seront affichés dans cette section. </p>
+
+				<div class="modalbox-bottom">
+
+					<a id="run-playground-id" class="modalbox-btn" onclick="plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());">
+						
+						<i class="fa-solid fa-chart-line"></i> Tracer
+					
+					</a>
+				
+				</div>
+				
+			</div>
+			
+		</div>
+
+		<div class="modalbox-class" id="modalbox-editor" style="display: none;">
+
+			<header class="modalbox-header-class">
+
+				Éditeur
+
+				<a class="modalbox-header-close" onclick="$('#modalbox-editor').css('display', 'none'); $('.overlay').css('display', 'none');">
+
+					<i class="fa fa-times" aria-hidden="true"></i>
+
+				</a>
+
+			</header>
+
+			<div class="modalbox-main-container">
+
+				<div id="editor"></div>
+
+			</div>
+			
+		</div>
+
+	</div>
+
+	<script data-goatcounter="https://nde-stats.goatcounter.com/count" async src="../js/goatcounter.js"></script>
+
+	<script src="../js/jquery.js"></script>
+
+	<script src="../js/app.js"></script>
+
+	<script src="../js/math.js" defer></script>
+
+    <script src="../js/plotly.js" defer></script>
+
+	<script src="../js/ace/ace.js" defer></script>
+
+	<script src="../js/ace/github_dark.js" defer></script>
+
+	<script src="../js/ace/mode-python.js" defer></script>
+
+	<script type="text/javascript">
+
+		var extendedData = {
+
+			is_in_loading: false,
+
+			editor: null,
+
+			X_LIMIT: [-50, 50],
+
+			STEP: 1000
+			
+		}
+
+		var interpolationProject = {};
+        
+		function setDegValueInHTML(val) { return $("#deg-id").html(val); }
+
+		function setHTMLForDegInput(val) { 
+			
+			let displayValue = (val === false) ? 'none' : 'block';
+
+			return $('#deg-html-id').css('display', displayValue) && $('#deg-white-line').css('display', displayValue);
+		
+		}
+
+		function parseNumber(element) { return (element.trim() === '') ? NaN : Number(element); }
+
+		function isStrictlyIncreasing(arr) {
+
+			if (Array.isArray(arr) === false) return false;
+
+			for (let i = 1; i < arr.length; i++) {
+
+				if (arr[i] <= arr[i - 1]) return false;
+
+			}
+
+			return true;
+
+		}
+
+		function isArrayWithOnlyValidNumbers(arr) {
+
+			if (Array.isArray(arr) === false) return false;
+
+			for (let elem of arr) {
+
+				if (typeof elem !== 'number' || isNaN(elem) || elem >= extendedData.X_LIMIT[1] || elem <= extendedData.X_LIMIT[0]) return false;
+				
+			}
+
+			return true;
+
+		}
+
+		function isFullSame(arr) {
+
+			if (arr.length === 0 || Array.isArray(arr) === false) return false; 
+
+			let firstElement = arr[0];
+
+			for (let i = 1; i < arr.length; i++) {
+
+				if (arr[i] !== firstElement) return false;
+
+			}
+
+			return true;
+			
+		}
+		
+		function getXForPlot(min, max, iter) {
+
+			let generatedX = [];
+
+			for (let i = min; i <= max; i += (1 / iter)) {
+
+				generatedX.push(i);
+
+			}
+
+			return generatedX;
+
+		}
+
+		function getLagrangeInterpolationInX(xp, x, y) {
+
+			let n = x.length;
+
+			let yp = 0;
+
+			for (let j = 0; j < n; j++) {
+
+				let v = 1;
+
+				for (let i = 0; i < n; i++) {
+
+					if (i !== j) v *= (xp - x[i]) / (x[j] - x[i]);
+
+				}
+
+				yp += v * y[j];
+
+			}
+
+			return yp;
+
+		}
+
+		function getSplineCoeffs(x, y) {
+
+			let n = x.length;
+
+			let h = new Array(n - 1).fill(0);
+
+			for (let i = 0; i < n - 1; i++) {
+
+				h[i] = x[i + 1] - x[i];
+
+			}
+
+			let Q = math.zeros(n, n)._data;
+
+			let p = new Array(n).fill(0);
+
+			for (let i = 0; i < n - 2; i++) {
+
+				Q[i][i] = h[i];
+
+				Q[i][i + 1] = 2 * (h[i] + h[i + 1]);
+
+				Q[i][i + 2] = h[i + 1];
+
+				p[i] = 6 * ((y[i + 2] - y[i + 1]) / h[i + 1] - (y[i + 1] - y[i]) / h[i]);
+
+			}
+
+			Q[n - 2][0] = 1;
+
+			Q[n - 1][n - 1] = 1;
+
+			let M = math.lusolve(math.matrix(Q), math.matrix(p));
+
+			M = M.valueOf().flat(); 
+
+			let a = new Array(n - 1).fill(0);
+
+			let b = new Array(n - 1).fill(0);
+
+			let c = new Array(n - 1).fill(0);
+
+			let d = new Array(n - 1).fill(0);
+
+			for (let i = 0; i < n - 1; i++) {
+
+				a[i] = (M[i + 1] - M[i]) / (6 * h[i]);
+
+				b[i] = M[i] / 2;
+
+				c[i] = (y[i + 1] - y[i]) / h[i] - (h[i] / 6) * (M[i + 1] + 2 * M[i]);
+
+				d[i] = y[i];
+
+			}
+
+			return [a, b, c, d];
+
+		}
+
+		function generateSplinePointsForPlot(x, a, b, c, d, accuracy) {
+
+			let splineXVal = [];
+
+			let splineYVal = [];
+
+			for (let i = 0; i < x.length - 1; i++) {
+
+				for (let j = 0; j < accuracy; j++) {
+
+					let t = (x[i] + (j * (x[i + 1] - x[i])) / (accuracy - 1));
+
+					let y_spline = (a[i] * Math.pow(t - x[i], 3) + b[i] * Math.pow(t - x[i], 2) + c[i] * (t - x[i]) + d[i]);
+
+					splineXVal.push(t);
+
+					splineYVal.push(y_spline);
+
+				}
+
+			}
+
+			return [splineXVal, splineYVal]; 
+
+		}
+
+		function getLeastSquaresCoefficients(x, y, m) {
+
+			let deg = (m + 1);
+
+    		let n = x.length;
+
+    		let A = math.zeros(n, deg);
+
+			for (let i = 0; i < deg; i++) {
+
+				for (let j = 0; j < n; j++) {
+
+					A.set([j, i], Math.pow(x[j], i));
+
+				}
+
+			}
+
+			let ATA = math.multiply(math.transpose(A), A);
+
+			let ATy = math.multiply(math.transpose(A), math.matrix(y)); 
+
+			return math.lusolve(ATA, ATy)._data;
+
+		}
+
+		function generateYForLeastSquares(coeffs, min, max, iter) {
+
+			let yleastSquares = [];
+
+			for (let i = min; i <= max; i += (1 / iter)) {
+
+				let y = 0;
+
+				for (let j = 0; j < coeffs.length; j++) {
+
+					y += coeffs[j] * Math.pow(i, j);
+
+				}
+
+				yleastSquares.push(y);
+
+			}
+
+			return yleastSquares;
+
+		}
+
+		function getCompiledPythonCode() {
+
+			let pythonCode = `
+			# ----------------------------------------------------------------
+			# Voici un peu de documentation sur les raccourcis clavier:
+			# https://github.com/ajaxorg/ace/wiki/default-keyboard-shortcuts
+			# ----------------------------------------------------------------
+			# Pour exécuter ce code, assurez-vous d'avoir les bibliothèques:
+			# - Matplotlib
+			# - Numpy
+			# - SciPy
+			import numpy as np
+			import matplotlib.pyplot as plt
+			from scipy.interpolate import CubicSpline, lagrange
+			from numpy.polynomial.polynomial import Polynomial
+
+			# Les conditions:
+			plotLagrange = ${interpolationProject.plot_lagrange}
+			plotSpline = ${interpolationProject.plot_spline}
+			plotRegression = ${interpolationProject.plot_regression}
+
+			# Les points saisis:
+			x = np.array([${interpolationProject.x}])
+			y = np.array([${interpolationProject.y}])
+
+			# Intervalle des valeurs de x pour un tracé plus précis:
+			x_fine = np.linspace(min(x), max(x), 1000)
+
+			# Calcul des interpolations et régression:
+			curves = {}
+
+			if plotSpline:
+
+				curves['Spline Cubique'] = CubicSpline(x, y, bc_type='natural')(x_fine)
+
+			if plotLagrange:
+
+				curves['Polynôme de Lagrange'] = lagrange(x, y)(x_fine)
+
+			if plotRegression:
+
+				poly_reg = np.poly1d(np.polyfit(x, y, ${interpolationProject.m}))
+
+				curves['Régression Polynomiale'] = poly_reg(x_fine)
+
+			# Fonction pour afficher le polynôme de régression
+			# sous une forme lisible.
+			# Retirer les guillemets en haut et en bas pour l'utiliser.
+			"""
+			def print_polynomial(coeffs):
+				terms = []
+				degree = len(coeffs) - 1
+				for i, coeff in enumerate(coeffs):
+					power = degree - i
+					if coeff != 0:
+						term = f"{coeff:.5f}"
+						if power > 0:
+							term += f"x^{power}" if power > 1 else "x"
+						terms.append(term)
+				print(" + ".join(terms))
+
+			if plot_regression:
+				print("Polynôme de régression: ")
+				print_polynomial(poly_reg.coefficients)
+			"""
+
+			# Tracé des résultats:
+			plt.figure(figsize=(10, 6))
+			plt.scatter(x, y, color='red', label='Points de données')
+			for label, y_vals in curves.items():
+				plt.plot(x_fine, y_vals, label=label)
+
+			plt.xlabel('X')
+			plt.ylabel('Y')
+			plt.title('Graphique des interpolations et régression')
+			plt.legend()
+			plt.grid()
+			plt.show()
+			`;
+
+			let lines = pythonCode.split("\n");
+
+			let minIndent = Math.min(...lines.filter(line => line.trim().length > 0).map(line => line.match(/^(\s*)/)[0].length));
+
+			return "# Bienvenue sur l'éditeur de code Python !" + lines.map(line => line.slice(minIndent)).join("\n");
+
+		}
+
+		function renderPlot(xScatter, yScatter, lagrangePlotPoints, splinePlotPoints, leastSquaresPlotPoints, minX, maxX) {
+
+			let xMargin = 0.015 * (maxX - minX);
+
+			let layout = {
+
+				displayModeBar: false,
+
+				hovermode: false,
+
+				showlegend: false,
+
+				plot_bgcolor: "transparent",
+
+				paper_bgcolor: "transparent",
+
+				height: 545,
+
+				margin: {
+
+					l: 10,
+
+					r: 10,
+								
+					b: 10,
+								
+					t: 10,
+								
+					pad: 5
+								
+				},
+
+				xaxis: {
+
+					color: 'white',
+
+					gridcolor: '#B0B0B0',
+
+					gridwidth: 0.5,
+
+					automargin: true,
+
+					zerolinewidth: 1.5,
+
+					dtick: (maxX - minX) / 10,
+					
+					range: [(minX - xMargin), (maxX + xMargin)],
+					
+					title: {
+								
+						text: 'Axe des abscisses',
+
+						font: {
+
+							size: 16
+
+						}
+
+					},
+
+					fixedrange: true
+
+				},
+
+				yaxis: {
+								
+					color: 'white',
+
+					gridcolor: '#B0B0B0',
+
+					gridwidth: 0.5,
+
+					zerolinewidth: 1.5,
+
+					automargin: true,
+
+					autotick: true,
+
+					title: {
+
+						standoff: 10,
+								
+						text: 'Axe des ordonnées',
+
+						font: {
+
+							size: 16
+
+						}
+
+					},
+
+				}
+
+			}
+
+			let lagrangeCurve = {
+
+				x: lagrangePlotPoints[0].map(item => Number(item)),
+
+				y: lagrangePlotPoints[1].map(item => Number(item)),
+
+				mode: 'lines',
+
+				type: 'scatter',
+
+				line: {
+
+					color: '#FD7E14',
+
+					width: 2.5
+
+				}
+
+			}
+
+			let splineCurve = {
+
+				x: splinePlotPoints[0][0].map(item => Number(item)),
+
+				y: splinePlotPoints[0][1].map(item => Number(item)),
+
+				mode: 'lines',
+
+				type: 'scatter',
+
+				line: {
+
+					color: '#F1C31B',
+
+					width: 2.5
+
+				}
+
+			}
+
+			let regressionCurve = {
+
+				x: leastSquaresPlotPoints[0].map(item => Number(item)),
+
+				y: leastSquaresPlotPoints[1].map(item => Number(item)),
+
+				mode: 'lines',
+
+				type: 'scatter',
+
+				line: {
+
+					color: '#DC3545',
+
+					width: 2.5
+
+				}
+
+			}
+
+			let markers = {
+
+				x: xScatter.map(item => Number(item)),
+
+				y: yScatter.map(item => Number(item)),
+
+				mode: 'markers',
+
+				type: 'scatter',
+
+				marker: {
+
+					color: '#005DD9', 
+
+					size: 10, 
+
+					line: {
+
+						color: '#0047A6',
+
+						width: 2.5,
+
+						dash: 'solid',
+
+					},
+
+				},
+
+			}
+
+			let data = [];	
+
+			if (leastSquaresPlotPoints[2] === true) data.push(regressionCurve);
+
+			if (splinePlotPoints[1] === true) data.push(splineCurve);
+
+			if (lagrangePlotPoints[2] === true) data.push(lagrangeCurve);
+
+			data.push(markers);
+
+			getPythonCode();
+
+			constructHTML();
+
+			Plotly.newPlot('plot-box', data, layout, { staticPlot: true });
+
+		}
+
+		function plotCurves(x, y, lagrange, spline, regression, deg) {
+
+			let plotLagrange = (lagrange === 'true') ? true : false;
+
+			let plotSpline = (spline === 'true') ? true : false;
+
+			let plotRegression = (regression === 'true') ? true : false;
+
+			let xVal = (x !== '') ? x.split(",").map(parseNumber) : false;
+
+			let yVal = (y !== '') ? y.split(",").map(parseNumber) : false;
+
+			if (xVal === false || isFullSame(xVal) || isArrayWithOnlyValidNumbers(xVal) === false || isStrictlyIncreasing(xVal) === false || xVal.length > 15 || xVal.length < 3) {
+
+				$("#modalbox-errors-warnings-id").html("Les coordonnées des points selon l'axe des X sont invalides !");
+
+				return false;
+
+			}
+
+			else if (yVal === false || isFullSame(yVal) || isArrayWithOnlyValidNumbers(yVal) === false || yVal.length > 15 || yVal.length < 3) {
+
+				$("#modalbox-errors-warnings-id").html("Les coordonnées des points selon l'axe des Y sont invalides !");
+
+				return false;
+
+			}
+
+			else if (xVal.length !== yVal.length) {
+				
+				$("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des X et celles selon l'axe des Y n'ont pas la même taille !");
+			
+				return false
+
+			}
+
+			else {
+
+				generateDataBtn();
+
+				setTimeout(function(){
+					
+					try {
+
+						let iteration = extendedData.STEP;
+
+						let minOfX = Math.min(...xVal);
+
+						let maxOfX = Math.max(...xVal);
+
+						let xPlot = getXForPlot(minOfX, maxOfX, iteration);
+
+						interpolationProject['x'] = xVal;
+
+						interpolationProject['y'] = yVal;
+
+						interpolationProject['m'] = Number(deg);
+
+						interpolationProject['plot_lagrange'] = (plotLagrange === true) ? 'True' : 'False';
+
+						interpolationProject['plot_spline'] = (plotSpline === true) ? 'True' : 'False';
+
+						interpolationProject['plot_regression'] = (plotRegression === true) ? 'True' : 'False';
+
+						let splinePlot = plotSpline ? (() => {
+
+							let coeffs = getSplineCoeffs(xVal, yVal);
+
+							let xySplinePlot = generateSplinePointsForPlot(xVal, coeffs[0], coeffs[1], coeffs[2], coeffs[3], iteration);
+
+							return [xySplinePlot, true];
+
+						})() : [[[], []], false];
+
+						let lagrangePlot = plotLagrange ? [xPlot, xPlot.map(x => getLagrangeInterpolationInX(x, xVal, yVal)), true] : [[], [], false];
+
+						let leastSquaresPlot = plotRegression ? (() => {
+
+							let coeffs = getLeastSquaresCoefficients(xVal, yVal, Number(deg));
+
+							return [xPlot, generateYForLeastSquares(coeffs, minOfX, maxOfX, iteration), true];
+
+						})() : [[], [], false];
+
+						interpolationProject['plot_x_range'] = xPlot;
+
+						interpolationProject['lagrange_points'] = lagrangePlot;
+
+						interpolationProject['spline_points'] = splinePlot;
+
+						interpolationProject['regression_points'] = leastSquaresPlot;
+
+						renderPlot(xVal, yVal, lagrangePlot, splinePlot, leastSquaresPlot, minOfX, maxOfX);
+
+						setCorrectButtonOnMobileInModalbox();
+
+					} catch(_err) {
+
+						abortProcess("Une erreur s'est produite lors du chargement des données.")
+
+					}
+
+				}, 3000);
+
+			}
+
+		}
+
+		function openEditor() {
+
+			extendedData.editor.setValue(getCompiledPythonCode());
+
+			extendedData.editor.clearSelection();
+
+			$('#modalbox-editor').css('display', 'block');
+
+			$('.overlay').css('display', 'block');
+
+			window.scrollTo(0, 0);
+
+			requestAnimationFrame(() => { extendedData.editor.resize(true) });
+
+		}
+
+		function getPythonCode() {
+
+			let polynomialBtn = $(".website-bottom .python-btn").length > 0;
+
+			if (polynomialBtn) $(".website-bottom .python-btn").remove();
+
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="python-btn" onclick="openEditor();"><i class="fa-brands fa-python"></i> Code compilé en python</a>`);
+
+			else $(".website-bottom").append(`<a class="python-btn" onclick="openEditor();"><i class="fa-brands fa-python"></i></a>`);
+
+		}
+
+		function constructHTML() {
+
+			$("#graph-container").html('<div id="plot-box"></div>');
+
+			$("#modalbox-interpolation").css("display", "none");
+
+			$('.overlay').css('display', 'none');
+
+			$("#run-playground-id").attr('onclick', `plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());`);
+
+			if ($(window).width() >= 1024) {
+
+				$(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer des courbes d\'interpolation');
+
+				$("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
+
+			}
+
+			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
+
+			extendedData.is_in_loading = false;
+
+			window.scrollTo(0, 0);
+
+		}
+
+		function generateDataBtn() {
+
+			extendedData.is_in_loading = true;
+
+			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
+
+			$("#run-playground-id").attr('onclick', '');
+
+			if ($(window).width() >= 1024) $("#run-playground-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+
+			else $("#run-playground-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+
+		}
+
+		function abortProcess(msg) {
+
+			extendedData.is_in_loading = false;
+
+			$("#modalbox-errors-warnings-id").html(msg);
+
+			if ($(window).width() >= 1024) $("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
+
+			else $("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i>');
+
+			$("#run-playground-id").attr('onclick', `plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());`);
+
+		}
+
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i>'); }
+
+		window.onload = () => {
+
+			extendedData.editor = ace.edit("editor");
+
+			extendedData.editor.setTheme("ace/theme/github_dark");
+
+			extendedData.editor.session.setMode("ace/mode/python");
+
+        	extendedData.editor.getSession().setOption("useWorker", false);
+
+			extendedData.editor.setOptions({
+
+				fontFamily: "monospace",
+
+				fontSize: "16px"
+
+			});
+
+			if ($(window).width() <= 1024) $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i>');
+
+			else $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i> Tracer des courbes d\'interpolation');
+
+			$(".interpolation-btn").attr('onclick', `$('#modalbox-interpolation').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`)
+
+			setCorrectButtonOnMobileInModalbox();
+
+			if ($(window).width() <= 768) {
+
+				$('.modalbox-class').css({
+
+					'marginLeft': 'unset',
+
+					'left': 'unset',
+
+					'width': globalData.modalbox_size
+
+				});
+
+			}
+
+		}
+		
+	</script>
+
+</body>
+
+</html>
