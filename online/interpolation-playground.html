@@ -775,7 +775,7 @@
 
 		function renderPlot(xScatter, yScatter, lagrangePlotPoints, splinePlotPoints, leastSquaresPlotPoints, minX, maxX) {
 
-			let xMargin = 0.015 * (maxX - minX);
+			let xMargin = (maxX - minX) * ($(window).width() >= 768 ? 0.016 : 0.0625);
 
 			let layout = {
 
