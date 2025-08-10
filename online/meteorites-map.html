@@ -28,7 +28,7 @@
     }
 
     #map {
-        height: 100vh;
+        height: calc(var(--vh, 1vh) * 100);
         z-index: 0;
     }
 
@@ -710,6 +710,8 @@
 
         }
 
+        function setRealVH() { return $('html').css('--vh', `${(window.innerHeight * 0.01)}px`); }
+
         L.Control.DropdownControl = L.Control.extend({
 
             onAdd: function (map) {
@@ -836,7 +838,9 @@
 
         window.onload = () => {
             
-            detectES6(); 
+            detectES6();
+
+            setRealVH(); 
 
             if ($(window).width() <= 768) {
 
@@ -895,6 +899,8 @@
         initAreaHTML();
 
         extendedData.marker_group = L.layerGroup().addTo(extendedData.map);
+
+        $(window).on('resize orientationchange', function () { setRealVH(); });
 
         document.oncontextmenu = () => { return false; }
 
