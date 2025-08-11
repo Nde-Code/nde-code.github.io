@@ -70,7 +70,10 @@
     }
     
     .leaflet-custom-marker {
-        border-radius: 50%;
+        width: 10px;               
+        height: 10px;             
+        border-radius: 50%;        
+        box-sizing: border-box;    
         box-shadow: 0 0 2px 2px #4690F2;
         background: #4690F2;
         border: 3px solid #0047A6;
@@ -584,7 +587,11 @@
 
                 className: 'leaflet-custom-marker',
 
-                iconSize: [4, 4]
+                iconSize: [10, 10],
+
+                iconAnchor: [5, 5],
+
+                popupAnchor: [0, -5]
 
             });
                 
