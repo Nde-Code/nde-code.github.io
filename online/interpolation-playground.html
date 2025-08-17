@@ -1095,8 +1095,6 @@
 
 			$('.overlay').css('display', 'block');
 
-			window.scrollTo(0, 0);
-
 			requestAnimationFrame(() => { extendedData.editor.resize(true) });
 
 		}
@@ -1134,8 +1132,6 @@
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 			extendedData.is_in_loading = false;
-
-			window.scrollTo(0, 0);
 
 		}
 
@@ -1191,7 +1187,7 @@
 
 			else $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i> Tracer des courbes d\'interpolation');
 
-			$(".interpolation-btn").attr('onclick', `$('#modalbox-interpolation').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`)
+			$(".interpolation-btn").attr('onclick', `$('#modalbox-interpolation').css('display', 'block'); $('.overlay').css('display', 'block');`)
 
 			setCorrectButtonOnMobileInModalbox();
 

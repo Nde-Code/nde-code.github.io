@@ -786,9 +786,9 @@
 
 			if ($(".website-bottom .revolution-period-btn").length > 0) $(".website-bottom .revolution-period-btn").remove();
 
-			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]} heures et ${tRevHoursMinutes[1]} minutes</a>`);
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="revolution-period-btn"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]} heures et ${tRevHoursMinutes[1]} minutes</a>`);
 			
-			else $(".website-bottom").append(`<a class="revolution-period-btn" onclick="window.scrollTo(0, 0);"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]}h${tRevHoursMinutes[1].toString().padStart(2, '0')}</a>`);
+			else $(".website-bottom").append(`<a class="revolution-period-btn"><i class="fa-solid fa-clock"></i> ${tRevHoursMinutes[0]}h${tRevHoursMinutes[1].toString().padStart(2, '0')}</a>`);
 		
 		}
 
@@ -813,8 +813,6 @@
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 			extendedData.is_in_loading = false;
-
-			window.scrollTo(0, 0);
 
 		}
 
@@ -854,7 +852,7 @@
 	
 			else $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler un pendule de Foucault');
 
-			$("#foucault-btn-id").attr('onclick', `$('#modalbox-foucault').css('display', 'block'); window.scrollTo(0, 0); $('.overlay').css('display', 'block');`)
+			$("#foucault-btn-id").attr('onclick', `$('#modalbox-foucault').css('display', 'block'); $('.overlay').css('display', 'block');`)
 
 			setCorrectButtonOnMobileInModalbox();
 
