@@ -241,7 +241,7 @@
 						
 					<p class="copyright-text"> Le code source est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io/blob/main/online/interpolation-playground.html" class="copyright-link">Github</a>.</p>
 						
-					<p class="copyright-text"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
+					<p class="copyright-text" id="remove-footer-notice"> L'icône de robot est fait par Flowicon sur <a href="https://www.flaticon.com/free-icon/chat_6819666?related_id=6819666#" class="copyright-link">Flaticon</a>.</p>
 					
 				</div>
 
@@ -1130,6 +1130,8 @@
 			}
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
+
+			if ($("#remove-footer-notice").length > 0) $("#remove-footer-notice").remove();
 
 			extendedData.is_in_loading = false;
 
