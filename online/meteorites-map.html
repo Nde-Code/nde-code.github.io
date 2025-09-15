@@ -318,19 +318,19 @@
 
             AREAS_COORDS: [
 
-                { name: "Europe", center_lat: 54, center_long: 15, radius: 2500 },
+                { name: "Europe", center_latitude: 54, center_longitude: 15, radius: 2500 },
 
-                { name: "Amérique du Nord", center_lat: 50, center_long: -100, radius: 3500 },
+                { name: "Amérique du Nord", center_latitude: 50, center_longitude: -100, radius: 3500 },
                 
-                { name: "Afrique", center_lat: 1, center_long: 17, radius: 3000 },
+                { name: "Afrique", center_latitude: 1, center_longitude: 17, radius: 3000 },
 
-                { name: "Amérique du Sud", center_lat: -15, center_long: -60, radius: 2500 },
+                { name: "Amérique du Sud", center_latitude: -15, center_longitude: -60, radius: 2500 },
 
-                { name: "Asie", center_lat: 45, center_long: 90, radius: 4500 },
+                { name: "Asie", center_latitude: 45, center_longitude: 90, radius: 4500 },
 
-                { name: "Océanie", center_lat: -25, center_long: 135, radius: 3000 },
+                { name: "Océanie", center_latitude: -25, center_longitude: 135, radius: 3000 },
 
-                { name: "Antarctique", center_lat: -70, center_long: 0, radius: 3000 }
+                { name: "Antarctique", center_latitude: -70, center_longitude: 0, radius: 3000 }
 
             ],
 
@@ -776,9 +776,9 @@
 
                             let params = {
 
-                                center_lat: area.center_lat.toString(),
+                                centerLatitude: area.center_latitude.toString(),
 
-                                center_long: area.center_long.toString(),
+                                centerLongitude: area.center_longitude.toString(),
 
                                 radius: area.radius.toString()
 
@@ -796,7 +796,7 @@
 
                                 $span.data('default', $span.html());
 
-                                extendedData.map.flyTo([area.center_lat, area.center_long], 4);
+                                extendedData.map.flyTo([area.center_latitude, area.center_longitude], 4);
 
                             }
 
