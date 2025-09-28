@@ -59,7 +59,7 @@ function openAboutBox() {
 
                 <h2>Librairies utilisées:</h2>
 
-                <p class="modalbox-description"> Afin de rendre ce site encore plus convivial, j'utilise des bibliothèques soigneusement choisies, privilégiant celles qui sont personnalisables, légères et sécurisées, dans le but d'optimiser votre expérience utilisateur et de garantir un confort maximal. Voici celle que j'utilise actuellement: </p>
+                <p class="modalbox-description"> Afin de rendre ce site encore plus convivial, j'utilise des bibliothèques soigneusement choisies, privilégiant celles qui sont personnalisables, légères et sécurisées, dans le but d'optimiser votre expérience utilisateur et de garantir un confort maximal: </p>
                     
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
                     
@@ -81,7 +81,7 @@ function openAboutBox() {
 
                 <h2>Outils et ressources utilisés:</h2>
 
-                <p class="modalbox-description"> Pour créer ce site, je ne me suis pas contenté d'un simple bloc-notes et de quelques images trouvées sur Internet (d'autant plus que je porte une attention particulière aux droits d'auteur). C'est pourquoi j'ai utilisé différents outils et ressources pour le concevoir. Les voici: </p>
+                <p class="modalbox-description"> Pour créer ce site, je ne me suis pas contenté d'un simple bloc-notes et de quelques images trouvées sur Internet (d'autant plus que je porte une attention particulière aux droits d'auteur). C'est pourquoi j'ai utilisé différents outils et ressources pour le concevoir: </p>
                     
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Visual Studio Code:</strong> pour rédiger et modifier le code de ce chaleureux site internet. </p>
                                         
@@ -103,9 +103,7 @@ function openAboutBox() {
 
                 <h2>Services tiers:</h2>
 
-                <p class="modalbox-description"> Mon site est entièrement statique, ce qui signifie qu'aucun traitement côté serveur n'est effectué lorsque vous le consultez. Ce choix présente de nombreux avantages, mais aussi quelques inconvénients, notamment en ce qui concerne les limitations fonctionnelles. Pour certaines tâches, je dois donc faire appel à des services tiers. Je porte une attention particulière aux réglementations et au respect de la vie privée dans le choix des services que j'utilise. Voici ceux que j'utilise actuellement: </p>
-
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Firebase:</strong> Un service cloud proposé par Google permettant de créer des bases de données, des systèmes d'authentification, etc. Actuellement, je n'utilise que la base de données en temps réel, pour certains projets. </p>
+                <p class="modalbox-description"> Mon site est entièrement statique, ce qui signifie qu'aucun traitement côté serveur n'est effectué lorsque vous le consultez. Ce choix présente de nombreux avantages, mais aussi quelques inconvénients, notamment en ce qui concerne les limitations fonctionnelles. Pour certaines tâches, je dois donc faire appel à des services tiers. Je porte une attention particulière aux réglementations et au respect de la vie privée dans le choix des services que j'utilise: </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Goatcounter:</strong> Pour obtenir quelques statistiques sur les visites de mon site comme le nombre de visiteurs, leur localisation (pays uniquement), le système d'exploitation, ... j'utilise ces données uniquement dans le but d'améliorer le site. Bien que diantrement simpliste, GoatCounter fait partie des rares services gratuits à la fois honnêtes et pleinement respectueux des réglementations sur la vie privée, comme le RGPD. À tel point que je n'ai même pas besoin d'afficher de bannière de cookies ou d'alerte concernant la collecte de données. </p>
 
