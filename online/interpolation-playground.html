@@ -449,7 +449,7 @@
 
 			X_LIMIT: [-50, 50],
 
-			STEP: 1000
+			STEP: 800
 			
 		}
 
@@ -875,7 +875,7 @@
 
 				mode: 'lines',
 
-				type: 'scatter',
+				type: 'scattergl',
 
 				line: {
 
@@ -895,7 +895,7 @@
 
 				mode: 'lines',
 
-				type: 'scatter',
+				type: 'scattergl',
 
 				line: {
 
@@ -915,7 +915,7 @@
 
 				mode: 'lines',
 
-				type: 'scatter',
+				type: 'scattergl',
 
 				line: {
 
@@ -935,7 +935,7 @@
 
 				mode: 'markers',
 
-				type: 'scatter',
+				type: 'scattergl',
 
 				marker: {
 
@@ -971,7 +971,7 @@
 
 			constructHTML();
 
-			Plotly.newPlot('plot-box', data, layout, { staticPlot: true });
+			Plotly.react('plot-box', data, layout, { staticPlot: true });
 
 		}
 

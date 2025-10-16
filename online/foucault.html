@@ -610,7 +610,7 @@
 
 				mode: 'lines',
 
-				type: 'scatter',
+				type: 'scattergl',
 
 				line: {
 
@@ -630,7 +630,7 @@
 
 				mode: 'lines',
 
-				type: 'scatter',
+				type: 'scattergl',
 
 				line: {
 
@@ -650,7 +650,7 @@
 
 				mode: 'lines',
 
-				type: 'scatter',
+				type: 'scattergl',
 
 				line: {
 
@@ -710,7 +710,7 @@
 
 			constructHTML();
 
-			Plotly.newPlot('pendulum-graph-box', data, layout, { staticPlot: true });
+			Plotly.react('pendulum-graph-box', data, layout, { staticPlot: true });
 
 		}
 
