@@ -70,8 +70,6 @@ function openAboutBox() {
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Plotly.js:</strong> pour dessiner des graphiques dans le navigateur. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Ace.js:</strong> un petit éditeur de code écrit en JavaScript, accompagné des compléments nécessaires, notamment un ou plusieurs thèmes ainsi qu'une ou plusieurs colorations syntaxiques. </p>
-
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Leaflet.js:</strong> pour créer des cartes interactives en JavaScript. </p>
                 
             </div>
 
@@ -103,11 +101,7 @@ function openAboutBox() {
 
                 <h2>Services tiers:</h2>
 
-                <p class="modalbox-description"> Mon site est entièrement statique, ce qui signifie qu'aucun traitement côté serveur n'est effectué lorsque vous le consultez. Ce choix présente de nombreux avantages, mais aussi quelques inconvénients, notamment en ce qui concerne les limitations fonctionnelles. Pour certaines tâches, je dois donc faire appel à des services tiers. Je porte une attention particulière aux réglementations et au respect de la vie privée dans le choix des services que j'utilise: </p>
-
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Goatcounter:</strong> Pour obtenir quelques statistiques sur les visites de mon site comme le nombre de visiteurs, leur localisation (pays uniquement), le système d'exploitation, ... j'utilise ces données uniquement dans le but d'améliorer le site. Bien que diantrement simpliste, GoatCounter fait partie des rares services gratuits à la fois honnêtes et pleinement respectueux des réglementations sur la vie privée, comme le RGPD. À tel point que je n'ai même pas besoin d'afficher de bannière de cookies ou d'alerte concernant la collecte de données. </p>
-
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>MapTiler:</strong> Pour réaliser des cartes avec Leaflet.js, j'utilise un service qui fournit des tuiles raster un peu plus qualitatives que celles d'OpenStreetMap. </p>
 
             </div>
 

@@ -16,8 +16,6 @@ Code source de mon site web personnel.
 
   - Ace.js: https://ace.c9.io/
 
-  - Leaflet.js: https://leafletjs.com/
-
 # 🛠️ Outils et ressources utilisés:
 
   - Visual Studio Code: https://code.visualstudio.com/
@@ -36,11 +34,7 @@ Code source de mon site web personnel.
 
   - Goatcounter: https://www.goatcounter.com/ 
 
-  - MapTiler: https://www.maptiler.com/
-
-# 📝 Notes:
-
-  - La carte interactive des chutes de météorites sur Terre repose sur une API externe, développée dans le cadre d'un autre de mes projets: [meteorites-api](https://github.com/Nde-Code/meteorites-api)
+# 📝 Note(s):
 
   - La base de données intégrée à mon logiciel de désintégration radioactive a été conçue entièrement par mes soins, à partir de sources variées. Ce travail a demandé un investissement conséquent. Deux versions sont disponibles : l’une lisible et facilement modifiable, l’autre optimisée et minimisée pour un usage en ligne performant. Son utilisation est libre, mais une mention de crédit serait grandement appréciée.
 
