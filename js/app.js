@@ -59,7 +59,7 @@ function openAboutBox() {
 
                 <h2>Librairies utilisées:</h2>
 
-                <p class="modalbox-description"> Afin de rendre ce site encore plus convivial, j'utilise des bibliothèques soigneusement choisies, privilégiant celles qui sont personnalisables, légères et sécurisées, dans le but d'optimiser votre expérience utilisateur et de garantir un confort maximal: </p>
+                <p class="modalbox-description"> J'utilise des bibliothèques soigneusement choisies, privilégiant celles qui sont personnalisables, légères et sécurisées, dans le but d'optimiser votre expérience utilisateur et de garantir un confort maximal: </p>
                     
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
                     
@@ -99,9 +99,9 @@ function openAboutBox() {
 
             <div class="modalbox-text-container">
 
-                <h2>Services tiers:</h2>
+                <h2>Pour avoir des statistiques:</h2>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Goatcounter:</strong> Pour obtenir quelques statistiques sur les visites de mon site comme le nombre de visiteurs, leur localisation (pays uniquement), le système d'exploitation, ... j'utilise ces données uniquement dans le but d'améliorer le site. Bien que diantrement simpliste, GoatCounter fait partie des rares services gratuits à la fois honnêtes et pleinement respectueux des réglementations sur la vie privée, comme le RGPD. À tel point que je n'ai même pas besoin d'afficher de bannière de cookies ou d'alerte concernant la collecte de données. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Goatcounter:</strong> pour obtenir certaines informations telles que le nombre de visiteurs, leur localisation (pays uniquement), leur système d'exploitation, ... Ce service est entièrement conforme au RGPD et ne nécessite pas de bannière de cookies. </p>
 
             </div>
 

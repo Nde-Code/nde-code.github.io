@@ -104,6 +104,7 @@ body.body-class {
     border-bottom-left-radius: 25px;
     font-weight: bold;
     color: #4690F2;
+    border-top: 2px solid #4690F2;
 }
 
 .menu-dropdown-items a:hover {
@@ -208,8 +209,8 @@ body.body-class {
 
 /* Pour les projets en ligne: */
 .website-main-panel-img {
-    width: 245px;
-    height: 245px;
+    width: 255px;
+    height: 255px;
     margin-top: 30px;
 }
 
@@ -236,7 +237,7 @@ body.body-class {
     margin-left: 15%;
     margin-right: 15%;
     text-align: center;
-    min-height: 550px;
+    min-height: 580px;
     /* Masquer la "scrollbar" sur Firefox. */
     scrollbar-width: none;
 }
@@ -326,7 +327,7 @@ h1.website-main-panel-title {
 }
 
 div.social-media {
-    padding: 18px 30px;
+    padding: 15px 30px;
     cursor: default;
 }
 
