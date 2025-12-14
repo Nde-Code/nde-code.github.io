@@ -776,6 +776,8 @@
 
 			}
 
+			$(".modalbox-header-close").attr('onclick', `$('#modalbox-waves').css('display', 'none'); $('.overlay').css('display', 'none');`);
+
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 			if ($("#remove-footer-notice").length > 0) $("#remove-footer-notice").remove();
@@ -789,6 +791,8 @@
 		function generateDataBtn() {
 
 			extendedData.is_in_loading = true;
+
+			$(".modalbox-header-close").removeAttr('onclick');
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
