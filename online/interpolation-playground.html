@@ -1127,7 +1127,7 @@
 
 			}
 
-			$(".modalbox-header-close").attr('onclick', `$('#modalbox-interpolation').css('display', 'none'); $('.overlay').css('display', 'none');`);
+			$("#modalbox-interpolation .modalbox-header-close").attr('onclick', `$('#modalbox-interpolation').css('display', 'none'); $('.overlay').css('display', 'none');`);
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
@@ -1141,7 +1141,7 @@
 
 			extendedData.is_in_loading = true;
 
-			$(".modalbox-header-close").removeAttr('onclick');
+			$("#modalbox-interpolation .modalbox-header-close").removeAttr("onclick");
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
