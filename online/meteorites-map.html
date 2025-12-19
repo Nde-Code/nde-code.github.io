@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Nathan Debilloëz · Carte</title>
+
+	<meta name="description" content="Carte interactive des chutes de météorites sur Terre, recensées par la NASA."> 
+
+	<meta name="keywords" content="Nathan Debilloëz · Carte">
+
+	<meta name="author" content="Nathan Debilloëz">
+
+    <link rel="stylesheet" href="../style.css">
+
+    <style>
+
+    html,
+    body {
+        height: 100%;
+        margin: 0 !important;
+    }
+
+    #map {
+        height: calc(var(--vh, 1vh) * 100);
+        z-index: 0;
+    }
+
+    .leaflet-popup-content-wrapper {
+        background: #404040 !important;
+        border: none !important;
+        color: #fff !important;
+    }
+
+    .leaflet-popup-tip {
+        background: #404040 !important;
+    }
+
+    .leaflet-popup-content {
+        font-size: 14px !important;
+        line-height: 1.4 !important;
+    }
+
+    .leaflet-container a.leaflet-popup-close-button {
+        color: #fff !important;
+        font-size: 16px !important;
+    }
+
+    .leaflet-container a {
+        color: #fff !important;
+    }
+
+    .leaflet-popup,
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .leaflet-control-attribution {
+        background: linear-gradient(135deg,rgba(85, 85, 85, 0.8) 0%,rgba(68, 68, 68, 0.8) 40%,rgba(51, 51, 51, 0.8) 75%,rgba(34, 34, 34, 0.8) 100%) !important;
+        color: #fff !important;
+        font-size: 14px !important;
+    }
+    
+    .leaflet-custom-marker {
+        width: 10px;               
+        height: 10px;             
+        border-radius: 50%;        
+        box-sizing: border-box;    
+        box-shadow: 0 0 2px 2px #4690F2;
+        background: #4690F2;
+        border: 3px solid #0047A6;
+    }
+
+    .maptiler-logo {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        padding: 4px;
+        border-radius: 4px;
+    }
+
+    .maptiler-logo img {
+        height: 24px;
+    }
+
+    .dropdown-container {
+        position: relative;
+    }
+
+    .dropdown-button {
+        background: #005DD9;
+        border: 4px solid #0047A6;
+        color: #fff; 
+        padding: 12px 24px; 
+        border-radius: 25px; 
+        font-size: 18px; 
+        font-weight: bold;
+        cursor: pointer;
+        width: 280px; 
+        text-align: center; 
+        -webkit-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+        box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .dropdown-button:hover {
+        background: #4690F2;
+    }
+
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        list-style: none;
+        padding: 5px 0;
+        margin: 0;
+        display: none; 
+        z-index: 1000;
+        width: 280px;
+    }
+
+    .dropdown-item {
+        user-select: none;
+        -webkit-user-select: none;
+        display: flex; 
+        align-items: center; 
+        background-color: #404040;
+        padding: 10px 15px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    .dropdown-item:hover {
+        background-color: #4e4e4e;
+    }
+
+    .dropdown-item:first-child {
+        border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+    }
+
+    .dropdown-item:last-child {
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+    }
+
+    .dropdown-item:first-child:hover {
+        background-color: #4e4e4e; 
+        border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+    }
+
+    .dropdown-item:last-child:hover {
+        background-color: #4e4e4e; 
+        border-bottom-right-radius: 25px;
+        border-bottom-left-radius: 25px;
+    }
+
+    .dropdown-item i {
+        width: 20px;
+        text-align: center;
+    }
+
+    @media (max-width: 768px) {
+        .leaflet-control-attribution {
+            font-size: 10px !important;
+        }
+        .maptiler-logo {
+            left: auto;      
+            right: 10px;     
+        }
+        .maptiler-logo img {
+            height: 18px;
+        }
+    }
+    </style>
+
+    <link rel="stylesheet" href="../assets/css/leaflet.css">
+
+    <link rel="stylesheet" href="../assets/css/fontawesome.css">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="../assets/favicon/apple-icon-57x57.png">
+
+	<link rel="apple-touch-icon" sizes="60x60" href="../assets/favicon/apple-icon-60x60.png">
+
+	<link rel="apple-touch-icon" sizes="72x72" href="../assets/favicon/apple-icon-72x72.png">
+
+	<link rel="apple-touch-icon" sizes="76x76" href="../assets/favicon/apple-icon-76x76.png">
+
+	<link rel="apple-touch-icon" sizes="114x114" href="../assets/favicon/apple-icon-114x114.png">
+
+	<link rel="apple-touch-icon" sizes="120x120" href="../assets/favicon/apple-icon-120x120.png">
+
+	<link rel="apple-touch-icon" sizes="144x144" href="../assets/favicon/apple-icon-144x144.png">
+
+	<link rel="apple-touch-icon" sizes="152x152" href="../assets/favicon/apple-icon-152x152.png">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-icon-180x180.png">
+
+	<link rel="icon" type="image/png" sizes="192x192" href="../assets/favicon/android-icon-192x192.png">
+
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon/favicon-32x32.png">
+
+	<link rel="icon" type="image/png" sizes="96x96" href="../assets/favicon/favicon-96x96.png">
+
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon/favicon-16x16.png">
+
+	<link rel="manifest" href="../assets/favicon/manifest.json">
+
+	<meta name="msapplication-TileColor" content="#ffffff">
+
+	<meta name="msapplication-TileImage" content="../assets/favicon/ms-icon-144x144.png">
+
+</head>
+
+<body>
+
+    <div class="overlay"></div>
+
+    <div id="map"></div>
+
+    <a href="https://maptiler.com/" class="maptiler-logo">
+
+        <img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler">
+
+    </a>
+
+    <div class="modalbox-class" id="modalbox-stats" style="display: none;"> 
+
+        <header class="modalbox-header-class">
+
+            Statistiques
+
+            <a class="modalbox-header-close" onclick="$('#modalbox-stats').css('display', 'none'); $('.overlay').css('display', 'none');">
+
+                <i class="fa fa-times" aria-hidden="true"></i>
+
+            </a>
+
+        </header>
+
+        <div class="modalbox-main-container" id="stats-container"></div>
+        
+    </div>
+
+    <div class="modalbox-class" id="modalbox-notes" style="display: none;"> 
+
+        <header class="modalbox-header-class">
+
+            Notes
+
+            <a class="modalbox-header-close" onclick="$('#modalbox-notes').css('display', 'none'); $('.overlay').css('display', 'none');">
+
+                <i class="fa fa-times" aria-hidden="true"></i>
+
+            </a>
+
+        </header>
+
+        <div class="modalbox-main-container">
+
+            <div class="modalbox-text-container">
+
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/dataset/meteorite-landings" style="color: #4690F2;"> [NASA]</a>. </p>
+
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le but de ce projet est de réaliser des statistiques basées sur l'aléatoire (générale ou par zone/continent), des météorites tombées sur Terre. Pour des raisons techniques évidentes, l’API utilisée par le logiciel ne contient pas toutes les données, mais seulement une partie.<!--Pour des recherches plus avancées, vous pouvez consulter la documentation de l'API <a href="https://github.com/Nde-Code/meteorites-api" style="color: #4690F2;"> [Ici]</a>. --></p>
+
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le quota est fixé à une requête par seconde. </p>
+                
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> J'utilise une tuile fournie par <a href="https://www.maptiler.com/" style="color: #4690F2;"> [MapTiler] </a> pour avoir un fond de carte sympa. </p>
+
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Pour prévenir les abus, l'API utilisée par le logiciel exploite votre adresse IP (afin de limiter le nombre de requêtes), mais celle-ci est hachée (via SHA-256) avec un "SALT" solide et robuste. Aucune IP brute ni aucune autre information personnelle n'est collectée. N'hésitez pas à me contacter pour toute question relative à ce sujet. <b> En utilisant ce logiciel ou/et l'API associée, vous confirmez être en accord avec les présentes conditions. </b></p>
+
+            </div>
+
+        </div>
+        
+    </div>
+
+    <script data-goatcounter="https://nde-stats.goatcounter.com/count" async src="../js/goatcounter.js"></script>
+
+    <script src="../js/jquery.js"></script>
+
+    <script src="../js/leaflet.js"></script>
+
+    <script>
+
+        var extendedData = {
+            
+            map: null,
+
+            DEFAULT_ZOOM: 5,
+            
+            BOUNDS_ARRAY: [[-90, -Infinity], [90, Infinity]],
+
+            bounds: null,
+
+            RANDOM_RANGE: [600, 900],
+
+            DEFAULT_VIEW: [50.85, 4.35],
+
+            BASE_API_URL: 'https://meteorites.nde-code.workers.dev',
+
+            is_in_loading: false,
+
+            marker_group: null, 
+
+            ranking: 8,
+
+            AREAS_COORDS: [
+
+                { name: "Europe", center_latitude: 54, center_longitude: 15, radius: 2500 },
+
+                { name: "Amérique du Nord", center_latitude: 39, center_longitude: -98, radius: 2500 },
+
+                { name: "Amérique centrale", center_latitude: 15, center_longitude: -90, radius: 1500 },
+                
+                { name: "Amérique du Sud", center_latitude: -15, center_longitude: -60, radius: 2500 },
+
+                { name: "Afrique du Nord", center_latitude: 28, center_longitude: 10, radius: 1000 },
+
+                { name: "Afrique subsaharienne", center_latitude: -5, center_longitude: 20, radius: 2500 },
+
+                { name: "Moyen-Orient", center_latitude: 29, center_longitude: 45, radius: 2500 },
+
+                { name: "Asie du Sud", center_latitude: 22, center_longitude: 79, radius: 2500 },
+
+                { name: "Chine", center_latitude: 35, center_longitude: 105, radius: 2500 },
+
+                { name: "Russie (Asie)", center_latitude: 60, center_longitude: 100, radius: 2500 },
+
+                { name: "Asie du Sud-Est", center_latitude: 10, center_longitude: 105, radius: 2500 },
+
+                { name: "Océanie", center_latitude: -25, center_longitude: 135, radius: 2500 },
+
+                { name: "Groenland", center_latitude: 72, center_longitude: -40, radius: 1000 },
+
+                { name: "Antarctique", center_latitude: -70, center_longitude: 0, radius: 2500 }
+
+            ],
+
+            area_index: 0,
+
+            starting_width: $(document).width()
+        
+        };
+
+        function getRandomInt(min, max) { return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min); }
+
+        async function fetchData(apiUrl, params = {}) {
+
+            if (!apiUrl) return null;
+
+            let queryString = new URLSearchParams(params).toString();
+
+            let fullUrl = `${apiUrl}?${queryString}`;
+
+            try {
+
+                let response = await fetch(fullUrl);
+
+                if (!response.ok) return null;
+
+                return await response.json();
+
+            } catch (_err) {
+
+                return null;
+
+            }
+
+        }
+
+        function detectES6() {
+
+            try {
+
+                Function("() => {};");
+
+            }
+
+            catch (_err) {
+
+                return window.location.href = "/";
+
+            }
+
+        }
+
+        function computeStats(data) {
+
+            let APIResponseJSON = data.success;
+
+            if (!APIResponseJSON || !Array.isArray(APIResponseJSON.meteorites) || APIResponseJSON.meteorites.length === 0) return null;
+
+            let meteorites = APIResponseJSON.meteorites;
+
+            let minYear = Infinity;
+
+            let maxYear = -Infinity;
+
+            let totalYear = 0;
+
+            let yearCount = 0;
+
+            let minMass = Infinity;
+
+            let maxMass = -Infinity;
+
+            let totalMass = 0;
+
+            let massCount = 0;
+
+            let totalCount = meteorites.length;
+
+            let recclassCounts = {};
+
+            meteorites.forEach(meteorite => {
+
+                let mass = meteorite.mass ? parseFloat(meteorite.mass) : NaN;
+
+                let year = parseInt(meteorite.year, 10);
+
+                if (!isNaN(mass) && mass > 0) {
+
+                    if (mass < minMass) minMass = mass;
+
+                    if (mass > maxMass) maxMass = mass;
+
+                    totalMass += mass;
+
+                    massCount++;
+
+                }
+
+                if (!isNaN(year)) {
+
+                    if (year < minYear) minYear = year;
+
+                    if (year > maxYear) maxYear = year;
+
+                    totalYear += year;
+
+                    yearCount++;
+
+                }
+
+                let recclass = meteorite.recclass || "Inconnue";
+
+                recclassCounts[recclass] = (recclassCounts[recclass] ?? 0) + 1;
+
+            });
+
+            let avgMass = massCount > 0 ? (totalMass / massCount) : null;
+
+            let avgYear = yearCount > 0 ? Math.round(totalYear / yearCount) : null;
+
+            return { totalCount, minMass, maxMass, avgMass, minYear, maxYear, avgYear, recclassCounts };
+
+        }
+
+        function modalboxStats(data) {
+
+            let statsJSON = computeStats(data);
+
+            if (!statsJSON) return;
+
+            $("#stats-container").empty();
+
+            let sections = [
+
+                {
+
+                    title: "Statistiques relatives à la masse:",
+
+                    items: [
+
+                        { label: "Masse minimale", value: statsJSON.minMass !== Infinity ? statsJSON.minMass + " g" : "N/A", color: "#F1C31B" },
+                       
+                        { label: "Masse maximale", value: statsJSON.maxMass !== -Infinity ? (statsJSON.maxMass / 1000).toFixed(6) + " kg" : "N/A", color: "#F1C31B" },
+                        
+                        { label: "Masse moyenne", value: statsJSON.avgMass !== null ? (statsJSON.avgMass / 1000).toFixed(6) + " kg" : "N/A", color: "#F1C31B" }
+                    
+                    ]
+
+                },
+
+                {
+
+                    title: "Statistiques relatives à l'année:",
+                    
+                    items: [
+
+                        { label: "Année la plus ancienne", value: statsJSON.minYear !== Infinity ? statsJSON.minYear : "N/A", color: "#FD7E14" },
+                       
+                        { label: "Année la plus récente", value: statsJSON.maxYear !== -Infinity ? statsJSON.maxYear : "N/A", color: "#FD7E14" },
+                        
+                        { label: "Année moyenne", value: statsJSON.avgYear !== null ? statsJSON.avgYear : "N/A", color: "#FD7E14" }
+                    
+                    ]
+
+                }
+
+            ];
+
+            let fullHtml = sections.map(section => {
+
+                let itemsHtml = section.items.map(item => `
+
+                    <p class="modalbox-description">
+
+                        <i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i>
+
+                        ${item.label}: <span style="font-weight: bold; color: ${item.color};">${item.value}</span>
+
+                    </p>
+
+                `).join("");
+
+                return `
+                
+                        <div class="modalbox-text-container">
+                            
+                            <h2>${section.title}</h2>
+                            
+                            ${itemsHtml}
+                            
+                        </div>
+                    
+                    `;
+
+            }).join("");
+
+            let sortedClasses = Object.entries(statsJSON.recclassCounts).sort((a, b) => b[1] - a[1]).slice(0, extendedData.ranking);
+
+            let classHTML = `
+
+                <div class="modalbox-text-container">
+
+                    <h2>Top ${extendedData.ranking} des classes de météorites:</h2>
+
+                    ${sortedClasses.map(([recclass, count]) => `
+
+                        <p class="modalbox-description">
+
+                            <i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i>
+                           
+                            Classe ${recclass}: <span style="font-weight: bold; color: #DC3545;">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
+                       
+                        </p>
+
+                    `).join("")}
+
+                </div>
+
+            `;
+
+            fullHtml += classHTML;
+
+            $("#stats-container").append(fullHtml);
+
+            $('#modalbox-stats').css('display', 'block');
+
+            $('.overlay').css('display', 'block');
+
+        }
+
+        function processMeteorites(data) {
+
+            let latitude = isNaN(Number(data.latitude)) ? null : Number(data.latitude);
+
+            let longitude = isNaN(Number(data.longitude)) ? null : Number(data.longitude);
+    
+            let popUpContent = `
+    
+                <b>Identifiant: </b> <span style="color: #4690F2;"> ${(data.id === '' || data.id === 'N/A' || data.id === "Unknown") ? 'Non renseigné' : data.id} </span> <br> 
+    
+                <b>Nom: </b> <span style="color: #4690F2;"> ${(data.name === '' || data.name === 'N/A' || data.name === "Unknown") ? 'Non renseigné' : data.name} </span> <br>
+    
+                <b>Classe: </b> <span style="color: #4690F2;"> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : data.recclass} </span> <br>
+    
+                <b>Masse: </b> <span style="color: #4690F2;"> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : (data.mass / 1000).toFixed(4) + " kg"} </span> <br>
+    
+                <b>Status: </b> <span style="color: #4690F2;"> ${(data.fall === 'Fell' || data.fall === 'N/A' || data.fall === "Unknown") ? 'Tombée' : 'Trouvée'} </span> <br>
+    
+                <b>Année: </b> <span style="color: #4690F2;"> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} </span> <br>
+    
+                <b>Coordonnées: </b> <span style="color: #4690F2;"> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) </span> <br>
+                    
+            `;
+
+            let customIcon = L.divIcon({
+
+                className: 'leaflet-custom-marker',
+
+                iconSize: [10, 10],
+
+                iconAnchor: [5, 5],
+
+                popupAnchor: [0, -5]
+
+            });
+                
+            return L.marker([latitude, longitude],  { icon: customIcon }).addTo(extendedData.map).bindPopup(popUpContent);
+
+        }
+
+        async function getRandomMeteoriteFromDB(endpoint, params, targetId) {
+
+            if (!endpoint || !params) return null;
+
+            if (extendedData.is_in_loading) return null;        
+            
+            extendedData.is_in_loading = true;
+
+            extendedData.marker_group.clearLayers();
+
+            let $label = $(`#${targetId}`);
+
+            let $icon = $label.closest('li').find('i');
+
+            let $li = $label.closest('li');
+
+            $icon.removeClass().addClass('fa-solid fa-gear rotate-animation');
+
+            $label.text("Chargement des données depuis l'API...");
+
+            $li.addClass('loading');
+
+            let reset = () => {
+
+                let iconClass = (targetId === 'random-areas-html') ? 'fa-solid fa-earth-europe animation' : 'fa-solid fa-plus animation';
+
+                $icon.removeClass().addClass(iconClass);
+
+                if (targetId === 'random-areas-html') $label.html($label.data('default') || "Ajouter des météorites sur une zone");
+               
+                else $label.text($label.data('default') || "Réajouter aléatoirement des météorites");
+
+                $li.removeClass('loading');
+
+                extendedData.is_in_loading = false;
+
+            };
+
+            try {
+
+                let data = await fetchData(`${extendedData.BASE_API_URL}${endpoint}`, params);
+
+                if (data?.success?.meteorites?.length > 0) {
+
+                    data.success.meteorites.forEach(meteorite => {
+
+                        let marker = processMeteorites(meteorite);
+
+                        extendedData.marker_group.addLayer(marker);
+
+                    });
+
+                    $('#meteorites-html').html(`${data.success.count} météorites sur la carte`);
+
+                    $('#stats-html').html("Voir les statistiques de l'échantillon");
+
+                    $('#stats-html').closest('li').off('click').on('click', () => modalboxStats(data));
+
+                    reset();
+
+                    return data; 
+                    
+                } else {
+
+                    $icon.removeClass().addClass('fa-solid fa-times animation');
+
+                    $label.text("Les données n'ont pas pu être récupérées...");
+
+                    $('#meteorites-html').html('Aucune météorite sur la carte');
+
+                    $('#stats-html').html("Aucune statistique disponible sur l'échantillon");
+
+                    $('#stats-html').closest('li').off('click');
+
+                    setTimeout(reset, 3000);
+
+                    return null;
+
+                }
+
+            } catch (_err) {
+
+                $icon.removeClass().addClass('fa-solid fa-times animation');
+
+                $label.text("Erreur de récupération des données...");
+
+                $('#meteorites-html').html('Aucune météorite sur la carte');
+
+                $('#stats-html').html("Aucune statistique disponible sur l'échantillon");
+
+                $('#stats-html').closest('li').off('click');
+
+                setTimeout(reset, 3000);
+
+                return null;
+
+            }
+
+        }
+
+        function initAreaHTML() {
+
+            let index = extendedData.area_index || 0;
+
+            let area = extendedData.AREAS_COORDS[index];
+
+            let $span = $('#random-areas-html');
+
+            if ($span.length) {
+
+                $span.html(`Ajouter des météorites sur la zone: <strong>${area.name}</strong>`);
+
+                $span.data('default', $span.html());
+
+            }
+
+        }
+
+        function setRealVH() { return $('html').css('--vh', `${(window.innerHeight * 0.01)}px`); }
+
+        L.Control.DropdownControl = L.Control.extend({
+
+            onAdd: function (map) {
+
+                let $container = $('<div>', { class: 'dropdown-container' });
+
+                let $button = $('<button>', {
+
+                    class: 'dropdown-button',
+
+                    html: '<i class="fa-solid fa-bars"></i> Menu des outils'
+
+                }).appendTo($container);
+
+                let $menu = $('<ul>', { class: 'dropdown-menu', css: { display: 'none' } }).appendTo($container);
+
+                let options = [
+
+                    { text: '<span id="random-html"> Ajouter aléatoirement des météorites sur la carte </span>', icon: 'fa-solid fa-plus animation', color: '#F1C31B', action: async () => { 
+
+                            let $li = $('#random-html').closest('li');
+                            
+                            if ($li.hasClass('loading')) return;
+                            
+                            let count = getRandomInt(extendedData.RANDOM_RANGE[0], extendedData.RANDOM_RANGE[1]);
+
+                            await getRandomMeteoriteFromDB('/random', { count }, 'random-html');
+
+                        }
+                    
+                    }, 
+
+                    {
+
+                        text: `<span id="random-areas-html"> Ajouter des météorites sur une zone </span>`,
+                       
+                        icon: 'fa-solid fa-globe-europe animation',
+                        
+                        color: '#28A745',
+                       
+                        action: async () => {
+
+                            let $span = $('#random-areas-html');
+
+                            let $li = $span.closest('li');
+
+                            if ($li.hasClass('loading')) return;
+
+                            let index = extendedData.area_index;
+
+                            let area = extendedData.AREAS_COORDS[index];
+
+                            let nextIndex = (index + 1) % extendedData.AREAS_COORDS.length;
+
+                            let params = {
+
+                                centerLatitude: area.center_latitude.toString(),
+
+                                centerLongitude: area.center_longitude.toString(),
+
+                                radius: area.radius.toString(),
+
+                                limit: 300
+
+                            };
+
+                            let data = await getRandomMeteoriteFromDB('/search', params, 'random-areas-html');
+
+                            if (data?.success?.meteorites?.length > 0) {
+
+                                extendedData.area_index = nextIndex;
+
+                                let nextArea = extendedData.AREAS_COORDS[nextIndex];
+
+                                $span.html(`Ajouter des météorites sur la zone: <strong>${nextArea.name}</strong>`);
+
+                                $span.data('default', $span.html());
+
+                                extendedData.map.flyTo([area.center_latitude, area.center_longitude], 4);
+
+                            }
+
+                        }
+
+                    },
+                    
+                    { text: '<span id="meteorites-html"> Aucune météorite sur la carte </span>', icon: 'fa-solid fa-meteor', color: '#FD7E14' }, 
+                                        
+                    { text: `<span id="stats-html"> Aucune statistique disponible sur l'échantillon </span>`, icon: 'fa-solid fa-chart-line', color: '#DC3545', action: () => {} }, 
+
+                    { text: 'Quelques notes du développeur', icon: 'fa-solid fa-book', color: '#4690F2', action: () => { 
+                                            
+                            $('#modalbox-notes').css('display', 'block');
+                            
+                            $('.overlay').css('display', 'block');
+
+                        }
+
+                    },
+
+                    { text: `${new Date().getFullYear()} Nathan Debilloëz`, icon: 'fa-regular fa-copyright', color: '#fff', action: () => { window.location.href = '/'; } } 
+
+                ];
+
+                options.forEach(function (option) {
+
+                    let $item = $('<li>', { class: 'dropdown-item' });
+
+                    $('<i>', { class: option.icon, css: { color: option.color, marginRight: '18px' } }).appendTo($item);
+                    
+                    $item.append(option.text);
+
+                    if (option.action) $item.on('click', option.action);
+
+                    $menu.append($item);
+
+                });
+
+                $button.on('click', function () { $menu.toggle(); });
+
+                return $container[0];
+
+            }
+
+        });
+
+        window.onload = () => {
+            
+            detectES6();
+
+            setRealVH(); 
+
+            if ($(window).width() <= 768) {
+
+				$('.modalbox-class').css({
+
+					'marginLeft': 'unset',
+
+					'left': 'unset',
+
+					'width': `${Math.round($(window).width() - 8)}px`
+
+				});
+
+			}
+
+        };
+
+        $(window).on('resize', () => {
+
+            let newWidth = $(document).width();
+
+            if (extendedData.starting_width !== newWidth) document.location.reload(true);
+
+        });
+
+        extendedData.bounds = L.latLngBounds(extendedData.BOUNDS_ARRAY);
+
+        extendedData.map = L.map('map', {
+
+            renderer: L.canvas(),
+
+            zoomControl: false,
+
+            scrollWheelZoom: true,
+
+            doubleClickZoom: false,
+
+            zoom: 10,
+
+            minZoom: 4,
+
+            maxZoom: 12,
+
+            worldCopyJump: true
+
+        }).setView([extendedData.DEFAULT_VIEW[0], extendedData.DEFAULT_VIEW[1]], extendedData.DEFAULT_ZOOM);
+
+        extendedData.map.setMaxBounds(extendedData.bounds);
+
+        extendedData.map.on('drag', function() { extendedData.map.panInsideBounds(extendedData.bounds, { animate: true }); });
+
+        L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=Y4mt0pJJj6lEa2eROPmN', { attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> © <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a>' }).addTo(extendedData.map);
+
+        extendedData.map.addControl(new L.Control.DropdownControl({ position: 'topright' }));
+
+        initAreaHTML();
+
+        extendedData.marker_group = L.layerGroup().addTo(extendedData.map);
+
+        $(window).on('resize orientationchange', function () { setRealVH(); });
+
+        document.oncontextmenu = () => { return false; }
+
+    </script>
+
+</body>
+
+</html>
