@@ -71,6 +71,8 @@ function openAboutBox() {
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Ace.js:</strong> un petit éditeur de code écrit en JavaScript, accompagné des compléments nécessaires, notamment un ou plusieurs thèmes ainsi qu'une ou plusieurs colorations syntaxiques. </p>
                 
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Leaflet.js:</strong> pour créer des cartes interactives en JavaScript. </p>
+
             </div>
 
             <div class="modalbox-line"></div>
@@ -99,9 +101,11 @@ function openAboutBox() {
 
             <div class="modalbox-text-container">
 
-                <h2>Pour avoir des statistiques:</h2>
+                <h2>Services tiers:</h2>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>Goatcounter:</strong> pour obtenir certaines informations telles que le nombre de visiteurs, leur localisation (pays uniquement), leur système d'exploitation, ... Ce service est entièrement conforme au RGPD et ne nécessite pas de bannière de cookies. </p>
+
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> <strong>MapTiler:</strong> pour réaliser des cartes avec Leaflet.js, j'utilise un service qui fournit des tuiles raster un peu plus qualitatives que celles d'OpenStreetMap. </p>
 
             </div>
 

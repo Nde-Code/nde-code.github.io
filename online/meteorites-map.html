@@ -99,75 +99,102 @@
     .dropdown-button {
         background: #005DD9;
         border: 4px solid #0047A6;
-        color: #fff; 
-        padding: 12px 24px; 
-        border-radius: 25px; 
-        font-size: 18px; 
-        font-weight: bold;
+        color: #fff;
+        padding: 12px;
+        border-radius: 50%;
         cursor: pointer;
-        width: 280px; 
-        text-align: center; 
-        -webkit-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
-        box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
 
     .dropdown-button:hover {
         background: #4690F2;
     }
 
+    .dropdown-button i {
+        font-size: 18px;
+        color: #fff;
+        line-height: 1;
+    }
+
     .dropdown-menu {
         position: absolute;
-        top: 100%;
-        left: 0;
+        top: calc(100% + 8px);
+        right: 0;
         list-style: none;
-        padding: 5px 0;
+        padding: 6px;
         margin: 0;
-        display: none; 
+        display: none;
         z-index: 1000;
-        width: 280px;
+        width: 300px;
+        background: #404040;
+        border-radius: 12px;
+        -webkit-box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+        box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+        overflow: visible; 
+    }
+
+    .dropdown-menu::before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        right: var(--caret-right);
+        width: 0;
+        height: 0;
+        border-left: 9px solid transparent;
+        border-right: 9px solid transparent;
+        border-bottom: 9px solid #404040;
+        transform: rotate(0deg);
+        transform-origin: center;
+        z-index: 1001;
+        pointer-events: none;
+        box-shadow: none;
     }
 
     .dropdown-item {
         user-select: none;
         -webkit-user-select: none;
-        display: flex; 
-        align-items: center; 
-        background-color: #404040;
-        padding: 10px 15px;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        padding: 10px 14px;
         cursor: pointer;
         color: #fff;
         font-size: 16px;
     }
 
     .dropdown-item:hover {
-        background-color: #4e4e4e;
+        background-color: rgba(255,255,255,0.03);
     }
 
     .dropdown-item:first-child {
-        border-top-right-radius: 25px;
-        border-top-left-radius: 25px;
+        padding-top: 12px;
+        border-top-right-radius: 12px;
+        border-top-left-radius: 12px;
     }
 
     .dropdown-item:last-child {
-        border-bottom-right-radius: 25px;
-        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 12px;
+        border-bottom-left-radius: 12px;
     }
 
     .dropdown-item:first-child:hover {
-        background-color: #4e4e4e; 
-        border-top-right-radius: 25px;
-        border-top-left-radius: 25px;
+        background-color: rgba(255,255,255,0.03);
     }
 
     .dropdown-item:last-child:hover {
-        background-color: #4e4e4e; 
-        border-bottom-right-radius: 25px;
-        border-bottom-left-radius: 25px;
+        background-color: rgba(255,255,255,0.03);
     }
 
     .dropdown-item i {
         width: 20px;
         text-align: center;
+        margin-right: 12px;
     }
 
     @media (max-width: 768px) {
@@ -180,6 +207,12 @@
         }
         .maptiler-logo img {
             height: 18px;
+        }
+        .dropdown-menu {
+            width: 260px;
+        }
+        .dropdown-button {
+            width: 40px; height: 40px;
         }
     }
     </style>
@@ -272,7 +305,7 @@
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/dataset/meteorite-landings" style="color: #4690F2;"> [NASA]</a>. </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le but de ce projet est de réaliser des statistiques basées sur l'aléatoire (générale ou par zone/continent), des météorites tombées sur Terre. Pour des raisons techniques évidentes, l’API utilisée par le logiciel ne contient pas toutes les données, mais seulement une partie.<!--Pour des recherches plus avancées, vous pouvez consulter la documentation de l'API <a href="https://github.com/Nde-Code/meteorites-api" style="color: #4690F2;"> [Ici]</a>. --></p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le but de ce projet est de réaliser des statistiques basées sur l'aléatoire (générale ou par zone/continent), des météorites tombées sur Terre. Pour des raisons techniques évidentes, l’API utilisée par le logiciel ne contient pas toutes les données, mais seulement une partie. Pour des recherches plus avancées, vous pouvez consulter la documentation de l'API <a href="https://github.com/Nde-Code/meteorites-v2" style="color: #4690F2;"> [Ici]</a>.</p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le quota est fixé à une requête par seconde. </p>
                 
@@ -484,12 +517,12 @@
 
                     items: [
 
-                        { label: "Masse minimale", value: statsJSON.minMass !== Infinity ? statsJSON.minMass + " g" : "N/A", color: "#F1C31B" },
+                        { label: "Masse minimale", value: statsJSON.minMass !== Infinity ? statsJSON.minMass + " g" : "N/A", color: "#4690F2" },
                        
-                        { label: "Masse maximale", value: statsJSON.maxMass !== -Infinity ? (statsJSON.maxMass / 1000).toFixed(6) + " kg" : "N/A", color: "#F1C31B" },
+                        { label: "Masse maximale", value: statsJSON.maxMass !== -Infinity ? (statsJSON.maxMass / 1000).toFixed(6) + " kg" : "N/A", color: "#4690F2" },
                         
-                        { label: "Masse moyenne", value: statsJSON.avgMass !== null ? (statsJSON.avgMass / 1000).toFixed(6) + " kg" : "N/A", color: "#F1C31B" }
-                    
+                        { label: "Masse moyenne", value: statsJSON.avgMass !== null ? (statsJSON.avgMass / 1000).toFixed(6) + " kg" : "N/A", color: "#4690F2" }
+
                     ]
 
                 },
@@ -500,11 +533,11 @@
                     
                     items: [
 
-                        { label: "Année la plus ancienne", value: statsJSON.minYear !== Infinity ? statsJSON.minYear : "N/A", color: "#FD7E14" },
+                        { label: "Année la plus ancienne", value: statsJSON.minYear !== Infinity ? statsJSON.minYear : "N/A", color: "#4690F2" },
                        
-                        { label: "Année la plus récente", value: statsJSON.maxYear !== -Infinity ? statsJSON.maxYear : "N/A", color: "#FD7E14" },
+                        { label: "Année la plus récente", value: statsJSON.maxYear !== -Infinity ? statsJSON.maxYear : "N/A", color: "#4690F2" },
                         
-                        { label: "Année moyenne", value: statsJSON.avgYear !== null ? statsJSON.avgYear : "N/A", color: "#FD7E14" }
+                        { label: "Année moyenne", value: statsJSON.avgYear !== null ? statsJSON.avgYear : "N/A", color: "#4690F2" }
                     
                     ]
 
@@ -554,7 +587,7 @@
 
                             <i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i>
                            
-                            Classe ${recclass}: <span style="font-weight: bold; color: #DC3545;">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
+                            Classe ${recclass}: <span style="font-weight: bold; color: #4690F2;">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
                        
                         </p>
 
@@ -582,9 +615,9 @@
     
             let popUpContent = `
     
-                <b>Identifiant: </b> <span style="color: #4690F2;"> ${(data.id === '' || data.id === 'N/A' || data.id === "Unknown") ? 'Non renseigné' : data.id} </span> <br> 
+                <b>Identifiant: </b> <span style="color: #4690F2;"> ${data.id} </span> <br> 
     
-                <b>Nom: </b> <span style="color: #4690F2;"> ${(data.name === '' || data.name === 'N/A' || data.name === "Unknown") ? 'Non renseigné' : data.name} </span> <br>
+                <b>Nom: </b> <span style="color: #4690F2;"> ${data.name} </span> <br>
     
                 <b>Classe: </b> <span style="color: #4690F2;"> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : data.recclass} </span> <br>
     
@@ -595,6 +628,8 @@
                 <b>Année: </b> <span style="color: #4690F2;"> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} </span> <br>
     
                 <b>Coordonnées: </b> <span style="color: #4690F2;"> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) </span> <br>
+
+                <b>Lien permanent: </b> <span style="color: #4690F2;"> ${'<a href="https://meteorites.nde-code.workers.dev/get?id=' + data.id + '" target="_blank" rel="noopener noreferrer" style="color: #4690F2 !important;">[Consulter]</a>'} </span> <br>
                     
             `;
 
@@ -744,7 +779,7 @@
 
                     class: 'dropdown-button',
 
-                    html: '<i class="fa-solid fa-bars"></i> Menu des outils'
+                    html: '<i class="fa-solid fa-bars"></i>'
 
                 }).appendTo($container);
 
@@ -752,7 +787,7 @@
 
                 let options = [
 
-                    { text: '<span id="random-html"> Ajouter aléatoirement des météorites sur la carte </span>', icon: 'fa-solid fa-plus animation', color: '#F1C31B', action: async () => { 
+                    { text: '<span id="random-html"> Ajouter aléatoirement des météorites sur la carte </span>', icon: 'fa-solid fa-plus animation', color: '#4690F2', action: async () => { 
 
                             let $li = $('#random-html').closest('li');
                             
@@ -772,7 +807,7 @@
                        
                         icon: 'fa-solid fa-globe-europe animation',
                         
-                        color: '#28A745',
+                        color: '#4690F2',
                        
                         action: async () => {
 
@@ -820,9 +855,9 @@
 
                     },
                     
-                    { text: '<span id="meteorites-html"> Aucune météorite sur la carte </span>', icon: 'fa-solid fa-meteor', color: '#FD7E14' }, 
+                    { text: '<span id="meteorites-html"> Aucune météorite sur la carte </span>', icon: 'fa-solid fa-meteor', color: '#4690F2' }, 
                                         
-                    { text: `<span id="stats-html"> Aucune statistique disponible sur l'échantillon </span>`, icon: 'fa-solid fa-chart-line', color: '#DC3545', action: () => {} }, 
+                    { text: `<span id="stats-html"> Aucune statistique disponible sur l'échantillon </span>`, icon: 'fa-solid fa-chart-line', color: '#4690F2', action: () => {} }, 
 
                     { text: 'Quelques notes du développeur', icon: 'fa-solid fa-book', color: '#4690F2', action: () => { 
                                             
@@ -834,7 +869,7 @@
 
                     },
 
-                    { text: `${new Date().getFullYear()} Nathan Debilloëz`, icon: 'fa-regular fa-copyright', color: '#fff', action: () => { window.location.href = '/'; } } 
+                    { text: `${new Date().getFullYear()} Nathan Debilloëz`, icon: 'fa-regular fa-copyright', color: '#4690F2', action: () => { window.location.href = '/'; } } 
 
                 ];
 
@@ -852,7 +887,37 @@
 
                 });
 
-                $button.on('click', function () { $menu.toggle(); });
+                function updateCaretPosition() {
+
+                    if (!$menu.is(':visible')) return;
+
+                    let btnOffset = $button.offset();
+
+                    let menuOffset = $menu.offset();
+
+                    let btnCenterX = btnOffset.left + ($button.outerWidth() / 2);
+
+                    let menuRightX = menuOffset.left + $menu.outerWidth();
+
+                    let rightValue = Math.round(menuRightX - btnCenterX);
+
+                    $menu[0].style.setProperty('--caret-right', rightValue - (parseFloat($(".fa-solid.fa-bars").css('font-size')) * 0.5) + 'px');
+
+                }
+
+                $button.on('click', function () {
+
+                    $menu.toggle();
+
+                    if ($menu.is(':visible')) setTimeout(updateCaretPosition, 0);
+
+                });
+
+                $(window).on('resize orientationchange', function () {
+
+                    if ($menu.is(':visible')) updateCaretPosition();
+
+                });
 
                 return $container[0];
 
@@ -916,7 +981,7 @@
 
         extendedData.map.on('drag', function() { extendedData.map.panInsideBounds(extendedData.bounds, { animate: true }); });
 
-        L.tileLayer('https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=Y4mt0pJJj6lEa2eROPmN', { attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> © <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a>' }).addTo(extendedData.map);
+        L.tileLayer('https://api.maptiler.com/maps/hybrid-v4/{z}/{x}/{y}.jpg?key=Y4mt0pJJj6lEa2eROPmN', { attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> © <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a>' }).addTo(extendedData.map);
 
         extendedData.map.addControl(new L.Control.DropdownControl({ position: 'topright' }));
 
