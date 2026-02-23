@@ -18,7 +18,7 @@ $(window).on('resize', () => {
 
 });
 
-function detectES6() {
+/*function detectES6() {
 
     try {
 
@@ -34,7 +34,7 @@ function detectES6() {
 
     }
 
-}
+}*/
 
 function openAboutBox() {
 
@@ -194,7 +194,7 @@ $(document).ready(function () {
 
     mobileES6WarningBox(globalData.modalbox_size);
 
-    if (detectES6() === false) {
+    /*if (detectES6() === false) {
 
         globalData.is_ES6 = false;
 
@@ -233,7 +233,7 @@ $(document).ready(function () {
 
         mobileES6WarningBox(globalData.modalbox_size);
 
-    }
+    }*/
 
 });
 
