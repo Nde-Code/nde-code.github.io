@@ -399,7 +399,9 @@
 
             area_index: 0,
 
-            starting_width: $(document).width()
+            starting_width: $(document).width(),
+
+			tol_resize: 15
         
         };
 
@@ -967,7 +969,7 @@
 
             let newWidth = $(document).width();
 
-            if (extendedData.starting_width !== newWidth) document.location.reload(true);
+            if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) document.location.reload(true);
 
         });
 
@@ -1014,4 +1016,5 @@
 </body>
 
 </html>
+
 
