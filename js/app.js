@@ -6,7 +6,7 @@ var globalData = {
 
     starting_width: $(document).width()
 
-}
+};
 
 document.oncontextmenu = () => { return false; }
 
@@ -172,7 +172,7 @@ $('#display-mobile-menu').on('click', function () {
 
         $(".menu-item").css("display", "block");
 
-        $(this).html('<i class="fa-solid fa-xmark"></i>')
+        $(this).html('<i class="fa-solid fa-xmark"></i>');
 
     } else {
 

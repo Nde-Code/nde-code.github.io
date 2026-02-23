@@ -386,7 +386,7 @@
 
 			is_run: false
 
-		}
+		};
 
 		function getElementSymbolWithAtomicNumber(atomicNumber) { return (extendedData.db_data.elements.find(el => el.atomic_number === atomicNumber) || {}).symbol || false; }
 
@@ -556,7 +556,7 @@
 
 			let elementSymbol = getElementSymbolWithAtomicNumber(currentZ);
 
-			return { element: elementSymbol, full_name: getElementNameWithSymbol(elementSymbol), Z: currentZ, A: currentA};
+			return { element: elementSymbol, full_name: getElementNameWithSymbol(elementSymbol), Z: currentZ, A: currentA };
 
 		}
 

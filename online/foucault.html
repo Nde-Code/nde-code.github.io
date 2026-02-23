@@ -392,7 +392,7 @@
 
 			BOUNDS_LIMIT: [-10, 10]
 
-		}
+		};
 
 		var foucaultPendulumProject = {};
 
@@ -426,19 +426,19 @@
 
 		function setAxisLabel(graphType, axis) {
 
-			if (graphType === 'x(t)' && axis === 'y') { return ($(window).width() <= 768) ? "x[m]" : "Évolution de la coordonnée x en mètres."}
+			if (graphType === 'x(t)' && axis === 'y') { return ($(window).width() <= 768) ? "x[m]" : "Évolution de la coordonnée x en mètres."; }
 
-			else if (graphType === 'y(t)' && axis === 'y') { return ($(window).width() <= 768) ? "y[mm]" : "Évolution de la coordonnée y en millimètres."}
+			else if (graphType === 'y(t)' && axis === 'y') { return ($(window).width() <= 768) ? "y[mm]" : "Évolution de la coordonnée y en millimètres."; }
 
-			else if (graphType === 'x(y)' && axis === 'x') { return ($(window).width() <= 768) ? "x[m]" : "Évolution de la coordonnée x en mètres."}
+			else if (graphType === 'x(y)' && axis === 'x') { return ($(window).width() <= 768) ? "x[m]" : "Évolution de la coordonnée x en mètres."; }
 
-			else if (graphType === 'x(y)' && axis === 'y') { return ($(window).width() <= 768) ? "y[mm]" : "Évolution de la coordonnée y en millimètres."}
+			else if (graphType === 'x(y)' && axis === 'y') { return ($(window).width() <= 768) ? "y[mm]" : "Évolution de la coordonnée y en millimètres."; }
 
 			else return ($(window).width() <= 768) ? "t[s]" : "Évolution du temps en secondes";
 
 		}
 
-		function setXAxisTick(param) { return ($(window).width() <= 768) ? [(Math.trunc(param) / 4), (Math.trunc(param) / 2)] : [(Math.trunc(param) / 8), (Math.trunc(param) / 4)] }
+		function setXAxisTick(param) { return ($(window).width() <= 768) ? [(Math.trunc(param) / 4), (Math.trunc(param) / 2)] : [(Math.trunc(param) / 8), (Math.trunc(param) / 4)]; }
 
 		function foucaultSystem(t, y) {
 
@@ -460,7 +460,7 @@
 
 			let init = [x0, 0, 0, 0];
 			
-			let tSpan = [0, (numberOfPeriods * oscillationPeriod)]
+			let tSpan = [0, (numberOfPeriods * oscillationPeriod)];
 
 			let options = {
 
@@ -598,7 +598,7 @@
 
 						}
 
-					},
+					}
 
 				}
 
@@ -622,7 +622,7 @@
 
 				}
 
-			}
+			};
 
 			let yt = {
 
@@ -642,7 +642,7 @@
 
 				}
 
-			}
+			};
 
 			let xy = {
 
@@ -662,7 +662,7 @@
 
 				}
 
-			}
+			};
 
 			let xy0 = {
 
@@ -686,11 +686,11 @@
 
 						width: 2,
 
-						dash: 'solid',
+						dash: 'solid'
 
-					},
+					}
 
-				},
+				}
 
 			};
 
@@ -718,11 +718,11 @@
 
 		function solveFoucaultSystem(graphType, latitude, length, numberOfPeriods, initialAngle) {
 
-			let latitudeNumber = Number(latitude)
+			let latitudeNumber = Number(latitude);
 
 			if (!latitude || isNaN(latitudeNumber) ||  latitudeNumber < -90 || latitudeNumber > 90 || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false || (latitudeNumber >= extendedData.BOUNDS_LIMIT[0] && latitudeNumber <= extendedData.BOUNDS_LIMIT[1])) {
 				
-				$("#modalbox-errors-warnings-id").html("La latitude saisie est invalide.")
+				$("#modalbox-errors-warnings-id").html("La latitude saisie est invalide.");
 			
 				return false;
 
@@ -738,7 +738,7 @@
 
 						let periodOfOscillation = getPeriodOfOscillation(length);
 
-						let x0 = getX0(initialAngle, length)
+						let x0 = getX0(initialAngle, length);
 
 						let omega = getOmega(latitude);
 
@@ -858,7 +858,7 @@
 	
 			else $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler un pendule de Foucault');
 
-			$("#foucault-btn-id").attr('onclick', `$('#modalbox-foucault').css('display', 'block'); $('.overlay').css('display', 'block');`)
+			$("#foucault-btn-id").attr('onclick', `$('#modalbox-foucault').css('display', 'block'); $('.overlay').css('display', 'block');`);
 
 			setCorrectButtonOnMobileInModalbox();
 

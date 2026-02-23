@@ -453,7 +453,7 @@
 
 			STEP: 800
 			
-		}
+		};
 
 		var interpolationProject = {};
         
@@ -863,11 +863,11 @@
 
 						}
 
-					},
+					}
 
 				}
 
-			}
+			};
 
 			let lagrangeCurve = {
 
@@ -887,7 +887,7 @@
 
 				}
 
-			}
+			};
 
 			let splineCurve = {
 
@@ -907,7 +907,7 @@
 
 				}
 
-			}
+			};
 
 			let regressionCurve = {
 
@@ -927,7 +927,7 @@
 
 				}
 
-			}
+			};
 
 			let markers = {
 
@@ -951,13 +951,13 @@
 
 						width: 2.5,
 
-						dash: 'solid',
+						dash: 'solid'
 
-					},
+					}
 
-				},
+				}
 
-			}
+			};
 
 			let data = [];	
 
@@ -1009,7 +1009,7 @@
 				
 				$("#modalbox-errors-warnings-id").html("Les coordonnées selon l'axe des X et celles selon l'axe des Y n'ont pas la même taille !");
 			
-				return false
+				return false;
 
 			}
 
@@ -1017,7 +1017,7 @@
 
 				generateDataBtn();
 
-				setTimeout(function(){
+				setTimeout(function() {
 					
 					try {
 
@@ -1075,7 +1075,7 @@
 
 					} catch(_err) {
 
-						abortProcess("Une erreur s'est produite lors du chargement des données.")
+						abortProcess("Une erreur s'est produite lors du chargement des données.");
 
 					}
 
@@ -1193,7 +1193,7 @@
 
 			else $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i> Tracer des courbes d\'interpolation');
 
-			$(".interpolation-btn").attr('onclick', `$('#modalbox-interpolation').css('display', 'block'); $('.overlay').css('display', 'block');`)
+			$(".interpolation-btn").attr('onclick', `$('#modalbox-interpolation').css('display', 'block'); $('.overlay').css('display', 'block');`);
 
 			setCorrectButtonOnMobileInModalbox();
 
@@ -1211,7 +1211,7 @@
 
 			}
 
-		}
+		};
 		
 	</script>
 

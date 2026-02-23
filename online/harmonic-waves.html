@@ -664,11 +664,11 @@
 
 						}
 
-					},
+					}
 
 				}
 
-			}
+			};
 
 			let data = [
 
@@ -726,7 +726,7 @@
 
 				}
 
-			]
+			];
 
 			Plotly.newPlot('waves-container', data, layout, { staticPlot: true });
 
@@ -768,7 +768,7 @@
 
 			$('.overlay').css('display', 'none');
 
-			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
+			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`);
 
 			if ($(window).width() >= 1024) {
 
@@ -816,7 +816,7 @@
 
 			else $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i>');
 
-			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`)
+			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`);
 
 		}
 
@@ -828,7 +828,7 @@
 	
 			else $(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler des ondes harmoniques');
 
-			$(".waves-btn").attr('onclick', `$('#modalbox-waves').css('display', 'block'); $('.overlay').css('display', 'block');`)
+			$(".waves-btn").attr('onclick', `$('#modalbox-waves').css('display', 'block'); $('.overlay').css('display', 'block');`);
 
 			setCorrectButtonOnMobileInModalbox();
 
@@ -842,7 +842,7 @@
 
 			}
 
-		}
+		};
 		
 	</script>
 
