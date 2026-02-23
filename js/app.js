@@ -4,7 +4,9 @@ var globalData = {
 
     modalbox_size: `${Math.round($(window).width() - 8)}px`,
 
-    starting_width: $(document).width()
+    starting_width: $(document).width(),
+
+    tol_resize: 15
 
 };
 
@@ -14,7 +16,7 @@ $(window).on('resize', () => {
 
     let newWidth = $(document).width();
 
-    if (globalData.starting_width !== newWidth) document.location.reload(true);
+    if (Math.abs(globalData.starting_width - newWidth) > globalData.tol_resize) document.location.reload(true);
 
 });
 
