@@ -314,11 +314,15 @@
 	
 			if ($(window).width() <= 768) {
 	
-				$("#modalbox-about").css('marginLeft', 'unset');
-	
-				$("#modalbox-about").css('left', 'unset');
-	
-				$("#modalbox-about").css('width', globalData.modalbox_size);
+				$("#modalbox-about").css({
+
+					"marginLeft": "unset",
+
+					"left": "unset",
+
+					"width": globalData.modalbox_size
+					
+				});
 	
 			}
 

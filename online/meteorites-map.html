@@ -431,22 +431,6 @@
 
         }
 
-        /*function detectES6() {
-
-            try {
-
-                Function("() => {};");
-
-            }
-
-            catch (_err) {
-
-                return window.location.href = "/";
-
-            }
-
-        }*/
-
         function computeStats(data) {
 
             let APIResponseJSON = data.success;
@@ -945,8 +929,6 @@
 
         window.onload = () => {
             
-            //detectES6();
-
             setRealVH(); 
 
             if ($(window).width() <= 768) {

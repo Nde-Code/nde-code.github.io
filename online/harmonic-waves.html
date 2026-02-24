@@ -834,11 +834,15 @@
 
 			if ($(window).width() <= 768) {
 
-				$("#modalbox-waves").css('marginLeft', 'unset');
+				$("#modalbox-waves").css({
 
-				$("#modalbox-waves").css('left', 'unset');
+					"marginLeft": "unset",
 
-				$("#modalbox-waves").css('width', globalData.modalbox_size);
+					"left": "unset",
+
+					"width": globalData.modalbox_size
+					
+				});
 
 			}
 

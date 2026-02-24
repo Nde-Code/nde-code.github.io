@@ -20,24 +20,6 @@ $(window).on('resize', () => {
 
 });
 
-/*function detectES6() {
-
-    try {
-
-        Function("() => {};");
-
-        return true;
-
-    }
-
-    catch (_err) {
-
-        return false;
-
-    }
-
-}*/
-
 function openAboutBox() {
 
     let aboutBoxHtml = `
@@ -139,11 +121,15 @@ function mobileAboutBox(windowSize) {
 
     if ($(window).width() <= 768) {
 
-        $("#modalbox-notes").css('marginLeft', 'unset');
+        $("#modalbox-notes").css({
 
-        $("#modalbox-notes").css('left', 'unset');
+            'marginLeft': 'unset',
 
-        $("#modalbox-notes").css('width', windowSize);
+            'left': 'unset',
+
+            'width': windowSize
+
+        });
 
     }
 
@@ -153,11 +139,15 @@ function mobileES6WarningBox(windowSize) {
 
     if ($(window).width() <= 768 && globalData.is_ES6 === false) {
 
-        $("#modalbox-warning").css('marginLeft', 'unset');
+        $("#modalbox-warning").css({
 
-        $("#modalbox-warning").css('left', 'unset');
+            "marginLeft": "unset",
 
-        $("#modalbox-warning").css('width', windowSize);
+            "left": "unset",
+
+            "width": windowSize
+            
+        });
 
     }
 
@@ -195,47 +185,6 @@ $(document).ready(function () {
     mobileAboutBox(globalData.modalbox_size);
 
     mobileES6WarningBox(globalData.modalbox_size);
-
-    /*if (detectES6() === false) {
-
-        globalData.is_ES6 = false;
-
-        let invalidBrowserBox = `
-        <div class="modalbox-class" id="modalbox-warning">
-
-            <header class="modalbox-header-class">
-
-                Attention
-
-            </header>
-
-            <div class="modalbox-main-container" style="text-align: center;">
-    
-                <div class="modalbox-text-container">
-
-                    <i class="fa-solid fa-triangle-exclamation warning-browser" style="font-size: 200px; color: #FD7E14;"></i>
-
-                    <h2>Absence ES6 - Navigateur obsolète:</h2>
-
-                    <p class="modalbox-description"><strong> Impossible d'interpréter le code JavaScript... </strong></p>
-
-                    <p class="modalbox-description"> Pour des raisons de sécurité évidentes, afin de pouvoir consulter mon site Internet, un navigateur moderne, c'est-à-dire doté de au minimum d'ES6, est nécessaire. </p>
-
-                </div>
-    
-            </div>
-            
-        </div>`;
-
-        $(".body-class").css("background", "#212121");
-
-        $("#main-html").remove();
-
-        $("#modalbox-open-div").append(invalidBrowserBox);
-
-        mobileES6WarningBox(globalData.modalbox_size);
-
-    }*/
 
 });
 

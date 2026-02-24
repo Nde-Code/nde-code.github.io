@@ -864,11 +864,15 @@
 
 			if ($(window).width() <= 768) {
 
-				$("#modalbox-foucault").css('marginLeft', 'unset');
+				$("#modalbox-foucault").css({
 
-				$("#modalbox-foucault").css('left', 'unset');
+					"marginLeft": "unset",
 
-				$("#modalbox-foucault").css('width', globalData.modalbox_size);
+					"left": "unset",
+
+					"width": globalData.modalbox_size
+					
+				});
 
 			}
 
