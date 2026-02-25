@@ -592,19 +592,23 @@
 
 		function generateHTMLEquationResponse(pNucleus, dNucleus, decayMode) {
 
+			const antiNu = `<span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;"><span style="width:100%;border-top:1.5px solid;margin-bottom:-3px;"></span>ν</span><sub>e</sub>`;
+			
+			const neutrino = `ν<sub>e</sub>`;
+
 			if (decayMode === "A") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> (4, 2)He <span class="atomic-plus"> + </span> Q`;
 
-			else if (decayMode === "CE") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <span class="atomic-plus"> + </span> e<sup>-</sup> <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			else if (decayMode === "CE") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <span class="atomic-plus"> + </span> e<sup>-</sup> <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>${neutrino} <span class="atomic-plus"> + </span> Q`;
 
-			else if (decayMode === "2CE") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <span class="atomic-plus"> + </span> 2e<sup>-</sup> <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>2V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			else if (decayMode === "2CE") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <span class="atomic-plus"> + </span> 2e<sup>-</sup> <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>2${neutrino} <span class="atomic-plus"> + </span> Q`;
 
-			else if (decayMode === "B-") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  e<sup>-</sup> <span class="atomic-plus"> + </span><span style="text-decoration: overline;">V</span><sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			else if (decayMode === "B-") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  e<sup>-</sup> <span class="atomic-plus"> + </span>${antiNu} <span class="atomic-plus"> + </span> Q`;
 
-			else if (decayMode === "B+") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  e<sup>+</sup> <span class="atomic-plus"> + </span>V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			else if (decayMode === "B+") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  e<sup>+</sup> <span class="atomic-plus"> + </span>${neutrino} <span class="atomic-plus"> + </span> Q`;
 
-			else if (decayMode === "2B-") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  2e<sup>-</sup> <span class="atomic-plus"> + </span>2<span style="text-decoration: overline;">V</span><sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			else if (decayMode === "2B-") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  2e<sup>-</sup> <span class="atomic-plus"> + </span>2${antiNu} <span class="atomic-plus"> + </span> Q`;
 
-			else if (decayMode === "2B+") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  2e<sup>+</sup> <span class="atomic-plus"> + </span>2V<sub>e</sub> <span class="atomic-plus"> + </span> Q`;
+			else if (decayMode === "2B+") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span>  2e<sup>+</sup> <span class="atomic-plus"> + </span>2${neutrino} <span class="atomic-plus"> + </span> Q`;
 
 			else if (decayMode === "p") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> p <span class="atomic-plus"> + </span> Q`;
 
