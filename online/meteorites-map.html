@@ -277,9 +277,9 @@
 
     <div id="map"></div>
 
-    <a href="https://maptiler.com/" class="maptiler-logo">
+    <a href="https://maptiler.com/" target="_blank" rel="noopener noreferrer" class="maptiler-logo">
 
-        <img src="https://api.maptiler.com/resources/logo.svg" alt="MapTiler">
+        <img src="https://api.maptiler.com/resources/logo.svg" target="_blank" rel="noopener noreferrer" alt="MapTiler">
 
     </a>
 
@@ -319,13 +319,13 @@
 
             <div class="modalbox-text-container">
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/dataset/meteorite-landings" style="color: #4690F2;"> [NASA]</a>. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/dataset/meteorite-landings" target="_blank" rel="noopener noreferrer" style="color: #4690F2;"> [NASA]</a>. </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le projet utilise une API externe, qui est également l’un de mes autres projets. Vous pouvez cliquer <a href="https://github.com/Nde-Code/MeteoritesAPI" style="color: #4690F2;">[ici]</a> pour le découvrir.</p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le projet utilise une API externe, qui est également l’un de mes autres projets. Vous pouvez cliquer <a href="https://github.com/Nde-Code/MeteoritesAPI" target="_blank" rel="noopener noreferrer" style="color: #4690F2;">[ici]</a> pour le découvrir.</p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le quota est fixé à une requête par seconde. </p>
                 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> J'utilise une tuile fournie par <a href="https://www.maptiler.com/" style="color: #4690F2;"> [MapTiler] </a> pour avoir un fond de carte sympa. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> J'utilise une tuile fournie par <a href="https://www.maptiler.com/" target="_blank" rel="noopener noreferrer" style="color: #4690F2;"> [MapTiler] </a> pour avoir un fond de carte sympa. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Pour prévenir les abus, l'API utilisée par le logiciel exploite votre adresse IP (afin de limiter le nombre de requêtes), mais celle-ci est hachée (via SHA-256) avec un "SALT" solide et robuste. Aucune IP brute ni aucune autre information personnelle n'est collectée. N'hésitez pas à me contacter pour toute question relative à ce sujet. <b> En utilisant ce logiciel ou/et l'API associée, vous confirmez être en accord avec les présentes conditions. </b></p>
 
@@ -989,7 +989,7 @@
 
         extendedData.map.on('drag', function() { extendedData.map.panInsideBounds(extendedData.bounds, { animate: true }); });
 
-        L.tileLayer('https://api.maptiler.com/maps/hybrid-v4/{z}/{x}/{y}.jpg?key=Y4mt0pJJj6lEa2eROPmN', { attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> © <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a>' }).addTo(extendedData.map);
+        L.tileLayer('https://api.maptiler.com/maps/hybrid-v4/{z}/{x}/{y}.jpg?key=Y4mt0pJJj6lEa2eROPmN', { attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> © <a href="https://www.maptiler.com/copyright/" target="_blank" rel="noopener noreferrer">MapTiler</a>' }).addTo(extendedData.map);
 
         extendedData.map.addControl(new L.Control.DropdownControl({ position: 'topright' }));
 
