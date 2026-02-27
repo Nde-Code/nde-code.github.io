@@ -23,13 +23,13 @@ $(window).on('resize', () => {
 function openAboutBox() {
 
     let aboutBoxHtml = `
-    <div class="modalbox-class" id="modalbox-notes">
+    <div class="modalbox-class" id="modalbox-notes" role="dialog">
 
         <header class="modalbox-header-class">
 
             Notes
 
-            <a class="modalbox-header-close" onclick="$('#modalbox-notes').remove(); $('.overlay').css('display', 'none');">
+            <a class="modalbox-header-close" id="close-notes-btn" aria-label="Fermer la boîte de dialogue">
 
                 <i class="fa fa-times" aria-hidden="true"></i>
 
@@ -156,21 +156,31 @@ function mobileES6WarningBox(windowSize) {
 // Merci: https://stackoverflow.com/questions/48002147/how-to-activate-and-disable-jquery-click-events-on-an-html-element
 $('#display-mobile-menu').on('click', function () {
 
-    if (!$(this).is(".active")) {
+    let $this = $(this);
 
-        $(this).addClass('active');
+    if (!$this.is(".active")) {
+
+        $this.addClass('active');
+
+        $this.attr('aria-expanded', 'true');
+
+        $this.attr('aria-label', 'Fermer le menu de navigation');
 
         $(".menu-dropdown .menu-dropdown-btn").css("display", "block");
 
         $(".menu-item").css("display", "block");
 
-        $(this).html('<i class="fa-solid fa-xmark"></i>');
+        $this.html('<i class="fa-solid fa-xmark"></i>');
 
     } else {
 
-        $(this).removeClass('active');
+        $this.removeClass('active');
 
-        $(this).html('<i class="fa-solid fa-bars"></i>');
+        $this.attr('aria-expanded', 'false');
+
+        $this.attr('aria-label', 'Ouvrir le menu de navigation');
+
+        $this.html('<i class="fa-solid fa-bars"></i>');
 
         $(".menu-dropdown .menu-dropdown-btn").css("display", "none");
 
@@ -185,6 +195,10 @@ $(document).ready(function () {
     mobileAboutBox(globalData.modalbox_size);
 
     mobileES6WarningBox(globalData.modalbox_size);
+
+    $('#modalbox-notes').remove();
+
+    $('.overlay').css('display', 'none');
 
 });
 
