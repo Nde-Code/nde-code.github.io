@@ -18,7 +18,7 @@ $(window).on('resize', () => {
 
 });
 
-function openAboutBox() {
+function openNotesBox() {
 
     let aboutBoxHtml = `
     <div class="modalbox-class" id="modalbox-notes" role="dialog">
@@ -107,15 +107,17 @@ function openAboutBox() {
 
     </div>`;
 
+    $("#modalbox-notes").remove();
+
     $("#modalbox-open-div").append(aboutBoxHtml);
 
-    mobileAboutBox(globalData.modalbox_size);
+    mobileNotesBox(globalData.modalbox_size);
 
     $('.overlay').css('display', 'block');
 
 }
 
-function mobileAboutBox(windowSize) {
+function mobileNotesBox(windowSize) {
 
     if ($(window).width() <= 768) {
 
@@ -172,7 +174,7 @@ $('#display-mobile-menu').on('click', function () {
 
 $(document).ready(function () {
 
-    $("#notes-btn-id").on("click", openAboutBox);
+    $("#notes-btn-id").on("click", openNotesBox);
 
     $(document).on('click', '#close-notes-btn, .overlay', () => { $('#modalbox-notes, .overlay').hide(); });
 
