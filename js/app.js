@@ -29,7 +29,7 @@ function openAboutBox() {
 
             Notes
 
-            <a class="modalbox-header-close" id="close-notes-btn" aria-label="Fermer la boîte de dialogue">
+            <a class="modalbox-header-close" id="close-notes-btn" aria-label="Fermer la boîte de dialogue.">
 
                 <i class="fa fa-times" aria-hidden="true"></i>
 
