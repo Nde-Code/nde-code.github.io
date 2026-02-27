@@ -100,7 +100,7 @@
 
 					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
 
-					<a onclick="openAboutBox();" class="menu-item">Notes</a>
+					<a id="notes-btn-id" class="menu-item">Notes</a>
 
 					<div class="menu-dropdown">
 
@@ -216,7 +216,7 @@
 
 				Simuler
 
-				<a class="modalbox-header-close" onclick="$('#modalbox-waves').css('display', 'none'); $('.overlay').css('display', 'none');">
+				<a class="modalbox-header-close">
 
 					<i class="fa fa-times" aria-hidden="true"></i>
 
@@ -234,7 +234,7 @@
 
                     <p class="modalbox-description"> Sélectionnez l'amplitude de la première onde à simuler: </p>
 					
-					<input onchange="setHTMLValueFormRange($('#A-value-1').val(), 'A-1-value-html', 'm');" title="Amplitude de la première onde:" type="range" id="A-value-1" class="modalbox-range" value="6" min="1" max="10" step="0.1">
+					<input title="Amplitude de la première onde:" type="range" id="A-value-1" class="modalbox-range" value="6" min="1" max="10" step="0.1">
                 
 				</div>
 
@@ -248,7 +248,7 @@
 
                     <p class="modalbox-description"> Sélectionnez le nombre d'onde de la première onde à simuler: </p>
 					
-					<input onchange="setHTMLValueFormRange($('#k-value-1').val(), 'k-1-value-html', ' rad/m');" title="Nombre d'onde de la première onde:" type="range" id="k-value-1" class="modalbox-range" value="3" min="1" max="10" step="0.1">
+					<input title="Nombre d'onde de la première onde:" type="range" id="k-value-1" class="modalbox-range" value="3" min="1" max="10" step="0.1">
                 
 				</div>
 
@@ -262,7 +262,7 @@
 
                     <p class="modalbox-description"> Sélectionnez la pulsation de la première onde à simuler: </p>
 					
-					<input onchange="setHTMLValueFormRange($('#w-value-1').val(), 'w-1-value-html', ' rad/s');" title="Pulsation de la première onde:" type="range" id="w-value-1" class="modalbox-range" value="20" min="10" max="30" step="0.25">
+					<input title="Pulsation de la première onde:" type="range" id="w-value-1" class="modalbox-range" value="20" min="10" max="30" step="0.25">
                 
 				</div>
 
@@ -276,7 +276,7 @@
 
                     <p class="modalbox-description"> Sélectionnez la phase initiale de la première onde à simuler: </p>
 					
-					<input onchange="setHTMLValueFormRange($('#phi-value-1').val(), 'phi-1-value-html', ' rad');" title="Phase initiale de la première onde:" type="range" id="phi-value-1" class="modalbox-range" value="0" min="0" max="6.28" step="0.01">
+					<input title="Phase initiale de la première onde:" type="range" id="phi-value-1" class="modalbox-range" value="0" min="0" max="6.28" step="0.01">
                 
 				</div>
 
@@ -308,7 +308,7 @@
 
                     <p class="modalbox-description"> Sélectionnez l'amplitude de la deuxième onde à simuler: </p>
 					
-					<input onchange="setHTMLValueFormRange($('#A-value-2').val(), 'A-2-value-html', 'm');" title="Amplitude de la deuxième onde:" type="range" id="A-value-2" class="modalbox-range" value="6" min="1" max="10" step="0.1">
+					<input title="Amplitude de la deuxième onde:" type="range" id="A-value-2" class="modalbox-range" value="6" min="1" max="10" step="0.1">
                 
 				</div>
 
@@ -322,7 +322,7 @@
 
                     <p class="modalbox-description"> Sélectionnez le nombre d'onde de la deuxième onde à simuler: </p>
 					
-					<input onchange="setHTMLValueFormRange($('#k-value-2').val(), 'k-2-value-html', ' rad/m');" title="Nombre d'onde de la deuxième onde:" type="range" id="k-value-2" class="modalbox-range" value="3" min="1" max="10" step="0.1">
+					<input title="Nombre d'onde de la deuxième onde:" type="range" id="k-value-2" class="modalbox-range" value="3" min="1" max="10" step="0.1">
                 
 				</div>
 
@@ -336,7 +336,7 @@
 
                     <p class="modalbox-description"> Sélectionnez la pulsation de la deuxième onde à simuler: </p>
 					
-					<input onchange="setHTMLValueFormRange($('#w-value-2').val(), 'w-2-value-html', ' rad/s');" title="Pulsation de la deuxième onde:" type="range" id="w-value-2" class="modalbox-range" value="20" min="10" max="30" step="0.25">
+					<input title="Pulsation de la deuxième onde:" type="range" id="w-value-2" class="modalbox-range" value="20" min="10" max="30" step="0.25">
                 
 				</div>
 
@@ -350,7 +350,7 @@
 
                     <p class="modalbox-description"> Sélectionnez la phase initiale de la deuxième onde à simuler: </p>
 					
-					<input onchange="setHTMLValueFormRange($('#phi-value-2').val(), 'phi-2-value-html', ' rad');" title="Phase initiale de la deuxième onde:" type="range" id="phi-value-2" class="modalbox-range" value="0" min="0" max="6.28" step="0.01">
+					<input title="Phase initiale de la deuxième onde:" type="range" id="phi-value-2" class="modalbox-range" value="0" min="0" max="6.28" step="0.01">
                 
 				</div>
 
@@ -404,7 +404,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="simulate-waves-btn" class="modalbox-btn" onclick="simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());">
+					<a id="simulate-waves-btn" class="modalbox-btn">
 						
 						<i class="fa-solid fa-wave-square"></i>
 						
@@ -768,8 +768,6 @@
 
 			$('.overlay').css('display', 'none');
 
-			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`);
-
 			if ($(window).width() >= 1024) {
 
 				$(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Resimuler des ondes harmoniques');
@@ -777,8 +775,6 @@
 				$("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
 			}
-
-			$(".modalbox-header-close").attr('onclick', `$('#modalbox-waves').css('display', 'none'); $('.overlay').css('display', 'none');`);
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
@@ -794,11 +790,7 @@
 
 			extendedData.is_in_loading = true;
 
-			$(".modalbox-header-close").removeAttr('onclick');
-
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
-
-			$("#simulate-waves-btn").attr('onclick', '');
 
 			if ($(window).width() >= 1024) $("#simulate-waves-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
@@ -816,19 +808,16 @@
 
 			else $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i>');
 
-			$("#simulate-waves-btn").attr('onclick', `simulateWaves($('#A-value-1').val(), $('#k-value-1').val(), $('#w-value-1').val(), $('#phi-value-1').val(), $('#sgn-value-1').val(), $('#A-value-2').val(), $('#k-value-2').val(), $('#w-value-2').val(), $('#phi-value-2').val(), $('#sgn-value-2').val());`);
-
 		}
 
 		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i>'); }
 
-		window.onload = () => {
+
+		$(document).ready(function() {
 
 			if ($(window).width() <= 1024) $(".waves-btn").html('<i class="fa-solid fa-wave-square"></i>');
 	
 			else $(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler des ondes harmoniques');
-
-			$(".waves-btn").attr('onclick', `$('#modalbox-waves').css('display', 'block'); $('.overlay').css('display', 'block');`);
 
 			setCorrectButtonOnMobileInModalbox();
 
@@ -846,7 +835,46 @@
 
 			}
 
-		};
+			$("#A-value-1").on("input", function() { setHTMLValueFormRange(this.value, 'A-1-value-html', 'm'); });
+
+			$("#k-value-1").on("input", function() { setHTMLValueFormRange(this.value, 'k-1-value-html', ' rad/m'); });
+
+			$("#w-value-1").on("input", function() { setHTMLValueFormRange(this.value, 'w-1-value-html', ' rad/s'); });
+
+			$("#phi-value-1").on("input", function() { setHTMLValueFormRange(this.value, 'phi-1-value-html', ' rad'); });
+
+			$("#A-value-2").on("input", function() { setHTMLValueFormRange(this.value, 'A-2-value-html', 'm'); });
+
+			$("#k-value-2").on("input", function() { setHTMLValueFormRange(this.value, 'k-2-value-html', ' rad/m'); });
+
+			$("#w-value-2").on("input", function() { setHTMLValueFormRange(this.value, 'w-2-value-html', ' rad/s'); });
+
+			$("#phi-value-2").on("input", function() { setHTMLValueFormRange(this.value, 'phi-2-value-html', ' rad'); });
+
+			$(".waves-btn").on("click", function() { $("#modalbox-waves, .overlay").show(); });
+
+			$(".modalbox-header-close, .overlay").on("click", function() { $("#modalbox-waves, .overlay").hide(); });
+
+			$("#simulate-waves-btn").on("click", function() {
+
+				if (extendedData.is_in_loading) return;
+
+				simulateWaves(
+					$('#A-value-1').val(),
+					$('#k-value-1').val(),
+					$('#w-value-1').val(),
+					$('#phi-value-1').val(),
+					$('#sgn-value-1').val(),
+					$('#A-value-2').val(),
+					$('#k-value-2').val(),
+					$('#w-value-2').val(),
+					$('#phi-value-2').val(),
+					$('#sgn-value-2').val()
+				);
+
+			});
+
+		});
 		
 	</script>
 

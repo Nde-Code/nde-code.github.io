@@ -188,4 +188,6 @@ $(document).ready(function () {
 
 });
 
+$("#notes-btn").on("click", openAboutBox);
+
 $("#copyright").html(new Date().getFullYear());

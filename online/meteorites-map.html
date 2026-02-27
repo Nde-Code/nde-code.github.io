@@ -289,7 +289,7 @@
 
             Statistiques
 
-            <a class="modalbox-header-close" onclick="$('#modalbox-stats').css('display', 'none'); $('.overlay').css('display', 'none');">
+            <a class="modalbox-header-close" id="close-stats">
 
                 <i class="fa fa-times" aria-hidden="true"></i>
 
@@ -307,7 +307,7 @@
 
             Notes
 
-            <a class="modalbox-header-close" onclick="$('#modalbox-notes').css('display', 'none'); $('.overlay').css('display', 'none');">
+            <a class="modalbox-header-close" id="close-notes">
 
                 <i class="fa fa-times" aria-hidden="true"></i>
 
@@ -953,6 +953,14 @@
 
             if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) document.location.reload(true);
 
+        });
+
+        $(document).ready(function () {
+            
+            $('#close-stats').on('click', () => $('#modalbox-stats, .overlay').hide());
+        
+            $('#close-notes').on('click', () => $('#modalbox-notes, .overlay').hide());
+        
         });
 
         extendedData.bounds = L.latLngBounds(extendedData.BOUNDS_ARRAY);

@@ -106,7 +106,7 @@
 
 					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
 
-					<a onclick="openAboutBox();" class="menu-item">Notes</a>
+					<a id="notes-btn-id" class="menu-item">Notes</a>
 
 					<div class="menu-dropdown">
 
@@ -234,7 +234,7 @@
 
 		else $(".last-page-btn").html('<i class="fa-solid fa-rotate-left"></i> Retourner à la page précédente');
 
-		$(".last-page-btn").attr('onclick', `history.back();`);
+		$(".last-page-btn").on("click", function () { history.back(); });
 
 	};
 		

@@ -100,7 +100,7 @@
 
 					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
 
-					<a onclick="openAboutBox();" class="menu-item">Notes</a>
+					<a id="notes-btn-id" class="menu-item">Notes</a>
 
 					<div class="menu-dropdown">
 
@@ -310,8 +310,8 @@
 
 			else $(".about-btn").html('<i class="fa-solid fa-user"></i> À propos de moi et de mes projets');
 
-			$(".about-btn").attr('onclick', `$('#modalbox-about').css('display', 'block'); $('.overlay').css('display', 'block');`);
-	
+			$(".about-btn").on("click", function () { $('#modalbox-about, .overlay').show(); });
+
 			if ($(window).width() <= 768) {
 	
 				$("#modalbox-about").css({

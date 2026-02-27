@@ -116,7 +116,7 @@
 
 					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
 
-					<a onclick="openAboutBox();" class="menu-item">Notes</a>
+					<a id="notes-btn-id" class="menu-item">Notes</a>
 
 					<div class="menu-dropdown">
 
@@ -232,7 +232,7 @@
 
 				Simuler
 
-				<a class="modalbox-header-close" onclick="$('#modalbox-foucault').css('display', 'none'); $('.overlay').css('display', 'none');">
+				<a class="modalbox-header-close" id="close-foucault-modal">
 
 					<i class="fa fa-times" aria-hidden="true"></i>
 
@@ -262,7 +262,7 @@
 
                     <p class="modalbox-description"> Sélectionnez la longueur du fil, en mètres, qui supporte la masse servant de pendule: </p>
 					
-					<input onchange="setLength($('#length-value-id').val()); setInitialAngle($('#initial-angle-value-id').val(), $('#length-value-id').val());" title="Longeur du fil:" type="range" id="length-value-id" class="modalbox-range" value="60" min="10" max="100" step="1">
+					<input title="Longeur du fil:" type="range" id="length-value-id" class="modalbox-range" value="60" min="10" max="100" step="1">
                 
 				</div>
 
@@ -278,7 +278,7 @@
 
                     <p class="modalbox-description"> Sélectionnez le nombre de fois que vous souhaitez simuler la période d'oscillation du pendule. </p>
 					
-					<input onchange="setNumberOfPeriods($('#number-of-periods-value-id').val());" title="Nombre de périodes:" type="range" id="number-of-periods-value-id" class="modalbox-range" value="3" min="2" max="10" step="1">
+					<input title="Nombre de périodes:" type="range" id="number-of-periods-value-id" class="modalbox-range" value="3" min="2" max="10" step="1">
                 
 				</div>
 
@@ -294,7 +294,7 @@
 
                     <p class="modalbox-description"> Sélectionnez l'angle initial d'inclinaison du pendule, en degrés, au moment du lâcher: </p>
 					
-					<input onchange="setInitialAngle($('#initial-angle-value-id').val(), $('#length-value-id').val());" title="Angle initial:" type="range" id="initial-angle-value-id" class="modalbox-range" value="3" min="1" max="10" step="0.1">
+					<input title="Angle initial:" type="range" id="initial-angle-value-id" class="modalbox-range" value="3" min="1" max="10" step="0.1">
                 
 				</div>
 
@@ -356,7 +356,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="simulate-foucault-btn-id" class="modalbox-btn" onclick="solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());">
+					<a id="simulate-foucault-btn-id" class="modalbox-btn">
 						
 						<i class="fa-solid fa-flask"></i>
 						
@@ -800,8 +800,6 @@
 
 			$('.overlay').css('display', 'none');
 
-			$("#simulate-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
-
 			if ($(window).width() >= 1024) {
 
 				$("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Resimuler un pendule de Foucault');
@@ -809,8 +807,6 @@
 				$("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler');
 
 			}
-
-			$(".modalbox-header-close").attr('onclick', `$('#modalbox-foucault').css('display', 'none'); $('.overlay').css('display', 'none');`);
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
@@ -824,11 +820,7 @@
 
 			extendedData.is_in_loading = true;
 
-			$(".modalbox-header-close").removeAttr('onclick');
-
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
-
-			$("#simulate-foucault-btn-id").attr('onclick', '');
 
 			if ($(window).width() >= 1024) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
@@ -846,19 +838,15 @@
 
 			else $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>');
 
-			$("#simulate-foucault-btn-id").attr('onclick', `solveFoucaultSystem($('#graph-type-id').val(), $('#latitude-value-id').val(), $('#length-value-id').val(), $('#number-of-periods-value-id').val(), $('#initial-angle-value-id').val());`);
-
 		}
 
 		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); }
 
-		window.onload = () => {
+		$(document).ready(function() {
 
 			if ($(window).width() <= 1024) $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i>'); 
 	
 			else $("#foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler un pendule de Foucault');
-
-			$("#foucault-btn-id").attr('onclick', `$('#modalbox-foucault').css('display', 'block'); $('.overlay').css('display', 'block');`);
 
 			setCorrectButtonOnMobileInModalbox();
 
@@ -876,7 +864,37 @@
 
 			}
 
-		};
+			$("#foucault-btn-id").on("click", function () { $("#modalbox-foucault, .overlay").show(); });
+
+			$("#close-foucault-modal").on("click", function () { $("#modalbox-foucault, .overlay").hide(); });
+
+			$("#simulate-foucault-btn-id").on("click", function () {
+
+				if (extendedData.is_in_loading) return;
+
+				solveFoucaultSystem(
+					$("#graph-type-id").val(),
+					$("#latitude-value-id").val(),
+					$("#length-value-id").val(),
+					$("#number-of-periods-value-id").val(),
+					$("#initial-angle-value-id").val()
+				);
+
+			});
+
+			$("#length-value-id").on("input", function () {
+
+				setLength($(this).val());
+				
+				setInitialAngle($("#initial-angle-value-id").val(), $(this).val());
+
+			});
+
+			$("#number-of-periods-value-id").on("input", function () { setNumberOfPeriods($(this).val()); });
+
+			$("#initial-angle-value-id").on("input", function () { setInitialAngle($(this).val(), $("#length-value-id").val()); });
+
+		});
 
 	</script>
 
