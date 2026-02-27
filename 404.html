@@ -228,7 +228,7 @@
 
     <script>   
 
-	window.onload = () => { 
+	$(document).ready(function() { 
 
 		if ($(window).width() <= 1024) $(".last-page-btn").html('<i class="fa-solid fa-rotate-left"></i>');
 
@@ -236,7 +236,7 @@
 
 		$(".last-page-btn").on("click", function () { history.back(); });
 
-	};
+	});
 		
     </script>
 	
