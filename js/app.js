@@ -164,7 +164,7 @@ $('#display-mobile-menu').on('click', function () {
 
         $this.attr('aria-expanded', 'true');
 
-        $this.attr('aria-label', 'Fermer le menu de navigation');
+        $this.attr('aria-label', 'Fermer le menu de navigation.');
 
         $(".menu-dropdown .menu-dropdown-btn").css("display", "block");
 
@@ -178,7 +178,7 @@ $('#display-mobile-menu').on('click', function () {
 
         $this.attr('aria-expanded', 'false');
 
-        $this.attr('aria-label', 'Ouvrir le menu de navigation');
+        $this.attr('aria-label', 'Ouvrir le menu de navigation.');
 
         $this.html('<i class="fa-solid fa-bars"></i>');
 
