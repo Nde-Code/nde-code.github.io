@@ -263,7 +263,7 @@
 
 				Établir
 
-				<a class="modalbox-header-close" onclick="$('#modalbox-decay').css('display', 'none'); $('.overlay').css('display', 'none');">
+				<a class="modalbox-header-close" id="close-decay-modal">
 
 					<i class="fa fa-times" aria-hidden="true"></i>
 
@@ -329,7 +329,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="simulate-decay-id" class="modalbox-btn" onclick="radioactiveDecay($('#element-id').val(), $('#radioisotope-id').val(), $('#decay-mode-id').val());">
+					<a id="simulate-decay-id" class="modalbox-btn">
 						
 						<i class="fa-solid fa-atom"></i>
 					
@@ -349,7 +349,7 @@
 
 				Chaîne
 
-				<a class="modalbox-header-close" onclick="$('#modalbox-chain').css('display', 'none'); $('.overlay').css('display', 'none');">
+				<a class="modalbox-header-close" id="close-chain-modal">
 
 					<i class="fa fa-times" aria-hidden="true"></i>
 
@@ -712,17 +712,11 @@
 
 		}
 
-		window.onload = () => {
+		function initApp() {
 
 			let $decayBtn = $("#radioactive-decay-btn-id");
 
-			let setDecayBtnHTML = (iconClass, text = '') => {
-
-				$decayBtn.html(`<i class="fa-solid ${iconClass}"></i>${($(window).width() >= 1024 && text) ? ' ' + text : ''}`);
-			
-			};
-
-			$decayBtn.attr('onclick', '');
+			let setDecayBtnHTML = (iconClass, text = '') => { $decayBtn.html(`<i class="fa-solid ${iconClass}"></i>${($(window).width() >= 1024 && text) ? ' ' + text : ''}`); };
 
 			setDecayBtnHTML('fa-gear rotate-animation', 'Chargement des données...');
 
@@ -731,8 +725,6 @@
 				loadRadioisotopesData().then(result => {
 
 					if (result) {
-
-						$decayBtn.attr('onclick', `$("#modalbox-decay").css("display", "block"); $(".overlay").css("display", "block")`);
 						
 						setDecayBtnHTML('fa-atom', 'Établir une équation radioactive');
 
@@ -752,12 +744,9 @@
 
 						setCorrectButtonOnMobile();
 
-					} else {
-
-						$decayBtn.attr('class', 'error-btn').attr('onclick', 'window.location.reload(); $(".overlay").css("display", "block")');
-
-						setDecayBtnHTML('fa-circle-xmark', 'Une erreur s\'est produite !');
 					}
+					
+					else setDecayBtnHTML('fa-circle-xmark', `Une erreur s'est produite !`);
 
 				});
 
@@ -849,7 +838,13 @@
 
 		}
 
-		function radioactiveDecay(elem, radioisotopeIndex, decayModes) {
+		function radioactiveDecay() {
+
+			let elem = $('#element-id').val();
+
+			let radioisotopeIndex = $('#radioisotope-id').val();
+
+			let decayModes = $('#decay-mode-id').val();
 
 			let modes = decayModes.split("::").map(x => x.trim());
 
@@ -949,9 +944,9 @@
 
 			if ($(".website-bottom .chain-btn").length > 0) $(".website-bottom .chain-btn").remove();
 
-			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="chain-btn" onclick="getChainElements();"><i class="fa-solid fa-list"></i> Chaîne de désintégration</a>`);
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="chain-btn"><i class="fa-solid fa-list"></i> Chaîne de désintégration</a>`);
 			
-			else $(".website-bottom").append(`<a class="chain-btn" onclick="getChainElements();"><i class="fa-solid fa-list"></i> </a>`);
+			else $(".website-bottom").append(`<a class="chain-btn"><i class="fa-solid fa-list"></i> </a>`);
 		
 		}
 
@@ -960,8 +955,6 @@
 			$("#modalbox-decay").css("display", "none");
 
 			$('.overlay').css('display', 'none');
-
-            $("#simulate-decay-id").attr('onclick', 'radioactiveDecay($("#element-id").val(), $("#radioisotope-id").val(), $("#decay-mode-id").val())');
 		
 			if ($(window).width() >= 1024) {
 
@@ -977,15 +970,33 @@
 
 		function setCorrectButtonOnMobile() { if ($(window).width() <= 1024 && extendedData.is_in_loading === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
 
-		$('#element-id').on('change', function() {
+		$(document).ready(function() {
 
-			updateRadioisotopes();
+			$('#radioactive-decay-btn-id').on('click', function() {
 
-			updateDecayModes(); 
-			
+				if (extendedData.is_in_loading) $('#modalbox-decay, .overlay').show();
+
+			});
+
+			$('#close-decay-modal, #close-chain-modal, .overlay').on('click', function() { $('.modalbox-class, .overlay').hide(); });
+
+			$('#simulate-decay-id').on('click', function() { radioactiveDecay(); });
+
+			$('#element-id').on('change', function() {
+
+				updateRadioisotopes();
+
+				updateDecayModes(); 
+
+			});
+
+			$('#radioisotope-id').on('change', function() { updateDecayModes(); });
+
+			$(document).on('click', '.chain-btn', function() { getChainElements(); });
+
+			initApp(); 
+
 		});
-
-		$('#radioisotope-id').on('change', updateDecayModes);
 
 	</script>
 
