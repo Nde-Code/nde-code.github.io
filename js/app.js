@@ -1,12 +1,10 @@
 var globalData = {
 
-    is_ES6: true,
-
     modalbox_size: `${Math.round($(window).width() - 8)}px`,
 
     starting_width: $(document).width(),
 
-    tol_resize: 15
+    tol_resize: 10
 
 };
 
@@ -135,24 +133,6 @@ function mobileAboutBox(windowSize) {
 
 }
 
-function mobileES6WarningBox(windowSize) {
-
-    if ($(window).width() <= 768 && globalData.is_ES6 === false) {
-
-        $("#modalbox-warning").css({
-
-            "marginLeft": "unset",
-
-            "left": "unset",
-
-            "width": windowSize
-            
-        });
-
-    }
-
-}
-
 // Merci: https://stackoverflow.com/questions/48002147/how-to-activate-and-disable-jquery-click-events-on-an-html-element
 $('#display-mobile-menu').on('click', function () {
 
@@ -192,16 +172,10 @@ $('#display-mobile-menu').on('click', function () {
 
 $(document).ready(function () {
 
-    mobileAboutBox(globalData.modalbox_size);
+    $("#notes-btn-id").on("click", openAboutBox);
 
-    mobileES6WarningBox(globalData.modalbox_size);
+    $(document).on('click', '#close-notes-btn, .overlay', () => { $('#modalbox-notes, .overlay').hide(); });
 
-    $('#modalbox-notes').remove();
-
-    $('.overlay').css('display', 'none');
+    $("#copyright").html(new Date().getFullYear());
 
 });
-
-$("#notes-btn-id").on("click", openAboutBox);
-
-$("#copyright").html(new Date().getFullYear());
