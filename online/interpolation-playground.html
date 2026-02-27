@@ -255,7 +255,7 @@
 
 				Tracer
 
-				<a class="modalbox-header-close" onclick="$('#modalbox-interpolation').css('display', 'none'); $('.overlay').css('display', 'none');">
+				<a class="modalbox-header-close">
 
 					<i class="fa fa-times" aria-hidden="true"></i>
 
@@ -331,7 +331,7 @@
 
                     <p class="modalbox-description"> Voulez-vous tracer le polynôme de régression, c'est-à-dire la courbe passant au mieux entre les points saisis ?: </p>
 					
-					<select title="Polynôme de régression:" id="regression-plot-id" onchange="setHTMLForDegInput($('#regression-plot-id').val() === 'true');">
+					<select title="Polynôme de régression:" id="regression-plot-id">
 
 						<option value="true" selected>Oui</option>
 
@@ -351,7 +351,7 @@
 
                     <p class="modalbox-description"> Sélectionnez le degré du polynôme de régression à tracer: </p>
 					
-					<input onchange="setDegValueInHTML($('#deg-data').val());" title="Degré du polynôme:" type="range" id="deg-data" class="modalbox-range" value="1" min="1" max="10" step="1">
+					<input title="Degré du polynôme:" type="range" id="deg-data" class="modalbox-range" value="1" min="1" max="10" step="1">
                 
 				</div>
 
@@ -389,7 +389,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="run-playground-id" class="modalbox-btn" onclick="plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());">
+					<a id="run-playground-id" class="modalbox-btn">
 						
 						<i class="fa-solid fa-chart-line"></i> Tracer
 					
@@ -407,7 +407,7 @@
 
 				Éditeur
 
-				<a class="modalbox-header-close" onclick="$('#modalbox-editor').css('display', 'none'); $('.overlay').css('display', 'none');">
+				<a class="modalbox-header-close">
 
 					<i class="fa fa-times" aria-hidden="true"></i>
 
@@ -459,13 +459,7 @@
         
 		function setDegValueInHTML(val) { return $("#deg-id").html(val); }
 
-		function setHTMLForDegInput(val) { 
-			
-			let displayValue = (val === false) ? 'none' : 'block';
-
-			return $('#deg-html-id').css('display', displayValue) && $('#deg-white-line').css('display', displayValue);
-		
-		}
+		function setHTMLForDegInput(val) { $('#deg-html-id, #deg-white-line').toggle(val); }
 
 		function parseNumber(element) { return (element.trim() === '') ? NaN : Number(element); }
 
@@ -1105,10 +1099,10 @@
 
 			if (polynomialBtn) $(".website-bottom .python-btn").remove();
 
-			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="python-btn" onclick="openEditor();"><i class="fa-brands fa-python"></i> Code compilé en python</a>`);
-
-			else $(".website-bottom").append(`<a class="python-btn" onclick="openEditor();"><i class="fa-brands fa-python"></i></a>`);
-
+			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="python-btn"><i class="fa-brands fa-python"></i> Code compilé en python</a>`);
+			
+			else $(".website-bottom").append(`<a class="python-btn"><i class="fa-brands fa-python"></i></a>`);
+	
 		}
 
 		function constructHTML() {
@@ -1119,8 +1113,6 @@
 
 			$('.overlay').css('display', 'none');
 
-			$("#run-playground-id").attr('onclick', `plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());`);
-
 			if ($(window).width() >= 1024) {
 
 				$(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i> Retracer des courbes d\'interpolation');
@@ -1128,8 +1120,6 @@
 				$("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i> Tracer');
 
 			}
-
-			$("#modalbox-interpolation .modalbox-header-close").attr('onclick', `$('#modalbox-interpolation').css('display', 'none'); $('.overlay').css('display', 'none');`);
 
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
@@ -1143,11 +1133,7 @@
 
 			extendedData.is_in_loading = true;
 
-			$("#modalbox-interpolation .modalbox-header-close").removeAttr("onclick");
-
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
-
-			$("#run-playground-id").attr('onclick', '');
 
 			if ($(window).width() >= 1024) $("#run-playground-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
@@ -1165,13 +1151,11 @@
 
 			else $("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i>');
 
-			$("#run-playground-id").attr('onclick', `plotCurves($('#x-data').val(), $('#y-data').val(), $('#langrage-plot-id').val(), $('#spline-plot-id').val(), $('#regression-plot-id').val(), $('#deg-data').val());`);
-
 		}
 
 		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#run-playground-id").html('<i class="fa-solid fa-chart-line"></i>'); }
 
-		window.onload = () => {
+		$(document).ready(function() {
 
 			extendedData.editor = ace.edit("editor");
 
@@ -1193,8 +1177,6 @@
 
 			else $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i> Tracer des courbes d\'interpolation');
 
-			$(".interpolation-btn").attr('onclick', `$('#modalbox-interpolation').css('display', 'block'); $('.overlay').css('display', 'block');`);
-
 			setCorrectButtonOnMobileInModalbox();
 
 			if ($(window).width() <= 768) {
@@ -1211,7 +1193,32 @@
 
 			}
 
-		};
+			$(".interpolation-btn").on('click', function() { $('#modalbox-interpolation, .overlay').show(); });
+
+			$(document).on('click', '.python-btn', function() { openEditor(); });
+
+    		$('.modalbox-header-close, .overlay').on('click', function() { $('.modalbox-class, .overlay').hide(); });
+
+    		$('#regression-plot-id').on('change', function() { setHTMLForDegInput($(this).val() === 'true'); });
+
+    		$('#deg-data').on('input change', function() { setDegValueInHTML($(this).val()); });
+
+    		$('#run-playground-id').on('click', function() {
+
+        		if (extendedData.is_in_loading) return;
+
+				plotCurves(
+					$('#x-data').val(), 
+					$('#y-data').val(), 
+					$('#langrage-plot-id').val(), 
+					$('#spline-plot-id').val(), 
+					$('#regression-plot-id').val(), 
+					$('#deg-data').val()
+				);
+
+    		});
+
+		});
 		
 	</script>
 
