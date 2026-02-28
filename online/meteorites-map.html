@@ -405,6 +405,17 @@
         
         };
 
+        function escapeHTML(value) {
+
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+
+        }
+
         function getRandomInt(min, max) { return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min); }
 
         async function fetchData(apiUrl, params = {}) {
@@ -555,7 +566,7 @@
 
                         <i class="fa-solid fa-square point"></i>
 
-                        ${item.label}: <span class="color-light-blue alone-bold">${item.value}</span>
+                        ${escapeHTML(item.label)}: <span class="color-light-blue alone-bold">${escapeHTML(item.value)}</span>
 
                     </p>
 
@@ -589,7 +600,7 @@
 
                             <i class="fa-solid fa-square point"></i>
                            
-                            Classe ${recclass}: <span class="color-light-blue alone-bold">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
+                            Classe ${escapeHTML(recclass)}: <span class="color-light-blue alone-bold">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
                        
                         </p>
 
@@ -612,24 +623,26 @@
             let latitude = isNaN(Number(data.latitude)) ? null : Number(data.latitude);
 
             let longitude = isNaN(Number(data.longitude)) ? null : Number(data.longitude);
+
+            let safeId = encodeURIComponent(data.id);
     
             let popUpContent = `
     
-                <b>Identifiant: </b> <span> ${data.id} </span> <br> 
+                <b>Identifiant: </b> <span> ${safeId} </span> <br> 
     
-                <b>Nom: </b> <span> ${data.name} </span> <br>
+                <b>Nom: </b> <span> ${escapeHTML(data.name)} </span> <br>
     
-                <b>Classe: </b> <span> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : data.recclass} </span> <br>
+                <b>Classe: </b> <span> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : escapeHTML(data.recclass)} </span> <br>
     
-                <b>Masse: </b> <span> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : (data.mass / 1000).toFixed(4) + " kg"} </span> <br>
+                <b>Masse: </b> <span> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : (Number(data.mass) / 1000).toFixed(4) + " kg"} </span> <br>
     
                 <b>Status: </b> <span> ${(data.fall === 'Fell' || data.fall === 'N/A' || data.fall === "Unknown") ? 'Tombée' : 'Trouvée'} </span> <br>
     
-                <b>Année: </b> <span> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} </span> <br>
+                <b>Année: </b> <span> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : escapeHTML(data.year)} </span> <br>
     
                 <b>Coordonnées: </b> <span> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) </span> <br>
 
-                <b>Lien permanent: </b> <span> ${'<a href="https://meteorites.nde-code.workers.dev/get?id=' + data.id + '" target="_blank" rel="noopener noreferrer">[Consulter]</a>'} </span> <br>
+                <b>Lien permanent: </b> <span> <a href="https://meteorites.nde-code.workers.dev/get?id=${safeId}" target="_blank" rel="noopener noreferrer">[Consulter]</a> </span>
                     
             `;
 
@@ -644,6 +657,8 @@
                 popupAnchor: [0, -5]
 
             });
+
+            if (latitude === null || longitude === null) return null;
                 
             return L.marker([latitude, longitude],  { icon: customIcon }).bindPopup(popUpContent);
 
@@ -697,7 +712,7 @@
 
                         let marker = processMeteorites(meteorite);
 
-                        extendedData.marker_group.addLayer(marker);
+                        if (marker) extendedData.marker_group.addLayer(marker);
 
                     });
 

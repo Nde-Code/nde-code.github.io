@@ -397,7 +397,7 @@
 
 			full_chain_html: '',
 
-			is_in_loading: false,
+			is_data_in_loading: false,
 
 			is_run: false
 
@@ -685,7 +685,7 @@
 
 				createParagraph(`
 
-					<span class="color-green alone-bold">(${step.A}, ${step.Z})${step.element}</span> à pour masse atomique: 
+					<span class="color-green alone-bold">(${step.A}, ${step.Z})${step.element}</span> a pour masse atomique: 
 					
 					<span class="color-orange alone-bold"> ≈ ${getAtomicMassWithRadioisotopeNumber(step.element, step.A)} uma</span>.
 				
@@ -755,7 +755,7 @@
 
 						updateRadioisotopes();
 
-						extendedData.is_in_loading = true;
+						extendedData.is_data_in_loading = true;
 
 						setCorrectButtonOnMobile();
 
@@ -979,13 +979,13 @@
 
 		}
 
-		function setCorrectButtonOnMobile() { if ($(window).width() <= 1024 && extendedData.is_in_loading === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
+		function setCorrectButtonOnMobile() { if ($(window).width() <= 1024 && extendedData.is_data_in_loading === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
 
 		$(document).ready(function() {
 
 			$('#radioactive-decay-btn-id').on('click', function() {
 
-				if (extendedData.is_in_loading) $('#modalbox-decay, .overlay').show();
+				if (extendedData.is_data_in_loading) $('#modalbox-decay, .overlay').show();
 
 			});
 

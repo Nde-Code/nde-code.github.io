@@ -203,7 +203,7 @@
 					
 				<p class="website-main-panel-description"><i class="fa-regular fa-circle-xmark red"></i> Qui limite en grandeur et en nombre les points saisis. </p>
 					
-				<p class="website-main-panel-description"><i class="fa-regular fa-circle-dot orange"></i> Qui des algorithmes numériques en O(n<sup>3</sup>) et O(n<sup>2</sup>). </p>
+				<p class="website-main-panel-description"><i class="fa-regular fa-circle-dot orange"></i> Qui utilise des algorithmes numériques en O(n<sup>3</sup>) et O(n<sup>2</sup>). </p>
 					
 			</div>
 
@@ -295,7 +295,7 @@
 
                     <p class="modalbox-description"> Voulez-vous tracer le polynôme de Lagrange, c'est-à-dire la courbe passant par tous les points saisis ?: </p>
 					
-					<select title="Polynôme de langrage:" id="langrage-plot-id">
+					<select title="Polynôme de langrage:" id="lagrange-plot-id">
 
 						<option value="true" selected>Oui</option>
 
@@ -483,7 +483,7 @@
 
 			for (let elem of arr) {
 
-				if (typeof elem !== 'number' || isNaN(elem) || elem >= extendedData.X_LIMIT[1] || elem <= extendedData.X_LIMIT[0]) return false;
+				if (typeof elem !== 'number' || isNaN(elem) || elem > extendedData.X_LIMIT[1] || elem < extendedData.X_LIMIT[0]) return false;
 				
 			}
 
@@ -1214,7 +1214,7 @@
 				plotCurves(
 					$('#x-data').val(), 
 					$('#y-data').val(), 
-					$('#langrage-plot-id').val(), 
+					$('#lagrange-plot-id').val(), 
 					$('#spline-plot-id').val(), 
 					$('#regression-plot-id').val(), 
 					$('#deg-data').val()
