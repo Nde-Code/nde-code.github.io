@@ -166,36 +166,26 @@ $(document).ready(function () {
 
         let $this = $(this);
 
-        if (!$this.is(".active")) {
+        let $menu = $(".menu-class"); 
+
+        if (!$this.hasClass("active")) {
 
             $this.addClass('active');
 
-            $this.attr('aria-expanded', 'true');
-
-            $this.attr('aria-label', 'Fermer le menu de navigation.');
-
-            $(".menu-dropdown .menu-dropdown-btn").css("display", "block");
-
-            $(".menu-item").css("display", "block");
-
+            $menu.addClass('is-mobile-open'); 
+            
             $this.html('<i class="fa-solid fa-xmark"></i>');
 
         } else {
 
             $this.removeClass('active');
 
-            $this.attr('aria-expanded', 'false');
-
-            $this.attr('aria-label', 'Ouvrir le menu de navigation.');
-
+            $menu.removeClass('is-mobile-open');
+            
             $this.html('<i class="fa-solid fa-bars"></i>');
 
-            $(".menu-dropdown .menu-dropdown-btn").css("display", "none");
-
-            $(".menu-item").css("display", "none");
-
         }
-
+        
     });
 
 });

@@ -137,7 +137,7 @@
 
 					<div class="menu-mobile">
 
-						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
+						<a id="display-mobile-menu" aria-label="Ouvrir le menu mobile."><i class="fa-solid fa-bars"></i></a>
 
 					</div>
 
@@ -934,9 +934,7 @@
 
 			$("#chain-container").html(extendedData.full_chain_html);
 
-			$('#modalbox-chain').css('display', 'block');
-
-			$('.overlay').css('display', 'block');
+			$('#modalbox-chain, .overlay').show();
 
 		}
 
@@ -952,9 +950,7 @@
 
 		function constructHTML() {
 			
-			$("#modalbox-decay").css("display", "none");
-
-			$('.overlay').css('display', 'none');
+			$("#modalbox-decay, .overlay").hide();
 		
 			if ($(window).width() >= 1024) {
 

@@ -131,7 +131,7 @@
 
 					<div class="menu-mobile">
 
-						<a id="display-mobile-menu"><i class="fa-solid fa-bars"></i></a>
+						<a id="display-mobile-menu" aria-label="Ouvrir le menu mobile."><i class="fa-solid fa-bars"></i></a>
 
 					</div>
 
@@ -1109,9 +1109,7 @@
 
 			$("#graph-container").html('<div id="plot-box"></div>');
 
-			$("#modalbox-interpolation").css("display", "none");
-
-			$('.overlay').css('display', 'none');
+			$("#modalbox-interpolation, .overlay").hide();
 
 			if ($(window).width() >= 1024) {
 

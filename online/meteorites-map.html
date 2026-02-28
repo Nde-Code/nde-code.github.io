@@ -603,9 +603,7 @@
 
             $("#stats-container").append(fullHtml);
 
-            $('#modalbox-stats').css('display', 'block');
-
-            $('.overlay').css('display', 'block');
+            $('#modalbox-stats, .overlay').show();
 
         }
 
@@ -863,9 +861,7 @@
 
                     { text: 'Quelques notes du développeur', icon: 'fa-solid fa-book', color: '#4690F2', action: () => { 
                                             
-                            $('#modalbox-notes').css('display', 'block');
-                            
-                            $('.overlay').css('display', 'block');
+                            $('#modalbox-notes, .overlay').show();
 
                         }
 

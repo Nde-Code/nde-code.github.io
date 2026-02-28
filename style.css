@@ -133,6 +133,10 @@ body.body-class {
 }
 
 @media only screen and (max-width: 1175px) {
+    .menu-class.is-mobile-open a.menu-item, 
+    .menu-class.is-mobile-open .menu-dropdown .menu-dropdown-btn {
+        display: block !important;
+    }
     .menu-mobile {
         color: white;
         display: block;
