@@ -866,7 +866,13 @@
 
 			$("#foucault-btn-id").on("click", function () { $("#modalbox-foucault, .overlay").show(); });
 
-			$("#close-foucault-modal").on("click", function () { $("#modalbox-foucault, .overlay").hide(); });
+			$("#close-foucault-modal").on("click", function () {
+
+				if (extendedData.is_in_loading === true) return;
+				
+				$("#modalbox-foucault, .overlay").hide();
+			
+			});
 
 			$("#simulate-foucault-btn-id").on("click", function () {
 

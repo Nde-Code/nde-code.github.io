@@ -1197,7 +1197,13 @@
 
 			$(document).on('click', '.python-btn', function() { openEditor(); });
 
-    		$('.modalbox-header-close, .overlay').on('click', function() { $('.modalbox-class, .overlay').hide(); });
+    		$('.modalbox-header-close, .overlay').on('click', function() {
+
+				if (extendedData.is_in_loading === true) return;
+				
+				$('.modalbox-class, .overlay').hide();
+			
+			});
 
     		$('#regression-plot-id').on('change', function() { setHTMLForDegInput($(this).val() === 'true'); });
 
