@@ -28,10 +28,6 @@
         margin: 0 !important;
     }
 
-    .color-ligth-blue-force {
-        color: #4690F2 !important;
-    }
-
     #map {
         height: calc(var(--vh, 1vh) * 100);
         z-index: 0;
@@ -619,21 +615,21 @@
     
             let popUpContent = `
     
-                <b>Identifiant: </b> <span class="color-ligth-blue"> ${data.id} </span> <br> 
+                <b>Identifiant: </b> <span> ${data.id} </span> <br> 
     
-                <b>Nom: </b> <span class="color-ligth-blue"> ${data.name} </span> <br>
+                <b>Nom: </b> <span> ${data.name} </span> <br>
     
-                <b>Classe: </b> <span class="color-ligth-blue"> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : data.recclass} </span> <br>
+                <b>Classe: </b> <span> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : data.recclass} </span> <br>
     
-                <b>Masse: </b> <span class="color-ligth-blue"> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : (data.mass / 1000).toFixed(4) + " kg"} </span> <br>
+                <b>Masse: </b> <span> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : (data.mass / 1000).toFixed(4) + " kg"} </span> <br>
     
-                <b>Status: </b> <span class="color-ligth-blue"> ${(data.fall === 'Fell' || data.fall === 'N/A' || data.fall === "Unknown") ? 'Tombée' : 'Trouvée'} </span> <br>
+                <b>Status: </b> <span> ${(data.fall === 'Fell' || data.fall === 'N/A' || data.fall === "Unknown") ? 'Tombée' : 'Trouvée'} </span> <br>
     
-                <b>Année: </b> <span class="color-ligth-blue"> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} </span> <br>
+                <b>Année: </b> <span> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} </span> <br>
     
-                <b>Coordonnées: </b> <span class="color-ligth-blue"> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) </span> <br>
+                <b>Coordonnées: </b> <span> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) </span> <br>
 
-                <b>Lien permanent: </b> <span class="color-ligth-blue"> ${'<a href="https://meteorites.nde-code.workers.dev/get?id=' + data.id + '" target="_blank" rel="noopener noreferrer" class="color-ligth-blue-force">[Consulter]</a>'} </span> <br>
+                <b>Lien permanent: </b> <span> ${'<a href="https://meteorites.nde-code.workers.dev/get?id=' + data.id + '" target="_blank" rel="noopener noreferrer">[Consulter]</a>'} </span> <br>
                     
             `;
 
