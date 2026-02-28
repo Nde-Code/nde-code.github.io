@@ -319,13 +319,13 @@
 
             <div class="modalbox-text-container">
 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/dataset/meteorite-landings" target="_blank" rel="noopener noreferrer" class="color-ligth-blue"> [NASA]</a>. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/dataset/meteorite-landings" target="_blank" rel="noopener noreferrer" class="color-light-blue"> [NASA]</a>. </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Le projet utilise une API externe, qui est également l’un de mes autres projets. Vous pouvez cliquer <a href="https://github.com/Nde-Code/MeteoritesAPI" target="_blank" rel="noopener noreferrer" class="color-ligth-blue">[ici]</a> pour le découvrir.</p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Le projet utilise une API externe, qui est également l’un de mes autres projets. Vous pouvez cliquer <a href="https://github.com/Nde-Code/MeteoritesAPI" target="_blank" rel="noopener noreferrer" class="color-light-blue">[ici]</a> pour le découvrir.</p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Le quota est fixé à une requête par seconde. </p>
                 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> J'utilise une tuile fournie par <a href="https://www.maptiler.com/" target="_blank" rel="noopener noreferrer" class="color-ligth-blue"> [MapTiler] </a> pour avoir un fond de carte sympa. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> J'utilise une tuile fournie par <a href="https://www.maptiler.com/" target="_blank" rel="noopener noreferrer" class="color-light-blue"> [MapTiler] </a> pour avoir un fond de carte sympa. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Pour prévenir les abus, l'API utilisée par le logiciel exploite votre adresse IP (afin de limiter le nombre de requêtes), mais celle-ci est hachée (via SHA-256) avec un "SALT" solide et robuste. Aucune IP brute ni aucune autre information personnelle n'est collectée. N'hésitez pas à me contacter pour toute question relative à ce sujet. <b> En utilisant ce logiciel ou/et l'API associée, vous confirmez être en accord avec les présentes conditions. </b></p>
 
@@ -519,11 +519,11 @@
 
                     items: [
 
-                        { label: "Masse minimale", value: statsJSON.minMass !== Infinity ? statsJSON.minMass + " g" : "N/A", color: "#4690F2" },
+                        { label: "Masse minimale", value: statsJSON.minMass !== Infinity ? statsJSON.minMass + " g" : "N/A" },
                        
-                        { label: "Masse maximale", value: statsJSON.maxMass !== -Infinity ? (statsJSON.maxMass / 1000).toFixed(6) + " kg" : "N/A", color: "#4690F2" },
+                        { label: "Masse maximale", value: statsJSON.maxMass !== -Infinity ? (statsJSON.maxMass / 1000).toFixed(6) + " kg" : "N/A" },
                         
-                        { label: "Masse moyenne", value: statsJSON.avgMass !== null ? (statsJSON.avgMass / 1000).toFixed(6) + " kg" : "N/A", color: "#4690F2" }
+                        { label: "Masse moyenne", value: statsJSON.avgMass !== null ? (statsJSON.avgMass / 1000).toFixed(6) + " kg" : "N/A" }
 
                     ]
 
@@ -535,11 +535,11 @@
                     
                     items: [
 
-                        { label: "Année la plus ancienne", value: statsJSON.minYear !== Infinity ? statsJSON.minYear : "N/A", color: "#4690F2" },
+                        { label: "Année la plus ancienne", value: statsJSON.minYear !== Infinity ? statsJSON.minYear : "N/A" },
                        
-                        { label: "Année la plus récente", value: statsJSON.maxYear !== -Infinity ? statsJSON.maxYear : "N/A", color: "#4690F2" },
+                        { label: "Année la plus récente", value: statsJSON.maxYear !== -Infinity ? statsJSON.maxYear : "N/A" },
                         
-                        { label: "Année moyenne", value: statsJSON.avgYear !== null ? statsJSON.avgYear : "N/A", color: "#4690F2" }
+                        { label: "Année moyenne", value: statsJSON.avgYear !== null ? statsJSON.avgYear : "N/A" }
                     
                     ]
 
@@ -555,7 +555,7 @@
 
                         <i class="fa-solid fa-square point"></i>
 
-                        ${item.label}: <span class="color-ligth-blue alone-bold">${item.value}</span>
+                        ${item.label}: <span class="color-light-blue alone-bold">${item.value}</span>
 
                     </p>
 
@@ -589,7 +589,7 @@
 
                             <i class="fa-solid fa-square point"></i>
                            
-                            Classe ${recclass}: <span class="color-ligth-blue alone-bold">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
+                            Classe ${recclass}: <span class="color-light-blue alone-bold">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
                        
                         </p>
 
