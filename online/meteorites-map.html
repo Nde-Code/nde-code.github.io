@@ -28,6 +28,10 @@
         margin: 0 !important;
     }
 
+    .color-ligth-blue-force {
+        color: #4690F2 !important;
+    }
+
     #map {
         height: calc(var(--vh, 1vh) * 100);
         z-index: 0;
@@ -283,7 +287,7 @@
 
     </a>
 
-    <div class="modalbox-class" id="modalbox-stats" style="display: none;" role="dialog"> 
+    <div class="modalbox-class" id="modalbox-stats" role="dialog"> 
 
         <header class="modalbox-header-class">
 
@@ -301,7 +305,7 @@
         
     </div>
 
-    <div class="modalbox-class" id="modalbox-notes" style="display: none;" role="dialog"> 
+    <div class="modalbox-class" id="modalbox-notes" role="dialog"> 
 
         <header class="modalbox-header-class">
 
@@ -319,15 +323,15 @@
 
             <div class="modalbox-text-container">
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/dataset/meteorite-landings" target="_blank" rel="noopener noreferrer" style="color: #4690F2;"> [NASA]</a>. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Les données sur les météorites tombées sur Terre proviennent de la <a href="https://data.nasa.gov/dataset/meteorite-landings" target="_blank" rel="noopener noreferrer" class="color-ligth-blue"> [NASA]</a>. </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le projet utilise une API externe, qui est également l’un de mes autres projets. Vous pouvez cliquer <a href="https://github.com/Nde-Code/MeteoritesAPI" target="_blank" rel="noopener noreferrer" style="color: #4690F2;">[ici]</a> pour le découvrir.</p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Le projet utilise une API externe, qui est également l’un de mes autres projets. Vous pouvez cliquer <a href="https://github.com/Nde-Code/MeteoritesAPI" target="_blank" rel="noopener noreferrer" class="color-ligth-blue">[ici]</a> pour le découvrir.</p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Le quota est fixé à une requête par seconde. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Le quota est fixé à une requête par seconde. </p>
                 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> J'utilise une tuile fournie par <a href="https://www.maptiler.com/" target="_blank" rel="noopener noreferrer" style="color: #4690F2;"> [MapTiler] </a> pour avoir un fond de carte sympa. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> J'utilise une tuile fournie par <a href="https://www.maptiler.com/" target="_blank" rel="noopener noreferrer" class="color-ligth-blue"> [MapTiler] </a> pour avoir un fond de carte sympa. </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Pour prévenir les abus, l'API utilisée par le logiciel exploite votre adresse IP (afin de limiter le nombre de requêtes), mais celle-ci est hachée (via SHA-256) avec un "SALT" solide et robuste. Aucune IP brute ni aucune autre information personnelle n'est collectée. N'hésitez pas à me contacter pour toute question relative à ce sujet. <b> En utilisant ce logiciel ou/et l'API associée, vous confirmez être en accord avec les présentes conditions. </b></p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Pour prévenir les abus, l'API utilisée par le logiciel exploite votre adresse IP (afin de limiter le nombre de requêtes), mais celle-ci est hachée (via SHA-256) avec un "SALT" solide et robuste. Aucune IP brute ni aucune autre information personnelle n'est collectée. N'hésitez pas à me contacter pour toute question relative à ce sujet. <b> En utilisant ce logiciel ou/et l'API associée, vous confirmez être en accord avec les présentes conditions. </b></p>
 
             </div>
 
@@ -553,9 +557,9 @@
 
                     <p class="modalbox-description">
 
-                        <i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i>
+                        <i class="fa-solid fa-square point"></i>
 
-                        ${item.label}: <span style="font-weight: bold; color: ${item.color};">${item.value}</span>
+                        ${item.label}: <span class="color-ligth-blue alone-bold">${item.value}</span>
 
                     </p>
 
@@ -587,9 +591,9 @@
 
                         <p class="modalbox-description">
 
-                            <i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i>
+                            <i class="fa-solid fa-square point"></i>
                            
-                            Classe ${recclass}: <span style="font-weight: bold; color: #4690F2;">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
+                            Classe ${recclass}: <span class="color-ligth-blue alone-bold">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
                        
                         </p>
 
@@ -615,21 +619,21 @@
     
             let popUpContent = `
     
-                <b>Identifiant: </b> <span style="color: #4690F2;"> ${data.id} </span> <br> 
+                <b>Identifiant: </b> <span class="color-ligth-blue"> ${data.id} </span> <br> 
     
-                <b>Nom: </b> <span style="color: #4690F2;"> ${data.name} </span> <br>
+                <b>Nom: </b> <span class="color-ligth-blue"> ${data.name} </span> <br>
     
-                <b>Classe: </b> <span style="color: #4690F2;"> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : data.recclass} </span> <br>
+                <b>Classe: </b> <span class="color-ligth-blue"> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : data.recclass} </span> <br>
     
-                <b>Masse: </b> <span style="color: #4690F2;"> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : (data.mass / 1000).toFixed(4) + " kg"} </span> <br>
+                <b>Masse: </b> <span class="color-ligth-blue"> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : (data.mass / 1000).toFixed(4) + " kg"} </span> <br>
     
-                <b>Status: </b> <span style="color: #4690F2;"> ${(data.fall === 'Fell' || data.fall === 'N/A' || data.fall === "Unknown") ? 'Tombée' : 'Trouvée'} </span> <br>
+                <b>Status: </b> <span class="color-ligth-blue"> ${(data.fall === 'Fell' || data.fall === 'N/A' || data.fall === "Unknown") ? 'Tombée' : 'Trouvée'} </span> <br>
     
-                <b>Année: </b> <span style="color: #4690F2;"> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} </span> <br>
+                <b>Année: </b> <span class="color-ligth-blue"> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : data.year} </span> <br>
     
-                <b>Coordonnées: </b> <span style="color: #4690F2;"> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) </span> <br>
+                <b>Coordonnées: </b> <span class="color-ligth-blue"> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) </span> <br>
 
-                <b>Lien permanent: </b> <span style="color: #4690F2;"> ${'<a href="https://meteorites.nde-code.workers.dev/get?id=' + data.id + '" target="_blank" rel="noopener noreferrer" style="color: #4690F2 !important;">[Consulter]</a>'} </span> <br>
+                <b>Lien permanent: </b> <span class="color-ligth-blue"> ${'<a href="https://meteorites.nde-code.workers.dev/get?id=' + data.id + '" target="_blank" rel="noopener noreferrer" class="color-ligth-blue-force">[Consulter]</a>'} </span> <br>
                     
             `;
 

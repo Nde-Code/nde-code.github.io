@@ -76,11 +76,26 @@
 		font-style: italic;
 		font-weight: bold;
 		cursor: default;
+		display: none;
 	}
 
 	.atomic-arrow {
 		margin-left: 10px;
 		margin-right: 10px;
+	}
+
+	.anti-nu {
+		display:inline-flex;
+		flex-direction:column;
+		align-items:center;
+		vertical-align:middle;
+		line-height:1;
+	}
+
+	.anti-nu-bar {
+		width:100%;
+		border-top:2px solid;
+		margin-bottom:-3px;
 	}
 
 	</style>
@@ -205,7 +220,7 @@
 
 				<h1 class="website-main-panel-title" id="title-id"> Logiciel de désintégration radioactive: </h1>
 
-				<div id="decay-plot-id" class="decay-plot" style="display: none;"></div>
+				<div id="decay-plot-id" class="decay-plot"></div>
 					
 				<p class="website-main-panel-description" id="info-1"><i class="fa-regular fa-circle-check green"></i> Qui est gratuit et muni d'une large base de données. </p>
 					
@@ -257,7 +272,7 @@
 
 		</div>
 
-		<div class="modalbox-class" id="modalbox-decay" style="display: none;" role="dialog"> 
+		<div class="modalbox-class" id="modalbox-decay" role="dialog"> 
 
 			<header class="modalbox-header-class">
 
@@ -313,15 +328,15 @@
 
 					<h2>Notes:</h2>
 
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> La création de la base de données nécessaire au fonctionnement de ce logiciel a représenté un travail colossal, m'ayant demandé de nombreuses heures d'effort et la consultation de plusieurs sources différentes, afin d'élaborer une base aussi complète et précise que possible. Cependant, les données sur les modes de désintégration peuvent changer d'une base de données à l'autre. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-square point"></i> La création de la base de données nécessaire au fonctionnement de ce logiciel a représenté un travail colossal, m'ayant demandé de nombreuses heures d'effort et la consultation de plusieurs sources différentes, afin d'élaborer une base aussi complète et précise que possible. Cependant, les données sur les modes de désintégration peuvent changer d'une base de données à l'autre. </p>
 					
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Certains modes de désintégration ne sont pas pris en charge, principalement pour des raisons techniques. En l'absence de formules directes permettant leur simulation, ces désintégrations nécessitent des données expérimentales ou statistiques, ce qui n'est pas réalisable dans le cadre actuel. Cela concerne notamment la fission spontanée, les émissions de clusters, ainsi que les états excités. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-square point"></i> Certains modes de désintégration ne sont pas pris en charge, principalement pour des raisons techniques. En l'absence de formules directes permettant leur simulation, ces désintégrations nécessitent des données expérimentales ou statistiques, ce qui n'est pas réalisable dans le cadre actuel. Cela concerne notamment la fission spontanée, les émissions de clusters, ainsi que les états excités. </p>
 
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les modes de désintégration sont triés du plus probable au moins probable. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-square point"></i> Les modes de désintégration sont triés du plus probable au moins probable. </p>
 
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Les données relatives aux masses atomiques doivent être utilisées avec discernement. Ces valeurs peuvent varier d'une base de données à une autre, ce qui peut entraîner des écarts non négligeables, notamment dans les calculs d'énergie de réaction. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-square point"></i> Les données relatives aux masses atomiques doivent être utilisées avec discernement. Ces valeurs peuvent varier d'une base de données à une autre, ce qui peut entraîner des écarts non négligeables, notamment dans les calculs d'énergie de réaction. </p>
 
-					<p class="modalbox-description"><i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Dans ce logiciel, les noyaux sont représentés sous la forme (A, Z)Symbole. </p>
+					<p class="modalbox-description"><i class="fa-solid fa-square point"></i> Dans ce logiciel, les noyaux sont représentés sous la forme (A, Z)Symbole. </p>
 														
 				</div>
 
@@ -343,7 +358,7 @@
 			
 		</div>
 
-		<div class="modalbox-class" id="modalbox-chain" style="display: none;" role="dialog"> 
+		<div class="modalbox-class" id="modalbox-chain" role="dialog"> 
 
 			<header class="modalbox-header-class">
 
@@ -592,7 +607,7 @@
 
 		function generateHTMLEquationResponse(pNucleus, dNucleus, decayMode) {
 
-			const antiNu = `<span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;line-height:1;"><span style="width:100%;border-top:2px solid;margin-bottom:-3px;"></span>ν</span><sub>e</sub>`;
+			const antiNu = `<span class="anti-nu"><span class="anti-nu-bar"></span>ν</span><sub>e</sub>`;
 			
 			const neutrino = `ν<sub>e</sub>`;
 
@@ -638,7 +653,7 @@
 
 				<p class="modalbox-description">
 
-					<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i>
+					<i class="fa-solid fa-square point"></i>
 
 					${content}
 
@@ -660,7 +675,7 @@
 
 					<br>
 											
-					<span style="font-weight: bold; color: #28A745;">${generateHTMLEquationResponse(p, d, mode.trim())}</span>
+					<span class="color-green alone-bold">${generateHTMLEquationResponse(p, d, mode.trim())}</span>
 									
 				`);
 
@@ -670,9 +685,9 @@
 
 				createParagraph(`
 
-					<span style="font-weight: bold; color: #28A745;">(${step.A}, ${step.Z})${step.element}</span> à pour masse atomique: 
+					<span class="color-green alone-bold">(${step.A}, ${step.Z})${step.element}</span> à pour masse atomique: 
 					
-					<span style="font-weight: bold; color: #FD7E14;"> ≈ ${getAtomicMassWithRadioisotopeNumber(step.element, step.A)} uma</span>.
+					<span class="color-orange alone-bold"> ≈ ${getAtomicMassWithRadioisotopeNumber(step.element, step.A)} uma</span>.
 				
 				`)
 
@@ -682,9 +697,9 @@
 
 				createParagraph(`
 
-					<span style="font-weight: bold; color: #28A745;">${step.element}</span> à pour nom complet: 
+					<span class="color-green alone-bold">${step.element}</span> à pour nom complet: 
 
-					<span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(step.element)}</span>.
+					<span class="color-red alone-bold">${getElementNameWithSymbol(step.element)}</span>.
 				
 				`)
 
@@ -908,11 +923,11 @@
 			
 			let resultMass = getAtomicMassWithSymbol(lastIndex, lastNucleus.element);
 
-			$("#info-1").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau parent: <span style="font-weight: bold; color: #F1C31B;">${!isNaN(parentMass) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
+			$("#info-1").html(`<i class="fa-solid fa-square point"></i> Admet comme masse atomique du noyau parent: <span class="color-yellow alone-bold">${!isNaN(parentMass) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
 			
-			$("#info-2").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme masse atomique du noyau résultant: <span class="discriminant-text" style="font-weight: bold; color: #FD7E14;">${!isNaN(resultMass) ? `≈ ${resultMass} uma` : 'Inconnue'}</span>`);
+			$("#info-2").html(`<i class="fa-solid fa-square point"></i> Admet comme masse atomique du noyau résultant: <span class="discriminant-text" class="color-orange alone-bold">${!isNaN(resultMass) ? `≈ ${resultMass} uma` : 'Inconnue'}</span>`);
 
-			$("#info-3").html(`<i class="fa-solid fa-square" style="color: #4690F2; font-size: 14px;"></i> Admet comme nom complet du noyau résultant: <span style="font-weight: bold; color: #DC3545;">${getElementNameWithSymbol(lastNucleus.element)}</span>`);
+			$("#info-3").html(`<i class="fa-solid fa-square point"></i> Admet comme nom complet du noyau résultant: <span class="color-red alone-bold">${getElementNameWithSymbol(lastNucleus.element)}</span>`);
 			
 			if ($(".website-bottom .chain-btn").length > 0 && isDecayChain === false) {
 
