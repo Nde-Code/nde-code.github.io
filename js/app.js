@@ -151,7 +151,7 @@ $(document).ready(function () {
 
     $("#notes-btn-id").on("click", openNotesBox);
 
-    $(document).on('click', '#close-notes-btn, .overlay', () => {
+    $(document).on('click', '#close-notes-btn', () => {
 
         $('#modalbox-notes').hide();
 
