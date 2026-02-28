@@ -286,8 +286,6 @@
 
     <script>     
 
-		$("#get-my-age").text(getAge("2004/09/11"));
-
 		function getAge(birthday) {
 
 			let today = new Date();
@@ -309,6 +307,8 @@
 			if ($(window).width() <= 1024) $(".about-btn").html('<i class="fa-solid fa-user"></i>');
 
 			else $(".about-btn").html('<i class="fa-solid fa-user"></i> À propos de moi et de mes projets');
+
+			$("#get-my-age").text(getAge("2004/09/11"));
 
 			$(".about-btn").on("click", function () { $('#modalbox-about, .overlay').show(); });
 

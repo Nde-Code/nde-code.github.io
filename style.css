@@ -16,7 +16,7 @@ body.body-class {
 
 #main-html {
     height: 100vh;   
-    height: 100dvh;  /* Use (100)vh as a fallback if (100)dvh is not supported. */
+    height: 100dvh;  /* Utiliser (100)vh comme solution de repli si (100)dvh n'est pas pris en charge. */
     overflow-y: auto !important;
 }
 
