@@ -14,14 +14,14 @@ $(window).on('resize', () => {
 
     let newWidth = $(document).width();
 
-    if (Math.abs(globalData.starting_width - newWidth) > globalData.tol_resize) document.location.reload(true);
+    if (Math.abs(globalData.starting_width - newWidth) > globalData.tol_resize) document.location.reload();
 
 });
 
-function openNotesBox() {
+function getNotesTemplate() {
 
-    let aboutBoxHtml = `
-    <div class="modalbox-class" id="modalbox-notes" role="dialog">
+    return `
+    <div class="modalbox-class" id="modalbox-notes" role="dialog" style="display:none;">
 
         <header class="modalbox-header-class">
 
@@ -107,27 +107,39 @@ function openNotesBox() {
 
     </div>`;
 
-    $("#modalbox-notes").remove();
+}
 
-    $("#modalbox-open-div").append(aboutBoxHtml);
+function openNotesBox() {
 
-    mobileNotesBox(globalData.modalbox_size);
+    let $modal = $("#modalbox-notes");
 
-    $('.overlay').css('display', 'block');
+    if ($modal.length === 0) {
+
+        $("#modalbox-open-div").append(getNotesTemplate());
+
+        $modal = $("#modalbox-notes"); 
+        
+    }
+
+    applyMobileStyles($modal);
+    
+    $modal.show();
+
+    $('.overlay').show();
 
 }
 
-function mobileNotesBox(windowSize) {
+function applyMobileStyles($element) {
 
     if ($(window).width() <= 768) {
 
-        $("#modalbox-notes").css({
+        $element.css({
 
             'marginLeft': 'unset',
 
             'left': 'unset',
 
-            'width': windowSize
+            'width': globalData.modalbox_size
 
         });
 
@@ -135,49 +147,56 @@ function mobileNotesBox(windowSize) {
 
 }
 
-// Merci: https://stackoverflow.com/questions/48002147/how-to-activate-and-disable-jquery-click-events-on-an-html-element
-$('#display-mobile-menu').on('click', function () {
-
-    let $this = $(this);
-
-    if (!$this.is(".active")) {
-
-        $this.addClass('active');
-
-        $this.attr('aria-expanded', 'true');
-
-        $this.attr('aria-label', 'Fermer le menu de navigation.');
-
-        $(".menu-dropdown .menu-dropdown-btn").css("display", "block");
-
-        $(".menu-item").css("display", "block");
-
-        $this.html('<i class="fa-solid fa-xmark"></i>');
-
-    } else {
-
-        $this.removeClass('active');
-
-        $this.attr('aria-expanded', 'false');
-
-        $this.attr('aria-label', 'Ouvrir le menu de navigation.');
-
-        $this.html('<i class="fa-solid fa-bars"></i>');
-
-        $(".menu-dropdown .menu-dropdown-btn").css("display", "none");
-
-        $(".menu-item").css("display", "none");
-
-    }
-
-});
-
 $(document).ready(function () {
 
     $("#notes-btn-id").on("click", openNotesBox);
 
-    $(document).on('click', '#close-notes-btn, .overlay', () => { $('#modalbox-notes, .overlay').hide(); });
+    $(document).on('click', '#close-notes-btn, .overlay', () => {
 
-    $("#copyright").html(new Date().getFullYear());
+        $('#modalbox-notes').hide();
+
+        $('.overlay').hide();
+
+    });
+
+    $("#copyright").text(new Date().getFullYear());
+
+    // Merci: https://stackoverflow.com/questions/48002147/how-to-activate-and-disable-jquery-click-events-on-an-html-element
+    $('#display-mobile-menu').on('click', function () {
+
+        let $this = $(this);
+
+        if (!$this.is(".active")) {
+
+            $this.addClass('active');
+
+            $this.attr('aria-expanded', 'true');
+
+            $this.attr('aria-label', 'Fermer le menu de navigation.');
+
+            $(".menu-dropdown .menu-dropdown-btn").css("display", "block");
+
+            $(".menu-item").css("display", "block");
+
+            $this.html('<i class="fa-solid fa-xmark"></i>');
+
+        } else {
+
+            $this.removeClass('active');
+
+            $this.attr('aria-expanded', 'false');
+
+            $this.attr('aria-label', 'Ouvrir le menu de navigation.');
+
+            $this.html('<i class="fa-solid fa-bars"></i>');
+
+            $(".menu-dropdown .menu-dropdown-btn").css("display", "none");
+
+            $(".menu-item").css("display", "none");
+
+        }
+
+    });
 
 });
+
