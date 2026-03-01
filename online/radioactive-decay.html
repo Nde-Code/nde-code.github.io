@@ -513,7 +513,7 @@
 
 		}
 
-		function emulateDecayModes(elem, atomicNumber, radioisotope, decayModes) {
+		function emulateDecayModes(atomicNumber, radioisotope, decayModes) {
 
 			let decayConfig = {
 
@@ -589,7 +589,7 @@
 
 			for (let i = 0; i < modes.length; i++) {
 
-				let result = emulateDecayModes(currentElement, currentZ, currentA, modes[i]);
+				let result = emulateDecayModes(currentZ, currentA, modes[i]);
 
 				nucleusSteps.push(result);
 
@@ -793,7 +793,7 @@
 				
 			}
 
-		};
+		}
 
 		function updateRadioisotopes() {
 
