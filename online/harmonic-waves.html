@@ -404,7 +404,7 @@
 
 				<div class="modalbox-bottom">
 
-					<a id="simulate-waves-btn" class="modalbox-btn">
+					<a id="simulate-waves-btn-id" class="modalbox-btn">
 						
 						<i class="fa-solid fa-wave-square"></i>
 						
@@ -770,7 +770,7 @@
 
 				$(".waves-btn").html('<i class="fa-solid fa-wave-square"></i> Resimuler des ondes harmoniques');
 
-				$("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+				$("#simulate-waves-btn-id").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
 			}
 
@@ -790,9 +790,9 @@
 
 			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
 
-			if ($(window).width() >= 1024) $("#simulate-waves-btn").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
+			if ($(window).width() >= 1024) $("#simulate-waves-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
-			else $("#simulate-waves-btn").html('<i class="fa-solid fa-gear rotate-animation"></i>');
+			else $("#simulate-waves-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i>');
 
 		}
 
@@ -802,13 +802,13 @@
 
 			$("#modalbox-errors-warnings-id").html(msg);
 
-			if ($(window).width() >= 1024) $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i> Simuler');
+			if ($(window).width() >= 1024) $("#simulate-waves-btn-id").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 
-			else $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i>');
+			else $("#simulate-waves-btn-id").html('<i class="fa-solid fa-wave-square"></i>');
 
 		}
 
-		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-waves-btn").html('<i class="fa-solid fa-wave-square"></i>'); }
+		function setCorrectButtonOnMobileInModalbox() { if ($(window).width() <= 1024 && extendedData.is_in_loading === false) $("#simulate-waves-btn-id").html('<i class="fa-solid fa-wave-square"></i>'); }
 
 
 		$(document).ready(function() {
@@ -859,7 +859,7 @@
 			
 			});
 
-			$("#simulate-waves-btn").on("click", function() {
+			$("#simulate-waves-btn-id").on("click", function() {
 
 				if (extendedData.is_in_loading) return;
 
