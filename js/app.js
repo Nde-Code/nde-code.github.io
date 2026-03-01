@@ -2,7 +2,7 @@ var globalData = {
 
     modalbox_size: `${Math.round($(window).width() - 8)}px`,
 
-    starting_width: $(document).width(),
+    starting_width: $(window).width(),
 
     tol_resize: 10
 
@@ -12,7 +12,7 @@ document.oncontextmenu = () => { return false; }
 
 $(window).on('resize', () => {
 
-    let newWidth = $(document).width();
+    let newWidth = $(window).width();
 
     if (Math.abs(globalData.starting_width - newWidth) > globalData.tol_resize) document.location.reload();
 

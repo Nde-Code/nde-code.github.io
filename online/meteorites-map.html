@@ -399,7 +399,7 @@
 
             area_index: 0,
 
-            starting_width: $(document).width(),
+            starting_width: $(window).width(),
 
 			tol_resize: 10
         
@@ -970,7 +970,7 @@
 
         $(window).on('resize', () => {
 
-            let newWidth = $(document).width();
+            let newWidth = $(window).width();
 
             if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) document.location.reload();
 
