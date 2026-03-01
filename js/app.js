@@ -186,7 +186,9 @@ $(document).ready(function () {
             
             $this.html('<i class="fa-solid fa-xmark"></i>');
 
-        } else {
+        }
+        
+        else {
 
             $this.removeClass('active');
 

@@ -726,7 +726,9 @@
 
                     return data; 
                     
-                } else {
+                }
+                
+                else {
 
                     $icon.removeClass().addClass('fa-solid fa-times animation');
 
@@ -938,9 +940,21 @@
 
         });
 
-        window.onload = () => {
+        $(window).on('resize', () => {
+
+            let newWidth = $(window).width();
+
+            if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) document.location.reload();
+
+        });
+
+        $(document).ready(function () {
+
+            setRealVH();
             
-            setRealVH(); 
+            $('#close-stats').on('click', () => $('#modalbox-stats, .overlay').hide());
+        
+            $('#close-notes').on('click', () => $('#modalbox-notes, .overlay').hide()); 
 
             const windowWidth = $(window).width();
 
@@ -954,7 +968,9 @@
 
                 });
 
-            } else {
+            }
+            
+            else {
 
                 $('.modalbox-class').css({
 
@@ -965,22 +981,6 @@
                 });
 
             }
-
-        };
-
-        $(window).on('resize', () => {
-
-            let newWidth = $(window).width();
-
-            if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) document.location.reload();
-
-        });
-
-        $(document).ready(function () {
-            
-            $('#close-stats').on('click', () => $('#modalbox-stats, .overlay').hide());
-        
-            $('#close-notes').on('click', () => $('#modalbox-notes, .overlay').hide());
         
         });
 
