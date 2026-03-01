@@ -38,43 +38,6 @@
 		background: #4690F2;
 	}
 
-	.python-btn {
-		font-size: 20px;
-		border-radius: 50px;
-		color: white;
-		background: #8A2BE2; 
-		transition: all 0.2s ease-out 0s;
-		font-weight: bold;
-		border: 4px solid #7A1FD1;
-		padding: 15px 30px;
-		cursor: pointer;
-	}
-
-	.python-btn:hover {
-		background: #9F8FEF; 
-	}
-
-	/* Ace.js CSS: */
-	#editor { 
-		overflow: hidden;
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		height: 500px;
-		border-bottom-right-radius: calc(40px - 4px);
-		border-bottom-left-radius: calc(40px - 4px);
-    }
-
-	#editor .ace_scrollbar-v {
-		display: none;
-	}
-
-	#editor .ace_scrollbar-h {
-		display: none;
-	}
-	/* Fin */
-
 	</style>
 
 	<link rel="stylesheet" href="../assets/css/fontawesome.css">
@@ -401,28 +364,6 @@
 			
 		</div>
 
-		<div class="modalbox-class" id="modalbox-editor" role="dialog">
-
-			<header class="modalbox-header-class">
-
-				Éditeur
-
-				<a class="modalbox-header-close" aria-label="Fermer la boîte de dialogue.">
-
-					<i class="fa fa-times" aria-hidden="true"></i>
-
-				</a>
-
-			</header>
-
-			<div class="modalbox-main-container">
-
-				<div id="editor"></div>
-
-			</div>
-			
-		</div>
-
 	</div>
 
 	<script data-goatcounter="https://nde-stats.goatcounter.com/count" async src="../js/goatcounter.js"></script>
@@ -435,19 +376,11 @@
 
     <script src="../js/plotly.js" defer></script>
 
-	<script src="../js/ace/ace.js" defer></script>
-
-	<script src="../js/ace/github_dark.js" defer></script>
-
-	<script src="../js/ace/mode-python.js" defer></script>
-
 	<script type="text/javascript">
 
 		var extendedData = {
 
 			is_in_loading: false,
-
-			editor: null,
 
 			X_LIMIT: [-50, 50],
 
@@ -679,94 +612,6 @@
 
 		}
 
-		function getCompiledPythonCode() {
-
-			let pythonCode = `
-			# ----------------------------------------------------------------
-			# Voici un peu de documentation sur les raccourcis clavier:
-			# https://github.com/ajaxorg/ace/wiki/default-keyboard-shortcuts
-			# ----------------------------------------------------------------
-			# Pour exécuter ce code, assurez-vous d'avoir les bibliothèques:
-			# - Matplotlib
-			# - Numpy
-			# - SciPy
-			import numpy as np
-			import matplotlib.pyplot as plt
-			from scipy.interpolate import CubicSpline, lagrange
-			from numpy.polynomial.polynomial import Polynomial
-
-			# Les conditions:
-			plotLagrange = ${interpolationProject.plot_lagrange}
-			plotSpline = ${interpolationProject.plot_spline}
-			plotRegression = ${interpolationProject.plot_regression}
-
-			# Les points saisis:
-			x = np.array([${interpolationProject.x}])
-			y = np.array([${interpolationProject.y}])
-
-			# Intervalle des valeurs de x pour un tracé plus précis:
-			x_fine = np.linspace(min(x), max(x), 1000)
-
-			# Calcul des interpolations et régression:
-			curves = {}
-
-			if plotSpline:
-
-				curves['Spline Cubique'] = CubicSpline(x, y, bc_type='natural')(x_fine)
-
-			if plotLagrange:
-
-				curves['Polynôme de Lagrange'] = lagrange(x, y)(x_fine)
-
-			if plotRegression:
-
-				poly_reg = np.poly1d(np.polyfit(x, y, ${interpolationProject.m}))
-
-				curves['Régression Polynomiale'] = poly_reg(x_fine)
-
-			# Fonction pour afficher le polynôme de régression
-			# sous une forme lisible.
-			# Retirer les guillemets en haut et en bas pour l'utiliser.
-			"""
-			def print_polynomial(coeffs):
-				terms = []
-				degree = len(coeffs) - 1
-				for i, coeff in enumerate(coeffs):
-					power = degree - i
-					if coeff != 0:
-						term = f"{coeff:.5f}"
-						if power > 0:
-							term += f"x^{power}" if power > 1 else "x"
-						terms.append(term)
-				print(" + ".join(terms))
-
-			if plot_regression:
-				print("Polynôme de régression: ")
-				print_polynomial(poly_reg.coefficients)
-			"""
-
-			# Tracé des résultats:
-			plt.figure(figsize=(10, 6))
-			plt.scatter(x, y, color='red', label='Points de données')
-			for label, y_vals in curves.items():
-				plt.plot(x_fine, y_vals, label=label)
-
-			plt.xlabel('X')
-			plt.ylabel('Y')
-			plt.title('Graphique des interpolations et régression')
-			plt.legend()
-			plt.grid()
-			plt.show()
-			`;
-
-			let lines = pythonCode.split("\n");
-
-			let minIndent = Math.min(...lines.filter(line => line.trim().length > 0).map(line => line.match(/^(\s*)/)[0].length));
-
-			return "# Bienvenue sur l'éditeur de code Python !" + lines.map(line => line.slice(minIndent)).join("\n");
-
-		}
-
 		function renderPlot(xScatter, yScatter, lagrangePlotPoints, splinePlotPoints, leastSquaresPlotPoints, minX, maxX) {
 
 			let xMargin = (maxX - minX) * ($(window).width() >= 768 ? 0.016 : 0.0625);
@@ -963,8 +808,6 @@
 
 			data.push(markers);
 
-			getPythonCode();
-
 			constructHTML();
 
 			Plotly.react('plot-box', data, layout, { staticPlot: true });
@@ -1079,32 +922,6 @@
 
 		}
 
-		function openEditor() {
-
-			extendedData.editor.setValue(getCompiledPythonCode());
-
-			extendedData.editor.clearSelection();
-
-			$('#modalbox-editor').css('display', 'block');
-
-			$('.overlay').css('display', 'block');
-
-			requestAnimationFrame(() => { extendedData.editor.resize(true) });
-
-		}
-
-		function getPythonCode() {
-
-			let polynomialBtn = $(".website-bottom .python-btn").length > 0;
-
-			if (polynomialBtn) $(".website-bottom .python-btn").remove();
-
-			if ($(window).width() >= 1024) $(".website-bottom").append(`<a class="python-btn"><i class="fa-brands fa-python"></i> Code compilé en python</a>`);
-			
-			else $(".website-bottom").append(`<a class="python-btn"><i class="fa-brands fa-python"></i></a>`);
-	
-		}
-
 		function constructHTML() {
 
 			$("#graph-container").html('<div id="plot-box"></div>');
@@ -1155,22 +972,6 @@
 
 		$(document).ready(function() {
 
-			extendedData.editor = ace.edit("editor");
-
-			extendedData.editor.setTheme("ace/theme/github_dark");
-
-			extendedData.editor.session.setMode("ace/mode/python");
-
-        	extendedData.editor.getSession().setOption("useWorker", false);
-
-			extendedData.editor.setOptions({
-
-				fontFamily: "monospace",
-
-				fontSize: "16px"
-
-			});
-
 			if ($(window).width() <= 1024) $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i>');
 
 			else $(".interpolation-btn").html('<i class="fa-solid fa-chart-line"></i> Tracer des courbes d\'interpolation');
@@ -1179,7 +980,7 @@
 
 			if ($(window).width() <= 768) {
 
-				$('.modalbox-class').css({
+				$('#modalbox-interpolation').css({
 
 					'width': globalData.modalbox_size,  
 					
@@ -1191,7 +992,7 @@
 			
 			else {
 
-				$('.modalbox-class').css({
+				$('#modalbox-interpolation').css({
 
 					'width': globalData.modalbox_size,    
 					
@@ -1202,8 +1003,6 @@
 			}
 
 			$(".interpolation-btn").on('click', function() { $('#modalbox-interpolation, .overlay').show(); });
-
-			$(document).on('click', '.python-btn', function() { openEditor(); });
 
     		$('.modalbox-header-close').on('click', function() {
 
