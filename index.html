@@ -315,17 +315,27 @@
 			$('#close-about-btn').on('click', () => { $('#modalbox-about, .overlay').hide(); });
 
 			if ($(window).width() <= 768) {
-	
+
 				$("#modalbox-about").css({
 
-					"marginLeft": "unset",
-
-					"left": "unset",
-
-					"width": globalData.modalbox_size
+					"width": globalData.modalbox_size, 
+					
+					"max-width": "95%"                  
 					
 				});
-	
+
+			}
+			
+			else {
+
+				$("#modalbox-about").css({
+
+					"width": globalData.modalbox_size,
+
+					"max-width": "675px"               
+					
+				});
+
 			}
 
 		});

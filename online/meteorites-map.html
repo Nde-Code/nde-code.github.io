@@ -942,19 +942,29 @@
             
             setRealVH(); 
 
-            if ($(window).width() <= 768) {
+            const windowWidth = $(window).width();
 
-				$('.modalbox-class').css({
+            if (windowWidth <= 768) {
 
-					'marginLeft': 'unset',
+                $('.modalbox-class').css({
 
-					'left': 'unset',
+                    'width': `${windowWidth - 8}px`,
 
-					'width': `${Math.round($(window).width() - 8)}px`
+                    'max-width': '95%'
 
-				});
+                });
 
-			}
+            } else {
+
+                $('.modalbox-class').css({
+
+                    'width': `${windowWidth - 8}px`,
+
+                    'max-width': '675px'
+
+                });
+
+            }
 
         };
 

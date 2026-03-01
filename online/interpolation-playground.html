@@ -1181,12 +1181,22 @@
 
 				$('.modalbox-class').css({
 
-					'marginLeft': 'unset',
+					'width': globalData.modalbox_size,  
+					
+					'max-width': '95%'                     
+					
+				});
 
-					'left': 'unset',
+			}
+			
+			else {
 
-					'width': globalData.modalbox_size
+				$('.modalbox-class').css({
 
+					'width': globalData.modalbox_size,    
+					
+					'max-width': '675px'                 
+					
 				});
 
 			}

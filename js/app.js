@@ -135,12 +135,22 @@ function applyMobileStyles($element) {
 
         $element.css({
 
-            'marginLeft': 'unset',
+            'width': globalData.modalbox_size, 
+            
+            'max-width': '95%'                  
+            
+        });
 
-            'left': 'unset',
+    }
+    
+    else {
 
-            'width': globalData.modalbox_size
+        $element.css({
 
+            'width': globalData.modalbox_size, 
+            
+            'max-width': '675px'                
+            
         });
 
     }

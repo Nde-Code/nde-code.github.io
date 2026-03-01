@@ -822,12 +822,22 @@
 			if ($(window).width() <= 768) {
 
 				$("#modalbox-waves").css({
+					
+					"width": globalData.modalbox_size, 
+					
+					"max-width": "95%"                  
+					
+				});
 
-					"marginLeft": "unset",
+			}
+			
+			else {
 
-					"left": "unset",
+				$("#modalbox-waves").css({
 
-					"width": globalData.modalbox_size
+					"width": globalData.modalbox_size,
+					
+					"max-width": "675px"               
 					
 				});
 

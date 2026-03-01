@@ -220,7 +220,7 @@ body.body-class {
 }
 
 .white-line {
-    height: 3px;
+    height: 2px;
     background-color: #E0E0E0;
     margin-left: 28.5%;
     margin-right: 28.5%;
@@ -388,63 +388,58 @@ p.copyright-text a.copyright-link {
 }
 
 .modalbox-class {
-    top: 35%;
-    left: 50%;
-    margin-left: -337.5px;
-    margin-top: -200px;
-    width: 675px;
-    background: linear-gradient(135deg, #555555 0%, #444444 40%, #333333 75%, #222222 100%);
-    z-index: 2;
-    border: 4px solid #404040;
-    color: white;
     position: fixed;
+    top: 5dvh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 675px;
+    max-height: 90dvh;
+    background: linear-gradient(135deg, #555555 0%, #444444 40%, #333333 75%, #222222 100%);
+    border: 4px solid #404040;
+    border-radius: 30px;
+    color: white;
     font-size: 20px;
-    -webkit-box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 0.5);
     box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 0.5);
-    border-radius: 40px;
-    animation-name: modalanimation;
-    animation-duration: 1s;
     display: none;
+    overflow: hidden;
+    z-index: 1000;
+    animation: modalanimation 0.25s ease-out;
 }
 
 @keyframes modalanimation {
     from {
-        top: 30%;
         opacity: 0;
+        transform: translateX(-50%) translateY(-15px);
     }
-
     to {
-        top: 35%;
         opacity: 1;
+        transform: translateX(-50%) translateY(0);
     }
+}
+
+header.modalbox-header-class {
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #4690F2 0%, #005DD9 50%, #0047A6 100%);
+    border-bottom: 4px solid #404040;
+    font-weight: bold;
+    font-size: 24px;
 }
 
 .modalbox-header-close {
     float: right;
-    margin-right: 15px;
-    color: #ffffff;
-    font-size: 28px;
+    margin-right: 10px;
+    font-size: 26px;
     cursor: pointer;
 }
-
-header.modalbox-header-class {
-    padding: 20px;
-    background: linear-gradient(135deg, #4690F2 0%, #005DD9 50%, #0047A6 100%);
-    border-bottom: 4px solid #404040;
-    color: white;
-    font-weight: bold;
-    font-size: 28px;
-    border-top-right-radius: 36px;
-    border-top-left-radius: 36px;
-}
-
 .modalbox-main-container {
-    overflow-y: scroll;
-    height: 500px;
-    /* Ajouter des bords arrondis ici aussi (36px pour compenser les 4px de la bordure). */
-    border-bottom-right-radius: 36px;
-    border-bottom-left-radius: 36px;
-    /* Masquer la "scrollbar" sur Firefox. */
+    overflow-y: auto;
+    max-height: calc(90dvh - 100px);
+    padding-bottom: 20px;
+
+    border-bottom-left-radius: 26px;
+    border-bottom-right-radius: 26px;
+
     scrollbar-width: none;
 }
 
@@ -453,45 +448,18 @@ header.modalbox-header-class {
 }
 
 .modalbox-text-container {
-    margin-right: 5%;
-    margin-left: 5%;
-    margin-bottom: 20px;
-    margin-top: 20px;
+    margin: 20px 5%;
 }
 
 .modalbox-line {
-    height: 3px;
-    margin-left: 20%;
-    margin-right: 20%;
+    height: 2px;
+    margin: 20px 20% 40px 20%;
     background-color: #E0E0E0;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    -webkit-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
     box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
 }
 
 select,
-.modalbox-input {
-    box-sizing: border-box;
-    width: 100%;
-    height: 50px;
-    background: #323232;
-    border: 4px solid #757375;
-    outline: none;
-    color: white;
-    font-size: 22px;
-    -webkit-box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 1);
-    box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 1);
-    border-radius: 40px;
-    text-indent: 15px;
-    appearance: none;
-}
-
-select,
-.modalbox-input::placeholder {
-    text-indent: 15px;
-}
-
+.modalbox-input,
 .modalbox-range {
     box-sizing: border-box;
     width: 100%;
@@ -500,16 +468,16 @@ select,
     border: 4px solid #757375;
     outline: none;
     color: white;
-    font-size: 22px;
-    -webkit-box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 1);
-    box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 1);
+    font-size: 20px;
     border-radius: 40px;
     text-indent: 15px;
     appearance: none;
+    box-shadow: 2px 5px 20px 3px rgba(0, 0, 0, 1);
 }
 
-/* Style pour Firefox */
-/* Taille de 42px pour corriger (en moyenne) l'erreur avec la bordure grise. */
+.modalbox-input::placeholder {
+    text-indent: 15px;
+}
 .modalbox-range::-moz-range-thumb {
     background: #005DD9;
     border: 4px solid #0047A6;
@@ -523,8 +491,6 @@ select,
     background: #4690F2;
 }
 
-/* Style navigateur traditionelle */
-/* Taille de 42px pour corriger (en moyenne) l'erreur avec la bordure grise. */
 .modalbox-range::-webkit-slider-thumb {
     -webkit-appearance: none;
     background: #005DD9;
@@ -540,16 +506,16 @@ select,
 }
 
 .modalbox-description {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .modalbox-description.bold-large {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
 }
 
 .modalbox-description i {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .modalbox-description i.point {
@@ -559,12 +525,10 @@ select,
 
 p.modalbox-errors-warnings-class {
     text-align: center;
-    font-size: 24px;
+    font-size: 22px;
     color: #DC3545;
     font-weight: bold;
-    margin-bottom: 50px;
-    margin-right: 50px;
-    margin-left: 50px;
+    margin: 0 30px 40px 30px;
     text-shadow: 3px 3px 7px #000000;
     cursor: pointer;
 }
@@ -574,20 +538,20 @@ p.modalbox-errors-warnings-class:hover {
 }
 
 .modalbox-bottom {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
 .modalbox-btn {
-    font-size: 20px;
+    font-size: 18px;
     border-radius: 50px;
     color: white;
     background: #005DD9;
-    transition: all 0.2s ease-out 0s;
-    font-weight: bold;
     border: 4px solid #0047A6;
-    padding: 15px 30px;
+    padding: 12px 28px;
+    font-weight: bold;
     cursor: pointer;
+    transition: all 0.2s ease-out;
 }
 
 .modalbox-btn:hover {
@@ -597,10 +561,37 @@ p.modalbox-errors-warnings-class:hover {
 .overlay {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-color: rgba(0, 0, 0, 0.7);
-    z-index: 1;
+    z-index: 999;
+}
+
+@media (max-width: 600px) {
+
+    .modalbox-class {
+        width: 95%;
+        top: 3dvh;
+        border-radius: 20px;
+    }
+
+    header.modalbox-header-class {
+        font-size: 20px;
+        padding: 15px;
+    }
+
+    .modalbox-description {
+        font-size: 18px;
+    }
+
+    select,
+    .modalbox-input,
+    .modalbox-range {
+        height: 45px;
+        font-size: 18px;
+    }
+
+    .modalbox-btn {
+        font-size: 16px;
+        padding: 10px 22px;
+    }
 }

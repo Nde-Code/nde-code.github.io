@@ -852,14 +852,24 @@
 
 				$("#modalbox-foucault").css({
 
-					"marginLeft": "unset",
-
-					"left": "unset",
-
-					"width": globalData.modalbox_size
+					"width": globalData.modalbox_size, 
+					
+					"max-width": "95%"                  
 					
 				});
 
+			}
+			
+			else {
+
+				$("#modalbox-foucault").css({
+
+					"width": globalData.modalbox_size, 
+					
+					"max-width": "675px"               
+					
+				});
+				
 			}
 
 			$("#foucault-btn-id").on("click", function () { $("#modalbox-foucault, .overlay").show(); });

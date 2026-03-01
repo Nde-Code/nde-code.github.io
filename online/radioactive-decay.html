@@ -773,14 +773,24 @@
 
 				$('.modalbox-class').css({
 
-					marginLeft: 'unset',
-
-					left: 'unset',
-
-					width: globalData.modalbox_size
-
+					'width': globalData.modalbox_size, 
+					
+					'max-width': '95%'                     
+					
 				});
 
+			}
+
+			else {
+
+				$('.modalbox-class').css({
+
+					'width': globalData.modalbox_size,    
+					
+					'max-width': '675px'                 
+					
+				});
+				
 			}
 
 		};
