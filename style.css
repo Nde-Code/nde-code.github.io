@@ -30,7 +30,7 @@ body.body-class {
     overflow: hidden;
 }
 
-#main-html {
+.main-html {
     height: 100vh;
     height: 100dvh; /* Utiliser (100)vh comme solution de repli si (100)dvh n'est pas pris en charge. */
     overflow-y: auto !important;
@@ -273,18 +273,6 @@ h1.website-main-panel-title {
     color: white;
     font-size: 28px;
     font-weight: bold;
-}
-
-.green {
-    color: #28A745;
-}
-
-.red {
-    color: #DC3545;
-}
-
-.orange {
-    color: #FD7E14;
 }
 
 .website-main-panel-description {
