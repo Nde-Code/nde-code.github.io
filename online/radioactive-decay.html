@@ -397,7 +397,7 @@
 
 			full_chain_html: '',
 
-			is_data_in_loading: false,
+			is_data_loaded: false,
 
 			is_run: false
 
@@ -755,7 +755,7 @@
 
 						updateRadioisotopes();
 
-						extendedData.is_data_in_loading = true;
+						extendedData.is_data_loaded = true;
 
 						setCorrectButtonOnMobile();
 
@@ -979,13 +979,13 @@
 
 		}
 
-		function setCorrectButtonOnMobile() { if ($(window).width() <= 1024 && extendedData.is_data_in_loading === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
+		function setCorrectButtonOnMobile() { if ($(window).width() <= 1024 && extendedData.is_data_loaded === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
 
 		$(document).ready(function() {
 
 			$('#radioactive-decay-btn-id').on('click', function() {
 
-				if (extendedData.is_data_in_loading) $('#modalbox-decay, .overlay').show();
+				if (extendedData.is_data_loaded) $('#modalbox-decay, .overlay').show();
 
 			});
 
