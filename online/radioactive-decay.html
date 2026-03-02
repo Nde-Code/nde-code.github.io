@@ -780,18 +780,18 @@
 						setCorrectButtonOnMobile();
 
 					}
-					
-					if ($(window).width() >= 1024) $decayBtn.html('<i class="fa-solid fa-circle-xmark"></i> Une erreur s\'est produite !');
-					
-					else $decayBtn.html('<i class="fa-solid fa-circle-xmark"></i>');
 
-					$decayBtn
-						.removeClass('radioactive-decay-btn')
-						.addClass('error-btn')
-						.prop('disabled', true)
-						.attr('aria-disabled', 'true')
-						.attr('title', `Impossible d'établir une équation.`);
-					});
+					else {
+					
+						if ($(window).width() >= 1024) $decayBtn.html('<i class="fa-solid fa-circle-xmark"></i> Une erreur s\'est produite !');
+						
+						else $decayBtn.html('<i class="fa-solid fa-circle-xmark"></i>');
+
+						$decayBtn.removeClass('radioactive-decay-btn').addClass('error-btn').prop('disabled', true).attr('aria-disabled', 'true').attr('title', `Impossible d'établir une équation.`);
+
+					}
+					
+				});
 
 			}, 4000);
 
