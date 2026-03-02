@@ -31,8 +31,7 @@ body.body-class {
 }
 
 .main-html {
-    height: 100vh;
-    height: 100dvh; /* Utiliser (100)vh comme solution de repli si (100)dvh n'est pas pris en charge. */
+    height: 100dvh; 
     overflow-y: auto !important;
 }
 
