@@ -445,8 +445,12 @@
 
 			let element = extendedData.db_data.elements.find(el => el.symbol === symbol);
 			
-			return (element && Array.isArray(element.atomic_masses) && index < element.atomic_masses.length) ? element.atomic_masses[index] : false;
-		
+			if (typeof index !== 'number' || !element || !Array.isArray(element.atomic_masses)) return null; 
+
+			let mass = element.atomic_masses[index];
+
+			return (mass !== undefined) ? mass : null;
+
 		}
 
 		function hasChaine(arr) { return (Array.isArray(arr) && arr.length > 1); }
@@ -651,7 +655,7 @@
 
 			else if (decayMode === "t") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> (3, 1)H <span class="atomic-plus"> + </span> Q`;
 
-			else return "Qui n'a pu être établie...";
+			else return "L'équation n'a pas pu être établie...";
 
 		}
 
@@ -669,44 +673,46 @@
 
 			`;
 
-			let chainHTML = "";
+    		let chainHTML = "";
 
 			chainHTML += decayModes.map((mode, i) => {
 
 				let p = steps[i];
 
 				let d = steps[i + 1];
-				
+
 				return createParagraph(`
-											
+
 					Réaction ${i + 1}, suivant le mode ${decayModeString(mode.trim())}:
 
 					<br>
-											
+
 					<span class="color-green alone-bold">${generateHTMLEquationResponse(p, d, mode.trim())}</span>
-									
+				
 				`);
 
 			}).join('');
 
-			chainHTML += steps.map(step =>
+			chainHTML += steps.map(step => {
 
-				createParagraph(`
+				let stepMass = getAtomicMassWithRadioisotopeNumber(step.element, step.A);
+
+				return createParagraph(`
 
 					<span class="color-green alone-bold">(${step.A}, ${step.Z})${step.element}</span> a pour masse atomique: 
 					
-					<span class="color-orange alone-bold"> ≈ ${getAtomicMassWithRadioisotopeNumber(step.element, step.A)} uma</span>.
+					<span class="color-orange alone-bold"> ${(stepMass && !isNaN(stepMass)) ? `≈ ${stepMass} uma` : 'Inconnue'}</span>.
 				
-				`)
+				`);
 
-			).join('');
+			}).join('');
 
 			chainHTML += steps.filter((step, index, self) => index === self.findIndex(s => s.element === step.element)).map(step =>
-
+				
 				createParagraph(`
 
 					<span class="color-green alone-bold">${step.element}</span> a pour nom complet: 
-
+					
 					<span class="color-red alone-bold">${getElementNameWithSymbol(step.element)}</span>.
 				
 				`)
@@ -945,9 +951,9 @@
 			
 			resultMass = getAtomicMassWithSymbol(lastIndex, lastNucleus.element);
 
-			$("#info-1").html(`<i class="fa-solid fa-square point"></i> Admet comme masse atomique du noyau parent: <span class="color-yellow alone-bold">${!isNaN(parentMass) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
-			
-			$("#info-2").html(`<i class="fa-solid fa-square point"></i> Admet comme masse atomique du noyau résultant: <span class="color-orange alone-bold">${!isNaN(resultMass) ? `≈ ${resultMass} uma` : 'Inconnue'}</span>`);
+			$("#info-1").html(`<i class="fa-solid fa-square point"></i> Admet comme masse atomique du noyau parent: <span class="color-yellow alone-bold">${(parentMass && !isNaN(parentMass)) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
+
+			$("#info-2").html(`<i class="fa-solid fa-square point"></i> Admet comme masse atomique du noyau résultant: <span class="color-orange alone-bold">${(resultMass && !isNaN(resultMass)) ? `≈ ${resultMass} uma` : 'Inconnue'}</span>`);
 
 			$("#info-3").html(`<i class="fa-solid fa-square point"></i> Admet comme nom complet du noyau résultant: <span class="color-red alone-bold">${getElementNameWithSymbol(lastNucleus.element)}</span>`);
 			
