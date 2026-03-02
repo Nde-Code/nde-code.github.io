@@ -571,6 +571,8 @@
 
 			let elementSymbol = getElementSymbolWithAtomicNumber(currentZ);
 
+			if (!elementSymbol) return null;
+
 			return { element: elementSymbol, full_name: getElementNameWithSymbol(elementSymbol), Z: currentZ, A: currentA };
 
 		}
@@ -591,13 +593,19 @@
 
 				let result = emulateDecayModes(currentZ, currentA, modes[i]);
 
-				nucleusSteps.push(result);
+				if (result) {
 
-				currentElement = result.element;
+					nucleusSteps.push(result);
 
-				currentZ = result.Z;
+					currentElement = result.element;
 
-				currentA = result.A;
+					currentZ = result.Z;
+
+					currentA = result.A;
+
+				}
+				
+				else break;
 
 			}
 
@@ -865,9 +873,11 @@
 
 		function radioactiveDecay() {
 
+			let resultMass;
+
 			let elem = $('#element-id').val();
 
-			let radioisotopeIndex = $('#radioisotope-id').val();
+			let radioisotopeIndex = Number($('#radioisotope-id').val());
 
 			let decayModes = $('#decay-mode-id').val();
 
@@ -907,6 +917,8 @@
 			
 			let lastIndex = getRadioisotopeIndexWithSymbol(lastNucleus.element, lastNucleus.A);
 			
+			if (lastIndex === false) resultMass = null;
+
 			let isDecayChain = hasChaine(modes);
 
 			if (isDecayChain) {
@@ -931,7 +943,7 @@
 
 			let parentMass = getAtomicMassWithSymbol(Number(radioisotopeIndex), elem);
 			
-			let resultMass = getAtomicMassWithSymbol(lastIndex, lastNucleus.element);
+			resultMass = getAtomicMassWithSymbol(lastIndex, lastNucleus.element);
 
 			$("#info-1").html(`<i class="fa-solid fa-square point"></i> Admet comme masse atomique du noyau parent: <span class="color-yellow alone-bold">${!isNaN(parentMass) ? `≈ ${parentMass} uma` : 'Inconnue'}</span>`);
 			
