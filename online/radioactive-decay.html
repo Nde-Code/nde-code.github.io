@@ -479,6 +479,8 @@
 
 				"5p": "5p",
 
+				"3p": "3p",
+
 				"2p": "2p",
 
 				"p": "p",
@@ -538,6 +540,8 @@
 				"p": { Z: -1, A: -1 },
 
 				"2p": { Z: -2, A: -2 },
+
+				"3p": { Z: -3, A: -3 },
 
 				"5p": { Z: -5, A: -5 },
 
@@ -640,6 +644,8 @@
 			else if (decayMode === "p") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> p <span class="atomic-plus"> + </span> Q`;
 
 			else if (decayMode === "2p") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> 2p <span class="atomic-plus"> + </span> Q`;
+
+			else if (decayMode === "3p") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> 3p <span class="atomic-plus"> + </span> Q`;
 
 			else if (decayMode === "5p") return `(${pNucleus.A}, ${pNucleus.Z})${pNucleus.element} <i class="fa-solid fa-arrow-right atomic-arrow"></i> (${dNucleus.A}, ${dNucleus.Z})${dNucleus.element} <span class="atomic-plus"> + </span> 5p <span class="atomic-plus"> + </span> Q`;
 
