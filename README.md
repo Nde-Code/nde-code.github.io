@@ -46,9 +46,13 @@ Ce travail a demandé un investissement conséquent.
 
 Deux versions sont disponibles :
 
-- une **version lisible** et facilement modifiable.  
+- une **version lisible** et facilement modifiable [ici](https://gist.github.com/Nde-Code/0dc819d80ee1d593d7d27d138fc68292). 
+
+    - Toutes les demandes de modifications, commentaires, avis, etc..., doivent être faites sur ce Gist. 
 
 - une **version optimisée et minimisée** pour un usage en ligne performant.
+
+    - Version très simplement minimisée via un outil, très peu pratique pour la maintenance.
 
 > 🔓 Son utilisation est libre, mais une **mention de crédit** serait grandement appréciée.
 
