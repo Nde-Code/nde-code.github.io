@@ -390,7 +390,6 @@
 
 	<script type="text/javascript">
 
-		// Coding: UTF-8
 		var extendedData = {
 
 			db_data: null,
@@ -771,9 +770,9 @@
 
 				"DC": "Le mode de désintégration choisi n'est actuellement pas supporté...",
 
-				"stable": "L'isotope sélectionné est stable et ne se désintègre pas !",
+				"stable": "L'isotope sélectionné est stable et ne se désintègre donc pas !",
 
-				"Aucun": "Aucun mode de désintégration connu pour cet isotope !"
+				"Aucun": "Aucun mode de désintégration connu pour cet isotope."
 
 			};
 
@@ -1096,8 +1095,6 @@
 			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 		}
-
-		function setCorrectButtonOnMobile() { if ($(window).width() <= 1024 && extendedData.is_data_loaded === true) $("#radioactive-decay-btn-id").html('<i class="fa-solid fa-atom"></i>'); }
 
 		$(document).ready(function() {
 
