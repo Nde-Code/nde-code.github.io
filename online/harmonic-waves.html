@@ -728,7 +728,7 @@
 
 			];
 
-			Plotly.newPlot('waves-container', data, layout, { staticPlot: true });
+			Plotly.react('waves-container', data, layout, { staticPlot: true });
 
 			if (extendedData.is_run === false) requestAnimationFrame(update);
 
