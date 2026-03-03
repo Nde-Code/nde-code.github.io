@@ -978,6 +978,7 @@
 				$("#modalbox-errors-warnings-id").html(error);
 
 				return;
+				
 			}
 
 			let mainNucleus = { element: elem, Z: getElementAtomicNumberWithSymbol(elem), A: getRadioisotopeWithElement(elem, radioisotopeIndex) };
@@ -1004,7 +1005,7 @@
 			
 			if (lastIndex == null) {
 
-				$("#modalbox-errors-warnings-id").html("Isotope résultant inconnu.");
+				$("#modalbox-errors-warnings-id").html("L'isotope obtenu n'est pas répertorié dans la base de données.");
 
 				extendedData.full_chain_html = '';
 
@@ -1013,6 +1014,7 @@
 				resultMass = null;
 
 				return;
+
 			}
 
 			let isDecayChain = hasChaine(modes);
