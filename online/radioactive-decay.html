@@ -805,13 +805,11 @@
 
 			$("#simulate-decay-id").html(`<i class="fa-solid fa-atom"></i>${($(window).width() <= 1024) ? '' : ' Établir'}`);
 
-			const modalWidth = ($(window).width() <= 768) ? '95%' : '675px';
-
 			$('.modalbox-class').css({
 
 				'width': globalData.modalbox_size,
 
-				'max-width': modalWidth
+				'max-width': ($(window).width() <= 768) ? '95%' : '675px'
 
 			});
 
