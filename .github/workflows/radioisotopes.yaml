@@ -31,7 +31,7 @@ jobs:
       - name: Validate database
         env:
           GIST_SCRIPT_URL: ${{ secrets.GIST_SECRET_SCRIPT }}
-          GIST_DB_URL: ${{ secrets.GIST_SECRET_DB_URL }}
+          GIST_DB_URL: ${{ secrets.GIST_LINK_TO_DB }}
         run: |
           curl -sL "$GIST_SCRIPT_URL" -o radioisotopes.py && \
           python3 radioisotopes.py \
