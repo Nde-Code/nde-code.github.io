@@ -728,6 +728,8 @@
 
 			];
 
+			constructHTML();
+
 			Plotly.react('waves-container', data, layout, { staticPlot: true });
 
 			if (extendedData.is_run === false) requestAnimationFrame(update);
@@ -746,9 +748,9 @@
 
 					editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo);
 					
-					constructHTML();
+					createPlot();
 					
-					createPlot();	
+					setCorrectButtonOnMobileInModalbox();
 
 				} catch (_err) {	
 
@@ -779,8 +781,6 @@
 			if ($("#remove-footer-notice").length > 0) $("#remove-footer-notice").remove();
 
 			extendedData.is_in_loading = false;
-
-			setCorrectButtonOnMobileInModalbox();
 
 		}
 
