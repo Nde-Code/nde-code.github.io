@@ -232,6 +232,23 @@
         }
 
     }
+
+    /* Adaptation pour les écrans en mode paysage: */
+    @media screen and (max-height: 600px) {
+
+        .dropdown-item {
+            font-size: 10px;     
+            padding: 6px 10px;   
+            gap: 6px;          
+        }
+
+        .dropdown-item i {
+            width: 14px;         
+            font-size: 10px;
+            flex-shrink: 0;
+        }
+
+    }
     </style>
 
     <link rel="stylesheet" href="../assets/css/leaflet.css">
