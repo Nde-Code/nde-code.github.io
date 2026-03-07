@@ -673,7 +673,7 @@
 
         }
 
-        async function getRandomMeteoriteFromDB(endpoint, params, targetId) {
+        async function getMeteoritesFromDB(endpoint, params, targetId) {
 
             if (!endpoint || !params) return null;
 
@@ -821,7 +821,7 @@
                             
                             let count = getRandomInt(extendedData.RANDOM_RANGE[0], extendedData.RANDOM_RANGE[1]);
 
-                            await getRandomMeteoriteFromDB('/random', { count }, 'random-html');
+                            await getMeteoritesFromDB('/random', { count }, 'random-html');
 
                         }
                     
@@ -861,7 +861,7 @@
 
                             };
 
-                            let data = await getRandomMeteoriteFromDB('/search', params, 'random-areas-html');
+                            let data = await getMeteoritesFromDB('/search', params, 'random-areas-html');
 
                             if (data?.success?.meteorites?.length > 0) {
 
