@@ -632,12 +632,10 @@
             let latitude = isNaN(Number(data.latitude)) ? null : Number(data.latitude);
 
             let longitude = isNaN(Number(data.longitude)) ? null : Number(data.longitude);
-
-            let safeId = encodeURIComponent(data.id);
     
             let popUpContent = `
     
-                <b>Identifiant: </b> <span> ${safeId} </span> <br> 
+                <b>Identifiant: </b> <span> ${escapeHTML(data.id)} </span> <br> 
     
                 <b>Nom: </b> <span> ${escapeHTML(data.name)} </span> <br>
     
@@ -651,7 +649,7 @@
     
                 <b>Coordonnées: </b> <span> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) </span> <br>
 
-                <b>Lien permanent: </b> <span> <a href="https://meteorites.nde-code.workers.dev/get?id=${safeId}" target="_blank" rel="noopener noreferrer">[Consulter]</a> </span>
+                <b>Lien permanent: </b> <span> <a href="https://meteorites.nde-code.workers.dev/get?id=${encodeURIComponent(data.id)}" target="_blank" rel="noopener noreferrer">[Consulter]</a> </span>
                     
             `;
 
