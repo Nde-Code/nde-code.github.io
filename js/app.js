@@ -202,5 +202,19 @@ $(document).ready(function () {
         
     });
 
+    $('.menu-dropdown-btn').on('click', function(e) {
+
+        if ($(window).width() <= 1175) {
+
+            e.stopPropagation();
+
+            $(this).parent('.menu-dropdown').toggleClass('is-open');
+
+        }
+
+    });
+
+    $(document).on('click', function() { $('.menu-dropdown').removeClass('is-open'); });
+
 });
 
