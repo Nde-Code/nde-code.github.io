@@ -629,29 +629,49 @@
 
         function processMeteorites(data) {
 
-            let latitude = isNaN(Number(data.latitude)) ? null : Number(data.latitude);
+            let lat = parseFloat(data.latitude);
 
-            let longitude = isNaN(Number(data.longitude)) ? null : Number(data.longitude);
-    
+            let lon = parseFloat(data.longitude);
+
+            let latitude = isNaN(lat) ? null : lat;
+
+            let longitude = isNaN(lon) ? null : lon;
+
+            if (latitude === null || longitude === null) return null;
+
+            let formatValue = (val) => {
+
+                const str = String(val).trim();
+
+                return (str === '' || str === 'N/A' || str === 'Unknown') ? 'Non renseignée' : escapeHTML(str);
+
+            };
+
+            let massVal = Number(data.mass);
+
+            let massDisplay = (!isNaN(massVal) && data.mass !== '' && data.mass !== 'N/A' && data.mass !== 'Unknown') ? (massVal / 1000).toFixed(4) + " kg" : "Non renseignée";
+
+            let fallStatus = data.fall === 'Fell' ? 'Tombée' : (data.fall === 'Found' ? 'Trouvée' : 'Non renseigné');
+
             let popUpContent = `
-    
-                <b>Identifiant: </b> <span> ${escapeHTML(data.id)} </span> <br> 
-    
+
+                <b>Identifiant: </b> <span> ${escapeHTML(data.id)} </span> <br>
+
                 <b>Nom: </b> <span> ${escapeHTML(data.name)} </span> <br>
-    
-                <b>Classe: </b> <span> ${(data.recclass === '' || data.recclass === 'N/A' || data.recclass === "Unknown") ? 'Non renseignée' : escapeHTML(data.recclass)} </span> <br>
-    
-                <b>Masse: </b> <span> ${(data.mass === '' || data.mass === 'N/A' || data.mass === "Unknown") ? 'Non renseignée' : (Number(data.mass) / 1000).toFixed(4) + " kg"} </span> <br>
-    
-                <b>Status: </b> <span> ${(data.fall === 'Fell' || data.fall === 'N/A' || data.fall === "Unknown") ? 'Tombée' : 'Trouvée'} </span> <br>
-    
-                <b>Année: </b> <span> ${(data.year === '' || data.year === 'N/A' || data.year === "Unknown") ? 'Non renseignée' : escapeHTML(data.year)} </span> <br>
-    
-                <b>Coordonnées: </b> <span> (${(latitude === null) ? "Non renseignée": latitude}°, ${(longitude === null) ? "Non renseignée" : longitude}°) </span> <br>
+
+                <b>Classe: </b> <span> ${formatValue(data.recclass)} </span> <br>
+
+                <b>Masse: </b> <span> ${massDisplay} </span> <br>
+
+                <b>Status: </b> <span> ${fallStatus} </span> <br>
+
+                <b>Année: </b> <span> ${formatValue(data.year)} </span> <br>
+
+                <b>Coordonnées: </b> <span> (${latitude.toFixed(4)}°, ${longitude.toFixed(4)}°)</span> <br>
 
                 <b>Lien permanent: </b> <span> <a href="https://meteorites.nde-code.workers.dev/get?id=${encodeURIComponent(data.id)}" target="_blank" rel="noopener noreferrer">[Consulter]</a> </span>
-                    
-            `;
+            
+                `;
 
             let customIcon = L.divIcon({
 
@@ -665,9 +685,7 @@
 
             });
 
-            if (latitude === null || longitude === null) return null;
-                
-            return L.marker([latitude, longitude],  { icon: customIcon }).bindPopup(popUpContent);
+            return L.marker([latitude, longitude], { icon: customIcon }).bindPopup(popUpContent);
 
         }
 
