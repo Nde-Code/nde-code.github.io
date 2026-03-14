@@ -448,7 +448,7 @@
 
 		function decayModeString(str) {
 
-			let decayModes = {
+			const decayModes = {
 
 				"A": "α",
 
@@ -494,9 +494,9 @@
 
 			};
 
-			let parts = str.split("::");
+			const parts = str.split("::");
 
-			let result = parts.map(part => {
+			const result = parts.map(part => {
 
 				part = part.trim();  
 				
@@ -512,7 +512,7 @@
 
 		function emulateDecayModes(atomicNumber, radioisotope, decayModes) {
 
-			let decayConfig = {
+			const decayConfig = {
 
 				"A": { Z: -2, A: -4 },
 
@@ -550,7 +550,7 @@
 
 			};
 
-			let modes = decayModes ? decayModes.split("::").map(x => x.trim()) : [];
+			const modes = decayModes ? decayModes.split("::").map(x => x.trim()) : [];
 
 			let currentZ = atomicNumber;
 
@@ -688,7 +688,7 @@
 
 		function generateHTMLChainData(steps, decayModes) {
 
-			let createParagraph = (content) => `
+			const createParagraph = (content) => `
 
 				<p class="modalbox-description">
 
@@ -832,7 +832,7 @@
 
 					});
 
-					let $elementSelect = $('#element-id');
+					const $elementSelect = $('#element-id');
 
 					$elementSelect.empty();
 
@@ -858,9 +858,9 @@
 
 		function updateRadioisotopes() {
 
-			let selectedElement = $('#element-id').val();
+			const selectedElement = $('#element-id').val();
 
-			let element = getElementBySymbol(selectedElement);
+			const element = getElementBySymbol(selectedElement);
 
 			$('#radioisotope-id').empty();
 
@@ -886,11 +886,11 @@
 
 		function updateDecayModes() {
 
-			let selectedElement = $('#element-id').val();
+			const selectedElement = $('#element-id').val();
 
-			let selectedIndex = $('#radioisotope-id').val();
+			const selectedIndex = $('#radioisotope-id').val();
 
-			let element = getElementBySymbol(selectedElement);
+			const element = getElementBySymbol(selectedElement);
 
 			$('#decay-mode-id').empty();
 
@@ -930,9 +930,9 @@
 
 			let resultMass;
 
-			let elem = $('#element-id').val();
+			const elem = $('#element-id').val();
 
-			let rawIndex = $('#radioisotope-id').val();
+			const rawIndex = $('#radioisotope-id').val();
 
 			if (rawIndex === null) {
 
@@ -942,9 +942,9 @@
 
 			}
 
-			let radioisotopeIndex = Number(rawIndex);
+			const radioisotopeIndex = Number(rawIndex);
 
-			let decayModes = $('#decay-mode-id').val();
+			const decayModes = $('#decay-mode-id').val();
 
 			if (!decayModes) {
 
@@ -954,9 +954,9 @@
 
 			}
 
-			let modes = decayModes.split("::").map(x => x.trim());
+			const modes = decayModes.split("::").map(x => x.trim());
 
-			let error = validateDecayModes(modes);
+			const error = validateDecayModes(modes);
 
 			if (error) {
 
@@ -966,9 +966,9 @@
 				
 			}
 
-			let mainNucleus = { element: elem, Z: getElementAtomicNumberWithSymbol(elem), A: getRadioisotopeWithElement(elem, radioisotopeIndex) };
+			const mainNucleus = { element: elem, Z: getElementAtomicNumberWithSymbol(elem), A: getRadioisotopeWithElement(elem, radioisotopeIndex) };
 
-			let result = generateNucleusSteps(elem, radioisotopeIndex, modes);
+			const result = generateNucleusSteps(elem, radioisotopeIndex, modes);
 
 			if (result.error) {
 
@@ -982,11 +982,11 @@
 
 			}
 
-			let nucleusSteps = result.steps;
+			const nucleusSteps = result.steps;
 			
-			let lastNucleus = nucleusSteps[(nucleusSteps.length - 1)];
+			const lastNucleus = nucleusSteps[(nucleusSteps.length - 1)];
 			
-			let lastIndex = getRadioisotopeIndexWithSymbol(lastNucleus.element, lastNucleus.A);
+			const lastIndex = getRadioisotopeIndexWithSymbol(lastNucleus.element, lastNucleus.A);
 			
 			if (lastIndex == null) {
 
@@ -1002,7 +1002,7 @@
 
 			}
 
-			let isDecayChain = hasChaine(modes);
+			const isDecayChain = hasChaine(modes);
 
 			if (isDecayChain) {
 				
@@ -1024,7 +1024,7 @@
 
 			$("#decay-plot-id").css('display', 'block').html(generateHTMLEquationResponse(mainNucleus, lastNucleus, modes[modes.length - 1]));
 
-			let parentMass = getAtomicMassWithSymbol(radioisotopeIndex, elem);
+			const parentMass = getAtomicMassWithSymbol(radioisotopeIndex, elem);
 			
 			resultMass = getAtomicMassWithSymbol(lastIndex, lastNucleus.element);
 

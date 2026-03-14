@@ -402,11 +402,11 @@
 
 		function convertToHoursMinutes(decimalHours) {
 
-			let hours = Math.floor(decimalHours); 
+			const hours = Math.floor(decimalHours); 
 
-			let remainingMinutes = (decimalHours - hours) * 60; 
+			const remainingMinutes = (decimalHours - hours) * 60; 
 
-			let minutes = Math.floor(remainingMinutes); 
+			const minutes = Math.floor(remainingMinutes); 
 						
 			return [hours, minutes];
 
@@ -446,11 +446,11 @@
 
 		function solveSystem(x0, numberOfPeriods, oscillationPeriod) {
 
-			let init = [x0, 0, 0, 0];
+			const init = [x0, 0, 0, 0];
 			
-			let tSpan = [0, (numberOfPeriods * oscillationPeriod)];
+			const tSpan = [0, (numberOfPeriods * oscillationPeriod)];
 
-			let options = {
+			const options = {
 
 				method: 'RK45',  
 
@@ -460,13 +460,13 @@
 
 			};
 
-			let solution = math.solveODE(foucaultSystem, tSpan, init, options);
+			const solution = math.solveODE(foucaultSystem, tSpan, init, options);
 
-			let times = solution.t;
+			const times = solution.t;
 
-			let xVal = solution.y.map(state => state[0]); 
+			const xVal = solution.y.map(state => state[0]); 
 
-			let yVal = solution.y.map(state => state[1]);  
+			const yVal = solution.y.map(state => state[1]);  
 
 			return [times, xVal, yVal];
 
@@ -474,31 +474,31 @@
 
 		function createGraph(graphType, x0, solutions, Trev) {
 
-			let times = solutions[0].map(elem => Number(elem));
+			const times = solutions[0].map(elem => Number(elem));
 
-			let xDataPoints = solutions[1].map(elem => Number(elem)); 
+			const xDataPoints = solutions[1].map(elem => Number(elem)); 
 
-			let yDataPoints = solutions[2].map(x => Number(x) * 1000);  
+			const yDataPoints = solutions[2].map(x => Number(x) * 1000);  
 
-			let minT = Math.min(...times);
+			const minT = Math.min(...times);
 
-			let maxT = Math.max(...times);
+			const maxT = Math.max(...times);
 
-			let minX = Math.min(...xDataPoints);
+			const minX = Math.min(...xDataPoints);
 
-			let maxX = Math.max(...xDataPoints);
+			const maxX = Math.max(...xDataPoints);
 
-			let minY = Math.min(...yDataPoints);
+			const minY = Math.min(...yDataPoints);
 
-			let maxY = Math.max(...yDataPoints);
+			const maxY = Math.max(...yDataPoints);
 
-			let tMargin = 0.015 * (maxT - minT);
+			const tMargin = 0.015 * (maxT - minT);
 
-			let xMargin = 0.05 * (maxX - minX);
+			const xMargin = 0.05 * (maxX - minX);
 
-			let yMargin = 0.05 * (maxY - minY);
+			const yMargin = 0.05 * (maxY - minY);
 
-			let layout = {
+			const layout = {
 
 				displayModeBar: false,
 
@@ -592,7 +592,7 @@
 
 			}
 
-			let xt = {
+			const xt = {
 
 				x: times,
 
@@ -612,7 +612,7 @@
 
 			};
 
-			let yt = {
+			const yt = {
 
 				x: times,
 
@@ -632,7 +632,7 @@
 
 			};
 
-			let xy = {
+			const xy = {
 
 				x: xDataPoints,
 
@@ -652,7 +652,7 @@
 
 			};
 
-			let xy0 = {
+			const xy0 = {
 
 				x: [x0], 
 				
@@ -682,7 +682,7 @@
 
 			};
 
-			let data = [];
+			const data = [];
 						
 			if (graphType === 'x(t)') data.push(xt);
 
@@ -706,7 +706,7 @@
 
 		function solveFoucaultSystem(graphType, latitude, length, numberOfPeriods, initialAngle) {
 
-			let latitudeNumber = Number(latitude);
+			const latitudeNumber = Number(latitude);
 
 			if (!latitude || isNaN(latitudeNumber) ||  latitudeNumber < -90 || latitudeNumber > 90 || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false || (latitudeNumber >= extendedData.BOUNDS_LIMIT[0] && latitudeNumber <= extendedData.BOUNDS_LIMIT[1])) {
 				
@@ -724,13 +724,13 @@
 
 					try {
 
-						let periodOfOscillation = getPeriodOfOscillation(length);
+						const periodOfOscillation = getPeriodOfOscillation(length);
 
-						let x0 = getX0(initialAngle, length);
+						const x0 = getX0(initialAngle, length);
 
-						let omega = getOmega(latitude);
+						const omega = getOmega(latitude);
 
-						let Trev = (getPeriodOfRevolution(Math.abs(latitudeNumber)) / 3600);
+						const Trev = (getPeriodOfRevolution(Math.abs(latitudeNumber)) / 3600);
 
 						foucaultPendulumProject = {};
 
@@ -750,7 +750,7 @@
 
 						foucaultPendulumProject["period_of_revolution"] = convertToHoursMinutes(Trev);
 
-						let solutions = solveSystem(x0, Number(numberOfPeriods), periodOfOscillation);
+						const solutions = solveSystem(x0, Number(numberOfPeriods), periodOfOscillation);
 
 						createGraph(graphType, x0, solutions, Trev);
 
@@ -770,7 +770,7 @@
 
 		function addRevolutionPeriod(Trev) {
 
-			let tRevHoursMinutes = convertToHoursMinutes(Trev);
+			const tRevHoursMinutes = convertToHoursMinutes(Trev);
 
 			if ($(".website-bottom .revolution-period-btn").length > 0) $(".website-bottom .revolution-period-btn").remove();
 

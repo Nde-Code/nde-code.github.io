@@ -431,13 +431,13 @@
 
             if (!apiUrl) return null;
 
-            let queryString = new URLSearchParams(params).toString();
+            const queryString = new URLSearchParams(params).toString();
 
-            let fullUrl = `${apiUrl}?${queryString}`;
+            const fullUrl = `${apiUrl}?${queryString}`;
 
             try {
 
-                let response = await fetch(fullUrl);
+                const response = await fetch(fullUrl);
 
                 if (!response.ok) return null;
 
@@ -453,11 +453,11 @@
 
         function computeStats(data) {
 
-            let APIResponseJSON = data.success;
+            const APIResponseJSON = data.success;
 
             if (!APIResponseJSON || !Array.isArray(APIResponseJSON.meteorites) || APIResponseJSON.meteorites.length === 0) return null;
 
-            let meteorites = APIResponseJSON.meteorites;
+            const meteorites = APIResponseJSON.meteorites;
 
             let minYear = Infinity;
 
@@ -475,15 +475,15 @@
 
             let massCount = 0;
 
-            let totalCount = meteorites.length;
+            const totalCount = meteorites.length;
 
-            let recclassCounts = {};
+            const recclassCounts = {};
 
             meteorites.forEach(meteorite => {
 
-                let mass = meteorite.mass ? parseFloat(meteorite.mass) : NaN;
+                const mass = meteorite.mass ? parseFloat(meteorite.mass) : NaN;
 
-                let year = parseInt(meteorite.year, 10);
+                const year = parseInt(meteorite.year, 10);
 
                 if (!isNaN(mass) && mass > 0) {
 
@@ -509,15 +509,15 @@
 
                 }
 
-                let recclass = meteorite.recclass || "Inconnue";
+                const recclass = meteorite.recclass || "Inconnue";
 
                 recclassCounts[recclass] = (recclassCounts[recclass] ?? 0) + 1;
 
             });
 
-            let avgMass = massCount > 0 ? (totalMass / massCount) : null;
+            const avgMass = massCount > 0 ? (totalMass / massCount) : null;
 
-            let avgYear = yearCount > 0 ? Math.round(totalYear / yearCount) : null;
+            const avgYear = yearCount > 0 ? Math.round(totalYear / yearCount) : null;
 
             return { totalCount, minMass, maxMass, avgMass, minYear, maxYear, avgYear, recclassCounts };
 
@@ -525,13 +525,13 @@
 
         function modalboxStats(data) {
 
-            let statsJSON = computeStats(data);
+            const statsJSON = computeStats(data);
 
             if (!statsJSON) return;
 
             $("#stats-container").empty();
 
-            let sections = [
+            const sections = [
 
                 {
 
@@ -569,7 +569,7 @@
 
             let fullHtml = sections.map(section => {
 
-                let itemsHtml = section.items.map(item => `
+                const itemsHtml = section.items.map(item => `
 
                     <p class="modalbox-description">
 
@@ -595,7 +595,7 @@
 
             }).join("");
 
-            let sortedClasses = Object.entries(statsJSON.recclassCounts).sort((a, b) => b[1] - a[1]).slice(0, extendedData.ranking);
+            const sortedClasses = Object.entries(statsJSON.recclassCounts).sort((a, b) => b[1] - a[1]).slice(0, extendedData.ranking);
 
             let classHTML = `
 
@@ -629,17 +629,17 @@
 
         function processMeteorites(data) {
 
-            let lat = parseFloat(data.latitude);
+            const lat = parseFloat(data.latitude);
 
-            let lon = parseFloat(data.longitude);
+            const lon = parseFloat(data.longitude);
 
-            let latitude = isNaN(lat) ? null : lat;
+            const latitude = isNaN(lat) ? null : lat;
 
-            let longitude = isNaN(lon) ? null : lon;
+            const longitude = isNaN(lon) ? null : lon;
 
             if (latitude === null || longitude === null) return null;
 
-            let formatValue = (val) => {
+            const formatValue = (val) => {
 
                 const str = String(val).trim();
 
@@ -647,13 +647,13 @@
 
             };
 
-            let massVal = Number(data.mass);
+            const massVal = Number(data.mass);
 
-            let massDisplay = (!isNaN(massVal) && data.mass !== '' && data.mass !== 'N/A' && data.mass !== 'Unknown') ? (massVal / 1000).toFixed(4) + " kg" : "Non renseignée";
+            const massDisplay = (!isNaN(massVal) && data.mass !== '' && data.mass !== 'N/A' && data.mass !== 'Unknown') ? (massVal / 1000).toFixed(4) + " kg" : "Non renseignée";
 
-            let fallStatus = data.fall === 'Fell' ? 'Tombée' : (data.fall === 'Found' ? 'Trouvée' : 'Non renseigné');
+            const fallStatus = data.fall === 'Fell' ? 'Tombée' : (data.fall === 'Found' ? 'Trouvée' : 'Non renseigné');
 
-            let popUpContent = `
+            const popUpContent = `
 
                 <b>Identifiant: </b> <span> ${escapeHTML(data.id)} </span> <br>
 
@@ -673,7 +673,7 @@
             
                 `;
 
-            let customIcon = L.divIcon({
+            const customIcon = L.divIcon({
 
                 className: 'leaflet-custom-marker',
 
@@ -699,11 +699,11 @@
 
             extendedData.marker_group.clearLayers();
 
-            let $label = $(`#${targetId}`);
+            const $label = $(`#${targetId}`);
 
-            let $icon = $label.closest('li').find('i');
+            const $icon = $label.closest('li').find('i');
 
-            let $li = $label.closest('li');
+            const $li = $label.closest('li');
 
             $icon.removeClass().addClass('fa-solid fa-gear rotate-animation');
 
@@ -711,9 +711,9 @@
 
             $li.addClass('loading');
 
-            let reset = () => {
+            const reset = () => {
 
-                let iconClass = (targetId === 'random-areas-html') ? 'fa-solid fa-earth-europe animation' : 'fa-solid fa-plus animation';
+                const iconClass = (targetId === 'random-areas-html') ? 'fa-solid fa-earth-europe animation' : 'fa-solid fa-plus animation';
 
                 $icon.removeClass().addClass(iconClass);
 
@@ -729,13 +729,13 @@
 
             try {
 
-                let data = await fetchData(`${extendedData.BASE_API_URL}${endpoint}`, params);
+                const data = await fetchData(`${extendedData.BASE_API_URL}${endpoint}`, params);
 
                 if (data?.success?.meteorites?.length > 0) {
 
                     data.success.meteorites.forEach(meteorite => {
 
-                        let marker = processMeteorites(meteorite);
+                        const marker = processMeteorites(meteorite);
 
                         if (marker) extendedData.marker_group.addLayer(marker);
 
@@ -793,11 +793,11 @@
 
         function initAreaHTML() {
 
-            let index = extendedData.area_index || 0;
+            const index = extendedData.area_index || 0;
 
-            let area = extendedData.AREAS_COORDS[index];
+            const area = extendedData.AREAS_COORDS[index];
 
-            let $span = $('#random-areas-html');
+            const $span = $('#random-areas-html');
 
             if ($span.length) {
 
@@ -815,9 +815,9 @@
 
             onAdd: function (map) {
 
-                let $container = $('<div>', { class: 'dropdown-container' });
+                const $container = $('<div>', { class: 'dropdown-container' });
 
-                let $button = $('<button>', {
+                const $button = $('<button>', {
 
                     class: 'dropdown-button',
 
@@ -825,17 +825,17 @@
 
                 }).appendTo($container);
 
-                let $menu = $('<ul>', { class: 'dropdown-menu', css: { display: 'none' } }).appendTo($container);
+                const $menu = $('<ul>', { class: 'dropdown-menu', css: { display: 'none' } }).appendTo($container);
 
-                let options = [
+                const options = [
 
                     { text: '<span id="random-html"> Ajouter aléatoirement des météorites sur la carte </span>', icon: 'fa-solid fa-plus animation', color: '#4690F2', action: async () => { 
 
-                            let $li = $('#random-html').closest('li');
+                            const $li = $('#random-html').closest('li');
                             
                             if ($li.hasClass('loading')) return;
                             
-                            let count = getRandomInt(extendedData.RANDOM_RANGE[0], extendedData.RANDOM_RANGE[1]);
+                            const count = getRandomInt(extendedData.RANDOM_RANGE[0], extendedData.RANDOM_RANGE[1]);
 
                             await getMeteoritesFromDB('/random', { count }, 'random-html');
 
@@ -853,19 +853,19 @@
                        
                         action: async () => {
 
-                            let $span = $('#random-areas-html');
+                            const $span = $('#random-areas-html');
 
-                            let $li = $span.closest('li');
+                            const $li = $span.closest('li');
 
                             if ($li.hasClass('loading')) return;
 
-                            let index = extendedData.area_index;
+                            const index = extendedData.area_index;
 
-                            let area = extendedData.AREAS_COORDS[index];
+                            const area = extendedData.AREAS_COORDS[index];
 
-                            let nextIndex = (index + 1) % extendedData.AREAS_COORDS.length;
+                            const nextIndex = (index + 1) % extendedData.AREAS_COORDS.length;
 
-                            let params = {
+                            const params = {
 
                                 centerLatitude: area.center_latitude.toString(),
 
@@ -877,13 +877,13 @@
 
                             };
 
-                            let data = await getMeteoritesFromDB('/search', params, 'random-areas-html');
+                            const data = await getMeteoritesFromDB('/search', params, 'random-areas-html');
 
                             if (data?.success?.meteorites?.length > 0) {
 
                                 extendedData.area_index = nextIndex;
 
-                                let nextArea = extendedData.AREAS_COORDS[nextIndex];
+                                const nextArea = extendedData.AREAS_COORDS[nextIndex];
 
                                 $span.html(`Ajouter des météorites sur la zone: <strong>${nextArea.name}</strong>`);
 
@@ -915,7 +915,7 @@
 
                 options.forEach(function (option) {
 
-                    let $item = $('<li>', { class: 'dropdown-item' });
+                    const $item = $('<li>', { class: 'dropdown-item' });
 
                     $('<i>', { class: option.icon, css: { color: option.color, marginRight: '18px' } }).appendTo($item);
                     
@@ -931,15 +931,15 @@
 
                     if (!$menu.is(':visible')) return;
 
-                    let btnOffset = $button.offset();
+                    const btnOffset = $button.offset();
 
-                    let menuOffset = $menu.offset();
+                    const menuOffset = $menu.offset();
 
-                    let btnCenterX = btnOffset.left + ($button.outerWidth() / 2);
+                    const btnCenterX = btnOffset.left + ($button.outerWidth() / 2);
 
-                    let menuRightX = menuOffset.left + $menu.outerWidth();
+                    const menuRightX = menuOffset.left + $menu.outerWidth();
 
-                    let rightValue = Math.round(menuRightX - btnCenterX);
+                    const rightValue = Math.round(menuRightX - btnCenterX);
 
                     $menu[0].style.setProperty('--caret-right', rightValue - (parseFloat($(".fa-solid.fa-bars").css('font-size')) * 0.5) + 'px');
 
@@ -967,7 +967,7 @@
 
         $(window).on('resize', () => {
 
-            let newWidth = $(window).width();
+            const newWidth = $(window).width();
 
             if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) document.location.reload();
 

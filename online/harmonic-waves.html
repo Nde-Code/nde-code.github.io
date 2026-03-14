@@ -458,9 +458,9 @@
 
 		function initWavesAnimation() {
 
-			let N = extendedData.NUMBER_OF_POINTS;
+			const N = extendedData.NUMBER_OF_POINTS;
 			
-			let { wave_number_1: k1, wave_number_2: k2, initial_phase_1: phi1, initial_phase_2: phi2 } = wavesSimulationProject;
+			const { wave_number_1: k1, wave_number_2: k2, initial_phase_1: phi1, initial_phase_2: phi2 } = wavesSimulationProject;
 
 			if (!wavesSimulationData.wave_x) wavesSimulationData.wave_x = new Float32Array(N);
 			
@@ -476,7 +476,7 @@
 
 			for (let i = 0; i < N; i++) {
 
-				let x = (i / N) * 10;
+				const x = (i / N) * 10;
 
 				wavesSimulationData.wave_x[i] = x;
 
@@ -514,17 +514,17 @@
 
 			const phase2 = wavesSimulationData.phase2_base;
 
-			let y1_arr = wavesSimulationData.wave_1_y;
+			const y1_arr = wavesSimulationData.wave_1_y;
 
-			let y2_arr = wavesSimulationData.wave_2_y;
+			const y2_arr = wavesSimulationData.wave_2_y;
 
-			let y3_arr = wavesSimulationData.wave_3_y;
+			const y3_arr = wavesSimulationData.wave_3_y;
 
 			for (let i = 0; i < N; i++) {
 
-				let y1 = amp1 * Math.sin(phase1[i] + w1 * t_global);
+				const y1 = amp1 * Math.sin(phase1[i] + w1 * t_global);
 
-				let y2 = amp2 * Math.sin(phase2[i] + w2 * t_global);
+				const y2 = amp2 * Math.sin(phase2[i] + w2 * t_global);
 
 				y1_arr[i] = y1;
 
@@ -564,7 +564,7 @@
 
 			initWavesAnimation();
 
-			let layout = {
+			const layout = {
 
 				displayModeBar: false,
 
@@ -658,7 +658,7 @@
 
 			};
 
-			let data = [
+			const data = [
 
 				{
 

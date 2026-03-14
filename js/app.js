@@ -12,7 +12,7 @@ document.oncontextmenu = () => { return false; }
 
 $(window).on('resize', () => {
 
-    let newWidth = $(window).width();
+    const newWidth = $(window).width();
 
     if (Math.abs(globalData.starting_width - newWidth) > globalData.tol_resize) document.location.reload();
 
@@ -168,9 +168,9 @@ $(document).ready(function () {
     // Merci: https://stackoverflow.com/questions/48002147/how-to-activate-and-disable-jquery-click-events-on-an-html-element
     $('#display-mobile-menu').on('click', function () {
 
-        let $this = $(this);
+        const $this = $(this);
 
-        let $menu = $(".menu-class"); 
+        const $menu = $(".menu-class"); 
 
         if (!$this.hasClass("active")) {
 

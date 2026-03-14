@@ -428,7 +428,7 @@
 		
 		function getXForPlot(min, max, iter) {
 
-			let generatedX = [];
+			const generatedX = [];
 
 			for (let i = min; i <= max; i += (1 / iter)) {
 
@@ -442,7 +442,7 @@
 
 		function getLagrangeInterpolationInX(xp, x, y) {
 
-			let n = x.length;
+			const n = x.length;
 
 			let yp = 0;
 
@@ -466,9 +466,9 @@
 
 		function getSplineCoeffs(x, y) {
 
-			let n = x.length;
+			const n = x.length;
 
-			let h = new Array(n - 1).fill(0);
+			const h = new Array(n - 1).fill(0);
 
 			for (let i = 0; i < n - 1; i++) {
 
@@ -476,9 +476,9 @@
 
 			}
 
-			let Q = math.zeros(n, n)._data;
+			const Q = math.zeros(n, n)._data;
 
-			let p = new Array(n).fill(0);
+			const p = new Array(n).fill(0);
 
 			for (let i = 0; i < n - 2; i++) {
 
@@ -500,13 +500,13 @@
 
 			M = M.valueOf().flat(); 
 
-			let a = new Array(n - 1).fill(0);
+			const a = new Array(n - 1).fill(0);
 
-			let b = new Array(n - 1).fill(0);
+			const b = new Array(n - 1).fill(0);
 
-			let c = new Array(n - 1).fill(0);
+			const c = new Array(n - 1).fill(0);
 
-			let d = new Array(n - 1).fill(0);
+			const d = new Array(n - 1).fill(0);
 
 			for (let i = 0; i < n - 1; i++) {
 
@@ -526,9 +526,9 @@
 
 		function generateSplinePointsForPlot(x, a, b, c, d, accuracy) {
 
-			let splineXVal = [];
+			const splineXVal = [];
 
-			let splineYVal = [];
+			const splineYVal = [];
 
 			for (let i = 0; i < x.length - 1; i++) {
 
@@ -552,11 +552,11 @@
 
 		function getLeastSquaresCoefficients(x, y, m) {
 
-			let deg = (m + 1);
+			const deg = (m + 1);
 
-    		let n = x.length;
+    		const n = x.length;
 
-    		let A = math.zeros(n, deg);
+    		const A = math.zeros(n, deg);
 
 			for (let i = 0; i < deg; i++) {
 
@@ -568,9 +568,9 @@
 
 			}
 
-			let ATA = math.multiply(math.transpose(A), A);
+			const ATA = math.multiply(math.transpose(A), A);
 
-			let ATy = math.multiply(math.transpose(A), math.matrix(y)); 
+			const ATy = math.multiply(math.transpose(A), math.matrix(y)); 
 
 			return math.lusolve(ATA, ATy)._data;
 
@@ -600,9 +600,9 @@
 
 		function renderPlot(xScatter, yScatter, lagrangePlotPoints, splinePlotPoints, leastSquaresPlotPoints, minX, maxX) {
 
-			let xMargin = (maxX - minX) * ($(window).width() >= 768 ? 0.016 : 0.0625);
+			const xMargin = (maxX - minX) * ($(window).width() >= 768 ? 0.016 : 0.0625);
 
-			let layout = {
+			const layout = {
 
 				displayModeBar: false,
 
@@ -694,7 +694,7 @@
 
 			};
 
-			let lagrangeCurve = {
+			const lagrangeCurve = {
 
 				x: lagrangePlotPoints[0].map(item => Number(item)),
 
@@ -714,7 +714,7 @@
 
 			};
 
-			let splineCurve = {
+			const splineCurve = {
 
 				x: splinePlotPoints[0][0].map(item => Number(item)),
 
@@ -734,7 +734,7 @@
 
 			};
 
-			let regressionCurve = {
+			const regressionCurve = {
 
 				x: leastSquaresPlotPoints[0].map(item => Number(item)),
 
@@ -754,7 +754,7 @@
 
 			};
 
-			let markers = {
+			const markers = {
 
 				x: xScatter.map(item => Number(item)),
 
@@ -784,7 +784,7 @@
 
 			};
 
-			let data = [];	
+			const data = [];	
 
 			if (leastSquaresPlotPoints[2] === true) data.push(regressionCurve);
 
@@ -802,15 +802,15 @@
 
 		function plotCurves(x, y, lagrange, spline, regression, deg) {
 
-			let plotLagrange = (lagrange === 'true') ? true : false;
+			const plotLagrange = (lagrange === 'true') ? true : false;
 
-			let plotSpline = (spline === 'true') ? true : false;
+			const plotSpline = (spline === 'true') ? true : false;
 
-			let plotRegression = (regression === 'true') ? true : false;
+			const plotRegression = (regression === 'true') ? true : false;
 
-			let xVal = (x !== '') ? x.split(",").map(parseNumber) : false;
+			const xVal = (x !== '') ? x.split(",").map(parseNumber) : false;
 
-			let yVal = (y !== '') ? y.split(",").map(parseNumber) : false;
+			const yVal = (y !== '') ? y.split(",").map(parseNumber) : false;
 
 			if (xVal === false || isFullSame(xVal) || isArrayWithOnlyValidNumbers(xVal) === false || isStrictlyIncreasing(xVal) === false || xVal.length > 15 || xVal.length < 3) {
 
@@ -844,13 +844,13 @@
 					
 					try {
 
-						let iteration = extendedData.STEP;
+						const iteration = extendedData.STEP;
 
-						let minOfX = Math.min(...xVal);
+						const minOfX = Math.min(...xVal);
 
-						let maxOfX = Math.max(...xVal);
+						const maxOfX = Math.max(...xVal);
 
-						let xPlot = getXForPlot(minOfX, maxOfX, iteration);
+						const xPlot = getXForPlot(minOfX, maxOfX, iteration);
 
 						interpolationProject['x'] = xVal;
 
@@ -864,21 +864,21 @@
 
 						interpolationProject['plot_regression'] = (plotRegression === true) ? 'True' : 'False';
 
-						let splinePlot = plotSpline ? (() => {
+						const splinePlot = plotSpline ? (() => {
 
-							let coeffs = getSplineCoeffs(xVal, yVal);
+							const coeffs = getSplineCoeffs(xVal, yVal);
 
-							let xySplinePlot = generateSplinePointsForPlot(xVal, coeffs[0], coeffs[1], coeffs[2], coeffs[3], iteration);
+							const xySplinePlot = generateSplinePointsForPlot(xVal, coeffs[0], coeffs[1], coeffs[2], coeffs[3], iteration);
 
 							return [xySplinePlot, true];
 
 						})() : [[[], []], false];
 
-						let lagrangePlot = plotLagrange ? [xPlot, xPlot.map(x => getLagrangeInterpolationInX(x, xVal, yVal)), true] : [[], [], false];
+						const lagrangePlot = plotLagrange ? [xPlot, xPlot.map(x => getLagrangeInterpolationInX(x, xVal, yVal)), true] : [[], [], false];
 
-						let leastSquaresPlot = plotRegression ? (() => {
+						const leastSquaresPlot = plotRegression ? (() => {
 
-							let coeffs = getLeastSquaresCoefficients(xVal, yVal, Number(deg));
+							const coeffs = getLeastSquaresCoefficients(xVal, yVal, Number(deg));
 
 							return [xPlot, generateYForLeastSquares(coeffs, minOfX, maxOfX, iteration), true];
 
