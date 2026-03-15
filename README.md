@@ -6,8 +6,6 @@ Visitez le site ici: [nde-code.github.io](https://nde-code.github.io/)
 
 Prenez une seconde pour voir le code dans Visual Studio Code: [https://github1s.com/Nde-Code/nde-code.github.io](https://github1s.com/Nde-Code/nde-code.github.io)
 
-> Ce dépôt n’a pas vocation à remplacer la rubrique **« Notes »**, mais à offrir un aperçu des **outils et ressources** utilisés pour la création du site.  
-
 ## 📚 Librairies utilisées:
 
 - [Font Awesome](https://fontawesome.com/)
