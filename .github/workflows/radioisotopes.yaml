@@ -22,6 +22,7 @@ jobs:
       contents: read
 
     steps:
+    
       # 0. Initialize project sources.
       - uses: actions/checkout@v6
 
