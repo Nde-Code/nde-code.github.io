@@ -25,7 +25,7 @@ jobs:
       # 0. Initialize project sources.
       - uses: actions/checkout@v6
 
-      # 1. Install python v3.11.
+      # 1. Install the Python interpreter.
       - name: Setup Python
         uses: actions/setup-python@v6
         with:
