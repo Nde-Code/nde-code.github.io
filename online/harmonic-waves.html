@@ -434,7 +434,7 @@
 
 		var wavesSimulationData = {};
 
-		function setHTMLValueFormRange(val, id, unit) { return $(`#${id}`).html(`${val}${unit}`); }
+		function setHTMLValueFormRange(val, id, unit) { return $(`#${id}`).text(`${val}${unit}`); }
 
 		function editDataValue(AOne, kOne, wOne, phiOne, sgnOne, ATwo, kTwo, wTwo, phiTwo, sgnTwo) {
 
@@ -764,7 +764,7 @@
 
 			}
 
-			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
+			$("#modalbox-errors-warnings-id").text("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 			if ($("#remove-footer-notice").length > 0) $("#remove-footer-notice").remove();
 
@@ -776,7 +776,7 @@
 
 			extendedData.is_in_loading = true;
 
-			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
+			$("#modalbox-errors-warnings-id").text("Cette opération peut prendre quelques instants...");
 
 			if ($(window).width() >= 1024) $("#simulate-waves-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
@@ -786,7 +786,7 @@
 
 		function abortProcess(msg) {
 
-			$("#modalbox-errors-warnings-id").html(msg);
+			$("#modalbox-errors-warnings-id").text(msg);
 
 			if ($(window).width() >= 1024) $("#simulate-waves-btn-id").html('<i class="fa-solid fa-wave-square"></i> Simuler');
 

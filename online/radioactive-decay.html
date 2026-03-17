@@ -936,7 +936,7 @@
 
 			if (rawIndex === null) {
 
-				$("#modalbox-errors-warnings-id").html("Aucun radioisotope sélectionné.");
+				$("#modalbox-errors-warnings-id").text("Aucun radioisotope sélectionné.");
 
 				return;
 
@@ -948,7 +948,7 @@
 
 			if (!decayModes) {
 
-				$("#modalbox-errors-warnings-id").html("Aucun mode de désintégration sélectionné.");
+				$("#modalbox-errors-warnings-id").text("Aucun mode de désintégration sélectionné.");
 				
 				return;
 
@@ -960,7 +960,7 @@
 
 			if (error) {
 
-				$("#modalbox-errors-warnings-id").html(error);
+				$("#modalbox-errors-warnings-id").text(error);
 
 				return;
 				
@@ -972,7 +972,7 @@
 
 			if (result.error) {
 
-				$("#modalbox-errors-warnings-id").html(result.error);
+				$("#modalbox-errors-warnings-id").text(result.error);
 
 				extendedData.full_chain_html = '';
 				
@@ -990,7 +990,7 @@
 			
 			if (lastIndex == null) {
 
-				$("#modalbox-errors-warnings-id").html("L'isotope obtenu n'est pas répertorié dans la base de données.");
+				$("#modalbox-errors-warnings-id").text("L'isotope obtenu n'est pas répertorié dans la base de données.");
 
 				extendedData.full_chain_html = '';
 
@@ -1018,7 +1018,7 @@
 				
 				$("#copyright-change").html(`L'icône d'atome est fait par Iconixar sur <a href="https://www.flaticon.com/free-icon/atom_3081530?term=atome&page=1&position=15&origin=search&related_id=3081530" target="_blank" rel="noopener noreferrer" class="copyright-link">Flaticon</a>.`);
 				
-				$(".website-main-panel-title").html("L'équation de désintégration radioactive:");
+				$(".website-main-panel-title").text("L'équation de désintégration radioactive:");
 			
 			}
 
@@ -1080,7 +1080,7 @@
 
 			}
 
-			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
+			$("#modalbox-errors-warnings-id").text("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 		}
 

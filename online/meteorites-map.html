@@ -741,9 +741,9 @@
 
                     });
 
-                    $('#meteorites-html').html(`${data.success.count} météorites sur la carte`);
+                    $('#meteorites-html').text(`${data.success.count} météorites sur la carte`);
 
-                    $('#stats-html').html("Voir les statistiques de l'échantillon");
+                    $('#stats-html').text("Voir les statistiques de l'échantillon");
 
                     $('#stats-html').closest('li').off('click').on('click', () => modalboxStats(data));
 
@@ -759,9 +759,9 @@
 
                     $label.text("Les données n'ont pas pu être récupérées...");
 
-                    $('#meteorites-html').html('Aucune météorite sur la carte');
+                    $('#meteorites-html').text('Aucune météorite sur la carte');
 
-                    $('#stats-html').html("Aucune statistique disponible sur l'échantillon");
+                    $('#stats-html').text("Aucune statistique disponible sur l'échantillon");
 
                     $('#stats-html').closest('li').off('click');
 
@@ -777,9 +777,9 @@
 
                 $label.text("Erreur de récupération des données...");
 
-                $('#meteorites-html').html('Aucune météorite sur la carte');
+                $('#meteorites-html').text('Aucune météorite sur la carte');
 
-                $('#stats-html').html("Aucune statistique disponible sur l'échantillon");
+                $('#stats-html').text("Aucune statistique disponible sur l'échantillon");
 
                 $('#stats-html').closest('li').off('click');
 

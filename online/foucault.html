@@ -394,11 +394,11 @@
 
 		function getX0(angle, l) { return Number(l) * Math.sin(toRad(angle)); }
 		
-		function setLength(l) { return $("#length-id").html(`${l}m`) && $("#oscillation-id").html(`${getPeriodOfOscillation(l).toFixed(3)}s`); }
+		function setLength(l) { return $("#length-id").text(`${l}m`) && $("#oscillation-id").text(`${getPeriodOfOscillation(l).toFixed(3)}s`); }
 		
-		function setNumberOfPeriods(val) { return $("#number-of-periods-id").html(`${val}x`); }
+		function setNumberOfPeriods(val) { return $("#number-of-periods-id").text(`${val}x`); }
 		
-		function setInitialAngle(angle, l) { return $("#initial-angle-id").html(`${angle}°`) && $("#initial-position-id").html(`${getX0(angle, l).toFixed(3)}m`); }
+		function setInitialAngle(angle, l) { return $("#initial-angle-id").text(`${angle}°`) && $("#initial-position-id").text(`${getX0(angle, l).toFixed(3)}m`); }
 
 		function convertToHoursMinutes(decimalHours) {
 
@@ -710,7 +710,7 @@
 
 			if (!latitude || isNaN(latitudeNumber) ||  latitudeNumber < -90 || latitudeNumber > 90 || /^-?\d+(\.\d{1,2})?$/.test(latitude) === false || (latitudeNumber >= extendedData.BOUNDS_LIMIT[0] && latitudeNumber <= extendedData.BOUNDS_LIMIT[1])) {
 				
-				$("#modalbox-errors-warnings-id").html("La latitude saisie est invalide.");
+				$("#modalbox-errors-warnings-id").text("La latitude saisie est invalide.");
 			
 				return false;
 
@@ -794,7 +794,7 @@
 
 			}
 
-			$("#modalbox-errors-warnings-id").html("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
+			$("#modalbox-errors-warnings-id").text("Les messages d'erreur et d'avertissement seront affichés dans cette section.");
 
 			if ($("#remove-footer-notice").length > 0) $("#remove-footer-notice").remove();
 
@@ -806,7 +806,7 @@
 
 			extendedData.is_in_loading = true;
 
-			$("#modalbox-errors-warnings-id").html("Cette opération peut prendre quelques instants...");
+			$("#modalbox-errors-warnings-id").text("Cette opération peut prendre quelques instants...");
 
 			if ($(window).width() >= 1024) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-gear rotate-animation"></i> Chargement...');
 
@@ -816,7 +816,7 @@
 
 		function abortProcess(msg) {
 
-			$("#modalbox-errors-warnings-id").html(msg);
+			$("#modalbox-errors-warnings-id").text(msg);
 
 			if ($(window).width() >= 1024) $("#simulate-foucault-btn-id").html('<i class="fa-solid fa-flask"></i> Simuler');
 
