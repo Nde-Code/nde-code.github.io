@@ -16,8 +16,6 @@ Prenez une seconde pour voir le code dans Visual Studio Code: [https://github1s.
 
 - [Plotly.js](https://plotly.com/javascript/)
 
-- [Ace.js](https://ace.c9.io/)
-
 - [Leaflet.js](https://leafletjs.com/)
 
 ## 🛠️ Outils et ressources:

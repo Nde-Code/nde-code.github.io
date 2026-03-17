@@ -50,8 +50,6 @@ function getNotesTemplate() {
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Math.js:</strong> pour les outils mathématiques utilisés dans mes projets. </p>
                     
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Plotly.js:</strong> pour dessiner des graphiques dans le navigateur. </p>
-
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Ace.js:</strong> un petit éditeur de code écrit en JavaScript, accompagné des compléments nécessaires, notamment un ou plusieurs thèmes ainsi qu'une ou plusieurs colorations syntaxiques. </p>
                 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Leaflet.js:</strong> pour créer des cartes interactives en JavaScript. </p>
 
