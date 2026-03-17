@@ -713,11 +713,11 @@
 
             const reset = () => {
 
-                const iconClass = (targetId === 'random-areas-html') ? 'fa-solid fa-earth-europe animation' : 'fa-solid fa-plus animation';
+                const iconClass = (targetId === 'areas-html') ? 'fa-solid fa-earth-europe animation' : 'fa-solid fa-plus animation';
 
                 $icon.removeClass().addClass(iconClass);
 
-                if (targetId === 'random-areas-html') $label.html($label.data('default') || "Ajouter des météorites sur une zone");
+                if (targetId === 'areas-html') $label.html($label.data('default') || "Ajouter des météorites sur une zone");
                
                 else $label.text($label.data('default') || "Réajouter aléatoirement des météorites");
 
@@ -797,7 +797,7 @@
 
             const area = extendedData.AREAS_COORDS[index];
 
-            const $span = $('#random-areas-html');
+            const $span = $('#areas-html');
 
             if ($span.length) {
 
@@ -845,7 +845,7 @@
 
                     {
 
-                        text: `<span id="random-areas-html"> Ajouter des météorites sur une zone </span>`,
+                        text: `<span id="areas-html"> Ajouter des météorites sur une zone </span>`,
                        
                         icon: 'fa-solid fa-globe-europe animation',
                         
@@ -853,7 +853,7 @@
                        
                         action: async () => {
 
-                            const $span = $('#random-areas-html');
+                            const $span = $('#areas-html');
 
                             const $li = $span.closest('li');
 
@@ -877,7 +877,7 @@
 
                             };
 
-                            const data = await getMeteoritesFromDB('/search', params, 'random-areas-html');
+                            const data = await getMeteoritesFromDB('/search', params, 'areas-html');
 
                             if (data?.success?.meteorites?.length > 0) {
 
