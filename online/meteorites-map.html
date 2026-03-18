@@ -651,7 +651,7 @@
 
             const massDisplay = (!isNaN(massVal) && data.mass !== '' && data.mass !== 'N/A' && data.mass !== 'Unknown') ? (massVal / 1000).toFixed(4) + " kg" : "Non renseignée";
 
-            const fallStatus = data.fall === 'Fell' ? 'Tombée' : ((data.fall === 'Found') ? 'Trouvée' : 'Non renseigné');
+            const fallStatus = (data.fall === 'Fell') ? 'Tombée' : ((data.fall === 'Found') ? 'Trouvée' : 'Non renseigné');
 
             const popUpContent = `
 
