@@ -515,9 +515,9 @@
 
             });
 
-            const avgMass = massCount > 0 ? (totalMass / massCount) : null;
+            const avgMass = (massCount > 0) ? (totalMass / massCount) : null;
 
-            const avgYear = yearCount > 0 ? Math.round(totalYear / yearCount) : null;
+            const avgYear = (yearCount > 0) ? Math.round(totalYear / yearCount) : null;
 
             return { totalCount, minMass, maxMass, avgMass, minYear, maxYear, avgYear, recclassCounts };
 
@@ -539,11 +539,11 @@
 
                     items: [
 
-                        { label: "Masse minimale", value: statsJSON.minMass !== Infinity ? statsJSON.minMass + " g" : "N/A" },
+                        { label: "Masse minimale", value: (statsJSON.minMass !== Infinity) ? statsJSON.minMass + " g" : "N/A" },
                        
-                        { label: "Masse maximale", value: statsJSON.maxMass !== -Infinity ? (statsJSON.maxMass / 1000).toFixed(6) + " kg" : "N/A" },
+                        { label: "Masse maximale", value: (statsJSON.maxMass !== -Infinity) ? (statsJSON.maxMass / 1000).toFixed(6) + " kg" : "N/A" },
                         
-                        { label: "Masse moyenne", value: statsJSON.avgMass !== null ? (statsJSON.avgMass / 1000).toFixed(6) + " kg" : "N/A" }
+                        { label: "Masse moyenne", value: (statsJSON.avgMass !== null) ? (statsJSON.avgMass / 1000).toFixed(6) + " kg" : "N/A" }
 
                     ]
 
@@ -555,11 +555,11 @@
                     
                     items: [
 
-                        { label: "Année la plus ancienne", value: statsJSON.minYear !== Infinity ? statsJSON.minYear : "N/A" },
+                        { label: "Année la plus ancienne", value: (statsJSON.minYear !== Infinity) ? statsJSON.minYear : "N/A" },
                        
-                        { label: "Année la plus récente", value: statsJSON.maxYear !== -Infinity ? statsJSON.maxYear : "N/A" },
+                        { label: "Année la plus récente", value: (statsJSON.maxYear !== -Infinity) ? statsJSON.maxYear : "N/A" },
                         
-                        { label: "Année moyenne", value: statsJSON.avgYear !== null ? statsJSON.avgYear : "N/A" }
+                        { label: "Année moyenne", value: (statsJSON.avgYear !== null) ? statsJSON.avgYear : "N/A" }
                     
                     ]
 
@@ -651,7 +651,7 @@
 
             const massDisplay = (!isNaN(massVal) && data.mass !== '' && data.mass !== 'N/A' && data.mass !== 'Unknown') ? (massVal / 1000).toFixed(4) + " kg" : "Non renseignée";
 
-            const fallStatus = data.fall === 'Fell' ? 'Tombée' : (data.fall === 'Found' ? 'Trouvée' : 'Non renseigné');
+            const fallStatus = data.fall === 'Fell' ? 'Tombée' : ((data.fall === 'Found') ? 'Trouvée' : 'Non renseigné');
 
             const popUpContent = `
 
