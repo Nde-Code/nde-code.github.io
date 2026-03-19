@@ -38,6 +38,5 @@ jobs:
           curl -sL "${{ secrets.GIST_SECRET_SCRIPT }}" -o radioisotopes.py && \
           python3 radioisotopes.py \
             --input assets/apps/db/radioisotopes-min.json \
-            --enhanced-db "${{ secrets.GIST_LINK_TO_DB }}" ; \
-          rm -f radioisotopes.py
+            --enhanced-db "${{ secrets.GIST_LINK_TO_DB }}"
           
