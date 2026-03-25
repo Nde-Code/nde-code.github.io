@@ -140,13 +140,11 @@ body.body-class {
     background-color: #4e4e4e;
 }
 
-.menu-dropdown-items a:first-child:hover {
-    background-color: #555555;
+.menu-dropdown-items a:first-of-type:hover {
     border-top-right-radius: 25px;
 }
 
-.menu-dropdown-items a:last-child:hover {
-    background-color: #555555;
+.menu-dropdown-items a:last-of-type:hover {
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
 }
