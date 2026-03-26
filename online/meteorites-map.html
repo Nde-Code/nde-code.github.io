@@ -379,7 +379,7 @@
 
             is_in_loading: false,
 
-            reloadInProgress: false,
+            reload_in_progress: false,
 
             marker_group: null, 
 
@@ -703,7 +703,7 @@
 
             if (!endpoint || !params) return null;
 
-            if (extendedData.is_in_loading || extendedData.reloadInProgress) return null;        
+            if (extendedData.is_in_loading || extendedData.reload_in_progress) return null;        
             
             extendedData.is_in_loading = true;
 
@@ -983,13 +983,13 @@
 
         $(window).on('resize', () => {
 
-            if (extendedData.reloadInProgress) return;
+            if (extendedData.reload_in_progress) return;
 
             const newWidth = $(window).width();
 
             if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) {
 
-                extendedData.reloadInProgress = true;
+                extendedData.reload_in_progress = true;
                 
                 document.location.reload();
             
