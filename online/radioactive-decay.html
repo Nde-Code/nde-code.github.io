@@ -622,12 +622,18 @@
 
 			try {
 
-				const reponse = await fetch("../assets/apps/db/radioisotopes-min.json");
-
-				extendedData.db_data = await reponse.json();
-
+				const response = await fetch("../assets/apps/db/radioisotopes-min.json");
+				
+				if (!response.ok) return false;
+				
+				const data = await response.json();
+				
+				if (!data?.elements || !Array.isArray(data.elements)) return false;
+				
+				extendedData.db_data = data;
+				
 				return true;
-
+				
 			} catch (_err) {
 
 				return false;
