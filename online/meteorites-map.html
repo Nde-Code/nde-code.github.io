@@ -379,6 +379,8 @@
 
             is_in_loading: false,
 
+            reloadInProgress: false,
+
             marker_group: null, 
 
             ranking: 8,
@@ -427,23 +429,31 @@
 
         function getRandomInt(min, max) { return Math.floor(Math.random() * (Math.floor(max) - Math.ceil(min) + 1)) + Math.ceil(min); }
 
-        async function fetchData(apiUrl, params = {}) {
+        async function fetchData(apiUrl, params = {}, timeoutMs = 10000) {
 
             if (!apiUrl) return null;
+            
+            const controller = new AbortController();
 
-            const queryString = new URLSearchParams(params).toString();
-
-            const fullUrl = `${apiUrl}?${queryString}`;
+            const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
             try {
 
-                const response = await fetch(fullUrl);
+                const queryString = new URLSearchParams(params).toString();
+
+                const fullUrl = `${apiUrl}?${queryString}`;
+                
+                const response = await fetch(fullUrl, { signal: controller.signal });
+
+                clearTimeout(timeoutId);
 
                 if (!response.ok) return null;
 
                 return await response.json();
 
             } catch (_err) {
+
+                clearTimeout(timeoutId);
 
                 return null;
 
@@ -693,7 +703,7 @@
 
             if (!endpoint || !params) return null;
 
-            if (extendedData.is_in_loading) return null;        
+            if (extendedData.is_in_loading || extendedData.reloadInProgress) return null;        
             
             extendedData.is_in_loading = true;
 
@@ -847,7 +857,7 @@
 
                         text: `<span id="areas-html"> Ajouter des météorites sur une zone </span>`,
                        
-                        icon: 'fa-solid fa-globe-europe animation',
+                        icon: 'fa-solid fa-earth-europe animation',
                         
                         color: '#4690F2',
                        
@@ -931,17 +941,15 @@
 
                     if (!$menu.is(':visible')) return;
 
-                    const btnOffset = $button.offset();
+                    const btnRect = $button[0].getBoundingClientRect();
 
-                    const menuOffset = $menu.offset();
+                    const menuRect = $menu[0].getBoundingClientRect();
 
-                    const btnCenterX = btnOffset.left + ($button.outerWidth() / 2);
+                    const btnCenterX = btnRect.left + btnRect.width / 2;
 
-                    const menuRightX = menuOffset.left + $menu.outerWidth();
+                    const distanceFromMenuRight = menuRect.right - btnCenterX - 9;
 
-                    const rightValue = Math.round(menuRightX - btnCenterX);
-
-                    $menu[0].style.setProperty('--caret-right', rightValue - (parseFloat($(".fa-solid.fa-bars").css('font-size')) * 0.5) + 'px');
+                    $menu[0].style.setProperty('--caret-right', distanceFromMenuRight + 'px');
 
                 }
 
@@ -949,7 +957,15 @@
 
                     $menu.toggle();
 
-                    if ($menu.is(':visible')) setTimeout(updateCaretPosition, 0);
+                    if ($menu.is(':visible')) {
+
+                        setTimeout(updateCaretPosition, 0);
+
+                        $(window).on('resize.caret', updateCaretPosition); 
+                        
+                    }
+                    
+                    else $(window).off('resize.caret');
 
                 });
 
@@ -967,9 +983,17 @@
 
         $(window).on('resize', () => {
 
+            if (extendedData.reloadInProgress) return;
+
             const newWidth = $(window).width();
 
-            if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) document.location.reload();
+            if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) {
+
+                extendedData.reloadInProgress = true;
+                
+                document.location.reload();
+            
+            }
 
         });
 
