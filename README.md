@@ -26,11 +26,11 @@ Prenez une seconde pour voir le code dans Visual Studio Code: [https://github1s.
 
 - [Logomakr](https://logomakr.com/)
 
-- [Microsoft Copilot](https://copilot.microsoft.com/): Pour générer les diverses images de mon avatar.
+- [Microsoft Copilot](https://copilot.microsoft.com/): pour générer les diverses images de mon avatar.
 
 - [Flaticon](https://www.flaticon.com/): pour les diverses icônes utilisées  
 
-- [Pixabay](https://pixabay.com/fr/illustrations/bleu-triangles-polygone-contexte-1761175/): pour l’image de fond.
+- [Pixabay](https://pixabay.com/fr/illustrations/bleu-triangles-polygone-contexte-1761175/): pour l’image de fond (légèrement modifiée par mes soins).
 
 ## 🧩 Services tiers:
 
