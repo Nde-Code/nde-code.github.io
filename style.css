@@ -8,31 +8,31 @@
 }
 
 .color-blue {
-    color: #005DD9;
+    color: #2FB4E8;
 }
 
 .color-light-blue {
-    color: #4690F2;
+    color: #6AD6FF;
 }
 
 .color-green {
-    color: #28A745;
+    color: #4CCB5A;
 }
 
 .color-red {
-    color: #DC3545;
+    color: #E85A5A;
 }
 
 .color-yellow {
-    color: #F1C31B;
+    color: #F7D44A;
 }
 
 .color-orange {
-    color: #FD7E14;
+    color: #D48A1F;
 }
 
 .color-purple {
-    color: #8A2BE2;
+    color: #A56CFF;
 }
 
 .alone-bold {
@@ -132,8 +132,8 @@ body.body-class {
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
     font-weight: bold;
-    color: #4690F2;
-    border-top: 2px solid #4690F2;
+    color: #6AD6FF;
+    border-top: 2px solid #6AD6FF;
 }
 
 .menu-dropdown-items a:hover {
@@ -309,7 +309,7 @@ h1.website-main-panel-title {
 }
 
 .website-main-panel-description i.point {
-    color: #4690F2;
+    color: #6AD6FF;
     font-size: 14px;
 }
 
@@ -431,7 +431,7 @@ p.copyright-text a.copyright-link {
 
 header.modalbox-header-class {
     padding: 18px 20px;
-    background: linear-gradient(135deg, #4690F2 0%, #005DD9 50%, #0047A6 100%);
+    background: linear-gradient(135deg, #6AD6FF 0%, #2FB4E8 50%, #0A6FA0 100%);
     border-bottom: 4px solid #404040;
     font-weight: bold;
     font-size: 24px;
@@ -491,8 +491,8 @@ select,
 }
 
 .modalbox-range::-moz-range-thumb {
-    background: #005DD9;
-    border: 4px solid #0047A6;
+    background: #2FB4E8;
+    border: 4px solid #0A6FA0;
     height: 42px;
     width: 60px;
     border-radius: 50px;
@@ -500,13 +500,13 @@ select,
 }
 
 .modalbox-range::-moz-range-thumb:hover {
-    background: #4690F2;
+    background: #6AD6FF;
 }
 
 .modalbox-range::-webkit-slider-thumb {
     -webkit-appearance: none;
-    background: #005DD9;
-    border: 4px solid #0047A6;
+    background: #2FB4E8;
+    border: 4px solid #0A6FA0;
     height: 42px;
     width: 60px;
     border-radius: 50px;
@@ -514,7 +514,7 @@ select,
 }
 
 .modalbox-range::-webkit-slider-thumb:hover {
-    background: #4690F2;
+    background: #6AD6FF;
 }
 
 .modalbox-description {
@@ -531,14 +531,14 @@ select,
 }
 
 .modalbox-description i.point {
-    color: #4690F2;
+    color: #6AD6FF;
     font-size: 14px;
 }
 
 p.modalbox-errors-warnings-class {
     text-align: center;
     font-size: 22px;
-    color: #DC3545;
+    color: #E85A5A;
     font-weight: bold;
     margin: 0 30px 40px 30px;
     text-shadow: 3px 3px 7px #000000;
@@ -546,7 +546,7 @@ p.modalbox-errors-warnings-class {
 }
 
 p.modalbox-errors-warnings-class:hover {
-    color: #E55361;
+    color: #E56A75;
 }
 
 .modalbox-bottom {
@@ -558,8 +558,8 @@ p.modalbox-errors-warnings-class:hover {
     font-size: 18px;
     border-radius: 50px;
     color: white;
-    background: #005DD9;
-    border: 4px solid #0047A6;
+    background: #2FB4E8;
+    border: 4px solid #0A6FA0;
     padding: 12px 28px;
     font-weight: bold;
     cursor: pointer;
@@ -567,7 +567,7 @@ p.modalbox-errors-warnings-class:hover {
 }
 
 .modalbox-btn:hover {
-    background: #4690F2;
+    background: #6AD6FF;
 }
 
 .overlay {
