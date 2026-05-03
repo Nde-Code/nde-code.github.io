@@ -26,7 +26,7 @@ Prenez une seconde pour voir le code dans Visual Studio Code: [https://github1s.
 
 - [Logomakr](https://logomakr.com/)
 
-- [Perchance – AI Icon Generator](https://perchance.org/ai-icon-generator)
+- [Microsoft Copilot](https://copilot.microsoft.com/): Pour générer les diverses images de mon avatar.
 
 - [Flaticon](https://www.flaticon.com/): pour les diverses icônes utilisées  
 
