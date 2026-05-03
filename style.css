@@ -42,7 +42,7 @@
 body.body-class {
     margin: 0;
     padding: 0;
-    background-color: #404040;
+    background-color: #2a2a2a;
     overflow: hidden;
 }
 
@@ -63,10 +63,10 @@ body.body-class {
 
 .menu-class {
     overflow: hidden;
-    background: #323232;
+    background: #3a3a3a;
     margin-left: 15%;
     margin-right: 15%;
-    border: 4px solid #404040;
+    border: 4px solid #4a4a4a;
     border-radius: 25px;
     box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.5);
 }
@@ -100,13 +100,13 @@ body.body-class {
 
 .menu-class a:hover,
 .menu-dropdown:hover .menu-dropdown-btn {
-    background-color: #4e4e4e;
+    background-color: #4a4a4a;
 }
 
 .menu-dropdown-items {
     display: none;
     position: absolute;
-    background-color: #404040;
+    background-color: #3a3a3a;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.25);
     z-index: 1;
@@ -137,7 +137,7 @@ body.body-class {
 }
 
 .menu-dropdown-items a:hover {
-    background-color: #4e4e4e;
+    background-color: #4a4a4a;
 }
 
 .menu-dropdown-items a:first-of-type:hover {
@@ -269,10 +269,10 @@ body.body-class {
 
 .website-main-panel {
     overflow-y: scroll;
-    background: linear-gradient(135deg, #555555 0%, #444444 40%, #333333 75%, #222222 100%);
+    background: linear-gradient(135deg, #4a4a4a 0%, #424242 40%, #3a3a3a 75%, #323232 100%);
     padding: 20px;
     margin-top: 20px;
-    border: 4px solid #404040;
+    border: 4px solid #4a4a4a;
     color: white;
     -webkit-box-shadow: 2px 4px 10px 4px rgba(0, 0, 0, 0.6);
     box-shadow: 2px 4px 10px 4px rgba(0, 0, 0, 0.6);
@@ -356,7 +356,7 @@ h1.website-main-panel-title {
 .website-footer {
     -webkit-box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.65);
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.65);
-    background: #323232;
+    background: #2a2a2a;
     width: 100%;
     color: white;
     margin-top: 20px;
@@ -378,7 +378,7 @@ div.social-media i {
 /* Les classes sont toujours appliquées dans le HTML si nécessaire.*/
 
 div.copyright-container {
-    background: #404040;
+    background: #3a3a3a;
     margin: 0;
     padding: 0;
 }
@@ -405,8 +405,8 @@ p.copyright-text a.copyright-link {
     width: 92%;
     max-width: 675px;
     max-height: 90dvh;
-    background: linear-gradient(135deg, #555555 0%, #444444 40%, #333333 75%, #222222 100%);
-    border: 4px solid #404040;
+    background: linear-gradient(135deg, #4a4a4a 0%, #424242 40%, #3a3a3a 75%, #323232 100%);
+    border: 4px solid #4a4a4a;
     border-radius: 40px;
     color: white;
     font-size: 20px;
@@ -432,7 +432,7 @@ p.copyright-text a.copyright-link {
 header.modalbox-header-class {
     padding: 18px 20px;
     background: linear-gradient(135deg, #6AD6FF 0%, #2FB4E8 50%, #0A6FA0 100%);
-    border-bottom: 4px solid #404040;
+    border-bottom: 4px solid #4a4a4a;
     font-weight: bold;
     font-size: 24px;
 }
@@ -475,8 +475,8 @@ select,
     box-sizing: border-box;
     width: 100%;
     height: 50px;
-    background: #323232;
-    border: 4px solid #757375;
+    background: #3a3a3a;
+    border: 4px solid #5a5a5a;
     outline: none;
     color: white;
     font-size: 22px;
