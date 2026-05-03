@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+<head>
+
+	<meta charset="UTF-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Nathan Debilloëz</title>
+
+	<meta name="description" content="Bienvenue sur la page personnelle et officielle de Nathan Debilloëz.">
+
+	<meta name="keywords" content="Nathan Debilloëz">
+
+	<meta name="author" content="Nathan Debilloëz">
+
+	<link rel="stylesheet" href="style.css">
+
+	<style>
+
+		.about-btn {
+			font-size: 20px;
+			border-radius: 50px;
+			color: white;
+			background: #005DD9;
+			transition: all 0.2s ease-out 0s;
+			font-weight: bold;
+			border: 4px solid #0047A6;
+			padding: 15px 30px;
+			cursor: pointer;
+		}
+
+		.about-btn:hover {
+			background: #4690F2;
+		}
+
+		.status-btn {
+			font-size: 20px;
+			border-radius: 50px;
+			color: white;
+			background: #8A2BE2; 
+			transition: all 0.2s ease-out 0s;
+			font-weight: bold;
+			border: 4px solid #7A1FD1;
+			padding: 15px 30px;
+			cursor: pointer;
+		}
+
+		.status-btn:hover {
+			background: #9F8FEF;
+		}
+
+	</style>
+
+	<link rel="stylesheet" href="assets/css/fontawesome.css">
+
+	<link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
+
+	<link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+
+	<link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+
+	<link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+
+	<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon/android-icon-192x192.png">
+
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+
+	<link rel="manifest" href="assets/favicon/manifest.json">
+
+	<meta name="msapplication-TileColor" content="#ffffff">
+
+	<meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
+	
+</head>
+
+<body class="body-class">
+
+    <div id="modalbox-open-div"></div>
+
+	<div class="overlay"></div>
+	
+	<div class="main-html">
+
+		<div class="main-container">
+
+			<div class="website-header">
+
+				<div class="menu-class">
+
+					<div class="menu-mobile">
+
+						<a id="display-mobile-menu" aria-label="Ouvrir le menu mobile."><i class="fa-solid fa-bars"></i></a>
+
+					</div>
+
+					<a href="/" class="menu-title"><strong>Nathan Debilloëz</strong></a>
+
+					<a href="mailto:nathan.debilloez@outlook.com" class="menu-item">Contact</a>
+
+					<a id="notes-btn-id" class="menu-item">Notes</a>
+
+					<!-- Provisoirement, le href contient la racine. -->
+
+					<a href="/" class="menu-item menu-right" target="_blank" rel="noopener noreferrer">
+    					
+						Articles <i class="fas fa-external-link-alt fa-xs"></i>
+
+					</a>
+
+					<div class="menu-dropdown">
+
+						<button class="menu-dropdown-btn">Projets
+
+							<i class="fa fa-caret-down"></i>
+
+						</button>
+
+						<div class="menu-dropdown-items">
+
+							<a href="online/meteorites-map">Carte interactive des chutes de météorites sur Terre, recensées par la NASA</a>
+
+							<a href="online/interpolation-playground">Tracer un polynôme de Lagrange, une spline cubique et un polynôme de régression</a>
+
+							<a href="online/foucault">Simuler un pendule de Foucault</a>
+
+							<a href="online/radioactive-decay">Établir une équation de désintégration radioactive</a>
+
+							<a href="online/harmonic-waves">Simuler des ondes harmoniques</a>
+
+							<a href="https://github.com/Nde-Code?tab=repositories" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-plus"></i> En voir d'autres sur mon GitHub</a>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="white-line"></div>
+
+			<div class="website-main-panel">
+
+				<img class="website-main-panel-img" src="assets/avatar.webp" alt="Avatar">
+
+				<h1 class="website-main-panel-title">Bienvenue sur mon site:</h1>
+
+				<p class="website-main-panel-description alone-bold"> Mon repère sur lequel vous pourrez trouver: </p>
+
+				<p class="website-main-panel-description"><i class="fa-solid fa-square point"></i> Des informations me concernant, moi et mes projets.</p>
+
+				<p class="website-main-panel-description"><i class="fa-solid fa-square point"></i> Mes projets axés sur l'informatique ou la technologie.</p>
+
+				<p class="website-main-panel-description"><i class="fa-solid fa-square point"></i> Mes articles sur l'informatique et la technologie.</p>
+				
+			</div>
+
+            <div class="white-line"></div>
+
+			<div class="website-bottom">
+
+				<a class="about-btn">
+
+					<i class="fa-solid fa-gear rotate-animation"></i>
+
+					...
+
+				</a>
+
+				<a class="status-btn" href="https://nde-status.instatus.com/" target="_blank" rel="noopener noreferrer">
+
+					<i class="fa-solid fa-gear rotate-animation"></i>
+
+					...
+
+				</a>
+			
+			</div>
+
+			<div class="website-footer">
+
+				<div class="social-media">
+
+					<a href="https://x.com/nde_code" target="_blank" rel="noopener noreferrer" title="Mon X" aria-label="Voir mon profil X (Twitter)."><i class="fa-brands fa-x-twitter x"></i></a>
+
+					<a href="https://reddit.com/user/nde_code" target="_blank" rel="noopener noreferrer" title="Mon Reddit" aria-label="Voir mon profil Reddit."><i class="fa-brands fa-reddit-alien reddit"></i></a>
+
+					<a href="https://www.kaggle.com/nathandebilloez" target="_blank" rel="noopener noreferrer" title="Mon Kaggle" aria-label="Voir mon profil Kaggle."><i class="fa-brands fa-kaggle kaggle"></i></a>
+
+					<a href="https://github.com/Nde-Code" target="_blank" rel="noopener noreferrer" title="Mon GitHub" aria-label="Voir mon profil GitHub."><i class="fa-brands fa-github github"></i></a>
+
+				</div>
+
+				<div class="copyright-container">
+
+					<p class="copyright-text"> © <span id="copyright"></span> Nathan Debilloëz </p>
+
+					<p class="copyright-text"> Mon Favicon a été fait avec <a href="https://logomakr.com/" target="_blank" rel="noopener noreferrer" class="copyright-link">Logomakr</a>.</p>
+						
+					<p class="copyright-text"> Mon avatar a été généré avec <a href="https://copilot.microsoft.com/" target="_blank" rel="noopener noreferrer" class="copyright-link">Microsoft Copilot</a>.</p>
+						
+					<p class="copyright-text"> Le code source complet est disponible sur <a href="https://github.com/Nde-Code/nde-code.github.io" target="_blank" rel="noopener noreferrer" class="copyright-link">mon GitHub</a>.</p>
+					
+				</div>
+				
+			</div>
+
+		</div>
+
+		<div class="modalbox-class" id="modalbox-about" role="dialog">
+
+            <header class="modalbox-header-class">
+
+                À propos
+
+                <a class="modalbox-header-close" id="close-about-btn" aria-label="Fermer la boîte de dialogue.">
+
+                    <i class="fa fa-times" aria-hidden="true"></i>
+
+                </a>
+
+            </header>
+
+            <div class="modalbox-main-container">
+
+				<div class="modalbox-text-container">
+
+					<p class="modalbox-description">
+
+						Je m'appelle Nathan, j'ai <span id="get-my-age"></span> ans. 
+
+						Je suis étudiant en école d'ingénieurs orienté informatique et mathématiques.
+
+						Je suis passionné par la création de logiciels, de jeux et de tout ce qui touche à l'informatique.
+
+					</p>
+
+					<p class="modalbox-description">
+
+						En dehors de mes projets (liés à l'informatique), je fais du sport, m'intéresse aux nouvelles technologies et à bien d'autres domaines. 
+						
+						En réalité, mon intérêt s'étend à presque tout.
+					
+					</p>
+
+					<p class="modalbox-description">
+
+						J'ai commencé la programmation en autodidacte début 2020, à l'âge de 15 ans. 
+						
+						Mon premier langage, et toujours mon favori, est JavaScript, que j'utilise pour développer ce site, des APIs et d'autres projets.
+					
+					</p>
+
+					<p class="modalbox-description">
+
+						Sans m'y limiter, j'explore aussi d'autres langages comme Python pour scripts, automatisations, IA, ... et C++ pour des projets plus complexes, notamment ceux liés aux systèmes.
+						
+						Je m'intéresse aussi à Linux: c'est un noyau open-source que j'exploite pour divers usages comme mon NAS, ou pour la remise en service d'anciens ordinateurs.
+					
+					</p>
+
+					<p class="modalbox-description">
+
+						Je m'intéresse aussi à la sécurité informatique en utilisant des outils comme Wireshark, Burp Suite, VirusTotal ou encore Shodan (où je suis membre).
+					
+					</p>
+
+				</div>
+			
+			</div>
+			
+        </div>
+
+	</div>
+
+	<script data-goatcounter="https://nde-stats.goatcounter.com/count" async src="js/goatcounter.js"></script>
+
+	<script src="js/jquery.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <script>     
+
+		function getAge(birthday) {
+
+			const today = new Date();
+
+			const birthDate = new Date(birthday);
+
+			let age = (today.getFullYear() - birthDate.getFullYear());
+
+			const m = (today.getMonth() - birthDate.getMonth());
+
+			if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--;
+
+			return age;
+
+		}
+
+		$(document).ready(function() {
+
+			if ($(window).width() <= 1024) {
+				
+				$(".about-btn").html('<i class="fa-solid fa-user"></i>');
+
+				$(".status-btn").html('<i class="fa-solid fa-tower-broadcast"></i>');
+			
+			}
+
+			else {
+				
+				$(".about-btn").html('<i class="fa-solid fa-user"></i> À propos de moi et de mes projets');
+
+				$(".status-btn").html('<i class="fa-solid fa-tower-broadcast"></i> Voir le status de mes services');
+			
+			}
+
+			$("#get-my-age").text(getAge("2004/09/11"));
+
+			$(".about-btn").on("click", function () { $('#modalbox-about, .overlay').show(); });
+
+			$('#close-about-btn').on('click', () => { $('#modalbox-about, .overlay').hide(); });
+
+			if ($(window).width() <= 768) {
+
+				$("#modalbox-about").css({
+
+					"width": globalData.modalbox_size, 
+					
+					"max-width": "95%"                  
+					
+				});
+
+			}
+			
+			else {
+
+				$("#modalbox-about").css({
+
+					"width": globalData.modalbox_size,
+
+					"max-width": "675px"               
+					
+				});
+
+			}
+
+		});
+		
+    </script>
+	
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+name: Validate Nuclear DB
+
+on:
+
+  # When I push on this path, this job has to be run.
+  push:
+    paths:
+      - 'assets/apps/db/radioisotopes-min.json'
+
+  # Provide the option to run it manually if required.
+  workflow_dispatch:
+
+jobs:
+
+  validate:
+
+    # Execute this job on a Linux environment.
+    runs-on: ubuntu-latest
+
+    # Define read-only permission.
+    permissions:
+      contents: read
+
+    steps:
+    
+      # 0. Initialize project sources.
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      # 1. Install the Python interpreter.
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      # 2. Run the script from secret URL.
+      - name: Validate database
+        run: |
+          curl -sL "${{ secrets.GIST_SECRET_SCRIPT }}" -o radioisotopes.py && \
+          python radioisotopes.py \
+            --input assets/apps/db/radioisotopes-min.json \
+            --enhanced-db "${{ secrets.GIST_LINK_TO_DB }}"
+          
