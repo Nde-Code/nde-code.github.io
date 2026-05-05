@@ -375,6 +375,10 @@ div.social-media i {
     cursor: pointer;
 }
 
+div.social-media i:hover {
+    color: #e6e6e6;
+}
+
 /* Les classes sont toujours appliquées dans le HTML si nécessaire.*/
 
 div.copyright-container {
