@@ -34,7 +34,7 @@ Prenez une seconde pour voir le code dans Visual Studio Code: [https://github1s.
 
 ## 🧩 Services tiers:
 
-- [Goatcounter](https://www.goatcounter.com/): outil de statistiques web respectueux de la vie privée.
+- [Cloudflare web analytics](https://www.cloudflare.com/fr-fr/web-analytics/): outil de statistiques web respectueux de la vie privée (notamment du RGPD et sans empreinte numérique).
 
 - [MapTiler](https://www.maptiler.com/): service de tuiles "raster" pour les cartes Leaflet.js.
 

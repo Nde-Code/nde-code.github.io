@@ -83,7 +83,7 @@ function getNotesTemplate() {
 
                 <h2>Services tiers:</h2>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Goatcounter:</strong> pour obtenir certaines informations telles que le nombre de visiteurs, leur localisation (pays uniquement), leur système d'exploitation, ... Ce service est entièrement conforme au RGPD et ne nécessite pas de bannière de cookies. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Cloudflare Web Analytics:</strong> pour obtenir certaines informations telles que le nombre de visiteurs, leur localisation (pays uniquement), leur système d’exploitation, etc. Ce service est entièrement conforme au RGPD et respecte la vie privée (notamment grâce à l’absence d’empreinte numérique). Par conséquent, il ne nécessite pas de bannière de cookies. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>MapTiler:</strong> pour réaliser des cartes avec Leaflet.js, j'utilise un service qui fournit des tuiles raster un peu plus qualitatives que celles d'OpenStreetMap. </p>
 
