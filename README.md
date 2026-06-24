@@ -42,7 +42,7 @@ Prenez une seconde pour voir le code dans Visual Studio Code: [https://github1s.
 
 ## 🎯 Notes:
 
-La base de données intégrée à mon **logiciel de désintégration radioactive** a été conçue **entièrement par mes soins**, à partir de sources variées.  
+La base de données intégrée à mon logiciel de désintégration radioactive a été conçue **entièrement par mes soins**, à partir de sources variées.  
 
 Ce travail a nécessité un investissement conséquent en temps et en recherche.
 
@@ -56,7 +56,7 @@ Deux versions sont disponibles :
 
     - Version très simplement minimisée via un outil, très peu pratique pour la maintenance.
 
-> 🔓 Son utilisation est libre, mais une **mention de crédit** serait grandement appréciée.
+> 🔓 Son utilisation est libre, mais une mention de crédit serait grandement appréciée.
 
 ## ⚖️ Licence:
 
