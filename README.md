@@ -2,7 +2,7 @@
 
 Code source de mon site web personnel.
 
-Visitez le site ici: [nde-code.github.io](https://nde-code.github.io/)
+Visitez le site ici: [https://nde-code.github.io/](https://nde-code.github.io/)
 
 Prenez une seconde pour voir le code dans Visual Studio Code: [https://github1s.com/Nde-Code/nde-code.github.io](https://github1s.com/Nde-Code/nde-code.github.io)
 
