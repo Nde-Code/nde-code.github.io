@@ -71,8 +71,6 @@ function getNotesTemplate() {
                    
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Perchance:</strong> pour réaliser l'avatar sur la page d'accueil.</p>
                     
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Flaticon:</strong> pour les différentes ressources utilisés dans mes projets. je renseigne toujours l'utilisation de ces graphismes dans les pieds de page ou dans un fichier README.Md. </p>
-                    
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
                   
             </div>
