@@ -2,7 +2,7 @@ name: Validate Nuclear DB
 
 on:
 
-  # When I push on this path, this job has to be run.
+  # When I push on this path, this job has to be run:
   push:
     paths:
       - 'assets/apps/db/radioisotopes-min.json'
