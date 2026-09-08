@@ -22,7 +22,7 @@ jobs:
       contents: read
 
     steps:
-    
+
       # 0. Initialize project sources:
       - name: Checkout repository
         uses: actions/checkout@v7

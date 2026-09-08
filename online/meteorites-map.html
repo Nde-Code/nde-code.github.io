@@ -12,7 +12,7 @@
 
 	<title>Nathan Debilloëz · Carte</title>
 
-	<meta name="description" content="Carte interactive des chutes de météorites sur Terre, recensées par la NASA."> 
+	<meta name="description" content="Carte interactive des chutes de météorites sur Terre, recensées par la NASA.">
 
 	<meta name="keywords" content="Nathan Debilloëz · Carte">
 
@@ -69,12 +69,12 @@
             color: #fff !important;
             font-size: 14px !important;
         }
-        
+
         .leaflet-custom-marker {
-            width: 10px;               
-            height: 10px;             
-            border-radius: 50%;        
-            box-sizing: border-box;    
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            box-sizing: border-box;
             box-shadow: 0 0 2px 2px #6AD6FF;
             background: #6AD6FF;
             border: 3px solid #0A6FA0;
@@ -136,8 +136,8 @@
             border-radius: 12px;
             -webkit-box-shadow: 0 6px 18px rgba(0,0,0,0.3);
             box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-            max-height: 70vh;  
-            overflow: visible; 
+            max-height: 70vh;
+            overflow: visible;
         }
 
         .dropdown-menu::before {
@@ -203,8 +203,8 @@
                 font-size: 10px !important;
             }
             .maptiler-logo {
-                left: auto;      
-                right: 10px;     
+                left: auto;
+                right: 10px;
             }
             .maptiler-logo img {
                 height: 18px;
@@ -220,13 +220,13 @@
         @media (max-width: 420px) {
 
             .dropdown-item {
-                font-size: 12px;     
-                padding: 6px 10px;   
-                gap: 6px;          
+                font-size: 12px;
+                padding: 6px 10px;
+                gap: 6px;
             }
 
             .dropdown-item i {
-                width: 14px;         
+                width: 14px;
                 font-size: 12px;
                 flex-shrink: 0;
             }
@@ -237,19 +237,19 @@
         @media screen and (max-height: 620px) {
 
             .dropdown-item {
-                font-size: 10px;     
-                padding: 6px 10px;   
-                gap: 6px;          
+                font-size: 10px;
+                padding: 6px 10px;
+                gap: 6px;
             }
 
             .dropdown-item i {
-                width: 14px;         
+                width: 14px;
                 font-size: 10px;
                 flex-shrink: 0;
             }
 
         }
-        
+
     </style>
 
     <link rel="stylesheet" href="../assets/css/leaflet.css">
@@ -302,7 +302,7 @@
 
     </a>
 
-    <div class="modalbox-class" id="modalbox-stats" role="dialog"> 
+    <div class="modalbox-class" id="modalbox-stats" role="dialog">
 
         <header class="modalbox-header-class">
 
@@ -317,10 +317,10 @@
         </header>
 
         <div class="modalbox-main-container" id="stats-container"></div>
-        
+
     </div>
 
-    <div class="modalbox-class" id="modalbox-notes" role="dialog"> 
+    <div class="modalbox-class" id="modalbox-notes" role="dialog">
 
         <header class="modalbox-header-class">
 
@@ -343,7 +343,7 @@
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Le projet utilise une API externe, qui est également l'un de mes autres projets. Vous pouvez cliquer <a href="https://github.com/Nde-Code/MeteoritesAPI" target="_blank" rel="noopener noreferrer" class="color-light-blue">[ici]</a> pour le découvrir.</p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Le quota est fixé à une requête par seconde. </p>
-                
+
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> J'utilise une tuile fournie par <a href="https://www.maptiler.com/" target="_blank" rel="noopener noreferrer" class="color-light-blue"> [MapTiler] </a> pour avoir un fond de carte sympa. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> Pour prévenir les abus, l'API utilisée par le logiciel exploite votre adresse IP (afin de limiter le nombre de requêtes), mais celle-ci est hachée (via SHA-256) avec un "SALT" solide et robuste. Aucune IP brute ni aucune autre information personnelle n'est collectée. N'hésitez pas à me contacter pour toute question relative à ce sujet. <b> En utilisant ce logiciel ou/et l'API associée, vous confirmez être en accord avec les présentes conditions. </b></p>
@@ -351,7 +351,7 @@
             </div>
 
         </div>
-        
+
     </div>
 
     <script src="../js/jquery.js"></script>
@@ -361,11 +361,11 @@
     <script>
 
         var extendedData = {
-            
+
             map: null,
 
             DEFAULT_ZOOM: 5,
-            
+
             BOUNDS_ARRAY: [[-90, -Infinity], [90, Infinity]],
 
             bounds: null,
@@ -380,7 +380,7 @@
 
             reload_in_progress: false,
 
-            marker_group: null, 
+            marker_group: null,
 
             ranking: 8,
 
@@ -391,7 +391,7 @@
                 { name: "Amérique du Nord", center_latitude: 39, center_longitude: -98, radius: 2500 },
 
                 { name: "Amérique centrale", center_latitude: 15, center_longitude: -90, radius: 1500 },
-                
+
                 { name: "Amérique du Sud", center_latitude: -15, center_longitude: -60, radius: 2500 },
 
                 { name: "Afrique du Nord", center_latitude: 28, center_longitude: 10, radius: 1000 },
@@ -421,7 +421,7 @@
             starting_width: $(window).width(),
 
 			tol_resize: 10
-        
+
         };
 
         function escapeHTML(value) { return String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;"); }
@@ -431,7 +431,7 @@
         async function fetchData(apiUrl, params = {}, timeoutMs = 10000) {
 
             if (!apiUrl) return null;
-            
+
             const controller = new AbortController();
 
             const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
@@ -441,7 +441,7 @@
                 const queryString = new URLSearchParams(params).toString();
 
                 const fullUrl = `${apiUrl}?${queryString}`;
-                
+
                 const response = await fetch(fullUrl, { signal: controller.signal });
 
                 clearTimeout(timeoutId);
@@ -549,9 +549,9 @@
                     items: [
 
                         { label: "Masse minimale", value: (statsJSON.minMass !== Infinity) ? statsJSON.minMass + " g" : "N/A" },
-                       
+
                         { label: "Masse maximale", value: (statsJSON.maxMass !== -Infinity) ? (statsJSON.maxMass / 1000).toFixed(6) + " kg" : "N/A" },
-                        
+
                         { label: "Masse moyenne", value: (statsJSON.avgMass !== null) ? (statsJSON.avgMass / 1000).toFixed(6) + " kg" : "N/A" }
 
                     ]
@@ -561,15 +561,15 @@
                 {
 
                     title: "Statistiques relatives à l'année:",
-                    
+
                     items: [
 
                         { label: "Année la plus ancienne", value: (statsJSON.minYear !== Infinity) ? statsJSON.minYear : "N/A" },
-                       
+
                         { label: "Année la plus récente", value: (statsJSON.maxYear !== -Infinity) ? statsJSON.maxYear : "N/A" },
-                        
+
                         { label: "Année moyenne", value: (statsJSON.avgYear !== null) ? statsJSON.avgYear : "N/A" }
-                    
+
                     ]
 
                 }
@@ -591,15 +591,15 @@
                 `).join("");
 
                 return `
-                
+
                         <div class="modalbox-text-container">
-                            
+
                             <h2>${section.title}</h2>
-                            
+
                             ${itemsHtml}
-                            
+
                         </div>
-                    
+
                     `;
 
             }).join("");
@@ -617,9 +617,9 @@
                         <p class="modalbox-description">
 
                             <i class="fa-solid fa-square point"></i>
-                           
+
                             Classe ${escapeHTML(recclass)}: <span class="color-light-blue alone-bold">${count} (${((count / statsJSON.totalCount) * 100).toFixed(2)} %)</span>
-                       
+
                         </p>
 
                     `).join("")}
@@ -679,7 +679,7 @@
                 <b>Coordonnées: </b> <span> (${latitude.toFixed(4)}°, ${longitude.toFixed(4)}°)</span> <br>
 
                 <b>Lien permanent: </b> <span> <a href="https://meteorites.nde-code.workers.dev/get?id=${encodeURIComponent(data.id)}" target="_blank" rel="noopener noreferrer">[Consulter]</a> </span>
-            
+
                 `;
 
             const customIcon = L.divIcon({
@@ -702,8 +702,8 @@
 
             if (!endpoint || !params) return null;
 
-            if (extendedData.is_in_loading || extendedData.reload_in_progress) return null;        
-            
+            if (extendedData.is_in_loading || extendedData.reload_in_progress) return null;
+
             extendedData.is_in_loading = true;
 
             extendedData.marker_group.clearLayers();
@@ -727,7 +727,7 @@
                 $icon.removeClass().addClass(iconClass);
 
                 if (targetId === 'areas-html') $label.html($label.data('default') || "Ajouter des météorites sur une zone");
-               
+
                 else $label.text($label.data('default') || "Réajouter aléatoirement des météorites");
 
                 $li.removeClass('loading');
@@ -758,10 +758,10 @@
 
                     reset();
 
-                    return data; 
-                    
+                    return data;
+
                 }
-                
+
                 else {
 
                     $icon.removeClass().addClass('fa-solid fa-times animation');
@@ -838,28 +838,28 @@
 
                 const options = [
 
-                    { text: '<span id="random-html"> Ajouter aléatoirement des météorites sur la carte </span>', icon: 'fa-solid fa-plus animation', color: '#6AD6FF', action: async () => { 
+                    { text: '<span id="random-html"> Ajouter aléatoirement des météorites sur la carte </span>', icon: 'fa-solid fa-plus animation', color: '#6AD6FF', action: async () => {
 
                             const $li = $('#random-html').closest('li');
-                            
+
                             if ($li.hasClass('loading')) return;
-                            
+
                             const count = getRandomInt(extendedData.RANDOM_RANGE[0], extendedData.RANDOM_RANGE[1]);
 
                             await getMeteoritesFromDB('/random', { count }, 'random-html');
 
                         }
-                    
-                    }, 
+
+                    },
 
                     {
 
                         text: `<span id="areas-html"> Ajouter des météorites sur une zone </span>`,
-                       
+
                         icon: 'fa-solid fa-earth-europe animation',
-                        
+
                         color: '#6AD6FF',
-                       
+
                         action: async () => {
 
                             const $span = $('#areas-html');
@@ -905,20 +905,20 @@
                         }
 
                     },
-                    
-                    { text: '<span id="meteorites-html"> Aucune météorite sur la carte </span>', icon: 'fa-solid fa-meteor', color: '#6AD6FF' }, 
-                                        
-                    { text: `<span id="stats-html"> Aucune statistique disponible sur l'échantillon </span>`, icon: 'fa-solid fa-chart-line', color: '#6AD6FF', action: () => {} }, 
 
-                    { text: 'Quelques notes du développeur', icon: 'fa-solid fa-book', color: '#6AD6FF', action: () => { 
-                                            
+                    { text: '<span id="meteorites-html"> Aucune météorite sur la carte </span>', icon: 'fa-solid fa-meteor', color: '#6AD6FF' },
+
+                    { text: `<span id="stats-html"> Aucune statistique disponible sur l'échantillon </span>`, icon: 'fa-solid fa-chart-line', color: '#6AD6FF', action: () => {} },
+
+                    { text: 'Quelques notes du développeur', icon: 'fa-solid fa-book', color: '#6AD6FF', action: () => {
+
                             $('#modalbox-notes, .overlay').show();
 
                         }
 
                     },
 
-                    { text: `${new Date().getFullYear()} Nathan Debilloëz`, icon: 'fa-regular fa-copyright', color: '#6AD6FF', action: () => { window.location.href = '/'; } } 
+                    { text: `${new Date().getFullYear()} Nathan Debilloëz`, icon: 'fa-regular fa-copyright', color: '#6AD6FF', action: () => { window.location.href = '/'; } }
 
                 ];
 
@@ -927,7 +927,7 @@
                     const $item = $('<li>', { class: 'dropdown-item' });
 
                     $('<i>', { class: option.icon, css: { color: option.color, marginRight: '18px' } }).appendTo($item);
-                    
+
                     $item.append(option.text);
 
                     if (option.action) $item.on('click', option.action);
@@ -960,10 +960,10 @@
 
                         setTimeout(updateCaretPosition, 0);
 
-                        $(window).on('resize.caret', updateCaretPosition); 
-                        
+                        $(window).on('resize.caret', updateCaretPosition);
+
                     }
-                    
+
                     else $(window).off('resize.caret');
 
                 });
@@ -989,9 +989,9 @@
             if (Math.abs(extendedData.starting_width - newWidth) > extendedData.tol_resize) {
 
                 extendedData.reload_in_progress = true;
-                
+
                 document.location.reload();
-            
+
             }
 
         });
@@ -999,10 +999,10 @@
         $(document).ready(function () {
 
             setRealVH();
-            
+
             $('#close-stats').on('click', () => $('#modalbox-stats, .overlay').hide());
-        
-            $('#close-notes').on('click', () => $('#modalbox-notes, .overlay').hide()); 
+
+            $('#close-notes').on('click', () => $('#modalbox-notes, .overlay').hide());
 
             const windowWidth = $(window).width();
 
@@ -1017,7 +1017,7 @@
                 });
 
             }
-            
+
             else {
 
                 $('.modalbox-class').css({
@@ -1029,7 +1029,7 @@
                 });
 
             }
-        
+
         });
 
         extendedData.bounds = L.latLngBounds(extendedData.BOUNDS_ARRAY);

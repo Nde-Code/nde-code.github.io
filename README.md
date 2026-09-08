@@ -42,7 +42,7 @@ Visitez le site ici: [https://nde-code.github.io/](https://nde-code.github.io/)
 
 ## 🎯 Remarques:
 
-La base de données intégrée à mon logiciel de désintégration radioactive a été conçue **entièrement par mes soins**, à partir de sources variées.  
+La base de données intégrée à mon logiciel de désintégration radioactive a été conçue **entièrement par mes soins**, à partir de sources variées.
 
 Ce travail a nécessité un investissement conséquent en temps et en recherche.
 
