@@ -67,7 +67,7 @@ function getNotesTemplate() {
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Pixlr:</strong> pour retoucher l'image de fond du site.</p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Logomakr:</strong> pour créer mon "favicon".</p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Logomakr:</strong> pour créer mon favicon.</p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
 
