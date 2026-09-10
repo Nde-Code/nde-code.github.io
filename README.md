@@ -36,9 +36,9 @@ Visitez le site ici: [https://nde-code.github.io/](https://nde-code.github.io/)
 
 - [Cloudflare Web Analytics](https://www.cloudflare.com/fr-fr/web-analytics/): outil de statistiques web respectueux de la vie privée (notamment du RGPD et sans empreinte numérique).
 
-- [MapTiler](https://www.maptiler.com/): service de tuiles "raster" pour les cartes Leaflet.js.
+- [MapTiler](https://www.maptiler.com/): service de tuiles *raster* pour les cartes Leaflet.js.
 
-- [Instatus](https://instatus.com/) : pour la surveillance de mon site web et d'autres de mes services.
+- [Instatus](https://instatus.com/): pour la surveillance de mon site web et d'autres de mes services.
 
 ## 🎯 Remarques:
 
@@ -46,7 +46,7 @@ La base de données intégrée à mon logiciel de désintégration radioactive a
 
 Ce travail a nécessité un investissement conséquent en temps et en recherche.
 
-Deux versions sont disponibles :
+Deux versions sont disponibles:
 
 - une **version lisible** et facilement modifiable [ici](https://gist.github.com/Nde-Code/0dc819d80ee1d593d7d27d138fc68292).
 

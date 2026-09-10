@@ -69,8 +69,6 @@ function getNotesTemplate() {
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Logomakr:</strong> pour créer mon "favicon".</p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Perchance:</strong> pour réaliser l'avatar sur la page d'accueil.</p>
-
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
 
             </div>
@@ -83,7 +81,7 @@ function getNotesTemplate() {
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Cloudflare Web Analytics:</strong> pour obtenir certaines informations telles que le nombre de visiteurs, leur localisation (pays uniquement), leur système d'exploitation, etc. Ce service est entièrement conforme au RGPD et respecte la vie privée (notamment grâce à l'absence d'empreinte numérique). Par conséquent, il ne nécessite pas de bannière de cookies. </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>MapTiler:</strong> pour réaliser des cartes avec Leaflet.js, j'utilise un service qui fournit des tuiles raster un peu plus qualitatives que celles d'OpenStreetMap. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>MapTiler:</strong> pour réaliser des cartes avec Leaflet.js, j'utilise un service qui fournit des tuiles « raster » un peu plus qualitatives que celles d'OpenStreetMap. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Instatus:</strong> un outil de surveillance pour suivre l'état de mon site et de mes autres services, ainsi que pour annoncer les pannes, les maintenances, etc. Vous pouvez consulter ma page de statut en cliquant <a href="https://nde-status.instatus.com/" target="_blank" class="color-light-blue">[ici]</a>.</p>
 
