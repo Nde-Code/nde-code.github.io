@@ -39,13 +39,13 @@ function getNotesTemplate() {
 
             <div class="modalbox-text-container">
 
-                <h2>Librairies utilisées:</h2>
+                <h2>Bibliothèques utilisées:</h2>
 
                 <p class="modalbox-description"> J'utilise des bibliothèques soigneusement choisies, privilégiant celles qui sont personnalisables, légères et sécurisées, dans le but d'optimiser votre expérience utilisateur et de garantir un confort maximal: </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Font Awesome:</strong> pour les petits icons un peu partout sur le site. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Font Awesome:</strong> pour les petites icônes un peu partout sur le site. </p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>JQuery:</strong> pour une gestion plus éfficace du DOM en Javascript. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>JQuery:</strong> pour une gestion plus efficace du DOM en JavaScript. </p>
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Math.js:</strong> pour les outils mathématiques utilisés dans mes projets. </p>
 
@@ -69,7 +69,7 @@ function getNotesTemplate() {
 
                 <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Logomakr:</strong> pour créer mon favicon.</p>
 
-                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Pixabay:</strong> pour l'image de fond. Le lien est dans le "README.md" disponible sur le repos GitHub du projet. </p>
+                <p class="modalbox-description"><i class="fa-solid fa-square point"></i> <strong>Pixabay:</strong> pour l'image de fond. Le lien est dans le « README.md » disponible sur le dépôt GitHub du projet. </p>
 
             </div>
 
