@@ -57,10 +57,10 @@ export const PORTFOLIO_DATA = {
     quote:
       "\"Anything that can go wrong, will go wrong.\" – Murphy's Law",
     asciiBanner: `
-    88b 88    db    888888 88  88    db    88b 88     8888b.  
-    88Yb88   dPYb     88   88  88   dPYb   88Yb88      8I  Yb 
-    88 Y88  dP__Yb    88   888888  dP__Yb  88 Y88      8I  dY 
-    88  Y8 dP""""Yb   88   88  88 dP""""Yb 88  Y8     8888Y"                                 
+    88b 88    db    888888 88  88    db    88b 88     8888b.
+    88Yb88   dPYb     88   88  88   dPYb   88Yb88      8I  Yb
+    88 Y88  dP__Yb    88   888888  dP__Yb  88 Y88      8I  dY
+    88  Y8 dP""""Yb   88   88  88 dP""""Yb 88  Y8     8888Y"
 `,
     specs: {
       OS: " Arch Linux x86_64",

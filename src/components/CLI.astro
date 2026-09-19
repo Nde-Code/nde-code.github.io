@@ -430,7 +430,7 @@ import { PORTFOLIO_DATA } from "../data/portfolio";
           playErrorSound();
           appendOutput(`
             <div class="text-red-400">
-              zsh: command not found: <span class="font-bold">${escapeHtml(cmd)}</span>. 
+              zsh: command not found: <span class="font-bold">${escapeHtml(cmd)}</span>.
               Type <span class="text-[var(--fg-bright)] underline cursor-pointer" onclick="document.getElementById('cli-input').value='help'; document.getElementById('cli-input').dispatchEvent(new KeyboardEvent('keydown', {key:'Enter'}));">help</span> for manual.
             </div>
           `);
