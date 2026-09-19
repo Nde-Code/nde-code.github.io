@@ -1,4 +1,4 @@
-name: Build and deploy the site
+name: Build and deploy the website
 
 on:
   # Run workflow when changes are pushed to the main branch:
