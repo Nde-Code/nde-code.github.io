@@ -44,8 +44,9 @@ import { PORTFOLIO_DATA } from "../data/portfolio";
     <span
       class="text-[var(--accent)] font-bold flex items-center gap-1 select-none"
     >
+      <!-- Rename the system from 'quantum-box' to 'nde-system'. -->
       <span class="text-emerald-400">guest</span>@<span
-        class="text-[var(--fg-bright)]">quantum-box</span
+        class="text-[var(--fg-bright)]">nde-system</span
       >:<span class="text-cyan-400">~</span>$
     </span>
     <div class="relative flex-1 flex items-center">
@@ -165,7 +166,8 @@ import { PORTFOLIO_DATA } from "../data/portfolio";
       echoDiv.className =
         "flex items-center gap-2 font-mono text-xs md:text-sm font-bold mt-3";
       echoDiv.innerHTML = `
-        <span class="text-[var(--accent)]"><span class="text-emerald-400">guest</span>@<span class="text-[var(--fg-bright)]">quantum-box</span>:<span class="text-cyan-400">~</span>$</span>
+        <!-- Rename the system from 'quantum-box' to 'nde-system'. -->
+        <span class="text-[var(--accent)]"><span class="text-emerald-400">guest</span>@<span class="text-[var(--fg-bright)]">nde-system</span>:<span class="text-cyan-400">~</span>$</span>
         <span class="text-[var(--fg-bright)]">${escapeHtml(cmd)}</span>
       `;
       output.appendChild(echoDiv);

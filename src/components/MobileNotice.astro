@@ -47,8 +47,9 @@
           navigator.userAgent,
         );
       if (isMobile) {
+        // Simplify the notice alert by removing the 'QUANTUM-TUI' word.
         console.warn(
-          "%c ⚠️ [QUANTUM-TUI NOTICE]: MOBILE VIEWPORT DETECTED %c\nFor the optimal retro CRT monitor aesthetic, Web Audio keypress synthesis, and full CLI keyboard shortcuts, we recommend viewing on a Laptop/Desktop PC (width >= 768px).",
+          "%c ⚠️ [NOTICE]: MOBILE VIEWPORT DETECTED %c\nFor the optimal retro CRT monitor aesthetic, Web Audio keypress synthesis, and full CLI keyboard shortcuts, we recommend viewing on a Laptop/Desktop PC (width >= 768px).",
           "color: #ffb000; font-size: 13px; font-weight: bold; background: #140d04; padding: 4px 8px; border: 1px solid #ffb000; font-family: monospace;",
           "color: #00ff66; font-size: 11px; font-family: monospace; line-height: 1.5;",
         );
