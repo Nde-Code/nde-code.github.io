@@ -34,14 +34,14 @@ export const PORTFOLIO_DATA = {
   developer: {
     name: "Nathan Debilloëz",
     handle: "Nde-Code",
-    title: "Computer Science Engineering Student Focused on Cybersecurity and Systems",
+    title: "Open-source enthusiast & hobbyist programmer",
     alias: "root@nde-system",
     email: "nathan.debilloez@outlook.com",
     github: "https://github.com/Nde-Code",
     reddit: "https://www.reddit.com/user/nde_code/",
     twitter: "https://x.com/nde_code",
     location: "Brussels, Belgium // CET/CEST (UTC+1/+2)",
-    status: "COMPUTER SCIENCE STUDENT GROWING THROUGH PROJECTS & EXPERIENCES",
+    status: "ENGINEERING STUDENT GROWING THROUGH PROJECTS & EXPERIENCES",
     CLI_EMOJI: "⚡",
     palette: [
       "#0f0f0f",
