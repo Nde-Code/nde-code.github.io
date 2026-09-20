@@ -53,7 +53,7 @@ export const PORTFOLIO_DATA = {
       "#06b6d4",
       "#f8fafc",
     ],
-    bio: "Computer Science Engineering student driven by curiosity and continuous learning. Exploring systems, cybersecurity, and software engineering through projects and experimentation.",
+    bio: "Computer Science Engineering student passionate about building secure, reliable, and efficient digital solutions. Continuously exploring systems, cybersecurity, and software engineering through hands-on projects and experimentation. I prioritize protecting applications, websites, communications, and personal data by applying security best practices from design to deployment.",
     quote:
       "\"Anything that can go wrong, will go wrong.\" – Murphy's Law",
     asciiBanner: `
