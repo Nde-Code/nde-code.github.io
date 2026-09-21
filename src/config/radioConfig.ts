@@ -78,4 +78,3 @@ export const RADIO_CONFIG: RadioConfig = {
   autoPlay: false,
   tracks: RADIO_PLAYLIST,
 };
-

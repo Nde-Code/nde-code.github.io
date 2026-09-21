@@ -49,7 +49,10 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
       const cached = localStorage.getItem(CACHE_KEY);
       if (cached) {
         const { data, timestamp } = JSON.parse(cached);
-        if (Date.now() - timestamp < CACHE_TTL_MS && data.username === username) {
+        if (
+          Date.now() - timestamp < CACHE_TTL_MS &&
+          data.username === username
+        ) {
           return data;
         }
       }
@@ -64,7 +67,7 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
 
     // 3. Fetch Repositories
     const reposRes = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=pushed&per_page=100`
+      `https://api.github.com/users/${username}/repos?sort=pushed&per_page=100`,
     );
     if (!reposRes.ok) return null;
     const reposData = await reposRes.json();
@@ -92,7 +95,9 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
           forks,
           language: repo.language || "Plain Text",
           url: repo.html_url,
-          updatedAt: new Date(repo.pushed_at || repo.updated_at).toLocaleDateString(),
+          updatedAt: new Date(
+            repo.pushed_at || repo.updated_at,
+          ).toLocaleDateString(),
         };
       })
       .sort((a: any, b: any) => b.stars - a.stars);
@@ -127,7 +132,7 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
       try {
         localStorage.setItem(
           CACHE_KEY,
-          JSON.stringify({ data: stats, timestamp: Date.now() })
+          JSON.stringify({ data: stats, timestamp: Date.now() }),
         );
       } catch {}
     }
@@ -137,4 +142,3 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
     return null;
   }
 }
-

@@ -4,14 +4,17 @@ let audioCtx: AudioContext | null = null;
 let sfxEnabled = true;
 
 function getAudioContext(): AudioContext | null {
-  if (typeof window === 'undefined') return null;
+  if (typeof window === "undefined") return null;
   if (!audioCtx) {
-    const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    const AudioContextClass =
+      window.AudioContext ||
+      (window as unknown as { webkitAudioContext: typeof AudioContext })
+        .webkitAudioContext;
     if (AudioContextClass) {
       audioCtx = new AudioContextClass();
     }
   }
-  if (audioCtx && audioCtx.state === 'suspended') {
+  if (audioCtx && audioCtx.state === "suspended") {
     audioCtx.resume();
   }
   return audioCtx;
@@ -23,20 +26,20 @@ export function isSfxEnabled(): boolean {
 
 export function toggleSfx(force?: boolean): boolean {
   sfxEnabled = force !== undefined ? force : !sfxEnabled;
-  if (typeof window !== 'undefined') {
-    localStorage.setItem('tui_sfx_enabled', String(sfxEnabled));
+  if (typeof window !== "undefined") {
+    localStorage.setItem("tui_sfx_enabled", String(sfxEnabled));
   }
   if (sfxEnabled) {
-    playBeep(880, 0.05, 'triangle');
+    playBeep(880, 0.05, "triangle");
   }
   return sfxEnabled;
 }
 
 export function initSfxFromStorage(): void {
-  if (typeof window !== 'undefined') {
-    const saved = localStorage.getItem('tui_sfx_enabled');
+  if (typeof window !== "undefined") {
+    const saved = localStorage.getItem("tui_sfx_enabled");
     if (saved !== null) {
-      sfxEnabled = saved === 'true';
+      sfxEnabled = saved === "true";
     }
   }
 }
@@ -51,7 +54,7 @@ export function playKeypressSound(): void {
     const osc = audio.createOscillator();
     const gain = audio.createGain();
 
-    osc.type = 'triangle';
+    osc.type = "triangle";
     const now = audio.currentTime;
     const freq = 120 + Math.random() * 40;
     osc.frequency.setValueAtTime(freq, now);
@@ -68,7 +71,12 @@ export function playKeypressSound(): void {
   } catch (e) {}
 }
 
-export function playBeep(freq: number = 440, duration: number = 0.08, type: OscillatorType = 'sine', volume: number = 0.05): void {
+export function playBeep(
+  freq: number = 440,
+  duration: number = 0.08,
+  type: OscillatorType = "sine",
+  volume: number = 0.05,
+): void {
   if (!sfxEnabled) return;
   const ctx = getAudioContext();
   if (!ctx) return;
@@ -104,7 +112,7 @@ export function playSuccessSound(): void {
     [523.25, 659.25, 783.99].forEach((freq, idx) => {
       const osc = audio.createOscillator();
       const gain = audio.createGain();
-      osc.type = 'sine';
+      osc.type = "sine";
       osc.frequency.setValueAtTime(freq, now + idx * 0.04);
       gain.gain.setValueAtTime(0.03, now + idx * 0.04);
       gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.04 + 0.1);
@@ -127,7 +135,7 @@ export function playErrorSound(): void {
     [220, 180].forEach((freq, idx) => {
       const osc = audio.createOscillator();
       const gain = audio.createGain();
-      osc.type = 'sawtooth';
+      osc.type = "sawtooth";
       osc.frequency.setValueAtTime(freq, now + idx * 0.07);
       gain.gain.setValueAtTime(0.04, now + idx * 0.07);
       gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.06);

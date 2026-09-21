@@ -34,7 +34,9 @@ export const SPOTIFY_CONFIG: SpotifyConfig = {
 export async function getSpotifyActivity(): Promise<SpotifyTrack | null> {
   if (SPOTIFY_CONFIG.lanyardUserId) {
     try {
-      const res = await fetch(`https://api.lanyard.rest/v1/users/${SPOTIFY_CONFIG.lanyardUserId}`);
+      const res = await fetch(
+        `https://api.lanyard.rest/v1/users/${SPOTIFY_CONFIG.lanyardUserId}`,
+      );
       const data = await res.json();
       if (data.success) {
         if (data.data?.spotify) {

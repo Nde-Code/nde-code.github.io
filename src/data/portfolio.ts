@@ -54,8 +54,7 @@ export const PORTFOLIO_DATA = {
       "#f8fafc",
     ],
     bio: "Computer Science Engineering student passionate about building secure, reliable, and efficient digital solutions. Continuously exploring systems, cybersecurity, and software engineering through hands-on projects and experimentation. I prioritize protecting applications, websites, communications, and personal data by applying security best practices from design to deployment.",
-    quote:
-      "\"Anything that can go wrong, will go wrong.\" – Murphy's Law",
+    quote: '"Anything that can go wrong, will go wrong." – Murphy\'s Law',
     asciiBanner: `
     88b 88    db    888888 88  88    db    88b 88     8888b.
     88Yb88   dPYb     88   88  88   dPYb   88Yb88      8I  Yb
@@ -71,7 +70,7 @@ export const PORTFOLIO_DATA = {
       WM: " i3-gaps",
       Editor: " Neovim / VS Code",
       CPU: " Multi-core x86_64",
-      Memory: " Enough for experiments"
+      Memory: " Enough for experiments",
     },
   },
 
@@ -80,8 +79,18 @@ export const PORTFOLIO_DATA = {
       category: "Core Languages",
       icon: "⚡",
       skills: [
-        { name: "TypeScript / JavaScript", level: 75, experience: "5 yrs", tag: "EXPERIENCED" },
-        { name: "HTML5 / CSS3", level: 85, experience: "5 yrs", tag: "EXPERIENCED" },
+        {
+          name: "TypeScript / JavaScript",
+          level: 75,
+          experience: "5 yrs",
+          tag: "EXPERIENCED",
+        },
+        {
+          name: "HTML5 / CSS3",
+          level: 85,
+          experience: "5 yrs",
+          tag: "EXPERIENCED",
+        },
         { name: "C#", level: 60, experience: "1 yr", tag: "FAMILIAR" },
         { name: "Python", level: 70, experience: "3 yrs", tag: "FOCUSED" },
         { name: "Java", level: 40, experience: "< 1 yr", tag: "LEARNING" },
@@ -93,45 +102,125 @@ export const PORTFOLIO_DATA = {
       category: "Libraries, Scientific Computing & Tools",
       icon: "🛠️",
       skills: [
-        { name: "Markdown", level: 90, experience: "5+ yrs", tag: "EXPERIENCED" },
+        {
+          name: "Markdown",
+          level: 90,
+          experience: "5+ yrs",
+          tag: "EXPERIENCED",
+        },
         { name: "LaTeX", level: 60, experience: "2+ yrs", tag: "FOCUSED" },
 
         { name: "Math.js", level: 75, experience: "4 yrs", tag: "EXPERIENCED" },
-        { name: "NumPy / SciPy", level: 60, experience: "2 yrs", tag: "FOCUSED" },
+        {
+          name: "NumPy / SciPy",
+          level: 60,
+          experience: "2 yrs",
+          tag: "FOCUSED",
+        },
         { name: "Matplotlib", level: 65, experience: "3 yrs", tag: "FOCUSED" },
-        { name: "Jupyter Notebook", level: 70, experience: "3 yrs", tag: "FOCUSED" },
+        {
+          name: "Jupyter Notebook",
+          level: 70,
+          experience: "3 yrs",
+          tag: "FOCUSED",
+        },
 
-        { name: "TensorFlow", level: 30, experience: "< 1 yr", tag: "LEARNING" },
-        { name: "Ultralytics YOLO", level: 40, experience: "< 1 yr", tag: "LEARNING" },
+        {
+          name: "TensorFlow",
+          level: 30,
+          experience: "< 1 yr",
+          tag: "LEARNING",
+        },
+        {
+          name: "Ultralytics YOLO",
+          level: 40,
+          experience: "< 1 yr",
+          tag: "LEARNING",
+        },
       ],
     },
     {
       category: "DevOps, Cloud & Infrastructure",
       icon: "☁️",
       skills: [
-        { name: "Git / GitHub", level: 80, experience: "5 yrs", tag: "EXPERIENCED" },
-        { name: "Linux / Bash", level: 65, experience: "2 yrs", tag: "FOCUSED" },
+        {
+          name: "Git / GitHub",
+          level: 80,
+          experience: "5 yrs",
+          tag: "EXPERIENCED",
+        },
+        {
+          name: "Linux / Bash",
+          level: 65,
+          experience: "2 yrs",
+          tag: "FOCUSED",
+        },
 
-        { name: "GitHub Codespaces", level: 70, experience: "2 yrs", tag: "FOCUSED" },
-        { name: "GitHub Actions", level: 70, experience: "2 yrs", tag: "FOCUSED" },
+        {
+          name: "GitHub Codespaces",
+          level: 70,
+          experience: "2 yrs",
+          tag: "FOCUSED",
+        },
+        {
+          name: "GitHub Actions",
+          level: 70,
+          experience: "2 yrs",
+          tag: "FOCUSED",
+        },
 
-        { name: "REST APIs / API Design", level: 70, experience: "2 yrs", tag: "FOCUSED" },
-        { name: "Cloudflare Workers", level: 70, experience: "2 yrs", tag: "FOCUSED" },
+        {
+          name: "REST APIs / API Design",
+          level: 70,
+          experience: "2 yrs",
+          tag: "FOCUSED",
+        },
+        {
+          name: "Cloudflare Workers",
+          level: 70,
+          experience: "2 yrs",
+          tag: "FOCUSED",
+        },
 
-        { name: "Supabase / Upstash / Firebase", level: 65, experience: "3 yrs", tag: "FOCUSED" },
+        {
+          name: "Supabase / Upstash / Firebase",
+          level: 65,
+          experience: "3 yrs",
+          tag: "FOCUSED",
+        },
       ],
     },
     {
       category: "AI & Generative AI",
       icon: "🤖",
       skills: [
-        { name: "OpenAI GPT Models", level: 80, experience: "3+ yrs", tag: "EXPERIENCED" },
+        {
+          name: "OpenAI GPT Models",
+          level: 80,
+          experience: "3+ yrs",
+          tag: "EXPERIENCED",
+        },
 
-        { name: "Anthropic Claude", level: 70, experience: "2 yrs", tag: "FOCUSED" },
+        {
+          name: "Anthropic Claude",
+          level: 70,
+          experience: "2 yrs",
+          tag: "FOCUSED",
+        },
 
-        { name: "Google Gemini", level: 75, experience: "2 yrs", tag: "FOCUSED" },
+        {
+          name: "Google Gemini",
+          level: 75,
+          experience: "2 yrs",
+          tag: "FOCUSED",
+        },
 
-        { name: "Prompt Engineering", level: 75, experience: "3 yrs", tag: "FOCUSED" },
+        {
+          name: "Prompt Engineering",
+          level: 75,
+          experience: "3 yrs",
+          tag: "FOCUSED",
+        },
       ],
     },
   ] as SkillCategory[],
