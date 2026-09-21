@@ -53,7 +53,8 @@ export const PORTFOLIO_DATA = {
       "#06b6d4",
       "#f8fafc",
     ],
-    bio: "Computer Science Engineering student passionate about building secure, reliable, and efficient digital solutions. Continuously exploring systems, cybersecurity, and software engineering through hands-on projects and experimentation. I prioritize protecting applications, websites, communications, and personal data by applying security best practices from design to deployment.",
+    // Months are zero-indexed in JavaScript: 0 = January, ..., 8 = September (not 9).
+    bio: `I am Nathan, I am ${new Date().getFullYear() - 2004 - (new Date() < new Date(new Date().getFullYear(), 8, 11))} years old. I am a Computer Science Engineering student passionate about building secure, reliable, and efficient digital solutions. I continuously explore systems, cybersecurity, and software engineering through hands-on projects and experimentation. I prioritize protecting applications, websites, communications, and personal data by applying security best practices from design to deployment.`,
     quote: '"Anything that can go wrong, will go wrong." – Murphy\'s Law',
     asciiBanner: `
     88b 88    db    888888 88  88    db    88b 88     8888b.
