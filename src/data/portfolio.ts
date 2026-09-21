@@ -118,7 +118,7 @@ export const PORTFOLIO_DATA = {
         { name: "REST APIs / API Design", level: 70, experience: "2 yrs", tag: "FOCUSED" },
         { name: "Cloudflare Workers", level: 70, experience: "2 yrs", tag: "FOCUSED" },
 
-        { name: "PostgreSQL (Aiven) / Redis (Upstash)", level: 65, experience: "3 yrs", tag: "FOCUSED" },
+        { name: "Supabase / Upstash / Firebase", level: 65, experience: "3 yrs", tag: "FOCUSED" },
       ],
     },
     {
