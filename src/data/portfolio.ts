@@ -236,12 +236,12 @@ export const PORTFOLIO_DATA = {
       id: "bioattend-app",
       partner: "Some friends...",
       partnerType: "School project",
-      title: "BioAttend - AI Facial Recognition Attendance System",
+      title: "BioAttend - AI Facial Recognition Attendance System [COMPLETED]",
       role: "Software & System Engineer",
       period: "January 2026 - June 2026",
       status: "COMPLETED",
       description:
-        "A facial recognition attendance system designed with a strong focus on privacy compliance (GDPR). The platform uses a powerful AI model based on InsightFace, Django for the web platform, and Flask for the client software (https://github.com/Amory707/BioAttendFront). The system runs on a Raspberry Pi and integrates an additional AI model for spoofing detection. Supabase is used as the backend database for face embeddings.",
+        "A GDPR-oriented facial recognition attendance system designed with a strong focus on privacy and security. The platform uses InsightFace as the AI face recognition model, Django for the web platform, and Flask for the client software (https://github.com/Amory707/BioAttendFront). The system runs on a Raspberry Pi and integrates an additional AI model for anti-spoofing detection. Supabase is used as the backend database to securely manage face embeddings and other data, including user accounts, attendance records, statistics, and related information.",
       contributions: [
         "Lead contributor to the platform development, using Python and Django. Implemented automation workflows (GitHub Codespaces, GitHub Actions), repository protection, and source code security measures using CodeQL and GitGuardian.",
         "Core system engineer: designed and managed the database architecture with Supabase, deployed and maintained the production server infrastructure using CapRover and Hetzner Cloud, and implemented network monitoring solutions.",
