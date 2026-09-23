@@ -4,7 +4,7 @@ This repository contains the source code for my new personal portfolio, built wi
 
 This new site preserves the idea of a fun, technical, and immersive design while modernizing the experience with Astro and introducing a cleaner, more maintainable structure.
 
-> My old website is still available at [https://nde-code.netlify.app/](https://nde-code.netlify.app/) and is now under strict maintenance on [GitLab](https://gitlab.com/Nde-Code/nde-code). It remains online as a reminder of my first major web project, which I truly enjoyed creating and maintaining for over five years.
+> My old website (only available in my native language, French) is still available at [https://nde-code.netlify.app/](https://nde-code.netlify.app/) and is now under strict maintenance on [GitLab](https://gitlab.com/Nde-Code/nde-code). It remains online as a reminder of my first major web project, which I truly enjoyed creating and maintaining for more than five years.
 
 ## ⚡ Getting started:
 
