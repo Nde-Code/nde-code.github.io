@@ -1,0 +1,61 @@
+# Nathan Debilloëz - portfolio / website:
+
+This repository contains the source code for my new personal portfolio, built with [Astro](https://astro.build/) using the [Retro TUI Portfolio theme](https://astro.build/themes/details/retro-tui-portfolio/) created by [Nivin](https://github.com/nivinvysakh).
+
+This new site preserves the idea of a fun, technical, and immersive design while modernizing the experience with Astro and introducing a cleaner, more maintainable structure.
+
+> My old website is still available at [https://nde-code.netlify.app/](https://nde-code.netlify.app/) and is now under strict maintenance on [GitLab](https://gitlab.com/Nde-Code/nde-code). It remains online as a reminder of my first major web project, which I truly enjoyed creating and maintaining for over five years.
+
+## ⚡ Getting started:
+
+### Using GitHub Codespaces:
+
+The repository provides a ready-to-use development environment through [GitHub Codespaces](https://docs.github.com/en/codespaces/quickstart), allowing you to run this project without installing Node.js with the project dependencies locally. This is a convenient option for quickly setting up the project and starting development.
+
+To launch the project this way:
+
+1. Open the repository in GitHub Codespaces.
+2. Wait for the environment to be created.
+3. Start the development server: `npm run dev`.
+
+### Local installation:
+
+Make sure you have the following tools installed on your machine:
+
+- **Node.js version 18 or newer** ([https://nodejs.org/](https://nodejs.org/)): the V8-based runtime environment, widely used in the JavaScript ecosystem.
+- **Node Package Manager** ([https://www.npmjs.com/](https://www.npmjs.com/)): abbreviated as `npm`, it is the package manager for Node.js, generally included with the Node.js runtime.
+
+#### Project setup:
+
+1. Open a terminal if you don't already have one open.
+2. Clone the repository: `git clone https://github.com/Nde-Code/nde-code.github.io.git`.
+3. Go to the project directory: `cd nde-code.github.io`.
+4. Run the following command to install the dependencies: `npm install`.
+5. Start the local development server: `npm run dev`.
+
+### Available npm commands:
+
+The project uses the following scripts defined in [`package.json`](package.json):
+
+| Command                  | Description                                       |
+| ------------------------ | ------------------------------------------------- |
+| `npm install`            | Installs all project dependencies.                |
+| `npm run dev`            | Starts the Astro development server.              |
+| `npm run build`          | Builds the production version of the site.        |
+| `npm run preview`        | Previews the production build locally.            |
+| `npm run astro`          | Opens the Astro CLI.                              |
+| `npm run format`         | Formats the project with Prettier.                |
+| `npm run prettier-check` | Checks formatting without writing changes.        |
+| `npm run astro-check`    | Validates the Astro and TypeScript project setup. |
+
+## ⚖️ License:
+
+This project is distributed under the [MIT](LICENSE) license.
+
+> I have kept the original author's license and attribution. I have only added my name to credit the modifications I made to the original theme.
+
+## 🎯 Maintainer:
+
+This project is maintained by [Nathan Debilloëz](https://nde-code.github.io/).
+
+> Feel free to suggest improvements, fixes, or enhancements by opening an issue or a pull request.

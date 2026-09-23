@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  # Run workflow when changes are pushed to main branches:
+  push:
+    branches:
+      - main
+
+  # Run workflow for pull requests targeting main branches:
+  pull_request:
+    branches:
+      - main
+
+  # Allow manual workflow execution from GitHub Actions:
+  workflow_dispatch:
+
+permissions:
+  # Only required to read repository contents:
+  contents: read
+
+jobs:
+  # 1st job: lint
+  # This job verifies code formatting and code quality:
+  lint:
+    # Use ubuntu-latest runner for a consistent Linux environment:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository sources:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # Step 2: Setup Node.js environment:
+      # npm cache is enabled to speed up dependency installation.
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      # Step 3: Install project dependencies:
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Verify Prettier formatting:
+      # Fails if files are not correctly formatted.
+      - name: Check Prettier formatting
+        run: npm run prettier-check
+
+  # 2nd job: type-check
+  # This job verifies Astro and TypeScript correctness:
+  type-check:
+    # Use ubuntu-latest runner:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository sources:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # Step 2: Setup Node.js:
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      # Step 3: Install dependencies:
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Run Astro diagnostics:
+      # Checks Astro files, TypeScript errors and component issues.
+      - name: Run Astro type check
+        run: npm run astro-check
+
+  # 3rd job: build
+  # This job verifies that the production website can be generated:
+  build:
+    # Use ubuntu-latest runner:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout repository sources:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      # Step 2: Setup Node.js:
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      # Step 3: Install dependencies:
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Generate production website:
+      # Ensures Astro can successfully compile the project.
+      - name: Build Astro website
+        run: npm run build
