@@ -1,7 +1,12 @@
 export interface CollabItem {
   id: string;
   partner: string;
-  partnerType: "Open Source Org" | "Startup" | "Tech Studio" | "Research Team";
+  partnerType:
+    | "Open Source Org"
+    | "Startup"
+    | "Tech Studio"
+    | "Research Team"
+    | "School project";
   title: string;
   role: string;
   period: string;
@@ -54,7 +59,7 @@ export const PORTFOLIO_DATA = {
       "#f8fafc",
     ],
     // Months are zero-indexed in JavaScript: 0 = January, ..., 8 = September (not 9).
-    bio: `I am Nathan, I am ${new Date().getFullYear() - 2004 - (new Date() < new Date(new Date().getFullYear(), 8, 11))} years old. I am a Computer Science Engineering student passionate about building secure, reliable, and efficient digital solutions. I continuously explore systems, cybersecurity, and software engineering through hands-on projects and experimentation. I prioritize protecting applications, websites, communications, and personal data by applying security best practices from design to deployment.`,
+    bio: `I am Nathan, I am ${new Date().getFullYear() - 2004 - (new Date().getTime() < new Date(new Date().getFullYear(), 8, 11).getTime() ? 1 : 0)} years old. I am a Computer Science Engineering student passionate about building secure, reliable, and efficient digital solutions. I continuously explore systems, cybersecurity, and software engineering through hands-on projects and experimentation. I prioritize protecting applications, websites, communications, and personal data by applying security best practices from design to deployment.`,
     quote: '"Anything that can go wrong, will go wrong." – Murphy\'s Law',
     asciiBanner: `
     88b 88    db    888888 88  88    db    88b 88     8888b.
@@ -226,7 +231,38 @@ export const PORTFOLIO_DATA = {
     },
   ] as SkillCategory[],
 
-  collabs: [/* I will complete that later (and soon)... */] as CollabItem[],
+  collabs: [
+    {
+      id: "bioattend-app",
+      partner: "Some friends...",
+      partnerType: "School project",
+      title: "BioAttend - AI Facial Recognition Attendance System",
+      role: "Software & System Engineer",
+      period: "January 2026 - June 2026",
+      status: "COMPLETED",
+      description:
+        "A facial recognition attendance system designed with a strong focus on privacy compliance (GDPR). The platform uses a powerful AI model based on InsightFace, Django for the web platform, and Flask for the client software (https://github.com/Amory707/BioAttendFront). The system runs on a Raspberry Pi and integrates an additional AI model for spoofing detection. Supabase is used as the backend database for face embeddings.",
+      contributions: [
+        "Lead contributor to the platform development, using Python and Django. Implemented automation workflows (GitHub Codespaces, GitHub Actions), repository protection, and source code security measures using CodeQL and GitGuardian.",
+        "Core system engineer: designed and managed the database architecture with Supabase, deployed and maintained the production server infrastructure using CapRover and Hetzner Cloud, and implemented network monitoring solutions.",
+      ],
+      techStack: [
+        "Python",
+        "Django",
+        "Flask",
+        "Supabase",
+        "InsightFace",
+        "GitHub Actions",
+        "CodeQL",
+        "GitGuardian",
+        "Linux",
+      ],
+      link: "https://github.com/Amory707/BioAttendAPP",
+      asciiLogo: `+-+-+-+-+-+-+-+-+-+
+ |B|i|o|A|t|t|e|n|d|
+ +-+-+-+-+-+-+-+-+-+`,
+    },
+  ] as CollabItem[],
 
   commands: [
     {
