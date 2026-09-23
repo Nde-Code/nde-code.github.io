@@ -28,14 +28,13 @@
     "astro": "html"
   },
 
-  "tailwindCSS.experimental.classRegex": [
-    ["class:\\s*\"([^\"]*)\"", "class:\\s*'([^']*)'"]
-  ],
+  "tailwindCSS.experimental.classRegex": [["class:\\s*\"([^\"]*)\"", "class:\\s*'([^']*)'"]],
 
   "js/ts.tsdk.path": "node_modules/typescript/lib",
   "js/ts.tsdk.promptToUseWorkspaceVersion": true,
 
   "files.exclude": {
+    "**/.astro": true,
     "**/dist": true,
     "**/node_modules": true,
     "**/build": true,
@@ -44,6 +43,7 @@
   },
 
   "search.exclude": {
+    "**/.astro": true,
     "**/dist": true,
     "**/node_modules": true,
     "**/build": true,

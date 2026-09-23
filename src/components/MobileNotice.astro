@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <div
@@ -20,43 +19,40 @@
   </div>
 
   <p class="mt-1.5 text-yellow-200/90 text-[11px] leading-relaxed">
-    For the full interactive CRT screen, sound synthesis, and multi-window
-    experience, we recommend viewing this TUI portfolio on a laptop or desktop
-    computer.
+    For the full interactive CRT screen, sound synthesis, and multi-window experience, we recommend
+    viewing this TUI portfolio on a laptop or desktop computer.
   </p>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const notice = document.getElementById("mobile-notice");
-    const dismissBtn = document.getElementById("dismiss-mobile-notice");
+  document.addEventListener('DOMContentLoaded', () => {
+    const notice = document.getElementById('mobile-notice');
+    const dismissBtn = document.getElementById('dismiss-mobile-notice');
 
-    if (localStorage.getItem("tui_mobile_dismissed") === "true") {
-      notice?.classList.add("hidden");
+    if (localStorage.getItem('tui_mobile_dismissed') === 'true') {
+      notice?.classList.add('hidden');
     }
 
-    dismissBtn?.addEventListener("click", () => {
-      notice?.classList.add("hidden");
-      localStorage.setItem("tui_mobile_dismissed", "true");
+    dismissBtn?.addEventListener('click', () => {
+      notice?.classList.add('hidden');
+      localStorage.setItem('tui_mobile_dismissed', 'true');
     });
 
     function checkMobileConsoleWarning() {
       const isMobile =
         window.innerWidth < 768 ||
-        /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
-          navigator.userAgent,
-        );
+        /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
       if (isMobile) {
         // Simplify the notice alert by removing the 'QUANTUM-TUI' word.
         console.warn(
-          "%c ⚠️ [NOTICE]: MOBILE VIEWPORT DETECTED %c\nFor the optimal retro CRT monitor aesthetic, Web Audio keypress synthesis, and full CLI keyboard shortcuts, we recommend viewing on a Laptop/Desktop PC (width >= 768px).",
-          "color: #ffb000; font-size: 13px; font-weight: bold; background: #140d04; padding: 4px 8px; border: 1px solid #ffb000; font-family: monospace;",
-          "color: #00ff66; font-size: 11px; font-family: monospace; line-height: 1.5;",
+          '%c ⚠️ [NOTICE]: MOBILE VIEWPORT DETECTED %c\nFor the optimal retro CRT monitor aesthetic, Web Audio keypress synthesis, and full CLI keyboard shortcuts, we recommend viewing on a Laptop/Desktop PC (width >= 768px).',
+          'color: #ffb000; font-size: 13px; font-weight: bold; background: #140d04; padding: 4px 8px; border: 1px solid #ffb000; font-family: monospace;',
+          'color: #00ff66; font-size: 11px; font-family: monospace; line-height: 1.5;'
         );
       }
     }
 
     checkMobileConsoleWarning();
-    window.addEventListener("resize", checkMobileConsoleWarning);
+    window.addEventListener('resize', checkMobileConsoleWarning);
   });
 </script>

@@ -11,22 +11,15 @@
     class="w-full max-w-xl max-h-[94vh] sm:max-h-[90vh] border-2 border-[var(--border-active)] bg-[var(--bg-main)] shadow-2xl relative font-mono text-[var(--fg-main)] flex flex-col my-auto overflow-hidden rounded-sm"
   >
     <!-- Window Header -->
-    <div
-      class="bg-[var(--status-bar-bg)] border-b border-[var(--border-color)] px-3 py-2 flex items-center justify-between shrink-0"
-    >
+    <div class="bg-[var(--status-bar-bg)] border-b border-[var(--border-color)] px-3 py-2 flex items-center justify-between shrink-0">
       <div class="flex items-center gap-2 overflow-hidden">
         <span
           class="w-3 h-3 rounded-full bg-red-500 inline-block border border-red-700 cursor-pointer shrink-0"
-          id="radio-win-close"></span>
-        <span
-          class="w-3 h-3 rounded-full bg-yellow-500/50 inline-block border border-yellow-700 shrink-0"
+          id="radio-win-close"
         ></span>
-        <span
-          class="w-3 h-3 rounded-full bg-emerald-500/50 inline-block border border-emerald-700 shrink-0"
-        ></span>
-        <span
-          class="font-bold text-[11px] sm:text-xs text-[var(--fg-bright)] ml-1 flex items-center gap-1.5 truncate"
-        >
+        <span class="w-3 h-3 rounded-full bg-yellow-500/50 inline-block border border-yellow-700 shrink-0"></span>
+        <span class="w-3 h-3 rounded-full bg-emerald-500/50 inline-block border border-emerald-700 shrink-0"></span>
+        <span class="font-bold text-[11px] sm:text-xs text-[var(--fg-bright)] ml-1 flex items-center gap-1.5 truncate">
           <span>📻</span>
           <span class="inline sm:hidden">RADIO.SH</span>
           <span class="hidden sm:inline">RETRO CASSETTE RADIO [LO-FI + YOUTUBE]</span>
@@ -46,15 +39,16 @@
       <!-- Cassette Tape Unit -->
       <div class="p-3 sm:p-5 bg-[var(--bg-card)] border-b border-[var(--border-color)] space-y-3 sm:space-y-4">
         <!-- Cassette Body Visual -->
-        <div
-          class="border-2 border-[var(--border-color)] bg-[var(--bg-main)] p-2.5 sm:p-3 rounded-sm relative shadow-inner"
-        >
+        <div class="border-2 border-[var(--border-color)] bg-[var(--bg-main)] p-2.5 sm:p-3 rounded-sm relative shadow-inner">
           <div class="flex items-center justify-between border-b border-[var(--border-color)] pb-2 mb-2.5">
             <div class="flex items-center gap-1.5 sm:gap-2">
               <span class="text-[9px] sm:text-[10px] px-1.5 py-0.5 bg-[var(--border-color)] text-[var(--accent)] font-bold">
                 TYPE-II HIGH BIAS
               </span>
-              <span id="radio-genre-badge" class="text-[9px] sm:text-[10px] px-1.5 py-0.5 border border-[var(--border-color)] text-[var(--fg-bright)] font-bold">
+              <span
+                id="radio-genre-badge"
+                class="text-[9px] sm:text-[10px] px-1.5 py-0.5 border border-[var(--border-color)] text-[var(--fg-bright)] font-bold"
+              >
                 LO-FI
               </span>
             </div>
@@ -68,7 +62,10 @@
           <div class="flex items-center justify-center gap-3 sm:gap-6 py-1.5 sm:py-2">
             <!-- Left Reel -->
             <div class="relative w-12 h-12 sm:w-20 sm:h-20 rounded-full border-2 border-[var(--border-color)] bg-[var(--bg-card)] flex items-center justify-center shrink-0">
-              <div id="reel-left" class="w-8 h-8 sm:w-12 sm:h-12 border-2 sm:border-4 border-dashed border-[var(--accent)] rounded-full transition-transform"></div>
+              <div
+                id="reel-left"
+                class="w-8 h-8 sm:w-12 sm:h-12 border-2 sm:border-4 border-dashed border-[var(--accent)] rounded-full transition-transform"
+              ></div>
               <div class="absolute w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[var(--fg-main)]"></div>
             </div>
 
@@ -78,12 +75,20 @@
                 <span>SPECTRUM</span>
                 <span id="radio-ascii-meter"> ▂▃▅▆▇</span>
               </div>
-              <canvas id="radio-canvas-viz" width="160" height="30" class="w-full h-6 sm:h-7 block"></canvas>
+              <canvas
+                id="radio-canvas-viz"
+                width="160"
+                height="30"
+                class="w-full h-6 sm:h-7 block"
+              ></canvas>
             </div>
 
             <!-- Right Reel -->
             <div class="relative w-12 h-12 sm:w-20 sm:h-20 rounded-full border-2 border-[var(--border-color)] bg-[var(--bg-card)] flex items-center justify-center shrink-0">
-              <div id="reel-right" class="w-8 h-8 sm:w-12 sm:h-12 border-2 sm:border-4 border-dashed border-[var(--accent)] rounded-full transition-transform"></div>
+              <div
+                id="reel-right"
+                class="w-8 h-8 sm:w-12 sm:h-12 border-2 sm:border-4 border-dashed border-[var(--accent)] rounded-full transition-transform"
+              ></div>
               <div class="absolute w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-[var(--fg-main)]"></div>
             </div>
           </div>
@@ -91,14 +96,23 @@
           <!-- Track LCD Display -->
           <div class="mt-2.5 sm:mt-3 bg-black/70 border border-[var(--border-color)] p-2 flex items-center justify-between">
             <div class="overflow-hidden whitespace-nowrap pr-2">
-              <div id="radio-track-title" class="text-xs sm:text-sm font-bold text-[var(--fg-bright)] truncate">
+              <div
+                id="radio-track-title"
+                class="text-xs sm:text-sm font-bold text-[var(--fg-bright)] truncate"
+              >
                 Select a track or paste a YouTube URL...
               </div>
-              <div id="radio-track-artist" class="text-[10px] sm:text-[11px] text-[var(--fg-dim)] truncate">
+              <div
+                id="radio-track-artist"
+                class="text-[10px] sm:text-[11px] text-[var(--fg-dim)] truncate"
+              >
                 RetroWave Audio
               </div>
             </div>
-            <div id="radio-time-display" class="text-[11px] sm:text-xs font-mono text-[var(--accent)] whitespace-nowrap font-bold">
+            <div
+              id="radio-time-display"
+              class="text-[11px] sm:text-xs font-mono text-[var(--accent)] whitespace-nowrap font-bold"
+            >
               0:00 / 0:00
             </div>
           </div>
@@ -133,7 +147,9 @@
 
           <!-- Volume Slider (Desktop Only, Default 100%) -->
           <div class="hidden sm:flex items-center gap-1.5 sm:gap-2 text-xs">
-            <span id="radio-vol-icon" class="cursor-pointer text-xs sm:text-sm">🔊</span>
+            <span id="radio-vol-icon" class="cursor-pointer text-xs sm:text-sm">
+              🔊
+            </span>
             <input
               id="radio-vol-slider"
               type="range"
@@ -143,7 +159,12 @@
               aria-label="Radio Volume Slider"
               class="w-20 sm:w-24 accent-[var(--accent)] cursor-pointer"
             />
-            <span id="radio-vol-label" class="text-[10px] sm:text-[11px] text-[var(--fg-dim)] font-mono w-7 sm:w-8">100%</span>
+            <span
+              id="radio-vol-label"
+              class="text-[10px] sm:text-[11px] text-[var(--fg-dim)] font-mono w-7 sm:w-8"
+            >
+              100%
+            </span>
           </div>
         </div>
       </div>
@@ -190,20 +211,37 @@
     </div>
 
     <!-- Footer -->
-    <div
-      class="bg-[var(--status-bar-bg)] border-t border-[var(--border-color)] px-3 py-1.5 flex items-center justify-between text-[9px] sm:text-[10px] text-[var(--fg-dim)] shrink-0 font-mono"
-    >
+    <div class="bg-[var(--status-bar-bg)] border-t border-[var(--border-color)] px-3 py-1.5 flex items-center justify-between text-[9px] sm:text-[10px] text-[var(--fg-dim)] shrink-0 font-mono">
       <span class="truncate">Supports MP3 + YouTube streams</span>
-      <span class="shrink-0 ml-1 hidden sm:inline"><kbd class="px-1 py-0.5 border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--fg-bright)]">Space</kbd> Play/Pause • <kbd class="px-1 py-0.5 border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--fg-bright)]">ESC</kbd> Close</span>
-      <span class="shrink-0 ml-1 inline sm:hidden">Tap <kbd class="px-1 py-0.5 border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--fg-bright)]">CLOSE ✕</kbd> to Exit</span>
+      <span class="shrink-0 ml-1 hidden sm:inline">
+        <kbd class="px-1 py-0.5 border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--fg-bright)]">
+          Space
+        </kbd>{' '}
+        Play/Pause •{' '}
+        <kbd class="px-1 py-0.5 border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--fg-bright)]">
+          ESC
+        </kbd>{' '}
+        Close
+      </span>
+      <span class="shrink-0 ml-1 inline sm:hidden">
+        Tap{' '}
+        <kbd class="px-1 py-0.5 border border-[var(--border-color)] bg-[var(--bg-card)] text-[var(--fg-bright)]">
+          CLOSE ✕
+        </kbd>{' '}
+        to Exit
+      </span>
     </div>
   </div>
 </div>
 
 <style>
   @keyframes spinReel {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
   .reel-spinning {
     animation: spinReel 2.5s linear infinite;
@@ -211,9 +249,9 @@
 </style>
 
 <script>
-  import { RADIO_CONFIG } from "../config/radioConfig";
-  import type { RadioTrack } from "../config/radioConfig";
-  import { playBeep, playSuccessSound, playErrorSound } from "../utils/sound";
+  import { RADIO_CONFIG } from '../config/radioConfig';
+  import type { RadioTrack } from '../config/radioConfig';
+  import { playBeep, playSuccessSound, playErrorSound } from '../utils/sound';
 
   let audioEl: HTMLAudioElement | null = null;
   let audioCtx: AudioContext | null = null;
@@ -234,7 +272,7 @@
   let vizAnimationId: number | null = null;
   let ytTimeInterval: number | null = null;
 
-  const ASCII_BARS = [" ", " ", "▂", "▃", "▄", "▅", "▆", "▇", "█"];
+  const ASCII_BARS = [' ', ' ', '▂', '▃', '▄', '▅', '▆', '▇', '█'];
 
   // YouTube URL parser
   function extractYouTubeId(url: string): string | null {
@@ -246,12 +284,12 @@
   }
 
   function loadYouTubeApi() {
-    if (isYtApiLoaded || typeof window === "undefined") return;
+    if (isYtApiLoaded || typeof window === 'undefined') return;
     isYtApiLoaded = true;
 
-    const tag = document.createElement("script");
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName("script")[0];
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag?.parentNode?.insertBefore(tag, firstScriptTag);
 
     (window as any).onYouTubeIframeAPIReady = () => {
@@ -260,12 +298,12 @@
   }
 
   function initYouTubePlayer() {
-    if (typeof (window as any).YT === "undefined" || !(window as any).YT.Player) return;
+    if (typeof (window as any).YT === 'undefined' || !(window as any).YT.Player) return;
     try {
-      ytPlayer = new (window as any).YT.Player("tui-yt-player", {
-        height: "1",
-        width: "1",
-        videoId: "",
+      ytPlayer = new (window as any).YT.Player('tui-yt-player', {
+        height: '1',
+        width: '1',
+        videoId: '',
         playerVars: {
           autoplay: 0,
           controls: 0,
@@ -305,15 +343,15 @@
   function startYtTimeTracking() {
     stopYtTimeTracking();
     ytTimeInterval = window.setInterval(() => {
-      if (ytPlayer && isPlaying && allTracks[currentTrackIdx]?.type === "youtube") {
+      if (ytPlayer && isPlaying && allTracks[currentTrackIdx]?.type === 'youtube') {
         try {
           const cur = ytPlayer.getCurrentTime ? ytPlayer.getCurrentTime() : 0;
           const dur = ytPlayer.getDuration ? ytPlayer.getDuration() : 0;
-          const timeEl = document.getElementById("radio-time-display");
+          const timeEl = document.getElementById('radio-time-display');
           const track = allTracks[currentTrackIdx];
           if (timeEl) {
-            if (track?.duration === "LIVE" || dur > 86400 || dur <= 0 || !isFinite(dur)) {
-              timeEl.textContent = "00:00 / ∞";
+            if (track?.duration === 'LIVE' || dur > 86400 || dur <= 0 || !isFinite(dur)) {
+              timeEl.textContent = '00:00 / ∞';
             } else {
               timeEl.textContent = `${formatTime(cur)} / ${formatTime(dur)}`;
             }
@@ -332,7 +370,7 @@
 
   function loadCustomTracksFromStorage() {
     try {
-      const saved = localStorage.getItem("tui_custom_radio_tracks");
+      const saved = localStorage.getItem('tui_custom_radio_tracks');
       if (saved) {
         const parsed: RadioTrack[] = JSON.parse(saved);
         if (Array.isArray(parsed) && parsed.length > 0) {
@@ -345,23 +383,26 @@
   function saveCustomTracksToStorage() {
     try {
       const customTracks = allTracks.filter((t) => t.isCustom);
-      localStorage.setItem("tui_custom_radio_tracks", JSON.stringify(customTracks));
+      localStorage.setItem('tui_custom_radio_tracks', JSON.stringify(customTracks));
     } catch {}
   }
 
   function initAudioEngine() {
-    audioEl = document.getElementById("tui-radio-audio") as HTMLAudioElement;
+    audioEl = document.getElementById('tui-radio-audio') as HTMLAudioElement;
     if (!audioEl) return;
 
     loadCustomTracksFromStorage();
 
     // Load saved volume and track
     try {
-      const savedTrack = localStorage.getItem("tui_radio_track");
+      const savedTrack = localStorage.getItem('tui_radio_track');
       if (savedTrack !== null) {
-        currentTrackIdx = Math.max(0, Math.min(allTracks.length - 1, parseInt(savedTrack, 10) || 0));
+        currentTrackIdx = Math.max(
+          0,
+          Math.min(allTracks.length - 1, parseInt(savedTrack, 10) || 0)
+        );
       }
-      const savedVol = localStorage.getItem("tui_radio_volume");
+      const savedVol = localStorage.getItem('tui_radio_volume');
       if (savedVol !== null) {
         volume = parseFloat(savedVol) || RADIO_CONFIG.defaultVolume;
       }
@@ -371,21 +412,21 @@
     renderPlaylist();
     loadTrack(currentTrackIdx, false);
 
-    audioEl.addEventListener("ended", () => {
+    audioEl.addEventListener('ended', () => {
       nextTrack();
     });
 
-    audioEl.addEventListener("timeupdate", () => {
-      if (allTracks[currentTrackIdx]?.type !== "youtube") {
+    audioEl.addEventListener('timeupdate', () => {
+      if (allTracks[currentTrackIdx]?.type !== 'youtube') {
         updateTimeDisplay();
       }
     });
 
-    audioEl.addEventListener("play", () => {
+    audioEl.addEventListener('play', () => {
       setPlayState(true);
     });
 
-    audioEl.addEventListener("pause", () => {
+    audioEl.addEventListener('pause', () => {
       setPlayState(false);
     });
 
@@ -395,7 +436,9 @@
   function setupWebAudio() {
     if (isWebAudioInitialized || !audioEl) return;
     try {
-      const AudioCtxClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const AudioCtxClass =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
       if (AudioCtxClass) {
         audioCtx = new AudioCtxClass();
         analyser = audioCtx.createAnalyser();
@@ -417,12 +460,12 @@
     const track = allTracks[currentTrackIdx];
 
     try {
-      localStorage.setItem("tui_radio_track", String(currentTrackIdx));
+      localStorage.setItem('tui_radio_track', String(currentTrackIdx));
     } catch {}
 
     updateUI();
 
-    if (track.type === "youtube" && track.youtubeId) {
+    if (track.type === 'youtube' && track.youtubeId) {
       // Pause HTML5 audio
       if (audioEl) audioEl.pause();
 
@@ -432,7 +475,9 @@
     } else {
       // Pause YouTube player
       if (ytPlayer && ytPlayer.pauseVideo) {
-        try { ytPlayer.pauseVideo(); } catch {}
+        try {
+          ytPlayer.pauseVideo();
+        } catch {}
       }
       stopYtTimeTracking();
 
@@ -448,7 +493,7 @@
 
     // Broadcast track change
     window.dispatchEvent(
-      new CustomEvent("tui-radio-change", {
+      new CustomEvent('tui-radio-change', {
         detail: {
           track,
           index: currentTrackIdx,
@@ -462,7 +507,7 @@
     if (!audioEl) return;
     setupWebAudio();
 
-    if (audioCtx && audioCtx.state === "suspended") {
+    if (audioCtx && audioCtx.state === 'suspended') {
       audioCtx.resume();
     }
 
@@ -498,7 +543,7 @@
     if (isPlaying) {
       pauseTrack();
     } else {
-      if (track?.type === "youtube" && track.youtubeId) {
+      if (track?.type === 'youtube' && track.youtubeId) {
         if (ytPlayer && ytPlayer.playVideo) {
           ytPlayer.playVideo();
           setPlayState(true);
@@ -513,9 +558,11 @@
 
   function pauseTrack() {
     const track = allTracks[currentTrackIdx];
-    if (track?.type === "youtube") {
+    if (track?.type === 'youtube') {
       if (ytPlayer && ytPlayer.pauseVideo) {
-        try { ytPlayer.pauseVideo(); } catch {}
+        try {
+          ytPlayer.pauseVideo();
+        } catch {}
       }
       stopYtTimeTracking();
     } else {
@@ -540,51 +587,53 @@
     volume = Math.max(0, Math.min(1, val));
     if (audioEl) audioEl.volume = volume;
     if (ytPlayer && ytPlayer.setVolume) {
-      try { ytPlayer.setVolume(Math.round(volume * 100)); } catch {}
+      try {
+        ytPlayer.setVolume(Math.round(volume * 100));
+      } catch {}
     }
 
     try {
-      localStorage.setItem("tui_radio_volume", String(volume));
+      localStorage.setItem('tui_radio_volume', String(volume));
     } catch {}
 
-    const slider = document.getElementById("radio-vol-slider") as HTMLInputElement;
-    const label = document.getElementById("radio-vol-label");
+    const slider = document.getElementById('radio-vol-slider') as HTMLInputElement;
+    const label = document.getElementById('radio-vol-label');
     if (slider) slider.value = String(Math.round(volume * 100));
     if (label) label.textContent = `${Math.round(volume * 100)}%`;
   }
 
   function setPlayState(playing: boolean) {
     isPlaying = playing;
-    const playBtn = document.getElementById("radio-play-btn");
-    const reelL = document.getElementById("reel-left");
-    const reelR = document.getElementById("reel-right");
-    const led = document.getElementById("radio-led");
-    const statusText = document.getElementById("radio-status-text");
+    const playBtn = document.getElementById('radio-play-btn');
+    const reelL = document.getElementById('reel-left');
+    const reelR = document.getElementById('reel-right');
+    const led = document.getElementById('radio-led');
+    const statusText = document.getElementById('radio-status-text');
 
-    if (playBtn) playBtn.textContent = isPlaying ? "⏸ PAUSE" : "▶ PLAY";
+    if (playBtn) playBtn.textContent = isPlaying ? '⏸ PAUSE' : '▶ PLAY';
 
     if (isPlaying) {
-      reelL?.classList.add("reel-spinning");
-      reelR?.classList.add("reel-spinning");
-      if (led) led.className = "w-2 h-2 rounded-full bg-emerald-400 animate-pulse";
+      reelL?.classList.add('reel-spinning');
+      reelR?.classList.add('reel-spinning');
+      if (led) led.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-pulse';
       if (statusText) {
-        statusText.textContent = "PLAYING";
-        statusText.className = "text-emerald-400";
+        statusText.textContent = 'PLAYING';
+        statusText.className = 'text-emerald-400';
       }
       startVisualizer();
     } else {
-      reelL?.classList.remove("reel-spinning");
-      reelR?.classList.remove("reel-spinning");
-      if (led) led.className = "w-2 h-2 rounded-full bg-neutral-600";
+      reelL?.classList.remove('reel-spinning');
+      reelR?.classList.remove('reel-spinning');
+      if (led) led.className = 'w-2 h-2 rounded-full bg-neutral-600';
       if (statusText) {
-        statusText.textContent = "PAUSED";
-        statusText.className = "text-[var(--fg-dim)]";
+        statusText.textContent = 'PAUSED';
+        statusText.className = 'text-[var(--fg-dim)]';
       }
     }
 
     // Broadcast change
     window.dispatchEvent(
-      new CustomEvent("tui-radio-change", {
+      new CustomEvent('tui-radio-change', {
         detail: {
           track: allTracks[currentTrackIdx],
           index: currentTrackIdx,
@@ -596,32 +645,36 @@
 
   async function addYouTubeTrack(url: string, customTitle?: string): Promise<boolean> {
     const videoId = extractYouTubeId(url);
-    const statusEl = document.getElementById("yt-loader-status");
+    const statusEl = document.getElementById('yt-loader-status');
 
     if (!videoId) {
       playErrorSound();
       if (statusEl) {
-        statusEl.textContent = "✖ Invalid YouTube URL";
-        statusEl.className = "text-red-400 font-bold";
-        setTimeout(() => { if (statusEl) statusEl.textContent = ""; }, 4000);
+        statusEl.textContent = '✖ Invalid YouTube URL';
+        statusEl.className = 'text-red-400 font-bold';
+        setTimeout(() => {
+          if (statusEl) statusEl.textContent = '';
+        }, 4000);
       }
       return false;
     }
 
     if (statusEl) {
-      statusEl.textContent = "⏳ Fetching title...";
-      statusEl.className = "text-yellow-400 font-bold";
+      statusEl.textContent = '⏳ Fetching title...';
+      statusEl.className = 'text-yellow-400 font-bold';
     }
 
     let title = customTitle || `YouTube Track [${videoId}]`;
-    let artist = "YouTube Stream";
+    let artist = 'YouTube Stream';
 
     try {
-      const res = await fetch(`https://noembed.com/embed?url=https://www.youtube.com/watch?v=${videoId}`);
+      const res = await fetch(
+        `https://noembed.com/embed?url=https://www.youtube.com/watch?v=${videoId}`
+      );
       const data = await res.json();
       if (data && data.title) {
         title = data.title;
-        artist = data.author_name || "YouTube Creator";
+        artist = data.author_name || 'YouTube Creator';
       }
     } catch {}
 
@@ -629,11 +682,11 @@
       id: `yt-${videoId}-${Date.now()}`,
       title,
       artist,
-      genre: "YouTube",
-      type: "youtube",
+      genre: 'YouTube',
+      type: 'youtube',
       youtubeId: videoId,
       url: `https://www.youtube.com/watch?v=${videoId}`,
-      duration: "Stream",
+      duration: 'Stream',
       isCustom: true,
     };
 
@@ -644,13 +697,15 @@
 
     playSuccessSound();
     if (statusEl) {
-      statusEl.textContent = "✓ Track Added & Playing!";
-      statusEl.className = "text-emerald-400 font-bold";
-      setTimeout(() => { if (statusEl) statusEl.textContent = ""; }, 4000);
+      statusEl.textContent = '✓ Track Added & Playing!';
+      statusEl.className = 'text-emerald-400 font-bold';
+      setTimeout(() => {
+        if (statusEl) statusEl.textContent = '';
+      }, 4000);
     }
 
-    const input = document.getElementById("yt-url-input") as HTMLInputElement;
-    if (input) input.value = "";
+    const input = document.getElementById('yt-url-input') as HTMLInputElement;
+    if (input) input.value = '';
 
     return true;
   }
@@ -668,22 +723,27 @@
   }
 
   function renderPlaylist() {
-    const container = document.getElementById("radio-playlist-container");
-    const countBadge = document.getElementById("radio-track-count-badge");
+    const container = document.getElementById('radio-playlist-container');
+    const countBadge = document.getElementById('radio-track-count-badge');
     if (!container) return;
 
     if (countBadge) countBadge.textContent = `${allTracks.length} TRACKS`;
 
-    container.innerHTML = "";
+    container.innerHTML = '';
     allTracks.forEach((track, idx) => {
       const isSelected = idx === currentTrackIdx;
-      const row = document.createElement("div");
+      const row = document.createElement('div');
       row.className = `radio-track-row flex items-center justify-between p-1.5 hover:bg-[var(--border-color)] cursor-pointer transition-colors border ${
-        isSelected ? "bg-[var(--border-color)] border-[var(--accent)]" : "border-transparent hover:border-[var(--border-color)]"
+        isSelected
+          ? 'bg-[var(--border-color)] border-[var(--accent)]'
+          : 'border-transparent hover:border-[var(--border-color)]'
       }`;
-      row.setAttribute("data-track-index", String(idx));
+      row.setAttribute('data-track-index', String(idx));
 
-      const genreColor = track.genre === "YouTube" ? "bg-red-950 text-red-400 border border-red-800" : "bg-[var(--border-color)] text-[var(--accent)]";
+      const genreColor =
+        track.genre === 'YouTube'
+          ? 'bg-red-950 text-red-400 border border-red-800'
+          : 'bg-[var(--border-color)] text-[var(--accent)]';
 
       row.innerHTML = `
         <div class="flex items-center gap-2 truncate pr-2">
@@ -696,13 +756,13 @@
           ${
             track.isCustom
               ? `<button class="yt-delete-btn text-red-400 hover:text-red-300 font-bold px-1 text-xs" title="Remove track">✕</button>`
-              : `<span class="text-[10px] text-[var(--fg-dim)]">${track.duration || "2:00"}</span>`
+              : `<span class="text-[10px] text-[var(--fg-dim)]">${track.duration || '2:00'}</span>`
           }
         </div>
       `;
 
-      row.addEventListener("click", (e) => {
-        if ((e.target as HTMLElement).classList.contains("yt-delete-btn")) {
+      row.addEventListener('click', (e) => {
+        if ((e.target as HTMLElement).classList.contains('yt-delete-btn')) {
           e.stopPropagation();
           removeCustomTrack(idx);
           return;
@@ -719,48 +779,48 @@
     const track = allTracks[currentTrackIdx];
     if (!track) return;
 
-    const titleEl = document.getElementById("radio-track-title");
-    const artistEl = document.getElementById("radio-track-artist");
-    const genreEl = document.getElementById("radio-genre-badge");
+    const titleEl = document.getElementById('radio-track-title');
+    const artistEl = document.getElementById('radio-track-artist');
+    const genreEl = document.getElementById('radio-genre-badge');
 
     if (titleEl) titleEl.textContent = track.title;
     if (artistEl) artistEl.textContent = track.artist;
     if (genreEl) genreEl.textContent = track.genre.toUpperCase();
 
-    const timeEl = document.getElementById("radio-time-display");
+    const timeEl = document.getElementById('radio-time-display');
     if (timeEl) {
-      if (track.duration === "LIVE") {
-        timeEl.textContent = "00:00 / ∞";
+      if (track.duration === 'LIVE') {
+        timeEl.textContent = '00:00 / ∞';
       } else {
-        timeEl.textContent = "0:00 / 0:00";
+        timeEl.textContent = '0:00 / 0:00';
       }
     }
 
     // Highlight row in tracklist
-    const rows = document.querySelectorAll(".radio-track-row");
+    const rows = document.querySelectorAll('.radio-track-row');
     rows.forEach((row, idx) => {
       if (idx === currentTrackIdx) {
-        row.classList.add("bg-[var(--border-color)]", "border-[var(--accent)]");
+        row.classList.add('bg-[var(--border-color)]', 'border-[var(--accent)]');
       } else {
-        row.classList.remove("bg-[var(--border-color)]", "border-[var(--accent)]");
+        row.classList.remove('bg-[var(--border-color)]', 'border-[var(--accent)]');
       }
     });
   }
 
   function formatTime(secs: number): string {
-    if (isNaN(secs) || secs < 0 || !isFinite(secs)) return "0:00";
+    if (isNaN(secs) || secs < 0 || !isFinite(secs)) return '0:00';
     const mins = Math.floor(secs / 60);
     const remainder = Math.floor(secs % 60);
-    return `${mins}:${remainder < 10 ? "0" : ""}${remainder}`;
+    return `${mins}:${remainder < 10 ? '0' : ''}${remainder}`;
   }
 
   function updateTimeDisplay() {
     if (!audioEl) return;
-    const timeEl = document.getElementById("radio-time-display");
+    const timeEl = document.getElementById('radio-time-display');
     const track = allTracks[currentTrackIdx];
     if (timeEl) {
-      if (track?.duration === "LIVE" || isNaN(audioEl.duration) || !isFinite(audioEl.duration)) {
-        timeEl.textContent = "00:00 / ∞";
+      if (track?.duration === 'LIVE' || isNaN(audioEl.duration) || !isFinite(audioEl.duration)) {
+        timeEl.textContent = '00:00 / ∞';
       } else {
         timeEl.textContent = `${formatTime(audioEl.currentTime)} / ${formatTime(audioEl.duration)}`;
       }
@@ -768,25 +828,31 @@
   }
 
   function getThemeColor(): string {
-    const theme = document.documentElement.getAttribute("data-theme") || "green";
+    const theme = document.documentElement.getAttribute('data-theme') || 'green';
     switch (theme) {
-      case "amber": return "#ffb000";
-      case "cyan": return "#00f0ff";
-      case "dracula": return "#bd93f9";
-      case "mono": return "#eeeeee";
-      case "cappuccino": return "#e69a58";
-      case "green":
-      default: return "#00ff66";
+      case 'amber':
+        return '#ffb000';
+      case 'cyan':
+        return '#00f0ff';
+      case 'dracula':
+        return '#bd93f9';
+      case 'mono':
+        return '#eeeeee';
+      case 'cappuccino':
+        return '#e69a58';
+      case 'green':
+      default:
+        return '#00ff66';
     }
   }
 
   function startVisualizer() {
-    const canvas = document.getElementById("radio-canvas-viz") as HTMLCanvasElement;
+    const canvas = document.getElementById('radio-canvas-viz') as HTMLCanvasElement;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    const meterEl = document.getElementById("radio-ascii-meter");
+    const meterEl = document.getElementById('radio-ascii-meter');
 
     function renderViz() {
       const c = ctx;
@@ -794,12 +860,12 @@
       if (!c || !cvs) return;
       c.clearRect(0, 0, cvs.width, cvs.height);
 
-      let asciiStr = "";
+      let asciiStr = '';
       const barCount = 10;
       const barWidth = cvs.width / barCount;
       const themeColor = getThemeColor();
 
-      if (analyser && dataArray && isPlaying && allTracks[currentTrackIdx]?.type !== "youtube") {
+      if (analyser && dataArray && isPlaying && allTracks[currentTrackIdx]?.type !== 'youtube') {
         analyser.getByteFrequencyData(dataArray);
 
         for (let i = 0; i < barCount; i++) {
@@ -827,14 +893,14 @@
           asciiStr += ASCII_BARS[asciiIdx];
         }
       } else {
-        asciiStr = " ▂▃▅▆▇";
+        asciiStr = ' ▂▃▅▆▇';
       }
 
       if (meterEl) meterEl.textContent = asciiStr;
 
       // Broadcast visualizer tick for status bar ticker
       window.dispatchEvent(
-        new CustomEvent("tui-radio-viz", {
+        new CustomEvent('tui-radio-viz', {
           detail: {
             ascii: asciiStr,
             isPlaying,
@@ -853,18 +919,18 @@
   }
 
   function toggleModal(force?: boolean) {
-    const modal = document.getElementById("radio-modal-container");
+    const modal = document.getElementById('radio-modal-container');
     if (!modal) return;
 
     isModalOpen = force !== undefined ? force : !isModalOpen;
 
     if (isModalOpen) {
-      modal.classList.remove("hidden");
+      modal.classList.remove('hidden');
       renderPlaylist();
       updateUI();
       startVisualizer();
     } else {
-      modal.classList.add("hidden");
+      modal.classList.add('hidden');
     }
   }
 
@@ -872,7 +938,7 @@
   const radioEngine = {
     play: () => {
       const track = allTracks[currentTrackIdx];
-      if (track?.type === "youtube" && track.youtubeId) {
+      if (track?.type === 'youtube' && track.youtubeId) {
         if (ytPlayer && ytPlayer.playVideo) {
           ytPlayer.playVideo();
           setPlayState(true);
@@ -903,45 +969,45 @@
 
   (window as unknown as { radioEngine: typeof radioEngine }).radioEngine = radioEngine;
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener('DOMContentLoaded', () => {
     initAudioEngine();
 
-    const modal = document.getElementById("radio-modal-container");
-    const closeBtn = document.getElementById("radio-close-btn");
-    const winCloseBtn = document.getElementById("radio-win-close");
-    const playBtn = document.getElementById("radio-play-btn");
-    const nextBtn = document.getElementById("radio-next-btn");
-    const prevBtn = document.getElementById("radio-prev-btn");
-    const volSlider = document.getElementById("radio-vol-slider") as HTMLInputElement;
+    const modal = document.getElementById('radio-modal-container');
+    const closeBtn = document.getElementById('radio-close-btn');
+    const winCloseBtn = document.getElementById('radio-win-close');
+    const playBtn = document.getElementById('radio-play-btn');
+    const nextBtn = document.getElementById('radio-next-btn');
+    const prevBtn = document.getElementById('radio-prev-btn');
+    const volSlider = document.getElementById('radio-vol-slider') as HTMLInputElement;
 
-    const ytInput = document.getElementById("yt-url-input") as HTMLInputElement;
-    const ytAddBtn = document.getElementById("yt-add-btn");
+    const ytInput = document.getElementById('yt-url-input') as HTMLInputElement;
+    const ytAddBtn = document.getElementById('yt-add-btn');
 
-    closeBtn?.addEventListener("click", () => toggleModal(false));
-    winCloseBtn?.addEventListener("click", () => toggleModal(false));
-    playBtn?.addEventListener("click", togglePlay);
-    nextBtn?.addEventListener("click", nextTrack);
-    prevBtn?.addEventListener("click", prevTrack);
+    closeBtn?.addEventListener('click', () => toggleModal(false));
+    winCloseBtn?.addEventListener('click', () => toggleModal(false));
+    playBtn?.addEventListener('click', togglePlay);
+    nextBtn?.addEventListener('click', nextTrack);
+    prevBtn?.addEventListener('click', prevTrack);
 
-    volSlider?.addEventListener("input", (e) => {
+    volSlider?.addEventListener('input', (e) => {
       const target = e.target as HTMLInputElement;
       setVolume(parseInt(target.value, 10) / 100);
     });
 
-    ytAddBtn?.addEventListener("click", () => {
+    ytAddBtn?.addEventListener('click', () => {
       if (ytInput && ytInput.value.trim()) {
         addYouTubeTrack(ytInput.value.trim());
       }
     });
 
-    ytInput?.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && ytInput.value.trim()) {
+    ytInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && ytInput.value.trim()) {
         addYouTubeTrack(ytInput.value.trim());
       }
     });
 
     // Modal background click
-    modal?.addEventListener("click", (e) => {
+    modal?.addEventListener('click', (e) => {
       if (e.target === modal) {
         toggleModal(false);
       }
@@ -949,18 +1015,18 @@
   });
 
   // Global shortcut for Space (only when radio modal is open)
-  document.addEventListener("keydown", (e) => {
+  document.addEventListener('keydown', (e) => {
     if (!isModalOpen) return;
 
     // Ignore space if typing in YouTube input
     const activeEl = document.activeElement;
-    if (activeEl && activeEl.id === "yt-url-input") return;
+    if (activeEl && activeEl.id === 'yt-url-input') return;
 
-    if (e.key === " " || e.code === "Space") {
+    if (e.key === ' ' || e.code === 'Space') {
       e.preventDefault();
       togglePlay();
     }
-    if (e.key === "Escape" || e.key === "q" || e.key === "Q") {
+    if (e.key === 'Escape' || e.key === 'q' || e.key === 'Q') {
       toggleModal(false);
     }
   });

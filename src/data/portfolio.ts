@@ -1,12 +1,7 @@
 export interface CollabItem {
   id: string;
   partner: string;
-  partnerType:
-    | "Open Source Org"
-    | "Startup"
-    | "Tech Studio"
-    | "Research Team"
-    | "School project";
+  partnerType: 'Open Source Org' | 'Startup' | 'Tech Studio' | 'Research Team' | 'School project';
   title: string;
   role: string;
   period: string;
@@ -14,7 +9,7 @@ export interface CollabItem {
   contributions: string[];
   techStack: string[];
   link?: string;
-  status: "ACTIVE" | "COMPLETED" | "ONGOING";
+  status: 'ACTIVE' | 'COMPLETED' | 'ONGOING';
   asciiLogo?: string;
 }
 
@@ -37,26 +32,26 @@ export type Max8Colors =
 
 export const PORTFOLIO_DATA = {
   developer: {
-    name: "Nathan Debilloëz",
-    handle: "Nde-Code",
-    title: "Open-source enthusiast & hobbyist programmer",
-    alias: "root@nde-system",
-    email: "nathan.debilloez@outlook.com",
-    github: "https://github.com/Nde-Code",
-    reddit: "https://www.reddit.com/user/nde_code/",
-    twitter: "https://x.com/nde_code",
-    location: "Brussels, Belgium // CET/CEST (UTC+1/+2)",
-    status: "ENGINEERING STUDENT GROWING THROUGH PROJECTS & EXPERIENCES",
-    CLI_EMOJI: "⚡",
+    name: 'Nathan Debilloëz',
+    handle: 'Nde-Code',
+    title: 'Open-source enthusiast & hobbyist programmer',
+    alias: 'root@nde-system',
+    email: 'nathan.debilloez@outlook.com',
+    github: 'https://github.com/Nde-Code',
+    reddit: 'https://www.reddit.com/user/nde_code/',
+    twitter: 'https://x.com/nde_code',
+    location: 'Brussels, Belgium // CET/CEST (UTC+1/+2)',
+    status: 'ENGINEERING STUDENT GROWING THROUGH PROJECTS & EXPERIENCES',
+    CLI_EMOJI: '⚡',
     palette: [
-      "#0f0f0f",
-      "#ef4444",
-      "#22c55e",
-      "#eab308",
-      "#3b82f6",
-      "#a855f7",
-      "#06b6d4",
-      "#f8fafc",
+      '#0f0f0f',
+      '#ef4444',
+      '#22c55e',
+      '#eab308',
+      '#3b82f6',
+      '#a855f7',
+      '#06b6d4',
+      '#f8fafc',
     ],
     // Months are zero-indexed in JavaScript: 0 = January, ..., 8 = September (not 9).
     bio: `I am Nathan, I am ${new Date().getFullYear() - 2004 - (new Date().getTime() < new Date(new Date().getFullYear(), 8, 11).getTime() ? 1 : 0)} years old. I am a Computer Science Engineering student passionate about building secure, reliable, and efficient digital solutions. I continuously explore systems, cybersecurity, and software engineering through hands-on projects and experimentation. I prioritize protecting applications, websites, communications, and personal data by applying security best practices from design to deployment.`,
@@ -68,164 +63,164 @@ export const PORTFOLIO_DATA = {
     88  Y8 dP""""Yb   88   88  88 dP""""Yb 88  Y8     8888Y"
 `,
     specs: {
-      OS: " Arch Linux x86_64",
-      Kernel: " Linux 6.x-zen",
-      Uptime: " Always exploring",
-      Shell: " zsh",
-      Terminal: " Alacritty",
-      WM: " i3-gaps",
-      Editor: " Neovim / VS Code",
-      CPU: " Multi-core x86_64",
-      Memory: " Enough for experiments",
+      OS: ' Arch Linux x86_64',
+      Kernel: ' Linux 6.x-zen',
+      Uptime: ' Always exploring',
+      Shell: ' zsh',
+      Terminal: ' Alacritty',
+      WM: ' i3-gaps',
+      Editor: ' Neovim / VS Code',
+      CPU: ' Multi-core x86_64',
+      Memory: ' Enough for experiments',
     },
   },
 
   skills: [
     {
-      category: "Core Languages",
-      icon: "⚡",
+      category: 'Core Languages',
+      icon: '⚡',
       skills: [
         {
-          name: "TypeScript / JavaScript",
+          name: 'TypeScript / JavaScript',
           level: 75,
-          experience: "5 yrs",
-          tag: "EXPERIENCED",
+          experience: '5 yrs',
+          tag: 'EXPERIENCED',
         },
         {
-          name: "HTML5 / CSS3",
+          name: 'HTML5 / CSS3',
           level: 85,
-          experience: "5 yrs",
-          tag: "EXPERIENCED",
+          experience: '5 yrs',
+          tag: 'EXPERIENCED',
         },
-        { name: "C#", level: 60, experience: "1 yr", tag: "FAMILIAR" },
-        { name: "Python", level: 70, experience: "3 yrs", tag: "FOCUSED" },
-        { name: "Java", level: 40, experience: "< 1 yr", tag: "LEARNING" },
-        { name: "C", level: 35, experience: "< 1 yr", tag: "LEARNING" },
-        { name: "C++", level: 35, experience: "< 1 yr", tag: "LEARNING" },
+        { name: 'C#', level: 60, experience: '1 yr', tag: 'FAMILIAR' },
+        { name: 'Python', level: 70, experience: '3 yrs', tag: 'FOCUSED' },
+        { name: 'Java', level: 40, experience: '< 1 yr', tag: 'LEARNING' },
+        { name: 'C', level: 35, experience: '< 1 yr', tag: 'LEARNING' },
+        { name: 'C++', level: 35, experience: '< 1 yr', tag: 'LEARNING' },
       ],
     },
     {
-      category: "Libraries, Scientific Computing & Tools",
-      icon: "🛠️",
+      category: 'Libraries, Scientific Computing & Tools',
+      icon: '🛠️',
       skills: [
         {
-          name: "Markdown",
+          name: 'Markdown',
           level: 90,
-          experience: "5+ yrs",
-          tag: "EXPERIENCED",
+          experience: '5+ yrs',
+          tag: 'EXPERIENCED',
         },
-        { name: "LaTeX", level: 60, experience: "2+ yrs", tag: "FOCUSED" },
+        { name: 'LaTeX', level: 60, experience: '2+ yrs', tag: 'FOCUSED' },
 
-        { name: "Math.js", level: 75, experience: "4 yrs", tag: "EXPERIENCED" },
+        { name: 'Math.js', level: 75, experience: '4 yrs', tag: 'EXPERIENCED' },
         {
-          name: "NumPy / SciPy",
+          name: 'NumPy / SciPy',
           level: 60,
-          experience: "2 yrs",
-          tag: "FOCUSED",
+          experience: '2 yrs',
+          tag: 'FOCUSED',
         },
-        { name: "Matplotlib", level: 65, experience: "3 yrs", tag: "FOCUSED" },
+        { name: 'Matplotlib', level: 65, experience: '3 yrs', tag: 'FOCUSED' },
         {
-          name: "Jupyter Notebook",
+          name: 'Jupyter Notebook',
           level: 70,
-          experience: "3 yrs",
-          tag: "FOCUSED",
+          experience: '3 yrs',
+          tag: 'FOCUSED',
         },
 
         {
-          name: "TensorFlow",
+          name: 'TensorFlow',
           level: 30,
-          experience: "< 1 yr",
-          tag: "LEARNING",
+          experience: '< 1 yr',
+          tag: 'LEARNING',
         },
         {
-          name: "Ultralytics YOLO",
+          name: 'Ultralytics YOLO',
           level: 40,
-          experience: "< 1 yr",
-          tag: "LEARNING",
+          experience: '< 1 yr',
+          tag: 'LEARNING',
         },
       ],
     },
     {
-      category: "DevOps, Cloud & Infrastructure",
-      icon: "☁️",
+      category: 'DevOps, Cloud & Infrastructure',
+      icon: '☁️',
       skills: [
         {
-          name: "Git / GitHub",
+          name: 'Git / GitHub',
           level: 80,
-          experience: "5 yrs",
-          tag: "EXPERIENCED",
+          experience: '5 yrs',
+          tag: 'EXPERIENCED',
         },
         {
-          name: "Linux / Bash",
+          name: 'Linux / Bash',
           level: 65,
-          experience: "2 yrs",
-          tag: "FOCUSED",
+          experience: '2 yrs',
+          tag: 'FOCUSED',
         },
 
         {
-          name: "GitHub Codespaces",
+          name: 'GitHub Codespaces',
           level: 70,
-          experience: "2 yrs",
-          tag: "FOCUSED",
+          experience: '2 yrs',
+          tag: 'FOCUSED',
         },
         {
-          name: "GitHub Actions",
+          name: 'GitHub Actions',
           level: 70,
-          experience: "2 yrs",
-          tag: "FOCUSED",
-        },
-
-        {
-          name: "REST APIs / API Design",
-          level: 70,
-          experience: "2 yrs",
-          tag: "FOCUSED",
-        },
-        {
-          name: "Cloudflare Workers",
-          level: 70,
-          experience: "2 yrs",
-          tag: "FOCUSED",
+          experience: '2 yrs',
+          tag: 'FOCUSED',
         },
 
         {
-          name: "Supabase / Upstash / Firebase",
+          name: 'REST APIs / API Design',
+          level: 70,
+          experience: '2 yrs',
+          tag: 'FOCUSED',
+        },
+        {
+          name: 'Cloudflare Workers',
+          level: 70,
+          experience: '2 yrs',
+          tag: 'FOCUSED',
+        },
+
+        {
+          name: 'Supabase / Upstash / Firebase',
           level: 65,
-          experience: "3 yrs",
-          tag: "FOCUSED",
+          experience: '3 yrs',
+          tag: 'FOCUSED',
         },
       ],
     },
     {
-      category: "AI & Generative AI",
-      icon: "🤖",
+      category: 'AI & Generative AI',
+      icon: '🤖',
       skills: [
         {
-          name: "OpenAI GPT Models",
+          name: 'OpenAI GPT Models',
           level: 80,
-          experience: "3+ yrs",
-          tag: "EXPERIENCED",
+          experience: '3+ yrs',
+          tag: 'EXPERIENCED',
         },
 
         {
-          name: "Anthropic Claude",
+          name: 'Anthropic Claude',
           level: 70,
-          experience: "2 yrs",
-          tag: "FOCUSED",
+          experience: '2 yrs',
+          tag: 'FOCUSED',
         },
 
         {
-          name: "Google Gemini",
+          name: 'Google Gemini',
           level: 75,
-          experience: "2 yrs",
-          tag: "FOCUSED",
+          experience: '2 yrs',
+          tag: 'FOCUSED',
         },
 
         {
-          name: "Prompt Engineering",
+          name: 'Prompt Engineering',
           level: 75,
-          experience: "3 yrs",
-          tag: "FOCUSED",
+          experience: '3 yrs',
+          tag: 'FOCUSED',
         },
       ],
     },
@@ -233,31 +228,31 @@ export const PORTFOLIO_DATA = {
 
   collabs: [
     {
-      id: "bioattend-app",
-      partner: "/",
-      partnerType: "School project",
-      title: "BioAttend - AI Facial Recognition Attendance System [COMPLETED]",
-      role: "Software & System Engineer",
-      period: "January 2026 - June 2026",
-      status: "COMPLETED",
+      id: 'bioattend-app',
+      partner: '/',
+      partnerType: 'School project',
+      title: 'BioAttend - AI Facial Recognition Attendance System [COMPLETED]',
+      role: 'Software & System Engineer',
+      period: 'January 2026 - June 2026',
+      status: 'COMPLETED',
       description:
-        "A GDPR-oriented facial recognition attendance system focused on privacy and security. The project uses InsightFace for facial embedding extraction, allowing identity verification through secure similarity matching rather than raw image storage. Built with Django for the web platform and Flask for the Raspberry Pi client (https://github.com/Amory707/BioAttendFront), which performs real-time face processing and integrates an AI-based anti-spoofing model. Supabase is used as the backend database to securely manage biometric embeddings, user accounts, attendance records, statistics, and related data.",
+        'A GDPR-oriented facial recognition attendance system focused on privacy and security. The project uses InsightFace for facial embedding extraction, allowing identity verification through secure similarity matching rather than raw image storage. Built with Django for the web platform and Flask for the Raspberry Pi client (https://github.com/Amory707/BioAttendFront), which performs real-time face processing and integrates an AI-based anti-spoofing model. Supabase is used as the backend database to securely manage biometric embeddings, user accounts, attendance records, statistics, and related data.',
       contributions: [
-        "Lead contributor to the platform development, using Python and Django. Implemented automation workflows (GitHub Codespaces, GitHub Actions), repository protection, and source code security measures using CodeQL and GitGuardian.",
-        "Core system engineer: designed and managed the database architecture with Supabase, deployed and maintained the production server infrastructure using CapRover and Hetzner Cloud, and implemented network monitoring solutions.",
+        'Lead contributor to the platform development, using Python and Django. Implemented automation workflows (GitHub Codespaces, GitHub Actions), repository protection, and source code security measures using CodeQL and GitGuardian.',
+        'Core system engineer: designed and managed the database architecture with Supabase, deployed and maintained the production server infrastructure using CapRover and Hetzner Cloud, and implemented network monitoring solutions.',
       ],
       techStack: [
-        "Python",
-        "Django",
-        "Flask",
-        "Supabase",
-        "InsightFace",
-        "GitHub Actions",
-        "CodeQL",
-        "GitGuardian",
-        "Linux",
+        'Python',
+        'Django',
+        'Flask',
+        'Supabase',
+        'InsightFace',
+        'GitHub Actions',
+        'CodeQL',
+        'GitGuardian',
+        'Linux',
       ],
-      link: "https://github.com/Amory707/BioAttendAPP",
+      link: 'https://github.com/Amory707/BioAttendAPP',
       asciiLogo: `
 +-+-+-+-+-+-+-+-+-+
 |B|i|o|A|t|t|e|n|d|
@@ -267,101 +262,101 @@ export const PORTFOLIO_DATA = {
 
   commands: [
     {
-      name: "help",
-      desc: "List all available terminal commands",
-      usage: "help",
+      name: 'help',
+      desc: 'List all available terminal commands',
+      usage: 'help',
     },
     {
-      name: "about",
-      desc: "Display bio, engineering philosophy & summary",
-      usage: "about [or cat bio.txt]",
+      name: 'about',
+      desc: 'Display bio, engineering philosophy & summary',
+      usage: 'about [or cat bio.txt]',
     },
     {
-      name: "skills",
-      desc: "Display interactive skill proficiency meters",
-      usage: "skills [or cat skills.sh]",
+      name: 'skills',
+      desc: 'Display interactive skill proficiency meters',
+      usage: 'skills [or cat skills.sh]',
     },
     {
-      name: "collabs",
-      desc: "Display list of team collaborations & partner projects",
-      usage: "collabs [or cat collabs.md]",
+      name: 'collabs',
+      desc: 'Display list of team collaborations & partner projects',
+      usage: 'collabs [or cat collabs.md]',
     },
     {
-      name: "neofetch",
-      desc: "Display ASCII banner & hardware system specs",
-      usage: "neofetch",
+      name: 'neofetch',
+      desc: 'Display ASCII banner & hardware system specs',
+      usage: 'neofetch',
     },
     {
-      name: "spotify",
-      desc: "Display Spotify Now Playing song activity & Audio RPC status",
-      usage: "spotify [or np, nowplaying]",
+      name: 'spotify',
+      desc: 'Display Spotify Now Playing song activity & Audio RPC status',
+      usage: 'spotify [or np, nowplaying]',
     },
     {
-      name: "contact",
-      desc: "Display contact info and social handles",
-      usage: "contact [or mail]",
+      name: 'contact',
+      desc: 'Display contact info and social handles',
+      usage: 'contact [or mail]',
     },
     {
-      name: "links",
+      name: 'links',
       // I use Reddit instead of LinkedIn.
-      desc: "Display interactive links to GitHub, Reddit, X/Twitter & Email",
-      usage: "links [or socials, urls]",
+      desc: 'Display interactive links to GitHub, Reddit, X/Twitter & Email',
+      usage: 'links [or socials, urls]',
     },
     {
-      name: "theme",
-      desc: "Switch theme (green, amber, cyan, dracula, mono)",
-      usage: "theme <green|amber|cyan|dracula|mono>",
+      name: 'theme',
+      desc: 'Switch theme (green, amber, cyan, dracula, mono)',
+      usage: 'theme <green|amber|cyan|dracula|mono>',
     },
     {
-      name: "pong",
-      desc: "Play retro 1972 arcade Pong mini-game vs CPU",
-      usage: "pong [or game, play, ./pong.sh]",
+      name: 'pong',
+      desc: 'Play retro 1972 arcade Pong mini-game vs CPU',
+      usage: 'pong [or game, play, ./pong.sh]',
     },
     {
-      name: "snake",
-      desc: "Play classic retro Snake arcade mini-game",
-      usage: "snake [or playsnake, ./snake.sh]",
+      name: 'snake',
+      desc: 'Play classic retro Snake arcade mini-game',
+      usage: 'snake [or playsnake, ./snake.sh]',
     },
     {
-      name: "github",
-      desc: "Display live GitHub stats, stars, forks, and language metrics",
-      usage: "github [or gh, stats]",
+      name: 'github',
+      desc: 'Display live GitHub stats, stars, forks, and language metrics',
+      usage: 'github [or gh, stats]',
     },
     {
-      name: "repos",
-      desc: "List featured GitHub repositories with star counts and links",
-      usage: "repos [or projects]",
+      name: 'repos',
+      desc: 'List featured GitHub repositories with star counts and links',
+      usage: 'repos [or projects]',
     },
     {
-      name: "radio",
-      desc: "Play retro Lo-Fi/Chiptune radio or stream custom songs from YouTube",
-      usage: "radio [play|pause|next|add <url>|vol <n>|list]",
+      name: 'radio',
+      desc: 'Play retro Lo-Fi/Chiptune radio or stream custom songs from YouTube',
+      usage: 'radio [play|pause|next|add <url>|vol <n>|list]',
     },
     {
-      name: "matrix",
-      desc: "Toggle digital rain CRT overlay animation",
-      usage: "matrix",
+      name: 'matrix',
+      desc: 'Toggle digital rain CRT overlay animation',
+      usage: 'matrix',
     },
-    { name: "crt", desc: "Toggle CRT scanline screen effect", usage: "crt" },
+    { name: 'crt', desc: 'Toggle CRT scanline screen effect', usage: 'crt' },
     {
-      name: "sfx",
-      desc: "Toggle audio feedback keypress sounds",
-      usage: "sfx",
-    },
-    {
-      name: "clear",
-      desc: "Clear terminal buffer screen",
-      usage: "clear [or cls]",
+      name: 'sfx',
+      desc: 'Toggle audio feedback keypress sounds',
+      usage: 'sfx',
     },
     {
-      name: "gui",
-      desc: "Switch window layout to TUI Visual Dashboard",
-      usage: "gui",
+      name: 'clear',
+      desc: 'Clear terminal buffer screen',
+      usage: 'clear [or cls]',
     },
     {
-      name: "cli",
-      desc: "Switch window layout to Interactive CLI Mode",
-      usage: "cli",
+      name: 'gui',
+      desc: 'Switch window layout to TUI Visual Dashboard',
+      usage: 'gui',
+    },
+    {
+      name: 'cli',
+      desc: 'Switch window layout to Interactive CLI Mode',
+      usage: 'cli',
     },
   ],
 };

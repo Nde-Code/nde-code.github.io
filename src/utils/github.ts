@@ -1,5 +1,5 @@
 // GitHub REST API Integration & Stats Aggregator
-import { PORTFOLIO_DATA } from "../data/portfolio";
+import { PORTFOLIO_DATA } from '../data/portfolio';
 
 export interface GitHubStats {
   username: string;
@@ -24,8 +24,8 @@ export interface GitHubStats {
 }
 
 function extractUsername(): string {
-  const raw = (PORTFOLIO_DATA.developer.github || "").trim().replace(/^@/, "");
-  if (!raw) return "Nde-Code"; // Replaced the default GitHub username with mine.
+  const raw = (PORTFOLIO_DATA.developer.github || '').trim().replace(/^@/, '');
+  if (!raw) return 'Nde-Code'; // Replaced the default GitHub username with mine.
 
   // Extract owner username from github.com/username or github.com/username/repo
   const match = raw.match(/github\.com\/([a-zA-Z0-9_-]+)/i);
@@ -34,25 +34,22 @@ function extractUsername(): string {
   }
 
   // If user entered just their username directly (e.g. "torvalds")
-  return raw.replace(/\/$/, "");
+  return raw.replace(/\/$/, '');
 }
 
-const CACHE_KEY = "tui_github_stats_cache";
+const CACHE_KEY = 'tui_github_stats_cache';
 const CACHE_TTL_MS = 15 * 60 * 1000; // 15 minutes
 
 export async function fetchGitHubStats(): Promise<GitHubStats | null> {
   const username = extractUsername();
 
   // 1. Check LocalStorage Cache
-  if (typeof window !== "undefined") {
+  if (typeof window !== 'undefined') {
     try {
       const cached = localStorage.getItem(CACHE_KEY);
       if (cached) {
         const { data, timestamp } = JSON.parse(cached);
-        if (
-          Date.now() - timestamp < CACHE_TTL_MS &&
-          data.username === username
-        ) {
+        if (Date.now() - timestamp < CACHE_TTL_MS && data.username === username) {
           return data;
         }
       }
@@ -67,7 +64,7 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
 
     // 3. Fetch Repositories
     const reposRes = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=pushed&per_page=100`,
+      `https://api.github.com/users/${username}/repos?sort=pushed&per_page=100`
     );
     if (!reposRes.ok) return null;
     const reposData = await reposRes.json();
@@ -90,14 +87,12 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
 
         return {
           name: repo.name,
-          description: repo.description || "No description provided",
+          description: repo.description || 'No description provided',
           stars,
           forks,
-          language: repo.language || "Plain Text",
+          language: repo.language || 'Plain Text',
           url: repo.html_url,
-          updatedAt: new Date(
-            repo.pushed_at || repo.updated_at,
-          ).toLocaleDateString(),
+          updatedAt: new Date(repo.pushed_at || repo.updated_at).toLocaleDateString(),
         };
       })
       .sort((a: any, b: any) => b.stars - a.stars);
@@ -116,8 +111,8 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
     const stats: GitHubStats = {
       username,
       name: userData.name || username,
-      avatarUrl: userData.avatar_url || "",
-      bio: userData.bio || "",
+      avatarUrl: userData.avatar_url || '',
+      bio: userData.bio || '',
       publicRepos: userData.public_repos || reposData.length,
       followers: userData.followers || 0,
       following: userData.following || 0,
@@ -128,12 +123,9 @@ export async function fetchGitHubStats(): Promise<GitHubStats | null> {
     };
 
     // Save to Cache
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       try {
-        localStorage.setItem(
-          CACHE_KEY,
-          JSON.stringify({ data: stats, timestamp: Date.now() }),
-        );
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ data: stats, timestamp: Date.now() }));
       } catch {}
     }
 

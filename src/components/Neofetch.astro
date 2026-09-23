@@ -1,5 +1,5 @@
 ---
-import { PORTFOLIO_DATA } from "../data/portfolio";
+import { PORTFOLIO_DATA } from '../data/portfolio';
 
 const { developer } = PORTFOLIO_DATA;
 
@@ -10,46 +10,26 @@ if (developer.palette && developer.palette.length > 8) {
 }
 ---
 
-<div
-  class="font-mono text-xs md:text-sm my-4 p-4 border border-[var(--border-color)] bg-[var(--bg-card)] rounded-none relative overflow-hidden"
->
-  <div
-    class="absolute top-0 right-0 px-2 py-1 bg-[var(--border-color)] text-[var(--fg-dim)] text-[10px] uppercase font-bold tracking-widest"
-  >
+<div class="font-mono text-xs md:text-sm my-4 p-4 border border-[var(--border-color)] bg-[var(--bg-card)] rounded-none relative overflow-hidden">
+  <div class="absolute top-0 right-0 px-2 py-1 bg-[var(--border-color)] text-[var(--fg-dim)] text-[10px] uppercase font-bold tracking-widest">
     SYSTEM INFO v2.4
   </div>
 
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
     <!-- I've added a class to hide the scrollbar because it is annoying. -->
-    <div
-      class="lg:col-span-5 text-[var(--fg-bright)] overflow-x-auto scrollbar-hide whitespace-pre font-bold select-none leading-none text-[11px] md:text-xs"
-    >
+    <div class="lg:col-span-5 text-[var(--fg-bright)] overflow-x-auto scrollbar-hide whitespace-pre font-bold select-none leading-none text-[11px] md:text-xs">
       {developer.asciiBanner}
-      <div
-        class="mt-5 ml-3 text-[var(--fg-dim)] text-[10px] flex items-center gap-2.5 select-none"
-      >
-        <span
-          class="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center"
-        >
-          <span
-            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"
-          ></span>
-          <span
-            class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"
-          ></span>
+      <div class="mt-5 ml-3 text-[var(--fg-dim)] text-[10px] flex items-center gap-2.5 select-none">
+        <span class="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
         </span>
-        <span class="font-bold tracking-wider text-emerald-400"
-          >{developer.status}</span
-        >
+        <span class="font-bold tracking-wider text-emerald-400">{developer.status}</span>
       </div>
     </div>
 
-    <div
-      class="lg:col-span-7 flex flex-col justify-center space-y-1.5 border-t lg:border-t-0 lg:border-l border-[var(--border-color)] pt-4 lg:pt-0 lg:pl-6"
-    >
-      <div
-        class="flex items-center gap-2 pb-2 border-b border-[var(--border-color)]"
-      >
+    <div class="lg:col-span-7 flex flex-col justify-center space-y-1.5 border-t lg:border-t-0 lg:border-l border-[var(--border-color)] pt-4 lg:pt-0 lg:pl-6">
+      <div class="flex items-center gap-2 pb-2 border-b border-[var(--border-color)]">
         <span class="text-[var(--fg-bright)] font-bold">{developer.alias}</span>
         <span class="text-[var(--fg-dim)]">-------------------</span>
       </div>
@@ -93,14 +73,14 @@ if (developer.palette && developer.palette.length > 8) {
         <span class="text-[10px] text-[var(--fg-dim)] mr-2">PALETTE:</span>
         {(
           developer.palette || [
-            "#0f0f0f",
-            "#ef4444",
-            "#22c55e",
-            "#eab308",
-            "#3b82f6",
-            "#a855f7",
-            "#06b6d4",
-            "#f8fafc",
+            '#0f0f0f',
+            '#ef4444',
+            '#22c55e',
+            '#eab308',
+            '#3b82f6',
+            '#a855f7',
+            '#06b6d4',
+            '#f8fafc',
           ]
         ).map((color) => (
           <span

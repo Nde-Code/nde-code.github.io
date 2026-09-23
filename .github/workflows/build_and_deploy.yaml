@@ -40,7 +40,7 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: 22
-          cache: "npm"
+          cache: 'npm'
 
       # Step 3: Install project dependencies from package.json:
       - name: Install dependencies

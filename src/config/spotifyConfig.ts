@@ -25,7 +25,7 @@ export interface SpotifyConfig {
 export const SPOTIFY_CONFIG: SpotifyConfig = {
   enabled: false,
   // Provide your Discord User ID here (e.g. lanyardUserId: "123456789012345678")
-  lanyardUserId: "your_discord_id",
+  lanyardUserId: 'your_discord_id',
 };
 
 /**
@@ -34,9 +34,7 @@ export const SPOTIFY_CONFIG: SpotifyConfig = {
 export async function getSpotifyActivity(): Promise<SpotifyTrack | null> {
   if (SPOTIFY_CONFIG.lanyardUserId) {
     try {
-      const res = await fetch(
-        `https://api.lanyard.rest/v1/users/${SPOTIFY_CONFIG.lanyardUserId}`,
-      );
+      const res = await fetch(`https://api.lanyard.rest/v1/users/${SPOTIFY_CONFIG.lanyardUserId}`);
       const data = await res.json();
       if (data.success) {
         if (data.data?.spotify) {
@@ -59,9 +57,9 @@ export async function getSpotifyActivity(): Promise<SpotifyTrack | null> {
           // Spotify is paused / stopped / inactive
           return {
             isPlaying: false,
-            title: "No Active Track",
-            artist: "Offline",
-            album: "Spotify Inactive",
+            title: 'No Active Track',
+            artist: 'Offline',
+            album: 'Spotify Inactive',
             progressMs: 0,
             durationMs: 180000,
           };

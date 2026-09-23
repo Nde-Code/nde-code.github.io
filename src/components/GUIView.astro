@@ -1,28 +1,21 @@
 ---
-import { PORTFOLIO_DATA } from "../data/portfolio";
-import Neofetch from "./Neofetch.astro";
-import SpotifyWidget from "./SpotifyWidget.astro";
-import GamesWidget from "./GamesWidget.astro";
+import { PORTFOLIO_DATA } from '../data/portfolio';
+import Neofetch from './Neofetch.astro';
+import SpotifyWidget from './SpotifyWidget.astro';
+import GamesWidget from './GamesWidget.astro';
 
 const { developer, skills, collabs } = PORTFOLIO_DATA;
 ---
 
-<div
-  id="view-gui"
-  class="hidden flex flex-col space-y-6 font-mono text-xs md:text-sm"
->
+<div id="view-gui" class="hidden flex flex-col space-y-6 font-mono text-xs md:text-sm">
   <!-- Top Neofetch System Summary Card -->
   <Neofetch />
 
   <!-- Main TUI Grid: Sidebar Directory Navigation + Main Panel -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
     <!-- Sidebar Navigation Tree -->
-    <aside
-      class="lg:col-span-3 border border-[var(--border-color)] bg-[var(--bg-card)] p-4 space-y-4"
-    >
-      <div
-        class="text-[var(--accent)] font-bold border-b border-[var(--border-color)] pb-2 flex items-center justify-between"
-      >
+    <aside class="lg:col-span-3 border border-[var(--border-color)] bg-[var(--bg-card)] p-4 space-y-4">
+      <div class="text-[var(--accent)] font-bold border-b border-[var(--border-color)] pb-2 flex items-center justify-between">
         <span>📁 EXPLORER</span>
         <span class="text-[10px] text-[var(--fg-dim)]">CONTENTS</span>
       </div>
@@ -88,26 +81,21 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
       <GamesWidget />
 
       <!-- Quick Metrics -->
-      <div
-        class="pt-4 border-t border-[var(--border-color)] space-y-2 text-[11px]"
-      >
-        <div
-          class="text-[var(--fg-dim)] font-bold uppercase tracking-wider text-[10px]"
-        >
+      <div class="pt-4 border-t border-[var(--border-color)] space-y-2 text-[11px]">
+        <div class="text-[var(--fg-dim)] font-bold uppercase tracking-wider text-[10px]">
           CONTENT SPEC
         </div>
         <div class="flex justify-between text-[var(--fg-main)]">
           <!-- Rename Active Collabs to Number of Collabs. -->
           <span>Number of Collabs:</span>
-          <span class="font-bold text-[var(--fg-bright)]">{collabs.length}</span
-          >
+          <span class="font-bold text-[var(--fg-bright)]">{collabs.length}</span>
         </div>
         <div class="flex justify-between text-[var(--fg-main)]">
           <span>Skill Domains:</span>
           <span class="font-bold text-yellow-400">{skills.length}</span>
         </div>
         <div class="flex justify-between text-[var(--fg-main)]">
-        <!-- I don't know why this is not in the profile config too. I don't need it at the moment, so I commented it out.
+          <!-- I don't know why this is not in the profile config too. I don't need it at the moment, so I commented it out.
           <span>Experience:</span>
           <span class="font-bold text-emerald-400">7+ Years</span>
         -->
@@ -134,50 +122,34 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
         id="gui-about"
         class="border border-[var(--border-color)] bg-[var(--bg-card)] p-4 sm:p-5 space-y-4"
       >
-        <div
-          class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-3"
-        >
-          <h2
-            class="text-xs sm:text-base font-bold text-[var(--fg-bright)] flex items-center gap-1.5 sm:gap-2 truncate"
-          >
+        <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-3">
+          <h2 class="text-xs sm:text-base font-bold text-[var(--fg-bright)] flex items-center gap-1.5 sm:gap-2 truncate">
             <span class="text-[var(--accent)]">></span> CAT BIO.TXT // ABOUT ME
           </h2>
           <span class="text-[10px] sm:text-xs text-[var(--fg-dim)] shrink-0">[READ-ONLY]</span>
         </div>
 
-        <p class="text-[var(--fg-main)] leading-relaxed text-xs sm:text-sm">
-          {developer.bio}
-        </p>
+        <p class="text-[var(--fg-main)] leading-relaxed text-xs sm:text-sm">{developer.bio}</p>
 
-        {
-          developer.quote && (
-            <blockquote class="p-3 border-l-2 border-[var(--accent)] bg-[var(--bg-main)] text-[var(--fg-dim)] italic text-xs leading-relaxed">
-              {developer.quote}
-            </blockquote>
-          )
-        }
+        {developer.quote && (
+          <blockquote class="p-3 border-l-2 border-[var(--accent)] bg-[var(--bg-main)] text-[var(--fg-dim)] italic text-xs leading-relaxed">
+            {developer.quote}
+          </blockquote>
+        )}
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-          <div
-            class="p-3 border border-[var(--border-color)] bg-[var(--bg-main)] space-y-1"
-          >
-            <span class="text-[10px] text-[var(--fg-dim)] uppercase font-bold"
-              >ENGINEERING FOCUS</span
-            >
+          <div class="p-3 border border-[var(--border-color)] bg-[var(--bg-main)] space-y-1">
+            <span class="text-[10px] text-[var(--fg-dim)] uppercase font-bold">
+              ENGINEERING FOCUS
+            </span>
             <div class="text-xs text-[var(--accent)] font-bold">
-            <!-- I don't know why this is not in the profile -->
+              <!-- I don't know why this is not in the profile -->
               Cybersecurity and Forensics for the Internet of Everything
             </div>
           </div>
-          <div
-            class="p-3 border border-[var(--border-color)] bg-[var(--bg-main)] space-y-1"
-          >
-            <span class="text-[10px] text-[var(--fg-dim)] uppercase font-bold"
-              >LOCATION</span
-            >
-            <div class="text-xs text-[var(--fg-bright)] font-bold">
-              📍 {developer.location}
-            </div>
+          <div class="p-3 border border-[var(--border-color)] bg-[var(--bg-main)] space-y-1">
+            <span class="text-[10px] text-[var(--fg-dim)] uppercase font-bold">LOCATION</span>
+            <div class="text-xs text-[var(--fg-bright)] font-bold">📍 {developer.location}</div>
           </div>
         </div>
       </section>
@@ -187,63 +159,53 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
         id="gui-skills"
         class="border border-[var(--border-color)] bg-[var(--bg-card)] p-4 sm:p-5 space-y-4"
       >
-        <div
-          class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-3"
-        >
-          <h2
-            class="text-xs sm:text-base font-bold text-[var(--fg-bright)] flex items-center gap-1.5 sm:gap-2 truncate"
-          >
+        <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-3">
+          <h2 class="text-xs sm:text-base font-bold text-[var(--fg-bright)] flex items-center gap-1.5 sm:gap-2 truncate">
             <span class="text-[var(--accent)]">></span> ./SKILLS.SH // TECHNICAL PROFICIENCY
           </h2>
-          <span class="text-[10px] sm:text-xs text-[var(--fg-dim)] shrink-0">[PROFICIENCY METRICS]</span
-          >
+          <span class="text-[10px] sm:text-xs text-[var(--fg-dim)] shrink-0">
+            [PROFICIENCY METRICS]
+          </span>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {
-            skills.map((cat) => (
-              <div class="border border-[var(--border-color)] bg-[var(--bg-main)] p-4 space-y-3">
-                <div class="text-xs font-bold text-[var(--accent)] flex items-center gap-2 border-b border-[var(--border-color)] pb-2">
-                  <span>{cat.icon}</span>
-                  <span>{cat.category}</span>
-                </div>
-
-                <div class="space-y-2.5">
-                  {cat.skills.map((skill) => {
-                    const filledCount = Math.round(skill.level / 10);
-                    const barStr =
-                      "█".repeat(filledCount) + "░".repeat(10 - filledCount);
-                    return (
-                      <div class="space-y-1">
-                        <div class="flex justify-between text-xs font-bold">
-                          <span class="text-[var(--fg-bright)]">
-                            {skill.name}
-                          </span>
-                          <span class="text-[var(--fg-dim)] text-[10px]">
-                            {skill.experience}
-                          </span>
-                        </div>
-                        <div class="flex items-center gap-2 text-xs">
-                          <div class="flex-1 bg-[var(--bg-card)] border border-[var(--border-color)] h-4 overflow-hidden relative flex items-center px-1">
-                            <div
-                              class="h-full bg-[var(--fg-dim)] opacity-40 absolute left-0 top-0"
-                              style={`width: ${skill.level}%`}
-                            />
-                            <span class="relative z-10 text-[10px] text-[var(--fg-bright)] font-mono">
-                              {barStr} {skill.level}%
-                            </span>
-                          </div>
-                          <span class="text-[9px] px-1 bg-[var(--border-color)] text-[var(--accent)] font-bold">
-                            {skill.tag}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
+          {skills.map((cat) => (
+            <div class="border border-[var(--border-color)] bg-[var(--bg-main)] p-4 space-y-3">
+              <div class="text-xs font-bold text-[var(--accent)] flex items-center gap-2 border-b border-[var(--border-color)] pb-2">
+                <span>{cat.icon}</span>
+                <span>{cat.category}</span>
               </div>
-            ))
-          }
+
+              <div class="space-y-2.5">
+                {cat.skills.map((skill) => {
+                  const filledCount = Math.round(skill.level / 10);
+                  const barStr = '█'.repeat(filledCount) + '░'.repeat(10 - filledCount);
+                  return (
+                    <div class="space-y-1">
+                      <div class="flex justify-between text-xs font-bold">
+                        <span class="text-[var(--fg-bright)]">{skill.name}</span>
+                        <span class="text-[var(--fg-dim)] text-[10px]">{skill.experience}</span>
+                      </div>
+                      <div class="flex items-center gap-2 text-xs">
+                        <div class="flex-1 bg-[var(--bg-card)] border border-[var(--border-color)] h-4 overflow-hidden relative flex items-center px-1">
+                          <div
+                            class="h-full bg-[var(--fg-dim)] opacity-40 absolute left-0 top-0"
+                            style={`width: ${skill.level}%`}
+                          />
+                          <span class="relative z-10 text-[10px] text-[var(--fg-bright)] font-mono">
+                            {barStr} {skill.level}%
+                          </span>
+                        </div>
+                        <span class="text-[9px] px-1 bg-[var(--border-color)] text-[var(--accent)] font-bold">
+                          {skill.tag}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -252,86 +214,72 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
         id="gui-collabs"
         class="border border-[var(--border-color)] bg-[var(--bg-card)] p-4 sm:p-5 space-y-4"
       >
-        <div
-          class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-3"
-        >
-          <h2
-            class="text-xs sm:text-base font-bold text-[var(--fg-bright)] flex items-center gap-1.5 sm:gap-2 truncate"
-          >
+        <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-3">
+          <h2 class="text-xs sm:text-base font-bold text-[var(--fg-bright)] flex items-center gap-1.5 sm:gap-2 truncate">
             <span class="text-[var(--accent)]">></span> CAT COLLABS.MD // TEAM COLLABORATIONS
           </h2>
           <span class="text-[10px] sm:text-xs text-[var(--fg-dim)] shrink-0">[PARTNERSHIPS]</span>
         </div>
 
         <div class="space-y-4">
-          {
-            collabs.map((item) => (
-              <div class="border border-[var(--border-color)] bg-[var(--bg-main)] p-5 space-y-3 hover:border-[var(--border-active)] transition-all">
-                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-2">
-                  <h3 class="text-sm font-bold text-[var(--fg-bright)] flex items-center gap-2">
-                    <span>🤝</span> {item.title}
-                  </h3>
-                  <span class="text-[10px] px-2 py-0.5 border border-[var(--border-color)] text-[var(--accent)] uppercase font-bold">
-                    {item.partnerType}
-                  </span>
-                </div>
-
-                {item.asciiLogo && (
-                  <pre class="my-2 p-2.5 bg-[var(--bg-card)] text-[10px] sm:text-xs text-[var(--fg-bright)] overflow-x-auto leading-tight select-none border border-[var(--border-color)] font-mono whitespace-pre">{item.asciiLogo}</pre>
-                )}
-
-                <div class="text-xs">
-                  <span class="text-[var(--accent)] font-bold">
-                    Partner Org:
-                  </span>{" "}
-                  <span class="text-[var(--fg-bright)] font-bold">
-                    {item.partner}
-                  </span>
-                  <span class="mx-2 text-[var(--fg-dim)]">|</span>
-                  <span class="text-[var(--accent)] font-bold">Role:</span>{" "}
-                  <span class="text-emerald-400 font-bold">{item.role}</span>
-                  <span class="mx-2 text-[var(--fg-dim)]">|</span>
-                  <span class="text-[var(--fg-dim)]">{item.period}</span>
-                </div>
-
-                <p class="text-xs text-[var(--fg-main)] leading-relaxed">
-                  {item.description}
-                </p>
-
-                <div class="space-y-1 pt-1">
-                  <span class="text-[10px] text-[var(--fg-dim)] uppercase font-bold">
-                    Key Contributions:
-                  </span>
-                  <ul class="list-disc list-inside text-xs text-[var(--fg-main)] space-y-0.5">
-                    {item.contributions.map((c) => (
-                      <li>{c}</li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div class="flex flex-wrap items-center justify-between pt-3 border-t border-[var(--border-color)] gap-2">
-                  <div class="flex flex-wrap gap-1">
-                    {item.techStack.map((t) => (
-                      <span class="text-[10px] px-1.5 py-0.5 bg-[var(--bg-card)] text-[var(--fg-dim)] border border-[var(--border-color)]">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-
-                  {item.link && (
-                    <a
-                      href={item.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-xs text-[var(--accent)] hover:underline font-bold"
-                    >
-                      View Project ↗
-                    </a>
-                  )}
-                </div>
+          {collabs.map((item) => (
+            <div class="border border-[var(--border-color)] bg-[var(--bg-main)] p-5 space-y-3 hover:border-[var(--border-active)] transition-all">
+              <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-2">
+                <h3 class="text-sm font-bold text-[var(--fg-bright)] flex items-center gap-2">
+                  <span>🤝</span> {item.title}
+                </h3>
+                <span class="text-[10px] px-2 py-0.5 border border-[var(--border-color)] text-[var(--accent)] uppercase font-bold">
+                  {item.partnerType}
+                </span>
               </div>
-            ))
-          }
+
+              {item.asciiLogo && <pre class="my-2 p-2.5 bg-[var(--bg-card)] text-[10px] sm:text-xs text-[var(--fg-bright)] overflow-x-auto leading-tight select-none border border-[var(--border-color)] font-mono whitespace-pre">{item.asciiLogo}</pre>}
+
+              <div class="text-xs">
+                <span class="text-[var(--accent)] font-bold">Partner Org:</span>{' '}
+                <span class="text-[var(--fg-bright)] font-bold">{item.partner}</span>
+                <span class="mx-2 text-[var(--fg-dim)]">|</span>
+                <span class="text-[var(--accent)] font-bold">Role:</span>{' '}
+                <span class="text-emerald-400 font-bold">{item.role}</span>
+                <span class="mx-2 text-[var(--fg-dim)]">|</span>
+                <span class="text-[var(--fg-dim)]">{item.period}</span>
+              </div>
+
+              <p class="text-xs text-[var(--fg-main)] leading-relaxed">{item.description}</p>
+
+              <div class="space-y-1 pt-1">
+                <span class="text-[10px] text-[var(--fg-dim)] uppercase font-bold">
+                  Key Contributions:
+                </span>
+                <ul class="list-disc list-inside text-xs text-[var(--fg-main)] space-y-0.5">
+                  {item.contributions.map((c) => (
+                    <li>{c}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="flex flex-wrap items-center justify-between pt-3 border-t border-[var(--border-color)] gap-2">
+                <div class="flex flex-wrap gap-1">
+                  {item.techStack.map((t) => (
+                    <span class="text-[10px] px-1.5 py-0.5 bg-[var(--bg-card)] text-[var(--fg-dim)] border border-[var(--border-color)]">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                {item.link && (
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs text-[var(--accent)] hover:underline font-bold"
+                  >
+                    View Project ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -340,12 +288,8 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
         id="gui-github"
         class="border border-[var(--border-color)] bg-[var(--bg-card)] p-4 sm:p-5 space-y-4"
       >
-        <div
-          class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-3"
-        >
-          <h2
-            class="text-xs sm:text-base font-bold text-[var(--fg-bright)] flex items-center gap-1.5 sm:gap-2 truncate"
-          >
+        <div class="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 border-b border-[var(--border-color)] pb-3">
+          <h2 class="text-xs sm:text-base font-bold text-[var(--fg-bright)] flex items-center gap-1.5 sm:gap-2 truncate">
             <span class="text-[var(--accent)]">></span> CAT GITHUB.SH // REPOSITORIES & METRICS
           </h2>
           <span class="text-[10px] sm:text-xs text-emerald-400 font-bold flex items-center gap-1.5 shrink-0">
@@ -362,20 +306,48 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
           <!-- Metric Counter Cards -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
             <div class="border border-[var(--border-color)] bg-[var(--bg-main)] p-2 sm:p-3 text-center">
-              <div class="text-[9px] sm:text-[10px] text-[var(--fg-dim)] font-bold truncate">TOTAL STARS ⭐</div>
-              <div id="gui-gh-stars" class="text-base sm:text-xl font-bold text-yellow-400 mt-0.5 sm:mt-1">0</div>
+              <div class="text-[9px] sm:text-[10px] text-[var(--fg-dim)] font-bold truncate">
+                TOTAL STARS ⭐
+              </div>
+              <div
+                id="gui-gh-stars"
+                class="text-base sm:text-xl font-bold text-yellow-400 mt-0.5 sm:mt-1"
+              >
+                0
+              </div>
             </div>
             <div class="border border-[var(--border-color)] bg-[var(--bg-main)] p-2 sm:p-3 text-center">
-              <div class="text-[9px] sm:text-[10px] text-[var(--fg-dim)] font-bold truncate">TOTAL FORKS 🍴</div>
-              <div id="gui-gh-forks" class="text-base sm:text-xl font-bold text-cyan-400 mt-0.5 sm:mt-1">0</div>
+              <div class="text-[9px] sm:text-[10px] text-[var(--fg-dim)] font-bold truncate">
+                TOTAL FORKS 🍴
+              </div>
+              <div
+                id="gui-gh-forks"
+                class="text-base sm:text-xl font-bold text-cyan-400 mt-0.5 sm:mt-1"
+              >
+                0
+              </div>
             </div>
             <div class="border border-[var(--border-color)] bg-[var(--bg-main)] p-2 sm:p-3 text-center">
-              <div class="text-[9px] sm:text-[10px] text-[var(--fg-dim)] font-bold truncate">PUBLIC REPOS 📦</div>
-              <div id="gui-gh-repos" class="text-base sm:text-xl font-bold text-emerald-400 mt-0.5 sm:mt-1">0</div>
+              <div class="text-[9px] sm:text-[10px] text-[var(--fg-dim)] font-bold truncate">
+                PUBLIC REPOS 📦
+              </div>
+              <div
+                id="gui-gh-repos"
+                class="text-base sm:text-xl font-bold text-emerald-400 mt-0.5 sm:mt-1"
+              >
+                0
+              </div>
             </div>
             <div class="border border-[var(--border-color)] bg-[var(--bg-main)] p-2 sm:p-3 text-center">
-              <div class="text-[9px] sm:text-[10px] text-[var(--fg-dim)] font-bold truncate">FOLLOWERS 👥</div>
-              <div id="gui-gh-followers" class="text-base sm:text-xl font-bold text-purple-400 mt-0.5 sm:mt-1">0</div>
+              <div class="text-[9px] sm:text-[10px] text-[var(--fg-dim)] font-bold truncate">
+                FOLLOWERS 👥
+              </div>
+              <div
+                id="gui-gh-followers"
+                class="text-base sm:text-xl font-bold text-purple-400 mt-0.5 sm:mt-1"
+              >
+                0
+              </div>
             </div>
           </div>
 
@@ -490,41 +462,39 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
 </div>
 
 <script>
-  import confetti from "canvas-confetti";
-  import { playSuccessSound } from "../utils/sound";
-  import { PORTFOLIO_DATA } from "../data/portfolio";
-  import { fetchGitHubStats } from "../utils/github";
+  import confetti from 'canvas-confetti';
+  import { playSuccessSound } from '../utils/sound';
+  import { PORTFOLIO_DATA } from '../data/portfolio';
+  import { fetchGitHubStats } from '../utils/github';
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contact-form") as HTMLFormElement;
-    const statusMsg = document.getElementById("form-status");
-    const submitBtn = document.getElementById(
-      "contact-submit-btn",
-    ) as HTMLButtonElement;
-    const btnText = document.getElementById("btn-text");
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const statusMsg = document.getElementById('form-status');
+    const submitBtn = document.getElementById('contact-submit-btn') as HTMLButtonElement;
+    const btnText = document.getElementById('btn-text');
     const recipientEmail = PORTFOLIO_DATA.developer.email;
 
     // Fetch and populate live GitHub stats
     initGitHubStats();
 
     async function initGitHubStats() {
-      const loadingEl = document.getElementById("gui-gh-loading");
-      const contentEl = document.getElementById("gui-gh-content");
-      const starsEl = document.getElementById("gui-gh-stars");
-      const forksEl = document.getElementById("gui-gh-forks");
-      const reposEl = document.getElementById("gui-gh-repos");
-      const followersEl = document.getElementById("gui-gh-followers");
-      const langListEl = document.getElementById("gui-gh-lang-list");
-      const reposListEl = document.getElementById("gui-gh-repos-list");
+      const loadingEl = document.getElementById('gui-gh-loading');
+      const contentEl = document.getElementById('gui-gh-content');
+      const starsEl = document.getElementById('gui-gh-stars');
+      const forksEl = document.getElementById('gui-gh-forks');
+      const reposEl = document.getElementById('gui-gh-repos');
+      const followersEl = document.getElementById('gui-gh-followers');
+      const langListEl = document.getElementById('gui-gh-lang-list');
+      const reposListEl = document.getElementById('gui-gh-repos-list');
 
       const stats = await fetchGitHubStats();
       if (!stats) {
-        if (loadingEl) loadingEl.textContent = "GitHub metrics temporarily offline / rate-limited.";
+        if (loadingEl) loadingEl.textContent = 'GitHub metrics temporarily offline / rate-limited.';
         return;
       }
 
-      if (loadingEl) loadingEl.classList.add("hidden");
-      if (contentEl) contentEl.classList.remove("hidden");
+      if (loadingEl) loadingEl.classList.add('hidden');
+      if (contentEl) contentEl.classList.remove('hidden');
 
       if (starsEl) starsEl.textContent = String(stats.totalStars);
       if (forksEl) forksEl.textContent = String(stats.totalForks);
@@ -532,23 +502,25 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
       if (followersEl) followersEl.textContent = String(stats.followers);
 
       if (langListEl) {
-        langListEl.innerHTML = "";
+        langListEl.innerHTML = '';
         stats.topLanguages.forEach((lang) => {
-          const badge = document.createElement("span");
-          badge.className = "px-2 py-1 bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--fg-bright)] flex items-center gap-1.5";
+          const badge = document.createElement('span');
+          badge.className =
+            'px-2 py-1 bg-[var(--bg-card)] border border-[var(--border-color)] text-[var(--fg-bright)] flex items-center gap-1.5';
           badge.innerHTML = `<span class="text-[var(--accent)] font-bold">${lang.name}</span> <span class="text-[var(--fg-dim)] text-[10px]">(${lang.percentage}%)</span>`;
           langListEl.appendChild(badge);
         });
       }
 
       if (reposListEl) {
-        reposListEl.innerHTML = "";
+        reposListEl.innerHTML = '';
         stats.topRepos.forEach((repo) => {
-          const card = document.createElement("a");
+          const card = document.createElement('a');
           card.href = repo.url;
-          card.target = "_blank";
-          card.rel = "noopener noreferrer";
-          card.className = "border border-[var(--border-color)] bg-[var(--bg-main)] p-3 hover:border-[var(--accent)] transition-all flex flex-col justify-between block group";
+          card.target = '_blank';
+          card.rel = 'noopener noreferrer';
+          card.className =
+            'border border-[var(--border-color)] bg-[var(--bg-main)] p-3 hover:border-[var(--accent)] transition-all flex flex-col justify-between block group';
           card.innerHTML = `
             <div>
               <div class="flex items-center justify-between gap-2 border-b border-[var(--border-color)] pb-1.5 mb-1.5">
@@ -567,18 +539,12 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
       }
     }
 
-    form?.addEventListener("submit", async (e) => {
+    form?.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const nameInput = document.getElementById(
-        "contact-name",
-      ) as HTMLInputElement;
-      const emailInput = document.getElementById(
-        "contact-email",
-      ) as HTMLInputElement;
-      const messageInput = document.getElementById(
-        "contact-message",
-      ) as HTMLTextAreaElement;
+      const nameInput = document.getElementById('contact-name') as HTMLInputElement;
+      const emailInput = document.getElementById('contact-email') as HTMLInputElement;
+      const messageInput = document.getElementById('contact-message') as HTMLTextAreaElement;
 
       const name = nameInput.value.trim();
       const email = emailInput.value.trim();
@@ -588,30 +554,27 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
 
       // Loading state
       if (submitBtn) submitBtn.disabled = true;
-      if (btnText) btnText.textContent = "TRANSMITTING...";
+      if (btnText) btnText.textContent = 'TRANSMITTING...';
       if (statusMsg) {
-        statusMsg.className = "text-xs font-bold text-yellow-400 block";
-        statusMsg.textContent = "⏳ Encrypting & dispatching email payload...";
+        statusMsg.className = 'text-xs font-bold text-yellow-400 block';
+        statusMsg.textContent = '⏳ Encrypting & dispatching email payload...';
       }
 
       try {
-        const response = await fetch(
-          `https://formsubmit.co/ajax/${recipientEmail}`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify({
-              name,
-              email,
-              message,
-              _subject: `Portfolio Contact from ${name}`,
-              _captcha: "false",
-            }),
+        const response = await fetch(`https://formsubmit.co/ajax/${recipientEmail}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
           },
-        );
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+            _subject: `Portfolio Contact from ${name}`,
+            _captcha: 'false',
+          }),
+        });
 
         if (response.ok) {
           playSuccessSound();
@@ -620,16 +583,15 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
             particleCount: 80,
             spread: 60,
             origin: { y: 0.7 },
-            colors: ["#00ff66", "#00f0ff", "#ffb000", "#bd93f9"],
+            colors: ['#00ff66', '#00f0ff', '#ffb000', '#bd93f9'],
           });
 
           if (statusMsg) {
-            statusMsg.className = "text-xs font-bold text-emerald-400 block";
-            statusMsg.textContent =
-              "✓ Message payload successfully transmitted!";
+            statusMsg.className = 'text-xs font-bold text-emerald-400 block';
+            statusMsg.textContent = '✓ Message payload successfully transmitted!';
             setTimeout(() => {
-              statusMsg.className = "text-xs font-bold hidden";
-              statusMsg.textContent = "";
+              statusMsg.className = 'text-xs font-bold hidden';
+              statusMsg.textContent = '';
             }, 7000);
           }
           form.reset();
@@ -638,13 +600,12 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
         }
       } catch (err) {
         if (statusMsg) {
-          statusMsg.className = "text-xs font-bold text-rose-400 block";
-          statusMsg.textContent =
-            "✖ Transmission failed. Please try again later.";
+          statusMsg.className = 'text-xs font-bold text-rose-400 block';
+          statusMsg.textContent = '✖ Transmission failed. Please try again later.';
         }
       } finally {
         if (submitBtn) submitBtn.disabled = false;
-        if (btnText) btnText.textContent = "SEND PAYLOAD [ENTER]";
+        if (btnText) btnText.textContent = 'SEND PAYLOAD [ENTER]';
       }
     });
 
@@ -658,14 +619,18 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
         lastTrigger = now;
         callback();
       };
-      el.addEventListener("click", handler);
-      el.addEventListener("touchstart", (e) => {
-        e.preventDefault();
-        handler();
-      }, { passive: false });
+      el.addEventListener('click', handler);
+      el.addEventListener(
+        'touchstart',
+        (e) => {
+          e.preventDefault();
+          handler();
+        },
+        { passive: false }
+      );
     };
 
-    bindLaunchBtn("gui-launch-pong", () => {
+    bindLaunchBtn('gui-launch-pong', () => {
       const win = window as unknown as { togglePong?: (f?: boolean) => void };
       if (win.togglePong) {
         win.togglePong(true);
@@ -673,7 +638,7 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
       }
     });
 
-    bindLaunchBtn("gui-launch-snake", () => {
+    bindLaunchBtn('gui-launch-snake', () => {
       const win = window as unknown as { toggleSnake?: (f?: boolean) => void };
       if (win.toggleSnake) {
         win.toggleSnake(true);
@@ -681,7 +646,7 @@ const { developer, skills, collabs } = PORTFOLIO_DATA;
       }
     });
 
-    bindLaunchBtn("gui-launch-radio", () => {
+    bindLaunchBtn('gui-launch-radio', () => {
       const win = window as unknown as { radioEngine?: { toggleModal: (f?: boolean) => void } };
       if (win.radioEngine) {
         win.radioEngine.toggleModal(true);

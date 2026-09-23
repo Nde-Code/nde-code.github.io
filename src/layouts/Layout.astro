@@ -1,10 +1,10 @@
 ---
-import "../styles/global.css";
-import MatrixRain from "../components/MatrixRain.astro";
-import PongGame from "../components/PongGame.astro";
-import SnakeGame from "../components/SnakeGame.astro";
-import RadioPlayer from "../components/RadioPlayer.astro";
-import { PORTFOLIO_DATA } from "../data/portfolio";
+import '../styles/global.css';
+import MatrixRain from '../components/MatrixRain.astro';
+import PongGame from '../components/PongGame.astro';
+import SnakeGame from '../components/SnakeGame.astro';
+import RadioPlayer from '../components/RadioPlayer.astro';
+import { PORTFOLIO_DATA } from '../data/portfolio';
 
 interface Props {
   title?: string;
@@ -17,7 +17,7 @@ const {
 } = Astro.props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="green">
   <head>
     <meta charset="UTF-8" />
@@ -34,15 +34,17 @@ const {
     <meta name="theme-color" content="#0a120b" />
 
     <script>
-      import { applyTheme } from "../config/themeConfig";
-      const savedTheme = localStorage.getItem("tui_theme") || "green";
+      import { applyTheme } from '../config/themeConfig';
+      const savedTheme = localStorage.getItem('tui_theme') || 'green';
       applyTheme(savedTheme);
     </script>
-    <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b050008e433747e1b029fa4046f152b6"}'></script>
+    <script
+      type="module"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token": "b050008e433747e1b029fa4046f152b6"}'
+    ></script>
   </head>
-  <body
-    class="min-h-screen relative flex flex-col justify-between py-4 sm:py-8 px-2 sm:px-4 crt-flicker"
-  >
+  <body class="min-h-screen relative flex flex-col justify-between py-4 sm:py-8 px-2 sm:px-4 crt-flicker">
     <div id="crt-overlay-layer" class="crt-overlay"></div>
     <div class="crt-vignette"></div>
 
