@@ -234,14 +234,14 @@ export const PORTFOLIO_DATA = {
   collabs: [
     {
       id: "bioattend-app",
-      partner: "Some friends...",
+      partner: "/",
       partnerType: "School project",
       title: "BioAttend - AI Facial Recognition Attendance System [COMPLETED]",
       role: "Software & System Engineer",
       period: "January 2026 - June 2026",
       status: "COMPLETED",
       description:
-        "A GDPR-oriented facial recognition attendance system focused on privacy and security. The platform uses InsightFace for facial embedding extraction, allowing identity verification through secure similarity matching rather than raw image storage. Built with Django for the web platform and Flask for the Raspberry Pi client (https://github.com/Amory707/BioAttendFront), which performs real-time face processing and integrates an AI-based anti-spoofing model. Supabase is used as the backend database to securely manage biometric embeddings, user accounts, attendance records, statistics, and related data.",
+        "A GDPR-oriented facial recognition attendance system focused on privacy and security. The project uses InsightFace for facial embedding extraction, allowing identity verification through secure similarity matching rather than raw image storage. Built with Django for the web platform and Flask for the Raspberry Pi client (https://github.com/Amory707/BioAttendFront), which performs real-time face processing and integrates an AI-based anti-spoofing model. Supabase is used as the backend database to securely manage biometric embeddings, user accounts, attendance records, statistics, and related data.",
       contributions: [
         "Lead contributor to the platform development, using Python and Django. Implemented automation workflows (GitHub Codespaces, GitHub Actions), repository protection, and source code security measures using CodeQL and GitGuardian.",
         "Core system engineer: designed and managed the database architecture with Supabase, deployed and maintained the production server infrastructure using CapRover and Hetzner Cloud, and implemented network monitoring solutions.",
