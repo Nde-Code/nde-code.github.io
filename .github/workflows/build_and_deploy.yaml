@@ -44,7 +44,7 @@ jobs:
 
       # Step 3: Install project dependencies from package.json:
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Step 4: Build the Astro website:
       # Generated production files are output to the ./dist directory.

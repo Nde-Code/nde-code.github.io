@@ -40,7 +40,7 @@ jobs:
 
       # Step 3: Install project dependencies:
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Step 4: Verify Prettier formatting:
       # Fails if files are not correctly formatted.
@@ -67,7 +67,7 @@ jobs:
 
       # Step 3: Install dependencies:
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Step 4: Run Astro diagnostics:
       # Checks Astro files, TypeScript errors and component issues.
@@ -94,7 +94,7 @@ jobs:
 
       # Step 3: Install dependencies:
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       # Step 4: Generate production website:
       # Ensures Astro can successfully compile the project.
