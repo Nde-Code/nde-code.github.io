@@ -258,9 +258,10 @@ export const PORTFOLIO_DATA = {
         "Linux",
       ],
       link: "https://github.com/Amory707/BioAttendAPP",
-      asciiLogo: `+-+-+-+-+-+-+-+-+-+
- |B|i|o|A|t|t|e|n|d|
- +-+-+-+-+-+-+-+-+-+`,
+      asciiLogo: `
++-+-+-+-+-+-+-+-+-+
+|B|i|o|A|t|t|e|n|d|
++-+-+-+-+-+-+-+-+-+`,
     },
   ] as CollabItem[],
 
