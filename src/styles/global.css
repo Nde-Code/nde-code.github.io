@@ -199,3 +199,10 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none; /* Chrome/Safari */
 }
+
+/* I've added this style to adjust the ASCII art on mobile devices. */
+@media screen and (max-width: 480px) {
+  .scrollbar-hide {
+    font-size: 8px;
+  }
+}
