@@ -1,102 +1,73 @@
 name: CI
 
 on:
-  # Run workflow when changes are pushed to main branch:
   push:
     branches:
       - main
 
-  # Run workflow for pull requests targeting main branch:
   pull_request:
     branches:
       - main
 
-  # Allow manual workflow execution from GitHub Actions:
   workflow_dispatch:
 
 permissions:
-  # Only required to read repository contents:
   contents: read
 
 jobs:
-  # 1st job: format-check
-  # This job verifies that the project files follow the configured Prettier formatting rules:
   format-check:
-    # Use ubuntu-latest runner for a consistent Linux environment:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository sources:
       - name: Checkout
         uses: actions/checkout@v7
 
-      # Step 2: Setup Node.js environment:
-      # npm cache is enabled to speed up dependency installation.
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: 'npm'
 
-      # Step 3: Install project dependencies:
       - name: Install dependencies
         run: npm ci
 
-      # Step 4: Check Prettier formatting:
-      # Fails if files do not match the project's formatting rules.
       - name: Check Prettier formatting
         run: npm run prettier-check
 
-  # 2nd job: type-check
-  # This job verifies Astro files and TypeScript correctness:
   type-check:
-    # Use ubuntu-latest runner:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository sources:
       - name: Checkout
         uses: actions/checkout@v7
 
-      # Step 2: Setup Node.js environment:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: 'npm'
 
-      # Step 3: Install project dependencies:
       - name: Install dependencies
         run: npm ci
 
-      # Step 4: Run Astro diagnostics:
-      # Detects TypeScript errors, invalid Astro components and project issues.
       - name: Run Astro type check
         run: npm run astro-check
 
-  # 3rd job: build
-  # This job verifies that the website can be successfully generated for production:
   build:
-    # Use ubuntu-latest runner:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository sources:
       - name: Checkout
         uses: actions/checkout@v7
 
-      # Step 2: Setup Node.js environment:
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: 'npm'
 
-      # Step 3: Install project dependencies:
       - name: Install dependencies
         run: npm ci
 
-      # Step 4: Build production website:
-      # Ensures Astro can compile the project and generate the final output.
       - name: Build Astro website
         run: npm run build

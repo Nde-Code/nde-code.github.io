@@ -1,78 +1,57 @@
 name: Build and deploy the website
 
 on:
-  # Run workflow when changes are pushed to the main branch:
   push:
     branches:
       - main
 
-  # Allow manual workflow execution from GitHub Actions:
   workflow_dispatch:
 
 permissions:
-  # Required permissions for GitHub Pages deployment:
-  contents: read # Required to checkout repository contents.
-  pages: write # Required to publish the Pages artifact.
-  id-token: write # Required for OIDC-based deployment authentication.
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  # Prevent conflicting deployments from running simultaneously:
   group: pages
 
-  # Keep active deployments running until completion:
   cancel-in-progress: false
 
 jobs:
-  # 1st job: build
-  # This job installs dependencies and generates the static Astro website:
   build:
-    # Use ubuntu-latest runner for a consistent Linux build environment:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout repository sources:
       - name: Checkout
         uses: actions/checkout@v7
 
-      # Step 2: Set up Node.js environment required by Astro:
-      # npm cache is enabled to speed up future builds.
       - name: Setup Node.js
         uses: actions/setup-node@v7
         with:
           node-version: 22
           cache: 'npm'
 
-      # Step 3: Install project dependencies from package.json:
       - name: Install dependencies
         run: npm ci
 
-      # Step 4: Build the Astro website:
-      # Generated production files are output to the ./dist directory.
       - name: Build the Astro website
         run: npm run build
 
-      # Step 5: Upload generated site files as a GitHub Pages artifact:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: ./dist
 
-  # 2nd job: deploy
-  # This job publishes the generated artifact to GitHub Pages:
   deploy:
-    # Use ubuntu-latest runner for deployment:
     runs-on: ubuntu-latest
 
-    # Wait for the build job to complete successfully:
     needs: build
 
-    # Associate deployment with the GitHub Pages environment:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      # Step 1: Deploy the uploaded artifact to GitHub Pages:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
