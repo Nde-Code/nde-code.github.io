@@ -36,6 +36,8 @@
     "**/node_modules": true,
     "**/build": true,
     "**/.DS_Store": true,
+    "**/.AppleDouble": true,
+    "**/.LSOverride": true,
     "**/Thumbs.db": true
   },
   "search.exclude": {
@@ -44,6 +46,8 @@
     "**/node_modules": true,
     "**/build": true,
     "**/.DS_Store": true,
+    "**/.AppleDouble": true,
+    "**/.LSOverride": true,
     "**/Thumbs.db": true
   },
   "search.useIgnoreFiles": true,
