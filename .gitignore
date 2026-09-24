@@ -1,11 +1,20 @@
+# Node.js dependencies (auto-generated, very large, never commit):
 node_modules/
 
-# Mac Os Junks
+# Astro generated files and cache:
+.astro/
+
+# Production build output (compiled / bundled code):
+dist/
+build/
+
+# Application or system logs (temporary debug files):
+*.log
+
+# macOS system metadata files (Finder metadata, safe to ignore):
 .DS_Store
 .AppleDouble
 .LSOverride
 
-# Astro Junks
-
-.astro
-dist
+# Windows system thumbnail cache files:
+Thumbs.db
