@@ -56,6 +56,6 @@ This project is distributed under the [MIT](LICENSE) license.
 
 ## 🎯 Maintainer:
 
-This project is maintained by [Nathan Debilloëz](https://nde-code.github.io/).
+This project is maintained by [Nde-Code](https://nde-code.github.io/).
 
 > Feel free to suggest improvements, fixes, or enhancements by opening an issue or a pull request.
