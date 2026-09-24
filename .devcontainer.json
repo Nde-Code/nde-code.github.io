@@ -9,7 +9,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "astro.astro-vscode",
+        "astro-build.astro-vscode",
         "bradlc.vscode-tailwindcss",
         "esbenp.prettier-vscode",
         "dbaeumer.vscode-eslint",
