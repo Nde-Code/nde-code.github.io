@@ -92,15 +92,15 @@ export const PORTFOLIO_DATA = {
           experience: '5 yrs',
           tag: 'EXPERIENCED',
         },
-        { name: 'C#', level: 60, experience: '1 yr', tag: 'FAMILIAR' },
+        { name: 'C#', level: 65, experience: '1 yr', tag: 'FAMILIAR' },
         { name: 'Python', level: 70, experience: '3 yrs', tag: 'FOCUSED' },
-        { name: 'Java', level: 40, experience: '< 1 yr', tag: 'LEARNING' },
-        { name: 'C', level: 35, experience: '< 1 yr', tag: 'LEARNING' },
+        { name: 'Java', level: 55, experience: '< 1 yr', tag: 'LEARNING' },
         { name: 'C++', level: 35, experience: '< 1 yr', tag: 'LEARNING' },
+        { name: 'C', level: 30, experience: '< 1 yr', tag: 'LEARNING' },
       ],
     },
     {
-      category: 'Libraries, Scientific Computing & Tools',
+      category: 'Technical Tools',
       icon: '🛠️',
       skills: [
         {
@@ -111,32 +111,26 @@ export const PORTFOLIO_DATA = {
         },
         { name: 'LaTeX', level: 60, experience: '2+ yrs', tag: 'FOCUSED' },
 
-        { name: 'Math.js', level: 75, experience: '4 yrs', tag: 'EXPERIENCED' },
+        { name: 'Wireshark', level: 75, experience: '4 yrs', tag: 'EXPERIENCED' },
         {
-          name: 'NumPy / SciPy',
-          level: 60,
-          experience: '2 yrs',
-          tag: 'FOCUSED',
+          name: 'VS Code',
+          level: 80,
+          experience: '5 yrs',
+          tag: 'EXPERIENCED',
         },
-        { name: 'Matplotlib', level: 65, experience: '3 yrs', tag: 'FOCUSED' },
+        { name: 'VMware Workstation Pro', level: 60, experience: '1 yrs', tag: 'FOCUSED' },
         {
-          name: 'Jupyter Notebook',
-          level: 70,
-          experience: '3 yrs',
-          tag: 'FOCUSED',
+          name: 'KeePass(XC / DX)',
+          level: 90,
+          experience: '8 yrs',
+          tag: 'EXPERIENCED',
         },
 
         {
-          name: 'TensorFlow',
-          level: 30,
-          experience: '< 1 yr',
-          tag: 'LEARNING',
-        },
-        {
-          name: 'Ultralytics YOLO',
-          level: 40,
-          experience: '< 1 yr',
-          tag: 'LEARNING',
+          name: 'Postman',
+          level: 60,
+          experience: '< 2 yr',
+          tag: 'FOCUSED',
         },
       ],
     },
@@ -145,7 +139,7 @@ export const PORTFOLIO_DATA = {
       icon: '☁️',
       skills: [
         {
-          name: 'Git / GitHub',
+          name: 'Git / GitHub / GitLab',
           level: 80,
           experience: '5 yrs',
           tag: 'EXPERIENCED',
@@ -171,12 +165,6 @@ export const PORTFOLIO_DATA = {
         },
 
         {
-          name: 'REST APIs / API Design',
-          level: 70,
-          experience: '2 yrs',
-          tag: 'FOCUSED',
-        },
-        {
           name: 'Cloudflare Workers',
           level: 70,
           experience: '2 yrs',
@@ -192,7 +180,7 @@ export const PORTFOLIO_DATA = {
       ],
     },
     {
-      category: 'AI & Generative AI',
+      category: 'AI & Machine Learning',
       icon: '🤖',
       skills: [
         {
@@ -221,6 +209,18 @@ export const PORTFOLIO_DATA = {
           level: 75,
           experience: '3 yrs',
           tag: 'FOCUSED',
+        },
+        {
+          name: 'TensorFlow',
+          level: 30,
+          experience: '< 1 yr',
+          tag: 'LEARNING',
+        },
+        {
+          name: 'Ultralytics YOLO',
+          level: 40,
+          experience: '< 1 yr',
+          tag: 'LEARNING',
         },
       ],
     },
