@@ -329,7 +329,7 @@ export const PORTFOLIO_DATA = {
     },
     {
       name: 'radio',
-      desc: 'Play retro Lo-Fi/Chiptune radio or stream custom songs from YouTube',
+      desc: 'Play retro radio or stream custom songs from YouTube',
       usage: 'radio [play|pause|next|add <url>|vol <n>|list]',
     },
     {
