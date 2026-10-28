@@ -1,32 +1,15 @@
-<div align="center">
-
-# 🧑‍💻 Nathan Debilloëz — Portfolio / Website
+# Nathan Debilloëz: Portfolio / Website
 
 **Source code for my personal portfolio**, built with [Astro](https://astro.build/) using the [Retro TUI Portfolio theme](https://astro.build/themes/details/retro-tui-portfolio/) created by [Nivin](https://github.com/nivinvysakh).
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Built with Astro](https://img.shields.io/badge/Built%20with-Astro-orange.svg)](https://astro.build/)
 
-</div>
-
----
-
 This new site preserves the idea of a fun, technical, and immersive design while modernizing the experience with Astro and introducing a cleaner, more maintainable structure.
 
-> 🗂️ My old website (only available in my native language, French) is still available at [nde-code.netlify.app](https://nde-code.netlify.app/) and is now under strict maintenance on [GitLab](https://gitlab.com/Nde-Code/nde-code). It remains online as a reminder of my first major web project, which I truly enjoyed creating and maintaining for more than five years.
+My old website (only available in my native language, French) is still available at [nde-code.netlify.app](https://nde-code.netlify.app/) and is now under strict maintenance on [GitLab](https://gitlab.com/Nde-Code/nde-code). It remains online as a reminder of my first major web project, which I truly enjoyed creating and maintaining for more than five years.
 
-## 📑 Table of contents
-
-- [⚡ Getting started](#-getting-started)
-  - [Using GitHub Codespaces](#using-github-codespaces)
-  - [Local installation](#local-installation)
-  - [Available npm commands](#available-npm-commands)
-- [⚖️ License](#️-license)
-- [🎯 Maintainer](#-maintainer)
-
----
-
-## ⚡ Getting started
+## Getting started
 
 ### Using GitHub Codespaces
 
@@ -45,7 +28,7 @@ Make sure you have the following tools installed on your machine:
 | Tool                                              | Description                                                                |
 | ------------------------------------------------- | -------------------------------------------------------------------------- |
 | **[Node.js](https://nodejs.org/)** (v18 or newer) | The V8-based runtime environment, widely used in the JavaScript ecosystem. |
-| **[npm](https://www.npmjs.com/)**                 | Node Package Manager — generally included with the Node.js runtime.        |
+| **[npm](https://www.npmjs.com/)**                 | Node Package Manager, generally included with the Node.js runtime.         |
 
 **Project setup:**
 
@@ -82,14 +65,14 @@ The project uses the following scripts defined in [`package.json`](package.json)
 | `npm run prettier-check` | Checks formatting without writing changes.        |
 | `npm run astro-check`    | Validates the Astro and TypeScript project setup. |
 
-## ⚖️ License
+## License
 
 This project is distributed under the **[MIT](LICENSE)** license.
 
-> I have kept the original author's license and attribution. I have only added my name to credit the modifications I made to the original theme.
+I have kept the original author's license and attribution. I have only added my name to credit the modifications I made to the original theme.
 
-## 🎯 Maintainer
+## Maintainer
 
 This project is maintained by **[Nde-Code](https://nde-code.github.io/)**.
 
-> Feel free to suggest improvements, fixes, or enhancements by opening an issue or a pull request.
+Feel free to suggest improvements, fixes, or enhancements by opening an issue or a pull request.
