@@ -7,7 +7,7 @@
 
 This new site preserves the idea of a fun, technical, and immersive design while modernizing the experience with Astro and introducing a cleaner, more maintainable structure.
 
-My old website (only available in my native language, French) is still available at [nde-code.netlify.app](https://nde-code.netlify.app/) and is now under strict maintenance on [GitLab](https://gitlab.com/Nde-Code/nde-code). It remains online as a reminder of my first major web project, which I truly enjoyed creating and maintaining for more than five years.
+> My old website (only available in my native language, French) is still available at [nde-code.netlify.app](https://nde-code.netlify.app/) and is now under strict maintenance on [GitLab](https://gitlab.com/Nde-Code/nde-code). It remains online as a reminder of my first major web project, which I truly enjoyed creating and maintaining for more than five years.
 
 ## Getting started
 
@@ -69,10 +69,10 @@ The project uses the following scripts defined in [`package.json`](package.json)
 
 This project is distributed under the **[MIT](LICENSE)** license.
 
-I have kept the original author's license and attribution. I have only added my name to credit the modifications I made to the original theme.
+> I have kept the original author's license and attribution. I have only added my name to credit the modifications I made to the original theme.
 
 ## Maintainer
 
 This project is maintained by **[Nde-Code](https://nde-code.github.io/)**.
 
-Feel free to suggest improvements, fixes, or enhancements by opening an issue or a pull request.
+> Feel free to suggest improvements, fixes, or enhancements by opening an issue or a pull request.
