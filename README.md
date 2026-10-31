@@ -1,4 +1,4 @@
-# Nathan Debilloëz: Portfolio / Website
+# Nathan Debilloëz - Portfolio/Website
 
 **Source code for my personal portfolio**, built with [Astro](https://astro.build/) using the [Retro TUI Portfolio theme](https://astro.build/themes/details/retro-tui-portfolio/) created by [Nivin](https://github.com/nivinvysakh).
 
