@@ -184,23 +184,16 @@ export const PORTFOLIO_DATA = {
       icon: '🤖',
       skills: [
         {
-          name: 'OpenAI GPT Models',
+          name: 'LLMs',
           level: 80,
           experience: '3+ yrs',
           tag: 'EXPERIENCED',
         },
 
         {
-          name: 'Anthropic Claude',
-          level: 70,
-          experience: '2 yrs',
-          tag: 'FOCUSED',
-        },
-
-        {
-          name: 'Google Gemini',
-          level: 75,
-          experience: '2 yrs',
+          name: 'GitHub Copilot / Vibe',
+          level: 65,
+          experience: '1 yrs',
           tag: 'FOCUSED',
         },
 
@@ -208,7 +201,7 @@ export const PORTFOLIO_DATA = {
           name: 'Prompt Engineering',
           level: 75,
           experience: '3 yrs',
-          tag: 'FOCUSED',
+          tag: 'EXPERIENCED',
         },
         {
           name: 'TensorFlow',
