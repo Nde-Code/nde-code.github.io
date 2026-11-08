@@ -245,7 +245,7 @@ export const PORTFOLIO_DATA = {
         'GitGuardian',
         'Linux',
       ],
-      link: 'https://github.com/Amory707/BioAttendAPP',
+      link: '',
       asciiLogo: `
 +-+-+-+-+-+-+-+-+-+
 |B|i|o|A|t|t|e|n|d|
