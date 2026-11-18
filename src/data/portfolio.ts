@@ -106,10 +106,10 @@ export const PORTFOLIO_DATA = {
         {
           name: 'Markdown',
           level: 90,
-          experience: '5+ yrs',
+          experience: '5 yrs',
           tag: 'EXPERIENCED',
         },
-        { name: 'LaTeX', level: 60, experience: '2+ yrs', tag: 'FOCUSED' },
+        { name: 'LaTeX', level: 60, experience: '2 yrs', tag: 'FOCUSED' },
 
         { name: 'Wireshark', level: 75, experience: '4 yrs', tag: 'EXPERIENCED' },
         {
@@ -186,23 +186,17 @@ export const PORTFOLIO_DATA = {
         {
           name: 'LLMs',
           level: 80,
-          experience: '3+ yrs',
+          experience: '3 yrs',
           tag: 'EXPERIENCED',
         },
 
         {
-          name: 'GitHub Copilot / Vibe',
-          level: 65,
+          name: 'Agentic coding',
+          level: 70,
           experience: '1 yrs',
           tag: 'FOCUSED',
         },
 
-        {
-          name: 'Prompt Engineering',
-          level: 75,
-          experience: '3 yrs',
-          tag: 'EXPERIENCED',
-        },
         {
           name: 'TensorFlow',
           level: 30,
@@ -210,7 +204,7 @@ export const PORTFOLIO_DATA = {
           tag: 'LEARNING',
         },
         {
-          name: 'Ultralytics YOLO',
+          name: 'Ultralytics',
           level: 40,
           experience: '< 1 yr',
           tag: 'LEARNING',
